@@ -1,0 +1,77 @@
+<wiidisc version="1">
+	<id game="RMC"/>
+	<options>
+		<section name="Formula Kart Wii">
+			<option name="Formula Kart Wii">
+				<choice name="Enabled">
+					<patch id="fkw" />
+				</choice>
+			</option>
+			<option name="CTGP My Stuff">
+				<choice name="Enabled">
+					<patch id="mystuff" />
+				</choice>
+			</option>
+			<option name="Disable Music">
+				<choice name="Enabled">
+					<patch id="nomusic" />
+				</choice>
+			</option>
+			<option name="Faster Menu Navigation">
+				<choice name="Enabled">
+					<patch id="fastmenu" />
+				</choice>
+			</option>
+			<option name="Force Battle Glitch">
+				<choice name="Enabled">
+					<patch id="btglitch" />
+				</choice>
+			</option>
+			<option name="Mii Heads on Minimap">
+				<choice name="Enabled">
+					<patch id="miiheads" />
+				</choice>
+			</option>
+		</section>
+	</options>
+	<patch id="fkw">
+		<!--Load Code-->
+		<memory valuefile="/fkw/Loader/Loader{$__region}.bin" offset="0x80258700"/>
+		<memory offset="0x8000629C" value="48252FB0"/>
+		<folder external="/fkw/codes" disc="/codes" create="true"/>
+		<!--File Replacements-->
+		<file disc="/Scene/UI/Title.szs" external="/fkw/Title.szs" />
+		<file disc="/Scene/UI/Race.szs" external="/fkw/Race.szs" />
+		<file disc="/Scene/UI/Race_R.szs" external="/fkw/Race_R.szs" />
+		<file disc="/Race/Common_E.szs" external="/fkw/Common_X.szs" />
+		<file disc="/Race/Common_F.szs" external="/fkw/Common_X.szs" />
+		<file disc="/Race/Common_G.szs" external="/fkw/Common_X.szs" />
+		<file disc="/Race/Common_I.szs" external="/fkw/Common_X.szs" />
+		<file disc="/Race/Common_J.szs" external="/fkw/Common_X.szs" />
+		<file disc="/Race/Common_M.szs" external="/fkw/Common_X.szs" />
+		<file disc="/Race/Common_Q.szs" external="/fkw/Common_X.szs" />
+		<file disc="/Race/Common_S.szs" external="/fkw/Common_X.szs" />
+		<file disc="/Race/Common_U.szs" external="/fkw/Common_X.szs" />
+		<folder disc="/Scene/UI" external="/fkw/Race_X" />
+	</patch>
+	<patch id="mystuff">
+		<folder external="/ctgpr/My Stuff" recursive="false" />
+		<folder external="/ctgpr/My Stuff" disc="/" />
+	</patch>
+	<patch id="fastmenu">
+		<!--Set byte to enable the code-->
+		<memory offset="0x800016BB" value="01"/>
+	</patch>
+	<patch id="miiheads">
+		<!--Set byte to enable the code-->
+		<memory offset="0x800016BD" value="01"/>
+	</patch>
+	<patch id="nomusic">
+		<!--Set byte to enable the code-->
+		<memory offset="0x800016BF" value="01"/>
+	</patch>
+	<patch id="btglitch">
+		<!--Set byte to enable the code-->
+		<memory offset="0x800016C1" value="01"/>
+	</patch>
+</wiidisc>

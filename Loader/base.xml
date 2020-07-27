@@ -1,0 +1,17 @@
+<wiidisc version="1">
+	<options>
+		<section name="cool codeloader">
+			<option name="use it">
+				<choice name="yeah">
+					<patch id="coolCodeloader" />
+				</choice>
+			</option>
+		</section>
+	</options>
+
+	<patch id="coolCodeloader">
+		<memory valuefile="loader.bin" offset="{}"/>
+		<memory offset="{}" value="{}"/>
+		<folder external="/codes" disc="/codes" create="true"/>
+	</patch>
+</wiidisc>
