@@ -36,7 +36,7 @@
 	</options>
 	<patch id="fkw">
 		<!--Load Code-->
-		<memory valuefile="/fkw/Loader/Loader{$__region}.bin" offset="0x80258700"/>
+		<memory valuefile="/fkw/Loader{$__region}.bin" offset="0x80258700"/>
 		<memory offset="0x8000629C" value="48252FB0"/>
 		<folder external="/fkw/codes" disc="/codes" create="true"/>
 		<!--File Replacements-->

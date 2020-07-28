@@ -14,21 +14,21 @@
                                 : "r"(_val))
 
 typedef struct {
-	int unk1;		// 00
-	int unk2;		// 04
-	int unk3;		// 08
-	int unk4;		// 0C
-	int unk5;		// 10
-	int unk6;		// 14
-	int unk7;		// 18
-	int unk8;		// 1C
-	int unk9;		// 20
-	int unk10;		// 24
-	int unk11;		// 28
-	int unk12;		// 2C
+	int unk1;	// 00
+	int unk2;	// 04
+	int unk3;	// 08
+	int unk4;	// 0C
+	int unk5;	// 10
+	int unk6;	// 14
+	int unk7;	// 18
+	int unk8;	// 1C
+	int unk9;	// 20
+	int unk10;	// 24
+	int unk11;	// 28
+	int unk12;	// 2C
 	int address;	// 30
-	int length;		// 34
-	int unk13;		// 38
+	int length;	// 34
+	int unk13;	// 38
 } DVDHandle;
 
 bool DVDOpen(const char* path, DVDHandle *fd);
