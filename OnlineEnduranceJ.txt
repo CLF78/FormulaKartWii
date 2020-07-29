@@ -331,6 +331,9 @@ E0000000 80008000
 Disable Timer Flashing
 047F75F4 60000000
 
+Don't Hide Position After Race
+047F4424 38000001
+
 Draggable Blue Shells
 047ADF14 60000000
 
