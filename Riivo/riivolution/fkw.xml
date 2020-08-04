@@ -7,6 +7,11 @@
 					<patch id="fkw" />
 				</choice>
 			</option>
+			<option name="Always Win Track Vote">
+				<choice name="Enabled">
+					<patch id="voting" />
+				</choice>
+			</option>
 			<option name="CTGP My Stuff">
 				<choice name="Enabled">
 					<patch id="mystuff" />
@@ -30,6 +35,25 @@
 			<option name="Mii Heads on Minimap">
 				<choice name="Enabled">
 					<patch id="miiheads" />
+				</choice>
+			</option>
+			<option name="Unlock Everything">
+				<param name="slot" value="00" />
+				<choice name="Top-left">
+					<patch id="unlocker" />
+					<param name="slot" value="01" />
+				</choice>
+				<choice name="Top-right">
+					<patch id="unlocker" />
+					<param name="slot" value="02" />
+				</choice>
+				<choice name="Bottom-left">
+					<patch id="unlocker" />
+					<param name="slot" value="03" />
+				</choice>
+				<choice name="Bottom-right">
+					<patch id="unlocker" />
+					<param name="slot" value="04" />
 				</choice>
 			</option>
 		</section>
@@ -73,5 +97,13 @@
 	<patch id="btglitch">
 		<!--Set byte to enable the code-->
 		<memory offset="0x800016C1" value="01"/>
+	</patch>
+	<patch id="unlocker">
+		<!--Set byte to enable the code-->
+		<memory offset="0x800016C3" value="{$slot}"/>
+	</patch>
+	<patch id="voting">
+		<!--Set byte to enable the code-->
+		<memory offset="0x800016C5" value="01"/>
 	</patch>
 </wiidisc>
