@@ -67,15 +67,10 @@
 		<file disc="/Scene/UI/Title.szs" external="/fkw/Title.szs" />
 		<file disc="/Scene/UI/Race.szs" external="/fkw/Race.szs" />
 		<file disc="/Scene/UI/Race_R.szs" external="/fkw/Race_R.szs" />
-		<file disc="/Race/Common_E.szs" external="/fkw/Common_X.szs" />
-		<file disc="/Race/Common_F.szs" external="/fkw/Common_X.szs" />
-		<file disc="/Race/Common_G.szs" external="/fkw/Common_X.szs" />
-		<file disc="/Race/Common_I.szs" external="/fkw/Common_X.szs" />
-		<file disc="/Race/Common_J.szs" external="/fkw/Common_X.szs" />
-		<file disc="/Race/Common_M.szs" external="/fkw/Common_X.szs" />
-		<file disc="/Race/Common_Q.szs" external="/fkw/Common_X.szs" />
-		<file disc="/Race/Common_S.szs" external="/fkw/Common_X.szs" />
-		<file disc="/Race/Common_U.szs" external="/fkw/Common_X.szs" />
+		<file disc="/Race/Common_U.szs" external="/fkw/Common_X/Common_E.szs" />
+		<file disc="/Race/Common_Q.szs" external="/fkw/Common_X/Common_F.szs" />
+		<file disc="/Race/Common_M.szs" external="/fkw/Common_X/Common_S.szs" />
+		<folder disc="/Race" external="/fkw/Common_X" />
 		<folder disc="/Scene/UI" external="/fkw/Race_X" />
 	</patch>
 	<patch id="mystuff">

@@ -77,31 +77,31 @@ IF %LETTER%==p (
 	copy /b fkw\Race_G.szs mkw.d\files\Scene\UI\Race_G.szs >nul
 	copy /b fkw\Race_I.szs mkw.d\files\Scene\UI\Race_I.szs >nul
 	copy /b fkw\Race_S.szs mkw.d\files\Scene\UI\Race_S.szs >nul
-	copy /b fkw\Common_X.szs mkw.d\files\Race\Common_E.szs >nul
-	copy /b fkw\Common_X.szs mkw.d\files\Race\Common_F.szs >nul
-	copy /b fkw\Common_X.szs mkw.d\files\Race\Common_G.szs >nul
-	copy /b fkw\Common_X.szs mkw.d\files\Race\Common_I.szs >nul
-	copy /b fkw\Common_X.szs mkw.d\files\Race\Common_S.szs >nul
+	copy /b fkw\Common_E.szs mkw.d\files\Race\Common_E.szs >nul
+	copy /b fkw\Common_F.szs mkw.d\files\Race\Common_F.szs >nul
+	copy /b fkw\Common_G.szs mkw.d\files\Race\Common_G.szs >nul
+	copy /b fkw\Common_I.szs mkw.d\files\Race\Common_I.szs >nul
+	copy /b fkw\Common_S.szs mkw.d\files\Race\Common_S.szs >nul
 )
 
 IF %LETTER%==e (
 	copy /b fkw\Race_M.szs mkw.d\files\Scene\UI\Race_M.szs >nul
 	copy /b fkw\Race_Q.szs mkw.d\files\Scene\UI\Race_Q.szs >nul
 	copy /b fkw\Race_U.szs mkw.d\files\Scene\UI\Race_U.szs >nul
-	copy /b fkw\Common_X.szs mkw.d\files\Race\Common_M.szs >nul
-	copy /b fkw\Common_X.szs mkw.d\files\Race\Common_Q.szs >nul
-	copy /b fkw\Common_X.szs mkw.d\files\Race\Common_U.szs >nul
+	copy /b fkw\Common_S.szs mkw.d\files\Race\Common_M.szs >nul
+	copy /b fkw\Common_F.szs mkw.d\files\Race\Common_Q.szs >nul
+	copy /b fkw\Common_E.szs mkw.d\files\Race\Common_U.szs >nul
 )
 
 IF %LETTER%==j (
 	copy /b fkw\Race_J.szs mkw.d\files\Scene\UI\Race_J.szs >nul
-	copy /b fkw\Common_X.szs mkw.d\files\Race\Common_J.szs >nul
+	copy /b fkw\Common_J.szs mkw.d\files\Race\Common_J.szs >nul
 )
 
 IF %LETTER%==k (
 	copy /b fkw\Race_K.szs mkw.d\files\Scene\UI\Race_K.szs >nul
 	copy /b fkw\Race_R.szs mkw.d\files\Scene\UI\Race_R.szs >nul
-	copy /b fkw\Common_X.szs mkw.d\files\Race\Common_J.szs >nul
+	copy /b fkw\Common_J.szs mkw.d\files\Race\Common_J.szs >nul
 )
 
 echo.
