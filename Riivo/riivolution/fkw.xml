@@ -37,21 +37,21 @@
 					<patch id="miiheads" />
 				</choice>
 			</option>
-			<option name="Unlock Everything">
+			<option name="Unlock Everything for X License">
 				<param name="slot" value="00" />
-				<choice name="Top-left">
+				<choice name="Top-Left">
 					<patch id="unlocker" />
 					<param name="slot" value="01" />
 				</choice>
-				<choice name="Top-right">
+				<choice name="Top-Right">
 					<patch id="unlocker" />
 					<param name="slot" value="02" />
 				</choice>
-				<choice name="Bottom-left">
+				<choice name="Bottom-Left">
 					<patch id="unlocker" />
 					<param name="slot" value="03" />
 				</choice>
-				<choice name="Bottom-right">
+				<choice name="Bottom-Right">
 					<patch id="unlocker" />
 					<param name="slot" value="04" />
 				</choice>
@@ -82,28 +82,23 @@
 		<folder external="/ctgpr/My Stuff" recursive="false" />
 		<folder external="/ctgpr/My Stuff" disc="/" />
 	</patch>
+	<!--Set bytes to enable the following codes-->
 	<patch id="fastmenu">
-		<!--Set byte to enable the code-->
 		<memory offset="0x800016BB" value="01"/>
 	</patch>
 	<patch id="miiheads">
-		<!--Set byte to enable the code-->
 		<memory offset="0x800016BD" value="01"/>
 	</patch>
 	<patch id="nomusic">
-		<!--Set byte to enable the code-->
 		<memory offset="0x800016BF" value="01"/>
 	</patch>
 	<patch id="btglitch">
-		<!--Set byte to enable the code-->
 		<memory offset="0x800016C1" value="01"/>
 	</patch>
 	<patch id="unlocker">
-		<!--Set byte to enable the code-->
 		<memory offset="0x800016C3" value="{$slot}"/>
 	</patch>
 	<patch id="voting">
-		<!--Set byte to enable the code-->
 		<memory offset="0x800016C5" value="01"/>
 	</patch>
 </wiidisc>
