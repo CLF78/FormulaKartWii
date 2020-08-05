@@ -106,7 +106,7 @@ IF %LETTER%==k (
 
 echo.
 SET /P VOTING=Enable Always Win Track Vote? (Y/N):
-IF /i %FRAMERATE%==Y copy /b fkw\codes\tmp.bin+fkw\codes\voting%LETTER%.bin fkw\codes\tmp.bin >nul
+IF /i %VOTING%==Y copy /b fkw\codes\tmp.bin+fkw\codes\voting%LETTER%.bin fkw\codes\tmp.bin >nul
 
 echo.
 SET /P FASTMENU=Enable Faster Menu Navigation? (Y/N):
