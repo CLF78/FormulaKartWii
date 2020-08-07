@@ -17,11 +17,6 @@
 					<patch id="mystuff" />
 				</choice>
 			</option>
-			<option name="Disable Music">
-				<choice name="Enabled">
-					<patch id="nomusic" />
-				</choice>
-			</option>
 			<option name="Faster Menu Navigation">
 				<choice name="Enabled">
 					<patch id="fastmenu" />
@@ -35,6 +30,11 @@
 			<option name="Mii Heads on Minimap">
 				<choice name="Enabled">
 					<patch id="miiheads" />
+				</choice>
+			</option>
+			<option name="No Music">
+				<choice name="Enabled">
+					<patch id="nomusic" />
 				</choice>
 			</option>
 			<option name="Unlock Everything for X License">

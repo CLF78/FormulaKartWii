@@ -246,7 +246,7 @@ C21D4E1C 00000016
 Race-Specific Codes
 
 30 Second Time Limit Modifier
-0453E60C 28042A30
+0253E60E 00002A30
 
 All Items Can Land
 06001600 000000B8
