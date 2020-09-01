@@ -7,7 +7,6 @@
 
 # Mushroom Gorge
 * ✓ Kinoko Canyon
-* Mystic Falls
 * Rocky Cliff
 * Sky Grove
 * Sunset Forest
@@ -215,10 +214,10 @@
 * Magmatic Sanctuary
 * Medieval Castlegrounds
 * Siberian Chateau
-* Space Race Castle
+* ✓ Space Race Castle (make right route easier and shroom-only)
 
 # Snowy Tracks
-* 3DS Rosalina's Snow World (MysterE)
+* ✓ 3DS Rosalina's Snow World (MysterE)
 * Christmas Wish
 * DS DK Pass (Skipper)
 * GCN Sherbet Land (Tock)
