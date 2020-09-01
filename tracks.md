@@ -6,7 +6,6 @@
 * N64 Moo Moo Farm
 
 # Mushroom Gorge
-* ✓ Flooded Cavern
 * ✓ Kinoko Canyon
 * Mystic Falls
 * Rocky Cliff
@@ -17,16 +16,16 @@
 # Toad's Factory
 * Night Factory
 * Toad's Forgery
-* ✓ Waluigi's Choco Factory
+* ✓ Waluigi's Choco Factory (add sticky road, mdush before first ramp)
 
 # Mario Circuit
 * (see Circuit Tracks)
 
 # Coconut Mall (new theme: Food)
-* ✓ Candy Bay
+* ✓ Candy Bay (remove invisible walls, improve water animation, remove pillars, fix kcl)
 * Candy Mountains
 * Cheesebow Road
-* Cookie Village
+* ✓ Cookie Village (remove cookie)
 * ✓ GBA Cheese Land (ZPL)
 * N64 Choco Mountain
 * Piece of Delight
@@ -40,7 +39,7 @@
 * Crystal Cove
 * Goomba Cave
 * Icestone Shaft
-* ✓ Sparkling Cavern
+* ✓ Sparkling Cavern (upscale, fix kcl)
 
 # Daisy Circuit
 * (see Circuit Tracks as well)
@@ -52,17 +51,16 @@
 * Aquania
 * Koopa Shell Pipeland
 * Warp Pipe Island
-* ✓ Wii U Dolphin Shoals
+* ✓ Wii U Dolphin Shoals (fix bill in cavern)
 * Windmill Village
 
 # Maple Treeway
 * Autumn Forest
-* ✓ Daisy's Palace
+* ✓ Daisy's Palace (remove shortcut gate)
 * Honeybee Hideout
 * Torrential Treetops
 
 # Grumble Volcano
-* ✓ Blazing Subterrane
 * Fireway
 * Lava Lake
 * Volcanic Pipeyard
@@ -92,7 +90,7 @@
 
 # DS Yoshi Falls
 * Galvarny Falls
-* ✓ Lakeside Grove
+* ✓ Lakeside Grove (fix horizontal blocks, improve item sets at the ramps, add water animation)
 
 # SNES Ghost Valley 2
 * Abandoned Boardwalk
@@ -136,7 +134,7 @@
 * 3DS DK Jungle (Skipper)
 * GCN Dino Dino Jungle (Tock)
 * Jungle Parkway
-* ✓ Saltwater Lake
+* ✓ Saltwater Lake (change road edge and waterfall kcl)
 * Thwomp Swamp
 
 # GCN Mario Circuit (new theme: Sky)
@@ -149,7 +147,6 @@
 * SNES MC2 (NialBlack)
 
 # DS Peach Gardens
-* Beagle Plains
 * Cherry Blossom Gardens
 * ✓ Garden of Dreams
 * Rockside River
@@ -165,6 +162,7 @@
 * Sunset Mountain
 
 # N64 Bowser's Castle
+* (see Bowser Tracks)
 
 # Circuit Tracks
 * 3DS Music Park
@@ -190,11 +188,11 @@
 * Park Cruise
 * River Bridge
 * Seaside Circuit
-* Seasonal Circuit
+* ✓ Seasonal Circuit
 * Shadow Woods
 * Shell Speedway
 * Shining Town
-* ✓ Slot Kart Derby
+* ✓ Slot Kart Derby (try sticky road)
 * Starshine Atoll
 * Sunny Island
 * Sunset Circuit
@@ -203,7 +201,7 @@
 * Unfinished Mario Circuit
 * Wario Circuit
 * Water Village
-* Wii Play Tanks
+* ✓ Wii Play Tanks (add arrows, swap ramp trick type, fix kcl)
 * Yoshi's Woolly Raceway
 
 # Bowser Tracks
@@ -250,4 +248,4 @@
 * Secluded Island
 
 # Uncategorized
-* GBA Ribbon Road (Gabriela)
+* ✓ GBA Ribbon Road (Gabriela)
