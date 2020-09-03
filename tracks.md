@@ -22,13 +22,11 @@
 
 # Coconut Mall (new theme: Food)
 * ✓ Candy Bay (remove invisible walls, improve water animation, remove pillars, fix kcl)
-* Candy Mountains
 * Cheesebow Road
 * ✓ Cookie Village (remove cookie)
 * ✓ GBA Cheese Land (ZPL)
 * N64 Choco Mountain
 * Piece of Delight
-* SNES Choco Island 1 (Noia)
 
 # DK Summit
 * (see Snowy Tracks)
@@ -109,7 +107,7 @@
 
 # GBA Shy Guy Beach
 * (see Beach Tracks as well)
-* SNES Koopa Beach 2 (Noia)
+* SNES Koopa Beach 2 (Noia) (remove slippery road)
 
 # DS Delfino Square
 * ✓ Concord Town
@@ -157,7 +155,6 @@
 * ✓ Camp Kartigan
 * Dragonite Island
 * GP Pac Mountain
-* Grassland Lake
 * Sunset Mountain
 
 # N64 Bowser's Castle
@@ -192,6 +189,7 @@
 * Shell Speedway
 * Shining Town
 * ✓ Slot Kart Derby (try sticky road)
+* SNES Donut Plains 2 (Noia)
 * Starshine Atoll
 * Sunny Island
 * Sunset Circuit
@@ -212,7 +210,7 @@
 * Kamek's Library
 * Lava Prison
 * Magmatic Sanctuary
-* Medieval Castlegrounds
+* ✓ Medieval Castlegrounds (fix kcl, add animations)
 * Siberian Chateau
 * ✓ Space Race Castle (make right route easier and shroom-only)
 
