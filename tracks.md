@@ -154,7 +154,6 @@
 * 3DS Rock Rock Mountain (Zilly)
 * ✓ Camp Kartigan
 * Dragonite Island
-* GP Pac Mountain
 * Sunset Mountain
 
 # N64 Bowser's Castle
