@@ -70,7 +70,7 @@
 # Moonview Highway
 * 3DS Neo Koopa City
 * Downtown Underground
-* GCN Mushroom Bridge (Tock)
+* ✓ GCN Mushroom Bridge (Tock)
 * GCN Mushroom City (Tock)
 * Skyline Avenue
 
@@ -132,7 +132,6 @@
 * GCN Dino Dino Jungle (Tock)
 * Jungle Parkway
 * ✓ Saltwater Lake (change road edge and waterfall kcl)
-* Thwomp Swamp
 
 # GCN Mario Circuit (new theme: Sky)
 * Cascade Kingdom
@@ -146,7 +145,7 @@
 # DS Peach Gardens
 * Cherry Blossom Gardens
 * ✓ Garden of Dreams
-* Rockside River
+* ✓ Rockside River
 * Sakura Sanctuary
 * White Garden
 
@@ -238,8 +237,9 @@
 
 # Beach Tracks
 * Cataquack Beach
+* Divine Paradise
 * DS Cheep Cheep Beach (ZPL)
-* Fishdom Island
+* ✓ Fishdom Island (Jasperr) (improve moving item box set)
 * N64 Koopa Troopa Beach (Zilly)
 * Secluded Island
 
