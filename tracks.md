@@ -10,7 +10,7 @@
 * Rocky Cliff
 * Sky Grove
 * Sunset Forest
-* Sunshine Island
+* ✓ Sunshine Island (fix bill falling on last ramp)
 
 # Toad's Factory
 * Night Factory
@@ -35,7 +35,6 @@
 * Cavern Escapade
 * Crystal Cove
 * Goomba Cave
-* Icestone Shaft
 * ✓ Sparkling Cavern (upscale, fix kcl)
 
 # Daisy Circuit
@@ -111,7 +110,7 @@
 
 # DS Delfino Square
 * ✓ Concord Town
-* Summer Starville
+* ✓ Summer Starville
 
 # GCN Waluigi Stadium
 * DS Waluigi Pinball (Sniki)
