@@ -37,25 +37,6 @@
 					<patch id="nomusic" />
 				</choice>
 			</option>
-			<option name="Unlock Everything for X License">
-				<param name="slot" value="00" />
-				<choice name="Top-Left">
-					<patch id="unlocker" />
-					<param name="slot" value="01" />
-				</choice>
-				<choice name="Top-Right">
-					<patch id="unlocker" />
-					<param name="slot" value="02" />
-				</choice>
-				<choice name="Bottom-Left">
-					<patch id="unlocker" />
-					<param name="slot" value="03" />
-				</choice>
-				<choice name="Bottom-Right">
-					<patch id="unlocker" />
-					<param name="slot" value="04" />
-				</choice>
-			</option>
 		</section>
 	</options>
 	<patch id="fkw">
@@ -89,9 +70,6 @@
 	</patch>
 	<patch id="btglitch">
 		<memory offset="0x800016C1" value="01"/>
-	</patch>
-	<patch id="unlocker">
-		<memory offset="0x800016C3" value="{$slot}"/>
 	</patch>
 	<patch id="voting">
 		<memory offset="0x800016C5" value="01"/>
