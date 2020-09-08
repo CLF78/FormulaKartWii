@@ -50,6 +50,7 @@ Service Codes
 
 Auto Press A at Wii Remote Strap Screen
 040077C8 4E800020
+04604094 4800001C
 
 Automatic BRSAR Patcher
 C20912B0 00000002
