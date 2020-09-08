@@ -106,7 +106,7 @@
 
 # GBA Shy Guy Beach
 * (see Beach Tracks as well)
-* SNES Koopa Beach 2 (Noia) (remove slippery road)
+* ✓ SNES Koopa Beach 2 (Noia) (remove slippery road)
 
 # DS Delfino Square
 * ✓ Concord Town
@@ -146,7 +146,7 @@
 * ✓ Garden of Dreams
 * ✓ Rockside River
 * Sakura Sanctuary
-* White Garden
+* ✓ White Garden
 
 # GCN DK Mountain
 * 3DS Rock Rock Mountain (Zilly)
@@ -168,8 +168,8 @@
 * GBA Mario Circuit (MysterE99)
 * GCN Luigi Circuit (Tock)
 * GCN Yoshi Circuit (Ermelber)
-* GP Mario Beach
-* Grassy Plains (ZPL)
+* ✓ GP Mario Beach
+* ✓ Grassy Plains (ZPL) (improve bill item routes)
 * Green Hill Zone
 * Hillside Circuit
 * Jungle Jamble
@@ -186,7 +186,7 @@
 * Shell Speedway
 * Shining Town
 * ✓ Slot Kart Derby (try sticky road)
-* SNES Donut Plains 2 (Noia)
+* ✓ SNES Donut Plains 2 (Noia)
 * Starshine Atoll
 * Sunny Island
 * Sunset Circuit
@@ -235,7 +235,6 @@
 * Thwomp Desert
 
 # Beach Tracks
-* Cataquack Beach
 * Divine Paradise
 * DS Cheep Cheep Beach (ZPL)
 * ✓ Fishdom Island (Jasperr) (improve moving item box set)
