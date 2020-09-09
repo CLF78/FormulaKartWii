@@ -48,7 +48,7 @@
 * Koopa Shell Pipeland
 * Warp Pipe Island
 * ✓ Wii U Dolphin Shoals (fix bill in cavern)
-* Windmill Village
+* ✓ Windmill Village (add items to crates)
 
 # Maple Treeway
 * Autumn Forest
@@ -214,7 +214,7 @@
 # Snowy Tracks
 * ✓ 3DS Rosalina's Snow World (MysterE)
 * Christmas Wish
-* DS DK Pass (Skipper)
+* ✓ DS DK Pass (Quajeek)
 * GCN Sherbet Land (Tock)
 * Icy Surroundings
 * Snowy Drive
