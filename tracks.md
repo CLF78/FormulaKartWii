@@ -3,7 +3,7 @@
 
 # Moo Moo Meadows
 * Farm Road
-* N64 Moo Moo Farm
+* N64 Moo Moo Farm (add sticky road)
 
 # Mushroom Gorge
 * ✓ Kinoko Canyon
@@ -26,14 +26,12 @@
 * ✓ Cookie Village (remove cookie)
 * ✓ GBA Cheese Land (ZPL)
 * N64 Choco Mountain
-* Piece of Delight
 
 # DK Summit
 * (see Snowy Tracks)
 
 # Wario's Gold Mine
-* Cavern Escapade
-* Crystal Cove
+* ✓ Crystal Cove
 * Goomba Cave
 * ✓ Sparkling Cavern (upscale, fix kcl)
 
@@ -213,7 +211,7 @@
 
 # Snowy Tracks
 * ✓ 3DS Rosalina's Snow World (MysterE)
-* Christmas Wish
+* ✓ Christmas Wish
 * ✓ DS DK Pass (Quajeek)
 * GCN Sherbet Land (Tock)
 * Icy Surroundings
@@ -221,14 +219,14 @@
 * ✓ Stargaze Summit
 
 # Desert Tracks
-* 3DS Shy Guy Bazaar
+* ✓ 3DS Shy Guy Bazaar
 * Desert Badlands
 * Desert Bone
 * Desert Raceway (Joris)
 * Dryland Hills
 * Molten Desert
 * N64 Kalimari Desert (Sniki)
-* NISWOE Desert
+* ✓ NISWOE Desert (make cannon faster)
 * Sandcastle Park
 * Sandy Citadel
 * Spike Desert
