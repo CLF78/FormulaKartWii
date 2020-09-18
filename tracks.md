@@ -92,7 +92,6 @@
 * DS Luigi's Mansion (Tock)
 * King Boo's Area 2
 * N64 Banshee Boardwalk (ZPL)
-* Parallel Purgatory
 * ✓ Unnamed Valley
 
 # N64 Mario Raceway
@@ -132,7 +131,7 @@
 
 # GCN Mario Circuit (new theme: Sky)
 * Cascade Kingdom
-* Celestial Ruins
+* ✓ Celestial Ruins
 * ✓ Coin Heaven
 
 # SNES Mario Circuit 3
