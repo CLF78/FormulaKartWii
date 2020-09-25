@@ -125,6 +125,7 @@
 # N64 DK's Jungle Parkway
 * 3DS DK Jungle (Skipper)
 * GCN Dino Dino Jungle (Tock)
+* Jungle Glade
 * Jungle Parkway
 * ✓ Saltwater Lake (change road edge and waterfall kcl)
 
@@ -161,6 +162,7 @@
 * DS Figure 8 Circuit (Sniki)
 * DS Mario Circuit (ZPL)
 * Fiery Path
+* Floating Fortress
 * GBA Mario Circuit (MysterE99)
 * GCN Luigi Circuit (Tock)
 * GCN Yoshi Circuit (Ermelber)
@@ -173,6 +175,7 @@
 * ✓ Luigi's Island
 * Mushroom Fort
 * Mushroom Park
+* Mystical Marsh
 * Nature Creek Pass
 * Park Cruise
 * River Bridge
