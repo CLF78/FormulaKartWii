@@ -125,7 +125,6 @@
 # N64 DK's Jungle Parkway
 * 3DS DK Jungle (Skipper)
 * GCN Dino Dino Jungle (Tock)
-* Jungle Glade
 * Jungle Parkway
 * ✓ Saltwater Lake (change road edge and waterfall kcl)
 
@@ -214,7 +213,6 @@
 * ✓ 3DS Rosalina's Snow World (MysterE)
 * ✓ Christmas Wish
 * ✓ DS DK Pass (Quajeek)
-* GCN Sherbet Land (Tock)
 * Icy Surroundings
 * Snowy Drive
 * ✓ Stargaze Summit
@@ -235,7 +233,6 @@
 
 # Beach Tracks
 * Divine Paradise
-* DS Cheep Cheep Beach (ZPL)
 * ✓ Fishdom Island (Jasperr) (improve moving item box set)
 * N64 Koopa Troopa Beach (Zilly)
 * Secluded Island
