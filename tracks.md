@@ -41,7 +41,6 @@
 
 # Koopa Cape
 * 3DS Cheep Cheep Lagoon (ZPL)
-* 3DS Piranha Plant Slide (Atlas)
 * Aquania
 * Koopa Shell Pipeland
 * Warp Pipe Island
@@ -110,7 +109,7 @@
 * ✓ Summer Starville
 
 # GCN Waluigi Stadium
-* DS Waluigi Pinball (Sniki)
+* ✓ DS Waluigi Pinball (Sniki)
 * DS Wario Stadium (Skipper)
 * Excitebike Adventure
 * Sea Stadium
