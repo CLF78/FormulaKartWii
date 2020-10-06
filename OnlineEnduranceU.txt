@@ -116,6 +116,9 @@ Disable Toad's Factory Music Reset
 Don't Lose VR When Disconnecting
 04834AD0 60000000
 
+Final Lap Music Trigger Modifier
+0470492C 281F0002
+
 License Unlock
 04544438 38600001
 

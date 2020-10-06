@@ -6,9 +6,8 @@
 
 # Mushroom Gorge
 * ✓ Kinoko Canyon
-* Rocky Cliff
 * Sky Grove
-* Sunset Forest
+* ✓ Sunset Forest
 * ✓ Sunshine Island (fix bill falling on last ramp)
 
 # Toad's Factory

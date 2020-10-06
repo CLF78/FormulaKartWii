@@ -115,6 +115,9 @@ Disable Toad's Factory Music Reset
 Don't Lose VR When Disconnecting
 04856560 60000000
 
+Final Lap Music Trigger Modifier
+0470B2D0 281F0002
+
 License Unlock
 04549974 38600001
 
@@ -587,6 +590,13 @@ E0000000 80008000
 
 No Bullet Bill Icon
 047BA5D0 60000000
+
+No Invincibility Frames
+C656779C 800001C0
+060001C0 00000018
+2C160007 41820010
+2C160008 41820008
+48567624 485675CC
 
 Prevent Shock/POW From Dropping
 C27BC450 00000004
