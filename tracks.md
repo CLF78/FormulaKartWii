@@ -2,8 +2,7 @@
 * (see Circuit Tracks)
 
 # Moo Moo Meadows
-* Farm Road
-* N64 Moo Moo Farm (add sticky road)
+* ✓ N64 Moo Moo Farm (add sticky road)
 
 # Mushroom Gorge
 * ✓ Kinoko Canyon
@@ -22,7 +21,6 @@
 
 # Coconut Mall (new theme: Food)
 * ✓ Candy Bay (remove invisible walls, improve water animation, remove pillars, fix kcl)
-* Cheesebow Road
 * ✓ Cookie Village (remove cookie)
 * ✓ GBA Cheese Land (ZPL)
 * N64 Choco Mountain
@@ -32,7 +30,7 @@
 
 # Wario's Gold Mine
 * ✓ Crystal Cove
-* Goomba Cave
+* ✓ Goomba Cave (fix beancorners, add boost panels, change chomp position, move track up y axis, check kcl)
 * ✓ Sparkling Cavern (upscale, fix kcl)
 
 # Daisy Circuit
@@ -75,7 +73,8 @@
 
 # Rainbow Road
 * Keegs Road
-* Neon Loop
+* ✓ Neon Loop
+* SNES Rainbow Road (ZPL)
 * Sparkly Road
 
 # GCN Peach Beach
@@ -157,6 +156,7 @@
 * 3DS Music Park
 * 3DS Toad Circuit (Torran)
 * Birthday Park
+* ✓ Cheesebow Road (fix ramps)
 * Compact Highway
 * DS Figure 8 Circuit (Sniki)
 * DS Mario Circuit (ZPL)
@@ -189,7 +189,7 @@
 * Sunny Island
 * Sunset Circuit
 * Sunshine Way
-* Tiny Town Route
+* ✓ Tiny Town Route
 * Unfinished Mario Circuit
 * Wario Circuit
 * Water Village
@@ -199,7 +199,7 @@
 # Bowser Tracks
 * 3DS Bowser's Castle (Atlas)
 * Bowser's Lava Lair
-* CTR Cortex Castle
+* ✓ CTR Cortex Castle
 * DS Airship Fortress (Sniki)
 * ✓ Dark Matter Fortress
 * Kamek's Library
@@ -214,7 +214,6 @@
 * ✓ Christmas Wish
 * ✓ DS DK Pass (Quajeek)
 * Icy Surroundings
-* Snowy Drive
 * ✓ Stargaze Summit
 
 # Desert Tracks
@@ -227,7 +226,7 @@
 * N64 Kalimari Desert (Sniki)
 * ✓ NISWOE Desert (make cannon faster)
 * Sandcastle Park
-* Sandy Citadel
+* ✓ Sandy Citadel (fix checkpoint bug)
 * Spike Desert
 * Thwomp Desert
 
