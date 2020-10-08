@@ -197,9 +197,8 @@
 
 # Bowser Tracks
 * 3DS Bowser's Castle (Atlas)
-* Bowser's Lava Lair
 * ✓ CTR Cortex Castle
-* DS Airship Fortress (Sniki)
+* ✓ DS Airship Fortress (Sniki) (try v1.2, fix ramp kcl, check woodbox settings)
 * ✓ Dark Matter Fortress
 * Kamek's Library
 * Lava Prison
