@@ -115,7 +115,7 @@ DATE		= 2020-10-03
  0x0ce      .     .     .     .  # HeyhoShipGBA
  0x0cf     25     .     .     .  # koopaBall
 
- 0x0d0     30     .     8     .  # kart_truck
+ 0x0d0     30     .     .     .  # kart_truck
  0x0d1     30     .     .     .  # car_body
  0x0d2      .     .     .     .  # skyship
  0x0d3      8     .     .     .  # w_woodbox
@@ -141,13 +141,13 @@ DATE		= 2020-10-03
  0x0e6     28     .     .     .  # basabasa_dummy
  0x0e7     14     .     .     .  # CarA2
  0x0e8     14     .     .     .  # CarA3
- 0x0e9     16     .     8     .  # Hwanwan
+ 0x0e9     16     .     .     .  # Hwanwan
  0x0ea     32     .     .     .  # HeyhoBallGBA
- 0x0eb     30     .     8     .  # Twanwan
+ 0x0eb     30     .     .     .  # Twanwan
  0x0ec      .     .     .     .  # cruiserR
  0x0ed      .     .     .     .  # bird
  0x0ee      .     .     .     .  # sin_itembox
- 0x0ef     16     .     8     .  # Twanwan_ue
+ 0x0ef     16     .     .     .  # Twanwan_ue
 
  0x0f0     27     .     .     .  # BossHanachan
  0x0f1      8     8     8     8  # Kdossunc
@@ -265,14 +265,14 @@ DATE		= 2020-10-03
  0x193     14     .     .     .  # cow
  0x194     14     .     .     .  # pakkun_f
  0x195     11     .     .     .  # WLfirebarGC
- 0x196     16     .     8     .  # wanwan
+ 0x196     16     .     .     .  # wanwan
  0x197     21     .     .     .  # poihana
  0x198     25     .     .     .  # DKrockGC
  0x199     10     .     .     .  # sanbo
  0x19a     13     .     .     .  # choropu2
  0x19b     25     .     .     .  # TruckWagon
  0x19c     10     .     .     .  # heyho
- 0x19d      8     .     8     .  # Press
+ 0x19d      8     .     .     .  # Press
  0x19e     17     .     8     .  # Press_soko
  0x19f     26    26    26    26  # pile
 
@@ -321,11 +321,11 @@ DATE		= 2020-10-03
 
  0x210      .     .     .     .  # starGate
  0x211      .     .     .     .  # RM_ring1
- 0x212     13     .     .     .  # FlamePole_v
+ 0x212     11     .     .     .  # FlamePole_v
  0x213      .     .     .     .  # M_obj_s_jump
  0x214      .     .     .     .  # InsekiA
  0x215      .     .     .     .  # InsekiB
- 0x216     13     .     .     .  # FlamePole_v_big
+ 0x216     11     .     .     .  # FlamePole_v_big
  0x217      .     .     .     .  # Mdush
  0x218      .     .     .     .  # HP_pipe
  0x219      .     .     .     .  # DemoCol

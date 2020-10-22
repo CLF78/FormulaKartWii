@@ -115,7 +115,7 @@ DATE		= 2020-10-03
  0x0ce      .     .     .     .  # HeyhoShipGBA
  0x0cf      .     6     5     6  # koopaBall
 
- 0x0d0      .     5     .     5  # kart_truck
+ 0x0d0      .     5     5     5  # kart_truck
  0x0d1      .     5     5     5  # car_body
  0x0d2      .     .     .     .  # skyship
  0x0d3      5     5     5     5  # w_woodbox
@@ -141,13 +141,13 @@ DATE		= 2020-10-03
  0x0e6      .     5     5     5  # basabasa_dummy
  0x0e7      .     5     5     5  # CarA2
  0x0e8      .     5     5     5  # CarA3
- 0x0e9      .     5     .     5  # Hwanwan
+ 0x0e9      .     5     5     5  # Hwanwan
  0x0ea      5     5     5     5  # HeyhoBallGBA
- 0x0eb      .     5     .     5  # Twanwan
+ 0x0eb      .     5     5     5  # Twanwan
  0x0ec      .     .     .     .  # cruiserR
  0x0ed      .     .     .     .  # bird
  0x0ee      5     5     5     5  # sin_itembox
- 0x0ef      .     5     .     5  # Twanwan_ue
+ 0x0ef      .     5     5     5  # Twanwan_ue
 
  0x0f0      .     5     5     5  # BossHanachan
  0x0f1      .     .     .     .  # Kdossunc
@@ -265,7 +265,7 @@ DATE		= 2020-10-03
  0x193      .     5     5     5  # cow
  0x194      .     5     5     5  # pakkun_f
  0x195      .     .     .     .  # WLfirebarGC
- 0x196      .     5     .     5  # wanwan
+ 0x196      .     5     5     5  # wanwan
  0x197      6     5     5     5  # poihana
  0x198      .     3     3     3  # DKrockGC
  0x199      6     5     5     5  # sanbo
