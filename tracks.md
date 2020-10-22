@@ -64,8 +64,8 @@
 * 3DS Neo Koopa City
 * Downtown Underground
 * ✓ GCN Mushroom Bridge (Tock)
-* GCN Mushroom City (Tock)
-* Skyline Avenue
+* ✓ GCN Mushroom City (Tock)
+* ✓ Skyline Avenue
 
 # Bowser's Castle
 * (see Bowser Tracks)
@@ -74,7 +74,6 @@
 * Keegs Road
 * ✓ Neon Loop
 * SNES Rainbow Road (ZPL)
-* Sparkly Road
 
 # GCN Peach Beach
 * (see Beach Tracks)
@@ -112,7 +111,7 @@
 * Excitebike Adventure
 * Sea Stadium
 * Waluigi's Motocross
-* Windy Whirl
+* ✓ Windy Whirl (add Rolling Chomp on the big square)
 
 # DS Desert Hills
 * (see Desert Tracks)
@@ -152,7 +151,7 @@
 * (see Bowser Tracks)
 
 # Circuit Tracks
-* 3DS Music Park
+* ✓ 3DS Music Park
 * 3DS Toad Circuit (Torran)
 * Birthday Park
 * ✓ Cheesebow Road (fix ramps)

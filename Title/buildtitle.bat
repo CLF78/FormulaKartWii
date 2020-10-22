@@ -8,4 +8,3 @@ ren %cd%\titlepics\MarioKart.tpl tt_title_screen_mario2.tpl
 ren %cd%\titlepics\Peach.tpl tt_title_screen_peachi.tpl
 move %cd%\titlepics\*.tpl %cd%\Title.d\title\timg
 wszst create Title.d
-move %cd%\Title.szs %cd%\Riivo\fkw
