@@ -321,11 +321,11 @@ DATE		= 2020-10-03
 
  0x210      .     .     .     .  # starGate
  0x211      .     .     .     .  # RM_ring1
- 0x212     11     .     .     .  # FlamePole_v
+ 0x212     13     .     .     .  # FlamePole_v
  0x213      .     .     .     .  # M_obj_s_jump
  0x214      .     .     .     .  # InsekiA
  0x215      .     .     .     .  # InsekiB
- 0x216     11     .     .     .  # FlamePole_v_big
+ 0x216     13     .     .     .  # FlamePole_v_big
  0x217      .     .     .     .  # Mdush
  0x218      .     .     .     .  # HP_pipe
  0x219      .     .     .     .  # DemoCol
