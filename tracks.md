@@ -62,7 +62,7 @@
 
 # Moonview Highway
 * 3DS Neo Koopa City
-* Downtown Underground
+* ✓ Downtown Underground
 * ✓ GCN Mushroom Bridge (Tock)
 * ✓ GCN Mushroom City (Tock)
 * ✓ Skyline Avenue
@@ -132,7 +132,7 @@
 
 # SNES Mario Circuit 3
 * (see Circuit Tracks as well)
-* SNES MC2 (NialBlack)
+* ✓ SNES MC2 (Wexos)
 
 # DS Peach Gardens
 * Cherry Blossom Gardens
@@ -180,7 +180,6 @@
 * ✓ Seasonal Circuit
 * Shadow Woods
 * Shell Speedway
-* Shining Town
 * ✓ Slot Kart Derby (try sticky road)
 * ✓ SNES Donut Plains 2 (Noia)
 * Starshine Atoll
@@ -200,8 +199,8 @@
 * ✓ DS Airship Fortress (Sniki) (try v1.2, fix ramp kcl, check woodbox settings)
 * ✓ Dark Matter Fortress
 * Kamek's Library
-* Lava Prison
-* Magmatic Sanctuary
+* ✓ Lava Prison
+* ✓ Magmatic Sanctuary
 * ✓ Medieval Castlegrounds (fix kcl, add animations)
 * Siberian Chateau
 * ✓ Space Race Castle (make right route easier and shroom-only)
@@ -219,7 +218,7 @@
 * Desert Bone
 * Desert Raceway (Joris)
 * Dryland Hills
-* Molten Desert
+* ✓ Molten Desert
 * N64 Kalimari Desert (Sniki)
 * ✓ NISWOE Desert (make cannon faster)
 * Sandcastle Park
