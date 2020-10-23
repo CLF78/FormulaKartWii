@@ -142,7 +142,7 @@
 * ✓ White Garden
 
 # GCN DK Mountain
-* 3DS Rock Rock Mountain (Zilly)
+* ✓ 3DS Rock Rock Mountain (Zilly)
 * ✓ Camp Kartigan
 * Dragonite Island
 * Sunset Mountain
@@ -174,7 +174,7 @@
 * Mushroom Park
 * Mystical Marsh
 * Nature Creek Pass
-* Park Cruise
+* ✓ Park Cruise
 * River Bridge
 * Seaside Circuit
 * ✓ Seasonal Circuit
@@ -219,7 +219,7 @@
 * Desert Raceway (Joris)
 * Dryland Hills
 * ✓ Molten Desert
-* N64 Kalimari Desert (Sniki)
+* ✓ N64 Kalimari Desert (Sniki) (remove coins, add item set, slight downscale)
 * ✓ NISWOE Desert (make cannon faster)
 * Sandcastle Park
 * ✓ Sandy Citadel (fix checkpoint bug)
