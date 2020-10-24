@@ -187,7 +187,6 @@
 * Sunset Circuit
 * Sunshine Way
 * ✓ Tiny Town Route
-* Unfinished Mario Circuit
 * Wario Circuit
 * Water Village
 * ✓ Wii Play Tanks (add arrows, swap ramp trick type, fix kcl)
@@ -202,7 +201,7 @@
 * ✓ Lava Prison
 * ✓ Magmatic Sanctuary
 * ✓ Medieval Castlegrounds (fix kcl, add animations)
-* Siberian Chateau
+* ✓ Siberian Chateau
 * ✓ Space Race Castle (make right route easier and shroom-only)
 
 # Snowy Tracks
