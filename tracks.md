@@ -121,7 +121,6 @@
 
 # N64 DK's Jungle Parkway
 * 3DS DK Jungle (Skipper)
-* GCN Dino Dino Jungle (Tock)
 * Jungle Parkway
 * ✓ Saltwater Lake (change road edge and waterfall kcl)
 
@@ -145,6 +144,7 @@
 * ✓ 3DS Rock Rock Mountain (Zilly)
 * ✓ Camp Kartigan
 * Dragonite Island
+* ✓ GCN Dino Dino Jungle (Tock) (restore itembox texture, rearrange item sets, change dino kcl, check second bridge respawn, remove slippery road)
 * Sunset Mountain
 
 # N64 Bowser's Castle
