@@ -45,7 +45,7 @@
 * ✓ Windmill Village (add items to crates)
 
 # Maple Treeway
-* Autumn Forest
+* ✓ Autumn Forest
 * ✓ Daisy's Palace (remove shortcut gate)
 * Honeybee Hideout
 * Torrential Treetops
@@ -79,7 +79,7 @@
 * (see Beach Tracks)
 
 # DS Yoshi Falls
-* Galvarny Falls
+* ✓ Galvarny Falls
 * ✓ Lakeside Grove (fix horizontal blocks, improve item sets at the ramps, add water animation)
 
 # SNES Ghost Valley 2
@@ -201,7 +201,7 @@
 * ✓ Lava Prison
 * ✓ Magmatic Sanctuary
 * ✓ Medieval Castlegrounds (fix kcl, add animations)
-* ✓ Siberian Chateau
+* ✓ Siberian Chateau (check item routes at the final bridge)
 * ✓ Space Race Castle (make right route easier and shroom-only)
 
 # Snowy Tracks
@@ -223,7 +223,6 @@
 * Sandcastle Park
 * ✓ Sandy Citadel (fix checkpoint bug)
 * Spike Desert
-* Thwomp Desert
 
 # Beach Tracks
 * Divine Paradise
