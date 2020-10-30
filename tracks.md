@@ -107,7 +107,6 @@
 
 # GCN Waluigi Stadium
 * ✓ DS Waluigi Pinball (Sniki)
-* DS Wario Stadium (Skipper)
 * Excitebike Adventure
 * Sea Stadium
 * Waluigi's Motocross
@@ -161,7 +160,7 @@
 * Fiery Path
 * Floating Fortress
 * GBA Mario Circuit (MysterE99)
-* GCN Luigi Circuit (Tock)
+* ✓ GCN Luigi Circuit (Tock)
 * GCN Yoshi Circuit (Ermelber)
 * ✓ GP Mario Beach
 * ✓ Grassy Plains (ZPL) (improve bill item routes)
