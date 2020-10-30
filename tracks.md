@@ -92,7 +92,6 @@
 
 # N64 Mario Raceway
 * (see Circuit Tracks as well)
-* Retro Raceway
 
 # N64 Sherbet Land
 * (see Snowy Tracks)
@@ -107,7 +106,7 @@
 
 # GCN Waluigi Stadium
 * ✓ DS Waluigi Pinball (Sniki)
-* Excitebike Adventure
+* ✓ Excitebike Adventure (move item set to right after last turn)
 * Sea Stadium
 * Waluigi's Motocross
 * ✓ Windy Whirl (add Rolling Chomp on the big square)
