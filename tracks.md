@@ -132,7 +132,7 @@
 * ✓ SNES MC2 (Wexos)
 
 # DS Peach Gardens
-* Cherry Blossom Gardens
+* ✓ Cherry Blossom Gardens (add items to bushes)
 * ✓ Garden of Dreams
 * ✓ Rockside River
 * Sakura Sanctuary
