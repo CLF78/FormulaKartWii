@@ -52,7 +52,8 @@
 
 # Grumble Volcano
 * Fireway
-* Lava Lake
+* ✓ Lava Lake
+* Ring of Fire
 * Volcanic Pipeyard
 * Volcano Canyon
 * Volcano Valley
@@ -85,6 +86,7 @@
 # SNES Ghost Valley 2
 * Abandoned Boardwalk
 * Banshee Boardwalk 2
+* ✓ CT Cemetery (wait for Riidefi's fix)
 * DS Luigi's Mansion (Tock)
 * King Boo's Area 2
 * N64 Banshee Boardwalk (ZPL)
@@ -103,6 +105,7 @@
 # DS Delfino Square
 * ✓ Concord Town
 * ✓ Summer Starville
+* Sundown Streets
 
 # GCN Waluigi Stadium
 * ✓ DS Waluigi Pinball (Sniki)
@@ -157,7 +160,9 @@
 * DS Figure 8 Circuit (Sniki)
 * DS Mario Circuit (ZPL)
 * Fiery Path
+* Filthy Pond
 * Floating Fortress
+* Flooded Mario Circuit
 * GBA Mario Circuit (MysterE99)
 * ✓ GCN Luigi Circuit (Tock)
 * GCN Yoshi Circuit (Ermelber)
@@ -185,6 +190,7 @@
 * Sunset Circuit
 * Sunshine Way
 * ✓ Tiny Town Route
+* Toadstool Trench
 * Wario Circuit
 * Water Village
 * ✓ Wii Play Tanks (add arrows, swap ramp trick type, fix kcl)
@@ -195,18 +201,19 @@
 * ✓ CTR Cortex Castle
 * ✓ DS Airship Fortress (Sniki) (try v1.2, fix ramp kcl, check woodbox settings)
 * ✓ Dark Matter Fortress
+* Haunted Library
 * Kamek's Library
 * ✓ Lava Prison
 * ✓ Magmatic Sanctuary
 * ✓ Medieval Castlegrounds (fix kcl, add animations)
 * ✓ Siberian Chateau (check item routes at the final bridge)
 * ✓ Space Race Castle (make right route easier and shroom-only)
+* Wicked Woods
 
 # Snowy Tracks
 * ✓ 3DS Rosalina's Snow World (MysterE)
 * ✓ Christmas Wish
 * ✓ DS DK Pass (Quajeek)
-* Icy Surroundings
 * ✓ Stargaze Summit
 
 # Desert Tracks
@@ -225,8 +232,10 @@
 # Beach Tracks
 * Divine Paradise
 * ✓ Fishdom Island (Jasperr) (improve moving item box set)
+* Jungle Beach
 * N64 Koopa Troopa Beach (Zilly)
 * Secluded Island
 
 # Uncategorized
 * ✓ GBA Ribbon Road (Gabriela)
+* Mouse Hole Mania
