@@ -12,7 +12,6 @@
 
 # Toad's Factory
 * Night Factory
-* Toad's Forgery
 * ✓ Waluigi's Choco Factory (add sticky road, mdush before first ramp)
 
 # Mario Circuit
