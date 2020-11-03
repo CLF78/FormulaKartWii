@@ -104,7 +104,7 @@
 # DS Delfino Square
 * ✓ Concord Town
 * ✓ Summer Starville
-* Sundown Streets
+* ✓ Sundown Streets
 
 # GCN Waluigi Stadium
 * ✓ DS Waluigi Pinball (Sniki)
@@ -217,7 +217,7 @@
 
 # Desert Tracks
 * ✓ 3DS Shy Guy Bazaar
-* Desert Badlands
+* ✓ Desert Badlands (remove slippery road, change offroad, fix pillars, add shortcut item routes, change pocha texture, change cacti model)
 * Desert Bone
 * Desert Raceway (Joris)
 * Dryland Hills
