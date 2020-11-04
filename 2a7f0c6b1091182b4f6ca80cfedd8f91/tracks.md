@@ -36,7 +36,6 @@
 * ✓ Sarasa Kingdom
 
 # Koopa Cape
-* 3DS Cheep Cheep Lagoon (ZPL)
 * Aquania
 * Koopa Shell Pipeland
 * Warp Pipe Island
@@ -86,7 +85,7 @@
 * Abandoned Boardwalk
 * Banshee Boardwalk 2
 * ✓ CT Cemetery (wait for Riidefi's fix)
-* DS Luigi's Mansion (Tock)
+* ✓ DS Luigi's Mansion (Tock)
 * King Boo's Area 2
 * N64 Banshee Boardwalk (ZPL)
 * ✓ Unnamed Valley
@@ -145,7 +144,6 @@
 * ✓ Camp Kartigan
 * Dragonite Island
 * ✓ GCN Dino Dino Jungle (Tock) (restore itembox texture, rearrange item sets, change dino kcl, check second bridge respawn, remove slippery road)
-* Sunset Mountain
 
 # N64 Bowser's Castle
 * (see Bowser Tracks)
@@ -172,7 +170,7 @@
 * Jungle Jamble
 * Kartwood Creek
 * ✓ Luigi's Island
-* Mushroom Fort
+* ✓ Mushroom Fort
 * Mushroom Park
 * Mystical Marsh
 * Nature Creek Pass
@@ -237,4 +235,4 @@
 
 # Uncategorized
 * ✓ GBA Ribbon Road (Gabriela)
-* Mouse Hole Mania
+* ✓ Mouse Hole Mania (fix respawn, move last item set, enlarge last turn?, improve cheese texture)
