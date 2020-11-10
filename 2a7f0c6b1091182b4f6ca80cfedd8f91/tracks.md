@@ -70,6 +70,7 @@
 * (see Bowser Tracks)
 
 # Rainbow Road
+* Acid Terrene
 * Keegs Road
 * ✓ Neon Loop
 * SNES Rainbow Road (ZPL)
@@ -86,6 +87,7 @@
 * Banshee Boardwalk 2
 * ✓ CT Cemetery (wait for Riidefi's fix)
 * ✓ DS Luigi's Mansion (Tock)
+* Haunted Gardens
 * King Boo's Area 2
 * N64 Banshee Boardwalk (ZPL)
 * ✓ Unnamed Valley
@@ -159,7 +161,6 @@
 * Fiery Path
 * Filthy Pond
 * Floating Fortress
-* Flooded Mario Circuit
 * GBA Mario Circuit (MysterE99)
 * ✓ GCN Luigi Circuit (Tock)
 * GCN Yoshi Circuit (Ermelber)
@@ -188,7 +189,7 @@
 * Sunshine Way
 * ✓ Tiny Town Route
 * Toadstool Trench
-* Wario Circuit
+* ✓ Wario Circuit (update textures)
 * Water Village
 * ✓ Wii Play Tanks (add arrows, swap ramp trick type, fix kcl)
 * Yoshi's Woolly Raceway
@@ -205,7 +206,7 @@
 * ✓ Medieval Castlegrounds (fix kcl, add animations)
 * ✓ Siberian Chateau (check item routes at the final bridge)
 * ✓ Space Race Castle (make right route easier and shroom-only)
-* Wicked Woods
+* ✓ Wicked Woods (move first item set, add arrows in first section, add boost panel trick after the first carpet, add solid fall on the red carpet far away, add trick to cannon, add goombas to last section and decos underwater)
 
 # Snowy Tracks
 * ✓ 3DS Rosalina's Snow World (MysterE)
