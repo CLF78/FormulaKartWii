@@ -37,7 +37,7 @@
 
 # Koopa Cape
 * Aquania
-* Koopa Shell Pipeland
+* ✓ Koopa Shell Pipeland (yes but no, crashes randomly)
 * Warp Pipe Island
 * ✓ Wii U Dolphin Shoals (fix bill in cavern)
 * ✓ Windmill Village (add items to crates)
@@ -89,7 +89,9 @@
 * ✓ DS Luigi's Mansion (Tock)
 * Haunted Gardens
 * King Boo's Area 2
+* Midnight Forest (wait for new version)
 * N64 Banshee Boardwalk (ZPL)
+* ✓ SNES Ghost Valley 1 (Slimeserver)
 * ✓ Unnamed Valley
 
 # N64 Mario Raceway
@@ -144,6 +146,7 @@
 # GCN DK Mountain
 * ✓ 3DS Rock Rock Mountain (Zilly)
 * ✓ Camp Kartigan
+* ✓ Quaking Mad Cliffs (fix falling rock)
 * Dragonite Island
 * ✓ GCN Dino Dino Jungle (Tock) (restore itembox texture, rearrange item sets, change dino kcl, check second bridge respawn, remove slippery road)
 
@@ -152,7 +155,7 @@
 
 # Circuit Tracks
 * ✓ 3DS Music Park
-* 3DS Toad Circuit (Torran)
+* ✓ 3DS Toad Circuit (Torran) (use v1.3, add conditional out of bounds)
 * Birthday Park
 * ✓ Cheesebow Road (fix ramps)
 * Compact Highway
@@ -195,7 +198,6 @@
 * Yoshi's Woolly Raceway
 
 # Bowser Tracks
-* 3DS Bowser's Castle (Atlas)
 * ✓ CTR Cortex Castle
 * ✓ DS Airship Fortress (Sniki) (try v1.2, fix ramp kcl, check woodbox settings)
 * ✓ Dark Matter Fortress
@@ -228,7 +230,7 @@
 * Spike Desert
 
 # Beach Tracks
-* Divine Paradise
+* ✓ Divine Paradise
 * ✓ Fishdom Island (Jasperr) (improve moving item box set)
 * Jungle Beach
 * N64 Koopa Troopa Beach (Zilly)

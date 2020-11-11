@@ -32,6 +32,11 @@
 					<patch id="miiheads" />
 				</choice>
 			</option>
+			<option name="No Character Sounds">
+				<choice name="Enabled">
+					<patch id="nochars" />
+				</choice>
+			</option>
 			<option name="No Music">
 				<choice name="Enabled">
 					<patch id="nomusic" />
@@ -70,6 +75,9 @@
 	</patch>
 	<patch id="btglitch">
 		<memory offset="0x800016C1" value="01"/>
+	</patch>
+	<patch id="nochars">
+		<memory offset="0x800016C3" value="01"/>
 	</patch>
 	<patch id="voting">
 		<memory offset="0x800016C5" value="01"/>

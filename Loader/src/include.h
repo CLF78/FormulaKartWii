@@ -5,7 +5,6 @@
 #include <stddef.h>
 #include <stdint.h>
 
-// thanks josh
 #define dcbf(_val) asm volatile("dcbf 0, %0" \
                                 :            \
                                 : "r"(_val))
@@ -32,10 +31,13 @@ typedef struct {
 } DVDHandle;
 
 bool DVDOpen(const char* path, DVDHandle *fd);
-int DVDReadPrio(DVDHandle* fd, void* buffer, int length, int offset, int param_5);
 bool DVDClose(DVDHandle* fd);
+int DVDReadPrio(DVDHandle* fd, void* buffer, int length, int offset, int param_5);
+
 int sprintf(char *s, const char *format, ...);
+
 void OSSetMEM1ArenaHi(uint32_t value);
+
 void flushAddr(void* addr);
 void directWrite(uint32_t* addr, uint32_t value);
 void directBranchEx(void* addr, void* ptr, bool lk);

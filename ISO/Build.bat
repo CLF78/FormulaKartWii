@@ -121,6 +121,10 @@ SET /P NOMUS=Disable Music? (Y/N):
 IF /i %NOMUS%==Y copy /b fkw\codes\tmp.bin+fkw\codes\nomus%LETTER%.bin fkw\codes\tmp.bin >nul
 
 echo.
+SET /P NOCHARS=Disable Character Voices? (Y/N):
+IF /i %NOCHARS%==Y copy /b fkw\codes\tmp.bin+fkw\codes\nochars%LETTER%.bin fkw\codes\tmp.bin >nul
+
+echo.
 SET /P BTGLITCH=Force Battle Glitch? (Y/N):
 IF /i %BTGLITCH%==Y copy /b fkw\codes\tmp.bin+fkw\codes\btglitch%LETTER%.bin fkw\codes\tmp.bin >nul
 
