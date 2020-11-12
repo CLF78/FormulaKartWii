@@ -162,7 +162,6 @@
 * DS Figure 8 Circuit (Sniki)
 * DS Mario Circuit (ZPL)
 * Fiery Path
-* Filthy Pond
 * Floating Fortress
 * GBA Mario Circuit (MysterE99)
 * ✓ GCN Luigi Circuit (Tock)
