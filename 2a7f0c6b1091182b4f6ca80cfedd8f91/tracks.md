@@ -194,14 +194,12 @@
 * ✓ Wario Circuit (update textures)
 * Water Village
 * ✓ Wii Play Tanks (add arrows, swap ramp trick type, fix kcl)
-* Yoshi's Woolly Raceway
 
 # Bowser Tracks
 * ✓ CTR Cortex Castle
 * ✓ DS Airship Fortress (Sniki) (try v1.2, fix ramp kcl, check woodbox settings)
 * ✓ Dark Matter Fortress
 * Haunted Library
-* Kamek's Library
 * ✓ Lava Prison
 * ✓ Magmatic Sanctuary
 * ✓ Medieval Castlegrounds (fix kcl, add animations)
@@ -226,7 +224,6 @@
 * ✓ NISWOE Desert (make cannon faster)
 * Sandcastle Park
 * ✓ Sandy Citadel (fix checkpoint bug)
-* Spike Desert
 
 # Beach Tracks
 * ✓ Divine Paradise

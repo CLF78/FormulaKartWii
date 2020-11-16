@@ -38,3 +38,7 @@
 - 0x800016B8-0x800016C4 = Riivolution Options
 
 # 0x80001798-0x800017FF
+
+# Other ranges
+- 0x80002FF4 = Sandpit Float
+- 0x80002FF8-0x80002FFC = Mega Mushroom Size Modifier Floats
