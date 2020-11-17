@@ -50,14 +50,15 @@
 		<memory offset="0x8000629C" value="48252FB0"/>
 		<folder external="/fkw/codes" disc="/codes" create="true"/>
 		<!--File Replacements-->
-		<file disc="/Scene/UI/Title.szs" external="/fkw/Title.szs" />
-		<file disc="/Scene/UI/Race.szs" external="/fkw/Race.szs" />
-		<file disc="/Scene/UI/Race_R.szs" external="/fkw/Race_R.szs" />
 		<file disc="/Race/Common_U.szs" external="/fkw/Common_X/Common_E.szs" />
 		<file disc="/Race/Common_Q.szs" external="/fkw/Common_X/Common_F.szs" />
 		<file disc="/Race/Common_M.szs" external="/fkw/Common_X/Common_S.szs" />
 		<folder disc="/Race" external="/fkw/Common_X" />
+		<folder disc="/Race/Course" external="/fkw/TrackPatches" create="true" />
 		<folder disc="/Scene/UI" external="/fkw/Race_X" />
+		<file disc="/Scene/UI/Title.szs" external="/fkw/Title.szs" />
+		<file disc="/Scene/UI/Race.szs" external="/fkw/Race.szs" />
+		<file disc="/Scene/UI/Race_R.szs" external="/fkw/Race_R.szs" />
 	</patch>
 	<patch id="mystuff">
 		<folder external="/ctgpr/My Stuff" recursive="false" />
