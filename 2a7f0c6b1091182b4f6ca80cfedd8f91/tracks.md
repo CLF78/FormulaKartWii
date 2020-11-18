@@ -217,7 +217,6 @@
 * ✓ 3DS Shy Guy Bazaar
 * ✓ Desert Badlands (remove slippery road, change offroad, fix pillars, add shortcut item routes, change pocha texture, change cacti model)
 * Desert Bone
-* Desert Raceway (Joris)
 * Dryland Hills
 * ✓ Molten Desert
 * ✓ N64 Kalimari Desert (Sniki) (remove coins, add item set, slight downscale)
@@ -228,7 +227,7 @@
 # Beach Tracks
 * ✓ Divine Paradise
 * ✓ Fishdom Island (Jasperr) (improve moving item box set)
-* Jungle Beach
+* ✓ Jungle Beach
 * N64 Koopa Troopa Beach (Zilly)
 * Secluded Island
 
