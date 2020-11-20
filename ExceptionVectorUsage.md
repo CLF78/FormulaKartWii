@@ -40,4 +40,3 @@
 # 0x80001798-0x800017FF
 
 # Other ranges
-- 0x80002FF4 = Sandpit Float
