@@ -41,4 +41,3 @@
 
 # Other ranges
 - 0x80002FF4 = Sandpit Float
-- 0x80002FF8-0x80002FFC = Mega Mushroom Size Modifier Floats
