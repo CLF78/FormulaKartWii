@@ -158,6 +158,7 @@
 * ✓ 3DS Toad Circuit (Torran) (use v1.3, add conditional out of bounds)
 * Birthday Park
 * ✓ Cheesebow Road (fix ramps)
+* Cliffside Circuit
 * Compact Highway
 * DS Figure 8 Circuit (Sniki)
 * DS Mario Circuit (ZPL)
@@ -211,6 +212,7 @@
 * ✓ 3DS Rosalina's Snow World (MysterE)
 * ✓ Christmas Wish
 * ✓ DS DK Pass (Quajeek)
+* Evenom Snowstorm
 * ✓ Stargaze Summit
 
 # Desert Tracks
