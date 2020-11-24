@@ -45,7 +45,6 @@
 # Maple Treeway
 * ✓ Autumn Forest
 * ✓ Daisy's Palace (remove shortcut gate)
-* Honeybee Hideout
 * Torrential Treetops
 
 # Grumble Volcano
@@ -70,7 +69,6 @@
 * (see Bowser Tracks)
 
 # Rainbow Road
-* Acid Terrene
 * Keegs Road
 * ✓ Neon Loop
 * SNES Rainbow Road (ZPL)
@@ -140,7 +138,6 @@
 * ✓ Cherry Blossom Gardens (add items to bushes)
 * ✓ Garden of Dreams
 * ✓ Rockside River
-* Sakura Sanctuary
 * ✓ White Garden
 
 # GCN DK Mountain
@@ -186,8 +183,6 @@
 * Shell Speedway
 * ✓ Slot Kart Derby (try sticky road)
 * ✓ SNES Donut Plains 2 (Noia)
-* Starshine Atoll
-* Sunny Island
 * Sunset Circuit
 * Sunshine Way
 * ✓ Tiny Town Route
@@ -212,13 +207,12 @@
 * ✓ 3DS Rosalina's Snow World (MysterE)
 * ✓ Christmas Wish
 * ✓ DS DK Pass (Quajeek)
-* Evenom Snowstorm
+* ✓ Evenom Snowstorm
 * ✓ Stargaze Summit
 
 # Desert Tracks
 * ✓ 3DS Shy Guy Bazaar
 * ✓ Desert Badlands (remove slippery road, change offroad, fix pillars, add shortcut item routes, change pocha texture, change cacti model)
-* Desert Bone
 * Dryland Hills
 * ✓ Molten Desert
 * ✓ N64 Kalimari Desert (Sniki) (remove coins, add item set, slight downscale)
@@ -231,7 +225,7 @@
 * ✓ Fishdom Island (Jasperr) (improve moving item box set)
 * ✓ Jungle Beach
 * N64 Koopa Troopa Beach (Zilly)
-* Secluded Island
+* ✓ Secluded Island
 
 # Uncategorized
 * ✓ GBA Ribbon Road (Gabriela)
