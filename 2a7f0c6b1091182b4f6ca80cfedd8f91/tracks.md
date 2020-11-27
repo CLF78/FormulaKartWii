@@ -6,12 +6,10 @@
 
 # Mushroom Gorge
 * ✓ Kinoko Canyon
-* Sky Grove
 * ✓ Sunset Forest
 * ✓ Sunshine Island (fix bill falling on last ramp)
 
 # Toad's Factory
-* Night Factory
 * ✓ Waluigi's Choco Factory (add sticky road, mdush before first ramp)
 
 # Mario Circuit
@@ -21,7 +19,7 @@
 * ✓ Candy Bay (remove invisible walls, improve water animation, remove pillars, fix kcl)
 * ✓ Cookie Village (remove cookie)
 * ✓ GBA Cheese Land (ZPL)
-* N64 Choco Mountain
+* ✓ N64 Choco Mountain (edited version)
 
 # DK Summit
 * (see Snowy Tracks)
@@ -38,14 +36,13 @@
 # Koopa Cape
 * Aquania
 * ✓ Koopa Shell Pipeland (yes but no, crashes randomly)
-* Warp Pipe Island
+* ✓ Warp Pipe Island
 * ✓ Wii U Dolphin Shoals (fix bill in cavern)
 * ✓ Windmill Village (add items to crates)
 
 # Maple Treeway
 * ✓ Autumn Forest
 * ✓ Daisy's Palace (remove shortcut gate)
-* Torrential Treetops
 
 # Grumble Volcano
 * Fireway
@@ -86,7 +83,6 @@
 * ✓ CT Cemetery (wait for Riidefi's fix)
 * ✓ DS Luigi's Mansion (Tock)
 * Haunted Gardens
-* King Boo's Area 2
 * Midnight Forest (wait for new version)
 * N64 Banshee Boardwalk (ZPL)
 * ✓ SNES Ghost Valley 1 (Slimeserver)
@@ -121,8 +117,7 @@
 * (see Bowser Tracks)
 
 # N64 DK's Jungle Parkway
-* 3DS DK Jungle (Skipper)
-* Jungle Parkway
+* ✓ 3DS DK Jungle (Skipper)
 * ✓ Saltwater Lake (change road edge and waterfall kcl)
 
 # GCN Mario Circuit (new theme: Sky)
@@ -144,7 +139,6 @@
 * ✓ 3DS Rock Rock Mountain (Zilly)
 * ✓ Camp Kartigan
 * ✓ Quaking Mad Cliffs (fix falling rock)
-* Dragonite Island
 * ✓ GCN Dino Dino Jungle (Tock) (restore itembox texture, rearrange item sets, change dino kcl, check second bridge respawn, remove slippery road)
 
 # N64 Bowser's Castle
@@ -153,12 +147,11 @@
 # Circuit Tracks
 * ✓ 3DS Music Park
 * ✓ 3DS Toad Circuit (Torran) (use v1.3, add conditional out of bounds)
-* Birthday Park
 * ✓ Cheesebow Road (fix ramps)
 * Cliffside Circuit
 * Compact Highway
-* DS Figure 8 Circuit (Sniki)
-* DS Mario Circuit (ZPL)
+* ✓ DS Figure 8 Circuit (Sniki)
+* ✓ DS Mario Circuit (ZPL)
 * Fiery Path
 * Floating Fortress
 * GBA Mario Circuit (MysterE99)
@@ -167,13 +160,12 @@
 * ✓ GP Mario Beach
 * ✓ Grassy Plains (ZPL) (improve bill item routes)
 * Green Hill Zone
-* Hillside Circuit
+* ✓ Hillside Circuit (change offroad and dirt kcl, fix road texture, remove bridge ramp, fix shortcut rock)
 * Jungle Jamble
 * Kartwood Creek
 * ✓ Luigi's Island
 * ✓ Mushroom Fort
 * Mushroom Park
-* Mystical Marsh
 * Nature Creek Pass
 * ✓ Park Cruise
 * River Bridge
@@ -188,14 +180,14 @@
 * ✓ Tiny Town Route
 * Toadstool Trench
 * ✓ Wario Circuit (update textures)
-* Water Village
+* ✓ Water Village (change final ramp collision)
 * ✓ Wii Play Tanks (add arrows, swap ramp trick type, fix kcl)
 
 # Bowser Tracks
 * ✓ CTR Cortex Castle
 * ✓ DS Airship Fortress (Sniki) (try v1.2, fix ramp kcl, check woodbox settings)
 * ✓ Dark Matter Fortress
-* Haunted Library
+* ✓ Haunted Library (wait for author intervention)
 * ✓ Lava Prison
 * ✓ Magmatic Sanctuary
 * ✓ Medieval Castlegrounds (fix kcl, add animations)
@@ -224,7 +216,6 @@
 * ✓ Divine Paradise
 * ✓ Fishdom Island (Jasperr) (improve moving item box set)
 * ✓ Jungle Beach
-* N64 Koopa Troopa Beach (Zilly)
 * ✓ Secluded Island
 
 # Uncategorized
