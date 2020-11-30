@@ -2,7 +2,6 @@
 
 # 0x80000198-0x800001FF
 - 0x800001B0 = Anti-Lapper
-- 0x800001C0-0x800001E8 = No Invincibility Frames
 - 0x800001F0 = No Invincibility Frames
 
 # 0x80000298-0x800002FF
@@ -29,7 +28,6 @@
 - 0x80000EBC-0x80000EDC = Change Characters Between Races
 
 # 0x80000F98-0x800012FF
-- 0x80001000-0x80001020 = Mega Thundercloud
 
 # 0x80001398-0x800013FF
 
