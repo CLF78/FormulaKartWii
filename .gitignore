@@ -1,5 +1,5 @@
-ISO/wit
-Loader/__pycache__
-Loader/build
-Loader/libwinpthread-1.dll
-Title/Title.d
+build/ISO/wit
+src/loader/__pycache__
+src/loader/build
+src/loader/libwinpthread-1.dll
+files/Title/Title.d
