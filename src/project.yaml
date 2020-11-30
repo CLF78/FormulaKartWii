@@ -2,7 +2,30 @@
 regions: ['P', 'U', 'J', 'K']
 modules:
 
-  # Test comment
-  - name: 'Test Code'
+    # Antifreeze Codes
+  - name: 'Cannon Antifreeze'
+    type: 'COMPILED'
+    src: 'antifreeze/cannon.txt'
+
+  - name: 'Item Spam Antifreeze'
     type: 'C2D2'
-    src: 'test.S'
+    src: 'antifreeze/itemspam.S'
+    addr_p: 0x8065BBD4
+    addr_u: 0x806575B8
+    addr_j: 0x8065B240
+    addr_k: 0x80649EEC
+
+  - name: 'Mii Outfit C Antifreeze'
+    type: 'COMPILED'
+    src: 'antifreeze/miioutfitc.txt'
+
+  - name: 'Process Invalid Track Vote'
+    type: 'NOP'
+    addr_p: 0x8064433C
+    addr_u: 0x80612F1C
+    addr_j: 0x806439A8
+    addr_k: 0x80632654
+
+  - name: 'Thwomp Antifreeze'
+    type: 'COMPILED'
+    src: 'antifreeze/thwomp.txt'

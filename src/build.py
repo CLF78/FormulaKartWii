@@ -8,6 +8,7 @@ modulefolder = 'codes'
 tempfolder = 'tmp'
 pyasmiipath = 'C:\\Program Files\\pyiiasmh-4.1.5\\pyiiasmh.exe'
 codetypeslist = ['0414', '0616', 'C0', 'C2D2', 'F2F4', 'RAW']
+currtmp = 0
 
 
 def writeToFile(filestr, name, region):
@@ -19,7 +20,9 @@ def writeToFile(filestr, name, region):
         f.write('\n'.join(thinglist))
 
 
-def doCode(filestr, name, addr, codetype, region, currtmp=0):
+def doCode(filestr, name, addr, codetype, region):
+    global currtmp
+
     # Address sanity check
     customaddr = 0x80000000 <= addr <= 0x817FFFFF
 
@@ -30,10 +33,19 @@ def doCode(filestr, name, addr, codetype, region, currtmp=0):
     # If it's a compiled code, write it right away
     if codetype == 'COMPILED':
         # Strips anything other than code from compiled code lines
-        filestr = '\n'.join([line[:8] for line in filestr.splitlines()])
+        filestr = '\n'.join([line[:17] for line in filestr.splitlines()])
 
         # Write to the file
         writeToFile(filestr, name, region)
+        print('Built!')
+    elif codetype == 'NOP':
+        filestr = '0' + hex(addr - 0x80000000 + 0x4000000)[2:] + ' 60000000'
+        writeToFile(filestr.upper(), name, region)
+        print('Built!')
+    elif codetype == 'BLR':
+        filestr = '0' + hex(addr - 0x80000000 + 0x4000000)[2:] + ' 4E800020'
+        writeToFile(filestr.upper(), name, region)
+        print('Built!')
     else:
         # Write to a temp file
         path = os.path.join(tempfolder, str(currtmp) + '.S')
@@ -63,11 +75,12 @@ def doCode(filestr, name, addr, codetype, region, currtmp=0):
         try:
             a = int(code[:8], 16)
             writeToFile(code.upper(), name, region)
+            print('Built!')
         except:
             print('Build failed!', code)
 
-        # Increase tmp file number, for debugging
-        currtmp += 1
+    # Increase tmp file number, for debugging
+    currtmp += 1
 
 
 def doProjectFile(project):
@@ -98,45 +111,43 @@ def doProjectFile(project):
         # Begin parsing modules
         for module in project['modules']:
 
-            # Sanity check
-            if 'src' not in module:
-                print('Hook is missing the source file!')
-                continue
+            # Set some stuff
+            codename = module['name'] if 'name' in module else ''
+            print('Parsing', codename)
+
+            thing = 'addr_' + region.lower()
+            injectionaddr = module[thing] if thing in module else 0
+            codetype = module['type'] if 'type' in module else ''
 
             # Open the file specified by the module
-            file = os.path.join(modulefolder, module['src'])
-            with open(file) as f:
+            if 'src' in module:
+                file = os.path.join(modulefolder, module['src'])
+                with open(file) as g:
 
-                # Set some stuff
-                codename = module['name'] if 'name' in module else 'Unknown Code'
-                thing = 'addr_' + region.lower()
-                injectionaddr = module[thing] if thing in module else 0
-                codetype = module['type'] if 'type' in module else ''
-
-                print('Parsing', codename)
-
-                # Read the file line by line, and parse special lines
-                filechunk = ''
-                ignore = False
-                line = f.readline()
-                while line:
-                    if line.startswith('#ENDCODE'):
-                        if not ignore:
-                            doCode(filechunk.strip(), codename, injectionaddr, codetype, region)
-                        filechunk = ''
-                        codename = ''
-                        ignore = False
-                    elif line.startswith('#INJECT'):
-                        injectionaddr = int(line.removeprefix('#INJECT').strip().split(',')[i], 16)
-                    elif line.startswith('#SETTYPE'):
-                        codetype = line.removeprefix('#SETTYPE').strip().upper()
-                    elif line.startswith('#SETREGION'):
-                        line = line.removeprefix('#SETREGION').strip()
-                        if line != region:
-                            ignore = True
-                    else:
-                        filechunk += line
-                    line = f.readline()
+                    # Read the file line by line, and parse special lines
+                    filechunk = ''
+                    ignore = False
+                    line = g.readline()
+                    while line:
+                        if line.startswith('#ENDCODE'):
+                            if not ignore:
+                                doCode(filechunk.strip(), codename, injectionaddr, codetype, region)
+                                codename = ''
+                            filechunk = ''
+                            ignore = False
+                        elif line.startswith('#INJECT'):
+                            injectionaddr = int(line.removeprefix('#INJECT').strip().split(', ')[i], 16)
+                        elif line.startswith('#SETTYPE'):
+                            codetype = line.removeprefix('#SETTYPE').strip().upper()
+                        elif line.startswith('#SETREGION'):
+                            line = line.removeprefix('#SETREGION').strip()
+                            if line != region:
+                                ignore = True
+                        else:
+                            filechunk += line
+                        line = g.readline()
+            else:
+                doCode('', codename, injectionaddr, codetype, region)
     print('All done!')
 
 
