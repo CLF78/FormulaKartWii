@@ -1,0 +1,8 @@
+---
+regions: ['P', 'U', 'J', 'K']
+modules:
+
+  # Test comment
+  - name: 'Test Code'
+    type: 'C2D2'
+    src: 'test.S'
