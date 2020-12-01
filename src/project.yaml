@@ -142,3 +142,58 @@ modules:
     addr_u: 0x8070492C
     addr_j: 0x8070A93C
     addr_k: 0x806F9678
+
+  - name: 'Ultimate Item Randomizer'
+    type: 'C2D2'
+    src: 'ultimate_item_randomizer.S'
+    addr_p: 0x809C3670
+    addr_u: 0x809BEE68
+    addr_j: 0x809C26D0
+    addr_k: 0x809B1CB0
+    
+  - name: 'Ultra UnCut'
+    type: 'COMPILED'
+    src: 'ultra_uncut.txt'
+    
+  - name: 'Wooden Box Respawn Modifier'
+    type: 'COMPILED'
+    src: 'wooden_box_respawn.txt'
+    
+  - name: 'Time Limit Modifier'
+    type: 'COMPILED'
+    src: 'time_limit.txt'
+    
+  - name: 'Starting Lap Modifier'
+    type: 'C2D2'
+    src: 'starting_lap_modifier.S'
+    addr_p: 0x805340A8
+    addr_u: 0x8052F560
+    addr_j: 0x80533A28
+    addr_k: 0x80522100
+    
+  - name: "Show Everyone's Times After Race"
+    type: 'COMPILED'
+    src: 'show_times.txt'
+    
+  - name: 'Replace Blooper with Triple FIBs'
+    type: 'COMPILED'
+    src: 'blooper_to_fibs.txt'
+    
+  - name: 'Remove Mushroom Bug'
+    type: 'DATA'
+    data: '00'
+    addr_p: 0x807BA077
+    addr_u: 0x807AB617
+    addr_j: 0x807B96E3
+    addr_k: 0x807A8437
+    
+  - name: 'No Bullet Bill Icon'
+    type: 'NOP'
+    addr_p: 0x807BA5D0
+    addr_u: 0x807ABB70
+    addr_j: 0x807B9C3C
+    addr_k: 0x807A8990
+    
+  - name: 'Motion-Sensor Bomb'
+    type: 'DATA'
+    src: 'motion-sensor_bomb.txt'
