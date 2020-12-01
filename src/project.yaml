@@ -2,7 +2,7 @@
 regions: ['P', 'U', 'J', 'K']
 modules:
 
-    # Antifreeze Codes
+# Antifreeze Codes
   - name: 'Cannon Antifreeze'
     type: 'COMPILED'
     src: 'antifreeze/cannon.txt'
@@ -29,3 +29,116 @@ modules:
   - name: 'Thwomp Antifreeze'
     type: 'COMPILED'
     src: 'antifreeze/thwomp.txt'
+
+  # CT Support
+  - name: 'BRRES Anti-Flicker'
+    type: 'COMPILED'
+    src: 'ctsupport/brresantiflicker.txt'
+
+  - name: 'Speed Modifier'
+    type: 'COMPILED'
+    src: 'ctsupport/speedmod.txt'
+
+  # Commodities
+  - name: 'Auto Press A At Wii Strap Screen'
+    type: 'BLR'
+    addr_p: 0x800077C8
+    addr_u: 0x800077C8
+    addr_j: 0x800077C8
+    addr_k: 0x80007894
+
+  # USA ONLY
+  - type: 'COMPILED'
+    src: extras/esrbskip.txt
+
+  - name: 'Automatic BRSAR Patcher'
+    type: 'C2D2'
+    src: 'extras/autobrsar.S'
+    addr_p: 0x80091350
+    addr_u: 0x800912B0
+    addr_j: 0x80091270
+    addr_k: 0x800913B0
+
+  - name: 'Change Character Between Races'
+    type: 'COMPILED'
+    src: 'extras/changechars.txt'
+
+  - name: 'Disable Battle Mode Button'
+    type: 'C2D2'
+    src: 'extras/disablebattle.S'
+    addr_p: 0x805F2E88
+    addr_u: 0x80635FA4
+    addr_j: 0x805F2764
+    addr_k: 0x805E12A8
+
+  - name: "Disable Toad's Factory Music Reset"
+    type: 'DATA'
+    data: '48000010'
+    addr_p: 0x80719920
+    addr_u: 0x80711A54
+    addr_j: 0x80718F8C
+    addr_k: 0x80707CC8
+
+  - name: "Don't Lose VR When Disconnecting"
+    type: 'NOP'
+    addr_p: 0x80856560
+    addr_u: 0x80834AD0
+    addr_j: 0x80855BCC
+    addr_k: 0x80844920
+
+  - name: 'Instant Disconnect'
+    type: 'COMPILED'
+    src: 'extras/instantdc.txt'
+
+  - name: 'License Unlocker'
+    type: 'DATA'
+    data: '38600001'
+    addr_p: 0x80549974
+    addr_u: 0x80544438
+    addr_j: 0x805492F4
+    addr_k: 0x805379CC
+
+  - name: 'Points Table Modifier'
+    type: 'C2D2'
+    src: 'extras/points.S'
+    addr_p: 0x8052EC38
+    addr_u: 0x8052A0F0
+    addr_j: 0x8052E5B8
+    addr_k: 0x8051CC90
+
+  - name: 'Region Lines Patch'
+    type: 'COMPILED'
+    src: 'extras/regionlines.S'
+    addr_p: 0x806513E0
+    addr_u: 0x8061E0CC
+    addr_j: 0x80650A4C
+    addr_k: 0x8063F6F8
+
+  - name: 'Silent Controller Changing'
+    type: 'NOP'
+    addr_p: 0x8061AF98
+    addr_u: 0x805EAF5C
+    addr_j: 0x8061A70C
+    addr_k: 0x806093B8
+
+# Online Stuff
+  - name: 'Region Changer'
+    type: 'COMPILED'
+    src: 'online/regionpatch.txt'
+
+  - name: 'Remove Worldwides Button'
+    type: 'COMPILED'
+    src: 'online/nowwbutton.txt'
+
+  - name: 'Wiimmfi'
+    type: 'COMPILED'
+    src: 'online/wiimmfi.txt'
+
+# Important Codes
+  - name: 'Final Lap Music Trigger Modifier'
+    type: 'DATA'
+    data: '281F0002'
+    addr_p: 0x8070B2D0
+    addr_u: 0x8070492C
+    addr_j: 0x8070A93C
+    addr_k: 0x806F9678

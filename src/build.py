@@ -46,6 +46,9 @@ def doCode(filestr, name, addr, codetype, region):
         filestr = '0' + hex(addr - 0x80000000 + 0x4000000)[2:] + ' 4E800020'
         writeToFile(filestr.upper(), name, region)
         print('Built!')
+    elif codetype == 'DATA':
+        filestr = '0' + hex(addr - 0x80000000 + 0x4000000)[2:] + ' ' + filestr
+        writeToFile(filestr.upper(), name, region)
     else:
         # Write to a temp file
         path = os.path.join(tempfolder, str(currtmp) + '.S')
@@ -79,8 +82,8 @@ def doCode(filestr, name, addr, codetype, region):
         except:
             print('Build failed!', code)
 
-    # Increase tmp file number, for debugging
-    currtmp += 1
+        # Increase tmp file number, for debugging
+        currtmp += 1
 
 
 def doProjectFile(project):
@@ -146,6 +149,8 @@ def doProjectFile(project):
                         else:
                             filechunk += line
                         line = g.readline()
+            elif 'data' in module:
+                doCode(module['data'].strip(), codename, injectionaddr, 'DATA', region)
             else:
                 doCode('', codename, injectionaddr, codetype, region)
     print('All done!')
