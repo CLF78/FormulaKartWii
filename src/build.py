@@ -47,7 +47,17 @@ def doCode(filestr, name, addr, codetype, region):
         writeToFile(filestr.upper(), name, region)
         print('Built!')
     elif codetype == 'DATA':
-        filestr = '0' + hex(addr - 0x80000000 + 0x4000000)[2:] + ' ' + filestr
+        datalen = len(filestr) // 2
+        if datalen == 1:
+            codetype = 0
+            thing = ' 0000'
+        elif datalen == 2:
+            codetype = 2
+            thing = ' 00'
+        else:
+            codetype = 4
+            thing = ' '
+        filestr = '0' + hex(addr - 0x80000000 + codetype * 0x1000000)[2:] + thing + filestr
         writeToFile(filestr.upper(), name, region)
     else:
         # Write to a temp file
