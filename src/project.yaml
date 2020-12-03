@@ -30,7 +30,7 @@ modules:
     type: 'COMPILED'
     src: 'antifreeze/thwomp.txt'
 
-  # CT Support
+# CT Support
   - name: 'BRRES Anti-Flicker'
     type: 'COMPILED'
     src: 'ctsupport/brresantiflicker.txt'
@@ -39,7 +39,7 @@ modules:
     type: 'COMPILED'
     src: 'ctsupport/speedmod.txt'
 
-  # Commodities
+# Commodities
   - name: 'Auto Press A At Wii Strap Screen'
     type: 'BLR'
     addr_p: 0x800077C8
@@ -150,6 +150,55 @@ modules:
     addr_j: 0x80001600
     addr_k: 0x80001600
 
+  - name: 'Blooper Invincibility'
+    type: 'BLR'
+    addr_p: 0x807A92B0
+    addr_u: 0x807D6070
+    addr_j: 0x807A891C
+    addr_k: 0x80797670
+
+  - name: 'Blue Shell Speed Modifier'
+    type: 'DATA'
+    data: '4482'
+    addr_p: 0x808A5BC4
+    addr_u: 0x808A10EE
+    addr_j: 0x808A4D24
+    addr_k: 0x80894024
+
+  - name: 'Blue Shell Timer'
+    type: 'C2D2'
+    src: 'bluetimer.S'
+    addr_p: 0x807AE8A8
+    addr_u: 0x807A3C00
+    addr_j: 0x807ADF14
+    addr_k: 0x8079CC68
+
+  - name: 'Bullet Bill Speed Modifier'
+    type: 'DATA'
+    data: '435C'
+    addr_p: 0x808B59F8
+    addr_u: 0x808B1138
+    addr_j: 0x808B4B58
+    addr_k: 0x808A3E70
+    
+    type: 'COMPILED'
+    src: 'billcannonfix.txt'
+
+  - name: 'DC Bug Fix'
+    type: 'DATA'
+    data: '38E40032'
+    addr_p: 0x8053F6C4
+    addr_u: 0x8053A188
+    addr_j: 0x8053F044
+    addr_k: 0x8052D71C
+
+  - name: 'Disable Item Poof'
+    type: 'BLR'
+    addr_p: 0x807A6C14
+    addr_u: 0x8079DC08
+    addr_j: 0x807A6280
+    addr_k: 0x80794FD4
+
   - name: 'Final Lap Music Trigger Modifier'
     type: 'DATA'
     data: '281F0002'
@@ -157,6 +206,18 @@ modules:
     addr_u: 0x8070492C
     addr_j: 0x8070A93C
     addr_k: 0x806F9678
+
+  - name: 'Green Shell Speed Modifier'
+    type: 'DATA'
+    data: '4320'
+    addr_p: 0x808A5DBC
+    addr_u: 0x808A12E4
+    addr_j: 0x808A4F1C
+    addr_k: 0x8089421C
+
+  - name: 'Lap Distance Checker'
+    type: 'C0'
+    src: 'antilapper.S'
 
   - name: 'Motion-Sensor Bomb'
     type: 'DATA'
@@ -187,11 +248,11 @@ modules:
 
   - name: 'Starting Lap Modifier'
     type: 'C2D2'
-    src: 'starting_lap_modifier.S'
-    addr_p: 0x805340A8
-    addr_u: 0x8052F560
-    addr_j: 0x80533A28
-    addr_k: 0x80522100
+    src: 'lapmod.S'
+    addr_p: 0x807F84F8
+    addr_u: 0x807ED9F8
+    addr_j: 0x807F7B64
+    addr_k: 0x807E68B8
 
   - name: 'Time Limit Modifier'
     type: 'COMPILED'
@@ -212,3 +273,24 @@ modules:
   - name: 'Wooden Box Respawn Modifier'
     type: 'COMPILED'
     src: 'wooden_box_respawn.txt'
+
+# Cycle Fixes
+  - name: 'Cycle Fix - Coconut Mall'
+    type: 'C2D2'
+    src: 'cyclefixes/coconutmall.S'
+
+  - name: 'Cycle Fix - Dry Dry Ruins'
+    type: 'C2D2'
+    src: 'cyclefixes/drydryruins.S'
+
+  - name: 'Cycle Fix - Ghost Valley 2'
+    type: 'DATA'
+    data: '03C0'
+    addr_p: 0x8080ADEE
+    addr_u: 0x807F9DCE
+    addr_j: 0x8080A45A
+    addr_k: 0x807F91AE
+
+  - name: "Cycle Fix - Toad's Factory"
+    type: 'C2D2'
+    src: 'cyclefixes/toadfactory.S'
