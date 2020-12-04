@@ -122,6 +122,14 @@ modules:
     addr_k: 0x806093B8
 
 # Online Stuff
+  - name: 'Force 150cc'
+    type: 'COMPILED'
+    src: 'online/force150cc.txt'
+
+  - name: 'Friend Room Race Count Modifier'
+    type: 'COMPILED'
+    src: 'online/froomraces.txt'
+
   - name: 'Region Changer'
     type: 'COMPILED'
     src: 'online/regionpatch.txt'
@@ -150,13 +158,6 @@ modules:
     addr_j: 0x80001600
     addr_k: 0x80001600
 
-  - name: 'Blooper Invincibility'
-    type: 'BLR'
-    addr_p: 0x807A92B0
-    addr_u: 0x807D6070
-    addr_j: 0x807A891C
-    addr_k: 0x80797670
-
   - name: 'Blue Shell Speed Modifier'
     type: 'DATA'
     data: '4482'
@@ -180,9 +181,6 @@ modules:
     addr_u: 0x808B1138
     addr_j: 0x808B4B58
     addr_k: 0x808A3E70
-    
-    type: 'COMPILED'
-    src: 'billcannonfix.txt'
 
   - name: 'DC Bug Fix'
     type: 'DATA'
@@ -192,12 +190,46 @@ modules:
     addr_j: 0x8053F044
     addr_k: 0x8052D71C
 
+  - name: 'Disable Blooper'
+    type: 'COMPILED'
+    src: 'noblooper.txt'
+
   - name: 'Disable Item Poof'
     type: 'BLR'
     addr_p: 0x807A6C14
     addr_u: 0x8079DC08
     addr_j: 0x807A6280
     addr_k: 0x80794FD4
+
+  - name: 'Disable Timer Flashing'
+    type: 'NOP'
+    addr_p: 0x807F7F88
+    addr_u: 0x807ED488
+    addr_j: 0x807F75F4
+    addr_k: 0x807E6348
+
+  - name: "Don't Hide Position After Race"
+    type: 'DATA'
+    data: '38000001'
+    addr_p: 0x807F4DB8
+    addr_u: 0x807EA790
+    addr_j: 0x807F4424
+    addr_k: 0x807E3178
+
+  - name: 'Draggable Blue Shells'
+    type: 'NOP'
+    addr_p: 0x807AE8A8
+    addr_u: 0x807A3C00
+    addr_j: 0x807ADF14
+    addr_k: 0x8079CC68
+
+  - name: 'Fast POW'
+    type: 'DATA'
+    data: '80'
+    addr_p: 0x807B1DD3
+    addr_u: 0x807D9827
+    addr_j: 0x807B143F
+    addr_k: 0x807A0193
 
   - name: 'Final Lap Music Trigger Modifier'
     type: 'DATA'
@@ -215,9 +247,40 @@ modules:
     addr_j: 0x808A4F1C
     addr_k: 0x8089421C
 
+  - name: 'Increase Visual Distance'
+    type: 'DATA'
+    data: '4FFFFFFF'
+    addr_p: 0x80892320
+    addr_u: 0x8088DBE0
+    addr_j: 0x80891970
+    addr_k: 0x80880728
+
+  - name: 'Inside Drift Bikes'
+    type: 'C2D2'
+    src: 'insidedriftbikes.S'
+    addr_p: 0x80591FE8
+    addr_u: 0x8058B7C4
+    addr_j: 0x80591968
+    addr_k: 0x80580040
+
+  - name: 'Instant Item Boxes'
+    type: 'NOP'
+    addr_p: 0x80828EDC
+    addr_u: 0x808153C8
+    addr_j: 0x80828548
+    addr_k: 0x8081729C
+
   - name: 'Lap Distance Checker'
     type: 'C0'
     src: 'antilapper.S'
+
+  - name: 'Load GeoHit From Race'
+    type: 'DATA'
+    data: '02'
+    addr_p: 0x807F92AB
+    addr_u: 0x807EDEBB
+    addr_j: 0x807F8917
+    addr_k: 0x807E766B
 
   - name: 'Motion-Sensor Bomb'
     type: 'DATA'
@@ -241,6 +304,10 @@ modules:
   - name: 'Replace Blooper with Triple FIBs'
     type: 'COMPILED'
     src: 'blooper_to_fibs.txt'
+
+  - name: 'Shells Never Break'
+    type: 'COMPILED'
+    src: 'noshellbreak.txt'
 
   - name: "Show Everyone's Times After Race"
     type: 'COMPILED'

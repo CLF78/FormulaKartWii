@@ -47,7 +47,6 @@
 # Grumble Volcano
 * Fireway
 * ✓ Lava Lake
-* Ring of Fire
 * Volcanic Pipeyard
 * Volcano Canyon
 * Volcano Valley
@@ -60,15 +59,18 @@
 * ✓ Downtown Underground
 * ✓ GCN Mushroom Bridge (Tock)
 * ✓ GCN Mushroom City (Tock)
+* Modern City Sights (wait for author fix)
 * ✓ Skyline Avenue
 
 # Bowser's Castle
 * (see Bowser Tracks)
 
 # Rainbow Road
+* ✓ Adreastea Station (add conditional out of bounds, reds should make the ramp and not take the cut by default, fix conveyor collision)
 * Keegs Road
+* Orbital Outpost
 * ✓ Neon Loop
-* SNES Rainbow Road (ZPL)
+* ✓ SNES Rainbow Road (ZPL)
 
 # GCN Peach Beach
 * (see Beach Tracks)
@@ -154,12 +156,11 @@
 * ✓ DS Mario Circuit (ZPL)
 * Fiery Path
 * Floating Fortress
-* GBA Mario Circuit (MysterE99)
+* ✓ GBA Mario Circuit (MysterE99)
 * ✓ GCN Luigi Circuit (Tock)
 * GCN Yoshi Circuit (Ermelber)
 * ✓ GP Mario Beach
 * ✓ Grassy Plains (ZPL) (improve bill item routes)
-* Green Hill Zone
 * ✓ Hillside Circuit (change offroad and dirt kcl, fix road texture, remove bridge ramp, fix shortcut rock)
 * Jungle Jamble
 * Kartwood Creek
