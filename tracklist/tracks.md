@@ -47,7 +47,7 @@
 # Grumble Volcano
 * Fireway
 * ✓ Lava Lake
-* Volcanic Pipeyard
+* ✓ Volcanic Pipeyard (fix pipe respawn, add item routes to final cut)
 * Volcano Canyon
 * Volcano Valley
 
