@@ -37,27 +37,24 @@ def doCode(filestr, name, addr, codetype, region):
 
         # Write to the file
         writeToFile(filestr, name, region)
-        print('Built!')
     elif codetype == 'NOP':
         filestr = '0' + hex(addr - 0x80000000 + 0x4000000)[2:] + ' 60000000'
         writeToFile(filestr.upper(), name, region)
-        print('Built!')
     elif codetype == 'BLR':
         filestr = '0' + hex(addr - 0x80000000 + 0x4000000)[2:] + ' 4E800020'
         writeToFile(filestr.upper(), name, region)
-        print('Built!')
     elif codetype == 'DATA':
         datalen = len(filestr) // 2
         if datalen == 1:
             codetype = 0
-            thing = ' 0000'
+            thing = ' 000000'
         elif datalen == 2:
             codetype = 2
-            thing = ' 00'
+            thing = ' 0000'
         else:
             codetype = 4
             thing = ' '
-        filestr = '0' + hex(addr - 0x80000000 + codetype * 0x1000000)[2:] + thing + filestr
+        filestr = ('0' if codetype else '00') + hex(addr - 0x80000000 + codetype * 0x1000000)[2:] + thing + filestr
         writeToFile(filestr.upper(), name, region)
     else:
         # Write to a temp file
@@ -88,7 +85,6 @@ def doCode(filestr, name, addr, codetype, region):
         try:
             a = int(code[:8], 16)
             writeToFile(code.upper(), name, region)
-            print('Built!')
         except:
             print('Build failed!', code)
 
@@ -118,7 +114,7 @@ def doProjectFile(project):
 
         # Write the game id and name
         with open(buildfile.format(region), 'w') as f:
-            f.write('RMC{}01\n'.format(region))
+            f.write('RMC{}01\n'.format(region).replace('U', 'E'))
             f.write('Mario Kart Wii\n')
 
         # Begin parsing modules
@@ -126,7 +122,8 @@ def doProjectFile(project):
 
             # Set some stuff
             codename = module['name'] if 'name' in module else ''
-            print('Parsing', codename)
+            if codename:
+                print('Parsing', codename)
 
             thing = 'addr_' + region.lower()
             injectionaddr = module[thing] if thing in module else 0

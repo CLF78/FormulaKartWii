@@ -393,7 +393,7 @@ modules:
     addr_k: 0x8051CC90
 
   - name: 'Region Lines Patch'
-    type: 'COMPILED'
+    type: 'C2D2'
     src: 'extras/regionlines.S'
     addr_p: 0x806513E0
     addr_u: 0x8061E0CC
@@ -428,6 +428,10 @@ modules:
   - name: 'No Music'
     type: 'COMPILED'
     src: 'options/nomusic.txt'
+
+  - name: 'Force Battle Glitch'
+    type: 'COMPILED'
+    src: 'options/btglitch.txt'
 
   - name: 'No Character Sounds'
     type: 'COMPILED'

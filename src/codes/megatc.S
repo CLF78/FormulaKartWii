@@ -21,7 +21,7 @@ blrl
 
 lis r3, ADDR2@ha
 lbz r0, ADDR2@l(r3)
-cmpwi r0
+cmpwi r0, 0
 beq end
 
 li r3, 0x8

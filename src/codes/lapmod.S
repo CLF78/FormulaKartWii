@@ -52,9 +52,11 @@ addi r28, r28, 43
 # Starting Lap Modifier
 li r12, -43
 sth r12, 0x24(r3)
-#ENDCODE
 
 # Custom Laps Code
+#ENDCODE
+
+#SETTYPE COMPILED
 #SETREGION P
 C25328B0 00000002
 38000007 98040B8D

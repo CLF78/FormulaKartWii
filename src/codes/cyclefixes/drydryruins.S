@@ -28,12 +28,13 @@ fdivs f0, f0, f1
 # Store (original instruction)
 stfs f0, 296(r28)
 
-#ENDCODE
-
 ###########################
 # Sandpit Halfword Hotfix #
 ###########################
 
+#ENDCODE
+
+#SETTYPE COMPILED
 #SETREGION P
 006872E8 00000090
 0068787C 00000080
