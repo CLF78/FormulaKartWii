@@ -11,23 +11,21 @@ cmpwi r0, 0x122A
 beq multiply
 
 cmpwi r0, 0x16A8
-beq multiply
-
-b end
+bne+ end
 
 # Multiply by 16
 multiply:
-mulli r0, r0, 0x10
+mulli r0, r0, 16
 
 # Original instruction
 end:
-stw r0, 224(r30)
-
-#ENDCODE
+stw r0, 0xE0(r30)
 
 #########################
 # Grumble Volcano Rocks #
 #########################
+
+#ENDCODE
 
 #SETTYPE COMPILED
 #SETREGION P

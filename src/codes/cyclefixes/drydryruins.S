@@ -5,7 +5,7 @@
 
 # Multiply by 16 (CC-independent)
 mulli r0, r0, 16
-stw r0, 264(r31)
+stw r0, 0x108(r31)
 
 # Original instruction
 lwz r3, 0(r28)
@@ -19,19 +19,18 @@ lwz r3, 0(r28)
 
 # Reload word as float
 lis r4, 0x4200
-stw r4, 296(r28)
-lfs f1, 296(r28)
+stw r4, 0x128(r28)
+lfs f1, 0x128(r28)
 
 # Divide
 fdivs f0, f0, f1
 
 # Store (original instruction)
-stfs f0, 296(r28)
+stfs f0, 0x128(r28)
 
 ###########################
 # Sandpit Halfword Hotfix #
 ###########################
-
 #ENDCODE
 
 #SETTYPE COMPILED

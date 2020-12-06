@@ -1,5 +1,3 @@
-#INJECT 807FD3C4, 807F0804, 807FCA30, 807EB784
-
 # Original instruction
 lwz r0, 0xBC(r3)
 

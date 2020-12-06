@@ -1,4 +1,7 @@
-# Lap Counter
+###############
+# Lap Counter #
+###############
+
 .if (REGION == 'P')
 	.set RACEDATA, 0x809BD728
 	.set RACEINFO, 0x809BD730
@@ -28,19 +31,19 @@ lwz r26, RACEDATA@l(r26)
 # scenarios[0].settings = 0xb48
 # settings.hudPlayerIds[0] = 0x1c
 # total = 0xb84
-lbz r26, 0xb84(r26)
-rlwinm r26, r26, 2, 0, 29 # multiply by 4
+lbz r26, 0xB84(r26)
+rlwinm r26, r26, 2, 0, 29 # Multiply by 4
 
 # Get raceinfo pointer - needs special porting
 lis r28, RACEINFO@ha
 lwz r28, RACEINFO@l(r28)
 
 # Get player from player array
-lwz r28, 0xC (r28)
+lwz r28, 0xC(r28)
 lwzx r28, r28, r26
 
 # Get current lap of player
-lbz r28, 0x25 (r28)
+lbz r28, 0x25(r28)
 
 # Add 43 to match
 extsb r28, r28
@@ -48,12 +51,17 @@ addi r28, r28, 43
 
 #ENDCODE
 
+#########################
+# Starting Lap Modifier #
+#########################
 #INJECT 805340A8, 8052F560, 80533A28, 80522100
-# Starting Lap Modifier
+
 li r12, -43
 sth r12, 0x24(r3)
 
-# Custom Laps Code
+####################
+# Custom Laps Code #
+####################
 #ENDCODE
 
 #SETTYPE COMPILED

@@ -259,9 +259,17 @@ modules:
     addr_j: 0x8080A45A
     addr_k: 0x807F91AE
 
+  - name: 'Cycle Fix - Grumble Volcano'
+    type: 'C2D2'
+    src: 'cyclefixes/grumblevolcano.S'
+
   - name: "Cycle Fix - Toad's Factory"
     type: 'C2D2'
     src: 'cyclefixes/toadfactory.S'
+    addr_p: 0x807FD3C4
+    addr_u: 0x807F0804
+    addr_j: 0x807FCA30
+    addr_k: 0x807EB784
 
 # Team stuff
   - name: 'No Team Colors'

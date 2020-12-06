@@ -13,4 +13,6 @@
 lis r3, ItemSlotData@h
 ori r3, r3, ItemSlotData@l
 li r4, 1500
-stw r4, 0x38 (r3)
+stw r4, 0x38(r3)
+
+#ENDCODE

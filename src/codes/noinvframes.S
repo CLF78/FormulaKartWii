@@ -6,7 +6,7 @@
 .set InvFramesOn, 0x800001F0
 
 # Original instruction
-lwz r5, 0x1c(r21)
+lwz r5, 0x1C(r21)
 
 # Check that InvFrames is on
 lis r3, InvFramesOn@ha
