@@ -71,12 +71,13 @@ fsubs f2, f2, f3
 # If greater than threshold, output 1
 li r3, 0
 fcmpu cr0, f2, f0
-ble+ end
+ble+ store
 li r3, 1
 
-end:
+store:
 stb r3, 0(r10)
+
+end:
 mtlr r12
-blr
 
 #ENDCODE
