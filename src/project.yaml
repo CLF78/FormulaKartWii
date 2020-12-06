@@ -2,146 +2,6 @@
 regions: ['P', 'U', 'J', 'K']
 modules:
 
-# Antifreeze Codes
-  - name: 'Cannon Antifreeze'
-    type: 'COMPILED'
-    src: 'antifreeze/cannon.txt'
-
-  - name: 'Item Spam Antifreeze'
-    type: 'C2D2'
-    src: 'antifreeze/itemspam.S'
-    addr_p: 0x8065BBD4
-    addr_u: 0x806575B8
-    addr_j: 0x8065B240
-    addr_k: 0x80649EEC
-
-  - name: 'Mii Outfit C Antifreeze'
-    type: 'COMPILED'
-    src: 'antifreeze/miioutfitc.txt'
-
-  - name: 'Process Invalid Track Vote'
-    type: 'NOP'
-    addr_p: 0x8064433C
-    addr_u: 0x80612F1C
-    addr_j: 0x806439A8
-    addr_k: 0x80632654
-
-  - name: 'Thwomp Antifreeze'
-    type: 'COMPILED'
-    src: 'antifreeze/thwomp.txt'
-
-# CT Support
-  - name: 'BRRES Anti-Flicker'
-    type: 'COMPILED'
-    src: 'ctsupport/brresantiflicker.txt'
-
-  - name: 'Speed Modifier'
-    type: 'COMPILED'
-    src: 'ctsupport/speedmod.txt'
-
-# Commodities
-  - name: 'Auto Press A At Wii Strap Screen'
-    type: 'BLR'
-    addr_p: 0x800077C8
-    addr_u: 0x800077C8
-    addr_j: 0x800077C8
-    addr_k: 0x80007894
-
-  # USA ONLY
-  - type: 'COMPILED'
-    src: extras/esrbskip.txt
-
-  - name: 'Automatic BRSAR Patcher'
-    type: 'C2D2'
-    src: 'extras/autobrsar.S'
-    addr_p: 0x80091350
-    addr_u: 0x800912B0
-    addr_j: 0x80091270
-    addr_k: 0x800913B0
-
-  - name: 'Change Character Between Races'
-    type: 'COMPILED'
-    src: 'extras/changechars.txt'
-
-  - name: 'Disable Battle Mode Button'
-    type: 'C2D2'
-    src: 'extras/disablebattle.S'
-    addr_p: 0x805F2E88
-    addr_u: 0x80635FA4
-    addr_j: 0x805F2764
-    addr_k: 0x805E12A8
-
-  - name: "Disable Toad's Factory Music Reset"
-    type: 'DATA'
-    data: '48000010'
-    addr_p: 0x80719920
-    addr_u: 0x80711A54
-    addr_j: 0x80718F8C
-    addr_k: 0x80707CC8
-
-  - name: "Don't Lose VR When Disconnecting"
-    type: 'NOP'
-    addr_p: 0x80856560
-    addr_u: 0x80834AD0
-    addr_j: 0x80855BCC
-    addr_k: 0x80844920
-
-  - name: 'Instant Disconnect'
-    type: 'COMPILED'
-    src: 'extras/instantdc.txt'
-
-  - name: 'License Unlocker'
-    type: 'DATA'
-    data: '38600001'
-    addr_p: 0x80549974
-    addr_u: 0x80544438
-    addr_j: 0x805492F4
-    addr_k: 0x805379CC
-
-  - name: 'Points Table Modifier'
-    type: 'C2D2'
-    src: 'extras/points.S'
-    addr_p: 0x8052EC38
-    addr_u: 0x8052A0F0
-    addr_j: 0x8052E5B8
-    addr_k: 0x8051CC90
-
-  - name: 'Region Lines Patch'
-    type: 'COMPILED'
-    src: 'extras/regionlines.S'
-    addr_p: 0x806513E0
-    addr_u: 0x8061E0CC
-    addr_j: 0x80650A4C
-    addr_k: 0x8063F6F8
-
-  - name: 'Silent Controller Changing'
-    type: 'NOP'
-    addr_p: 0x8061AF98
-    addr_u: 0x805EAF5C
-    addr_j: 0x8061A70C
-    addr_k: 0x806093B8
-
-# Online Stuff
-  - name: 'Force 150cc'
-    type: 'COMPILED'
-    src: 'online/force150cc.txt'
-
-  - name: 'Friend Room Race Count Modifier'
-    type: 'COMPILED'
-    src: 'online/froomraces.txt'
-
-  - name: 'Region Changer'
-    type: 'COMPILED'
-    src: 'online/regionpatch.txt'
-
-  - name: 'Remove Worldwides Button'
-    type: 'COMPILED'
-    src: 'online/nowwbutton.txt'
-
-  - name: 'Wiimmfi'
-    type: 'COMPILED'
-    src: 'online/wiimmfi.txt'
-
 # Important Codes
   - name: '30 Second Time Limit Modifier'
     type: 'DATA'
@@ -153,6 +13,7 @@ modules:
 
   - name: 'All Items Can Land'
     type: '0616'
+    src: 'allitemscanland.S'
     addr_p: 0x80001600
     addr_u: 0x80001600
     addr_j: 0x80001600
@@ -282,9 +143,37 @@ modules:
     addr_j: 0x807F8917
     addr_k: 0x807E766B
 
-  - name: 'Motion-Sensor Bomb'
+  - name: 'Max Item Limit Modifier'
+    type: 'COMPILED'
+    src: 'delimiters.txt'
+
+  - name: 'Mega Flips Cars'
     type: 'DATA'
-    src: 'motion-sensor_bomb.txt'
+    data: '01'
+    addr_p: 0x8082AC03
+    addr_u: 0x808170EF
+    addr_j: 0x8082A26F
+    addr_k: 0x80818FC3
+
+  - name: 'Mega Mushroom Size Multiplier'
+    type: 'C2D2'
+    src: 'megasize.S'
+    addr_p: 0x80592128
+    addr_u: 0x8058B904
+    addr_j: 0x80591AA8
+    addr_k: 0x80580180
+
+  - name: 'Mega Thundercloud'
+    type: 'C2D2'
+    src: 'megatc.S'
+    addr_p: 0x80580630
+    addr_u: 0x80579DCC
+    addr_j: 0x8057FFB0
+    addr_k: 0x8056E688
+
+  - name: 'Motion-Sensor Bomb'
+    type: 'COMPILED'
+    src: 'bombpatch.txt'
 
   - name: 'No Bullet Bill Icon'
     type: 'NOP'
@@ -292,6 +181,10 @@ modules:
     addr_u: 0x807ABB70
     addr_j: 0x807B9C3C
     addr_k: 0x807A8990
+
+  - name: 'No Invincibility Frames'
+    type: 'C2D2'
+    src: 'noinvframes.S'
 
   - name: 'Remove Mushroom Bug'
     type: 'DATA'
@@ -303,7 +196,7 @@ modules:
 
   - name: 'Replace Blooper with Triple FIBs'
     type: 'COMPILED'
-    src: 'blooper_to_fibs.txt'
+    src: 'triplefibs.txt'
 
   - name: 'Shells Never Break'
     type: 'COMPILED'
@@ -311,7 +204,15 @@ modules:
 
   - name: "Show Everyone's Times After Race"
     type: 'COMPILED'
-    src: 'show_times.txt'
+    src: 'showtimes.txt'
+
+  - name: 'Special Item Randomizer'
+    type: 'C2D2'
+    src: 'specialrandomizer.S'
+    addr_p: 0x80799FBC
+    addr_u: 0x80790FB0
+    addr_j: 0x80799628
+    addr_k: 0x8078837C
 
   - name: 'Starting Lap Modifier'
     type: 'C2D2'
@@ -323,23 +224,23 @@ modules:
 
   - name: 'Time Limit Modifier'
     type: 'COMPILED'
-    src: 'time_limit.txt'
+    src: 'timelimit.txt'
 
   - name: 'Ultimate Item Randomizer'
     type: 'C2D2'
-    src: 'ultimate_item_randomizer.S'
-    addr_p: 0x809C3670
-    addr_u: 0x809BEE68
-    addr_j: 0x809C26D0
-    addr_k: 0x809B1CB0
+    src: 'normalrandomizer.S'
+    addr_p: 0x807BA164
+    addr_u: 0x807AB704
+    addr_j: 0x807B97D0
+    addr_k: 0x807A8524
 
   - name: 'Ultra UnCut'
     type: 'COMPILED'
-    src: 'ultra_uncut.txt'
+    src: 'ultrauncut.txt'
 
   - name: 'Wooden Box Respawn Modifier'
     type: 'COMPILED'
-    src: 'wooden_box_respawn.txt'
+    src: 'woodbox.txt'
 
 # Cycle Fixes
   - name: 'Cycle Fix - Coconut Mall'
@@ -361,3 +262,177 @@ modules:
   - name: "Cycle Fix - Toad's Factory"
     type: 'C2D2'
     src: 'cyclefixes/toadfactory.S'
+
+# Team stuff
+  - name: 'No Team Colors'
+    type: 'COMPILED'
+    src: 'teams/nocolors.txt'
+
+  - name: 'No Team Invincibility'
+    type: 'DATA'
+    data: '38E00000'
+    addr_p: 0x8053056C
+    addr_u: 0x8052BA24
+    addr_j: 0x8052FEEC
+    addr_k: 0x8051E5C4
+
+# Online Stuff
+  - name: 'Force 150cc'
+    type: 'COMPILED'
+    src: 'online/force150cc.txt'
+
+  - name: 'Friend Room Race Count Modifier'
+    type: 'COMPILED'
+    src: 'online/froomraces.txt'
+
+  - name: 'Region Changer'
+    type: 'COMPILED'
+    src: 'online/regionpatch.txt'
+
+  - name: 'Remove Worldwides Button'
+    type: 'COMPILED'
+    src: 'online/nowwbutton.txt'
+
+  - name: 'Wiimmfi'
+    type: 'COMPILED'
+    src: 'online/wiimmfi.txt'
+
+# Antifreeze Codes
+  - name: 'Cannon Antifreeze'
+    type: 'COMPILED'
+    src: 'antifreeze/cannon.txt'
+
+  - name: 'Item Spam Antifreeze'
+    type: 'C2D2'
+    src: 'antifreeze/itemspam.S'
+    addr_p: 0x8065BBD4
+    addr_u: 0x806575B8
+    addr_j: 0x8065B240
+    addr_k: 0x80649EEC
+
+  - name: 'Mii Outfit C Antifreeze'
+    type: 'COMPILED'
+    src: 'antifreeze/miioutfitc.txt'
+
+  - name: 'Process Invalid Track Vote'
+    type: 'NOP'
+    addr_p: 0x8064433C
+    addr_u: 0x80612F1C
+    addr_j: 0x806439A8
+    addr_k: 0x80632654
+
+  - name: 'Thwomp Antifreeze'
+    type: 'COMPILED'
+    src: 'antifreeze/thwomp.txt'
+
+# Commodities
+  - name: 'Auto Press A At Wii Strap Screen'
+    type: 'BLR'
+    addr_p: 0x800077C8
+    addr_u: 0x800077C8
+    addr_j: 0x800077C8
+    addr_k: 0x80007894
+
+  # USA ONLY
+  - type: 'COMPILED'
+    src: extras/esrbskip.txt
+
+  - name: 'Automatic BRSAR Patcher'
+    type: 'C2D2'
+    src: 'extras/autobrsar.S'
+    addr_p: 0x80091350
+    addr_u: 0x800912B0
+    addr_j: 0x80091270
+    addr_k: 0x800913B0
+
+  - name: 'Change Character Between Races'
+    type: 'COMPILED'
+    src: 'extras/changechars.txt'
+
+  - name: 'Disable Battle Mode Button'
+    type: 'C2D2'
+    src: 'extras/disablebattle.S'
+    addr_p: 0x805F2E88
+    addr_u: 0x80635FA4
+    addr_j: 0x805F2764
+    addr_k: 0x805E12A8
+
+  - name: "Disable Toad's Factory Music Reset"
+    type: 'DATA'
+    data: '48000010'
+    addr_p: 0x80719920
+    addr_u: 0x80711A54
+    addr_j: 0x80718F8C
+    addr_k: 0x80707CC8
+
+  - name: "Don't Lose VR When Disconnecting"
+    type: 'NOP'
+    addr_p: 0x80856560
+    addr_u: 0x80834AD0
+    addr_j: 0x80855BCC
+    addr_k: 0x80844920
+
+  - name: 'Instant Disconnect'
+    type: 'COMPILED'
+    src: 'extras/instantdc.txt'
+
+  - name: 'License Unlocker'
+    type: 'DATA'
+    data: '38600001'
+    addr_p: 0x80549974
+    addr_u: 0x80544438
+    addr_j: 0x805492F4
+    addr_k: 0x805379CC
+
+  - name: 'Points Table Modifier'
+    type: 'C2D2'
+    src: 'extras/points.S'
+    addr_p: 0x8052EC38
+    addr_u: 0x8052A0F0
+    addr_j: 0x8052E5B8
+    addr_k: 0x8051CC90
+
+  - name: 'Region Lines Patch'
+    type: 'COMPILED'
+    src: 'extras/regionlines.S'
+    addr_p: 0x806513E0
+    addr_u: 0x8061E0CC
+    addr_j: 0x80650A4C
+    addr_k: 0x8063F6F8
+
+  - name: 'Silent Controller Changing'
+    type: 'NOP'
+    addr_p: 0x8061AF98
+    addr_u: 0x805EAF5C
+    addr_j: 0x8061A70C
+    addr_k: 0x806093B8
+
+# CT Support
+  - name: 'BRRES Anti-Flicker'
+    type: 'COMPILED'
+    src: 'ctsupport/noflicker.txt'
+
+  - name: 'Speed Modifier'
+    type: 'COMPILED'
+    src: 'ctsupport/speedmod.txt'
+
+# Toggleables
+  - name: 'Faster Menu Navigation'
+    type: 'COMPILED'
+    src: 'options/fastmenu.txt'
+
+  - name: 'Mii Heads on Minimap'
+    type: 'COMPILED'
+    src: 'options/miiheads.txt'
+
+  - name: 'No Music'
+    type: 'COMPILED'
+    src: 'options/nomusic.txt'
+
+  - name: 'No Character Sounds'
+    type: 'COMPILED'
+    src: 'options/nochars.txt'
+
+  - name: 'Always Win Track Vote'
+    type: 'COMPILED'
+    src: 'options/voting.txt'
