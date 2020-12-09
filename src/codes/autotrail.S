@@ -12,7 +12,7 @@ ble+ end
 lwz r3, -0x28(r27)
 
 # Bananas will be set to trail mode
-cmpwi r3, 1
+cmpwi r3, 2
 beq doItemTrail
 
 # Greens, Reds and FIBs will be set to circling mode instead
