@@ -38,8 +38,8 @@ lis r30, THING@ha
 lwz r30, THING@l(r30)
 lwz r30, 0x14(r30)
 sub r30, r28, r30
-li r29, 0x248
-divw r30, r30, r29
+li r29, 0x92
+divw r29, r30, r29
 
 # Get player id in 1st and multiply it by 4
 # raceinfo->playerIdInEachPosition[0]
