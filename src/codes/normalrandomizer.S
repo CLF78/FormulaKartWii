@@ -1,7 +1,7 @@
 # Notes: r25 is position, r3 is item to be stored, r4 is a pointer to ItemSlotData
 # Other free registers: r5, r6, r7
 
-.set NewbieHelper, 0x800001B0
+.set LapDistance, 0x800014B4
 
 .if (REGION == 'P')
 	.set ItemSlotData, 0x809C3670
@@ -21,14 +21,14 @@ lwz r4, ItemSlotData@l(r4)
 
 # Get a random number using the timebase as a seed
 getRandom:
-  mftbl r3
-  li r5, 19
-  divw r5, r3, r5
-  mulli r5, r5, 19
-  subf r3, r5, r3
-  srawi r5, r3, 31
-  xor r3, r5, r3
-  subf r3, r5, r3
+	mftbl r3
+	li r5, 19
+	divw r5, r3, r5
+	mulli r5, r5, 19
+	subf r3, r5, r3
+	srawi r5, r3, 31
+	xor r3, r5, r3
+	subf r3, r5, r3
 
 # Begin timer checks!
 cmpwi r3, 7
@@ -66,9 +66,12 @@ shock:
 
 # Checks that newbie helper is enabled
 checkNewbie:
-	lis r4, NewbieHelper@ha
-	lwz r4, NewbieHelper@l(r4)
-	cmpwi r4, 0
+	lis r6, LapDistance@h
+	ori r6, r6, LapDistance@l
+	mtlr r6
+	blrl
+
+	cmpwi r5, 0
 	beq+ end
 
 	cmpwi r3, 1
@@ -98,6 +101,6 @@ newbie1:
 
 # Original instruction
 end:
-	stw r3, 32(r23)
+	stw r3, 0x20(r23)
 
 #ENDCODE

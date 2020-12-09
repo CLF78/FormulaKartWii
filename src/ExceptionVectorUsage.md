@@ -1,7 +1,6 @@
 *Note: Uses Vega's older version of the thread.*
 
 # 0x80000198-0x800001FF
-- 0x800001B0 = Anti-Lapper
 - 0x800001F0 = No Invincibility Frames
 
 # 0x80000298-0x800002FF
@@ -32,7 +31,9 @@
 # 0x80001398-0x800013FF
 
 # 0x80001498-0x800016FF
-- 0x80001600-0x800016B8 = All Items Can Land
+- 0x800014B0 = Max Lap Distance Float
+- 0x800014B4-0x8000152C = Lap Distance Checker
+- 0x80001600-0x800016B4 = All Items Can Land
 - 0x800016B8-0x800016C4 = Riivolution Options
 
 # 0x80001798-0x800017FF

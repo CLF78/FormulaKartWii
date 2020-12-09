@@ -77,6 +77,14 @@ modules:
     addr_j: 0x807F4424
     addr_k: 0x807E3178
 
+  - name: 'Duplicated Item Auto-Trail'
+    type: 'C2D2'
+    src: 'autotrail.S'
+    addr_p: 0x80791970
+    addr_u: 0x80788964
+    addr_j: 0x80790FDC
+    addr_k: 0x8077FD30
+
   - name: 'Draggable Blue Shells'
     type: 'NOP'
     addr_p: 0x807AE8A8
@@ -132,8 +140,12 @@ modules:
     addr_k: 0x8081729C
 
   - name: 'Lap Distance Checker'
-    type: 'C0'
+    type: '0616'
     src: 'antilapper.S'
+    addr_p: 0x800014B0
+    addr_u: 0x800014B0
+    addr_j: 0x800014B0
+    addr_k: 0x800014B0
 
   - name: 'Load GeoHit From Race'
     type: 'DATA'
