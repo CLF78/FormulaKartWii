@@ -26,7 +26,7 @@ DATE		= 2020-10-03
 #  ID     :   :   : Shroom :   :   : Fake Box   :   : POW    :   :   :  # Name
 #-----------------------------------------------------------------------#-----------------
 
- 0x001    1   1   1   1    1   .   .   1    .   1   .   .    .   .   .  # airblock
+ 0x001    1   1   1   1    1   1   1   1    1   1   .   1    1   1   .  # airblock
  0x002    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # Psea
  0x003    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # lensFX
  0x004    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # venice_nami
@@ -53,9 +53,9 @@ DATE		= 2020-10-03
  0x018    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # startline2D
 
  0x065    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # itembox
- 0x066    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # DummyPole
- 0x067    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # flag
- 0x068    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # flagBlend
+ 0x066    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # DummyPole
+ 0x067    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # flag
+ 0x068    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # flagBlend
  0x069    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # gnd_sphere
  0x06a    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # gnd_trapezoid
  0x06b    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # gnd_wave1
@@ -64,56 +64,56 @@ DATE		= 2020-10-03
  0x06e    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # gnd_wave4
  0x06f    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # sun
 
- 0x070    2   2   1   1    1   .   .   1    .   2   .   .    .   .   .  # woodbox
+ 0x070    2   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # woodbox
  0x071    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # KmoonZ
  0x072    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # sunDS
  0x073    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # coin
- 0x074    1   2   1   1    1   .   .   1    .   2   .   .    .   .   .  # ironbox
+ 0x074    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # ironbox
  0x075    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # ItemDirect
  0x076    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # s_itembox
  0x077    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # pile_coin
 
  0x0c9    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # f_itembox
  0x0ca    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # MashBalloonGC
- 0x0cb    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # WLwallGC
- 0x0cc    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # CarA1
- 0x0cd    2   2   .   1    1   .   .   .    .   .   .   .    .   .   .  # basabasa
+ 0x0cb    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # WLwallGC
+ 0x0cc    1   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # CarA1
+ 0x0cd    2   2   .   .    .   .   .   .    .   .   .   .    .   .   .  # basabasa
  0x0ce    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # HeyhoShipGBA
- 0x0cf    2   2   2   2    2   .   .   2    .   2   .   .    .   .   .  # koopaBall
+ 0x0cf    2   2   2   2    2   2   2   2    2   2   .   2    2   2   .  # koopaBall
 
- 0x0d0    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # kart_truck
- 0x0d1    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # car_body
+ 0x0d0    1   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # kart_truck
+ 0x0d1    1   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # car_body
  0x0d2    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # skyship
- 0x0d3    2   2   1   1    1   .   .   1    .   2   .   .    .   .   .  # w_woodbox
+ 0x0d3    2   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # w_woodbox
  0x0d4    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # w_itembox
- 0x0d5    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # w_itemboxline
- 0x0d6    2   2   2   2    2   .   .   2    .   2   .   .    .   .   .  # VolcanoBall1
- 0x0d7    2   2   1   1    1   .   .   1    .   2   .   .    .   .   .  # penguin_s
- 0x0d8    2   2   1   1    1   .   .   1    .   2   .   .    .   .   .  # penguin_m
+ 0x0d5    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # w_itemboxline
+ 0x0d6    2   2   2   2    2   2   2   2    2   2   .   2    2   2   .  # VolcanoBall1
+ 0x0d7    2   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # penguin_s
+ 0x0d8    2   2   1   1    1   2   1   1    2   2   .   1    1   1   .  # penguin_m
  0x0d9    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # penguin_l
  0x0da    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # castleballoon1
- 0x0db    1   2   1   1    1   .   .   1    .   2   .   .    .   .   .  # dossunc
- 0x0dc    1   2   1   2    2   .   .   2    .   2   .   .    .   .   .  # dossunc_soko
+ 0x0db    1   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # dossunc
+ 0x0dc    1   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # dossunc_soko
  0x0dd    2   2   .   .    .   .   .   .    .   .   .   .    .   .   .  # boble
- 0x0de    2   2   2   1    1   .   .   1    .   2   .   .    .   .   .  # K_bomb_car
- 0x0df    2   2   2   1    1   .   .   1    .   2   .   .    .   .   .  # K_bomb_car_dummy
+ 0x0de    2   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # K_bomb_car
+ 0x0df    2   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # K_bomb_car_dummy
 
- 0x0e0    2   2   2   1    1   .   .   1    .   2   .   .    .   .   .  # car_body_dummy
- 0x0e1    2   2   2   1    1   .   .   1    .   2   .   .    .   .   .  # kart_truck_dummy
- 0x0e2    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # hanachan
+ 0x0e0    1   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # car_body_dummy
+ 0x0e1    1   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # kart_truck_dummy
+ 0x0e2    1   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # hanachan
  0x0e3    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # seagull
  0x0e4    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # moray
- 0x0e5    2   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # crab
- 0x0e6    2   2   2   1    1   .   .   1    .   2   .   .    .   .   .  # basabasa_dummy
- 0x0e7    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # CarA2
- 0x0e8    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # CarA3
- 0x0e9    2   2   1   1    1   .   .   1    .   2   .   .    .   .   .  # Hwanwan
- 0x0ea    2   2   2   2    2   .   .   2    .   2   .   .    .   .   .  # HeyhoBallGBA
- 0x0eb    1   2   1   2    2   .   .   1    .   1   .   .    .   .   .  # Twanwan
+ 0x0e5    2   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # crab
+ 0x0e6    2   2   .   .    .   .   .   .    .   .   .   .    .   .   .  # basabasa_dummy
+ 0x0e7    1   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # CarA2
+ 0x0e8    1   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # CarA3
+ 0x0e9    1   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # Hwanwan
+ 0x0ea    2   2   2   2    2   2   2   2    2   2   .   2    2   2   .  # HeyhoBallGBA
+ 0x0eb    1   2   1   2    2   2   2   2    2   2   .   2    2   2   .  # Twanwan
  0x0ec    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # cruiserR
  0x0ed    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # bird
  0x0ee    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # sin_itembox
- 0x0ef    2   2   2   1    1   .   .   1    .   2   .   .    .   .   .  # Twanwan_ue
+ 0x0ef    1   2   1   2    2   2   2   2    2   2   .   2    2   2   .  # Twanwan_ue
 
  0x0f0    2   2   2   1    1   .   .   1    .   2   .   .    .   .   .  # BossHanachan
  0x0f1    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # Kdossunc
@@ -121,37 +121,37 @@ DATE		= 2020-10-03
  0x0f3    2   2   2   1    1   .   .   1    .   2   .   .    .   .   .  # K_bomb_car1
 
  0x12d    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # dummy
- 0x12e    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # dokan_sfc
+ 0x12e    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # dokan_sfc
  0x12f    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # castletree1
 
- 0x130    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # castletree1c
+ 0x130    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # castletree1c
  0x131    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # castletree2
  0x132    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # castleflower1
  0x133    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # mariotreeGC
- 0x134    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # mariotreeGCc
+ 0x134    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # mariotreeGCc
  0x135    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # donkytree1GC
- 0x136    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # donkytree2GC
+ 0x136    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # donkytree2GC
  0x137    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # peachtreeGC
- 0x138    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # peachtreeGCc
+ 0x138    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # peachtreeGCc
  0x139    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # npc_mii_a
  0x13a    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # npc_mii_b
  0x13b    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # npc_mii_c
  0x13c    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # obakeblockSFCc
  0x13d    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # WLarrowGC
  0x13e    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # WLscreenGC
- 0x13f    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # WLdokanGC
+ 0x13f    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # WLdokanGC
 
  0x140    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # MarioGo64c
  0x141    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # PeachHunsuiGC
  0x142    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # kinokoT1
  0x143    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # kinokoT2
- 0x144    .   .   1   1    1   .   .   1    .   .   .   .    .   .   .  # pylon01
- 0x145    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # PalmTree
- 0x146    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # parasol
+ 0x144    .   .   1   1    1   1   1   1    1   .   .   1    1   1   .  # pylon01
+ 0x145    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # PalmTree
+ 0x146    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # parasol
  0x147    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # cruiser
  0x148    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # K_sticklift00
  0x149    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # heyho2
- 0x14a    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # HeyhoTreeGBAc
+ 0x14a    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # HeyhoTreeGBAc
  0x14b    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # MFaceBill
  0x14c    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # truckChimSmk
  0x14d    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # MiiObj01
@@ -159,17 +159,17 @@ DATE		= 2020-10-03
  0x14f    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # MiiObj03
 
  0x150    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # gardentreeDS
- 0x151    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # gardentreeDSc
+ 0x151    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # gardentreeDSc
  0x152    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # FlagA1
  0x153    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # FlagA2
  0x154    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # FlagB1
  0x155    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # FlagB2
  0x156    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # FlagA3
  0x157    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # DKtreeA64
- 0x158    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # DKtreeA64c
+ 0x158    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # DKtreeA64c
  0x159    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # DKtreeB64
- 0x15a    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # DKtreeB64c
- 0x15b    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # TownTreeDSc
+ 0x15a    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # DKtreeB64c
+ 0x15b    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # TownTreeDSc
  0x15c    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # Piston
  0x15d    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # oilSFC
  0x15e    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # DKmarutaGCc
@@ -189,7 +189,7 @@ DATE		= 2020-10-03
  0x16b    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # miiposter
  0x16c    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # dk_miiobj00
  0x16d    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # light_house
- 0x16e    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # r_parasol
+ 0x16e    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # r_parasol
  0x16f    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # obakeblock2SFCc
 
  0x170    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # obakeblock3SFCc
@@ -220,39 +220,39 @@ DATE		= 2020-10-03
  0x188    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # MiiStatueP1
  0x189    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # SentakuDS
  0x18a    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # fks_screen_wii
- 0x18b    2   2   2   2    2   .   .   2    .   .   .   .    .   .   .  # KoopaFigure64
+ 0x18b    2   2   2   2    2   2   2   2    2   2   .   2    2   2   .  # KoopaFigure64
  0x18c    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # b_teresa
  0x18d    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # MiiStatueDK1
  0x18e    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # MiiKanban
  0x18f    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # BGteresaSFC
 
- 0x191    2   2   1   1    1   .   .   1    .   2   .   .    .   .   .  # kuribo
- 0x192    1   2   1   1    1   .   .   1    .   2   .   .    .   .   .  # choropu
- 0x193    1   2   1   1    1   .   .   1    .   2   .   .    .   .   .  # cow
- 0x194    2   2   1   1    1   .   .   1    .   2   .   .    .   .   .  # pakkun_f
- 0x195    2   2   .   2    2   .   .   .    .   2   .   .    .   .   .  # WLfirebarGC
- 0x196    1   2   1   1    1   .   .   1    .   2   .   .    .   .   .  # wanwan
- 0x197    2   2   1   1    1   .   .   1    .   2   .   .    .   .   .  # poihana
- 0x198    2   2   2   1    1   .   .   1    .   2   .   .    .   .   .  # DKrockGC
- 0x199    2   2   1   1    1   .   .   1    .   2   .   .    .   .   .  # sanbo
- 0x19a    1   2   1   1    1   .   .   1    .   2   .   .    .   .   .  # choropu2
- 0x19b    1   2   1   1    1   .   .   1    .   2   .   .    .   .   .  # TruckWagon
- 0x19c    1   2   1   1    1   .   .   1    .   2   .   .    .   .   .  # heyho
- 0x19d    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # Press
- 0x19e    2   2   2   2    2   .   .   2    .   2   .   .    .   .   .  # Press_soko
+ 0x191    2   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # kuribo
+ 0x192    2   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # choropu
+ 0x193    1   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # cow
+ 0x194    1   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # pakkun_f
+ 0x195    2   2   .   2    2   2   2   .    2   2   .   2    2   2   .  # WLfirebarGC
+ 0x196    1   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # wanwan
+ 0x197    2   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # poihana
+ 0x198    2   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # DKrockGC
+ 0x199    2   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # sanbo
+ 0x19a    2   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # choropu2
+ 0x19b    1   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # TruckWagon
+ 0x19c    1   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # heyho
+ 0x19d    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # Press
+ 0x19e    2   2   2   2    2   2   2   2    2   2   .   2    2   2   .  # Press_soko
  0x19f    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # pile
 
  0x1a0    2   2   2   1    1   .   .   1    .   1   .   .    .   .   .  # choropu_ground
- 0x1a1    2   2   .   2    2   .   .   .    .   2   .   .    .   .   .  # WLfireringGC
- 0x1a2    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # pakkun_dokan
+ 0x1a1    2   2   .   2    2   2   2   .    2   2   .   2    2   2   .  # WLfireringGC
+ 0x1a2    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # pakkun_dokan
  0x1a3    1   2   1   1    1   .   .   1    .   2   .   .    .   .   .  # begoman_spike
- 0x1a4    2   2   .   2    2   .   .   .    .   2   .   .    .   .   .  # FireSnake
- 0x1a5    2   2   .   2    2   .   .   .    .   2   .   .    .   .   .  # koopaFirebar
+ 0x1a4    2   2   .   2    2   2   2   .    2   2   .   2    2   2   .  # FireSnake
+ 0x1a5    2   2   .   2    2   2   2   .    2   2   .   2    2   2   .  # koopaFirebar
  0x1a6    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # Epropeller
  0x1a7    2   2   2   2    2   .   .   2    .   2   .   .    .   .   .  # dc_pillar_c
- 0x1a8    2   2   .   2    2   .   .   .    .   2   .   .    .   .   .  # FireSnake_v
+ 0x1a8    2   2   .   2    2   2   2   .    2   2   .   2    2   2   .  # FireSnake_v
  0x1a9    2   2   2   2    2   .   .   2    .   2   .   .    .   .   .  # honeBall
- 0x1aa    1   2   1   1    1   .   .   1    .   2   .   .    .   .   .  # puchi_pakkun
+ 0x1aa    1   2   1   1    1   2   1   1    1   2   .   1    1   1   .  # puchi_pakkun
  0x1ab    2   2   2   1    1   .   .   1    .   2   .   .    .   .   .  # sanbo_big
  0x1ac    2   2   2   1    1   .   .   1    .   2   .   .    .   .   .  # sanbo_big.2
 
@@ -268,7 +268,7 @@ DATE		= 2020-10-03
  0x1fe    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # TwistedWay
  0x1ff    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # TownBridgeDSc
 
- 0x200    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # DKship64
+ 0x200    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # DKship64
  0x201    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # kinoko_kuki
  0x202    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # DKturibashiGCc
  0x203    2   2   2   2    2   .   .   2    .   2   .   .    .   .   .  # FlamePoleEff
@@ -287,27 +287,27 @@ DATE		= 2020-10-03
 
  0x210    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # starGate
  0x211    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # RM_ring1
- 0x212    2   2   2   2    2   .   .   2    .   2   .   .    .   .   .  # FlamePole_v
+ 0x212    2   2   2   2    2   2   2   2    2   2   .   2    2   2   .  # FlamePole_v
  0x213    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # M_obj_s_jump
  0x214    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # InsekiA
  0x215    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # InsekiB
- 0x216    2   2   2   2    2   .   .   2    .   2   .   .    .   .   .  # FlamePole_v_big
+ 0x216    2   2   2   2    2   2   2   2    2   2   .   2    2   2   .  # FlamePole_v_big
  0x217    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # Mdush
  0x218    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # HP_pipe
  0x219    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # DemoCol
  0x21a    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # M_obj_s_jump2
  0x21b    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # M_obj_jump2
 
- 0x259    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # DonkyCannonGC
+ 0x259    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # DonkyCannonGC
  0x25a    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # BeltEasy
  0x25b    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # BeltCrossing
  0x25c    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # BeltCurveA
  0x25d    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # BeltCurveB
  0x25e    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # escalator
- 0x25f    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # DonkyCannon_wii
+ 0x25f    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # DonkyCannon_wii
 
  0x260    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # escalator_group
- 0x261    1   2   1   1    1   .   .   1    .   1   .   .    .   .   .  # tree_cannon
+ 0x261    1   2   1   1    1   1   1   1    1   1   .   1    1   1   .  # tree_cannon
 
  0x2bd    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # group_enemy_b
  0x2be    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # group_enemy_c

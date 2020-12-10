@@ -95,7 +95,7 @@ DATE		= 2020-10-03
  0x0da    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # castleballoon1
  0x0db    .   .   .   .    .   5   .   .    .   5   .   .    .   .   .  # dossunc
  0x0dc    .   .   .   .    .   5   .   .    .   5   .   .    .   .   .  # dossunc_soko
- 0x0dd    .   .   .   .    .   5   .   .    .   5   .   .    .   .   .  # boble
+ 0x0dd    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # boble
  0x0de    5   5   .   .    .   5   .   .    .   5   .   .    .   .   .  # K_bomb_car
  0x0df    5   5   .   .    .   5   .   .    .   5   .   .    .   .   .  # K_bomb_car_dummy
 
@@ -109,7 +109,7 @@ DATE		= 2020-10-03
  0x0e7    .   .   .   .    .   5   .   .    .   5   .   .    .   .   .  # CarA2
  0x0e8    .   .   .   .    .   5   .   .    .   5   .   .    .   .   .  # CarA3
  0x0e9    .   .   .   .    .   5   .   .    .   5   .   .    .   .   .  # Hwanwan
- 0x0ea    5   5   .   .    .   5   .   .    .   5   .   .    .   .   .  # HeyhoBallGBA
+ 0x0ea    5   5   5   5    5   5   5   5    5   5   .   5    5   5   .  # HeyhoBallGBA
  0x0eb    .   .   .   .    .   5   .   .    .   5   .   .    .   .   .  # Twanwan
  0x0ec    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # cruiserR
  0x0ed    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # bird
@@ -190,7 +190,7 @@ DATE		= 2020-10-03
  0x16b    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # miiposter
  0x16c    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # dk_miiobj00
  0x16d    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # light_house
- 0x16e    6   6   5   5    5   6   .   5    .   6   .   5    .   .   .  # r_parasol
+ 0x16e    6   6   5   5    5   6   5   5    5   6   .   5    5   5   .  # r_parasol
  0x16f    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # obakeblock2SFCc
 
  0x170    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # obakeblock3SFCc
@@ -228,15 +228,15 @@ DATE		= 2020-10-03
  0x18f    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # BGteresaSFC
 
  0x191    5   5   .   .    .   5   .   .    .   5   .   .    .   .   .  # kuribo
- 0x192    .   5   .   .    .   5   .   .    .   5   .   .    .   .   .  # choropu
+ 0x192    5   5   .   .    .   5   .   .    .   5   .   .    .   .   .  # choropu
  0x193    .   5   .   .    .   5   .   .    .   5   .   5    .   .   .  # cow
  0x194    .   .   .   .    .   5   .   .    .   5   .   5    .   .   .  # pakkun_f
  0x195    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # WLfirebarGC
  0x196    .   .   .   .    .   5   .   .    .   5   .   .    .   .   .  # wanwan
  0x197    5   5   .   .    .   5   .   .    .   5   .   5    .   .   .  # poihana
  0x198    .   .   .   .    .   5   .   .    .   5   .   .    .   .   .  # DKrockGC
- 0x199    5   5   .   .    .   5   .   .    .   5   .   6    .   .   .  # sanbo
- 0x19a    .   5   .   .    .   5   .   .    .   5   .   .    .   .   .  # choropu2
+ 0x199    5   5   6   6    6   5   6   6    6   5   .   6    6   6   .  # sanbo
+ 0x19a    5   5   .   .    .   5   .   .    .   5   .   .    .   .   .  # choropu2
  0x19b    .   .   .   .    .   5   .   .    .   5   .   .    .   .   .  # TruckWagon
  0x19c    .   5   .   .    .   5   .   .    .   5   .   5    .   .   .  # heyho
  0x19d    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # Press
