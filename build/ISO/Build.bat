@@ -66,7 +66,6 @@ exit
 :COPY
 echo.
 echo Copying mod files...
-copy /b fkw\Title.szs mkw.d\files\Scene\UI\Title.szs >nul
 copy /b fkw\main%LETTER%.dol mkw.d\sys\main.dol >nul
 copy /b fkw\codes\main%LETTER%.bin fkw\codes\tmp.bin >nul
 copy /b fkw\tracks\*.szs mkw.d\files\Race\Course >nul
@@ -77,6 +76,11 @@ IF %LETTER%==p (
 	copy /b fkw\Race_G.szs mkw.d\files\Scene\UI\Race_G.szs >nul
 	copy /b fkw\Race_I.szs mkw.d\files\Scene\UI\Race_I.szs >nul
 	copy /b fkw\Race_S.szs mkw.d\files\Scene\UI\Race_S.szs >nul
+	copy /b fkw\Title_E.szs mkw.d\files\Scene\UI\Title_E.szs >nul
+	copy /b fkw\Title_F.szs mkw.d\files\Scene\UI\Title_F.szs >nul
+	copy /b fkw\Title_G.szs mkw.d\files\Scene\UI\Title_G.szs >nul
+	copy /b fkw\Title_I.szs mkw.d\files\Scene\UI\Title_I.szs >nul
+	copy /b fkw\Title_S.szs mkw.d\files\Scene\UI\Title_S.szs >nul
 	copy /b fkw\Common_E.szs mkw.d\files\Race\Common_E.szs >nul
 	copy /b fkw\Common_F.szs mkw.d\files\Race\Common_F.szs >nul
 	copy /b fkw\Common_G.szs mkw.d\files\Race\Common_G.szs >nul
@@ -88,6 +92,9 @@ IF %LETTER%==e (
 	copy /b fkw\Race_M.szs mkw.d\files\Scene\UI\Race_M.szs >nul
 	copy /b fkw\Race_Q.szs mkw.d\files\Scene\UI\Race_Q.szs >nul
 	copy /b fkw\Race_U.szs mkw.d\files\Scene\UI\Race_U.szs >nul
+	copy /b fkw\Title_M.szs mkw.d\files\Scene\UI\Title_M.szs >nul
+	copy /b fkw\Title_Q.szs mkw.d\files\Scene\UI\Title_Q.szs >nul
+	copy /b fkw\Title_U.szs mkw.d\files\Scene\UI\Title_U.szs >nul
 	copy /b fkw\Common_S.szs mkw.d\files\Race\Common_M.szs >nul
 	copy /b fkw\Common_F.szs mkw.d\files\Race\Common_Q.szs >nul
 	copy /b fkw\Common_E.szs mkw.d\files\Race\Common_U.szs >nul
@@ -95,11 +102,13 @@ IF %LETTER%==e (
 
 IF %LETTER%==j (
 	copy /b fkw\Race_J.szs mkw.d\files\Scene\UI\Race_J.szs >nul
+	copy /b fkw\Title_J.szs mkw.d\files\Scene\UI\Title_J.szs >nul
 	copy /b fkw\Common_J.szs mkw.d\files\Race\Common_J.szs >nul
 )
 
 IF %LETTER%==k (
 	copy /b fkw\Race_K.szs mkw.d\files\Scene\UI\Race_K.szs >nul
+	copy /b fkw\Title_K.szs mkw.d\files\Scene\UI\Title_K.szs >nul
 	copy /b fkw\Common_J.szs mkw.d\files\Race\Common_J.szs >nul
 )
 

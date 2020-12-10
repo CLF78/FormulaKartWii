@@ -1,10 +1,13 @@
-wimgt encode titlepics/*.png --transform=TPL.RGB565
-ren %cd%\titlepics\*. *.tpl
-ren %cd%\titlepics\Bowser.tpl tt_title_screen_koopa.tpl
-ren %cd%\titlepics\Luigi.tpl tt_title_screen_luigi.tpl
-ren %cd%\titlepics\Mario.tpl tt_title_screen_mario.tpl
-ren %cd%\titlepics\MarioLuigi.tpl tt_title_screen_mario0.tpl
-ren %cd%\titlepics\MarioKart.tpl tt_title_screen_mario2.tpl
-ren %cd%\titlepics\Peach.tpl tt_title_screen_peachi.tpl
-move %cd%\titlepics\*.tpl %cd%\Title.d\title\timg
-wszst create Title.d
+wimgt encode logo.png --transform=TPL.IA4 --dest=logo.tpl
+copy /b logo.tpl Title_E.d\title\timg\logo.tpl >nul
+copy /b logo.tpl Title_F.d\title\timg\logo.tpl >nul
+copy /b logo.tpl Title_G.d\title\timg\logo.tpl >nul
+copy /b logo.tpl Title_I.d\title\timg\logo.tpl >nul
+copy /b logo.tpl Title_J.d\title\timg\logo.tpl >nul
+copy /b logo.tpl Title_K.d\title\timg\logo.tpl >nul
+copy /b logo.tpl Title_M.d\title\timg\logo.tpl >nul
+copy /b logo.tpl Title_Q.d\title\timg\logo.tpl >nul
+copy /b logo.tpl Title_S.d\title\timg\logo.tpl >nul
+copy /b logo.tpl Title_U.d\title\timg\logo.tpl >nul
+wszst create *.d
+ren %cd%\logo.tpl
