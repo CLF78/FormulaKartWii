@@ -66,6 +66,7 @@ mr r19, r0
 b getPlayer
 
 continue:
+# C++ Code: https://godbolt.org/z/f1YGPe
 # If the time is 0, give 0 points
 li r9, 0
 cmpw r10, r9

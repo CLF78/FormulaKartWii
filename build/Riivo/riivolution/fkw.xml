@@ -57,8 +57,6 @@
 		<folder disc="/Race/Course" external="/fkw/TrackPatches" create="true" />
 		<folder disc="/Scene/UI" external="/fkw/Race_X" />
 		<file disc="/Scene/UI/Title.szs" external="/fkw/Title.szs" />
-		<file disc="/Scene/UI/Race.szs" external="/fkw/Race.szs" />
-		<file disc="/Scene/UI/Race_R.szs" external="/fkw/Race_R.szs" />
 	</patch>
 	<patch id="mystuff">
 		<folder external="/ctgpr/My Stuff" recursive="false" />

@@ -66,7 +66,6 @@ exit
 :COPY
 echo.
 echo Copying mod files...
-copy /b fkw\Race.szs mkw.d\files\Scene\UI\Race.szs >nul
 copy /b fkw\Title.szs mkw.d\files\Scene\UI\Title.szs >nul
 copy /b fkw\main%LETTER%.dol mkw.d\sys\main.dol >nul
 copy /b fkw\codes\main%LETTER%.bin fkw\codes\tmp.bin >nul
@@ -101,7 +100,6 @@ IF %LETTER%==j (
 
 IF %LETTER%==k (
 	copy /b fkw\Race_K.szs mkw.d\files\Scene\UI\Race_K.szs >nul
-	copy /b fkw\Race_R.szs mkw.d\files\Scene\UI\Race_R.szs >nul
 	copy /b fkw\Common_J.szs mkw.d\files\Race\Common_J.szs >nul
 )
 

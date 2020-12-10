@@ -35,6 +35,10 @@ modules:
     addr_j: 0x807ADF14
     addr_k: 0x8079CC68
 
+  - name: 'BRCTR Redirector'
+    type: 'COMPILED'
+    src: 'ctrlpatch.txt'
+
   - name: 'Bullet Bill Speed Modifier'
     type: 'DATA'
     data: '435C'
@@ -148,12 +152,12 @@ modules:
     addr_k: 0x800014B0
 
   - name: 'Load GeoHit From Race'
-    type: 'DATA'
-    data: '02'
-    addr_p: 0x807F92AB
-    addr_u: 0x807EDEBB
-    addr_j: 0x807F8917
-    addr_k: 0x807E766B
+    type: 'C2D2'
+    src: 'geohit.S'
+    addr_p: 0x807F92A8
+    addr_u: 0x807EDEB8
+    addr_j: 0x807F8914
+    addr_k: 0x807E7668
 
   - name: 'Max Item Limit Modifier'
     type: 'COMPILED'
