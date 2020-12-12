@@ -112,6 +112,10 @@ modules:
     addr_j: 0x8070A93C
     addr_k: 0x806F9678
 
+  - name: 'GeoHit Redirector'
+    type: 'COMPILED'
+    src: 'geohit.txt'
+
   - name: 'Green Shell Speed Modifier'
     type: 'DATA'
     data: '4320'
@@ -150,14 +154,6 @@ modules:
     addr_u: 0x800014B0
     addr_j: 0x800014B0
     addr_k: 0x800014B0
-
-  - name: 'Load GeoHit From Race'
-    type: 'C2D2'
-    src: 'geohit.S'
-    addr_p: 0x807F92A8
-    addr_u: 0x807EDEB8
-    addr_j: 0x807F8914
-    addr_k: 0x807E7668
 
   - name: 'Max Item Limit Modifier'
     type: 'COMPILED'
@@ -321,10 +317,17 @@ modules:
     type: 'COMPILED'
     src: 'online/wiimmfi.txt'
 
-# Antifreeze Codes
+# Antifreeze/Anticheat Codes
   - name: 'Cannon Antifreeze'
     type: 'COMPILED'
     src: 'antifreeze/cannon.txt'
+
+  - name: 'Codehandler Terminator'
+    type: 'BLR'
+    addr_p: 0x800018A8
+    addr_u: 0x800018A8
+    addr_j: 0x800018A8
+    addr_k: 0x800018A8
 
   - name: 'Item Spam Antifreeze'
     type: 'C2D2'
