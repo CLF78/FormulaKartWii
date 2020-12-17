@@ -105,12 +105,12 @@ modules:
     addr_k: 0x807A0193
 
   - name: 'Final Lap Music Trigger Modifier'
-    type: 'DATA'
-    data: '281F0002'
-    addr_p: 0x8070B2D0
-    addr_u: 0x8070492C
-    addr_j: 0x8070A93C
-    addr_k: 0x806F9678
+    type: 'C2D2'
+    src: 'finallap.S'
+    addr_p: 0x8070B2CC
+    addr_u: 0x80704928
+    addr_j: 0x8070A938
+    addr_k: 0x806F9674
 
   - name: 'GeoHit Redirector'
     type: 'COMPILED'
@@ -197,6 +197,14 @@ modules:
   - name: 'No Invincibility Frames'
     type: 'C2D2'
     src: 'noinvframes.S'
+
+  - name: 'Prevent Shock/POW From Dropping'
+    type: 'C2D2'
+    src: 'nodrop.S'
+    addr_p: 0x807BC630
+    addr_u: 0x807ADBD0
+    addr_j: 0x807BBC9C
+    addr_k: 0x807AA9F0
 
   - name: 'Remove Mushroom Bug'
     type: 'DATA'

@@ -217,6 +217,7 @@
 * ✓ Divine Paradise
 * ✓ Fishdom Island (Jasperr) (improve moving item box set)
 * ✓ Jungle Beach
+* ✓ Pianta Shore
 * ✓ Secluded Island
 
 # Uncategorized
