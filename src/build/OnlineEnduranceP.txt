@@ -496,7 +496,7 @@ C2518AEC 00000008
 7D6803A6 4E800020
 7D6803A6 00000000
 
-Codehandler Terminator
+Codehandler Annihilator
 040018A8 4E800020
 
 Item Spam Antifreeze
