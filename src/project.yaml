@@ -330,7 +330,7 @@ modules:
     type: 'COMPILED'
     src: 'antifreeze/cannon.txt'
 
-  - name: 'Codehandler Terminator'
+  - name: 'Codehandler Annihilator'
     type: 'BLR'
     addr_p: 0x800018A8
     addr_u: 0x800018A8
