@@ -337,6 +337,14 @@ modules:
     addr_j: 0x800018A8
     addr_k: 0x800018A8
 
+  - name: 'Exception Recovery'
+    type: '0616'
+    src: 'antifreeze/nodsi.S'
+    addr_p: 0x80000300
+    addr_u: 0x80000300
+    addr_j: 0x80000300
+    addr_k: 0x80000300
+
   - name: 'Item Spam Antifreeze'
     type: 'C2D2'
     src: 'antifreeze/itemspam.S'
