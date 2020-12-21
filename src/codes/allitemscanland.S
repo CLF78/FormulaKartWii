@@ -51,8 +51,12 @@ loc_0x50:
 loc_0x70:
 	mr r3, r4
 	lwz r4, 0x90(r3)
+	cmpwi r7, 0xA
+	bne+ add
 	cmpwi r4, 3
 	beq noadd
+
+add:
 	addi r4, r4, 0x1
 	stw r4, 0x90(r3)
 
