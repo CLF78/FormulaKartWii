@@ -12,11 +12,6 @@
 					<patch id="voting" />
 				</choice>
 			</option>
-			<option name="CTGP My Stuff">
-				<choice name="Enabled">
-					<patch id="mystuff" />
-				</choice>
-			</option>
 			<option name="Faster Menu Navigation">
 				<choice name="Enabled">
 					<patch id="fastmenu" />
@@ -30,6 +25,23 @@
 			<option name="Mii Heads on Minimap">
 				<choice name="Enabled">
 					<patch id="miiheads" />
+				</choice>
+			</option>
+			<option name="My Stuff">
+				<param name="mystuff" value="fkw" /> <!--Fallback value-->
+				<choice name="CTGP">
+					<param name="mystuff" value="ctgpr" />
+				</choice>
+				<choice name="FKW">
+					<param name="mystuff" value="fkw" />
+				</choice>
+			</option>
+			<option name="My Stuff Type">
+				<choice name="Normal">
+					<patch id="mystuffnormal" />
+				</choice>
+				<choice name="Music Only">
+					<patch id="mystuffnrt" />
 				</choice>
 			</option>
 			<option name="No Character Sounds">
@@ -58,9 +70,13 @@
 		<folder disc="/Scene/UI" external="/fkw/Race_X" />
 		<folder disc="/Scene/UI" external="/fkw/Title_X" />
 	</patch>
-	<patch id="mystuff">
-		<folder external="/ctgpr/My Stuff" recursive="false" />
-		<folder external="/ctgpr/My Stuff" disc="/" />
+	<patch id="mystuffnormal">
+		<folder external="/{$mystuff}/My Stuff" recursive="false" />
+		<folder external="/{$mystuff}/My Stuff" disc="/" />
+	</patch>
+	<patch id="mystuffnrt">
+		<folder external="/{$mystuff}/My Stuff" recursive="false" disc="/Sound" />
+		<folder external="/{$mystuff}/My Stuff" disc="/Sound" />
 	</patch>
 	<!--Set bytes to enable the following codes-->
 	<patch id="fastmenu">
