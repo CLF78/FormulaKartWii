@@ -49,6 +49,21 @@ lbz r28, 0x25(r28)
 extsb r28, r28
 addi r28, r28, 43
 
+# If lap is 51, replace with 50
+cmpwi r28, 51
+beq replace50
+
+# If lap is less than 1, set to 1
+cmpwi r28, 1
+bge+ end
+
+li r28, 1
+b end
+
+replace50:
+li r28, 50
+
+end:
 #ENDCODE
 
 #########################

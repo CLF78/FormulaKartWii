@@ -196,7 +196,7 @@ modules:
 
   - name: 'No Invincibility Frames'
     type: 'C2D2'
-    src: 'noinvframes.S'
+    src: 'noinvframesv2.S'
 
   - name: 'Prevent Shock/POW From Dropping'
     type: 'C2D2'
