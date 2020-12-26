@@ -196,7 +196,7 @@ modules:
 
   - name: 'No Invincibility Frames'
     type: 'C2D2'
-    src: 'noinvframesv2.S'
+    src: 'noinvframes.S'
 
   - name: 'Prevent Shock/POW From Dropping'
     type: 'C2D2'
@@ -312,6 +312,14 @@ modules:
   - name: 'Friend Room Race Count Modifier'
     type: 'COMPILED'
     src: 'online/froomraces.txt'
+
+  - name: 'Message Editor'
+    type: 'C2D2'
+    src: 'online/msg.S'
+    addr_p: 0x805CDDC8
+    addr_u: 0x805C12A8
+    addr_j: 0x805CD6A4
+    addr_k: 0x805BBD88
 
   - name: 'Region Changer'
     type: 'COMPILED'

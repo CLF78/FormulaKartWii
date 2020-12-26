@@ -51,10 +51,28 @@ loc_0x50:
 loc_0x70:
 	mr r3, r4
 	lwz r4, 0x90(r3)
+	lwz r5, 0x8C(r3)
 	cmpwi r7, 0xA
 	bne+ add
+
+	cmpwi r5, 3
+	ble amountCheck
+	
+	cmpwi r5, 6
+	beq amountCheck
+	
+	cmpwi r5, 7
+	beq amountCheck
+	
+	cmpwi r5, 0xC
+	beq amountCheck
+	
+	cmpwi r5, 0x10
+	blt+ add
+
+amountCheck:
 	cmpwi r4, 3
-	beq noadd
+	bge noadd
 
 add:
 	addi r4, r4, 0x1

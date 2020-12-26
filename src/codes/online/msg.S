@@ -16,12 +16,12 @@ li r12, '2'
 
 # Check if language is Spanish
 cmpwi r3, 4
-li r4, 48
+li r4, 51
 beq messageChecks2
 
 # Check if language is English
 cmpwi r3, 1
-li r4, 50
+li r4, 53
 bne+ end
 
 # Check that the messages match
@@ -80,7 +80,7 @@ doReplacement:
 lwz r3, 0x20(r1)
 
 # Store byte at index
-stb r12, 46(r3)
+stb r12, 49(r3)
 
 end:
 #ENDCODE
