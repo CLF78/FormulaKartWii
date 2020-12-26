@@ -43,7 +43,7 @@ doReplacement:
 lwz r3, 0x20(r1)
 
 # Store byte at index
-stbx r12, r3, r4
+stbx r12, r4, r3
 
 end:
 #ENDCODE
