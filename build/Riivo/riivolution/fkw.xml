@@ -80,21 +80,21 @@
 	</patch>
 	<!--Set bytes to enable the following codes-->
 	<patch id="fastmenu">
-		<memory offset="0x800016BB" value="01"/>
+		<memory offset="0x800017B0" value="01"/>
 	</patch>
 	<patch id="miiheads">
-		<memory offset="0x800016BD" value="01"/>
+		<memory offset="0x800017B1" value="01"/>
 	</patch>
 	<patch id="nomusic">
-		<memory offset="0x800016BF" value="01"/>
+		<memory offset="0x800017B2" value="01"/>
 	</patch>
 	<patch id="btglitch">
-		<memory offset="0x800016C1" value="01"/>
+		<memory offset="0x800017B3" value="01"/>
 	</patch>
 	<patch id="nochars">
-		<memory offset="0x800016C3" value="01"/>
+		<memory offset="0x800017B4" value="01"/>
 	</patch>
 	<patch id="voting">
-		<memory offset="0x800016C5" value="01"/>
+		<memory offset="0x800017B5" value="01"/>
 	</patch>
 </wiidisc>

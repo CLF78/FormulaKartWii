@@ -33,9 +33,9 @@
 # 0x80001498-0x800016FF
 - 0x800014B0 = Max Lap Distance Float
 - 0x800014B4-0x8000152C = Lap Distance Checker
-- 0x80001600-0x800016B4 = All Items Can Land
-- 0x800016B8-0x800016C4 = Riivolution Options
+- 0x80001600-0x800016D8 = All Items Can Land
 
 # 0x80001798-0x800017FF
+- 0x800017B0-0x800017B5 = Riivolution Options
 
 # Other ranges
