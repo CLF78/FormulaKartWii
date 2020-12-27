@@ -28,20 +28,17 @@
 				</choice>
 			</option>
 			<option name="My Stuff">
-				<param name="mystuff" value="fkw" /> <!--Fallback value-->
 				<choice name="CTGP">
-					<param name="mystuff" value="ctgpr" />
+					<patch id="mystuffctgp" />
+				</choice>
+				<choice name="CTGP (Music Only)">
+					<patch id="mystuffctgpnrt" />
 				</choice>
 				<choice name="FKW">
-					<param name="mystuff" value="fkw" />
+					<patch id="mystufffkw" />
 				</choice>
-			</option>
-			<option name="My Stuff Type">
-				<choice name="Normal">
-					<patch id="mystuffnormal" />
-				</choice>
-				<choice name="Music Only">
-					<patch id="mystuffnrt" />
+				<choice name="FKW (Music Only)">
+					<patch id="mystufffkwnrt" />
 				</choice>
 			</option>
 			<option name="No Character Sounds">
@@ -70,13 +67,21 @@
 		<folder disc="/Scene/UI" external="/fkw/Race_X" />
 		<folder disc="/Scene/UI" external="/fkw/Title_X" />
 	</patch>
-	<patch id="mystuffnormal">
-		<folder external="/{$mystuff}/My Stuff" recursive="false" />
-		<folder external="/{$mystuff}/My Stuff" disc="/" />
+	<patch id="mystuffctgp">
+		<folder external="/ctgpr/My Stuff" recursive="false" />
+		<folder external="/ctgpr/My Stuff" disc="/" />
 	</patch>
-	<patch id="mystuffnrt">
-		<folder external="/{$mystuff}/My Stuff" recursive="false" disc="/Sound" />
-		<folder external="/{$mystuff}/My Stuff" disc="/Sound" />
+	<patch id="mystuffctgpnrt">
+		<folder external="/ctgpr/My Stuff" recursive="false" disc="/sound" />
+		<folder external="/ctgpr/My Stuff" recursive="false" disc="/sound/strm" />
+	</patch>
+	<patch id="mystufffkw">
+		<folder external="/fkw/My Stuff" recursive="false" />
+		<folder external="/fkw/My Stuff" disc="/" />
+	</patch>
+	<patch id="mystufffkwnrt">
+		<folder external="/fkw/My Stuff" recursive="false" disc="/sound" />
+		<folder external="/fkw/My Stuff" recursive="false" disc="/sound/strm" />
 	</patch>
 	<!--Set bytes to enable the following codes-->
 	<patch id="fastmenu">

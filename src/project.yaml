@@ -258,6 +258,14 @@ modules:
     type: 'COMPILED'
     src: 'ultrauncut.txt'
 
+  - name: 'Wooden Box Probability Modifier'
+    type: 'C2D2'
+    src: 'woodboxprob.S'
+    addr_p: 0x8076EE28
+    addr_u: 0x8077B300
+    addr_j: 0x8076E494
+    addr_k: 0x8075D1E8
+
   - name: 'Wooden Box Respawn Modifier'
     type: 'COMPILED'
     src: 'woodbox.txt'
