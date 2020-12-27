@@ -109,7 +109,7 @@ DATE		= 2020-10-03
  0x0e7    .   .   .   .    .   5   .   .    .   5   .   .    .   .   .  # CarA2
  0x0e8    .   .   .   .    .   5   .   .    .   5   .   .    .   .   .  # CarA3
  0x0e9    .   .   .   .    .   5   .   .    .   5   .   .    .   .   .  # Hwanwan
- 0x0ea    5   5   5   5    5   5   5   5    5   5   .   5    5   5   .  # HeyhoBallGBA
+ 0x0ea    5   5   5   5    5   5   .   5    5   5   .   .    5   5   .  # HeyhoBallGBA
  0x0eb    .   .   .   .    .   5   .   .    .   5   .   .    .   .   .  # Twanwan
  0x0ec    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # cruiserR
  0x0ed    .   .   .   .    .   .   .   .    .   .   .   .    .   .   .  # bird
