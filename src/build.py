@@ -110,7 +110,7 @@ def doProjectFile(project):
     # Compile each module
     print('Beginning compilation...')
     for i, region in enumerate(project['regions']):
-        print('Compiling region', region)
+        print('\nCompiling region', region)
 
         # Write the game id and name
         with open(buildfile.format(region), 'w') as f:

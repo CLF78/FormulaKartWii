@@ -1,0 +1,76 @@
+###################
+# Player ID Saver #
+###################
+#INJECT 805967B0, 8058FF8C, 80596130, 80584808
+
+.set PlayerID, 0x800001F1
+
+.if (REGION == 'P')
+	.set RACEDATA, 0x809BD728
+.elseif (REGION == 'U')
+	.set RACEDATA, 0x809B8F68
+.elseif (REGION == 'J')
+	.set RACEDATA, 0x809BC788
+.elseif (REGION == 'K')
+    .set RACEDATA, 0x809ABD68
+.else
+    .err
+.endif
+
+# Store player ID
+lis r4, PlayerID@ha
+stb r3, PlayerID@l(r4)
+
+# Original instruction
+lis r4, RACEDATA@ha
+#ENDCODE
+
+#########################
+# Cannon Bill Speed Mod #
+#########################
+#INJECT 805850D0, 8057E8AC, 80584A50, 80573128
+
+.set PlayerID, 0x800001F1
+.set Multiplier, 0x80001530
+
+.if (REGION == 'P')
+	.set ItemHolder, 0x809C3618
+.elseif (REGION == 'U')
+	.set ItemHolder, 0x809BEE20
+.elseif (REGION == 'J')
+	.set ItemHolder, 0x809C2678
+.elseif (REGION == 'K')
+    .set ItemHolder, 0x809B1C58
+.else
+    .err
+.endif
+
+# Original instruction
+lfs f7, 0(r29)
+
+# Get Player ID
+lis r11, PlayerID@ha
+lbz r11, PlayerID@l(r11)
+mulli r11, r11, 0x248
+
+# Load Bullet Bill Flag
+lis r12, ItemHolder@ha
+lwz r12, ItemHolder@l(r12)
+lwz r12, 0x14(r12)
+lwzx r12, r11, r12
+lwz r12, 0x50(r12)
+lwz r12, 0(r12)
+lbz r12, 0x10C(r12)
+
+# Check if it's on
+cmpwi r12, 0
+beq+ end
+
+# Multiply float if so
+lis r11, Multiplier@h
+ori r11, r11, Multiplier@l
+lfs f30, 0(r11)
+fmuls f7, f7, f30
+
+end:
+#ENDCODE
