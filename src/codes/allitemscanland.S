@@ -38,47 +38,30 @@ begin:
 	lwz r4, 0x14(r4)
 	li r3, 0
 
-loc_0x50:
+getPlayerLoop:
 	lwz r5, 0x0(r4)
 	cmpw r5, r6
-	beq loc_0x70
+	beq gotPlayer
 	addi r4, r4, 0x248
 	addi r3, r3, 0x1
 	cmpwi r3, 0xC
 	beq return
-	b loc_0x50
+	b getPlayerLoop
 
-loc_0x70:
+gotPlayer:
 	mr r3, r4
 	lwz r4, 0x90(r3)
 	lwz r5, 0x8C(r3)
 	cmpwi r7, 0xA
-	bne+ add
-
-	cmpwi r5, 3
-	ble amountCheck
-	
-	cmpwi r5, 6
-	beq amountCheck
-	
-	cmpwi r5, 7
-	beq amountCheck
-	
-	cmpwi r5, 0xC
-	beq amountCheck
-	
-	cmpwi r5, 0x10
-	blt+ add
-
-amountCheck:
+	bne+ addItem
 	cmpwi r4, 3
-	bge noadd
+	bge noAddItem
 
-add:
+addItem:
 	addi r4, r4, 0x1
 	stw r4, 0x90(r3)
 
-noadd:
+noAddItem:
 	lis r4, ADDR2@h
 	ori r4, r4, ADDR2@l
 	mulli r7, r7, 0x1C

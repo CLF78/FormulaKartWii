@@ -39,15 +39,8 @@ modules:
     type: 'COMPILED'
     src: 'ctrlpatch.txt'
 
-  - name: 'Bullet Bill Cannon Speed Modifier'
-    type: 'DATA'
-    data: '3FC0'
-    addr_p: 0x80001530
-    addr_u: 0x80001530
-    addr_j: 0x80001530
-    addr_k: 0x80001530
-    
-  - type: 'C2D2'
+  - name: 'Bullet Bill Cannon Speed Modifier'    
+    type: 'C2D2'
     src: 'bulletbillcannon.S'
 
   - name: 'Bullet Bill Speed Modifier'

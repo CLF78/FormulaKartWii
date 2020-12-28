@@ -130,3 +130,21 @@ end:
 li r4, 0
 stb r4, 0(r3)
 #ENDCODE
+
+##############
+# Camera Fix #
+##############
+#INJECT 805A22C4, 8059728C, 805A1C44, 8059031C
+
+.set InvFramesOn, 0x800001F0
+
+# Only execute is InvFrames is off
+lis r4, InvFramesOn@ha
+lbz r4, InvFramesOn@l(r4)
+cmpwi r4, 1
+beq end
+
+lhz r0, 0x334(r29)
+
+end:
+#ENDCODE
