@@ -9,6 +9,7 @@ tempfolder = 'tmp'
 pyasmiipath = 'C:\\Program Files\\pyiiasmh-4.1.5\\pyiiasmh.exe'
 codetypeslist = ['0414', '0616', 'C0', 'C2D2', 'F2F4', 'RAW']
 currtmp = 0
+debug = False
 
 
 def writeToFile(filestr, name, region):
@@ -107,6 +108,8 @@ def doProjectFile(project):
     if not os.path.isdir('build'):
         os.mkdir('build')
 
+    debug = (input('Enable debug mode? (Y/N): ') == 'Y')
+
     # Compile each module
     print('Beginning compilation...')
     for i, region in enumerate(project['regions']):
@@ -119,6 +122,11 @@ def doProjectFile(project):
 
         # Begin parsing modules
         for module in project['modules']:
+        
+            # Skip debug stuff
+            if 'debug' in module:
+                if (module['debug'] == 'true' and not debug) or (module['debug'] == 'false' and debug):
+                    continue
 
             # Set some stuff
             codename = module['name'] if 'name' in module else ''
