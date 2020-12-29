@@ -3,7 +3,7 @@
 ###################
 #INJECT 805967B0, 8058FF8C, 80596130, 80584808
 
-.set PlayerID, 0x800001F1
+.set PlayerID, 0x800001F0
 
 .if (REGION == 'P')
 	.set RACEDATA, 0x809BD728
@@ -30,7 +30,7 @@ lis r4, RACEDATA@ha
 ###########################
 #INJECT 805850C4, 8057E8A0, 80584A44, 8057311C
 
-.set PlayerID, 0x800001F1
+.set PlayerID, 0x800001F0
 
 .if (REGION == 'P')
 	.set ItemHolder, 0x809C3618

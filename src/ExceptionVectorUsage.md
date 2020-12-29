@@ -1,8 +1,8 @@
 *Note: Uses Vega's older version of the thread.*
 
 # 0x80000198-0x800001FF
-- 0x800001F0 = No Invincibility Frames
-- 0x800001F1 = Bullet Bill Cannon Speed Mod 
+- 0x800001B0-0x800001BC = No Invincibility Frames
+- 0x800001F0 = Bullet Bill Cannon Speed Mod 
 
 # 0x80000298-0x800002FF
 
