@@ -145,5 +145,58 @@ li r5, -1
 # Store 0 to InvFramesOn
 end:
 li r4, 0
-stb r4, 0(r3)
+stbx r4, r7, r3
+#ENDCODE
+
+##############
+# Camera Fix #
+##############
+#INJECT 805A22C4, 8059728C, 805A1C44, 8059031C
+
+.set InvFramesOn, 0x800001B0
+
+.if (REGION == 'P')
+	.set RACEDATA, 0x809BD728
+.elseif (REGION == 'U')
+	.set RACEDATA, 0x809B8F68
+.elseif (REGION == 'J')
+	.set RACEDATA, 0x809BC788
+.elseif (REGION == 'K')
+	.set RACEDATA, 0x809ABD68
+.else
+    .err
+.endif
+
+# Load RACEDATA
+lis r28, RACEDATA@ha
+lwz r28, RACEDATA@l(r28)
+li r12, 0
+
+# Get hudplayerid
+firstLoop:
+addi r11, r12, 0xB84
+lbzx r11, r11, r28
+
+# Check that the player exists
+cmpwi r11, -1
+beq+ end
+
+# Load its InvFramesOn value
+lis r7, InvFramesOn@h
+ori r7, r7, InvFramesOn@l
+lbzx r4, r11, r7
+
+# Check if it's enabled
+cmpwi r4, 1
+beq end
+
+# Continue the loop otherwise
+addi r12, r12, 1
+cmpwi r12, 3
+ble+ firstLoop
+
+# If all checks were passed, execute the og instruction
+lhz r0, 0x334(r29)
+
+end:
 #ENDCODE

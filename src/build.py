@@ -108,7 +108,7 @@ def doProjectFile(project):
     if not os.path.isdir('build'):
         os.mkdir('build')
 
-    debug = (input('Enable debug mode? (Y/N): ') == 'Y')
+    debug = (input('Enable debug mode? (Y/N): ').upper() == 'Y')
 
     # Compile each module
     print('Beginning compilation...')
