@@ -253,10 +253,10 @@ modules:
   - name: 'Ultimate Item Randomizer'
     type: 'C2D2'
     src: 'normalrandomizer.S'
-    addr_p: 0x807BA164
-    addr_u: 0x807AB704
-    addr_j: 0x807B97D0
-    addr_k: 0x807A8524
+    addr_p: 0x807BA160
+    addr_u: 0x807AB700
+    addr_j: 0x807B97CC
+    addr_k: 0x807A8520
 
   - name: 'Ultra UnCut'
     type: 'COMPILED'
