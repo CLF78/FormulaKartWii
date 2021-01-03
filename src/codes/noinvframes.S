@@ -48,23 +48,6 @@ ori r5, r5, InvFramesOn@l
 stbx r4, r24, r5
 #ENDCODE
 
-##############################
-# Shock Invincibility Frames #
-##############################
-#INJECT 805808A4, 8057A040, 80580224, 8056E8FC
-
-.set InvFramesOn, 0x800001B0
-
-# Original instruction
-li r4, 0xA
-
-# Store 1 to InvFramesOn
-li r3, 1
-lis r5, InvFramesOn@h
-ori r5, r5, InvFramesOn@l
-stbx r3, r27, r5
-#ENDCODE
-
 #####################
 # POW Player ID Fix #
 #####################
