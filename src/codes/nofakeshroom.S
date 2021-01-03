@@ -27,7 +27,7 @@ end:
 #INJECT 807BA484, 807ABA24, 807B9AF0, 807A8844
 
 cmpwi r3, 1
-beq 20
+bne+ 20
 li r0, 5
 
 #ENDCODE
