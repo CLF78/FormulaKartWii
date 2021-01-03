@@ -64,11 +64,11 @@ modules:
     src: 'noblooper.txt'
 
   - name: 'Disable Item Poof'
-    type: 'BLR'
-    addr_p: 0x807A6C14
-    addr_u: 0x8079DC08
-    addr_j: 0x807A6280
-    addr_k: 0x80794FD4
+    type: 'NOP'
+    addr_p: 0x807965C0
+    addr_u: 0x8078D5B4
+    addr_j: 0x80795C2C
+    addr_k: 0x80784980
 
   - name: 'Disable Timer Flashing'
     type: 'NOP'
@@ -217,6 +217,10 @@ modules:
     addr_u: 0x807AB617
     addr_j: 0x807B96E3
     addr_k: 0x807A8437
+
+  - name: 'Remove Mushroom Bug 2'
+    type: 'C2D2'
+    src: 'nofakeshroom.S'
 
   - name: 'Replace Blooper with Triple FIBs'
     type: 'COMPILED'
