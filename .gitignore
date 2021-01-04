@@ -1,4 +1,5 @@
 build/ISO/wit
+src/build/*.txt
 src/loader/__pycache__
 src/loader/build
 src/loader/libwinpthread-1.dll
