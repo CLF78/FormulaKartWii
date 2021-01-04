@@ -250,13 +250,6 @@ modules:
     addr_j: 0x807F7B64
     addr_k: 0x807E68B8
 
-  - type: 'DATA'
-    data: '3980FFD5'
-    addr_p: 0x805340A0
-    addr_u: 0x8052F558
-    addr_j: 0x80533A20
-    addr_k: 0x805220F8
-
   - name: 'Time Limit Modifier'
     type: 'COMPILED'
     src: 'timelimit.txt'
