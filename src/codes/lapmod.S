@@ -64,15 +64,6 @@ replace50:
 li r28, 50
 
 end:
-#ENDCODE
-
-#########################
-# Starting Lap Modifier #
-#########################
-#INJECT 805340A8, 8052F560, 80533A28, 80522100
-
-li r12, -43
-sth r12, 0x24(r3)
 
 ####################
 # Custom Laps Code #

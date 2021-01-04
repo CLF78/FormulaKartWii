@@ -126,9 +126,10 @@ beq+ end
 li r5, -1
 
 # Store 0 to InvFramesOn
-end:
 li r4, 0
 stbx r4, r7, r3
+
+end:
 #ENDCODE
 
 ##############
@@ -162,7 +163,7 @@ lbzx r11, r11, r28
 
 # Check that the player exists
 cmpwi r11, -1
-beq+ end
+beq+ executeOG
 
 # Load its InvFramesOn value
 lis r7, InvFramesOn@h
@@ -176,9 +177,10 @@ beq end
 # Continue the loop otherwise
 addi r12, r12, 1
 cmpwi r12, 3
-ble+ firstLoop
+blt+ firstLoop
 
 # If all checks were passed, execute the og instruction
+executeOG:
 lhz r0, 0x334(r29)
 
 end:

@@ -11,9 +11,6 @@ ori r12, r12, SCGetLanguage@l
 mtlr r12
 blrl
 
-# Load character we want to replace
-li r12, '2'
-
 # Check if language is Spanish
 cmpwi r3, 4
 li r4, 55
@@ -38,6 +35,9 @@ beq doReplacement
 cmpwi r14, 0x14C0
 bne+ end
 
+# Load character we want to replace
+li r12, '2'
+
 # Reload pointer
 doReplacement:
 lwz r3, 0x20(r1)
@@ -61,9 +61,6 @@ ori r12, r12, SCGetLanguage@l
 mtlr r12
 blrl
 
-# Load character we want to replace
-li r12, '2'
-
 # Check Spanish
 cmpwi r3, 4
 bne+ end
@@ -74,6 +71,9 @@ beq doReplacement
 
 cmpwi r14, 0x14C0
 bne+ end
+
+# Load character we want to replace
+li r12, '2'
 
 # Reload pointer
 doReplacement:

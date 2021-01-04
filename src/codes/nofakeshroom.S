@@ -3,8 +3,10 @@
 ######################
 #INJECT 807BA480, 807ABA20, 807B9AEC, 807A8840
 
-# Original instruction
+# Assume replacement to be 0
 li r3, 0
+
+# Original instruction
 lwz r0, 0x20(r31)
 
 # Check for POW and Shock

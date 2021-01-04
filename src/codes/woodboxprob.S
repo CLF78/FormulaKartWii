@@ -24,7 +24,7 @@ li r28, 100
 b end
 
 isBush:
-li r28, 65
+li r28, 33
 
 end:
 #ENDCODE

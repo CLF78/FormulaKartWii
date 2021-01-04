@@ -28,7 +28,7 @@ stw r0, 0xE0(r30)
 #INJECT 80817F24, 80805178, 80817590, 808062E4
 
 # Load X coordinate
-lwz r12, 0x0114 (r30)
+lwz r12, 0x0114(r30)
 
 # Check if it's the Ultra Shortcut rock
 lis r4, 0xC6BE
@@ -47,7 +47,7 @@ li r5, 0
 
 # Original instruction
 end:
-stw r5, 0x0130 (r30)
+stw r5, 0x0130(r30)
 
 #########################
 # Grumble Volcano Rocks #

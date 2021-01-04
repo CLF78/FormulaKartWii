@@ -20,6 +20,6 @@ stb r0, 0x19 (r27)
 
 # Default instruction
 noblock:
-	lbz r0, 0x19 (r27)
+lbz r0, 0x19 (r27)
 
 #ENDCODE

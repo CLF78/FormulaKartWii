@@ -6,13 +6,13 @@
 .set PlayerID, 0x800001F0
 
 .if (REGION == 'P')
-	.set RACEDATA, 0x809BD728
+	.set RaceData, 0x809BD728
 .elseif (REGION == 'U')
-	.set RACEDATA, 0x809B8F68
+	.set RaceData, 0x809B8F68
 .elseif (REGION == 'J')
-	.set RACEDATA, 0x809BC788
+	.set RaceData, 0x809BC788
 .elseif (REGION == 'K')
-    .set RACEDATA, 0x809ABD68
+    .set RaceData, 0x809ABD68
 .else
     .err
 .endif
@@ -22,7 +22,7 @@ lis r4, PlayerID@ha
 stb r3, PlayerID@l(r4)
 
 # Original instruction
-lis r4, RACEDATA@ha
+lis r4, RaceData@ha
 #ENDCODE
 
 ###########################

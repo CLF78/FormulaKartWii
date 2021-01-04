@@ -1,19 +1,18 @@
 .if (REGION == 'P')
-	.set ADDR1, 0x809C3618
-	.set ADDR2, 0x809C36B8
+	.set ItemHolder, 0x809C3618
+	.set ItemStructs, 0x809C36B8
 .elseif (REGION == 'U')
-	.set ADDR1, 0x809BEE20
-	.set ADDR2, 0x809BEEB0
+	.set ItemHolder, 0x809BEE20
+	.set ItemStructs, 0x809BEEB0
 .elseif (REGION == 'J')
-	.set ADDR1, 0x809C2678
-	.set ADDR2, 0x809C2718
+	.set ItemHolder, 0x809C2678
+	.set ItemStructs, 0x809C2718
 .elseif (REGION == 'K')
-	.set ADDR1, 0x809B1C58
-	.set ADDR2, 0x80893E78
+	.set ItemHolder, 0x809B1C58
+	.set ItemStructs, 0x80893E78
 .else
     .err
 .endif
-
 
 # Mega
 li r7, 0xB
@@ -25,58 +24,49 @@ b begin
 
 # Bullet Bill
 li r7, 0xF
-b begin
 
-# Backup registers and setup
+# Push stack and save LR
 begin:
-	stwu sp, -0x10(sp)
-	mflr r0
-	stw r0, 0x14(sp)
-	lwz r6, 0x4(r3)
-	lis r4, ADDR1@ha
-	lwz r4, ADDR1@l(r4)
-	lwz r4, 0x14(r4)
-	li r3, 0
+stwu r1, -0x10(r1)
+mflr r0
+stw r0, 0x14(r1)
 
-getPlayerLoop:
-	lwz r5, 0x0(r4)
-	cmpw r5, r6
-	beq gotPlayer
-	addi r4, r4, 0x248
-	addi r3, r3, 0x1
-	cmpwi r3, 0xC
-	beq return
-	b getPlayerLoop
+# Get player struct
+lis r3, ItemHolder@ha
+lwz r3, ItemHolder@l(r3)
+lwz r3, 0x14(r3)
+mulli r4, r24, 0x248
+add r3, r3, r4
 
-gotPlayer:
-	mr r3, r4
-	lwz r4, 0x90(r3)
-	lwz r5, 0x8C(r3)
-	cmpwi r7, 0xA
-	bne+ addItem
-	cmpwi r4, 3
-	bge noAddItem
+# Get current item amount and check that the item is a golden
+lwz r4, 0x90(r3)
+cmpwi r7, 0xA
+bne+ addItem
+cmpwi r4, 3
+bge noAddItem
 
 addItem:
-	addi r4, r4, 0x1
-	stw r4, 0x90(r3)
+addi r4, r4, 1
+stw r4, 0x90(r3)
 
+# Run the correct function
 noAddItem:
-	lis r4, ADDR2@h
-	ori r4, r4, ADDR2@l
-	mulli r7, r7, 0x1C
-	lwzx r4, r4, r7
-	cmpwi r4, 0
-	beq return
-	mtctr r4
-	bctrl
+lis r4, ItemStructs@h
+ori r4, r4, ItemStructs@l
+mulli r7, r7, 0x1C
+lwzx r4, r4, r7
+cmpwi r4, 0
+beq return
+mtctr r4
+bctrl
 
+# Pop stack
 return:
-	li r3, -0x1
-	lwz r0, 0x14(sp)
-	mtlr r0
-	addi sp, sp, 0x10
-	blr
+li r3, -0x1
+lwz r0, 0x14(r1)
+mtlr r0
+addi r1, r1, 0x10
+blr
 
 #ENDCODE
 

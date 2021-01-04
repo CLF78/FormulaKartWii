@@ -26,11 +26,11 @@ b end
 
 # For b instruction
 skip:
-	oris r11, r11, 0x4800 
+oris r11, r11, 0x4800 
 
 # Write in new instruction
 end:
-	lis r5, BranchAddress@ha
-    stw r11, BranchAddress@l(r5)
+lis r5, BranchAddress@ha
+stw r11, BranchAddress@l(r5)
 
 #ENDCODE
