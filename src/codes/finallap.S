@@ -16,11 +16,11 @@
 rlwinm r0, r3, 0, 0x18, 0x1F
 
 # Check if it's lap 45
-cmpwi r31, 2
+cmpwi r31, -2
 beq doLapChange
 
 # Check if it's lap 50
-cmpwi r31, 7
+cmpwi r31, 3
 bne+ end
 
 # Change pitch

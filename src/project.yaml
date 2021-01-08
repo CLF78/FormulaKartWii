@@ -245,10 +245,6 @@ modules:
   - name: 'Starting Lap Modifier'
     type: 'C2D2'
     src: 'lapmod.S'
-    addr_p: 0x807F84F8
-    addr_u: 0x807ED9F8
-    addr_j: 0x807F7B64
-    addr_k: 0x807E68B8
 
   - name: 'Time Limit Modifier'
     type: 'COMPILED'
