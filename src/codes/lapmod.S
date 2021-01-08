@@ -93,7 +93,7 @@ addi r1, r1, 0x10
 sth r5, 0x24(r3)
 
 # Check that it isn't the final lap
-cmpwi r5, 3
+cmpwi r5, 4
 beq end
 
 # Otherwise store to maxLap as well
