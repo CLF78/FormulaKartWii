@@ -89,13 +89,57 @@ addi r1, r1, 0x10
 ####################
 #INJECT 80534B58, 80530010, 805344D8, 80522BB0
 
-cmpwi r3, 0xCE
-li r3, 1
+# Fix current lap
+extsb r3, r3
+addi r3, r3, 50
+
+# Module division
+li r5, 3
+divw r5, r3, r5
+mulli r5, r5, 3
+subf r3, r5, r3
+
+#ENDCODE
+
+######################
+# Lap Counting Fix 2 #
+######################
+#INJECT 8053572C, 80530BE4, 805350AC, 80523784
+
+# Modified original instruction
+cmplwi r4, 0xCF
+
+# Convert lap
+extsb r4, r4
+addi r4, r4, 50
+
+# Module division
+li r6, 3
+divw r6, r4, r6
+mulli r6, r6, 3
+subf r4, r6, r4
+
+# Add 1
+addi r4, r4, 1
+
+#ENDCODE
+
+###################
+# Lap Count Fix 3 #
+###################
+#INJECT 80535798, 80530C50, 80535118, 805237F0
+
+# Original instruction
+subi r6, r4, 2
+
+# If the result is -1, loop back to 2
+cmpwi r6, -1
 bne+ end
 
-li r3, 0
+li r6, 2
 
 end:
+
 ####################
 # Custom Laps Code #
 ####################
