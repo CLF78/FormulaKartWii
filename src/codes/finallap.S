@@ -16,7 +16,7 @@
 rlwinm r0, r3, 0, 0x18, 0x1F
 
 # Check if it's lap 45
-cmpwi r31, 249
+cmpwi r31, 250
 beq doLapChange
 
 # Check if it's lap 50
