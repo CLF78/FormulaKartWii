@@ -106,6 +106,18 @@ subf r3, r5, r3
 ######################
 #INJECT 8053572C, 80530BE4, 805350AC, 80523784
 
+.if (REGION == 'P')
+	.set RaceInfo, 0x809BD730
+.elseif (REGION == 'U')
+	.set RaceInfo, 0x809B8F70
+.elseif (REGION == 'J')
+	.set RaceInfo, 0x809BC790
+.elseif (REGION == 'K')
+    .set RaceInfo, 0x809ABD70
+.else
+    .err
+.endif
+
 # Modified original instruction
 cmplwi r4, 0xCF
 
@@ -121,6 +133,8 @@ subf r4, r6, r4
 
 # Add 1
 addi r4, r4, 1
+
+end:
 
 #ENDCODE
 
@@ -139,6 +153,35 @@ bne+ end
 li r6, 2
 
 end:
+#ENDCODE
+
+###################
+# Lap Count Fix 4 #
+###################
+#INJECT 80534A18, 8052FED0, 80534398, 80522A70
+
+# Fix both lap counts
+extsh r3, r5
+extsb r0, r0
+
+#ENDCODE
+
+###################
+# Lap Count Fix 5 #
+###################
+#INJECT 8070B2B8, 80704914, 8070A924, 806F9660
+
+# Original instruction
+lbz r0, 0xDB(r29)
+
+# Check that it isn't the first lap
+cmpwi r31, 0xCE
+bne+ end
+
+# If so force a match
+li r0, 0xCE
+
+end:
 
 ####################
 # Custom Laps Code #
@@ -152,9 +195,8 @@ end:
 045340B0 60000000
 04723D3C 48000008
 04723D48 7FAC0774
-04534A18 54A3063E
-04534BDC 38000000
-04534BE0 40A00078
+04534BDC 380000FF
+04723CCC 380000FF 
 #ENDCODE
 
 #SETREGION U
@@ -163,9 +205,8 @@ end:
 0452F568 60000000
 0471F90C 48000008
 0471F918 7FAC0774
-0452FED0 54A3063E
-04530094 38000000
-04530098 40A00078
+04530094 380000FF
+0471F89C 380000FF
 #ENDCODE
 
 #SETREGION J
@@ -174,9 +215,8 @@ end:
 04533A30 60000000
 047233A8 48000008
 047233B4 7FAC0774
-04534398 54A3063E
-0453455C 38000000
-04534560 40A00078
+0453455C 380000FF
+04723338 380000FF
 #ENDCODE
 
 #SETREGION K
@@ -185,7 +225,6 @@ end:
 04522108 60000000
 047120E4 48000008
 047120F0 7FAC0774
-04522A70 54A3063E
-04522C34 38000000
-04522C38 40A00078
+04522C34 380000FF
+04712074 380000FF
 #ENDCODE

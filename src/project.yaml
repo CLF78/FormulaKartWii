@@ -246,6 +246,10 @@ modules:
     type: 'C2D2'
     src: 'lapmod.S'
 
+  - name: 'Time Difference Calculator'
+    type: 'C2D2'
+    src: 'timediff.S'
+
   - name: 'Time Limit Modifier'
     type: 'COMPILED'
     src: 'timelimit.txt'

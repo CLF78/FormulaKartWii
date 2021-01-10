@@ -1,0 +1,147 @@
+###########
+# Patch 1 #
+###########
+#INJECT 807EE5C0, 8084215C, 807EDC2C, 807DC980
+
+# r5 = RaceInfoPlayer
+
+.if (REGION == 'P')
+	.set RaceData, 0x809BD728
+	.set RaceInfo, 0x809BD730
+.elseif (REGION == 'U')
+	.set RaceData, 0x809B8F68
+	.set RaceInfo, 0x809B8F70
+.elseif (REGION == 'J')
+	.set RaceData, 0x809BC788
+	.set RaceInfo, 0x809BC790
+.elseif (REGION == 'K')
+    .set RaceData, 0x809ABD68
+    .set RaceInfo, 0x809ABD70
+.else
+    .err
+.endif
+
+# Check game mode
+lis r6, RaceData@ha
+lwz r9, RaceData@l(r6)
+lwz r7, 0xB70(r9)
+cmpwi r7, 2
+beq end
+
+# Load PlayerIdInEachPosition
+lwz r6, RaceInfo@l(r6)
+lwz r6, 0x18(r6)
+
+# Load my PlayerID
+lbz r8, 0x1774(r9)
+mulli r8, r8, 4
+
+# Check if in 1st
+lwzx r8, r5, r8
+lbz r8, 0x20(r8)
+cmpwi r8, 1
+bne+ end
+
+# If so, load 2nd place's RaceInfo and MaxLap
+addi r8, r8, 2
+lbz r12, 0x1(r6)
+mulli r12, r12, 4
+lwzx r12, r5, r12
+lbz r31, 0x26(r12)
+
+# If not equal, trigger the difference
+end:
+cmplw r3, r31
+#ENDCODE
+
+###########
+# Patch 2 #
+###########
+#INJECT 807EE5DC, 80842178, 807EDC48, 807DC99C 
+
+# r5 = RaceInfoPlayer
+# r6 = PlayerIdInEachPosition
+# r7 = Game Mode
+# r8 = Position
+# r9 = Racedata
+
+# Check gamemode
+cmpwi r7, 2
+bne+ next
+
+# Otherwise do the default instructions
+add r5, r30, r0
+addi r5, r5, 0x204
+b end
+
+# Get the ID of the player in front of me, OR if in 1st, get the ID of the player in 2nd
+next:
+subi r8, r8, 2
+lbzx r8, r6, r8
+mulli r8, r8, 0x4
+
+# Load their raceinfo
+lwzx r5, r5, r8
+
+# Add the correct offset for the function that fills the laps
+addi r5, r5, 0x74
+
+# Convert lap
+extsb r4, r31
+addi r4, r4, 50
+
+# Module division
+li r12, 3
+divw r12, r4, r12
+mulli r12, r12, 3
+subf r4, r12, r4
+
+subi r4, r4, 1
+cmpwi r4, -1
+bne+ multiply
+
+li r4, 2
+
+# Add the result to r5
+multiply:
+mulli r4, r4, 0xC
+add r5, r5, r4
+
+# Load a high MEM1 address so that the function that fills the laps loads a null lap 1
+lis r4, 0x8150
+ori r4, r4, 0x14B0
+end:
+#ENDCODE
+
+#SETTYPE COMPILED
+#SETREGION P
+04858358 480000A0
+04858448 60000000
+047EE5A4 38000001
+047EE580 38000001
+047EE5D8 60000000
+#ENDCODE
+
+#SETREGION U
+048368C8 480000A0
+048369B8 60000000
+04842140 38000001
+0494211C 38000001
+04842174 60000000
+#ENDCODE
+
+#SETREGION J
+048579C4 480000A0
+04857AB4 60000000
+047EDC10 38000001
+047EDBEC 38000001
+047EDC44 60000000
+#ENDCODE
+
+#SETREGION K
+04846718 480000A0
+04846808 60000000
+047DC964 38000001
+047DC940 38000001
+047DC998 60000000
+#ENDCODE
