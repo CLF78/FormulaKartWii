@@ -140,6 +140,16 @@ echo.
 SET /P FRAMERATE=Force 30 FPS? (Y/N):
 IF /i %FRAMERATE%==Y copy /b fkw\codes\tmp.bin+fkw\codes\framerate%LETTER%.bin fkw\codes\tmp.bin >nul
 
+echo.
+echo Enable Time Difference?:
+echo 0. No
+echo 1. Yes (distance to player in front)
+echo 2. Yes (distance to player in 1st)
+SET /P TIMEDIFF=Enter the number corresponding to the option you want: 
+
+IF TIMEDIFF%==1 copy /b fkw\codes\tmp.bin+fkw\codes\timediff1.bin fkw\codes\tmp.bin >nul
+IF TIMEDIFF%==2 copy /b fkw\codes\tmp.bin+fkw\codes\timediff2.bin fkw\codes\tmp.bin >nul
+
 mkdir mkw.d\files\codes
 copy /b fkw\codes\tmp.bin + fkw\codes\ending.bin mkw.d\files\codes\%GAMEID%.gct >nul
 del /f fkw\codes\tmp.bin
@@ -149,8 +159,7 @@ echo Format Selection:
 echo 1. WBFS
 echo 2. ISO
 echo 3. Extracted Filesystem (ADVANCED USERS ONLY)
-echo Enter the number corresponding to the format you want
-SET /P EXTINPUT=Enter Number and press Enter:
+SET /P EXTINPUT=Enter the number corresponding to the format you want: 
 
 IF %EXTINPUT%==1 (
 	SET FILEEXT=wbfs
