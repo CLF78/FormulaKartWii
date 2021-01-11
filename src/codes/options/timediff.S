@@ -31,7 +31,7 @@ cmpwi r7, 2
 beq end
 
 # Hardcoded last lap failsafe
-cmpwi r31, 0
+cmpwi r31, 255
 beq doNothing
 
 lis r11, TimeDiffType@ha
