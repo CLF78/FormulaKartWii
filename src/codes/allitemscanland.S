@@ -42,6 +42,36 @@ add r3, r3, r4
 lwz r4, 0x90(r3)
 cmpwi r7, 0xA
 bne+ addItem
+
+# Get current item
+lwz r5, 0x8C(r3)
+
+cmpwi r5, 2
+ble tripleItems
+
+cmpwi r5, 3
+beq tripleFIBs
+
+cmpwi r5, 4
+bne+ quantCheck
+
+# Mushrooms go to Triple Mushrooms
+li r5, 5
+b storeItem
+
+# Bananas/Shells go to the triple counterpart
+tripleItems:
+addi r5, r5, 0x10
+b storeItem
+
+# FIBs go to Triple FIBs
+tripleFIBs:
+li r5, 0xC
+
+storeItem:
+stw r5, 0x8C(r3)
+
+quantCheck:
 cmpwi r4, 3
 bge noAddItem
 

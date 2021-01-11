@@ -30,12 +30,17 @@ lwz r7, 0xB70(r9)
 cmpwi r7, 2
 beq end
 
+# Hardcoded last lap failsafe
+cmpwi r31, 0
+beq doNothing
+
 lis r11, TimeDiffType@ha
 lbz r11, TimeDiffType@l(r11)
 cmpwi r11, 0
 bne+ next
 
 # Move r31 to r3 to force the compare result if the option is disabled
+doNothing:
 mr r3, r31
 b end
 
