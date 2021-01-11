@@ -11,14 +11,6 @@ ble+ end
 # Get current item
 lwz r3, -0x28(r27)
 
-# Bananas will be set to trail mode
-cmpwi r3, 2
-beq doItemTrail
-
-# Greens, Reds and FIBs will be set to circling mode instead
-cmpwi r3, 3
-ble doItemRotate
-
 # Same for Bombs
 cmpwi r3, 6
 beq doItemRotate
@@ -28,11 +20,7 @@ cmpwi r3, 7
 bne+ end
 
 doItemRotate:
-    li r30, 3
-    b end
-
-doItemTrail:
-    li r30, 2
+li r30, 3
 
 end:
 #ENDCODE
