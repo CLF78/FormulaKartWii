@@ -5,6 +5,8 @@
 
 # r5 = RaceInfoPlayer
 
+.set TimeDiffType, 0x800017B6
+
 .if (REGION == 'P')
 	.set RaceData, 0x809BD728
 	.set RaceInfo, 0x809BD730
@@ -28,7 +30,17 @@ lwz r7, 0xB70(r9)
 cmpwi r7, 2
 beq end
 
+lis r11, TimeDiffType@ha
+lbz r11, TimeDiffType@l(r11)
+cmpwi r11, 0
+bne+ next
+
+# Move r31 to r3 to force the compare result if the option is disabled
+mr r3, r31
+b end
+
 # Load PlayerIdInEachPosition
+next:
 lwz r6, RaceInfo@l(r6)
 lwz r6, 0x18(r6)
 
@@ -40,9 +52,16 @@ mulli r8, r8, 4
 lwzx r8, r5, r8
 lbz r8, 0x20(r8)
 cmpwi r8, 1
+beq next2
+
+# Otherwise check which option is enabled
+cmpwi r11, 2
 bne+ end
+li r8, 2
+b end
 
 # If so, load 2nd place's RaceInfo and MaxLap
+next2:
 addi r8, r8, 2
 lbz r12, 0x1(r6)
 mulli r12, r12, 4
@@ -126,7 +145,7 @@ end:
 048368C8 480000A0
 048369B8 60000000
 04842140 38000001
-0494211C 38000001
+0484211C 38000001
 04842174 60000000
 #ENDCODE
 

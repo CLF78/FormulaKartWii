@@ -51,6 +51,14 @@
 					<patch id="nomusic" />
 				</choice>
 			</option>
+			<option name="Show Time Difference">
+				<choice name="Player In Front">
+					<patch id="timediff1" />
+				</choice>
+				<choice name="Player In 1st">
+					<patch id="timediff2" />
+				</choice>
+			</option>
 		</section>
 	</options>
 	<patch id="fkw">
@@ -101,5 +109,11 @@
 	</patch>
 	<patch id="voting">
 		<memory offset="0x800017B5" value="01"/>
+	</patch>
+	<patch id="timediff1">
+		<memory offset="0x800017B6" value="01"/>
+	</patch>
+	<patch id="timediff2">
+		<memory offset="0x800017B6" value="02"/>
 	</patch>
 </wiidisc>

@@ -37,6 +37,6 @@
 - 0x80001600-0x80001684 = All Items Can Land
 
 # 0x80001798-0x800017FF
-- 0x800017B0-0x800017B5 = Riivolution Options
+- 0x800017B0-0x800017B6 = Riivolution Options
 
 # Other ranges

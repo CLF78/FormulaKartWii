@@ -246,10 +246,6 @@ modules:
     type: 'C2D2'
     src: 'lapmod.S'
 
-  - name: 'Time Difference Calculator'
-    type: 'C2D2'
-    src: 'timediff.S'
-
   - name: 'Time Limit Modifier'
     type: 'COMPILED'
     src: 'timelimit.txt'
@@ -505,6 +501,10 @@ modules:
     src: 'debug/perfmon.txt'
 
 # Toggleables
+  - name: 'Time Difference Calculator'
+    type: 'C2D2'
+    src: 'options/timediff.S'
+
   - name: 'Faster Menu Navigation'
     type: 'COMPILED'
     src: 'options/fastmenu.txt'
@@ -527,4 +527,4 @@ modules:
 
   - name: 'Always Win Track Vote'
     type: 'COMPILED'
-    src: 'options/voting.txt'
+    src: 'options/voting.S'

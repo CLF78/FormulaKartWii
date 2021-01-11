@@ -43,10 +43,10 @@ lwz r28, RACEINFO@l(r28)
 lwz r28, 0xC(r28)
 lwzx r28, r28, r26
 
-# Get current lap of player
+# Get max lap of player
 lbz r28, 0x26(r28)
 
-# Add 47 to match
+# Add 51 to match
 extsb r28, r28
 addi r28, r28, 51
 #ENDCODE
@@ -85,7 +85,7 @@ addi r1, r1, 0x10
 #ENDCODE
 
 ####################
-# Lap Counting Fix #
+# Time Storing Fix #
 ####################
 #INJECT 80534B58, 80530010, 805344D8, 80522BB0
 
@@ -102,21 +102,9 @@ subf r3, r5, r3
 #ENDCODE
 
 ######################
-# Lap Counting Fix 2 #
+# Time Storing Fix 2 #
 ######################
 #INJECT 8053572C, 80530BE4, 805350AC, 80523784
-
-.if (REGION == 'P')
-	.set RaceInfo, 0x809BD730
-.elseif (REGION == 'U')
-	.set RaceInfo, 0x809B8F70
-.elseif (REGION == 'J')
-	.set RaceInfo, 0x809BC790
-.elseif (REGION == 'K')
-    .set RaceInfo, 0x809ABD70
-.else
-    .err
-.endif
 
 # Modified original instruction
 cmplwi r4, 0xCF
@@ -135,12 +123,11 @@ subf r4, r6, r4
 addi r4, r4, 1
 
 end:
-
 #ENDCODE
 
-###################
-# Lap Count Fix 3 #
-###################
+######################
+# Time Storing Fix 3 #
+######################
 #INJECT 80535798, 80530C50, 80535118, 805237F0
 
 # Original instruction
@@ -156,7 +143,7 @@ end:
 #ENDCODE
 
 ###################
-# Lap Count Fix 4 #
+# Race Ending Fix #
 ###################
 #INJECT 80534A18, 8052FED0, 80534398, 80522A70
 
@@ -166,9 +153,9 @@ extsb r0, r0
 
 #ENDCODE
 
-###################
-# Lap Count Fix 5 #
-###################
+#######################
+# Starting Jingle Fix #
+#######################
 #INJECT 8070B2B8, 80704914, 8070A924, 806F9660
 
 # Original instruction
