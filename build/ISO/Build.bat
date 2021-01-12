@@ -147,8 +147,8 @@ echo 1. Yes (distance to player in front)
 echo 2. Yes (distance to player in 1st)
 SET /P TIMEDIFF=Enter the number corresponding to the option you want: 
 
-IF TIMEDIFF%==1 copy /b fkw\codes\tmp.bin+fkw\codes\timediff1.bin fkw\codes\tmp.bin >nul
-IF TIMEDIFF%==2 copy /b fkw\codes\tmp.bin+fkw\codes\timediff2.bin fkw\codes\tmp.bin >nul
+IF %TIMEDIFF%==1 copy /b fkw\codes\tmp.bin+fkw\codes\timediff1.bin fkw\codes\tmp.bin >nul
+IF %TIMEDIFF%==2 copy /b fkw\codes\tmp.bin+fkw\codes\timediff2.bin fkw\codes\tmp.bin >nul
 
 mkdir mkw.d\files\codes
 copy /b fkw\codes\tmp.bin + fkw\codes\ending.bin mkw.d\files\codes\%GAMEID%.gct >nul
