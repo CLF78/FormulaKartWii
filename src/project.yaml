@@ -70,13 +70,6 @@ modules:
     addr_j: 0x80795C2C
     addr_k: 0x80784980
 
-  - name: 'Disable Timer Flashing'
-    type: 'NOP'
-    addr_p: 0x807F7F88
-    addr_u: 0x807ED488
-    addr_j: 0x807F75F4
-    addr_k: 0x807E6348
-
   - name: "Don't Hide Position After Race"
     type: 'DATA'
     data: '38000001'
@@ -150,6 +143,10 @@ modules:
     addr_u: 0x808153C8
     addr_j: 0x80828548
     addr_k: 0x8081729C
+
+  - name: 'Lap Counter'
+    type: 'C2D2'
+    src: 'lapcounter.S'
 
   - name: 'Lap Distance Checker'
     type: '0616'

@@ -137,34 +137,80 @@ ori r4, r4, 0x14B0
 end:
 #ENDCODE
 
+########################
+# Multiplayer Disabler #
+########################
+#INJECT 80858444, 808369B4, 80857AB0, 80846804
+
+.if (REGION == 'P')
+	.set RACEDATA, 0x809BD728
+.elseif (REGION == 'U')
+	.set RACEDATA, 0x809B8F68
+.elseif (REGION == 'J')
+	.set RACEDATA, 0x809BC788
+.elseif (REGION == 'K')
+	.set RACEDATA, 0x809ABD68
+.else
+    .err
+.endif
+
+# Load HudPlayerIDs[1]
+lis r3, RACEDATA@ha
+lwz r3, RACEDATA@l(r3)
+lbz r3, 0xB85(r3)
+
+# If there's a player two, skip
+srwi. r3, r3, 7
+
+#ENDCODE
+
+##########################
+# Multiplayer Disabler 2 #
+##########################
+#INJECT 80858354, 808368C4, 808579C0, 80846714
+
+.if (REGION == 'P')
+	.set RACEDATA, 0x809BD728
+.elseif (REGION == 'U')
+	.set RACEDATA, 0x809B8F68
+.elseif (REGION == 'J')
+	.set RACEDATA, 0x809BC788
+.elseif (REGION == 'K')
+	.set RACEDATA, 0x809ABD68
+.else
+    .err
+.endif
+
+# Load HudPlayerIDs[1]
+lis r3, RACEDATA@ha
+lwz r3, RACEDATA@l(r3)
+lbz r3, 0xB85(r3)
+
+# If there's no player two, skip
+cmpwi r3, -1
+
+#ENDCODE
+
 #SETTYPE COMPILED
 #SETREGION P
-04858358 480000A0
-04858448 60000000
 047EE5A4 38000001
 047EE580 38000001
 047EE5D8 60000000
 #ENDCODE
 
 #SETREGION U
-048368C8 480000A0
-048369B8 60000000
 04842140 38000001
 0484211C 38000001
 04842174 60000000
 #ENDCODE
 
 #SETREGION J
-048579C4 480000A0
-04857AB4 60000000
 047EDC10 38000001
 047EDBEC 38000001
 047EDC44 60000000
 #ENDCODE
 
 #SETREGION K
-04846718 480000A0
-04846808 60000000
 047DC964 38000001
 047DC940 38000001
 047DC998 60000000
