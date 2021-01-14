@@ -140,6 +140,33 @@ end:
 ########################
 # Multiplayer Disabler #
 ########################
+#INJECT 80858354, 808368C4, 808579C0, 80846714
+
+.if (REGION == 'P')
+	.set RACEDATA, 0x809BD728
+.elseif (REGION == 'U')
+	.set RACEDATA, 0x809B8F68
+.elseif (REGION == 'J')
+	.set RACEDATA, 0x809BC788
+.elseif (REGION == 'K')
+	.set RACEDATA, 0x809ABD68
+.else
+    .err
+.endif
+
+# Load HudPlayerIDs[1]
+lis r3, RACEDATA@ha
+lwz r3, RACEDATA@l(r3)
+lbz r3, 0xB85(r3)
+
+# If there's no player two, skip
+cmpwi r3, 0xFF
+
+#ENDCODE
+
+##########################
+# Multiplayer Disabler 2 #
+##########################
 #INJECT 80858444, 808369B4, 80857AB0, 80846804
 
 .if (REGION == 'P')
@@ -161,33 +188,6 @@ lbz r3, 0xB85(r3)
 
 # If there's a player two, skip
 srwi. r3, r3, 7
-
-#ENDCODE
-
-##########################
-# Multiplayer Disabler 2 #
-##########################
-#INJECT 80858354, 808368C4, 808579C0, 80846714
-
-.if (REGION == 'P')
-	.set RACEDATA, 0x809BD728
-.elseif (REGION == 'U')
-	.set RACEDATA, 0x809B8F68
-.elseif (REGION == 'J')
-	.set RACEDATA, 0x809BC788
-.elseif (REGION == 'K')
-	.set RACEDATA, 0x809ABD68
-.else
-    .err
-.endif
-
-# Load HudPlayerIDs[1]
-lis r3, RACEDATA@ha
-lwz r3, RACEDATA@l(r3)
-lbz r3, 0xB85(r3)
-
-# If there's no player two, skip
-cmpwi r3, -1
 
 #ENDCODE
 
