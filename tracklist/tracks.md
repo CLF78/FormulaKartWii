@@ -55,7 +55,7 @@
 * (see Desert Tracks)
 
 # Moonview Highway
-* 3DS Neo Koopa City
+* ✓ 3DS Neo Koopa City
 * ✓ Downtown Underground
 * ✓ GCN Mushroom Bridge (Tock)
 * ✓ GCN Mushroom City (Tock)
@@ -68,7 +68,7 @@
 # Rainbow Road
 * ✓ Adreastea Station (add conditional out of bounds, reds should make the ramp and not take the cut by default, fix conveyor collision)
 * Keegs Road
-* Orbital Outpost
+* ✓ Orbital Outpost
 * ✓ Neon Loop
 * ✓ SNES Rainbow Road (ZPL)
 
@@ -86,7 +86,6 @@
 * ✓ DS Luigi's Mansion (Tock)
 * Haunted Gardens
 * Midnight Forest (wait for new version)
-* N64 Banshee Boardwalk (ZPL)
 * ✓ SNES Ghost Valley 1 (Slimeserver)
 * ✓ Unnamed Valley
 
@@ -108,7 +107,6 @@
 # GCN Waluigi Stadium
 * ✓ DS Waluigi Pinball (Sniki)
 * ✓ Excitebike Adventure (move item set to right after last turn)
-* Sea Stadium
 * Waluigi's Motocross
 * ✓ Windy Whirl (add Rolling Chomp on the big square)
 
@@ -156,6 +154,7 @@
 * ✓ DS Mario Circuit (ZPL)
 * Fiery Path
 * Floating Fortress
+* ✓ Fungal Jungle
 * ✓ GBA Mario Circuit (MysterE99)
 * ✓ GCN Luigi Circuit (Tock)
 * GCN Yoshi Circuit (Ermelber)
@@ -166,7 +165,7 @@
 * Kartwood Creek
 * ✓ Luigi's Island
 * ✓ Mushroom Fort
-* Mushroom Park
+* ✓ Mushroom Park (remove Mushrooms in the middle of the road, improve item routes, fix cave respawn height, better mushroom textures)
 * Nature Creek Pass
 * ✓ Park Cruise
 * River Bridge
@@ -176,10 +175,8 @@
 * Shell Speedway
 * ✓ Slot Kart Derby (try sticky road)
 * ✓ SNES Donut Plains 2 (Noia)
-* Sunset Circuit
 * Sunshine Way
 * ✓ Tiny Town Route
-* Toadstool Trench
 * ✓ Wario Circuit (update textures)
 * ✓ Water Village (change final ramp collision)
 * ✓ Wii Play Tanks (add arrows, swap ramp trick type, fix kcl)
