@@ -191,6 +191,35 @@ srwi. r3, r3, 7
 
 #ENDCODE
 
+##################
+# Item Alert Fix #
+##################
+#INJECT 8060245C, 805DDB7C, 80601BD0, 805F087C
+
+# Load game mode
+lwz r5, 0x4 (r3)
+
+cmpwi r5, 0xC # grand prix
+beq increment
+
+cmpwi r5, 0xC # 1 player offline vs
+beq increment
+
+cmpwi r5, 0x40 # 1 player ww/regional vs
+beq increment
+
+cmpwi r5, 0x42 # 1 player friend room vs
+bne end
+
+increment:
+addi r4, r4, 1
+
+# Original instruction
+end:
+mr r5, r4
+
+#ENDCODE
+
 #SETTYPE COMPILED
 #SETREGION P
 047EE5A4 38000001
