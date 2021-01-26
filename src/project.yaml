@@ -300,6 +300,19 @@ modules:
     addr_j: 0x807FCA30
     addr_k: 0x807EB784
 
+# Gamemodes - Generic
+  - name: "Offline Race Count Modifier"
+    type: 'C2D2'
+    src: 'gamemodes/racecount.S'
+
+  - name: 'Play VS Race Alone'
+    type: 'DATA'
+    data: '38E00004'
+    addr_p: 0x80853148
+    addr_u: 0x80832C00
+    addr_j: 0x808527B4
+    addr_k: 0x80841508
+
 # Team stuff
   - name: 'No Team Colors'
     type: 'COMPILED'
@@ -424,14 +437,6 @@ modules:
     type: 'COMPILED'
     src: 'extras/changechars.txt'
 
-  - name: 'Disable Battle Mode Button'
-    type: 'C2D2'
-    src: 'extras/disablebattle.S'
-    addr_p: 0x805F2E88
-    addr_u: 0x80635FA4
-    addr_j: 0x805F2764
-    addr_k: 0x805E12A8
-
   - name: "Disable Toad's Factory Music Reset"
     type: 'DATA'
     data: '48000010'
@@ -492,10 +497,10 @@ modules:
     src: 'ctsupport/speedmod.txt'
     
 # Debug
-  - name: 'Performance Monitor'
+  - name: 'Lag Monitor'
     type: 'COMPILED'
     debug: 'true'
-    src: 'debug/perfmon.txt'
+    src: 'debug/lagmonitor.txt'
 
 # Toggleables
   - name: 'Time Difference Calculator'
