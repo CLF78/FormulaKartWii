@@ -237,7 +237,7 @@ srwi r11, r3, 24
 cmpwi r11, 1
 bnelr+
 
-# Check if the sender is the host (prevents room spoofer code from working)
+# Check if the sender is the host (prevents guests from starting rooms)
 lwz r11, RKNetController@l(r30)
 lwz r12, 0x291C(r11)
 mulli r12, r12, 0x58
@@ -280,5 +280,19 @@ blr
 # Replace room message to prevent room from starting
 fakeHost:
 li r3, 0
+blr
+#ENDCODE
+
+###############
+# Clear Flags #
+###############
+#INJECT 800D1AB0, 800D1A10, 800D19D0, 800D1B10
+
+.set EVArray, 0x800017C1
+
+# Set all flags to 0 when starting a new room (also clears them from any previous room)
+li r12, 0
+lis r11, EVArray@ha
+stw r12, EVArray@l(r11)
 blr
 #ENDCODE

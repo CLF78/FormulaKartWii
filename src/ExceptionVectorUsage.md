@@ -38,5 +38,6 @@
 
 # 0x80001798-0x800017FF
 - 0x800017B0-0x800017B6 = Riivolution Options
+- 0x800017C0-0x800017C5 = Game Mode/Froom Options
 
 # Other ranges
