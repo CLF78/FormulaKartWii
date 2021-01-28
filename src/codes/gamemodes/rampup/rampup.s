@@ -47,10 +47,29 @@ lwz r4, 0x10(r4)
 lfs f0, 0x10(r4)
 
 # Add f1 to f0
-fadds f0, f0, f1
-stfs f0, 0x10(r4)
+fadds f2, f0, f1
+stfs f2, 0x10(r4)
+
+# Get baseSpeed and increase it
+lfs f3, 0x14(r4)
+fdivs f3, f3, f0
+fmuls f3, f3, f2
+stfs f3, 0x14(r4)
 
 # Original instruction
 end:
 lbz r3, 0x26(r29)
+#ENDCODE
+
+####################
+# Max Speed Hotfix #
+####################
+#INJECT 8057B9B4, 80575150, 8057B334, 80569A0C
+
+# Multiply hard cap by current multiplier
+lfs f1, 0x10(r3)
+fmuls f0, f0, f1
+
+# Original instruction
+stfs f0, 0x2C(r3)
 #ENDCODE
