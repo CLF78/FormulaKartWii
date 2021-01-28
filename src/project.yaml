@@ -301,7 +301,11 @@ modules:
     addr_k: 0x807EB784
 
 # Gamemodes - Generic
-  - name: "Offline Race Count Modifier"
+  - name: 'Game Mode Selector'
+    type: 'C2D2'
+    src: 'gamemodes/gamemode.S'
+
+  - name: 'Offline Race Count Modifier'
     type: 'C2D2'
     src: 'gamemodes/racecount.S'
 
@@ -312,6 +316,11 @@ modules:
     addr_u: 0x80832C00
     addr_j: 0x808527B4
     addr_k: 0x80841508
+
+# Gamemodes - Ramp Up
+  - name: 'Ramp Up'
+    type: 'C2D2'
+    src: 'gamemodes/rampup/rampup.S'
 
 # Team stuff
   - name: 'No Team Colors'

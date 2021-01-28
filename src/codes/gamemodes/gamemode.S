@@ -46,13 +46,13 @@ li r10, 0
 ori r10, r10, 0x8CC0
 mullw r10, r9, r10
 
-# Load byte 0x81 if single player, else 0x85
-# Equivalent of "0x81 + 4 * bool(scene & 3)"
+# Load byte 0x81 if single player, else 0x85 (+ 8 because of the savefile header)
+# Equivalent of "0x89 + 4 * bool(scene & 3)"
 rlwinm r11, r4, 0, 30, 31
 subic r11, r11, 1
 subfe r11, r11, r11
 rlwinm r11, r11, 0, 0, 29
-addi r11, r11, 0x85
+addi r11, r11, 0x8D
 
 # Load byte and get two highest bits
 add r11, r10, r11
