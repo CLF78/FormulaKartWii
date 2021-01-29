@@ -39,7 +39,7 @@ modules:
     type: 'COMPILED'
     src: 'ctrlpatch.txt'
 
-  - name: 'Bullet Bill Cannon Speed Modifier'    
+  - name: 'Bullet Bill Cannon Speed Modifier'
     type: 'C2D2'
     src: 'bulletbillcannon.S'
 
@@ -322,6 +322,17 @@ modules:
     type: 'C2D2'
     src: 'gamemodes/rampup/rampup.S'
 
+  - name: 'Ramp Up - Drift Speed Fix'
+    type: 'C2D2'
+    src: 'gamemodes/rampup/driftfix.S'
+
+  - type: 'DATA'
+    data: '3ECCCCCD'
+    addr_p: 0x800001F4
+    addr_u: 0x800001F4
+    addr_j: 0x800001F4
+    addr_k: 0x800001F4
+
 # Team stuff
   - name: 'No Team Colors'
     type: 'COMPILED'
@@ -504,7 +515,7 @@ modules:
   - name: 'Speed Modifier'
     type: 'COMPILED'
     src: 'ctsupport/speedmod.txt'
-    
+
 # Debug
   - name: 'Lag Monitor'
     type: 'COMPILED'

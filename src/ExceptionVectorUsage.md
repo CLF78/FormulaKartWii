@@ -3,6 +3,7 @@
 # 0x80000198-0x800001FF
 - 0x800001B0-0x800001BC = No Invincibility Frames
 - 0x800001F0 = Bullet Bill Cannon Speed Mod 
+- 0x800001F4 = Drift Speed Multiplier
 
 # 0x80000298-0x800002FF
 
