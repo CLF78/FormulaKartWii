@@ -23,7 +23,7 @@ modules:
     type: 'DATA'
     data: '4482'
     addr_p: 0x808A5BC4
-    addr_u: 0x808A10EE
+    addr_u: 0x808A10EC
     addr_j: 0x808A4D24
     addr_k: 0x80894024
 
@@ -376,10 +376,6 @@ modules:
     src: 'online/wiimmfi.txt'
 
 # Antifreeze/Anticheat/Lag Prevention Codes
-  - name: 'Cannon Antifreeze'
-    type: 'COMPILED'
-    src: 'antifreeze/cannon.txt'
-
   - name: 'Codehandler Annihilator'
     type: 'BLR'
     debug: 'false'
