@@ -20,5 +20,5 @@ cmpw r5, r22
 beqlr+
 
 removeInvFrames:
-li r5,-1
+li r5, -1
 blr
