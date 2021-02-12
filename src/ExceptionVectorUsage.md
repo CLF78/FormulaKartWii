@@ -1,9 +1,8 @@
 *Note: Uses Vega's older version of the thread.*
 
 # 0x80000198-0x800001FF
-- 0x800001B0-0x800001BC = No Invincibility Frames
-- 0x800001F0 = Bullet Bill Cannon Speed Mod 
-- 0x800001F4 = Drift Speed Multiplier
+- 0x800001B0-0x800001B5 = Friend Room Flags
+- 0x800001C0-0x800001CC = TimerInstance
 
 # 0x80000298-0x800002FF
 
@@ -24,21 +23,14 @@
 # 0x80000C98-0x80000CFF
 
 # 0x80000D98-0x80000EFF
-- 0x80000E18-0x80000E44 = Change Characters Between Races
-- 0x80000EA0-0x80000EB0 = Change Characters Between Races
-- 0x80000EBC-0x80000EDC = Change Characters Between Races
+- 0x80000EA0-0x80000E?? = Change Characters Between Races
 
 # 0x80000F98-0x800012FF
 
 # 0x80001398-0x800013FF
 
 # 0x80001498-0x800016FF
-- 0x800014B0 = Max Lap Distance Float
-- 0x800014B4-0x80001528 = Lap Distance Checker
-- 0x80001600-0x800016B8 = All Items Can Land
 
 # 0x80001798-0x800017FF
-- 0x800017B0-0x800017B6 = Riivolution Options
-- 0x800017C0-0x800017C5 = Game Mode/Froom Options
 
 # Other ranges
