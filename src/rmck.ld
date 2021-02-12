@@ -41,7 +41,7 @@ SECTIONS {
 	ExcDispInfo = 0x80295410;
 
 	/* Wiimmfi */
-	WiimmfiPatch1 = 0x800ED8E0;
+	WiimmfiPatch1 = 0x800ED8E0; 
 	WiimmfiPatch2 = 0x800ECB24;
 	WiimmfiPatch3 = 0x800EE418;
 	WiimmfiPatch4 = 0x801D5258;
