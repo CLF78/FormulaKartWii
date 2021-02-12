@@ -80,7 +80,7 @@ b setupLoop
 
 # Some SHA1 stuff
 .long 0x0FFF1F07, 0x00E638C9, 0x49FBEFFA, 0x79022D3A, 0x84AB134F
- 
+
 # Setup loop
 setupLoop:
 mflr r3

@@ -14,7 +14,7 @@ SECTIONS {
 	SetPaneColor = 0x807E2674;
 
 	isOnlineRace = 0x809AF0B1;
-	
+
 	/* Codehandler Hooks */
 	VIHook = 0x801BAA80;
 	KPADHook = 0x80197A08;
@@ -42,7 +42,7 @@ SECTIONS {
 	ExcDispInfo = 0x802A3090;
 
 	/* Wiimmfi */
-	WiimmfiPatch1 = 0x800ED7C8; 
+	WiimmfiPatch1 = 0x800ED7C8;
 	WiimmfiPatch2 = 0x800ECA0C;
 	WiimmfiPatch3 = 0x800EE300;
 	WiimmfiPatch4 = 0x801D4E5C;
