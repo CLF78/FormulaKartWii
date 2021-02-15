@@ -127,8 +127,13 @@ void loadCodes() {
 	// Travelling speed
 	directWrite16(BulletBillSpeed, 0x435C); // Lower part of the float is identical
 
-	// Cannon landing speed fix
+	// Ignore this useless warning as it's the intended behaviour
+	#pragma GCC diagnostic push
+	#pragma GCC diagnostic ignored "-Wpointer-to-int-cast"
 	tempVal8 = (u8)&BulletBillSpeed;
+	#pragma GCC diagnostic pop
+	
+	// Cannon landing speed fix
 	directWrite8(CannonLandingFix, tempVal8);
 
 	// Cannon speed increase ASM
