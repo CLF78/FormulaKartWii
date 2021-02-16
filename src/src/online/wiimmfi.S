@@ -56,7 +56,7 @@ WiimmfiASM2:
 # Check if inited
 lwz r4, OFF2(r13)
 cmplwi r4, 1
-ble return
+ble nomatch
 
 # Push stack
 stwu r1, -0x80(r1)
@@ -101,11 +101,9 @@ exit:
 cmpw r6, r5
 addi r1, r1, 0x80
 lwz r4, OFF2(r13)
-beq return
+beq 0
 
 # Return 0 otherwise
 nomatch:
 li r4, 0
-
-return:
 b WiimmfiPatch4+4

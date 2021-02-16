@@ -47,7 +47,7 @@ SECTIONS {
 	WiimmfiPatch3 = 0x800EE300;
 	WiimmfiPatch4 = 0x801D4E5C;
 
-	LoginRegion = 0x80380C51;
+	LoginRegion = 0x80380C50;
 	VSRegion = 0x8064F1BC;
 	VSRegion2 = 0x80654D84;
 	VSRegion3 = 0x8065529C;

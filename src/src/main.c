@@ -66,7 +66,7 @@ void loadCodes() {
 	directWriteString(GSURL, "wiimmfi.de");			// Used as a template for several URLs
 
 	// Login region (needed for Friend Room Protection)
-	directWriteString(LoginRegion, "20045");
+	directWriteString(LoginRegion, "120045");
 
 	// VS Matchmaking Region Patch
 	directWrite32(VSRegion, 0x38A04E4D);

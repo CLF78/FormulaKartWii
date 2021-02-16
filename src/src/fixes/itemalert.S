@@ -24,17 +24,17 @@ bgt+ end
 increment:
 lis r5, TimeDiff@ha
 
-# Reset TimerInstance (class size = 0xC)
-li r0, 0
-stw r0, TimerInstance@l(r5)
-stw r0, TimerInstance@l+4(r5)
-stw r0, TimerInstance@l+8(r5)
-
 # Add 1 for Time Difference
 lbz r0, TimeDiff@l(r5)
 cmpwi r0, 'w'
 bne+ continue
 addi r4, r4, 1
+
+# Also reset TimerInstance (class size = 0xC)
+li r0, 0
+stw r0, TimerInstance@l(r5)
+stw r0, TimerInstance@l+4(r5)
+stw r0, TimerInstance@l+8(r5)
 
 # Add 1 for Speedometer
 continue:
