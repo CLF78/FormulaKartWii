@@ -553,9 +553,6 @@ void loadCodes() {
 	// Prevent matrix-type codes from working
 	directWriteBlr(NoLag);
 
-	// Prevent invalid track votes from stalling rooms
-	directWriteNop(NoVoteStall);
-
 	////////////
 	// Extras //
 	////////////

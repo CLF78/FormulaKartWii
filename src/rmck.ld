@@ -293,7 +293,6 @@ SECTIONS {
 	EVENTOverflowHook = 0x80649EEC;
 	MiiC = 0x808A1F78;
 	NoLag = 0x80642E18;
-	NoVoteStall = 0x80632654;
 
 	/* Automatic BRSAR Patch */
 	AutoBRSARHook = 0x80091334;
