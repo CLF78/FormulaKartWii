@@ -7,11 +7,6 @@
 					<patch id="fkw" />
 				</choice>
 			</option>
-			<option name="Always Win Track Vote">
-				<choice name="Enabled">
-					<patch id="voting" />
-				</choice>
-			</option>
 			<option name="Faster Menu Navigation">
 				<choice name="Enabled">
 					<patch id="fastmenu" />
@@ -58,14 +53,22 @@
 				<choice name="Player In 1st">
 					<patch id="timediff2" />
 				</choice>
+				<choice name="Player Behind">
+					<patch id="timediff3" />
+				</choice>
+			</option>
+			<option name="Speedometer">
+				<choice name="Enabled">
+					<patch id="speedo" />
+				</choice>
 			</option>
 		</section>
 	</options>
 	<patch id="fkw">
 		<!--Load Code-->
-		<memory valuefile="/fkw/Loader{$__region}.bin" offset="0x80258700"/>
-		<memory offset="0x8000629C" value="48252FB0"/>
-		<folder external="/fkw/codes" disc="/codes" create="true"/>
+		<memory valuefile="/fkw/Loader{$__region}.bin" offset="0x80004010"/>
+		<memory offset="0x8000629C" value="4BFFDE1C"/>
+		<folder external="/fkw/fkw" disc="/fkw" create="true"/>
 		<!--File Replacements-->
 		<file disc="/Race/Common_U.szs" external="/fkw/Common_X/Common_E.szs" />
 		<file disc="/Race/Common_Q.szs" external="/fkw/Common_X/Common_F.szs" />
@@ -76,16 +79,14 @@
 		<folder disc="/Scene/UI" external="/fkw/Title_X" />
 	</patch>
 	<patch id="mystuffctgp">
-		<folder external="/ctgpr/My Stuff" recursive="false" />
-		<folder external="/ctgpr/My Stuff" disc="/" />
+		<folder external="/ctgpr/My Stuff" recursive="false" disc="/" />
 	</patch>
 	<patch id="mystuffctgpnrt">
 		<folder external="/ctgpr/My Stuff" recursive="false" disc="/sound" />
 		<folder external="/ctgpr/My Stuff" recursive="false" disc="/sound/strm" />
 	</patch>
 	<patch id="mystufffkw">
-		<folder external="/fkw/My Stuff" recursive="false" />
-		<folder external="/fkw/My Stuff" disc="/" />
+		<folder external="/fkw/My Stuff" recursive="false" disc="/" />
 	</patch>
 	<patch id="mystufffkwnrt">
 		<folder external="/fkw/My Stuff" recursive="false" disc="/sound" />
@@ -93,27 +94,30 @@
 	</patch>
 	<!--Set bytes to enable the following codes-->
 	<patch id="fastmenu">
-		<memory offset="0x800017B0" value="01"/>
+		<memory offset="0x80004000" value="01"/>
 	</patch>
 	<patch id="miiheads">
-		<memory offset="0x800017B1" value="01"/>
+		<memory offset="0x80004001" value="01"/>
 	</patch>
 	<patch id="nomusic">
-		<memory offset="0x800017B2" value="01"/>
-	</patch>
-	<patch id="btglitch">
-		<memory offset="0x800017B3" value="01"/>
+		<memory offset="0x80004002" value="01"/>
 	</patch>
 	<patch id="nochars">
-		<memory offset="0x800017B4" value="01"/>
+		<memory offset="0x80004003" value="01"/>
 	</patch>
-	<patch id="voting">
-		<memory offset="0x800017B5" value="01"/>
+	<patch id="btglitch">
+		<memory offset="0x80004004" value="01"/>
 	</patch>
 	<patch id="timediff1">
-		<memory offset="0x800017B6" value="01"/>
+		<memory offset="0x80004005" value="01"/>
 	</patch>
 	<patch id="timediff2">
-		<memory offset="0x800017B6" value="02"/>
+		<memory offset="0x80004005" value="02"/>
+	</patch>
+	<patch id="timediff3">
+		<memory offset="0x80004005" value="03"/>
+	</patch>
+	<patch id="speedo">
+		<memory offset="0x80004006" value="01"/>
 	</patch>
 </wiidisc>

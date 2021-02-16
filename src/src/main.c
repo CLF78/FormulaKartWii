@@ -639,6 +639,12 @@ void loadCodes() {
 		directWriteBranch(TimeDiffPatchHook, TimeDiffPatch, true);
 		directWriteBranch(TimeDiffPatchHook2, TimeDiffPatch2, false);
 	}
+	
+	if (Framerate == 1) {
+		tempVal8 = 2;
+		directWrite8(FramerateHook, tempVal8);
+		directWrite8(FramerateHook2, tempVal8);
+	}
 
 	sync();
 	isync();

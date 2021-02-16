@@ -33,25 +33,25 @@ wit\wit.exe extract -s ../ -1 -n RMC.01 . mkw.d --psel=DATA -ovv
 echo.
 IF EXIST mkw.d\files\Scene\UI\Race_E.szs (
 	SET GAMEID=RMCP01
-	SET LETTER=p
+	SET LETTER=P
 	echo Detected version: PAL
 	GOTO COPY
 	)
 IF EXIST mkw.d\files\Scene\UI\Race_U.szs (
 	SET GAMEID=RMCE01
-	SET LETTER=e
+	SET LETTER=E
 	echo Detected version: NTSC-U
 	GOTO COPY
 	)
 IF EXIST mkw.d\files\Scene\UI\Race_J.szs (
 	SET GAMEID=RMCJ01
-	SET LETTER=j
+	SET LETTER=J
 	echo Detected version: NTSC-J
 	GOTO COPY
 	)
 IF EXIST mkw.d\files\Scene\UI\Race_K.szs (
 	SET GAMEID=RMCK01
-	SET LETTER=k
+	SET LETTER=K
 	echo Detected version: NTSC-K
 	GOTO COPY
 	)
@@ -66,8 +66,9 @@ exit
 :COPY
 echo.
 echo Copying mod files...
-copy /b fkw\main%LETTER%.dol mkw.d\sys\main.dol >nul
-copy /b fkw\codes\main%LETTER%.bin fkw\codes\tmp.bin >nul
+
+mkdir mkw.d\files\fkw
+copy /b fkw\code\FormulaKartWii%LETTER%.bin mkw.d\files\fkw >nul
 copy /b fkw\tracks\*.szs mkw.d\files\Race\Course >nul
 
 IF %LETTER%==p (
@@ -113,46 +114,47 @@ IF %LETTER%==k (
 )
 
 echo.
-SET /P VOTING=Enable Always Win Track Vote? (Y/N):
-IF /i %VOTING%==Y copy /b fkw\codes\tmp.bin+fkw\codes\voting%LETTER%.bin fkw\codes\tmp.bin >nul
-
-echo.
 SET /P FASTMENU=Enable Faster Menu Navigation? (Y/N):
-IF /i %FASTMENU%==Y copy /b fkw\codes\tmp.bin+fkw\codes\fastmenu%LETTER%.bin fkw\codes\tmp.bin >nul
+IF /i %FASTMENU%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 80004000=01 -q
 
 echo.
 SET /P MIIHEADS=Enable Mii Heads on Minimap? (Y/N):
-IF /i %MIIHEADS%==Y copy /b fkw\codes\tmp.bin+fkw\codes\miiheads%LETTER%.bin fkw\codes\tmp.bin >nul
+IF /i %MIIHEADS%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 80004001=01 -q
 
 echo.
 SET /P NOMUS=Disable Music? (Y/N):
-IF /i %NOMUS%==Y copy /b fkw\codes\tmp.bin+fkw\codes\nomus%LETTER%.bin fkw\codes\tmp.bin >nul
+IF /i %NOMUS%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 80004002=01 -q
 
 echo.
 SET /P NOCHARS=Disable Character Voices? (Y/N):
-IF /i %NOCHARS%==Y copy /b fkw\codes\tmp.bin+fkw\codes\nochars%LETTER%.bin fkw\codes\tmp.bin >nul
+IF /i %NOCHARS%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 80004003=01 -q
 
 echo.
 SET /P BTGLITCH=Force Battle Glitch? (Y/N):
-IF /i %BTGLITCH%==Y copy /b fkw\codes\tmp.bin+fkw\codes\btglitch%LETTER%.bin fkw\codes\tmp.bin >nul
-
-echo.
-SET /P FRAMERATE=Force 30 FPS? (Y/N):
-IF /i %FRAMERATE%==Y copy /b fkw\codes\tmp.bin+fkw\codes\framerate%LETTER%.bin fkw\codes\tmp.bin >nul
+IF /i %BTGLITCH%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 80004004=01 -q
 
 echo.
 echo Enable Time Difference?:
 echo 0. No
 echo 1. Yes (distance to player in front)
 echo 2. Yes (distance to player in 1st)
-SET /P TIMEDIFF=Enter the number corresponding to the option you want: 
+echo 3. Yes (distance to player behind)
+SET /P TIMEDIFF=Enter the number corresponding to the option you want:
 
-IF %TIMEDIFF%==1 copy /b fkw\codes\tmp.bin+fkw\codes\timediff1.bin fkw\codes\tmp.bin >nul
-IF %TIMEDIFF%==2 copy /b fkw\codes\tmp.bin+fkw\codes\timediff2.bin fkw\codes\tmp.bin >nul
+if %TIMEDIFF% leq 3 set TD=1
+if %TIMEDIFF% geq 1 set TD=1
+IF %TD%==1 wit\wit.exe dolpatch mkw.d/sys/main.dol 80004005=%TIMEDIFF% -q
 
-mkdir mkw.d\files\codes
-copy /b fkw\codes\tmp.bin + fkw\codes\ending.bin mkw.d\files\codes\%GAMEID%.gct >nul
-del /f fkw\codes\tmp.bin
+echo.
+SET /P SPEEDO=Enable Speedometer? (Y/N):
+IF /i %SPEEDO%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 80004006=01 -q
+
+echo.
+SET /P FRAMERATE=Force 30 FPS? (Y/N):
+IF /i %FRAMERATE%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400F=01 -q
+
+
+wit\wit.exe dolpatch mkw.d/sys/main.dol 8000629C=4BFFDE1C load=80004010,fkw/Loader%LETTER%.bin -q
 
 echo.
 echo Format Selection:

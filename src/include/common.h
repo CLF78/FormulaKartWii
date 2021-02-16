@@ -109,4 +109,4 @@ int sprintf(char *s, const char *format, ...);
 
 /* Common Vars */
 char gameRegion;
-char FasterMenu, MiiHeads, NoMusic, NoCharVoice, BtGlitch, TimeDiff, Speedometer;
+char FasterMenu, MiiHeads, NoMusic, NoCharVoice, BtGlitch, TimeDiff, Speedometer, Framerate;

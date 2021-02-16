@@ -352,4 +352,8 @@ SECTIONS {
 	PushButton_Vtable = 0x808B6918;
 	ChangeCharsHook2 = 0x80622574;
 	ChangeCharsHook3 = 0x8062D81C;
+
+	/* Force 30 FPS */
+	FramerateHook = 0x80428DD4;
+	FramerateHook2 = 0x802A3A69;
 }

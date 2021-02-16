@@ -32,4 +32,5 @@ SECTIONS {
 	BtGlitch = 0x80004004;
 	TimeDiff = 0x80004005;
 	Speedometer = 0x80004006;
+	Framerate = 0x8000400F;
 }
