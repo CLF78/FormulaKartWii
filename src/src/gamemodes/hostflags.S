@@ -20,6 +20,7 @@ bne+ continueMainCheck
 
 # Save game mode
 ori r5, r5, GameMode@l
+srwi r11, r4, 8
 stb r11, 0(r5)
 
 # Setup loop
@@ -101,11 +102,8 @@ continueSubCheck4:
 cmpwi r12, 10
 bgt end
 
-# Flag = (MSG & 3) - bool(MSG)
-rlwinm r11, r12, 0, 30, 31
-neg r12, r12
-srwi r12, r12, 31
-subf r12, r12, r11
+# Flag = (MSG - 8)
+subi r12, r12, 8
 stb r12, VehicleRestrict@l(r5)
 
 # Original instruction
