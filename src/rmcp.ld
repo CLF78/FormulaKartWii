@@ -354,5 +354,5 @@ SECTIONS {
 
 	/* Force 30 FPS */
 	FramerateHook = 0x80429454;
-	FramerateHook2 = 0x802A40E9;
+	FramerateHook2 = 0x8051B33E;
 }
