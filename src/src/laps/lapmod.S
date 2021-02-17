@@ -138,11 +138,13 @@ lfs f0, 0xC(r3)
 bl trick
 
 .float 4.0
+.float 0.125
 
 trick:
 mflr r4
 lfs f3, 0(r4)
+lfs f4, 0x4(r4)
 
 # Add them together
-fadds f0, f0, f3
+fmadds f0, f0, f4, f3
 b FinishTimesHook+4
