@@ -1,8 +1,10 @@
 SECTIONS {
 	/* Common Classes and Functions */
+	SystemManager = 0x80381C80;
 	Racedata = 0x809B8F68;
 	Raceinfo = 0x809B8F70;
 	PlayerHolder = 0x809BD110;
+	Menudata = 0x809BD508;
 	RKNetController = 0x809BD918;
 	ItemHolder = 0x809BEE20;
 	ItemStructs = 0x809BEEB0;
@@ -12,6 +14,7 @@ SECTIONS {
 	NETSHA1GetDigest = 0x801D2558;
 
 	SetPaneColor = 0x807E2674;
+	SetTextSrc = 0x805C11E0;
 
 	isOnlineRace = 0x809AF0B1;
 
@@ -35,6 +38,7 @@ SECTIONS {
 	DVDReadPrio = 0x8015E794;
 	DVDClose = 0x8015E4C8;
 	sprintf = 0x80010ECC;
+	swprintf = 0x80016CB4;
 	OSFatal = 0x801A4E24;
 
 	/* Exception Handler */
@@ -356,4 +360,11 @@ SECTIONS {
 	/* Force 30 FPS */
 	FramerateHook = 0x804250D4;
 	FramerateHook2 = 0x80516ECB;
+
+	/* Speedometer */
+	SpeedoScreenElement = 0x80836A48;
+	SpeedoUpdate = 0x80575B44;
+	SpeedoTextParse = 0x805C1214;
+	SpeedoString = 0x8088EED0;
+	SpeedoParseSkip = 0x805C12E8;
 }
