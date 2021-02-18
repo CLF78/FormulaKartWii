@@ -363,7 +363,8 @@ SECTIONS {
 	/* Speedometer */
 	SpeedoScreenElement = 0x80846898;
 	SpeedoUpdate = 0x8056A400;
-	SpeedoTextParse = 0x805BBCF4;
-	SpeedoString = 0x80882280;
+	SpeedoTextParseNop = 0x805BBCF4;
+	SpeedoTextParse = 0x805BBD30;
 	SpeedoParseSkip = 0x805BBDC8;
+	SpeedoNoPauseHook = 0x807D9934;
 }

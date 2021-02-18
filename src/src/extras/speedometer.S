@@ -1,7 +1,7 @@
 .include "asm_setup.S"
 
 .extern Racedata, Menudata, swprintf, SystemManager, SetTextSrc, SpeedoUpdate, SpeedoString, SpeedoParseSkip
-.global SpeedoScreenElementASM, SpeedoUpdateASM, SpeedoTextParseASM
+.global SpeedoScreenElementASM, SpeedoUpdateASM, SpeedoTextParseASM, SpeedoNoPause
 
 ######################################
 # Force Speedometer ScreenElement On #
@@ -113,11 +113,11 @@ bl swprintf
 ############################
 
 # Skip the bmg escape sequence
-addi r4, r1, 0x10
+addi r4, r1, 0x0E
 
 # Start loop
 loop:
-lhz r3, 0(r4)
+lhzu r3, 0x2(r4)
 cmpwi r3, 0
 beq out
 
@@ -142,7 +142,6 @@ addi r3, r3, 0x2430
 # Continue the loop
 notDigit:
 sth r3, 0(r4)
-addi r4, r4, 2
 b loop
 
 ################
@@ -174,7 +173,32 @@ stw r4, 0x4C(r3)
 # Set Visibility #
 ##################
 
-# Set element visible
+# Default value
+li r30, 0
+
+# Disable the speedo when respawning
+lwz r4, 0(r29)
+lwz r4, 0x30(r4)
+lhz r4, 0x48(r4)
+cmpwi r4, 0
+bne hide
+
+# Disable the speedo before the countdown and after the race
+lis r4, Raceinfo@ha
+lwz r4, Raceinfo@l(r4)
+lwz r4, 0x28(r4)
+subi r4, r4, 1
+cmplwi r4, 1
+ble+ noHide
+
+hide:
+li r30, 1
+
+# Store result
+noHide:
+stb r30, 0x85(r3)
+
+# Store normal visibility bool regardless of r30
 li r4, 0
 stb r4, 0x80(r3)
 
@@ -182,10 +206,12 @@ stb r4, 0x80(r3)
 # Set Text Alignment #
 ######################
 
-# Align the text to the right
-li r6, 2
+# Get material
 lwz r3, 0x114(r3)
 lwz r7, 0(r3)
+
+# Align the text to the right
+li r6, 2
 stb r6, 0x100(r7)
 
 ###################
@@ -211,26 +237,48 @@ b SpeedoUpdate+4
 # Check if custom text is enabled
 SpeedoTextParseASM:
 cmpwi r4, 0
-bne return
-
-# Some registers are initialized in the middle of the BMG loading stuff we are skipping, so we have to do it here instead
-lis r8, 0x4330
-stw r8, 0x70(r1)
-stw r8, 0x78(r1)
-mr r18, r3
-li r19, 0
-lis r24, SpeedoString@ha
-addi r24, r24, SpeedoString@l
+bne original
 
 # Load the custom string
 stw r5, 0x20(r1)
 li r5, 1
 stw r5, 0x10(r1)
 
-# Jump to the end of the BMG loading stuff
+# Jump to the end of the BMG loading stuff. This will not return
 b SpeedoParseSkip
 
-# Original instruction
-return:
+# Original instructions (the lwz was nopped, so the result of the cmpwi was also wrong)
+original:
+li r20, -1
 lwz r0, 0(r4)
+cmpwi r0, 0
+blr
+
+################################
+# Disable Speedometer on Pause #
+################################
+
+# Load Menudata -> curScene
+SpeedoNoPause:
+lis r12, Menudata@ha
+lwz r12, Menudata@l(r12)
+lwz r12, 0(r12)
+
+# Check if game is paused
+lbz r11, 0x38B(r12)
+cmpwi r11, 1
+bne+ doNothing
+
+# Check for Offline VS screen
+lwz r12, 0x40(r12)
+cmpwi r12, 0
+beq doNothing
+
+# Load speedometer and hide it!
+lwz r12, 0x5C(r12)
+stb r11, 0x85(r12)
+
+# Original instruction
+doNothing:
+lfs f0, 0x80(r3)
 blr

@@ -640,7 +640,9 @@ void loadCodes() {
 	if (Speedometer == 1) {
 		directWriteBranch(SpeedoScreenElement, SpeedoScreenElementASM, true);
 		directWriteBranch(SpeedoUpdate, SpeedoUpdateASM, false);
+		directWriteNop(SpeedoTextParseNop);
 		directWriteBranch(SpeedoTextParse, SpeedoTextParseASM, true);
+		directWriteBranch(SpeedoNoPauseHook, SpeedoNoPause, true);
 	}
 	
 	if (Framerate == 1) {
