@@ -104,7 +104,7 @@ li r4, 0x1A
 # String pointer
 mflr r5
 
-# Get playerPointers -> playerGraphics -> playerPhysicsHolder -> playerPhysics -> speedNorm
+# Get vehicle speed
 lfs f1, 0x20(r29)
 bl swprintf
 
@@ -144,9 +144,9 @@ notDigit:
 sth r3, 0(r4)
 b loop
 
-################
-# Set Position #
-################
+##################
+# Set X Position #
+##################
 
 # Get screen_hud -> ghostSaveInfoText
 out:
@@ -168,6 +168,13 @@ lis r4, 0x41F0
 # Store it
 widescreen:
 stw r4, 0x4C(r3)
+
+##################
+# Set Y Position #
+##################
+
+lis r4, 0xC37A
+stw r4, 0x50(r3)
 
 ##################
 # Set Visibility #
