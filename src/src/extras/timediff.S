@@ -13,7 +13,7 @@ lis r3, Racedata@ha
 lwz r3, Racedata@l(r3)
 lbz r3, 0xB85(r3)
 
-# If there's at least player two, skip (result must be false for single player)
+# If there's at least player two, skip (result must be 1 for single player and 0 for splitscreen)
 srwi. r3, r3, 7
 blr
 

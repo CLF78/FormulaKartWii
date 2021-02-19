@@ -53,9 +53,6 @@
 				<choice name="Player In 1st">
 					<patch id="timediff2" />
 				</choice>
-				<choice name="Player Behind">
-					<patch id="timediff3" />
-				</choice>
 			</option>
 			<option name="Speedometer">
 				<choice name="Enabled">
@@ -113,9 +110,6 @@
 	</patch>
 	<patch id="timediff2">
 		<memory offset="0x80004005" value="02"/>
-	</patch>
-	<patch id="timediff3">
-		<memory offset="0x80004005" value="03"/>
 	</patch>
 	<patch id="speedo">
 		<memory offset="0x80004006" value="01"/>

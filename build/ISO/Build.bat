@@ -138,10 +138,9 @@ echo Enable Time Difference?:
 echo 0. No
 echo 1. Yes (distance to player in front)
 echo 2. Yes (distance to player in 1st)
-echo 3. Yes (distance to player behind)
 SET /P TIMEDIFF=Enter the number corresponding to the option you want:
 
-if %TIMEDIFF% leq 3 set TD=1
+if %TIMEDIFF% leq 2 set TD=1
 if %TIMEDIFF% geq 1 set TD=1
 IF %TD%==1 wit\wit.exe dolpatch mkw.d/sys/main.dol 80004005=%TIMEDIFF% -q
 
@@ -152,7 +151,6 @@ IF /i %SPEEDO%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 80004006=01 -q
 echo.
 SET /P FRAMERATE=Force 30 FPS? (Y/N):
 IF /i %FRAMERATE%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400F=01 -q
-
 
 wit\wit.exe dolpatch mkw.d/sys/main.dol 8000629C=4BFFDE1C load=80004010,fkw/Loader%LETTER%.bin -q
 

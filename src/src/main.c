@@ -617,12 +617,12 @@ void loadCodes() {
 	}
 
 	// Fix the item alert if either Show Time Difference or Speedometer are enabled
-	if (TimeDiff == 1 || TimeDiff == 2 || TimeDiff == 3 || Speedometer == 1) {
+	if (TimeDiff == 1 || TimeDiff == 2 || Speedometer == 1) {
 		directWriteBranch(ItemAlertFixHook, ItemAlertFix, false);
 	}
 
 	// Show Time Difference
-	if (TimeDiff == 1 || TimeDiff == 2 || TimeDiff == 3) {
+	if (TimeDiff == 1 || TimeDiff == 2) {
 
 		// Do not initialize Time Difference in splitscreen mode
 		directWriteBranch(TimeDiffMPFixHook, TimeDiffMPFix, true);
