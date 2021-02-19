@@ -339,8 +339,8 @@ void loadCodes() {
 	directWriteBranch(LakituBoardHook, LakituBoard, true);
 
 	// Store the lap time by cycling through the 3 available arrays
-	directWriteBranch(TimeStoreHook, TimeStore, true);		// All players
-	directWriteBranch(TimeStoreHook2, TimeStore2, false);	// Local players ONLY
+	directWriteBranch(TimeStoreHook, TimeStore, true);
+	directWriteBranch(TimeStoreHook2, TimeStore2, false);
 
 	// Prevent an array underflow while storing the time
 	directWriteBranch(TimeStoreHook3, TimeStore3, false);

@@ -12,6 +12,7 @@ SECTIONS {
 	DriftRestrict = 0x800001B4;
 	VehicleRestrict = 0x800001B5;
 	TimerInstance = 0x800001C0;
+	EnableRampUpStuff = 0x800001CC;
 
 	/* Exception Recovery */
 	DSIException = 0x80000300;

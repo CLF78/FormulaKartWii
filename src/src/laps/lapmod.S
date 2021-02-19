@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern TimeStoreHook2, TimeStoreHook3, FinishTimesHook
+.extern TimeStoreHook2, TimeStoreHook3, FinishTimesHook, GameMode, Racedata, EnableRampUpStuff
 .global StartingLap, JingleFix, LapSignFix, LakituBoard, TimeStore, TimeStore2, TimeStore3, FinishTimes
 
 #########################
@@ -91,8 +91,28 @@ blr
 # Time Storing Fix 2 #
 ######################
 
-# Modified original instruction
+# Check game mode
 TimeStore2:
+lis r6, GameMode@ha
+lbz r6, GameMode@l(r6)
+cmpwi r6, 2
+bne+ keepGoing
+
+# Check if lap < 25
+cmplwi r4, 0xE5
+blt keepGoing
+
+# Get player id
+lbz r6, 0x8(r3)
+
+# Store byte
+li r8, 1
+lis r7, EnableRampUpStuff@h
+ori r7, r7, EnableRampUpStuff@l
+stbx r8, r7, r6
+
+# Modified original instruction
+keepGoing:
 cmplwi r4, 0xCF
 
 # Convert lap

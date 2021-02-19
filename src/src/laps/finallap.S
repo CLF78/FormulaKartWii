@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern MusicPitch
+.extern MusicPitch, EnableRampUpStuff
 .global FinalLapCheck, PitchReset, PitchReset2
 
 ###################
@@ -45,6 +45,13 @@ bnelr+
 lis r11, 0x3F80
 lis r12, MusicPitch@ha
 stw r11, MusicPitch@l(r12)
+
+# Write 0 to Ramp Up flag as well
+li r11, 0
+lis r12, EnableRampUpStuff@ha
+stw r11, EnableRampUpStuff@l(r12)
+stw r11, EnableRampUpStuff@l+4(r12)
+stw r11, EnableRampUpStuff@l+8(r12)
 blr
 
 ####################
@@ -56,4 +63,11 @@ PitchReset2:
 lis r11, 0x3F80
 lis r12, MusicPitch@ha
 stw r11, MusicPitch@l(r12)
+
+# Write 0 to Ramp Up flag as well
+li r11, 0
+lis r12, EnableRampUpStuff@ha
+stw r11, EnableRampUpStuff@l(r12)
+stw r11, EnableRampUpStuff@l+4(r12)
+stw r11, EnableRampUpStuff@l+8(r12)
 blr
