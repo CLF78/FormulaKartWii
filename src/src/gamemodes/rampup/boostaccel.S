@@ -3,26 +3,24 @@
 .extern BoostAccelHook
 .global BoostAccel
 
-# Do bl trick
-BoostAccel:
-bl trick
-
+TheFloats:
 .float 1.0
 .float 0.03
 
-trick:
-mflr r5
+# There is no other free register than r5. Simply amazing.
 
 # Load our floats
-lfs f2, 0(r5)
-lfs f3, 0x4(r5)
+BoostAccel:
+lis r5, TheFloats@ha
+lfs f2, TheFloats@l(r5)
+lfs f3, TheFloats@l+4(r5)
 
-# Get current multiplier
+# Load multiplier and subtract 1.0
 lfs f4, -0xF8(r3)
-
-# Accel += (multiplier - 1.0) * 0.03
 fsubs f4, f4, f2
-fmadds f0, f4, f3, f0
+
+# Multiply by 0.03 and add value to boost acceleration
+fmadds f0, f3, f4, f0
 
 # Original instruction
 stfs f0, 0x18(r3)
