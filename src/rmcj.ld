@@ -272,6 +272,7 @@ SECTIONS {
 	DriftFixHook3 = 0x8057DF28;
 	DriftFixHook4 = 0x8057E424;
 	DriftFixHook5 = 0x8057E988;
+	BoostAccelHook = 0x80588838;
 
 	/* Game Mode - Teams */
 	NoItemGlow = 0x807BC928;
