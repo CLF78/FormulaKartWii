@@ -492,9 +492,6 @@ void loadCodes() {
 	directWriteBranch(DriftFixHook3, DriftFixSub2, true);
 	directWriteBranch(DriftFixHook4, DriftFixSub3, false);
 	directWriteBranch(DriftFixHook5, DriftFixSub4, false);
-	
-	// Slowly increase the boost acceleration over time
-	directWriteBranch(BoostAccelHook, BoostAccel, false);
 
 	///////////////////////
 	// Game Mode - Teams //

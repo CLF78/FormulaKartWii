@@ -1,0 +1,14 @@
+sound:
+0x54(r3) + 0x0 = playerPointers
+
+effBike:
+0x118(r30) + 0x0 = playerPointers
+
+effKart:
+0x118(r31) + 0x0 = playerPointers
+
+fastfalling1:
+0x0(r29) + 0x0 = playerPointers
+
+fastfalling2:
+0x0(r28) + 0x0 = playerPointers
