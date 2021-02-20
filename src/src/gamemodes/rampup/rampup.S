@@ -18,11 +18,13 @@ bne+ end
 bl trick
 
 .float 0.01
+.float 220.0
 
-# Load float in f1
+# Load floats in f1 and f4
 trick:
 mflr r3
 lfs f1, 0(r3)
+lfs f4, 0x4(r3)
 
 # Get player ID
 lbz r3, 0x8(r29)
@@ -46,6 +48,14 @@ lfs f3, 0x14(r4)
 fdivs f3, f3, f0
 fmuls f3, f3, f2
 stfs f3, 0x14(r4)
+
+# Get hardSpeedLimit and increase it, unless it's the bullet bill speed
+lfs f3, 0x2C(r4)
+fcmpu cr0, f3, f4
+beq end
+fdivs f3, f3, f0
+fmuls f3, f3, f2
+stfs f3, 0x2C(r4)
 
 # Original instruction
 end:
