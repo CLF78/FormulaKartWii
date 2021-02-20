@@ -492,6 +492,20 @@ void loadCodes() {
 	directWriteBranch(DriftFixHook3, DriftFixSub2, true);
 	directWriteBranch(DriftFixHook4, DriftFixSub3, false);
 	directWriteBranch(DriftFixHook5, DriftFixSub4, false);
+	
+	// Brake Drifting
+	directWriteBranch(BrakeDriftClassicHook, BrakeDriftClassic, true);
+	directWriteBranch(BrakeDriftGCNHook, BrakeDriftGCN, true);
+	directWriteBranch(BrakeDriftNunchuckHook, BrakeDriftNunchuck, true);
+	directWriteBranch(BrakeDriftWheelHook, BrakeDriftWheel, true);
+	directWriteBranch(BrakeDriftMainHook, BrakeDriftMain, false);
+	directWriteBranch(BrakeDriftSoundHook, BrakeDriftSound, false);
+	directWriteBranch(BrakeDriftEffBikesHook, BrakeDriftEffBikes, false);
+	directWriteBranch(BrakeDriftEffKartsHook, BrakeDriftEffKarts, false);
+	
+	// Fast Falling
+	directWriteBranch(FastFallingHook, FastFalling, false);
+	directWriteBranch(FastFallingHook2, FastFalling2, false);
 
 	///////////////////////
 	// Game Mode - Teams //

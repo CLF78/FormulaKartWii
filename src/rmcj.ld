@@ -367,4 +367,22 @@ SECTIONS {
 	SpeedoTextParse = 0x805CD64C;
 	SpeedoParseSkip = 0x805CD6E4;
 	SpeedoNoPauseHook = 0x807EABE0;
+
+	/* Brake Drifting */
+	BrakeDriftClassicHook = 0x8051EF78;
+	BrakeDriftGCNHook = 0x8051FC1C;
+	BrakeDriftNunchuckHook = 0x80745320;
+	BrakeDriftWheelHook = 0x807455DC;
+	BrakeDriftMainHook = 0x8057A76C;
+	BrakeDriftSoundHook = 0x806FA664;
+	BrakeDriftEffBikesHook = 0x80699304;
+	BrakeDriftEffKartsHook = 0x806985BC;
+	PlayerGetControllerHolder = 0x8058FD74;
+	DoBrakeDrift = 0x8057A80C;
+	BrakeDriftEffFunc = 0x806A1044;
+	BrakeDriftEffFunc2 = 0x806A11D4;
+
+	/* Fast Falling */
+	FastFallingHook = 0x8059610C;
+	FastFallingHook2 = 0x80596D10;
 }

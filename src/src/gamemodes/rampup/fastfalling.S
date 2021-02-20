@@ -1,137 +1,167 @@
-# inject at 8059678c (PAL)
-# inject at 8058ff68 (NTSC-U)
-# inject at 8059610c (NTSC-J)
-# inject at 805847e4 (NTSC-K)
+.include "asm_setup.S"
 
-.set region, ''
+.extern EnableRampUpStuff, PlayerGetControllerHolder, FastFallingHook, FastFallingHook2
+.global FastFalling, FastFalling2
 
-.if (region == 'P')
-        .set Player_getControllerHolder, 0x805903f4
-.elseif (region == 'E')
-        .set Player_getControllerHolder, 0x80589bd0
-.elseif (region == 'J')
-        .set Player_getControllerHolder, 0x8058fd74
-.elseif (region == 'K')
-        .set Player_getControllerHolder, 0x8057e44c
-.else
-        .err
-.endif
+##################################
+# Fast Falling - Vehicle Gravity #
+##################################
 
-bl floats
+# Original instruction
+FastFalling:
+lfs f0, 0x4C(r31)
 
-.long 0x3e99999a # 0.3f
-.long 0x3f800000 # 1.0f
+# Get playerPointers -> playerParams -> playerID
+lwz r12, 0(r29)
+lwz r12, 0(r12)
+lbz r12, 0x10(r12)
 
-floats:
+# Check if fast falling is enabled
+lis r11, EnableRampUpStuff@h
+ori r11, r11, EnableRampUpStuff@l
+lbzx r11, r11, r12
+cmpwi r11, 1
+bne+ return
+
+# Do BL trick
+bl trick
+
+.float 0.3
+.float 1.0
+
+trick:
 mflr r12
 
+# Save r4
 mr r11, r4
 
-lfs f0, 0x4c (r31) # -1.3f
+# Get playerSub -> playerSub1c -> airtime
+lwz r3, 0x1C(r29)
+lwz r4, 0x1C(r3)
 
-lwz r3, 0x1c (r29) # playerSub->playerSub_1c
-lwz r4, 0x1c (r3) # playerSub_1c->airtime
+# Check if airtime < 2
+cmpwi r4, 1
+ble end
 
-cmpwi r4, 0x1
-ble end # airtime < 2
+# Check if hopping
+lbz r8, 0x96(r3)
+cmpwi r8, 1
+bne notHopping
 
-lbz r8, 0x96 (r3)
-cmpwi r8, 0x1
-bne not_hopping
+# Check if airtime < 19
+cmpwi r4, 18
+ble end
 
-cmpwi r4, 0x12
-ble end # airtime < 19
+# Get the player's controllerHolder
+notHopping:
+lwz r3, 0x18(r3)
+bl PlayerGetControllerHolder
 
-not_hopping:
-lwz r3, 0x18 (r3)
-lis r4, Player_getControllerHolder@h
-ori r4, r4, Player_getControllerHolder@l
-mtctr r4
-bctrl
+# Get controllerHolder -> currentInputState.stickY
+lfs f2, 0x34(r3)
 
-lfs f2, 0x34 (r3) # controllerHolder->currentInputState.stickY
+# stickY *= (stickY <= 0.0) ? 0.0 : 2.0
 fabs f3, f2
-fadds f2, f2, f3 # stickY <= 0.0f ? 0.0f : 2.0f * stickY
-lfs f3, 0x0 (r12) # 0.3f
-lfs f4, 0x4 (r12) # 1.0f
+fadds f2, f2, f3
+
+# gravitySpeed = (stickY * 0.3) + 1.0
+lfs f3, 0(r12)
+lfs f4, 0x4(r12)
 fmadds f2, f2, f3, f4
 fmuls f0, f0, f2
 
+# Restore registers
 end:
-
 mr r4, r11
 mr r3, r30
 
-# inject at 80597390 (PAL)
-# inject at 80590b6c (NTSC-U)
-# inject at 80596d10 (NTSC-J)
-# inject at 805853e8 (NTSC-K)
+return:
+b FastFallingHook+4
 
-.set region, ''
+################################
+# Fast Falling - Wheel Gravity #
+################################
 
-.if (region == 'P')
-        .set Player_getControllerHolder, 0x805903f4
-.elseif (region == 'E')
-        .set Player_getControllerHolder, 0x80589bd0
-.elseif (region == 'J')
-        .set Player_getControllerHolder, 0x8058fd74
-.elseif (region == 'K')
-        .set Player_getControllerHolder, 0x8057e44c
-.else
-        .err
-.endif
+# Get playerPointers -> playerParams -> playerID
+FastFalling2:
+lwz r3, 0(r28)
+lwz r3, 0(r12)
+lbz r3, 0x10(r12)
 
-bl floats
+# Check if fast falling is enabled
+lis r12, EnableRampUpStuff@h
+ori r12, r12, EnableRampUpStuff@l
+lbzx r12, r12, r3
+cmpwi r12, 1
+bne+ end2
 
-.long 0x3e99999a # 0.3f
-.long 0x3f800000 # 1.0f
+# Do BL trick
+bl trick2
 
-floats:
+.float 0.3
+.float 1.0
+
+trick2:
 mflr r12
 
-li r8, 0x1
+# Assume 1
+li r8, 1
 
-lwz r3, 0x1c (r28) # playerSub->playerSub_1c
-lwz r4, 0x1c (r3) # playerSub_1c->airtime
+# Get playerSub -> playerSub1c -> airtime
+lwz r3, 0x1C(r28)
+lwz r4, 0x1C(r3)
 
-cmpwi r4, 0x0
-bne not_first_frame # airtime != 0
+# Check if airtime is 0
+cmpwi r4, 0
+bne notFirstFrame
 
-li r8, 0x0
-stb r8, 0x96 (r3)
-lwz r8, 0x4 (r3)
+# Store 0 to thing
+li r8, 0
+stb r8, 0x96(r3)
+
+# Check if player is hopping
+lwz r8, 0x4(r3)
 rlwinm. r8, r8, 0, 24, 24
-beq not_pressing_hop_button # !(playerSub_1c->bitfield0 & DRIFT_START)
+beq notPressingHopButton
 
-li r8, 0x1
-stb r8, 0x96 (r3)
+# Store 1 to thing if so
+li r8, 1
+stb r8, 0x96(r3)
 
-not_pressing_hop_button:
-not_first_frame:
-cmpwi r4, 0x1
-ble end # airtime < 2
+# Check if airtime < 2
+notFirstFrame:
+notPressingHopButton:
+cmpwi r4, 1
+ble end2
 
-lbz r8, 0x96 (r3)
-cmpwi r8, 0x1
-bne not_hopping
+# Check if thing is 1
+lbz r8, 0x96(r3)
+cmpwi r8, 1
+bne notHopping2
 
-cmpwi r4, 0x12
-ble end # airtime < 19
+# Check if airtime < 19
+cmpwi r4, 18
+ble end2
 
-not_hopping:
-lwz r3, 0x18 (r3)
-lis r4, Player_getControllerHolder@h
-ori r4, r4, Player_getControllerHolder@l
-mtctr r4
-bctrl
+# Get the player's controllerHolder
+notHopping2:
+lwz r3, 0x18(r3)
+bl PlayerGetControllerHolder
 
-lfs f2, 0x34 (r3) # controllerHolder->currentInputState.stickY
+# Get controllerHolder -> currentInputState.stickY
+lfs f2, 0x34(r3)
+
+# stickY *= (stickY <= 0.0) ? 0.0 : 2.0
 fabs f3, f2
-fadds f2, f2, f3 # stickY <= 0.0f ? 0.0f : 2.0f * stickY
-lfs f3, 0x0 (r12) # 0.3f
-lfs f4, 0x4 (r12) # 1.0f
+fadds f2, f2, f3
+
+# gravitySpeed = (stickY * 0.3) + 1.0
+lfs f3, 0(r12)
+lfs f4, 0x4(r12)
 fmadds f2, f2, f3, f4
 fmuls f0, f0, f2
 
-end:
-mr r3, r28 # original instruction
+# Original instruction
+end2:
+mr r3, r28
+b FastFallingHook2+4
