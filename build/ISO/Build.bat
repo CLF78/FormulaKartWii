@@ -70,6 +70,7 @@ echo Copying mod files...
 mkdir mkw.d\files\fkw
 copy /b fkw\code\FormulaKartWii%LETTER%.bin mkw.d\files\fkw >nul
 copy /b fkw\tracks\*.szs mkw.d\files\Race\Course >nul
+copy /b fkw\tracks\*_Dif.szs mkw.d\files\Race\Course\*_d_Dif.szs >nul
 
 IF %LETTER%==p (
 	copy /b fkw\Race_E.szs mkw.d\files\Scene\UI\Race_E.szs >nul
