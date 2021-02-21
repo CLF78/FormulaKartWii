@@ -182,14 +182,17 @@ void loadCodes() {
 	directWriteBranch(FastMusicHook2, PitchReset, true);
 	directWriteBranch(FastMusicHook3, PitchReset2, false);
 
-	///////////////////////
-	// GeoHit Redirector //
-	///////////////////////
+	////////////////////
+	// GeoHit Patches //
+	////////////////////
 
 	// Rename GeoHitTableItem and GeoHitTableItemObj so that the game loads our custom ones
 	tempVal8 = 'N';
 	directWrite8(GeoHitTableItem, tempVal8);
 	directWrite8(GeoHitTableItemObj, tempVal8);
+	
+	// Patch GeoHitTableKart to prevent Geysers from throwing players 1000 miles in the air
+	directWriteBranch(GeoHitTableKartHook, GeoHitTableKartFix, true);
 
 	////////////////////////////////
 	// Green Shell Speed Modifier //

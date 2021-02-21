@@ -126,9 +126,10 @@ SECTIONS {
 	FastMusicHook2 = 0x80711AD8;
 	FastMusicHook3 = 0x80630090;
 
-	/* GeoHit Redirector */
+	/* GeoHit Patches */
 	GeoHitTableItem = 0x808D8070;
 	GeoHitTableItemObj = 0x808D8088;
+	GeoHitTableKartHook = 0x8082A478;
 
 	/* Green Shell Speed Modifier */
 	GreenShellSpeed = 0x808A5DBC;
