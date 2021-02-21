@@ -197,6 +197,7 @@ SECTIONS {
 	ShellHitCount2 = 0x807A3B0C;
 	ShellHitCount3 = 0x807A4218;
 	ShellHitCount4 = 0x807A422C;
+	ShellHitCount5 = 0x8079D05C;
 
 	/* Starting Lap Modifier */
 	StartingLapHook = 0x805220F8;

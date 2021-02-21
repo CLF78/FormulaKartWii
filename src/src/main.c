@@ -305,6 +305,7 @@ void loadCodes() {
 	directWriteNop(ShellHitCount2);
 	directWriteNop(ShellHitCount3);
 	directWriteNop(ShellHitCount4);
+	directWrite16(ShellHitCount5, 0x4800);
 
 	///////////////////////////
 	// Show Times After Race //
