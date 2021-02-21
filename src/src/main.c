@@ -299,6 +299,9 @@ void loadCodes() {
 	// Shells Never Break //
 	////////////////////////
 	directWriteNop(ShellHitCount);
+	directWriteNop(ShellHitCount2);
+	directWriteNop(ShellHitCount3);
+	directWriteNop(ShellHitCount4);
 
 	///////////////////////////
 	// Show Times After Race //

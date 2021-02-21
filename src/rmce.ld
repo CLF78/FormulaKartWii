@@ -193,7 +193,10 @@ SECTIONS {
 	MegaFunc = 0x8078F6A8;
 
 	/* Shells Never Break */
-	ShellHitCount = 0x807A73F8;
+	ShellHitCount = 0x807A6BAC;
+	ShellHitCount2 = 0x807A6CEC;
+	ShellHitCount3 = 0x807A73F8;
+	ShellHitCount4 = 0x807A740C;
 
 	/* Starting Lap Modifier */
 	StartingLapHook = 0x8052F558;
