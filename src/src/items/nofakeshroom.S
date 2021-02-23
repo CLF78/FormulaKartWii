@@ -12,9 +12,9 @@ NoFakeShroom:
 li r3, 0
 
 # Don't do anything on Item Rain
-lis r0, GameMode@ha
-lbz r0, GameMode@l(r0)
-cmpwi r0, 1
+lis r5, GameMode@ha
+lbz r5, GameMode@l(r5)
+cmpwi r5, 1
 beqlr
 
 # Original instruction

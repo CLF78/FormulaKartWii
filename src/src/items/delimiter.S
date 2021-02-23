@@ -1,7 +1,7 @@
 .include "asm_setup.S"
 
-.extern ItemLimits
-.global ItemLimitMod, NormalItemLimitArray
+.extern ItemLimits, GameMode
+.global ItemLimitMod
 
 # Choose the array based on game mode
 ItemLimitMod:
