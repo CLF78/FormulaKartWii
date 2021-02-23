@@ -96,6 +96,8 @@ void loadCodes() {
 	directWrite32(ItemLandMega, tempVal32);
 	directWrite32(ItemLandGolden, tempVal32+8);
 	directWrite32(ItemLandBill, tempVal32+16);
+	directWrite32(ItemLandShock, tempVal32+24);
+	directWrite32(ItemLandPOW, tempVal32+32);
 
 	/////////////////////////////
 	// Banana Spinout Modifier //

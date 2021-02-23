@@ -18,6 +18,14 @@ b begin
 
 # Bullet Bill
 li r7, 0xF
+b begin
+
+# Shock
+li r7, 0x8
+b begin
+
+# POW
+li r7, 0xD
 
 # Push stack and save LR
 begin:

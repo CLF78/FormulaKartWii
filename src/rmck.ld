@@ -81,6 +81,8 @@ SECTIONS {
 	ItemLandMega = 0x808A3948;
 	ItemLandGolden = 0x808A3978;
 	ItemLandBill = 0x808A3984;
+	ItemLandShock = 0x808A3930;
+	ItemLandPOW = 0x808A396C;
 
 	/* Blue Shell Speed */
 	BlueShellSpeed = 0x80894024;
