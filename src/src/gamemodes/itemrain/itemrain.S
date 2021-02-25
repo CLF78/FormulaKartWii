@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern GameMode, playerCount, isOnlineRace, Racedata, srand, rand, PlayerHolder, getPlayerById, getPlayerPosition, SpecialItemHook, ItemRainMainHook, Framerate, FramerateHook
+.extern GameMode, playerCount, isOnlineRace, Racedata, srand, rand, PlayerHolder, getPlayerById, getPlayerPosition, SpecialItemHook, ItemRainMainHook, Framerate, FramerateHook, FramerateHook2
 .global ItemRainMain
 
 ################
@@ -192,10 +192,13 @@ end:
 lis r31, Framerate@ha
 lbz r31, Framerate@l(r31)
 cmpwi r31, 1
-bne+ end
+bne+ return
 
 li r30, 2
 lis r29, FramerateHook@ha
 stb r30, FramerateHook@l(r29)
+lis r29, FramerateHook2@ha
+stb r30, FramerateHook2@l(r29)
 
+return:
 b ItemRainMainHook+4
