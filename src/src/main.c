@@ -112,7 +112,11 @@ void loadCodes() {
 	///////////////////////////////
 	// Blue Shell Speed Modifier //
 	///////////////////////////////
-	directWrite8(BlueShellSpeed, 0x44); // The other 3 bytes of the float are identical
+
+	// The other 3 bytes of the floats are identical
+	tempVal8 = 0x44;
+	directWrite8(BlueShellSpeed, tempVal8);
+	directWrite8(BlueShellSpeed2, tempVal8);
 
 	//////////////////////
 	// BRCTR Redirector //

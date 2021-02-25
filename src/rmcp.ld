@@ -93,6 +93,7 @@ SECTIONS {
 
 	/* Blue Shell Speed */
 	BlueShellSpeed = 0x808A5BC4;
+	BlueShellSpeed2 = 0x808A5C24;
 
 	/* BRCTR Redirector */
 	LapNumberCTR = 0x808A9CC7;
