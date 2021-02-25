@@ -40,5 +40,5 @@ NormalItemLimitArray:
 .byte 20, 20, 27, 12, 6, 4, 1, 27, 6, 9, 1, 1, 6, 6, 4
 
 ItemRainLimitArray:
-.byte 20, 20, 27, 12, 6, 4, 1, 27, 6, 9, 1, 1, 6, 6, 4 # ARRAY TO BE UPDATED
+.byte 28, 28, 28, 7, 3, 6, 3, 17, 17, 17, 1, 3, 3, 3, 3
 .align 2

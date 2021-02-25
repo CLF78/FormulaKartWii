@@ -15,8 +15,12 @@ blt noSubtract
 subi r3, r3, 0x8000
 extsh r3, r3
 
-# Load first magic number
+# Divide value by 2
 noSubtract:
+li r11, 2
+divw r3, r3, r11
+
+# Load first magic number
 lis r11, 0x5980
 ori r11, r11, 0x0004
 stw r11, 0x8(r1)
