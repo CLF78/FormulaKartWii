@@ -11,7 +11,7 @@ cmpwi r3, 1
 beq end
 
 # Override r31 so the cmpwi fails
-li r31, 1
+li r31, 0
 
 # Original instruction
 end:
