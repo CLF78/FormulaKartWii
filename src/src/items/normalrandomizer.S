@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern SharedItemHook, Raceinfo, ItemHolder
+.extern SharedItemHook, Raceinfo, ItemHolder, GameMode
 .global UltimateRandom
 
 # Notes: r25 is position, r3 is a pointer to ItemSlotData, r4 is item to be stored
@@ -19,7 +19,18 @@ srawi r5, r4, 31
 xor r4, r5, r4
 subf r4, r5, r4
 
+# Do less checks for item rain
+lis r5, GameMode@ha
+lbz r5, GameMode@l(r5)
+cmpwi r5, 1
+bne+ normalItemChecks
+
+cmpwi r4, 0xD
+beq powposcheck
+b checkNewbie
+
 # Specific item checks
+normalItemChecks:
 cmpwi r4, 7
 beq blue
 
@@ -38,6 +49,7 @@ cmpwi r5, 0
 bne+ UltimateRandom
 
 # If the player is in 1st, give them a Mushroom instead
+powposcheck:
 cmpwi r25, 1
 bne+ end
 li r4, 4

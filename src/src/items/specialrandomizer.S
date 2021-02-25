@@ -3,8 +3,12 @@
 .extern GameMode
 .global SpecialRandom
 
-# Get a random number using the timebase as a seed (modulo division)
+# Check if this was called by item rain
 SpecialRandom:
+cmpwi r8, 0xDAD
+beq end
+
+# Get a random number using the timebase as a seed (modulo division)
 mftbl r4
 li r11, 0xE
 divw r11, r4, r11

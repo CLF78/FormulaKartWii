@@ -151,7 +151,7 @@ void loadCodes() {
 	///////////////////////
 	// Disable Item Poof //
 	///////////////////////
-	directWriteNop(NoItemPoof);
+	directWriteBranch(NoItemPoofHook, NoItemPoof, true);
 
 	////////////////////////////////////
 	// Don't Hide Position After Race //
@@ -515,6 +515,16 @@ void loadCodes() {
 	// Fast Falling
 	directWriteBranch(FastFallingHook, FastFalling, false);
 	directWriteBranch(FastFallingHook2, FastFalling2, false);
+
+	///////////////////////////
+	// Game Mode - Item Rain //
+	///////////////////////////
+	
+	// Main code
+	directWriteBranch(ItemRainMainHook, ItemRainMain, false);
+
+	// Prevent the rain from stopping
+	directWriteNop(KeepTheRain);
 
 	///////////////////////
 	// Game Mode - Teams //

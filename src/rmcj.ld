@@ -9,6 +9,10 @@ SECTIONS {
 	ItemHolder = 0x809C2678;
 	ItemStructs = 0x809C2718;
 
+	PlayerGetControllerHolder = 0x8058FD74;
+	getPlayerById = 0x8058FA80;
+	getPlayerPosition = 0x8058FB8C;
+
 	NETSHA1Init = 0x801D2414;
 	NETSHA1Update = 0x801D2464;
 	NETSHA1GetDigest = 0x801D2518;
@@ -16,6 +20,7 @@ SECTIONS {
 	SetPaneColor = 0x807EB58C;
 	SetTextSrc = 0x805CD5DC;
 
+	playerCount = 0x809C2918;
 	isOnlineRace = 0x809C2919;
 
 	/* Codehandler Hooks */
@@ -39,6 +44,8 @@ SECTIONS {
 	sprintf = 0x80011950;
 	swprintf = 0x80017738;
 	OSFatal = 0x801A4DE4;
+	srand = 0x80011BB4;
+	rand = 0x80011B94;
 
 	/* Exception Handler */
 	ShowExceptions = 0x802A6D84;
@@ -102,7 +109,7 @@ SECTIONS {
 	DCFix = 0x8053F044;
 
 	/* Disable Item Poof */
-	NoItemPoof = 0x80795C2C;
+	NoItemPoofHook = 0x8079F4EC;
 
 	/* Replace Blooper with Triple FIBs */
 	BlooperKiller = 0x807A891C;
@@ -384,7 +391,6 @@ SECTIONS {
 	BrakeDriftSoundHook = 0x806FA664;
 	BrakeDriftEffBikesHook = 0x80699304;
 	BrakeDriftEffKartsHook = 0x806985BC;
-	PlayerGetControllerHolder = 0x8058FD74;
 	DoBrakeDrift = 0x8057A80C;
 	BrakeDriftEffFunc = 0x806A1044;
 	BrakeDriftEffFunc2 = 0x806A11D4;
@@ -392,4 +398,8 @@ SECTIONS {
 	/* Fast Falling */
 	FastFallingHook = 0x8059610C;
 	FastFallingHook2 = 0x80596D10;
+
+	/* Item Rain */
+	ItemRainMainHook = 0x805355FC;
+	KeepTheRain = 0x807997E8;
 }
