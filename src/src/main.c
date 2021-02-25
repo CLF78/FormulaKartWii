@@ -138,7 +138,7 @@ void loadCodes() {
 	#pragma GCC diagnostic ignored "-Wpointer-to-int-cast"
 	tempVal8 = (u8)&BulletBillSpeed;
 	#pragma GCC diagnostic pop
-	
+
 	// Cannon landing speed fix
 	directWrite8(CannonLandingFix, tempVal8);
 
@@ -196,7 +196,7 @@ void loadCodes() {
 	tempVal8 = 'N';
 	directWrite8(GeoHitTableItem, tempVal8);
 	directWrite8(GeoHitTableItemObj, tempVal8);
-	
+
 	// Patch GeoHitTableKart to prevent Geysers from throwing players 1000 miles in the air
 	directWriteBranch(GeoHitTableKartHook, GeoHitTableKartFix, true);
 
@@ -505,7 +505,7 @@ void loadCodes() {
 	directWriteBranch(DriftFixHook3, DriftFixSub2, true);
 	directWriteBranch(DriftFixHook4, DriftFixSub3, false);
 	directWriteBranch(DriftFixHook5, DriftFixSub4, false);
-	
+
 	// Brake Drifting
 	directWriteBranch(BrakeDriftClassicHook, BrakeDriftClassic, true);
 	directWriteBranch(BrakeDriftGCNHook, BrakeDriftGCN, true);
@@ -515,7 +515,7 @@ void loadCodes() {
 	directWriteBranch(BrakeDriftSoundHook, BrakeDriftSound, false);
 	directWriteBranch(BrakeDriftEffBikesHook, BrakeDriftEffBikes, false);
 	directWriteBranch(BrakeDriftEffKartsHook, BrakeDriftEffKarts, false);
-	
+
 	// Fast Falling
 	directWriteBranch(FastFallingHook, FastFalling, false);
 	directWriteBranch(FastFallingHook2, FastFalling2, false);
@@ -523,7 +523,7 @@ void loadCodes() {
 	///////////////////////////
 	// Game Mode - Item Rain //
 	///////////////////////////
-	
+
 	// Main code
 	directWriteBranch(ItemRainMainHook, ItemRainMain, false);
 
@@ -673,19 +673,13 @@ void loadCodes() {
 		directWriteBranch(TimeDiffPatchHook, TimeDiffPatch, true);
 		directWriteBranch(TimeDiffPatchHook2, TimeDiffPatch2, false);
 	}
-	
+
 	if (Speedometer == 1) {
 		directWriteBranch(SpeedoScreenElement, SpeedoScreenElementASM, true);
 		directWriteBranch(SpeedoUpdate, SpeedoUpdateASM, false);
 		directWriteNop(SpeedoTextParseNop);
 		directWriteBranch(SpeedoTextParse, SpeedoTextParseASM, true);
 		directWriteBranch(SpeedoNoPauseHook, SpeedoNoPause, true);
-	}
-	
-	if (Framerate == 1) {
-		tempVal8 = 2;
-		directWrite8(FramerateHook, tempVal8);
-		directWrite8(FramerateHook2, tempVal8);
 	}
 
 	sync();

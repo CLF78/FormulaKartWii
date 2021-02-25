@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern GameMode, playerCount, isOnlineRace, Racedata, srand, rand, PlayerHolder, getPlayerById, getPlayerPosition, SpecialItemHook, ItemRainMainHook
+.extern GameMode, playerCount, isOnlineRace, Racedata, srand, rand, PlayerHolder, getPlayerById, getPlayerPosition, SpecialItemHook, ItemRainMainHook, FramerateHook
 .global ItemRainMain
 
 ################
@@ -187,5 +187,15 @@ li r8, 0xDAD
 # Call function (yes, i am lazy)
 bl SpecialItemHook-0xC
 
+# 30 FPS code
 end:
+lis r31, Framerate@ha
+lbz r31, Framerate@l(r31)
+cmpwi r31, 1
+bne+ end
+
+li r30, 2
+lis r29, FramerateHook@ha
+stb r30, FramerateHook@l(r29)
+
 b ItemRainMainHook+4

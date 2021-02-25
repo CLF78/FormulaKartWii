@@ -374,7 +374,6 @@ SECTIONS {
 
 	/* Force 30 FPS */
 	FramerateHook = 0x804250D4;
-	FramerateHook2 = 0x80516ECB;
 
 	/* Speedometer */
 	SpeedoScreenElement = 0x80836A48;
