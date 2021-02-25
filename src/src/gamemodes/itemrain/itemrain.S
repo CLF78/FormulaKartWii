@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern GameMode, playerCount, isOnlineRace, Racedata, srand, rand, PlayerHolder, getPlayerById, getPlayerPosition, SpecialItemHook, ItemRainMainHook, FramerateHook
+.extern GameMode, playerCount, isOnlineRace, Racedata, srand, rand, PlayerHolder, getPlayerById, getPlayerPosition, SpecialItemHook, ItemRainMainHook, Framerate, FramerateHook
 .global ItemRainMain
 
 ################
