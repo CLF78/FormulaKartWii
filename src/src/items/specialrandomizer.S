@@ -24,7 +24,7 @@ beq SpecialRandom
 lis r11, GameMode@ha
 lbz r11, GameMode@l(r11)
 cmpwi r11, 1
-beq end
+bne+ end
 
 # Otherwise check for POW and Shock
 cmpwi r4, 6

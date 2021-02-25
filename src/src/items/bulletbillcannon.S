@@ -54,8 +54,12 @@ beq+ end
 # Multiply float if so
 fmuls f0, f0, f30
 
-# No BLR because i did the bl trick and i cba to store the LR
+# Divide by multiplier for Ramp Up
 end:
+lfs f29, 0x10(r30)
+fdivs f0, f0, f29
+
+# No BLR because i did the bl trick and i cba to store the LR
 b CannonSpeed2+4
 
 ###########################
@@ -68,8 +72,12 @@ lfs f7, 0(r29)
 
 # Check if the bill flag is on
 cmpwi r4, 0
-beqlr+
+beq+ noBill
 
 # Multiply float if so (multiplier is still in f30, no need to load it again)
 fmuls f7, f7, f30
+
+# Multiply with multiplier for Ramp Up (that one's in r29)
+noBill:
+fmuls f7, f7, f29
 blr
