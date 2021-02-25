@@ -72,7 +72,7 @@ copy /b fkw\code\FormulaKartWii%LETTER%.bin mkw.d\files\fkw >nul
 copy /b fkw\tracks\*.szs mkw.d\files\Race\Course >nul
 copy /b fkw\tracks\*_Dif.szs mkw.d\files\Race\Course\*_d_Dif.szs >nul
 
-IF %LETTER%==p (
+IF %LETTER%==P (
 	copy /b fkw\Race_E.szs mkw.d\files\Scene\UI\Race_E.szs >nul
 	copy /b fkw\Race_F.szs mkw.d\files\Scene\UI\Race_F.szs >nul
 	copy /b fkw\Race_G.szs mkw.d\files\Scene\UI\Race_G.szs >nul
@@ -90,7 +90,7 @@ IF %LETTER%==p (
 	copy /b fkw\Common_S.szs mkw.d\files\Race\Common_S.szs >nul
 )
 
-IF %LETTER%==e (
+IF %LETTER%==E (
 	copy /b fkw\Race_M.szs mkw.d\files\Scene\UI\Race_M.szs >nul
 	copy /b fkw\Race_Q.szs mkw.d\files\Scene\UI\Race_Q.szs >nul
 	copy /b fkw\Race_U.szs mkw.d\files\Scene\UI\Race_U.szs >nul
@@ -102,13 +102,13 @@ IF %LETTER%==e (
 	copy /b fkw\Common_E.szs mkw.d\files\Race\Common_U.szs >nul
 )
 
-IF %LETTER%==j (
+IF %LETTER%==J (
 	copy /b fkw\Race_J.szs mkw.d\files\Scene\UI\Race_J.szs >nul
 	copy /b fkw\Title_J.szs mkw.d\files\Scene\UI\Title_J.szs >nul
 	copy /b fkw\Common_J.szs mkw.d\files\Race\Common_J.szs >nul
 )
 
-IF %LETTER%==k (
+IF %LETTER%==K (
 	copy /b fkw\Race_K.szs mkw.d\files\Scene\UI\Race_K.szs >nul
 	copy /b fkw\Title_K.szs mkw.d\files\Scene\UI\Title_K.szs >nul
 	copy /b fkw\Common_J.szs mkw.d\files\Race\Common_J.szs >nul
