@@ -95,8 +95,8 @@ bl rand
 # Random item lookup table
 bl itemtrick
 
-# Golden Mushroom, POW Block, Bullet Bill, Bob-Omb, Mega Mushroom, Fake Item Box, Shock, Blue Shell, Mushroom, Banana, Red Shell (Green Shell uses whatever remains)
-.short 0x200, 0x200, 0x200, 0xE00, 0xE00, 0xE00, 0x200, 0x400, 0x200, 0x600, 0x1800, 0x1800
+# Golden Mushroom, POW Block, Bullet Bill, Bob-Omb, Mega Mushroom, Fake Item Box, Shock, Blue Shell, Star, Mushroom, Banana, Red Shell (Green Shell uses whatever remains)
+.short 0x200, 0x200, 0x200, 0xE00, 0x600, 0xE00, 0x200, 0x400, 0x200, 0xE00, 0x1800, 0x1800
 .align 2
 
 # Setup loop
