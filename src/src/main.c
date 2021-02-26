@@ -530,6 +530,26 @@ void loadCodes() {
 	// Prevent the rain from stopping
 	directWriteNop(KeepTheRain);
 
+	// Prevent null pointer in explosions
+	directWriteBranch(ItemRainExplosionsHook, ItemRainExplosions, false);
+	
+	// Packet stuff
+	directWriteBranch(FreeExpiredSendEntriesPatchHook, FreeExpiredSendEntriesPatch, true);
+	directWriteBranch(AddEntryPatchHook, AddEntryPatch, true);
+	directWriteBranch(ImportRecvEntriesPatchHook, ImportRecvEntriesPatch, false);
+	directWrite8(SendNextRACEPacketPatch, 7);
+	directWrite16(PacketCreatorPatch, 0x300);
+	directWriteNop(DisableEVENTThingy);
+	directWriteNop(DisableEVENTThingy2);
+
+	// Collision stuff
+	directWriteBranch(ItemRainCollisionThingyHook, ItemRainCollisionThingy, true);
+	directWriteBranch(ItemRainCollisionThingyHook2, ItemRainCollisionThingy2, true);
+	directWriteBranch(ItemRainCollisionThingyHook3, ItemRainCollisionThingy3, true);
+
+	// Force _d variant when loading a track
+	directWriteBranch(ItemRainTrackLoadPatchHook, ItemRainTrackLoadPatch, true);
+
 	///////////////////////
 	// Game Mode - Teams //
 	///////////////////////

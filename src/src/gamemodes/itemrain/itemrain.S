@@ -1,7 +1,8 @@
 .include "asm_setup.S"
 
 .extern GameMode, playerCount, isOnlineRace, Racedata, srand, rand, PlayerHolder, getPlayerById, getPlayerPosition, SpecialItemHook, ItemRainMainHook, Framerate, FramerateHook, FramerateHook2
-.global ItemRainMain
+.extern ItemRainExplosionsHook, memcmp, _directWriteArray, ImportRecvEntriesPatchHook, DisableCollisionThingy
+.global ItemRainMain, ItemRainExplosions, FreeExpiredSendEntriesPatch, AddEntryPatch, ItemRainCollisionThingy, ItemRainCollisionThingy2, ItemRainCollisionThingy3, ImportRecvEntriesPatch, ItemRainTrackLoadPatch
 
 ################
 # Sub Function #
@@ -192,8 +193,14 @@ end:
 lis r31, Framerate@ha
 lbz r31, Framerate@l(r31)
 cmpwi r31, 1
-bne+ return
+beq do30FPS
 
+lis r31, playerCount@ha
+lbz r31, playerCount@l(r31)
+cmpwi r31, 9
+ble+ return
+
+do30FPS:
 li r30, 2
 lis r29, FramerateHook@ha
 stb r30, FramerateHook@l(r29)
@@ -202,3 +209,189 @@ stb r30, FramerateHook2@l(r29)
 
 return:
 b ItemRainMainHook+4
+
+################################
+# Explosion Null Pointer Check #
+################################
+
+# Null pointer check
+ItemRainExplosions:
+cmpwi r3, 0
+beqlr
+
+# Original instruction
+lwz r0, 0xC(r3)
+b ItemRainExplosionsHook+4
+
+################################
+# Patch FreeExpiredSendEntries #
+################################
+
+# Move timestamp to r3 without changing it
+FreeExpiredSendEntriesPatch:
+mr r3, r4
+
+# Get EVENT action
+lbz r4, 0x1B(r27)
+
+# Check for DROP 
+cmpwi r4, 7
+beqlr+
+
+# Check for BREAK_DRAGGED and BREAK
+subi r5, r3, 3
+cmplwi r5, 1
+blelr+
+
+# Original instruction
+addi r3, r3, 0xC8
+blr
+
+##################
+# Patch AddEntry #
+##################
+
+# Load custom timestamp in r3
+AddEntryPatch:
+lis r11, playerCount@ha
+lbz r11, playerCount@l(r3)
+slwi r11, r11, 3
+subi r11, r11, 1
+
+# Checks for EVENT actions
+cmpwi r5, 7
+beq+ addTimestamp
+
+subi r12, r5, 3
+cmplwi r12, 1
+ble+ addTimestamp
+
+# Use original value if they don't match
+li r11, 0xC8
+
+# Modified original instruction
+addTimestamp:
+add r6, r6, r11
+blr
+
+########################
+# Some Collision Thing #
+########################
+
+# Original instruction
+ItemRainCollisionThingy:
+li r4, 1
+
+# Some check
+lis r12, DisableCollisionThingy@h
+ori r12, r12, DisableCollisionThingy@l
+lbz r5, 0(r12)
+cmpwi r5, 1
+bne+ ret
+
+# Replace r4
+li r4, 0
+
+# Return
+ret:
+li r11, 0
+stb r11, 0(r12)
+blr
+
+##########################
+# Some Collision Thing 2 #
+##########################
+
+# Check thing
+ItemRainCollisionThingy2:
+lwz r5, 0x4(r31)
+cmpwi r5, 9
+bne+ noStoreThing
+cmpwi r28, 2
+bne noStoreThing
+
+# Store thing
+li r12, 1
+lis r5, DisableCollisionThingy@ha
+stb r12, DisableCollisionThingy@l(r5)
+
+# Original instruction
+noStoreThing:
+addi r5, r31, 0x44
+blr
+
+##########################
+# Some Collision Thing 3 #
+##########################
+
+# Check thing
+ItemRainCollisionThingy3:
+lwz r5, 0x4(r30)
+cmpwi r5, 9
+bne+ noStoreThing2
+cmpwi r28, 2
+bne noStoreThing2
+
+# Store thing
+li r12, 1
+lis r5, DisableCollisionThingy@ha
+stb r12, DisableCollisionThingy@l(r5)
+
+# Original instruction
+noStoreThing2:
+addi r5, r30, 0x44
+blr
+
+###########################
+# Patch ImportRecvEntries #
+###########################
+
+# Call memcmp
+ImportRecvEntriesPatch:
+bl memcmp
+
+# Check if the blocks match
+cmpwi r3, 0
+beq+ noCopy
+
+# Some other check
+lhz r3, 0x4(r25)
+lhz r4, 0(r23)
+cmpw r3, r4
+bgt noCopy
+
+# Some weird shit
+addi r3, r25, 0x2400
+mulli r4, r28, -0x2A0
+add r3, r3, r4
+mulli r4, r22, -0x1C
+add r3, r3, r4
+
+# Store 0 to the computed r3
+li r4, 0
+stw r4, 0(r3)
+
+# Call memcpy
+addi r3, r25, 4
+mr r4, r23
+lbz r5, 0x1C(r25)
+bl _directWriteArray
+
+# Return
+noCopy:
+b ImportRecvEntriesPatchHook+4
+
+#################
+# Load _d Track #
+#################
+
+# Check game mode
+ItemRainTrackLoadPatch:
+lis r4, GameMode@ha
+lbz r4, GameMode@l(r4)
+cmpwi r4, 1
+beqlr
+
+# Original instruction
+addi r5, r5, 0x11
+blr

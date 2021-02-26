@@ -403,4 +403,17 @@ SECTIONS {
 	/* Item Rain */
 	ItemRainMainHook = 0x80535C7C;
 	KeepTheRain = 0x8079A17C;
+	ItemRainExplosionsHook = 0x80786F80;
+	FreeExpiredSendEntriesPatchHook = 0x8065BB40;
+	AddEntryPatchHook = 0x8065B870;
+	ItemRainCollisionThingyHook = 0x807A1C64;
+	ImportRecvEntriesPatchHook = 0x8065BDF8;
+	DisableEVENTThingy2 = 0x80797018;
+	DisableEVENTThingy = 0x807A6C74;
+	SendNextRACEPacketPatch = 0x80657EAB;
+	PacketCreatorPatch = 0x8065322A;
+	ItemRainTrackLoadPatchHook = 0x80540864;
+	memcmp = 0x8000F314;
+	ItemRainCollisionThingyHook2 = 0x807A0FF4;
+	ItemRainCollisionThingyHook3 = 0x807A1008;
 }
