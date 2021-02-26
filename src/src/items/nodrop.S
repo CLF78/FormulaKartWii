@@ -11,7 +11,7 @@ lbz r0, 0x29(r3)
 lis r29, GameMode@ha
 lbz r29, GameMode@l(r29)
 cmpwi r29, 1
-bnelr+
+beqlr+
 
 # Get the player's item
 lwz r29, 0x4(r3)
