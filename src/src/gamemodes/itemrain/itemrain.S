@@ -53,7 +53,7 @@ stw r0, 0x48(r29)
 lis r28, GameMode@ha
 lbz r28, GameMode@l(r28)
 cmpwi r28, 1
-bne+ end
+bne+ 30FPSCheck
 
 # Get playerCount and multiply it by 2
 lis r28, playerCount@ha
@@ -190,15 +190,16 @@ bl SpecialItemHook-0xC
 
 # 30 FPS code
 end:
-lis r31, Framerate@ha
-lbz r31, Framerate@l(r31)
-cmpwi r31, 1
-beq do30FPS
-
 lis r31, playerCount@ha
 lbz r31, playerCount@l(r31)
 cmpwi r31, 9
-ble+ return
+bgt do30FPS
+
+30FPSCheck:
+lis r31, Framerate@ha
+lbz r31, Framerate@l(r31)
+cmpwi r31, 1
+bne+ return
 
 do30FPS:
 li r30, 2
