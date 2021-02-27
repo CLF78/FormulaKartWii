@@ -53,7 +53,7 @@ stw r0, 0x48(r29)
 lis r28, GameMode@ha
 lbz r28, GameMode@l(r28)
 cmpwi r28, 1
-bne+ 30FPSCheck
+bne+ FPSCheck
 
 # Get playerCount and multiply it by 2
 lis r28, playerCount@ha
@@ -195,7 +195,7 @@ lbz r31, playerCount@l(r31)
 cmpwi r31, 9
 bgt do30FPS
 
-30FPSCheck:
+FPSCheck:
 lis r31, Framerate@ha
 lbz r31, Framerate@l(r31)
 cmpwi r31, 1

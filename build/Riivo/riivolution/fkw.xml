@@ -80,14 +80,16 @@
 		<file disc="/Race/Course/old_falls_ds_d_Dif.szs" external="/fkw/TrackPatches/old_falls_ds_d_Dif.szs" create="true" />
 	</patch>
 	<patch id="mystuffctgp">
-		<folder external="/ctgpr/My Stuff" recursive="false" disc="/" />
+		<folder external="/ctgpr/My Stuff" recursive="false" />
+		<folder external="/ctgpr/My Stuff" disc="/" />
 	</patch>
 	<patch id="mystuffctgpnrt">
 		<folder external="/ctgpr/My Stuff" recursive="false" disc="/sound" />
 		<folder external="/ctgpr/My Stuff" recursive="false" disc="/sound/strm" />
 	</patch>
 	<patch id="mystufffkw">
-		<folder external="/fkw/My Stuff" recursive="false" disc="/" />
+		<folder external="/fkw/My Stuff" recursive="false" />
+		<folder external="/fkw/My Stuff" disc="/" />
 	</patch>
 	<patch id="mystufffkwnrt">
 		<folder external="/fkw/My Stuff" recursive="false" disc="/sound" />
