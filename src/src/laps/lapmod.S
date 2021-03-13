@@ -99,7 +99,7 @@ cmpwi r6, 2
 bne+ keepGoing
 
 # Check if lap < 25
-cmplwi r4, 0xE5
+cmplwi r4, 0xE0
 blt keepGoing
 
 # Get player id
