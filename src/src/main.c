@@ -560,6 +560,9 @@ void loadCodes() {
 	// Disable team invincibility
 	directWriteBranch(NoTeamInvincibility, NoTeamInv, true);
 
+	// Allow people from the same team to exchange TCs
+	directWriteNop(TeamTCPass);
+
 	//////////////////
 	// Online Stuff //
 	//////////////////

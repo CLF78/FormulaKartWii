@@ -291,6 +291,7 @@ SECTIONS {
 	/* Game Mode - Teams */
 	NoItemGlow = 0x807BC928;
 	NoTeamInvincibility = 0x8052FEEC;
+	TeamTCPass = 0x807B0248;
 
 	/* Online Stuff */
 	ForceCCHook = 0x80660A70;
