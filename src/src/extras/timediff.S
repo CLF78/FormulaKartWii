@@ -53,9 +53,18 @@ beq inFirst
 
 # Otherwise check which option is enabled
 cmpwi r11, 2
-bne+ end
+beq diffWithFirst
+
+# TimeDiff == 1 (diff with person in front, UGLY)
+lis r11, Raceinfo@ha
+lwz r11, Raceinfo@l(r11)
+lwz r11, 0xC(r11)
+lwzx r11, r11, r8
+lbz r8, 0x20(r11)
+b end
 
 # TimeDiff == 2 (diff with 1st Place)
+diffWithFirst:
 li r8, 2
 b end
 
