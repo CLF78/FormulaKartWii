@@ -220,6 +220,7 @@ SECTIONS {
 	TimeStoreHook3 = 0x80535118;
 	FinishTimesHook = 0x80533D0C;
 	LapSignFixHook = 0x80534398;
+	LapArrayIncrease = 0x80532250;
 
 	/* No Invincibility Frames */
 	NoInvFramesHook = 0x80567114;

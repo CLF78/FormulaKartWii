@@ -346,7 +346,10 @@ void loadCodes() {
 	// Load the correct float for Lakitu's board
 	directWriteBranch(LakituBoardHook, LakituBoard, true);
 
-	// Store the lap time by cycling through the 3 available arrays
+	// Expand the Timer array to 10 per player
+	directWrite32(LapArrayIncrease, 0x38A0000A);
+
+	// Store the lap time by cycling through the 10 available arrays
 	directWriteBranch(TimeStoreHook, TimeStore, true);
 	directWriteBranch(TimeStoreHook2, TimeStore2, false);
 

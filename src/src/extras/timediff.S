@@ -106,16 +106,16 @@ extsb r4, r31
 addi r4, r4, 50
 
 # Module division
-li r12, 3
+li r12, 10
 divw r12, r4, r12
-mulli r12, r12, 3
+mulli r12, r12, 10
 subf r4, r12, r4
 
 # Prevent array underflow
 subi r4, r4, 1
 cmpwi r4, -1
 bne+ multiply
-li r4, 2
+li r4, 9
 
 # Add the result to r5
 multiply:

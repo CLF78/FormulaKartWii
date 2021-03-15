@@ -81,9 +81,9 @@ extsb r3, r3
 addi r3, r3, 50
 
 # Module division
-li r5, 3
+li r5, 10
 divw r5, r3, r5
-mulli r5, r5, 3
+mulli r5, r5, 10
 subf r3, r5, r3
 blr
 
@@ -120,9 +120,9 @@ extsb r4, r4
 addi r4, r4, 50
 
 # Module division
-li r6, 3
+li r6, 10
 divw r6, r4, r6
-mulli r6, r6, 3
+mulli r6, r6, 10
 subf r4, r6, r4
 
 # Add 1 (will be subtracted later)
@@ -137,11 +137,11 @@ b TimeStoreHook2+4
 TimeStore3:
 subi r6, r4, 2
 
-# If the result is -1, loop back to 2
+# If the result is -1, loop back to 9
 cmpwi r6, -1
 bne+ end
 
-li r6, 2
+li r6, 9
 
 end:
 b TimeStoreHook3+4
