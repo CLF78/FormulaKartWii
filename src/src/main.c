@@ -328,9 +328,6 @@ void loadCodes() {
 	// Set startingLap to -51 and maxLap to that +1
 	directWriteArray(StartingLapHook, StartingLap, 8);
 
-	// Prevent playerFlags from being written due to the above patch (this part of memory is wiped every race anyway)
-	directWriteNop(NoPlayerFlags);
-
 	// Fix the starting jingle at the beginning of the race
 	directWriteBranch(JingleFixHook, JingleFix, true);
 
@@ -520,6 +517,13 @@ void loadCodes() {
 	// Fast Falling
 	directWriteBranch(FastFallingHook, FastFalling, false);
 	directWriteBranch(FastFallingHook2, FastFalling2, false);
+
+	//////////////////////////
+	// Game Mode - Sabotage //
+	//////////////////////////
+
+	// Properly reset r28 and store random seed for Sabotage
+	directWriteBranch(SabotageHook, SabotageSetup, false);
 
 	///////////////////////
 	// Game Mode - Teams //

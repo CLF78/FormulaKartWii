@@ -209,7 +209,6 @@ SECTIONS {
 
 	/* Starting Lap Modifier */
 	StartingLapHook = 0x805220F8;
-	NoPlayerFlags = 0x80522108;
 	JingleFixHook = 0x806F9660;
 	LastLap = 0x80522C34;
 	LastLapLakitu = 0x80712074;
@@ -399,4 +398,9 @@ SECTIONS {
 	/* Fast Falling */
 	FastFallingHook = 0x805847E4;
 	FastFallingHook2 = 0x805853E8;
+
+	/* Game Mode - Sabotage */
+	SabotageHook = 0x80522108;
+	UtilRandomSeed = 0x800F2F40;
+	UtilRandint = 0x800F2F58;
 }
