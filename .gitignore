@@ -2,4 +2,5 @@ build/ISO/wit
 src/bin
 src/build
 src/doc
+src/asm_setup.S
 files/Title/*.d

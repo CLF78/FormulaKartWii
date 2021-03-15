@@ -374,7 +374,7 @@ void loadCodes() {
 	//////////////////////////////
 
 	// Itembox Randomizer
-	directWriteBranch(SharedItemHook, UltimateRandom, false);
+	directWriteBranch(SharedItemHook, UltimateRandom, true);
 
 	// Bush/Woodbox/Goomba Randomizer
 	directWriteBranch(SpecialItemHook, SpecialRandom, true);
@@ -468,7 +468,7 @@ void loadCodes() {
 	directWriteBranch(AlwaysWinVoteHook, VotePatch, true);
 
 	// Hook used both by Sabotage and Takedown
-	// directWriteBranch(TimerManagerHook, GameModeMaster, false);
+	directWriteBranch(TimerManagerHook, GameModeMaster, false);
 
 	/////////////////////////////////
 	// Offline Race Count Modifier //
