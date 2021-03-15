@@ -1,6 +1,5 @@
 .include "asm_setup.S"
 
-.extern GameMode
 .global NoFakeShroom, NoFakeShroom2
 
 ###########
@@ -10,12 +9,6 @@
 # Assume replacement to be 0
 NoFakeShroom:
 li r3, 0
-
-# Don't do anything on Item Rain
-lis r5, GameMode@ha
-lbz r5, GameMode@l(r5)
-cmpwi r5, 1
-beqlr
 
 # Original instruction
 lwz r0, 0x20(r31)

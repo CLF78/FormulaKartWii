@@ -1,13 +1,17 @@
 .include "asm_setup.S"
 
-.extern SharedItemHook, Raceinfo, ItemHolder, GameMode
+.extern SharedItemHook, Raceinfo, ItemHolder
 .global UltimateRandom
 
 # Notes: r25 is position, r3 is a pointer to ItemSlotData, r4 is item to be stored
 # Other free registers: r5, r6, r7, r8
 
-# Get a random number using the timebase as a seed (modulo division)
+# Backup LR
 UltimateRandom:
+mflr r12
+
+# Get a random number using the timebase as a seed (modulo division)
+Randomizer:
 mftbl r4
 li r5, 19
 divw r5, r4, r5
@@ -19,18 +23,7 @@ srawi r5, r4, 31
 xor r4, r5, r4
 subf r4, r5, r4
 
-# Do less checks for item rain
-lis r5, GameMode@ha
-lbz r5, GameMode@l(r5)
-cmpwi r5, 1
-bne+ normalItemChecks
-
-cmpwi r4, 0xD
-beq powposcheck
-b checkNewbie
-
 # Specific item checks
-normalItemChecks:
 cmpwi r4, 7
 beq blue
 
@@ -46,10 +39,9 @@ bne+ checkNewbie
 
 lwz r5, 0x40(r3)
 cmpwi r5, 0
-bne+ UltimateRandom
+bne+ Randomizer
 
 # If the player is in 1st, give them a Mushroom instead
-powposcheck:
 cmpwi r25, 1
 bne+ end
 li r4, 4
@@ -62,7 +54,7 @@ b end
 blue:
 lwz r5, 0x38(r3)
 cmpwi r5, 0
-bne+ UltimateRandom
+bne+ Randomizer
 b end
 
 #####################
@@ -72,7 +64,7 @@ b end
 shock:
 lwz r5, 0x34(r3)
 cmpwi r5, 0
-bne+ UltimateRandom
+bne+ Randomizer
 b end
 
 ###############
@@ -154,7 +146,8 @@ addi r4, r4, 7
 newbie1:
 addi r4, r4, 5
 
-# Move item to r3
+# Move item to r3, restore LR and return
 end:
 mr r3, r4
-b SharedItemHook+4
+mtlr r12
+blr

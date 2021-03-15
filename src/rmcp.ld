@@ -88,8 +88,6 @@ SECTIONS {
 	ItemLandMega = 0x808B54D0;
 	ItemLandGolden = 0x808B5500;
 	ItemLandBill = 0x808B550C;
-	ItemLandShock = 0x808B54B8;
-	ItemLandPOW = 0x808B54F4;
 
 	/* Blue Shell Speed */
 	BlueShellSpeed = 0x808A5BC4;
@@ -110,7 +108,7 @@ SECTIONS {
 	DCFix = 0x8053F6C4;
 
 	/* Disable Item Poof */
-	NoItemPoofHook = 0x8079FE80;
+	NoItemPoof = 0x807965C0;
 
 	/* Replace Blooper with Triple FIBs */
 	BlooperKiller = 0x807A92B0;
@@ -268,6 +266,7 @@ SECTIONS {
 	FlagResetHook5 = 0x800CCDA8;
 	BattleFixHook = 0x80860A8C;
 	BattleFixHook2 = 0x8084FEF0;
+	TimerManagerHook = 0x80535C7C;
 
 	/* Offline Race Count Modifier */
 	RaceCountFix1 = 0x808534BB;
@@ -400,21 +399,4 @@ SECTIONS {
 	/* Fast Falling */
 	FastFallingHook = 0x8059678C;
 	FastFallingHook2 = 0x80597390;
-
-	/* Item Rain */
-	ItemRainMainHook = 0x80535C7C;
-	KeepTheRain = 0x8079A17C;
-	ItemRainExplosionsHook = 0x80786F80;
-	FreeExpiredSendEntriesPatchHook = 0x8065BB40;
-	AddEntryPatchHook = 0x8065B870;
-	ItemRainCollisionThingyHook = 0x807A1C64;
-	ImportRecvEntriesPatchHook = 0x8065BDF8;
-	DisableEVENTThingy2 = 0x80797018;
-	DisableEVENTThingy = 0x807A6C74;
-	SendNextRACEPacketPatch = 0x80657EAB;
-	PacketCreatorPatch = 0x8065322A;
-	ItemRainTrackLoadPatchHook = 0x80540864;
-	memcmp = 0x8000F314;
-	ItemRainCollisionThingyHook2 = 0x807A0FF4;
-	ItemRainCollisionThingyHook3 = 0x807A1008;
 }

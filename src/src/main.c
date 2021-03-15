@@ -96,8 +96,6 @@ void loadCodes() {
 	directWrite32(ItemLandMega, tempVal32);
 	directWrite32(ItemLandGolden, tempVal32+8);
 	directWrite32(ItemLandBill, tempVal32+16);
-	directWrite32(ItemLandShock, tempVal32+24);
-	directWrite32(ItemLandPOW, tempVal32+32);
 
 	/////////////////////////////
 	// Banana Spinout Modifier //
@@ -155,7 +153,7 @@ void loadCodes() {
 	///////////////////////
 	// Disable Item Poof //
 	///////////////////////
-	directWriteBranch(NoItemPoofHook, NoItemPoof, true);
+	directWriteNop(NoItemPoof);
 
 	////////////////////////////////////
 	// Don't Hide Position After Race //
@@ -469,6 +467,9 @@ void loadCodes() {
 	// Always Win Track Vote option
 	directWriteBranch(AlwaysWinVoteHook, VotePatch, true);
 
+	// Hook used both by Sabotage and Takedown
+	// directWriteBranch(TimerManagerHook, GameModeMaster, false);
+
 	/////////////////////////////////
 	// Offline Race Count Modifier //
 	/////////////////////////////////
@@ -519,36 +520,6 @@ void loadCodes() {
 	// Fast Falling
 	directWriteBranch(FastFallingHook, FastFalling, false);
 	directWriteBranch(FastFallingHook2, FastFalling2, false);
-
-	///////////////////////////
-	// Game Mode - Item Rain //
-	///////////////////////////
-
-	// Main code
-	directWriteBranch(ItemRainMainHook, ItemRainMain, false);
-
-	// Prevent the rain from stopping
-	directWriteNop(KeepTheRain);
-
-	// Prevent null pointer in explosions
-	directWriteBranch(ItemRainExplosionsHook, ItemRainExplosions, false);
-	
-	// Packet stuff
-	directWriteBranch(FreeExpiredSendEntriesPatchHook, FreeExpiredSendEntriesPatch, true);
-	directWriteBranch(AddEntryPatchHook, AddEntryPatch, true);
-	directWriteBranch(ImportRecvEntriesPatchHook, ImportRecvEntriesPatch, false);
-	directWrite8(SendNextRACEPacketPatch, 7);
-	directWrite16(PacketCreatorPatch, 0x300);
-	directWriteNop(DisableEVENTThingy);
-	directWriteNop(DisableEVENTThingy2);
-
-	// Collision stuff
-	directWriteBranch(ItemRainCollisionThingyHook, ItemRainCollisionThingy, true);
-	directWriteBranch(ItemRainCollisionThingyHook2, ItemRainCollisionThingy2, true);
-	directWriteBranch(ItemRainCollisionThingyHook3, ItemRainCollisionThingy3, true);
-
-	// Force _d variant when loading a track
-	directWriteBranch(ItemRainTrackLoadPatchHook, ItemRainTrackLoadPatch, true);
 
 	///////////////////////
 	// Game Mode - Teams //
