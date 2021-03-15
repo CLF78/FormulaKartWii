@@ -34,16 +34,16 @@ b end
 
 # Load Racedata and Raceinfo
 continue:
-lis r6, Racedata@ha
-lwz r9, Racedata@l(r6)
-lwz r6, Raceinfo@l(r6)
+lis r12, Racedata@ha
+lwz r9, Racedata@l(r12)
+lwz r12, Raceinfo@l(r12)
 
 # Load TimeDiff type
 lis r11, TimeDiff@ha
 lbz r11, TimeDiff@l(r11)
 
 # Load PlayerIDInEachPosition and my PlayerID
-lwz r6, 0x18(r6)
+lwz r6, 0x18(r12)
 lbz r7, 0(r6)
 lbz r8, 0xB84(r9)
 
@@ -56,11 +56,9 @@ cmpwi r11, 2
 beq diffWithFirst
 
 # TimeDiff == 1 (diff with person in front, UGLY)
-lis r11, Raceinfo@ha
-lwz r11, Raceinfo@l(r11)
-lwz r11, 0xC(r11)
-lwzx r11, r11, r8
-lbz r8, 0x20(r11)
+lwz r12, 0xC(r12)
+lwzx r12, r12, r8
+lbz r8, 0x20(r12)
 b end
 
 # TimeDiff == 2 (diff with 1st Place)
