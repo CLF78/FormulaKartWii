@@ -405,4 +405,6 @@ SECTIONS {
 	SabotageHook = 0x8052F568;
 	UtilRandomSeed = 0x800F2E28;
 	UtilRandint = 0x800F2E40;
+	KartParam = 0x809BD130;
+	DriverParam = 0x809BD134;
 }
