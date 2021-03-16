@@ -43,15 +43,6 @@ mtlr r12
 blr
 
 #############################
-# Check Bit Helper Function #
-#############################
-
-checkBit:
-srw r3, r3, r4
-rlwinm. r3, r3, 0, 31, 31
-blr
-
-#############################
 # Clear Bit Helper Function #
 #############################
 
@@ -422,18 +413,10 @@ li r4, 4
 bl clearBit
 stw r3, 0x14(r27)
 
-# Check if bit 28 in bitfield0 is enabled
-lwz r3, 0x4(r27)
-li r4, 28
-bl checkBit
-beq finish
-
-# If so clear bit 28 and set bit 1 instead
+# Clear bit 28 from bitfield0
 lwz r3, 0x4(r27)
 li r4, 28
 bl clearBit
-li r4, 1
-bl setBit
 stw r3, 0x4(r27)
 b finish
 
@@ -452,18 +435,12 @@ stw r3, 0x14(r27)
 li r3, 0
 sth r3, 0xFC(r28)
 
-# Check if bit 1 in bitfield0 is enabled
+# Clear bit 3 and 19 from bitfield0
 lwz r3, 0x4(r27)
-li r4, 1
-bl checkBit
-beq finish
-
-# If so clear bit 1 and set bit 28 instead
-lwz r3, 0x4(r27)
-li r4, 1
+li r4, 3
 bl clearBit
-li r4, 28
-bl setBit
+li r4, 19
+bl clearBit
 stw r3, 0x4(r27)
 
 # Pop stack and return
