@@ -406,4 +406,7 @@ SECTIONS {
 	UtilRandint = 0x800F2EE0;
 	KartParam = 0x809C1918;
 	DriverParam = 0x809C191C;
+
+	/* Impervious TC */
+	ImperviousTCHook = 0x807AFADF;
 }
