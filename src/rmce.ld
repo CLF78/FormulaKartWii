@@ -409,5 +409,6 @@ SECTIONS {
 	DriverParam = 0x809BD134;
 
 	/* Impervious TC */
-	ImperviousTCHook = 0x807D7533;
+	ImperviousTCHook = 0x807D74F0;
+	ImperviousTCHook2 = 0x807D74FC;
 }

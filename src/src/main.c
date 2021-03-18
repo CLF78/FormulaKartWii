@@ -206,7 +206,8 @@ void loadCodes() {
 	///////////////////
 	// Impervious TC //
 	///////////////////
-	directWrite8(ImperviousTCHook, 0);
+	directWriteBranch(ImperviousTCHook, ImperviousTCFunc, true);
+	directWrite32(ImperviousTCHook2, 0x48000038);
 
 	////////////////////////
 	// Inside Drift Bikes //
