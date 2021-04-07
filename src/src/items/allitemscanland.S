@@ -13,7 +13,7 @@ li r7, 0xB
 b begin
 
 # Golden
-li r7, 0xA
+li r7, 0x4
 b begin
 
 # Bullet Bill
@@ -34,8 +34,11 @@ add r3, r3, r4
 
 # Get current item amount and check that the item is a golden
 lwz r4, 0x90(r3)
-cmpwi r7, 0xA
+cmpwi r7, 0x4
 bne+ addItem
+
+# Add 1 more manually
+addi r4, r4, 1
 
 # Get current item
 lwz r5, 0x8C(r3)

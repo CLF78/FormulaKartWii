@@ -148,6 +148,11 @@ SECTIONS {
 	/* Instant Item Boxes */
 	InstantItemBoxes = 0x80828EDC;
 
+	/* Item Textures */
+	ItemTexturesHook = 0x80860AF0;
+	OriginalTextures = 0x808AF7C0;
+	DoubleShroom = 0x808AF9A7;
+
 	/* Lap Counter */
 	SetLapCount = 0x807EF76C;
 	ColorFixHook = 0x807EF7E8;

@@ -219,6 +219,11 @@ void loadCodes() {
 	////////////////////////
 	directWriteNop(InstantItemBoxes);
 
+	///////////////////
+	// Item Textures //
+	///////////////////
+	directWriteBranch(ItemTexturesHook, ItemTextures, false);
+
 	/////////////////
 	// Lap Counter //
 	/////////////////
