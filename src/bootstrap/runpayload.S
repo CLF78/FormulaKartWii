@@ -9,4 +9,3 @@ lis r3, StartFunc@ha
 lwz r3, StartFunc@l(r3)
 mtctr r3
 bctr
-blr

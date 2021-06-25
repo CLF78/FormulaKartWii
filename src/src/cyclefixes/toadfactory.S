@@ -11,14 +11,11 @@ subi r27, r30, 60
 cmpw r0, r27
 bnelr+
 
-# Copy to r14
-mr r14, r0
-
 # Calculate the difference between the first timer and the second timer
-sub r29, r14, r5
+sub r29, r0, r5
 
 # Add the result once to the first timer
-add r14, r14, r29
+add r14, r0, r29
 stw r14, 0xB8(r3)
 
 # Add it twice to the second timer

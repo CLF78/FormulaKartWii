@@ -47,6 +47,14 @@ SECTIONS {
 	srand = 0x80011C90;
 	rand = 0x80011C70;
 
+	/* 30 FPS */
+	ThirtyFPSHook1 = 0x80009A3C;
+	ThirtyFPSHook2 = 0x800092AB;
+	ThirtyFPSHook3 = 0x800090AF;
+	ThirtyFPSHook4 = 0x8051AF94;
+	ThirtyFPSHook5 = 0x8051B33C;
+	ThirtyFPSHook6 = 0x8051B32B;
+
 	/* Exception Handler */
 	ShowExceptions = 0x802A7404;
 	ExcDispInfo = 0x802A7410;
@@ -109,6 +117,10 @@ SECTIONS {
 
 	/* Disable Item Poof */
 	NoItemPoof = 0x807965C0;
+	NoItemPoof2Hook = 0x807A1A54;
+	NoItemPoof3Hook = 0x807A1A64;
+	NoItemPoofFunc = 0x800213E4;
+	NoItemPoofFunc2 = 0x80021450;
 
 	/* Replace Blooper with Triple FIBs */
 	BlooperKiller = 0x807A92B0;

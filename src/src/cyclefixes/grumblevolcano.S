@@ -30,25 +30,20 @@ blr
 # Grumble Volcano Rocks #
 #########################
 
-# Modified original instruction
+# Load rock type
 RockFix2:
+lha r12, 0x2A(r5)
+
+# Modified original instruction
 mulli r5, r4, 0x3C0
 
-# Load X coordinate
-lwz r12, 0x0114(r30)
+# Sink if type is 1 or 13
+cmpwi r12, 1
+beq setZero
 
-# Check if it's the Ultra Shortcut rock
-lis r4, 0xC6BE
-ori r4, r4, 0x6EA1
-cmpw r4, r12
-beq setzero
-
-# Check if it's the Rock Hop rock
-lis r4, 0x4430
-ori r4, r4, 0x22DC
-cmpw r4, r12
+cmpwi r12, 13
 bnelr+
 
-setzero:
+setZero:
 li r5, 0
 blr

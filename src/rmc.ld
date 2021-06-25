@@ -1,6 +1,7 @@
 SECTIONS {
 	/* Base Functions */
 	gameRegion = 0x80000003;
+	OSLaunchCode = 0x8000318C;
 	_directWriteArray = 0x80005F34;
 	memset = 0x80006038;
 
@@ -13,9 +14,6 @@ SECTIONS {
 	VehicleRestrict = 0x800001B5;
 	TimerInstance = 0x800001C0;
 	EnableRampUpStuff = 0x800001CC;
-
-	/* Exception Recovery */
-	DSIException = 0x80000300;
 
 	/* Change Character Between Races */
 	ScenePtr = 0x80000EA0;
@@ -33,5 +31,5 @@ SECTIONS {
 	BtGlitch = 0x80004004;
 	TimeDiff = 0x80004005;
 	Speedometer = 0x80004006;
-	Framerate = 0x8000400F;
+	ThirtyFPS = 0x8000400F;
 }

@@ -18,13 +18,6 @@ void loadCodes() {
 	directWrite32(ShowExceptions, 0);
 	directWrite16(ExcDispInfo, (u16)(EXCEPTION_INFO_DEFAULT | EXCEPTION_INFO_GPR));
 
-	//////////////////////////
-	// ESRB Skip for NTSC-U //
-	//////////////////////////
-	#ifdef REGION_E
-	directWrite32(ESRBSkip, 0x4800001C);
-	#endif
-
 	/////////////
 	// Wiimmfi //
 	/////////////
@@ -154,6 +147,8 @@ void loadCodes() {
 	// Disable Item Poof //
 	///////////////////////
 	directWriteNop(NoItemPoof);
+	directWriteBranch(NoItemPoof2Hook, NoItemPoof2, false);
+	directWriteBranch(NoItemPoof3Hook, NoItemPoof3, true);
 
 	////////////////////////////////////
 	// Don't Hide Position After Race //
@@ -686,12 +681,20 @@ void loadCodes() {
 		directWriteBranch(TimeDiffPatchHook2, TimeDiffPatch2, false);
 	}
 
+	// Speedometer
 	if (Speedometer == 1) {
 		directWriteBranch(SpeedoScreenElement, SpeedoScreenElementASM, true);
 		directWriteBranch(SpeedoUpdate, SpeedoUpdateASM, false);
 		directWriteNop(SpeedoTextParseNop);
 		directWriteBranch(SpeedoTextParse, SpeedoTextParseASM, true);
 		directWriteBranch(SpeedoNoPauseHook, SpeedoNoPause, true);
+	}
+
+	// 30 FPS (by CLF78)
+	if (ThirtyFPS == 1) {
+		directWrite32(ThirtyFPSHook4, 0x3BE00002);
+		directWriteNop(ThirtyFPSHook5);
+		directWrite8(ThirtyFPSHook6, 2);
 	}
 
 	sync();

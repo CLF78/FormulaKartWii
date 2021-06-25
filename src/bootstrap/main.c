@@ -18,7 +18,7 @@ void readPayload() {
 	if (!ret) {
 		u32 fataltextcolor = 0xFFFFFFFF;
 		u32 fatalbackcolor = 0;
-		OSFatal(&fataltextcolor, &fatalbackcolor, "Could not find Formula Kart Wii payload. Please check that your installation is correct.");
+		OSFatal(&fataltextcolor, &fatalbackcolor, "Could not find Formula Kart Wii payload.\nPlease check that your installation is correct.");
 	}
 
 	// Read the file (destination must be aligned by 32!)
@@ -34,9 +34,7 @@ void readPayload() {
 // Initial function. This hooks at the end of init_registers
 void start() {
 
-	///////////////
-	// Anticheat //
-	///////////////
+	// "Anticheat"
 
 	#ifndef DEBUG
 	// Overwrite all commonly used hooks
@@ -50,19 +48,22 @@ void start() {
 	// Wipe area at 0x80001800-0x80003000
 	memset((void*)0x80001800, 0, 0x1800);
 
-	// Hook for Dolphin's codehandler
+	// Disable Dolphin's codehandler
 	_directWriteBlr((void*)0x800018A8);
 	#endif
 
-	////////////////////////////
-	// Auto Strap Screen Skip //
-	////////////////////////////
-	directWriteBlr(AutoStrapScreenSkip);
+	// Auto Strap Screen Skip (by TheLordScruffy)
+	directWrite16(OSLaunchCode, 0x101);
 
-	///////////////
-	// Main Hook //
-	///////////////
+	// Main Hook
 	directWriteBranchEx(RelHook, readPayload, false);
+
+	// 30 FPS (by CLF78)
+	if (ThirtyFPS == 1) {
+		directWriteBranch(ThirtyFPSHook1, ThirtyFPS1, true);
+		directWrite8(ThirtyFPSHook2, 2);
+		directWrite8(ThirtyFPSHook3, 2);
+	}
 
 	// Flush cache
 	sync();

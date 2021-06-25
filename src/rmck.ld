@@ -47,6 +47,14 @@ SECTIONS {
 	srand = 0x80011CF8;
 	rand = 0x80011CD8;
 
+	/* 30 FPS */
+	ThirtyFPSHook1 = 0x80009B44;
+	ThirtyFPSHook2 = 0x800093FB;
+	ThirtyFPSHook3 = 0x800091FF;
+	ThirtyFPSHook4 = 0x80508FB4;
+	ThirtyFPSHook5 = 0x8050935C;
+	ThirtyFPSHook6 = 0x8050934B;
+
 	/* Exception Handler */
 	ShowExceptions = 0x80295404;
 	ExcDispInfo = 0x80295410;
