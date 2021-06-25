@@ -43,7 +43,7 @@ bnelr+
 
 # Calculate the difference between the timers
 lwz r12, 0xB8(r30)
-sub r12, r11, r12
+sub r12, r3, r12
 
 # Add it once to the first timer
 add r11, r3, r12

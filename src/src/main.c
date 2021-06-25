@@ -333,6 +333,7 @@ void loadCodes() {
 
 	// Set startingLap to -51 and maxLap to that +1
 	directWriteArray(StartingLapHook, StartingLap, 8);
+	directWriteBranch(LapCountFixHook, LapCountFix, true);
 
 	// Fix the starting jingle at the beginning of the race
 	directWriteBranch(JingleFixHook, JingleFix, true);
@@ -527,13 +528,6 @@ void loadCodes() {
 	directWriteBranch(FastFallingHook, FastFalling, false);
 	directWriteBranch(FastFallingHook2, FastFalling2, false);
 
-	//////////////////////////
-	// Game Mode - Sabotage //
-	//////////////////////////
-
-	// Properly reset r28 and store random seed for Sabotage
-	directWriteBranch(SabotageHook, SabotageSetup, false);
-
 	///////////////////////
 	// Game Mode - Teams //
 	///////////////////////
@@ -584,9 +578,6 @@ void loadCodes() {
 	//////////////////////////
 	// Antifreeze/anticheat //
 	//////////////////////////
-
-	// Disable DSI exceptions
-	directWriteArray(DSIException, ExceptionRecovery, 24);
 
 	// Prevent buffer overflows in EVENT packets
 	directWriteBranch(EVENTOverflowHook, EVENTOverflow, true);
@@ -660,10 +651,8 @@ void loadCodes() {
 		directWrite32(TagDistance, 0x47927C00);
 	}
 
-	// Fix the item alert if either Show Time Difference or Speedometer are enabled
-	if (TimeDiff == 1 || TimeDiff == 2 || Speedometer == 1) {
-		directWriteBranch(ItemAlertFixHook, ItemAlertFix, false);
-	}
+	// Initialize flag for the two options below
+	tempVal8 = 0x8;
 
 	// Show Time Difference
 	if (TimeDiff == 1 || TimeDiff == 2) {
@@ -679,16 +668,26 @@ void loadCodes() {
 		// Actual patch
 		directWriteBranch(TimeDiffPatchHook, TimeDiffPatch, true);
 		directWriteBranch(TimeDiffPatchHook2, TimeDiffPatch2, false);
+
+		// Update flag
+		tempVal8 |= 1;
 	}
 
 	// Speedometer
 	if (Speedometer == 1) {
-		directWriteBranch(SpeedoScreenElement, SpeedoScreenElementASM, true);
-		directWriteBranch(SpeedoUpdate, SpeedoUpdateASM, false);
 		directWriteNop(SpeedoTextParseNop);
 		directWriteBranch(SpeedoTextParse, SpeedoTextParseASM, true);
 		directWriteBranch(SpeedoNoPauseHook, SpeedoNoPause, true);
+
+		// Update flag
+		tempVal8 |= 0x10;
 	}
+
+	// Write flag
+	directWrite8(SpeedoFlag1, tempVal8);
+	directWrite8(SpeedoFlag2, tempVal8);
+	directWrite8(SpeedoFlag3, tempVal8);
+	directWrite8(SpeedoFlag4, tempVal8);
 
 	// 30 FPS (by CLF78)
 	if (ThirtyFPS == 1) {

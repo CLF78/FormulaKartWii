@@ -1,101 +1,47 @@
 .include "asm_setup.S"
 
-.extern Racedata, Menudata, swprintf, SystemManager, SetTextSrc, SpeedoUpdate, SpeedoString, SpeedoParseSkip
-.global SpeedoScreenElementASM, SpeedoUpdateASM, SpeedoTextParseASM, SpeedoNoPause
-
-######################################
-# Force Speedometer ScreenElement On #
-######################################
-
-# Original instruction
-SpeedoScreenElementASM:
-rlwinm. r0, r16, 0, 19, 19
-
-# Skip if element is already scheduled for construction
-bnelr
-
-# Load current screen
-lwz r3, 0x4(r15)
-
-# Check for Offline VS
-cmpwi r3, 0xE
-beq invert
-
-# Check for Online WW
-cmpwi r3, 0x40
-beq invert
-
-# Check for Online Froom
-cmpwi r3, 0x42
-bnelr
-
-# Force CR0's EQ bit on
-invert:
-crnot 4*cr0 + eq, 4*cr0 + eq
-blr
+.extern Racedata, Menudata, SystemManager, Raceinfo, PlayerHolder, ScreenHUD
+.extern swprintf, SetTextSrc, SpeedoParseSkip
+.global SpeedoUpdateASM, SpeedoTextParseASM, SpeedoNoPause
 
 #########################
 # Update Function Patch #
 #########################
 
+# Get HUD
 SpeedoUpdateASM:
-bl trick
+lis r28, ScreenHUD@ha
+lwz r28, ScreenHUD@l(r28)
+
+# Get text element
+lwz r28, 0x5C(r28)
+cmpwi r28, 0
+beqlr
+
+# Save LR
+mflr r0
 
 # BMG escape sequence for yellow text
+bl trick
 .short 0x001A, 0x0800, 0x0001, 0x0030
 
 # The actual text
 .string16 "%.2f km/h"
 .align 2
 
-# Get PlayerSub10 -> playerPointers -> playerParams -> playerID
-trick:
-lwz r6, 0(r29)
-lwz r3, 0(r6)
-lbz r3, 0x10(r3)
-
-# Get HudPlayerIDs[0] from Racedata
-lis r30, Racedata@ha
-lwz r4, Racedata@l(r30)
-lbz r4, 0xB84(r4)
-
-# Check if the values match
-cmpw r3, r4
-bne+ end
-
-# Check current screen
-lwz r3, Menudata@l(r30)
-lwz r3, 0(r3)
-
-# Offline VS
-lwz r28, 0x40(r3)
-cmpwi r28, 0
-bne found
-
-# Online WW
-lwz r28, 0x108(r3)
-cmpwi r28, 0
-bne found
-
-# Online Friend Room
-lwz r28, 0x110(r3)
-cmpwi r28, 0
-beq end
-
-##################
-# Setup swprintf #
-##################
-
 # Push stack:
-# 0x8 needed by swprintf
-# 0x30 for the formatted string
-found:
-addi r1, r1, -0x40
+# + 0x8 needed by swprintf
+# + 0x30 for the formatted string
+# ---------------------------------
+# = 0x40 after alignment
+trick:
+stwu r1, -0x40(r1)
+stw r0, 0x44(r1)
 
-# Set CR1+EQ to store floats in the stack
+# Set cr1+eq to store floats in the stack
 crset 4 * cr1 + eq
 
-# Destination
+# Buffer
 addi r3, r1, 0x8
 
 # String length
@@ -104,8 +50,21 @@ li r4, 0x1A
 # String pointer
 mflr r5
 
+# Get local player id in r29
+lis r29, Racedata@ha
+lwz r29, Racedata@l(r29)
+lbz r29, 0xB84(r29)
+
+# Get PlayerSub10 in r31
+lis r31, PlayerHolder@ha
+lwz r31, PlayerHolder@l(r31)
+lwz r31, 0x20(r31)
+slwi r12, r29, 2
+lwzx r31, r12, r31
+lwz r31, 0x44(r31)
+
 # Get vehicle speed
-lfs f1, 0x20(r29)
+lfs f1, 0x20(r31)
 bl swprintf
 
 ############################
@@ -144,98 +103,104 @@ notDigit:
 sth r3, 0(r4)
 b loop
 
+#############################
+# Position/Size Adjustments #
+#############################
+
+# Check if adjustments are required
+out:
+lbz r3, 0x80(r28)
+cmpwi r3, 0
+
+# Preload function arguments in the relevant registers
+lwz r3, 0x114(r28)
+li r4, 0
+addi r5, r1, 0x8
+li r6, 2
+lwz r7, 0(r3)
+
+# Do the branch
+beq+ skipAdjustments
+
+# Make element visible - the regular way
+stb r4, 0x80(r28)
+
 ##################
 # Set X Position #
 ##################
 
-# Get screen_hud -> ghostSaveInfoText
-out:
-lwz r3, 0x5C(r28)
-
-# 30.0 for 4:3, 120.0 for 16:9
-lis r4, 0x42F0
+# 16:9 Position = 120.0f
+lis r11, 0x42F0
 
 # Check if widescreen
-lis r6, SystemManager@ha
-lwz r6, SystemManager@l(r6)
-lwz r6, 0x58(r6)
-cmpwi r6, 1
+lis r12, SystemManager@ha
+lwz r12, SystemManager@l(r12)
+lwz r12, 0x58(r12)
+cmpwi r12, 1
 beq+ widescreen
 
-# Set it for 4:3
-lis r4, 0x41F0
+# 4:3 Position = -30.0f
+lis r11, 0x41F0
 
-# Store it
+# Store position
 widescreen:
-stw r4, 0x4C(r3)
+stw r11, 0x4C(r28)
 
 ##################
 # Set Y Position #
 ##################
 
-lis r4, 0xC37A
-stw r4, 0x50(r3)
+lis r11, 0xC37A
+stw r11, 0x50(r28)
+
+######################
+# Set Text Alignment #
+######################
+
+# Alignment = Right
+stb r6, 0x100(r7)
 
 ##################
 # Set Visibility #
 ##################
 
 # Default value
-li r30, 0
+skipAdjustments:
+li r11, 0
 
-# Disable the speedo when respawning
-lwz r4, 0(r29)
-lwz r4, 0x30(r4)
-lhz r4, 0x48(r4)
-cmpwi r4, 0
+# Disable the text when respawning
+lwz r12, 0(r31)
+lwz r12, 0x30(r12)
+lhz r12, 0x48(r12)
+cmpwi r12, 0
 bne hide
 
-# Disable the speedo before the countdown and after the race
-lis r4, Raceinfo@ha
-lwz r4, Raceinfo@l(r4)
-lwz r4, 0x28(r4)
-subi r4, r4, 1
-cmplwi r4, 1
-ble+ noHide
+# Disable the text if the race has ended
+lis r12, Raceinfo@ha
+lwz r12, Raceinfo@l(r12)
+lwz r12, 0x28(r12)
+cmpwi r12, 2
+beq+ noHide
 
 hide:
-li r30, 1
+li r11, 1
 
 # Store result
 noHide:
-stb r30, 0x85(r3)
-
-# Store normal visibility bool regardless of r30
-li r4, 0
-stb r4, 0x80(r3)
-
-######################
-# Set Text Alignment #
-######################
-
-# Get material
-lwz r3, 0x114(r3)
-lwz r7, 0(r3)
-
-# Align the text to the right
-li r6, 2
-stb r6, 0x100(r7)
+stb r11, 0x85(r3)
 
 ###################
 # SetTextSrc Call #
 ###################
 
-# Set remaining arguments and call the function
-addi r5, r1, 0x8
+# Call function
 bl SetTextSrc
 
-# Pop stack
+# Pop stack and return
+lwz r0, 0x44(r1)
+mtlr r0
 addi r1, r1, 0x40
-
-# Original instruction
-end:
-lwz r31, 0x7C(r1)
-b SpeedoUpdate+4
+blr
 
 ###############
 # Text Parser #
@@ -256,7 +221,6 @@ b SpeedoParseSkip
 
 # Original instructions (the lwz was nopped, so the result of the cmpwi was also wrong)
 original:
-li r20, -1
 lwz r0, 0(r4)
 cmpwi r0, 0
 blr
@@ -265,25 +229,22 @@ blr
 # Disable Speedometer on Pause #
 ################################
 
-# Load Menudata -> curScene
+# Get if game is paused
 SpeedoNoPause:
 lis r12, Menudata@ha
 lwz r12, Menudata@l(r12)
 lwz r12, 0(r12)
+lbz r12, 0x38B(r12)
 
-# Check if game is paused
-lbz r11, 0x38B(r12)
-cmpwi r11, 1
-bne+ doNothing
+# Load screen element
+lis r11, ScreenHUD@ha
+lwz r11, ScreenHUD@l(r11)
+lwz r11, 0x5C(r11)
 
-# Check for Offline VS screen
-lwz r12, 0x40(r12)
-cmpwi r12, 0
+# Skip if ptr is null, otherwise store value
+cmpwi r11, 0
 beq doNothing
-
-# Load speedometer and hide it!
-lwz r12, 0x5C(r12)
-stb r11, 0x85(r12)
+stb r12, 0x85(r11)
 
 # Original instruction
 doNothing:

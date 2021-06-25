@@ -4,10 +4,13 @@ SECTIONS {
 	Racedata = 0x809B8F68;
 	Raceinfo = 0x809B8F70;
 	PlayerHolder = 0x809BD110;
+	KartParam = 0x809BD130;
+	DriverParam = 0x809BD134;
 	Menudata = 0x809BD508;
 	RKNetController = 0x809BD918;
 	ItemHolder = 0x809BEE20;
 	ItemStructs = 0x809BEEB0;
+	ScreenHUD = 0x809BFDC0;
 
 	PlayerGetControllerHolder = 0x80589BD0;
 	getPlayerById = 0x805898DC;
@@ -23,6 +26,9 @@ SECTIONS {
 	playerCount = 0x809AF0B0;
 	isOnlineRace = 0x809AF0B1;
 
+	UtilRandomSeed = 0x800F2E28;
+	UtilRandint = 0x800F2E40;
+
 	/* Codehandler Hooks */
 	VIHook = 0x801BAA80;
 	KPADHook = 0x80197A08;
@@ -30,10 +36,6 @@ SECTIONS {
 	GXFlushHook = 0x8016E60C;
 	OSSleepHook = 0x801AAAF4;
 	AXNextFrameHook = 0x80126500;
-
-	/* Auto Strap Screen Skip */
-	AutoStrapScreenSkip = 0x800077C8;
-	ESRBSkip = 0x80604094;
 
 	/* Payload Hook */
 	RelHook = 0x801A6C90;
@@ -230,6 +232,7 @@ SECTIONS {
 	FinishTimesHook = 0x8052F844;
 	LapSignFixHook = 0x8052FED0;
 	LapArrayIncrease = 0x8052DD88;
+	LapCountFixHook = 0x8052F568;
 
 	/* No Invincibility Frames */
 	NoInvFramesHook = 0x80563414;
@@ -385,12 +388,14 @@ SECTIONS {
 	FramerateHook2 = 0x8029FD69;
 
 	/* Speedometer */
-	SpeedoScreenElement = 0x80836A48;
-	SpeedoUpdate = 0x80575B44;
 	SpeedoTextParseNop = 0x805C1214;
 	SpeedoTextParse = 0x805C1250;
 	SpeedoParseSkip = 0x805C12E8;
 	SpeedoNoPauseHook = 0x807E1CC8;
+	SpeedoFlag1 = 0x8060278E;
+	SpeedoFlag2 = 0x8060281E;
+	SpeedoFlag3 = 0x8060293E;
+	SpeedoFlag4 = 0x80602BDE;
 
 	/* Brake Drifting */
 	BrakeDriftClassicHook = 0x8051B184;
@@ -408,13 +413,6 @@ SECTIONS {
 	/* Fast Falling */
 	FastFallingHook = 0x8058FF68;
 	FastFallingHook2 = 0x80590B6C;
-
-	/* Game Mode - Sabotage */
-	SabotageHook = 0x8052F568;
-	UtilRandomSeed = 0x800F2E28;
-	UtilRandint = 0x800F2E40;
-	KartParam = 0x809BD130;
-	DriverParam = 0x809BD134;
 
 	/* Impervious TC */
 	ImperviousTCHook = 0x807D74F0;

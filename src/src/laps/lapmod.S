@@ -1,7 +1,7 @@
 .include "asm_setup.S"
 
 .extern TimeStoreHook2, TimeStoreHook3, FinishTimesHook, GameMode, Racedata, EnableRampUpStuff
-.global StartingLap, JingleFix, LapSignFix, LakituBoard, TimeStore, TimeStore2, TimeStore3, FinishTimes
+.global StartingLap, JingleFix, LapSignFix, LakituBoard, TimeStore, TimeStore2, TimeStore3, FinishTimes, LapCountFix
 
 #########################
 # Starting Lap Modifier #
@@ -10,6 +10,11 @@
 StartingLap:
 li r28, -51
 addi r29, r28, 1
+
+LapCountFix:
+li r28, 0
+stw r28, 0x38(r3)
+blr
 
 #######################
 # Starting Jingle Fix #
