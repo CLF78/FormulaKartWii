@@ -330,7 +330,6 @@ SECTIONS {
 	NoWWButton9 = 0x8064BCC2;
 
 	/* Antifreeze */
-	EVENTOverflowHook = 0x8065BBD4;
 	MiiC = 0x808B3B00;
 	NoLag = 0x80654B00;
 
@@ -377,12 +376,10 @@ SECTIONS {
 	AlwaysWinVoteHook = 0x80661E20;
 
 	/* Show Time Difference */
-	ItemAlertFixHook = 0x8060245C;
-	GhostFileSkip = 0x807EE580;
-	GhostFileSkip2 = 0x807EE5A4;
+	GhostFileSkip = 0x807EE593;
 	TimeDiffPatchHook = 0x807EE5C0;
 	TimeDiffPatchHook2 = 0x807EE5D8;
-	TimeDiffMPFixHook = 0x80858444;
+	TimeDiffApplyHook = 0x808562B8;
 
 	/* Change Characters Between Races */
 	ChangeCharsHook = 0x8062E058;
@@ -392,19 +389,11 @@ SECTIONS {
 	ChangeCharsHook2 = 0x80622E28;
 	ChangeCharsHook3 = 0x8062E0D0;
 
-	/* Force 30 FPS */
-	FramerateHook = 0x80429454;
-	FramerateHook2 = 0x802A40E9;
-
 	/* Speedometer */
 	SpeedoTextParseNop = 0x805CDD34;
 	SpeedoTextParse = 0x805CDD70;
 	SpeedoParseSkip = 0x805CDE08;
 	SpeedoNoPauseHook = 0x807EB574;
-	SpeedoFlag1 = 0x80633642;
-	SpeedoFlag2 = 0x806336D2;
-	SpeedoFlag3 = 0x806337F2;
-	SpeedoFlag4 = 0x80633A92;
 
 	/* Brake Drifting */
 	BrakeDriftClassicHook = 0x8051F5F8;

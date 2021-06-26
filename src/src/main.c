@@ -579,9 +579,6 @@ void loadCodes() {
 	// Antifreeze/anticheat //
 	//////////////////////////
 
-	// Prevent buffer overflows in EVENT packets
-	directWriteBranch(EVENTOverflowHook, EVENTOverflow, true);
-
 	// Load Mii Outfit B files over Mii Outfit C
 	MiiOutfitCFix();
 
@@ -651,26 +648,15 @@ void loadCodes() {
 		directWrite32(TagDistance, 0x47927C00);
 	}
 
-	// Initialize flag for the two options below
-	tempVal8 = 0x8;
-
 	// Show Time Difference
 	if (TimeDiff == 1 || TimeDiff == 2) {
 
-		// Do not initialize Time Difference in splitscreen mode
-		directWriteBranch(TimeDiffMPFixHook, TimeDiffMPFix, true);
-
 		// Skip ghost file check
-		tempVal32 = 0x38000001;
-		directWrite32(GhostFileSkip, tempVal32);
-		directWrite32(GhostFileSkip2, tempVal32);
+		directWrite8(GhostFileSkip, 1);
 
 		// Actual patch
 		directWriteBranch(TimeDiffPatchHook, TimeDiffPatch, true);
 		directWriteBranch(TimeDiffPatchHook2, TimeDiffPatch2, false);
-
-		// Update flag
-		tempVal8 |= 1;
 	}
 
 	// Speedometer
@@ -678,16 +664,10 @@ void loadCodes() {
 		directWriteNop(SpeedoTextParseNop);
 		directWriteBranch(SpeedoTextParse, SpeedoTextParseASM, true);
 		directWriteBranch(SpeedoNoPauseHook, SpeedoNoPause, true);
-
-		// Update flag
-		tempVal8 |= 0x10;
 	}
 
-	// Write flag
-	directWrite8(SpeedoFlag1, tempVal8);
-	directWrite8(SpeedoFlag2, tempVal8);
-	directWrite8(SpeedoFlag3, tempVal8);
-	directWrite8(SpeedoFlag4, tempVal8);
+	// Applies the two options above
+	directWriteBranch(TimeDiffApplyHook, TimeDiffApply, true);
 
 	// 30 FPS (by CLF78)
 	if (ThirtyFPS == 1) {

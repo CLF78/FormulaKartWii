@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern TimeStoreHook2, TimeStoreHook3, FinishTimesHook, GameMode, Racedata, EnableRampUpStuff
+.extern TimeStoreHook2, TimeStoreHook3, FinishTimesHook, GameMode, Racedata, EnableRampUpStuff, TimerInstance
 .global StartingLap, JingleFix, LapSignFix, LakituBoard, TimeStore, TimeStore2, TimeStore3, FinishTimes, LapCountFix
 
 #########################
@@ -11,9 +11,18 @@ StartingLap:
 li r28, -51
 addi r29, r28, 1
 
+# Restore r28
 LapCountFix:
 li r28, 0
+
+# Original instruction
 stw r28, 0x38(r3)
+
+# Reset TimerInstance
+lis r3, TimerInstance@ha
+stw r28, TimerInstance@l(r3)
+stw r28, TimerInstance@l+4(r3)
+stw r28, TimerInstance@l+8(r3)
 blr
 
 #######################

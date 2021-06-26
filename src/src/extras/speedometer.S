@@ -13,6 +13,10 @@ SpeedoUpdateASM:
 lis r28, ScreenHUD@ha
 lwz r28, ScreenHUD@l(r28)
 
+# Failsafe
+cmpwi r28, 0
+beqlr
+
 # Get text element
 lwz r28, 0x5C(r28)
 cmpwi r28, 0

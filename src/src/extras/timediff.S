@@ -1,31 +1,52 @@
 .include "asm_setup.S"
 
-.extern TimeDiff, TimerInstance, TimeDiffPatchHook2, Racedata, Raceinfo
-.global TimeDiffMPFix, TimeDiffPatch, TimeDiffPatch2
+.extern TimeDiff, Speedometer
+.extern TimerInstance, TimeDiffPatchHook2, Racedata, Raceinfo
+.global TimeDiffPatch, TimeDiffPatch2, TimeDiffApply
 
-###################
-# Multiplayer Fix #
-###################
+########################
+# Multiplayer Failsafe #
+########################
 
-# Load HudPlayerIDs[1]
-TimeDiffMPFix:
-lis r3, Racedata@ha
-lwz r3, Racedata@l(r3)
-lbz r3, 0xB85(r3)
+# Get local player count
+TimeDiffApply:
+lis r4, Racedata@ha
+lwz r4, Racedata@l(r4)
+lbz r4, 0x26(r4)
 
-# If there's at least player two, skip (result must be 1 for single player and 0 for splitscreen)
-srwi. r3, r3, 7
+# If multiplayer, skip
+cmpwi r4, 1
+bgt return
+
+# Load 0x8000 in r31
+lis r31, Speedometer@ha
+
+# If speedometer is enabled, or with 0x1000
+lbz r4, Speedometer@l(r31)
+cmpwi r4, 1
+bne noSpeedo
+ori r3, r3, 0x1000
+
+# If timediff is enabled or with 0x100
+noSpeedo:
+lbz r4, TimeDiff@l(r31)
+subi r4, r4, 1
+cmplwi r4, 1
+bgt return
+ori r3, r3, 0x100
+
+# Original instruction
+return:
+mr r31, r3
 blr
 
 ###########
 # Patch 1 #
 ###########
 
-# r5 = RaceInfoPlayer
-
 # Last lap failsafe
 TimeDiffPatch:
-cmpwi r31, 255
+cmpwi r31, 0
 bne+ continue
 
 # Move r31 to r3 to force the compare result if it's the last lap
@@ -38,10 +59,6 @@ lis r12, Racedata@ha
 lwz r9, Racedata@l(r12)
 lwz r12, Raceinfo@l(r12)
 
-# Load TimeDiff type
-lis r11, TimeDiff@ha
-lbz r11, TimeDiff@l(r11)
-
 # Load PlayerIDInEachPosition and my PlayerID
 lwz r6, 0x18(r12)
 lbz r7, 0(r6)
@@ -52,10 +69,13 @@ cmpw r8, r7
 beq inFirst
 
 # Otherwise check which option is enabled
+lis r11, TimeDiff@ha
+lbz r11, TimeDiff@l(r11)
 cmpwi r11, 2
 beq diffWithFirst
 
-# TimeDiff == 1 (diff with person in front, UGLY)
+# TimeDiff == 1 (diff with person in front)
+slwi r8, r8, 2
 lwz r12, 0xC(r12)
 lwzx r12, r12, r8
 lbz r8, 0x20(r12)
@@ -72,11 +92,11 @@ li r8, 3
 
 # Get second place's maxLap
 lbz r12, 0x1(r6)
-mulli r12, r12, 4
+slwi r12, r12, 2
 lwzx r12, r5, r12
 lbz r31, 0x26(r12)
 
-# If not equal, trigger the difference
+# Original instruction
 end:
 cmplw r3, r31
 blr
@@ -93,13 +113,13 @@ blr
 TimeDiffPatch2:
 subi r8, r8, 2
 lbzx r8, r6, r8
-mulli r8, r8, 4
+slwi r8, r8, 2
 
 # Load their raceinfo
 lwzx r5, r5, r8
 
 # Add the correct offset for the function that fills the laps
-addi r5, r5, 0x74
+lwz r5, 0x3C(r5)
 
 # Convert lap
 extsb r4, r31
