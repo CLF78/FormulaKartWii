@@ -75,9 +75,9 @@
 		<folder disc="/Scene/UI" external="/fkw/Title_X" />
 		<!--Track Patches -->
 		<folder disc="/Race/Course" external="/fkw/TrackPatches" create="true" />
-		<file disc="/Race/Course/boardcross_course_d_Dif.szs" external="/fkw/TrackPatches/boardcross_course_d_Dif.szs" create="true" />
-		<file disc="/Race/Course/shopping_course_d_Dif.szs" external="/fkw/TrackPatches/shopping_course_d_Dif.szs" create="true" />
-		<file disc="/Race/Course/old_falls_ds_d_Dif.szs" external="/fkw/TrackPatches/old_falls_ds_d_Dif.szs" create="true" />
+		<file disc="/Race/Course/boardcross_course_d_Dif.szs" external="/fkw/TrackPatches/boardcross_course_Dif.szs" create="true" />
+		<file disc="/Race/Course/shopping_course_d_Dif.szs" external="/fkw/TrackPatches/shopping_course_Dif.szs" create="true" />
+		<file disc="/Race/Course/old_falls_ds_d_Dif.szs" external="/fkw/TrackPatches/old_falls_ds_Dif.szs" create="true" />
 	</patch>
 	<patch id="mystuffctgp">
 		<folder external="/ctgpr/My Stuff" recursive="false" />

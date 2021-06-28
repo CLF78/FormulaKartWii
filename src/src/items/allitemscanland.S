@@ -32,47 +32,8 @@ lwz r3, 0x14(r3)
 mulli r4, r24, 0x248
 add r3, r3, r4
 
-# Get current item amount and check that the item is a golden
+# Add 1 to current item amount
 lwz r4, 0x90(r3)
-cmpwi r7, 0x4
-bne+ addItem
-
-# Add 1 more manually
-addi r4, r4, 1
-
-# Get current item
-lwz r5, 0x8C(r3)
-
-cmpwi r5, 2
-ble tripleItems
-
-cmpwi r5, 3
-beq tripleFIBs
-
-cmpwi r5, 4
-bne+ quantCheck
-
-# Mushrooms go to Triple Mushrooms
-li r5, 5
-b storeItem
-
-# Bananas/Shells go to the triple counterpart
-tripleItems:
-addi r5, r5, 0x10
-b storeItem
-
-# FIBs go to Triple FIBs
-tripleFIBs:
-li r5, 0xC
-
-storeItem:
-stw r5, 0x8C(r3)
-
-quantCheck:
-cmpwi r4, 3
-bge noAddItem
-
-addItem:
 addi r4, r4, 1
 stw r4, 0x90(r3)
 
@@ -87,9 +48,11 @@ beq return
 mtctr r4
 bctrl
 
-# Pop stack
+# Return damage type -1
 return:
 li r3, -1
+
+# Pop stack
 lwz r0, 0x14(r1)
 mtlr r0
 addi r1, r1, 0x10

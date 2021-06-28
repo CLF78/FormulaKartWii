@@ -153,6 +153,7 @@ SECTIONS {
 	GeoHitTableItem = 0x808D8070;
 	GeoHitTableItemObj = 0x808D8088;
 	GeoHitTableKartHook = 0x8082A478;
+	GeyserCollFix = 0x805733C7;
 
 	/* Green Shell Speed Modifier */
 	GreenShellSpeed = 0x808A5DBC;
@@ -221,11 +222,8 @@ SECTIONS {
 	MegaFunc = 0x807986B4;
 
 	/* Shells Never Break */
-	ShellHitCount = 0x807B560C;
-	ShellHitCount2 = 0x807B574C;
-	ShellHitCount3 = 0x807B5E58;
-	ShellHitCount4 = 0x807B5E6C;
-	ShellHitCount5 = 0x807AEC9C;
+	ShellHitCount = 0x807B5F14;
+	ShellHitCount2 = 0x807AECB0;
 
 	/* Starting Lap Modifier */
 	StartingLapHook = 0x805340A0;
@@ -310,8 +308,10 @@ SECTIONS {
 
 	/* Game Mode - Teams */
 	NoItemGlow = 0x807BD2BC;
-	NoTeamInvincibility = 0x8053056C;
-	TeamTCPass = 0x807B0BDC;
+	NoTeamInvincibility = 0x80572610;
+	NoTeamInvincibility2 = 0x80573298;
+	NoTeamInvincibility3 = 0x8056FD64;
+	NoTeamInvincibility4 = 0x807B0BDC;
 
 	/* Online Stuff */
 	ForceCCHook = 0x80661404;
@@ -328,10 +328,6 @@ SECTIONS {
 	NoWWButton7 = 0x8064BCB6;
 	NoWWButton8 = 0x8064BC4E;
 	NoWWButton9 = 0x8064BCC2;
-
-	/* Antifreeze */
-	MiiC = 0x808B3B00;
-	NoLag = 0x80654B00;
 
 	/* Automatic BRSAR Patch */
 	AutoBRSARHook = 0x800912D4;

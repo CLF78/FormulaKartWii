@@ -1,9 +1,6 @@
 #include "common.h"
 #include "exception.h"
 
-// Forward declaration
-void MiiOutfitCFix();
-
 // This function loads all the codes that FKW uses after StaticR has loaded
 void loadCodes() {
 
@@ -12,17 +9,11 @@ void loadCodes() {
 	u16 tempVal16;
 	u32 tempVal32;
 
-	///////////////////////
-	// Exception Handler //
-	///////////////////////
+	// Exception Handler (by Star)
 	directWrite32(ShowExceptions, 0);
 	directWrite16(ExcDispInfo, (u16)(EXCEPTION_INFO_DEFAULT | EXCEPTION_INFO_GPR));
 
-	/////////////
-	// Wiimmfi //
-	/////////////
-
-	// Code patches
+	// Wiimmfi Code Patches (by Leseratte)
 	directWriteNop(WiimmfiPatch1);
 	directWrite32(WiimmfiPatch2, 0x3BC00000);
 	directWriteBranch(WiimmfiPatch3, WiimmfiASM1, false);
@@ -31,12 +22,11 @@ void loadCodes() {
 	// An useless version string that Leseratte wants. The space is intentional!
 	directWriteString(WiimmfiVersionString, "LE-CODE GCT v1 ");
 
-	// Naswii
+	// Wiimmfi String Patches (by Seeky)
 	directWriteString(NaswiiURL, "://ca.nas.wiimmfi.de/ca");
 	directWriteString(NaswiiURL2, "://naswii.wiimmfi.de/ac");
 	directWriteString(NaswiiURL3, "://naswii.wiimmfi.de/pr");
 
-	// Naswii (region-specific)
 	#ifdef REGION_P
 	directWriteString(NaswiiURL4, "://main.nas.wiimmfi.de/pp");
 	#elif REGION_E
@@ -47,73 +37,54 @@ void loadCodes() {
 	directWriteString(NaswiiURL4, "://main.nas.wiimmfi.de/pk");
 	#endif
 
-	// All the other remaining urls (SAKE not included)
-	directWriteString(AvailableURL, "wiimmfi.de");	// Server availability
-	directWriteString(GPCMURL, "wiimmfi.de");		// Friend management/status checking
-	directWriteString(GPSPURL, "wiimmfi.de");		// Friend -> nick conversion
-	directWriteString(MasterURL, "wiimmfi.de");		// Generic communication
-	directWriteString(NatnegURL, "wiimmfi.de");		// Natneg
-	directWriteString(NatnegURL2, "wiimmfi.de");	// Natneg
-	directWriteString(NatnegURL3, "wiimmfi.de");	// Natneg
-	directWriteString(MSURL, "wiimmfi.de");			// Matchmaking
-	directWriteString(GSURL, "wiimmfi.de");			// Used as a template for several URLs
+	directWriteString(AvailableURL, "wiimmfi.de");
+	directWriteString(GPCMURL, "wiimmfi.de");
+	directWriteString(GPSPURL, "wiimmfi.de");
+	directWriteString(MasterURL, "wiimmfi.de");
+	directWriteString(NatnegURL, "wiimmfi.de");
+	directWriteString(NatnegURL2, "wiimmfi.de");
+	directWriteString(NatnegURL3, "wiimmfi.de");
+	directWriteString(MSURL, "wiimmfi.de");
+	directWriteString(GSURL, "wiimmfi.de");
 
-	// Login region (needed for Friend Room Protection)
+	// Wiimmfi Login Region Changer (by Atlas)
 	directWriteString(LoginRegion, "120045");
 
-	// VS Matchmaking Region Patch
+	// VS Matchmaking Region Patch (by Leseratte)
 	directWrite32(VSRegion, 0x38A04E4D);
 	directWrite32(VSRegion2, 0x38E04E4D);
 	directWrite32(VSRegion3, 0x38E04E4D);
 	directWrite32(VSRegion4, 0x3880004D);
 
-	///////////////////////////
-	// 30 Seconds Time Limit //
-	///////////////////////////
+	// 30 Seconds Time Limit Modifier (by CLF78)
 	directWrite16(ThirtySecs, 0x2A30);
 
-	////////////////////////
-	// All Items Can Land //
-	////////////////////////
-
-	// Patches for online
+	// All Items Can Land (by MrBean and CLF78)
 	directWriteNop(AICLUnk1);
 	directWrite32(AICLUnk2, 0x38600000);
 
-	// Prevent items from poofing when landing on the ground
 	directWriteArray(NoItemLandingPoof, NoItemLandingPoofASM, 12);
 
-	// Give behaviour to the items
 	extern void* AllItemsCanLand;
 	tempVal32 = (u32)&AllItemsCanLand;
 	directWrite32(ItemLandMega, tempVal32);
 	directWrite32(ItemLandGolden, tempVal32+8);
 	directWrite32(ItemLandBill, tempVal32+16);
 
-	/////////////////////////////
-	// Banana Spinout Modifier //
-	/////////////////////////////
+	// Banana Spinout Modifier (Skullface)
 	directWrite32(BananaDamage, 0x38600001);
 
-	// Blue Shell and Bomb Spinout
+	// Blue Shell and Bomb Spinout Modifier (CLF78)
 	tempVal8 = 1;
 	directWrite8(BlueSpinoutDmg, tempVal8);
 	directWrite8(BombSpinoutDmg, tempVal8);
 
-	///////////////////////////////
-	// Blue Shell Speed Modifier //
-	///////////////////////////////
-
-	// The other 3 bytes of the floats are identical
+	// Blue Shell Speed Modifier (mdmwii)
 	tempVal8 = 0x44;
 	directWrite8(BlueShellSpeed, tempVal8);
 	directWrite8(BlueShellSpeed2, tempVal8);
 
-	//////////////////////
-	// BRCTR Redirector //
-	//////////////////////
-
-	// Rename lap_number and item_window so that the game loads our custom ones
+	// BRCTR Redirector (by CLF78)
 	directWrite8(LapNumberCTR, 'f');
 	directWrite8(ItemWindowCTR, 's');
 
@@ -181,17 +152,12 @@ void loadCodes() {
 	directWriteBranch(FastMusicHook2, PitchReset, true);
 	directWriteBranch(FastMusicHook3, PitchReset2, false);
 
-	////////////////////
-	// GeoHit Patches //
-	////////////////////
-
-	// Rename GeoHitTableItem and GeoHitTableItemObj so that the game loads our custom ones
+	// GeoHit Patches (by CLF78 and Ismy)
 	tempVal8 = 'N';
 	directWrite8(GeoHitTableItem, tempVal8);
 	directWrite8(GeoHitTableItemObj, tempVal8);
-
-	// Patch GeoHitTableKart to prevent Geysers from throwing players 1000 miles in the air
 	directWriteBranch(GeoHitTableKartHook, GeoHitTableKartFix, true);
+	directWrite8(GeyserCollFix, 9);
 
 	////////////////////////////////
 	// Green Shell Speed Modifier //
@@ -214,9 +180,7 @@ void loadCodes() {
 	////////////////////////
 	directWriteNop(InstantItemBoxes);
 
-	///////////////////
-	// Item Textures //
-	///////////////////
+	// Item Textures (by CLF78)
 	directWriteBranch(ItemTexturesHook, ItemTextures, false);
 
 	/////////////////
@@ -308,14 +272,9 @@ void loadCodes() {
 	// Change the item's data
 	directWriteArray(BlooperItemStruct, BlooperData, 24);
 
-	////////////////////////
-	// Shells Never Break //
-	////////////////////////
-	directWriteNop(ShellHitCount);
-	directWriteNop(ShellHitCount2);
-	directWriteNop(ShellHitCount3);
-	directWriteNop(ShellHitCount4);
-	directWrite16(ShellHitCount5, 0x4800);
+	// Shells Never Break (by CLF78)
+	directWrite16(ShellHitCount, 0x4800);
+	directWrite16(ShellHitCount2, 0x4800);
 
 	///////////////////////////
 	// Show Times After Race //
@@ -371,9 +330,7 @@ void loadCodes() {
 	/////////////////////////
 	directWriteArray(TimeLimit, NewTimeLimit, 8);
 
-	/////////////////
-	// Ultra UnCut //
-	/////////////////
+	// Ultra UnCut (by MrBean)
 	directWriteBranch(CKPTCheck, UltraUncut, true);
 
 	//////////////////////////////
@@ -396,27 +353,13 @@ void loadCodes() {
 	// Force probability to 100 (also affects Bushes!)
 	directWriteBranch(WoodProb, WoodboxPatch, true);
 
-	//////////////////////////////
-	// Cycle Fix - Coconut Mall //
-	//////////////////////////////
-
-	// Make the escalators loop
+	// Cycle Fix - Coconut Mall (by CLF78 and Ismy)
 	directWriteBranch(EscalatorFixHook, EscalatorFix, true);
-
-	// Fix the turning pianta
 	directWriteBranch(PiantaFixHook, PiantaFix, true);
 
-	///////////////////////////////
-	// Cycle Fix - Dry Dry Ruins //
-	///////////////////////////////
-
-	// Update the pillars' fall delay
+	// Cycle Fix - Dry Dry Ruins (by CLF78 and Ismy)
 	directWriteBranch(PillarFixHook, PillarFix, true);
-
-	// Slow down the sandpits
 	directWriteBranch(SandpitFixHook, SandpitFix, true);
-
-	// Make the delay a word instead of halfword+padding
 	directWrite8(SandpitFix2, 0x90);
 	directWrite8(SandpitFix3, 0x80);
 
@@ -427,24 +370,12 @@ void loadCodes() {
 	// Update the blocks' fall delay
 	directWrite16(GV2Fix, 0x3C0);
 
-	/////////////////////////////////
-	// Cycle Fix - Grumble Volcano //
-	/////////////////////////////////
-
-	// Update the rocks' fall delay
+	// Cycle Fix - Grumble Volcano (by CLF78 and Ismy)
 	directWrite16(RockFix, 0x3C0);
-
-	// Update the rocks' shake delay (and sink the Ultra Shortcut + Rock Hop rocks immediately)
 	directWriteBranch(RockFix2Hook, RockFix2, true);
-
-	// Update the geysers' initial delay
 	directWriteBranch(GeyserFixHook, GeyserFix, true);
 
-	////////////////////////////////
-	// Cycle Fix - Toad's Factory //
-	////////////////////////////////
-
-	// Make the conveyors loop
+	// Cycle Fix - Toad's Factory (by CLF78 and Ismy)
 	directWriteBranch(ConveyorFixHook, ConveyorFix, true);
 
 	//////////////////////////
@@ -528,18 +459,13 @@ void loadCodes() {
 	directWriteBranch(FastFallingHook, FastFalling, false);
 	directWriteBranch(FastFallingHook2, FastFalling2, false);
 
-	///////////////////////
-	// Game Mode - Teams //
-	///////////////////////
-
-	// Disable item glow
+	// Game Mode - Teams (by CLF78, Ismy and Chippy)
 	directWrite32(NoItemGlow, 0x38000000);
-
-	// Disable team invincibility
-	directWriteBranch(NoTeamInvincibility, NoTeamInv, true);
-
-	// Allow people from the same team to exchange TCs
-	directWriteNop(TeamTCPass);
+	tempVal16 = 0x4800;
+	directWrite16(NoTeamInvincibility, tempVal16);
+	directWrite16(NoTeamInvincibility2, tempVal16);
+	directWrite16(NoTeamInvincibility3, tempVal16);
+	directWriteNop(NoTeamInvincibility4);
 
 	//////////////////
 	// Online Stuff //
@@ -575,21 +501,11 @@ void loadCodes() {
 	directWrite16(NoWWButton8, tempVal16);
 	directWrite16(NoWWButton9, tempVal16);
 
-	//////////////////////////
-	// Antifreeze/anticheat //
-	//////////////////////////
-
-	// Load Mii Outfit B files over Mii Outfit C
-	MiiOutfitCFix();
-
-	// Prevent matrix-type codes from working
-	directWriteBlr(NoLag);
-
 	////////////
 	// Extras //
 	////////////
 
-	// Automatic BRSAR Patching
+	// Automatic BRSAR Patching (by Elias)
 	directWriteBranch(AutoBRSARHook, AutoBRSAR, true);
 
 	// Change Characters Between Races - THIS CODE SUCKS
@@ -604,13 +520,13 @@ void loadCodes() {
 	// Don't Lose VR When Disconnecting
 	directWriteNop(NoVRLoss);
 
-	// Instant DC
+	// Instant DC (by CLF78)
 	directWriteBranch(InstantDCHook, InstantDC, true);
 
-	// License Unlocker
+	// License Unlocker (by tZ)
 	directWrite32(LicenseUnlocker, 0x38600001);
 
-	// Points Modifier
+	// Points Modifier (by CLF78)
 	directWriteBranch(PointsModifierHook, PointsModifier, true);
 
 	// Silent Controller Changing
@@ -628,7 +544,7 @@ void loadCodes() {
 		directWrite32(FasterMenuHook3, 0x38000000);
 	}
 
-	// Mii Heads on Minimap
+	// Mii Heads on Minimap (by JoshuaMK and CLF78)
 	if (MiiHeads == 1) {
 		directWriteBranch(MiiHeadsHook, MiiHeadsPatch, true);
 	}
@@ -643,30 +559,26 @@ void loadCodes() {
 		directWrite32(NoCharVoiceHook, 0x38600001);
 	}
 
-	// Force Battle Glitch
+	// Force Battle Glitch (by XeR)
 	if (BtGlitch == 1) {
 		directWrite32(TagDistance, 0x47927C00);
 	}
 
-	// Show Time Difference
+	// Show Time Difference (by Melg and CLF78)
 	if (TimeDiff == 1 || TimeDiff == 2) {
-
-		// Skip ghost file check
 		directWrite8(GhostFileSkip, 1);
-
-		// Actual patch
 		directWriteBranch(TimeDiffPatchHook, TimeDiffPatch, true);
 		directWriteBranch(TimeDiffPatchHook2, TimeDiffPatch2, false);
 	}
 
-	// Speedometer
+	// Speedometer (by stebler and CLF78)
 	if (Speedometer == 1) {
 		directWriteNop(SpeedoTextParseNop);
 		directWriteBranch(SpeedoTextParse, SpeedoTextParseASM, true);
 		directWriteBranch(SpeedoNoPauseHook, SpeedoNoPause, true);
 	}
 
-	// Applies the two options above
+	// Applies the two options above (by CLF78)
 	directWriteBranch(TimeDiffApplyHook, TimeDiffApply, true);
 
 	// 30 FPS (by CLF78)
