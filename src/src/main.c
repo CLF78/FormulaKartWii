@@ -88,43 +88,28 @@ void loadCodes() {
 	directWrite8(LapNumberCTR, 'f');
 	directWrite8(ItemWindowCTR, 's');
 
-	////////////////////////////////
-	// Bullet Bill Speed Modifier //
-	////////////////////////////////
+	// Bullet Bill Speed Modifier (by davidevgen, CLF78 and Ismy)
+	directWrite16(BulletBillSpeed, 0x435C);
 
-	// Travelling speed
-	directWrite16(BulletBillSpeed, 0x435C); // Lower part of the float is identical
-
-	// Ignore this useless warning as it's the intended behaviour
 	#pragma GCC diagnostic push
 	#pragma GCC diagnostic ignored "-Wpointer-to-int-cast"
 	tempVal8 = (u8)&BulletBillSpeed;
 	#pragma GCC diagnostic pop
 
-	// Cannon landing speed fix
 	directWrite8(CannonLandingFix, tempVal8);
+	directWriteBranch(CannonSpeed, CannonSpeedMultiplier, false);
+	directWriteBranch(CannonSpeed2, CannonSpeedMultiplier2, true);
 
-	// Cannon speed increase ASM
-	directWriteBranch(CannonSpeed, StorePlayer, true);
-	directWriteBranch(CannonSpeed2, CannonSpeedMultiplier, false);
-	directWriteBranch(CannonSpeed3, CannonSpeedMultiplier2, true);
-
-	////////////////
-	// DC Bug Fix //
-	////////////////
+	// DC Bug Fix (by Seeky)
 	directWrite32(DCFix, 0x38E40032);
 
-	///////////////////////
-	// Disable Item Poof //
-	///////////////////////
+	// Disable Item Poof (by CLF78 and tZ)
 	directWriteNop(NoItemPoof);
 	directWriteBranch(NoItemPoof2Hook, NoItemPoof2, false);
 	directWriteBranch(NoItemPoof3Hook, NoItemPoof3, true);
 
-	////////////////////////////////////
-	// Don't Hide Position After Race //
-	////////////////////////////////////
-	directWrite32(NoHidePos, 0x38000001);
+	// Don't Hide Position After Race (by MrBean)
+	directWrite8(NoHidePos, 0);
 
 	///////////////////////////
 	// Draggable Blue Shells //

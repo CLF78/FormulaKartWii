@@ -29,6 +29,9 @@ SECTIONS {
 	UtilRandomSeed = 0x800F2E28;
 	UtilRandint = 0x800F2E40;
 
+	ptmf_test = 0x80020884;
+	ptmf_scall = 0x800208F0;
+
 	/* Codehandler Hooks */
 	VIHook = 0x801BAA80;
 	KPADHook = 0x80197A08;
@@ -111,15 +114,16 @@ SECTIONS {
 	/* Bullet Bill Speed Modifier */
 	BulletBillSpeed = 0x808B1138;
 	CannonLandingFix = 0x80571CF7;
-	CannonSpeed = 0x8058FF8C;
-	CannonSpeed2 = 0x8057E8A0;
-	CannonSpeed3 = 0x8057E8AC;
+	CannonSpeed = 0x8057E8A0;
+	CannonSpeed2 = 0x8057E8AC;
 
 	/* DC Bug Fix */
 	DCFix = 0x8053A188;
 
 	/* Disable Item Poof */
 	NoItemPoof = 0x8078D5B4;
+	NoItemPoof2Hook = 0x80798A48;
+	NoItemPoof3Hook = 0x80798A58;
 
 	/* Replace Blooper with Triple FIBs */
 	BlooperKiller = 0x807D6070;
@@ -128,7 +132,7 @@ SECTIONS {
 	BlooperItemStruct = 0x808A2D60;
 
 	/* Don't Hide Position After Race */
-	NoHidePos = 0x807EA790;
+	NoHidePos = 0x807EA79C;
 
 	/* Duplicated Item Auto-Trail */
 	AutoTrailHook = 0x80788964;
