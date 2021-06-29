@@ -11,6 +11,11 @@ void _directWrite8(u8* addr, u8 value) {
 	flushAddr(addr);
 }
 
+void _directWrite16(u16* addr, u16 value) {
+	addr[0] = value;
+	flushAddr(addr);
+}
+
 void _directWrite32(u32* addr, u32 value) {
 	addr[0] = value;
 	flushAddr(addr);

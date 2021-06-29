@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern MusicPitch, EnableRampUpStuff
+.extern MusicPitch, DriftSpeed, EnableRampUpStuff
 .global FinalLapCheck, PitchReset, PitchReset2
 
 ###################
@@ -41,30 +41,37 @@ mr r31, r4
 cmpwi r4, 7
 bnelr+
 
-# Write pitch back if so
-lis r11, 0x3F80
-lis r12, MusicPitch@ha
-stw r11, MusicPitch@l(r12)
-
-# Write 0 to Ramp Up flag as well
-li r11, 0
-lis r12, EnableRampUpStuff@ha
-stw r11, EnableRampUpStuff@l(r12)
-stw r11, EnableRampUpStuff@l+4(r12)
-stw r11, EnableRampUpStuff@l+8(r12)
-blr
-
 ####################
 # Pitch Resetter 2 #
 ####################
 
-# Write pitch back
+# Save LR
 PitchReset2:
+mflr r12
+
+# Do BL trick
+bl trick
+
+.float 0.55
+
+# Restore LR
+trick:
+mflr r11
+lfs f0, 0(r11)
+
+# Restore minimum drift speed
+lis r11, DriftSpeed@ha
+stfs f0, DriftSpeed@l(r11)
+
+# Restore LR
+mtlr r12
+
+# Write pitch back
 lis r11, 0x3F80
 lis r12, MusicPitch@ha
 stw r11, MusicPitch@l(r12)
 
-# Write 0 to Ramp Up flag as well
+# Write 0 to Ramp Up flag
 li r11, 0
 lis r12, EnableRampUpStuff@ha
 stw r11, EnableRampUpStuff@l(r12)

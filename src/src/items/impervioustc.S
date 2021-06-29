@@ -2,7 +2,6 @@
 
 .global ImperviousTCFunc
 
-
 # Copied and edited from the original game, cba
 ImperviousTCFunc:
 

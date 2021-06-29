@@ -3,10 +3,10 @@
 .extern ItemLimits
 .global ItemLimitMod
 
-# Choose the array based on game mode
+# Get the array
 ItemLimitMod:
-lis r3, NormalItemLimitArray@h
-ori r3, r3, NormalItemLimitArray@l-1
+lis r3, ItemLimitArray@h
+ori r3, r3, ItemLimitArray@l-1
 
 # Setup loop
 lis r4, ItemLimits@h
@@ -25,6 +25,6 @@ li r30, 0
 blr
 
 # Order = Green Shell, Red Shell, Banana, Mushroom, Star, Blue Shell, Lightning, Fake Box, Mega Mushroom, Bob-omb, Blooper, POW Block, Golden Mushroom, Bullet Bill, Thunder Cloud
-NormalItemLimitArray:
-.byte 20, 20, 27, 12, 6, 4, 1, 27, 6, 9, 1, 1, 6, 6, 4
+ItemLimitArray:
+.byte 20, 20, 27, 12, 7, 3, 1, 27, 7, 7, 1, 1, 7, 7, 3
 .align 2

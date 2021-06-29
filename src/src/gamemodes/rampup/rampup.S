@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern GameMode, PlayerHolder
+.extern GameMode, PlayerHolder, DriftSpeed
 .global RampUp, RampUpHook, RampUpSpeedFix
 
 #####################
@@ -19,12 +19,14 @@ bl trick
 
 .float 0.01
 .float 220.0
+.float 0.004
 
 # Load floats in f1 and f4
 trick:
 mflr r3
 lfs f1, 0(r3)
 lfs f4, 0x4(r3)
+lfs f5, 0x8(r3)
 
 # Get player ID
 lbz r3, 0x8(r29)
@@ -35,8 +37,7 @@ lis r4, PlayerHolder@ha
 lwz r4, PlayerHolder@l(r4)
 lwz r4, 0x20(r4)
 lwzx r4, r3, r4
-lwz r4, 0x10(r4)
-lwz r4, 0x10(r4)
+lwz r4, 0x44(r4)
 lfs f0, 0x10(r4)
 
 # Add f1 to f0
@@ -49,10 +50,16 @@ fdivs f3, f3, f0
 fmuls f3, f3, f2
 stfs f3, 0x14(r4)
 
+# Update minimum drift speed
+lis r3, DriftSpeed@ha
+lfs f1, DriftSpeed@l(r3)
+fsubs f1, f1, f5
+stfs f1, DriftSpeed@l(r3)
+
 # Get hardSpeedLimit and increase it, unless it's the bullet bill speed
 lfs f3, 0x2C(r4)
 fcmpu cr0, f3, f4
-beq end
+beq+ end
 fdivs f3, f3, f0
 fmuls f3, f3, f2
 stfs f3, 0x2C(r4)

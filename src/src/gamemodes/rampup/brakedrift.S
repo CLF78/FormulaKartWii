@@ -91,7 +91,7 @@ bne+ return
 # Save r4 to r11
 mr r11, r4
 
-# Check playerSub1c -> bitfield0
+# Check if we are brake drifting
 rlwinm r3, r11, 0, 28, 31
 cmpwi r3, 0xF
 bne+ end
@@ -105,7 +105,7 @@ lhz r3, 0x2C(r3)
 rlwinm. r3, r3, 0, 27, 27
 beq end
 
-# Otherwise do brake drift! This should theoretically not return
+# Otherwise do brake drift! This will not return
 b DoBrakeDrift
 
 # Restore r4
@@ -143,7 +143,7 @@ mr r10, r0
 mr r11, r3
 mr r12, r4
 
-# Check playerSub1c -> bitfield0
+# Check if we are brake drifting
 rlwinm r5, r10, 0, 27, 31
 cmpwi r5, 0xF
 bne+ end2
@@ -198,7 +198,7 @@ lbzx r11, r11, r12
 cmpwi r11, 1
 bne+ end3
 
-# Check playerSub1c -> bitfield0
+# Check if we are brake drifting
 lwz r3, 0x4(r3)
 lwz r6, 0x4(r3)
 rlwinm r5, r6, 0, 27, 31
@@ -277,7 +277,7 @@ lbzx r11, r11, r12
 cmpwi r11, 1
 bne+ end4
 
-# Check playerSub1c -> bitfield0
+# Check if we are brake drifting
 lwz r3, 0x4 (r3)
 lwz r6, 0x4 (r3)
 rlwinm r5, r6, 0, 27, 31

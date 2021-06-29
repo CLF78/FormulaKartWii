@@ -134,11 +134,11 @@ SECTIONS {
 	/* Don't Hide Position After Race */
 	NoHidePos = 0x807F4DC4;
 
+	/* Draggable Blue Shells */
+	BlueShellDrag = 0x808A5B30;
+
 	/* Duplicated Item Auto-Trail */
 	AutoTrailHook = 0x80791970;
-
-	/* Draggable Blue Shells */
-	BlueShellDrag = 0x807AE8A8;
 
 	/* Fast POW */
 	POWTimer = 0x807B1DD3;
@@ -158,6 +158,10 @@ SECTIONS {
 	/* Green Shell Speed Modifier */
 	GreenShellSpeed = 0x808A5DBC;
 
+	/* Impervious TC */
+	ImperviousTCHook = 0x807AFA9C;
+	ImperviousTCHook2 = 0x807AFAA8;
+
 	/* Inside Drift Bikes */
 	KartParamHook = 0x80591FE8;
 
@@ -172,6 +176,10 @@ SECTIONS {
 	/* Lap Counter */
 	SetLapCount = 0x807EF76C;
 	ColorFixHook = 0x807EF7E8;
+
+	/* Max Item Limit Modifier */
+	ItemLimitSetup = 0x80790C08;
+	ItemLimits = 0x809C2F4C;
 
 	/* Show Times After Race */
 	ShowTimesVS = 0x8085C914;
@@ -249,10 +257,6 @@ SECTIONS {
 	BlueSpinoutDmg = 0x805731C3;
 	BombSpinoutDmg = 0x805731DB;
 
-	/* Max Item Limit Modifier */
-	ItemLimitSetup = 0x80790C08;
-	ItemLimits = 0x809C2F4C;
-
 	/* Cycle Fixes - Coconut Mall */
 	EscalatorFixHook = 0x808009C4;
 	PiantaFixHook = 0x808021B4;
@@ -300,11 +304,20 @@ SECTIONS {
 	/* Game Mode - Ramp Up */
 	RampUpHook = 0x80534B50;
 	RampUpSpeedFixHook = 0x8057B9B4;
-	DriftFixHook = 0x8057E128;
-	DriftFixHook2 = 0x8057DF1C;
-	DriftFixHook3 = 0x8057E5A8;
-	DriftFixHook4 = 0x8057EAA4;
-	DriftFixHook5 = 0x8057F008;
+	DriftSpeed = 0x808B5B1C;
+	BrakeDriftClassicHook = 0x8051F5F8;
+	BrakeDriftGCNHook = 0x8052029C;
+	BrakeDriftNunchuckHook = 0x80745CB4;
+	BrakeDriftWheelHook = 0x80745F70;
+	BrakeDriftMainHook = 0x8057ADEC;
+	BrakeDriftSoundHook = 0x806FAFF8;
+	BrakeDriftEffBikesHook = 0x80699C98;
+	BrakeDriftEffKartsHook = 0x80698F50;
+	DoBrakeDrift = 0x8057AE8C;
+	BrakeDriftEffFunc = 0x806A19D8;
+	BrakeDriftEffFunc2 = 0x806A1B68;
+	FastFallingHook = 0x8059678C;
+	FastFallingHook2 = 0x80597390;
 
 	/* Game Mode - Teams */
 	NoItemGlow = 0x807BD2BC;
@@ -390,25 +403,4 @@ SECTIONS {
 	SpeedoTextParse = 0x805CDD70;
 	SpeedoParseSkip = 0x805CDE08;
 	SpeedoNoPauseHook = 0x807EB574;
-
-	/* Brake Drifting */
-	BrakeDriftClassicHook = 0x8051F5F8;
-	BrakeDriftGCNHook = 0x8052029C;
-	BrakeDriftNunchuckHook = 0x80745CB4;
-	BrakeDriftWheelHook = 0x80745F70;
-	BrakeDriftMainHook = 0x8057ADEC;
-	BrakeDriftSoundHook = 0x806FAFF8;
-	BrakeDriftEffBikesHook = 0x80699C98;
-	BrakeDriftEffKartsHook = 0x80698F50;
-	DoBrakeDrift = 0x8057AE8C;
-	BrakeDriftEffFunc = 0x806A19D8;
-	BrakeDriftEffFunc2 = 0x806A1B68;
-
-	/* Fast Falling */
-	FastFallingHook = 0x8059678C;
-	FastFallingHook2 = 0x80597390;
-
-	/* Impervious TC */
-	ImperviousTCHook = 0x807AFA9C;
-	ImperviousTCHook2 = 0x807AFAA8;
 }

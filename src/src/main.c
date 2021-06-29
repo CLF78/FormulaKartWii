@@ -111,29 +111,17 @@ void loadCodes() {
 	// Don't Hide Position After Race (by MrBean)
 	directWrite8(NoHidePos, 0);
 
-	///////////////////////////
-	// Draggable Blue Shells //
-	///////////////////////////
-	directWriteNop(BlueShellDrag);
+	// Draggable Blue Shells (by MrBean)
+	directWrite32(BlueShellDrag, 0);
 
-	////////////////////////////////
-	// Duplicated Item Auto-Trail //
-	////////////////////////////////
+	// Duplicated Item Auto-Trail (by CLF78)
 	directWriteBranch(AutoTrailHook, ItemTrail, true);
 
-	//////////////
-	// Fast POW //
-	//////////////
+	// Fast POW (by mdmwii)
 	directWrite8(POWTimer, 0x80);
 
-	//////////////////////////////////////
-	// Final Lap Music Trigger Modifier //
-	//////////////////////////////////////
-
-	// Patch the lap check to make it work on lap 45 and 50
+	// Final Lap Music Trigger Modifier (by CLF78)
 	directWriteBranch(FastMusicHook, FinalLapCheck, true);
-
-	// Reset the pitch if the race ends or the user quits
 	directWriteBranch(FastMusicHook2, PitchReset, true);
 	directWriteBranch(FastMusicHook3, PitchReset2, false);
 
@@ -144,45 +132,27 @@ void loadCodes() {
 	directWriteBranch(GeoHitTableKartHook, GeoHitTableKartFix, true);
 	directWrite8(GeyserCollFix, 9);
 
-	////////////////////////////////
-	// Green Shell Speed Modifier //
-	////////////////////////////////
+	// Green Shell Speed Modifier (by davidevgen)
 	directWrite16(GreenShellSpeed, 0x4320);
 
-	///////////////////
-	// Impervious TC //
-	///////////////////
+	// Impervious TC (by CLF78)
 	directWriteBranch(ImperviousTCHook, ImperviousTCFunc, true);
 	directWrite32(ImperviousTCHook2, 0x48000038);
 
-	////////////////////////
-	// Inside Drift Bikes //
-	////////////////////////
+	// Inside Drift Bikes (by Seeky)
 	directWriteBranch(KartParamHook, DriftOverride, true);
 
-	////////////////////////
-	// Instant Item Boxes //
-	////////////////////////
+	// Instant Item Boxes (by Anarion)
 	directWriteNop(InstantItemBoxes);
 
 	// Item Textures (by CLF78)
 	directWriteBranch(ItemTexturesHook, ItemTextures, false);
 
-	/////////////////
-	// Lap Counter //
-	/////////////////
-
-	// Set the lap count to the correct amount
+	// Lap Counter (by TheLordScruffy)
 	directWrite32(SetLapCount, 0x38600032);
-
-	// Add colors to the new panes
 	directWriteBranch(ColorFixHook, ColorFix, false);
 
-	/////////////////////////////
-	// Max Item Limit Modifier //
-	/////////////////////////////
-
-	// Write our new limits dynamically, as Item Rain will likely require different limits
+	// Max Item Limit Modifier (by CLF78)
 	directWriteBranch(ItemLimitSetup, ItemLimitMod, true);
 
 	/////////////////////
@@ -413,24 +383,9 @@ void loadCodes() {
 	////////////////////////
 	directWrite32(NoCPU, 0x38E00004);
 
-	/////////////////////////
-	// Game Mode - Ramp Up //
-	/////////////////////////
-
-	// Make the game mode work
+	// Game Mode - Ramp Up (by CLF78, Ismy and stebler)
 	directWriteBranch(RampUpHook, RampUp, false);
-
-	// Prevent maximum speed from being reset by Bullet Bills
 	directWriteBranch(RampUpSpeedFixHook, RampUpSpeedFix, false);
-
-	// Slowly decrease the minimum drift speed over time
-	directWriteBranch(DriftFixHook, DriftFixMain, true);
-	directWriteBranch(DriftFixHook2, DriftFixSub, true);
-	directWriteBranch(DriftFixHook3, DriftFixSub2, true);
-	directWriteBranch(DriftFixHook4, DriftFixSub3, false);
-	directWriteBranch(DriftFixHook5, DriftFixSub4, false);
-
-	// Brake Drifting
 	directWriteBranch(BrakeDriftClassicHook, BrakeDriftClassic, true);
 	directWriteBranch(BrakeDriftGCNHook, BrakeDriftGCN, true);
 	directWriteBranch(BrakeDriftNunchuckHook, BrakeDriftNunchuck, true);
@@ -439,8 +394,6 @@ void loadCodes() {
 	directWriteBranch(BrakeDriftSoundHook, BrakeDriftSound, false);
 	directWriteBranch(BrakeDriftEffBikesHook, BrakeDriftEffBikes, false);
 	directWriteBranch(BrakeDriftEffKartsHook, BrakeDriftEffKarts, false);
-
-	// Fast Falling
 	directWriteBranch(FastFallingHook, FastFalling, false);
 	directWriteBranch(FastFallingHook2, FastFalling2, false);
 

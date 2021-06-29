@@ -104,9 +104,6 @@ bl trick2
 trick2:
 mflr r12
 
-# Assume 1
-li r8, 1
-
 # Get playerSub -> playerSub1c -> airtime
 lwz r3, 0x1C(r28)
 lwz r4, 0x1C(r3)
