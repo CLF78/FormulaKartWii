@@ -25,20 +25,19 @@ blr
 
 # Original instruction
 FOVFix:
-lwz r4, 0x0(r28)
+lwz r0, 0x4(r3)
 
-# Check if real player (maybe)
-lwz r29, 0x24(r4)
-cmpwi r29, 0
+# Null ptr check
+lwz r5, 0x24(r4)
+cmpwi r5, 0
 beqlr
 
 # Check if player is in a Mega
-lwz r3, 0x4(r4)
 lwz r3, 0xC(r3)
 rlwinm. r3, r3, 0, 16, 16
 beqlr
 
-# Store new FOV
-lis r0, 0x4170
-stw r0, 0x120(r29)
+# Store new FOV if so
+lis r7, 0x4170
+stw r7, 0x120(r5)
 blr

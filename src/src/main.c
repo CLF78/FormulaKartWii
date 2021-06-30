@@ -155,37 +155,23 @@ void loadCodes() {
 	// Max Item Limit Modifier (by CLF78)
 	directWriteBranch(ItemLimitSetup, ItemLimitMod, true);
 
-	/////////////////////
-	// Mega Flips Cars //
-	/////////////////////
+	// Mega Flips Cars (by JoshuaMK)
 	directWrite8(MegaFlip, 1);
 
-	///////////////////////////////////
-	// Mega Mushroom Size Multiplier //
-	///////////////////////////////////
-
-	// Multiply the scale while KartParam is being loaded
+	// Mega Mushroom Size Multiplier (by CLF78 and TheLordScruffy)
 	directWriteBranch(MegaSizeHook, MegaSizeMod, true);
-
-	// Change the FOV when the player is in a Mega
 	directWriteBranch(FOVChange, FOVFix, true);
 
-	///////////////////////
-	// Mega Thundercloud //
-	///////////////////////
-	directWriteBranch(MegaTCHook, MegaTC, false);
+	// Mega Thundercloud (by tZ)
+	directWriteBranch(MegaTCHook, MegaFunc, true);
 
-	/////////////////////////
-	// Motion-Sensor Bombs //
-	/////////////////////////
+	// Motion-Sensor Bombs (by Hamster)
 	tempVal16 = 0x7FFF;
 	directWrite16(BombTimer, tempVal16);
 	directWrite16(BombTimer2, tempVal16);
 
-	/////////////////////////
-	// No Bullet Bill Icon //
-	/////////////////////////
-	directWriteNop(NoBBIcon);
+	// No Bullet Bill Icon (by Anarion)
+	directWriteBlr(NoBBIcon);
 
 	/////////////////////////////
 	// No Invincibility Frames //
@@ -231,15 +217,12 @@ void loadCodes() {
 	directWrite16(ShellHitCount, 0x4800);
 	directWrite16(ShellHitCount2, 0x4800);
 
-	///////////////////////////
-	// Show Times After Race //
-	///////////////////////////
-
-	// VS Mode
-	directWrite32(ShowTimesVS, 0x38000000);
-
-	// Online WWs
+	// Show Times After Race (by Melg and CLF78)
+	directWriteNop(ShowTimesVS);
 	directWriteBranch(ShowTimesWW, TimesFunc, true);
+	directWriteBranch(TimePrintHook, TimePrint, true);
+	directWriteNop(SpeedoTextParseNop);
+	directWriteBranch(SpeedoTextParse, SpeedoTextParseASM, true);
 
 	///////////////////////////
 	// Starting Lap Modifier //
@@ -511,8 +494,6 @@ void loadCodes() {
 
 	// Speedometer (by stebler and CLF78)
 	if (Speedometer == 1) {
-		directWriteNop(SpeedoTextParseNop);
-		directWriteBranch(SpeedoTextParse, SpeedoTextParseASM, true);
 		directWriteBranch(SpeedoNoPauseHook, SpeedoNoPause, true);
 	}
 

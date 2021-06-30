@@ -22,6 +22,7 @@ SECTIONS {
 
 	SetPaneColor = 0x807EB58C;
 	SetTextSrc = 0x805CD5DC;
+	SetMatText = 0x8063D328;
 
 	playerCount = 0x809C2918;
 	isOnlineRace = 0x809C2919;
@@ -31,6 +32,8 @@ SECTIONS {
 
 	ptmf_test = 0x80021308;
 	ptmf_scall = 0x80021374;
+
+	SubtractTimers = 0x807EDECC;
 
 	/* Codehandler Hooks */
 	VIHook = 0x801BAA40;
@@ -177,10 +180,29 @@ SECTIONS {
 	ItemLimitSetup = 0x80790274;
 	ItemLimits = 0x809C1FA4;
 
+	/* Mega Flips Cars */
+	MegaFlip = 0x8082A26F;
+
+	/* Mega Mushroom Size Multiplier */
+	MegaSizeHook = 0x80591AA8;
+	FOVChange = 0x80578D38;
+
+	/* Mega Thundercloud */
+	MegaTCHook = 0x8057FFB0;
+	MegaFunc = 0x80797D20;
+
+	/* Motion-Sensor Bombs */
+	BombTimer = 0x807A5262;
+	BombTimer2 = 0x807A4136;
+
+	/* No Bullet Bill Icon */
+	NoBBIcon = 0x807B9C3C;
+
 	/* Show Times After Race */
-	ShowTimesVS = 0x8085BF80;
+	ShowTimesVS = 0x8085BF78;
 	ShowTimesWW = 0x8085CACC;
 	TimesFunc = 0x807F4FC8;
+	TimePrintHook = 0x807F508C;
 
 	/* Ultra UnCut */
 	CKPTCheck = 0x80534A9C;
@@ -197,9 +219,6 @@ SECTIONS {
 	WoodProb = 0x8076E494;
 	BushFunc = 0x80766994;
 
-	/* Mega Flips Cars */
-	MegaFlip = 0x8082A26F;
-
 	/* Prevent Shock/POW Drop */
 	DropFunc = 0x807BBC9C;
 
@@ -207,23 +226,8 @@ SECTIONS {
 	SharedItemHook = 0x807B97CC;
 	SpecialItemHook = 0x80799634;
 
-	/* No Bullet Bill Icon */
-	NoBBIcon = 0x807B9C3C;
-
-	/* Motion-Sensor Bombs */
-	BombTimer = 0x807A5262;
-	BombTimer2 = 0x807A4136;
-
 	/* Time Limit Modifier */
 	TimeLimit = 0x8053E724;
-
-	/* Mega Mushroom Size Multiplier */
-	MegaSizeHook = 0x80591AA8;
-	FOVChange = 0x80578D2C;
-
-	/* Mega Thundercloud */
-	MegaTCHook = 0x8057FFB0;
-	MegaFunc = 0x80797D20;
 
 	/* Shells Never Break */
 	ShellHitCount = 0x807B5580;
