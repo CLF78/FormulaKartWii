@@ -106,6 +106,11 @@ SECTIONS {
 	ItemLandGolden = 0x808A3978;
 	ItemLandBill = 0x808A3984;
 
+	/* Banana/Blue/Bomb Spinout Modifier */
+	BananaDamage = 0x805611E0;
+	BlueSpinoutDmg = 0x8056121B;
+	BombSpinoutDmg = 0x80561233;
+
 	/* Blue Shell Speed */
 	BlueShellSpeed = 0x80894024;
 	BlueShellSpeed2 = 0x80894084;
@@ -198,6 +203,23 @@ SECTIONS {
 	/* No Bullet Bill Icon */
 	NoBBIcon = 0x807A8990;
 
+	/* No Invincibility Frames */
+	NoInvFramesHook = 0x805557EC;
+	NoRespawnInv = 0x805556A6;
+	StarInBullet = 0x8056E2CA;
+	ShroomInBullet = 0x8056D43A;
+	StarWhenHit = 0x8056E2FC;
+	ShroomWhenHit = 0x8056D4A8;
+
+	/* Prevent Shock/POW Drop */
+	DropFunc = 0x807AA9F0;
+
+	/* Remove Mushroom Bug */
+	RemoveShroomBug = 0x807A8437;
+	RemoveFakeShroom = 0x807A8840;
+	RemoveFakeShroom2 = 0x807A8844;
+	RemoveFakeShroom3 = 0x807A84E4;
+
 	/* Show Times After Race */
 	ShowTimesVS = 0x8084ACCC;
 	ShowTimesWW = 0x8084B820;
@@ -207,20 +229,10 @@ SECTIONS {
 	/* Ultra UnCut */
 	CKPTCheck = 0x80523174;
 
-	/* Remove Mushroom Bug */
-	RemoveShroomBug = 0x807A8437;
-
-	/* Remove Mushroom Bug 2 */
-	RemoveFakeShroom = 0x807A8840;
-	RemoveFakeShroom2 = 0x807A8844;
-
 	/* Woodbox Modifier */
 	WoodRespawn = 0x808BF728;
 	WoodProb = 0x8075D1E8;
 	BushFunc = 0x807556E8;
-
-	/* Prevent Shock/POW Drop */
-	DropFunc = 0x807AA9F0;
 
 	/* Ultimate Item Randomizer */
 	SharedItemHook = 0x807A8520;
@@ -248,14 +260,6 @@ SECTIONS {
 	LapSignFixHook = 0x80522A70;
 	LapArrayIncrease = 0x80520928;
 	LapCountFixHook = 0x80522108;
-
-	/* No Invincibility Frames */
-	NoInvFramesHook = 0x805557EC;
-
-	/* Banana Spinout Modifier */
-	BananaDamage = 0x805611E0;
-	BlueSpinoutDmg = 0x8056121B;
-	BombSpinoutDmg = 0x80561233;
 
 	/* Cycle Fixes - Coconut Mall */
 	EscalatorFixHook = 0x8087EED84;

@@ -112,7 +112,7 @@ lbz r6, GameMode@l(r6)
 cmpwi r6, 2
 bne+ keepGoing
 
-# Check if lap < 25
+# Check if lap < 20
 cmplwi r4, 0xE0
 blt keepGoing
 

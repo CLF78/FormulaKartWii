@@ -173,30 +173,22 @@ void loadCodes() {
 	// No Bullet Bill Icon (by Anarion)
 	directWriteBlr(NoBBIcon);
 
-	/////////////////////////////
-	// No Invincibility Frames //
-	/////////////////////////////
+	// No Invincibility Frames (by CLF78)
 	directWriteBranch(NoInvFramesHook, NoInvFrames, true);
+	directWrite8(NoRespawnInv, 0x20);
+	directWrite8(StarInBullet, 0);
+	directWrite8(ShroomInBullet, 0);
+	directWriteNop(StarWhenHit);
+	directWriteNop(ShroomWhenHit);
 
-	////////////////////////////
-	// Prevent Shock/POW Drop //
-	////////////////////////////
+	// Prevent Shock/POW Drop (by CLF78)
 	directWriteBranch(DropFunc, NoDrop, true);
 
-	/////////////////////////
-	// Remove Mushroom Bug //
-	/////////////////////////
-
-	// Prevents the game from giving shrooms if you hit 20+ boxes
+	// Remove Mushroom Bug (by Vega and CLF78)
 	directWrite8(RemoveShroomBug, 0);
-
-	///////////////////////////
-	// Remove Mushroom Bug 2 //
-	///////////////////////////
-
-	// Prevent the game from giving shrooms if the item is not available
 	directWriteBranch(RemoveFakeShroom, NoFakeShroom, true);
 	directWriteArray(RemoveFakeShroom2, NoFakeShroom2, 0xC);
+	directWrite32(RemoveFakeShroom3, 0x48000020);
 
 	//////////////////////////////////////
 	// Replace Blooper with Triple FIBs //
@@ -224,48 +216,24 @@ void loadCodes() {
 	directWriteNop(SpeedoTextParseNop);
 	directWriteBranch(SpeedoTextParse, SpeedoTextParseASM, true);
 
-	///////////////////////////
-	// Starting Lap Modifier //
-	///////////////////////////
-
-	// Set startingLap to -51 and maxLap to that +1
+	// Starting Lap Modifier (by CLF78, Ismy and Melg)
 	directWriteArray(StartingLapHook, StartingLap, 8);
 	directWriteBranch(LapCountFixHook, LapCountFix, true);
-
-	// Fix the starting jingle at the beginning of the race
 	directWriteBranch(JingleFixHook, JingleFix, true);
-
-	// Force last lap to 0xFF
 	tempVal32 = 0x380000FF;
-	directWrite32(LastLap, tempVal32);			// Makes the race end on the correct lap
-	directWrite32(LastLapLakitu, tempVal32);	// Fixes the "final lap" sign
-
-	// Fix maxLap for signed compare
+	directWrite32(LastLap, tempVal32);
+	directWrite32(LastLapLakitu, tempVal32);
 	directWriteBranch(LapSignFixHook, LapSignFix, true);
 	directWrite32(LapSignFix2, 0x7FAC0774);
-
-	// Prevent maxLap from being overwritten
 	directWrite16(NoLapFix, 0x4800);
-
-	// Load the correct float for Lakitu's board
 	directWriteBranch(LakituBoardHook, LakituBoard, true);
-
-	// Expand the Timer array to 10 per player
 	directWrite32(LapArrayIncrease, 0x38A0000A);
-
-	// Store the lap time by cycling through the 10 available arrays
 	directWriteBranch(TimeStoreHook, TimeStore, true);
 	directWriteBranch(TimeStoreHook2, TimeStore2, false);
-
-	// Prevent an array underflow while storing the time
 	directWriteBranch(TimeStoreHook3, TimeStore3, false);
-
-	// Offset non-local players' raceCompletion by 4 to fix "wrong" finishing times
 	directWriteBranch(FinishTimesHook, FinishTimes, false);
 
-	/////////////////////////
-	// Time Limit Modifier //
-	/////////////////////////
+	// Time Limit Modifier (by MrBean)
 	directWriteArray(TimeLimit, NewTimeLimit, 8);
 
 	// Ultra UnCut (by MrBean)
