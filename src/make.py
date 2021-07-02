@@ -4,56 +4,48 @@ from subprocess import call
 from elftools.elf.elffile import ELFFile as elf
 
 # Locate various things
-asm = 'powerpc-eabi-as'
 gcc = 'powerpc-eabi-gcc'
 objcopy = 'powerpc-eabi-objcopy'
+destdir = 'bin'
 
 # Initialize variables
-startHook = 0x8000629C
 debug = False
 regionlist = ['P', 'E', 'J', 'K']
+startHook = 0x8000629C
+startFuncName = 'start'
 
 def build(isBootStrap):
-    # Initialize lists
-    asmlist = []
-    cpplist = []
 
+    # Initialize vars
     if isBootStrap:
         mainpath = 'bootstrap'
         outname = 'Loader'
-        print('Building bootstrap...')
+        buildtype = 'bootstrap'
     else:
         mainpath = 'src'
         outname = 'FormulaKartWii'
-        print('Building payload...')
+        buildtype = 'payload'
+
+    # Pretty print
+    print('Building %s...' % buildtype)
 
     # Get all files in the source folder
-    for root, subfolder, files in os.walk(mainpath):
-        for item in files:
-            if item.lower().endswith('.s'):
-                filename = os.path.join(root, item)
-                asmlist.append(filename)
-            elif item.lower().endswith('.c'):
-                filename = os.path.join(root, item)
-                cpplist.append(filename)
+    filelist = [os.path.join(root, item) for root, subfolder, files in os.walk(mainpath) for item in files if item.lower().endswith('.s') or item.lower().endswith('.c')]
 
     for region in regionlist:
-        # Make a clean build folder
-        if os.path.isdir('build'):
-            rmtree('build')
-        os.mkdir('build')
+        # Assemble destination file
+        outputfile = '%s/%s%s.' % (destdir, outname, region)
 
         # Initialize GCC command
-        cc_command = [gcc, '-Iinclude', '-nostartfiles', '-nostdinc', '-D', 'REGION_{}'.format(region), '-D', 'REGION=\'{}\''.format(region), '-Os', '-Wl,-T,{}/mem.ld,-T,rmc.ld,-T,rmc{}.ld'.format(mainpath, region.lower()), '-ffunction-sections', '-fdata-sections', '-fcommon', '-mcpu=750', '-meabi', '-mhard-float']
+        cc_command = [gcc, '-Iinclude', '-nostdlib', '-D', 'REGION_%s' % (region), '-Os', '-Wl,-T,%s/mem.ld,-T,rmc.ld,-T,rmc%s.ld' % (mainpath, region.lower())]
 
         # Add debug macro if debug is on
         if debug:
             cc_command += ['-D', 'DEBUG']
 
         # Add all cpp files and the destination
-        cc_command += cpplist
-        cc_command += asmlist
-        cc_command += ['-o', 'build/{}{}.o'.format(outname, region)]
+        cc_command += filelist
+        cc_command += ['-o', outputfile + 'o']
 
         # Debug output for testing:
         # print(*cc_command)
@@ -66,22 +58,19 @@ def build(isBootStrap):
 
         # Get offset to start function
         if isBootStrap:
-            with open('build/{}{}.o'.format(outname,region), 'rb') as f:
-                elfData = elf(f)
-                symtab = elfData.get_section_by_name('.symtab')
-                startFunc = symtab.get_symbol_by_name('start')[0].entry['st_value']
-                instruction = (((startFunc-startHook) & 0x3FFFFFF ) | 0x48000000)
-                print('New instruction is', hex(instruction))
+            with open(outputfile + 'o', 'rb') as f:
+                startFunc = elf(f).get_section_by_name('.symtab').get_symbol_by_name(startFuncName)[0].entry['st_value']
+            instruction = (((startFunc-startHook) & 0x3FFFFFF ) | 0x48000000)
+            print('Hook instruction is', hex(instruction))
 
-        c = call([objcopy, '-O', 'binary', '-R', '.eh_frame', '-R', '.eh_frame_hdr', 'build/{}{}.o'.format(outname, region), 'bin/{}{}.bin'.format(outname, region)])
+        c = call([objcopy, '-O', 'binary', '-R', '.eh_frame', '-R', '.eh_frame_hdr', outputfile + 'o', outputfile + 'bin'])
         if c != 0:
             print('Build failed!')
             return
         else:
-            print('Built', region + '!')
+            print('Built %s!' % region)
 
     # We're done!
-    rmtree('build')
     print('All built!')
 
 def main():
@@ -89,10 +78,10 @@ def main():
     global debug
     debug = input('Enable debug mode? (Y/N): ').lower() == 'y'
 
-    # Make a clean bin folder
-    if os.path.isdir('bin'):
-        rmtree('bin')
-    os.mkdir('bin')
+    # Make a clean build folder
+    if os.path.isdir(destdir):
+        rmtree(destdir)
+    os.mkdir(destdir)
 
     # Build it!
     build(False)

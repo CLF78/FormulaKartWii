@@ -153,7 +153,7 @@ echo.
 SET /P FRAMERATE=Force 30 FPS? (Y/N):
 IF /i %FRAMERATE%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400F=01 -q
 
-wit\wit.exe dolpatch mkw.d/sys/main.dol 8000629C=4BFFDE1C load=80004010,fkw/Loader%LETTER%.bin -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 8000629C=4BFFDE64 load=80004010,fkw/Loader%LETTER%.bin -q
 
 echo.
 echo Format Selection:

@@ -64,7 +64,7 @@
 	<patch id="fkw">
 		<!--Load Code-->
 		<memory valuefile="/fkw/Loader{$__region}.bin" offset="0x80004010"/>
-		<memory offset="0x8000629C" value="4BFFDE1C"/>
+		<memory offset="0x8000629C" value="4BFFDE64"/>
 		<folder external="/fkw/fkw" disc="/fkw" create="true"/>
 		<!--File Replacements-->
 		<file disc="/Race/Common_U.szs" external="/fkw/Common_X/Common_E.szs" />

@@ -18,8 +18,6 @@ void loadCodes() {
 	directWrite32(WiimmfiPatch2, 0x3BC00000);
 	directWriteBranch(WiimmfiPatch3, WiimmfiASM1, false);
 	directWriteBranch(WiimmfiPatch4, WiimmfiASM2, false);
-
-	// An useless version string that Leseratte wants. The space is intentional!
 	directWriteString(WiimmfiVersionString, "LE-CODE GCT v1 ");
 
 	// Wiimmfi String Patches (by Seeky)
@@ -62,9 +60,7 @@ void loadCodes() {
 	// All Items Can Land (by MrBean and CLF78)
 	directWriteNop(AICLUnk1);
 	directWrite32(AICLUnk2, 0x38600000);
-
 	directWriteArray(NoItemLandingPoof, NoItemLandingPoofASM, 12);
-
 	extern void* AllItemsCanLand;
 	tempVal32 = (u32)&AllItemsCanLand;
 	directWrite32(ItemLandMega, tempVal32);
@@ -269,11 +265,7 @@ void loadCodes() {
 	directWrite8(SandpitFix2, 0x90);
 	directWrite8(SandpitFix3, 0x80);
 
-	////////////////////////////////
-	// Cycle Fix - Ghost Valley 2 //
-	////////////////////////////////
-
-	// Update the blocks' fall delay
+	// Cycle Fix - Ghost Valley 2 (by CLF78 and Ismy)
 	directWrite16(GV2Fix, 0x3C0);
 
 	// Cycle Fix - Grumble Volcano (by CLF78 and Ismy)
@@ -418,7 +410,7 @@ void loadCodes() {
 	// Points Modifier (by CLF78)
 	directWriteBranch(PointsModifierHook, PointsModifier, true);
 
-	// Silent Controller Changing
+	// Silent Controller Changing (by Bully)
 	directWriteNop(NoControllerDC);
 
 	////////////////////
@@ -438,12 +430,12 @@ void loadCodes() {
 		directWriteBranch(MiiHeadsHook, MiiHeadsPatch, true);
 	}
 
-	// No Music
+	// No Music (by CosmoCortney)
 	if (NoMusic == 1) {
 		directWrite32(NoMusicHook, 0x38600000);
 	}
 
-	// No Character Voices
+	// No Character Voices (by Melg)
 	if (NoCharVoice == 1) {
 		directWrite32(NoCharVoiceHook, 0x38600001);
 	}

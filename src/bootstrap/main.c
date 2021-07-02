@@ -1,6 +1,7 @@
 #include "common.h"
 
-// Forward declaration
+// Forward declarations
+char filename, fatalstring;
 void runPayload();
 
 // This function loads all the codes that FKW uses after StaticR has loaded
@@ -8,7 +9,7 @@ void readPayload() {
 
 	// Compose filename
 	char buffer[32];
-	sprintf(buffer, "/fkw/FormulaKartWii%c.bin", gameRegion);
+	sprintf(buffer, &filename, gameRegion);
 
 	// Open the file
 	DVDHandle fd;
@@ -18,7 +19,7 @@ void readPayload() {
 	if (!ret) {
 		u32 fataltextcolor = 0xFFFFFFFF;
 		u32 fatalbackcolor = 0;
-		OSFatal(&fataltextcolor, &fatalbackcolor, "Could not find Formula Kart Wii payload.\nPlease check that your installation is correct.");
+		OSFatal(&fataltextcolor, &fatalbackcolor, &fatalstring);
 	}
 
 	// Read the file (destination must be aligned by 32!)
@@ -34,21 +35,16 @@ void readPayload() {
 // Initial function. This hooks at the end of init_registers
 void start() {
 
-	// "Anticheat"
+	// Codehandler Annihilator (by CLF78)
 
 	#ifndef DEBUG
-	// Overwrite all commonly used hooks
 	directWriteBlr(VIHook);
 	directWriteBlr(KPADHook);
 	directWriteBlr(GXDrawHook);
 	directWriteBlr(GXFlushHook);
 	directWriteBlr(OSSleepHook);
 	directWriteBlr(AXNextFrameHook);
-
-	// Wipe area at 0x80001800-0x80003000
 	memset((void*)0x80001800, 0, 0x1800);
-
-	// Disable Dolphin's codehandler
 	_directWriteBlr((void*)0x800018A8);
 	#endif
 

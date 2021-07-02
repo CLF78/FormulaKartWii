@@ -55,6 +55,7 @@ SECTIONS {
 	OSFatal = 0x801A4E24;
 	srand = 0x80011130;
 	rand = 0x80011110;
+	_restgpr_31_x = 0x80020A9C;
 
 	/* 30 FPS */
 	ThirtyFPSHook1 = 0x800099FC;
