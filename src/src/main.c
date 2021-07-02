@@ -1,6 +1,9 @@
 #include "common.h"
 #include "exception.h"
 
+// Non-existant function so that DevkitPPC doesn't forget to pop the stack...
+void MainHookTail();
+
 // This function loads all the codes that FKW uses after StaticR has loaded
 void loadCodes() {
 
@@ -144,9 +147,10 @@ void loadCodes() {
 	// Item Textures (by CLF78)
 	directWriteBranch(ItemTexturesHook, ItemTextures, false);
 
-	// Lap Counter (by TheLordScruffy)
+	// Lap Counter (by TheLordScruffy and CLF78)
 	directWrite32(SetLapCount, 0x38600032);
 	directWriteBranch(ColorFixHook, ColorFix, false);
+	directWriteBranch(PositionFixHook, PositionFix, true);
 
 	// Max Item Limit Modifier (by CLF78)
 	directWriteBranch(ItemLimitSetup, ItemLimitMod, true);
@@ -321,10 +325,10 @@ void loadCodes() {
 	directWrite16(RaceCountFix4, 0x4800);
 	directWriteBranch(RaceCountFix5, RaceCountFix, true);
 
-	////////////////////////
-	// Play VS Race Alone //
-	////////////////////////
+	// Play VS Race Alone (by Elias)
+	#ifndef DEBUG
 	directWrite32(NoCPU, 0x38E00004);
+	#endif
 
 	// Game Mode - Ramp Up (by CLF78, Ismy and stebler)
 	directWriteBranch(RampUpHook, RampUp, false);
@@ -469,4 +473,5 @@ void loadCodes() {
 
 	sync();
 	isync();
+	MainHookTail();
 }

@@ -181,6 +181,7 @@ SECTIONS {
 	/* Lap Counter */
 	SetLapCount = 0x807EEDD8;
 	ColorFixHook = 0x807EEE54;
+	PositionFixHook = 0x807EEED0;
 
 	/* Max Item Limit Modifier */
 	ItemLimitSetup = 0x80790274;
