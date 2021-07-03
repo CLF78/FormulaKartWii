@@ -1,7 +1,7 @@
 .include "asm_setup.S"
 
 .extern BushFunc
-.global WoodboxPatch, WoodboxData
+.global WoodboxPatch
 
 # Load address of previous BL
 WoodboxPatch:
@@ -21,6 +21,3 @@ blr
 isBush:
 li r28, 33
 blr
-
-WoodboxData:
-.long 0xB4, 0x42F00000

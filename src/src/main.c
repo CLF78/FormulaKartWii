@@ -249,15 +249,11 @@ void loadCodes() {
 	// Bush/Woodbox/Goomba Randomizer
 	directWriteBranch(SpecialItemHook, SpecialRandom, true);
 
-	//////////////////////
-	// Woodbox Modifier //
-	//////////////////////
-
-	// Update respawn time and height
-	directWriteArray(WoodRespawn, WoodboxData, 8);
-
 	// Force probability to 100 (also affects Bushes!)
 	directWriteBranch(WoodProb, WoodboxPatch, true);
+
+	// Woodbox Respawn Modifier (by Atlas)
+	directWrite32(WoodRespawn, 150);
 
 	// Cycle Fix - Coconut Mall (by CLF78 and Ismy)
 	directWriteBranch(EscalatorFixHook, EscalatorFix, true);
@@ -280,35 +276,20 @@ void loadCodes() {
 	// Cycle Fix - Toad's Factory (by CLF78 and Ismy)
 	directWriteBranch(ConveyorFixHook, ConveyorFix, true);
 
-	//////////////////////////
-	// Game Modes - Generic //
-	//////////////////////////
-
-	// Swap some specific scenes and set the GameMode byte
+	// Game Modes - Generic (by CLF78, Ismy, Seeky, TheLordScruffy and Nameless)
 	directWriteBranch(SceneSwapHook, GameModeSelector, true);
-
-	// Room message flags (HOST)
 	directWriteBranch(HostFlagsHook, HostFlags, false);
-
-	// Room message flags (GUEST)
 	directWriteBranch(GuestFlagsHook, GuestFlags, false);
-
-	// Let people choose all vehicles on modes that replace Battle Mode online
-	directWriteBranch(BattleFixHook, BattleFix, false);
+	directWriteArray(BattleFixHook, BattleFix, 8);
 	directWrite32(BattleFixHook2, 0x48000044);
-
-	// Clear flags when leaving/entering rooms
 	directWriteBranch(FlagResetHook, FlagReset, false);
 	directWriteBranch(FlagResetHook2, FlagReset, false);
 	directWriteBranch(FlagResetHook3, FlagReset, false);
 	directWriteBranch(FlagResetHook4, FlagReset, false);
 	directWriteBranch(FlagResetHook5, FlagReset, false);
-
-	// Always Win Track Vote option
 	directWriteBranch(AlwaysWinVoteHook, VotePatch, true);
-
-	// Hook used both by Sabotage and Takedown
 	directWriteBranch(TimerManagerHook, GameModeMaster, false);
+	directWriteBranch(VehicleRestrictionHook, VehicleRestriction, true);
 
 	/////////////////////////////////
 	// Offline Race Count Modifier //
@@ -326,7 +307,7 @@ void loadCodes() {
 	directWriteBranch(RaceCountFix5, RaceCountFix, true);
 
 	// Play VS Race Alone (by Elias)
-	#ifndef DEBUG
+	#ifdef DEBUG
 	directWrite32(NoCPU, 0x38E00004);
 	#endif
 

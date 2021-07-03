@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern RKNetController, GameMode, AlwaysWinVote, MirrorOn, TeamsOn, DriftRestrict, VehicleRestrict
+.extern RKNetController, GameMode, AlwaysWinVote, MirrorOn, TeamsOn, VehicleRestrict
 .global GuestFlags
 
 # Check if mainType is 1
@@ -42,12 +42,8 @@ stb r10, MirrorOn@l(r12)
 rlwinm r10, r11, 19, 31, 31
 stb r10, TeamsOn@l(r12)
 
-# Store DriftRestrict
-rlwinm r10, r11, 20, 31, 31
-stb r10, DriftRestrict@l(r12)
-
 # Store VehicleRestrict
-rlwinm r11, r11, 22, 30, 31
+rlwinm r11, r11, 20, 30, 31
 stb r11, VehicleRestrict@l(r12)
 
 # Finally, clean up the subType to remove any flag

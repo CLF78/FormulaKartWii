@@ -296,6 +296,7 @@ SECTIONS {
 	BattleFixHook = 0x8083BE40;
 	BattleFixHook2 = 0x808308DC;
 	TimerManagerHook = 0x80531134;
+	VehicleRestrictionHook = 0x808286CC;
 
 	/* Offline Race Count Modifier */
 	RaceCountFix1 = 0x80832F73;

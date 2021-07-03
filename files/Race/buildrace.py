@@ -34,7 +34,7 @@ for region in regionlist:
     shutil.copy('stem.brlyt', '%s/game_image/blyt' % foldername)
 
     # game_image_lap.brlyt
-    shutil.copy('game_image_lap_%s.brlyt' % region.upper(), '%s/game_image/blyt' % foldername)
+    shutil.copy('game_image_lap_%s.brlyt' % region.upper(), '%s/game_image/blyt/game_image_lap.brlyt' % foldername)
 
     # game_image_lap_texture_pattern_0_9.brlan
     shutil.copy('game_image_lap_texture_pattern_0_9.brlan', '%s/game_image/anim' % foldername)

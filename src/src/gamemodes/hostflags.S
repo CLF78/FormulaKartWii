@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern GameMode, AlwaysWinVote, MirrorOn, TeamsOn, DriftRestrict, VehicleRestrict, HostFlagsHook
+.extern GameMode, AlwaysWinVote, MirrorOn, TeamsOn, VehicleRestrict, HostFlagsHook
 .global HostFlags
 
 # Load 0x8000 in r5
@@ -87,23 +87,13 @@ rlwinm r12, r12, 0, 31, 31
 stb r12, TeamsOn@l(r5)
 b end
 
-# Store DriftRestrict
-continueSubCheck3:
-cmpwi r12, 7
-bgt continueSubCheck4
-
-# Flag = (MSG & 1)
-rlwinm r12, r12, 0, 31, 31
-stb r12, DriftRestrict@l(r5)
-b end
-
 # Store VehicleRestrict
-continueSubCheck4:
-cmpwi r12, 10
+continueSubCheck3:
+cmpwi r12, 8
 bgt end
 
-# Flag = (MSG - 8)
-subi r12, r12, 8
+# Flag = (MSG - 6)
+subi r12, r12, 6
 stb r12, VehicleRestrict@l(r5)
 
 # Original instruction
@@ -116,5 +106,4 @@ b HostFlagsHook+4
 ########
 
 shifts:
-.byte 23, 22, 21, 20, 18
-.align 2
+.byte 23, 22, 21, 20
