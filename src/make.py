@@ -37,7 +37,7 @@ def build(isBootStrap):
         outputfile = '%s/%s%s.' % (destdir, outname, region)
 
         # Initialize GCC command
-        cc_command = [gcc, '-Iinclude', '-nostdlib', '-D', 'REGION_%s' % (region), '-Os', '-Wl,-T,%s/mem.ld,-T,rmc.ld,-T,rmc%s.ld' % (mainpath, region.lower())]
+        cc_command = [gcc, '-Iinclude', '-nostdlib', '-D', 'REGION_%s' % (region), '-D', 'REGION=\'%s\'' % region, '-Os', '-Wl,-T,%s/mem.ld,-T,rmc.ld,-T,rmc%s.ld' % (mainpath, region.lower())]
 
         # Add debug macro if debug is on
         if debug:

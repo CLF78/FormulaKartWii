@@ -291,18 +291,10 @@ void loadCodes() {
 	directWriteBranch(TimerManagerHook, GameModeMaster, false);
 	directWriteBranch(VehicleRestrictionHook, VehicleRestriction, true);
 
-	/////////////////////////////////
-	// Offline Race Count Modifier //
-	/////////////////////////////////
-
-	// Update the number of buttons (we cannot have more than 15 buttons, as it will otherwise overflow in the other settings)
+	// Offline Race Count Modifier (by JoshuaMK and CLF78)
 	directWrite8(RaceCountFix1, 15);
-
-	// Write (index+1) to the button, instead of loading from the array
 	directWrite32(RaceCountFix2, 0x381F0001);
 	directWriteNop(RaceCountFix3);
-
-	// Force default case and again use (index+1) as the value
 	directWrite16(RaceCountFix4, 0x4800);
 	directWriteBranch(RaceCountFix5, RaceCountFix, true);
 
@@ -337,29 +329,19 @@ void loadCodes() {
 	// Online Stuff //
 	//////////////////
 
-	// Force CC
+	// Force CC (by Star)
 	directWriteBranch(ForceCCHook, ForceCC, true);
 
-	// Friend Room Race Count
+	// Friend Room Race Count Modifier (by MrBean)
 	directWrite8(FroomRaceCount, 0);
 	directWrite8(FroomRaceCount2, 0);
 
-	/////////////////////////////
-	// Remove Worldwide Button //
-	/////////////////////////////
-
-	// Decrease button count
+	// Remove Worldwide Button (by Chadderz)
 	directWrite8(NoWWButton, 5);
-
-	// Skip WW button setup
 	directWriteNop(NoWWButton2);
 	directWriteNop(NoWWButton3);
 	directWrite32(NoWWButton4, 0x48000010);
-
-	// Replace child 1 with a different button
 	directWrite8(NoWWButton5, 1);
-
-	// Redirect button handlers to Regional button
 	tempVal16 = 0x484;
 	directWrite16(NoWWButton6, tempVal16);
 	directWrite16(NoWWButton7, tempVal16);
@@ -374,16 +356,16 @@ void loadCodes() {
 	// Automatic BRSAR Patching (by Elias)
 	directWriteBranch(AutoBRSARHook, AutoBRSAR, true);
 
-	// Change Characters Between Races - THIS CODE SUCKS
+	// Change Characters Between Races (by MrBean)
 	directWriteBranch(ChangeCharsHook, ChangeCharsSetup, false);
 	directWriteBranch(ChangeCharsHook2, ChangeCharsASM, true);
 	directWriteBranch(ChangeCharsHook3, ChangeCharsASM2, true);
 	directWriteArray(VtablePtr, ChangeCharsData, 0x14);
 
-	// Disable TF Music Reset
+	// Disable TF Music Reset (by tZ)
 	directWrite32(NoTFMusicReset, 0x48000010);
 
-	// Don't Lose VR When Disconnecting
+	// Don't Lose VR When Disconnecting (by Bully)
 	directWriteNop(NoVRLoss);
 
 	// Instant DC (by CLF78)
@@ -402,7 +384,7 @@ void loadCodes() {
 	// Custom Options //
 	////////////////////
 
-	// Faster Menu Navigation
+	// Faster Menu Navigation (by east)
 	if (FasterMenu == 1) {
 		tempVal32 = 0;
 		directWrite32(FasterMenuHook, tempVal32);
