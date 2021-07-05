@@ -1,15 +1,38 @@
 .include "asm_setup.S"
 
+.extern RKNetItemHandler
 .global ItemTrail
 
 # Original instruction
 ItemTrail:
 lwz r30, 0x14(r6)
 
-# Get current item
+# Check if player is ONLINE_REAL_LOCAL
+lbz r3, -0x9A(r27)
+cmpwi r3, 1
+beq onlinePlayer
+
+# Get current item and item amount
+localPlayer:
 lwz r3, -0x28(r27)
+lwz r4, -0x24(r27)
+b itemChecks
+
+# Get packet for playerId
+onlinePlayer:
+lis r3, RKNetItemHandler@ha
+lwz r3, RKNetItemHandler@l(r3)
+lbz r4, -0x9C(r27)
+slwi r4, r4, 3
+add r3, r3, r4
+
+# Get the data we need
+lbz r4, 0x17(r3)
+srwi r4, r4, 6
+lbz r3, 0x12(r3)
 
 # Check for Greens/Reds/Bananas/FIBs
+itemChecks:
 cmpwi r3, 3
 ble quantCheck
 
@@ -21,11 +44,8 @@ beq quantCheck
 cmpwi r3, 7
 bnelr+
 
-# Get current item amount
-quantCheck:
-lwz r4, -0x24(r27)
-
 # Check if it's more than 1, if not return
+quantCheck:
 cmpwi r4, 1
 blelr+
 

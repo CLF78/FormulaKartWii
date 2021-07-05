@@ -1,35 +1,29 @@
 .include "asm_setup.S"
 
+.extern RandomInstance, RandomNextLimited, SpecialItemHook
 .global SpecialRandom
 
-# Get a random number using the timebase as a seed (modulo division)
-SpecialRandom:
-mftbl r4
-li r11, 0xB
-divw r11, r4, r11
-mulli r11, r11, 0xB
-sub r4, r4, r11
-
-# Since timebase-low might be negative, get absolute value
-srawi r11, r4, 31
-xor r4, r11, r4
-sub r4, r4, r11
-
-# Convert the Blooper to a Bullet Bill
-cmpwi r4, 0xA
-beq fixblooper
-
-# Convert the Shock to a Golden Mushroom
-cmpwi r4, 6
-bne+ end
-
-fixshock:
-addi r4, r4, 3
-
-fixblooper:
-addi r4, r4, 3
-
 # Original instruction
+SpecialRandom:
+mr r31, r7
+
+# Get random item
+lis r3, RandomInstance@h
+ori r3, r3, RandomInstance@l
+li r4, 0xC
+bl RandomNextLimited
+
+# Replace shock
+cmpwi r3, 6
+blt+ end
+addi r3, r3, 1
+
+# Replace POW
+cmpwi r3, 0xB
+blt+ end
+addi r3, r3, 1
+
+# Store result
 end:
-addi r11, r1, 0x70
-blr
+mr r28, r3
+b SpecialItemHook+4

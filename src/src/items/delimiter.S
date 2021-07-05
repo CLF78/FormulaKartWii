@@ -26,5 +26,5 @@ blr
 
 # Order = Green Shell, Red Shell, Banana, Mushroom, Star, Blue Shell, Lightning, Fake Box, Mega Mushroom, Bob-omb, Blooper, POW Block, Golden Mushroom, Bullet Bill, Thunder Cloud
 ItemLimitArray:
-.byte 20, 20, 27, 12, 7, 3, 1, 27, 7, 7, 1, 1, 7, 7, 3
+.byte 20, 20, 27, 12, 7, 4, 1, 27, 7, 7, 7, 1, 7, 7, 4
 .align 2

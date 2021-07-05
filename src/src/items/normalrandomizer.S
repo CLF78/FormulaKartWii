@@ -1,153 +1,281 @@
 .include "asm_setup.S"
 
-.extern SharedItemHook, Raceinfo, ItemHolder
+.extern RandomNextLimited, RandomInstance, Raceinfo, ItemAmountArray
 .global UltimateRandom
 
-# Notes: r25 is position, r3 is a pointer to ItemSlotData, r4 is item to be stored
-# Other free registers: r5, r6, r7, r8
-
-# Backup LR
+# Push stack
 UltimateRandom:
-mflr r12
+stwu r1, -0x20(r1)
+mflr r0
+stw r0, 0x24(r1)
+stmw r28, 0xC(r1)
 
-# Get a random number using the timebase as a seed (modulo division)
-Randomizer:
-mftbl r4
-li r5, 19
-divw r5, r4, r5
-mulli r5, r5, 19
-subf r4, r5, r4
+# Backup some important registers
+mr r31, r3
+mr r30, r8
 
-# Since timebase-low might be negative, get absolute value
-srawi r5, r4, 31
-xor r4, r5, r4
-subf r4, r5, r4
+# Assume newbie helper off
+li r29, 0
 
-# Specific item checks
-cmpwi r4, 7
-beq blue
+# Check if player is human
+cmpwi r26, 1
+bne+ getRandom
 
-cmpwi r4, 8
-beq shock
+# Load Raceinfo
+lis r4, Raceinfo@ha
+lwz r4, Raceinfo@l(r4)
 
-cmpwi r4, 0xD
-bne+ checkNewbie
-
-###################
-# POW Timer Check #
-###################
-
-lwz r5, 0x40(r3)
-cmpwi r5, 0
-bne+ Randomizer
-
-# If the player is in 1st, give them a Mushroom instead
-cmpwi r25, 1
-bne+ end
-li r4, 4
-b end
-
-####################
-# Blue Timer Check #
-####################
-
-blue:
-lwz r5, 0x38(r3)
-cmpwi r5, 0
-bne+ Randomizer
-b end
-
-#####################
-# Shock Timer Check #
-#####################
-
-shock:
-lwz r5, 0x34(r3)
-cmpwi r5, 0
-bne+ Randomizer
-b end
-
-###############
-# Anti-Lapper #
-###############
-
-# Load RaceInfo
-checkNewbie:
-lis r8, Raceinfo@ha
-lwz r8, Raceinfo@l(r8)
-
-# Load difference threshold
-bl trick
-
-.float 1.0
-
-trick:
-mflr r7
-lfs f0, 0(r7)
-
-# Get the playerId from r23
-lis r7, ItemHolder@ha
-lwz r7, ItemHolder@l(r7)
-lwz r7, 0x14(r7)
-sub r7, r23, r7
-li r6, 0x92
-divw r6, r7, r6
-
-# Get player id in 1st and multiply it by 4
-lwz r5, 0x18(r8)
+# Get raceCompletion for player in 1st
+lwz r5, 0x18(r4)
 lbz r5, 0(r5)
-rlwinm r5, r5, 2, 0, 29
+slwi r5, r5, 2
+lwz r4, 0xC(r4)
+lwzx r5, r5, r4
+lfs f0, 0xC(r5)
 
-# Get RaceInfo player pointers
-lwz r8, 0xC(r8)
-lwzx r5, r8, r5
-lwzx r6, r8, r6
+# Get raceCompletion for currentPlayer
+lbz r5, 0x18(r30)
+slwi r5, r5, 2
+lwzx r5, r5, r4
+lfs f1, 0xC(r5)
 
-# Get lap progresses and calculate difference
-lfs f2, 0xC(r5)
-lfs f3, 0xC(r6)
-fsubs f2, f2, f3
+# Get immediate value for compare
+lis r6, 0x3F80
+stw r6, 0x1C(r1)
+lfs f2, 0x1C(r1)
 
-# If greater than threshold, apply the Newbie Helper
+# Subtract and compare
+fsubs f0, f0, f1
 fcmpu cr0, f2, f0
-ble+ end
+ble+ getRandom
 
-#################
-# Newbie Helper #
-#################
+# Newbie Helper required!
+li r29, 1
 
-# Green/Red Shells go to Triple Shrooms/Bomb
-cmpwi r4, 1
-ble newbie1
+# Get random number
+getRandom:
+lis r3, RandomInstance@h
+ori r3, r3, RandomInstance@l
 
-# Bananas/FIBs go to TC/Bullet Bill
-cmpwi r4, 3
-ble newbie2
+# Get amount of possible items
+notHuman:
+li r4, 0x13
+cmpwi r29, 0
+beq+ rand
+li r4, 0xa
 
-# Triple FIBs go to Blue Shell
-cmpwi r4, 12
-beq newbie3
+# Call function
+rand:
+bl RandomNextLimited
 
-# Triple Bananas/Shells go to Star/Golden/Mega
-cmpwi r4, 16
+# If Newbie Helper is on, add 6
+cmpwi r29, 0
+beq+ noNewb
+addi r3, r3, 6
+b noDecrease
+
+# Skip value 5
+noNewb:
+cmpwi r3, 0x5
+blt noIncrease
+addi r3, r3, 1
+
+# Subtract 0x10 for values 16 and above
+noIncrease:
+cmpwi r3, 0x10
+blt+ noDecrease
+subi r3, r3, 0x10
+
+# If blue, check blue timer
+noDecrease:
+cmpwi r3, 0x7
+bne+ notBlue
+lwz r4, 0x38(r31)
+cmpwi r4, 0
+bne getRandom
+
+# If shock, check shock timer
+notBlue:
+cmpwi r3, 0x8
+bne+ notShock
+lwz r4, 0x34(r31)
+cmpwi r4, 0
+bne getRandom
+
+# If pow, check pow timer and position
+notShock:
+cmpwi r3, 0xD
+bne+ notPow
+lwz r4, 0x40(r31)
+cmpwi r4, 0
+bne getRandom
+cmpwi r25, 1
+beq getRandom
+
+# Save chosen item
+notPow:
+mr r28, r3
+
+# Call random function
+lis r3, RandomInstance@h
+ori r3, r3, RandomInstance@l
+li r4, 100
+bl RandomNextLimited
+
+# Assume new amount to be 1
+li r6, 1
+
+# Setup chances array
+mulli r29, r29, 38
+slwi r5, r28, 1
+lis r4, ChancesArray@h
+ori r4, r4, ChancesArray@l
+add r4, r4, r29
+add r4, r4, r5
+
+# Check double chance
+lbz r5, 0(r4)
+cmpw r3, r5
 blt+ end
+addi r6, r6, 1
 
-# Subtraction logic, yay
-newbie4:
-subi r4, r4, 2
+# Check triple chance
+lbz r5, 0x1(r4)
+cmpw r3, r5
+blt+ end
+addi r6, r6, 1
 
-newbie3:
-subi r4, r4, 5
-b end
-
-newbie2:
-addi r4, r4, 7
-
-newbie1:
-addi r4, r4, 5
-
-# Move item to r3, restore LR and return
+# Store amount and return item
 end:
-mr r3, r4
-mtlr r12
+lis r4, ItemAmountArray@h
+ori r4, r4, ItemAmountArray@l
+lbz r5, 0x18(r30)
+stbx r6, r4, r5
+mr r3, r28
+
+# Pop stack and return
+lwz r0, 0x24(r1)
+lmw r28, 0xC(r1)
+mtlr r0
+addi r1, r1, 0x20
 blr
+
+# Regular Items
+ChancesArray:
+
+# Green Shell
+.byte 34,67
+
+# Red Shell
+.byte 34,67
+
+# Banana
+.byte 34,67
+
+# FIB
+.byte 34,67
+
+# Mushroom
+.byte 34,67
+
+# Triple Mushroom (UNUSED)
+.byte -1,-1
+
+# Bomb
+.byte 95,99
+
+# Blue Shell
+.byte 95,99
+
+# Shock
+.byte 95,99
+
+# Star
+.byte 85,95
+
+# Golden
+.byte 95,99
+
+# Mega
+.byte 85,95
+
+# Feather
+.byte 95,99
+
+# POW
+.byte 95,99
+
+# TC (SINGLE ONLY)
+.byte -1,-1
+
+# Bullet Bill
+.byte 95,99
+
+# Triple Banana (UNUSED)
+.byte -1,-1
+
+# Triple Green (UNUSED)
+.byte -1,-1
+
+# Triple Red (UNUSED)
+.byte -1,-1
+
+# Newbie Helper Items
+
+# Green Shell
+.byte -1,-1
+
+# Red Shell
+.byte -1,-1
+
+# Banana
+.byte -1,-1
+
+# FIB
+.byte -1,-1
+
+# Mushroom
+.byte -1,-1
+
+# Triple Mushroom (UNUSED)
+.byte -1,-1
+
+# Bomb
+.byte 85,95
+
+# Blue Shell
+.byte 85,95
+
+# Shock
+.byte 95,99
+
+# Star
+.byte 34,67
+
+# Golden
+.byte 85,95
+
+# Mega
+.byte 34,67
+
+# Feather
+.byte 85,95
+
+# POW
+.byte 95,99
+
+# TC (SINGLE ONLY)
+.byte -1,-1
+
+# Bullet Bill
+.byte 95,99
+
+# Triple Banana (UNUSED)
+.byte -1,-1
+
+# Triple Green (UNUSED)
+.byte -1,-1
+
+# Triple Red (UNUSED)
+.byte -1,-1
+.align 2

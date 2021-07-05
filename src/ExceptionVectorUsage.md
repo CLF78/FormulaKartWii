@@ -4,6 +4,8 @@
 - 0x800001B0-0x800001B5 = Friend Room Flags
 - 0x800001C0-0x800001CC = TimerInstance
 - 0x800001CC-0x800001D8 = Ramp Up Array
+- 0x800001D8-0x800001E4 = Item Amount Array
+- 0x800001E4-0x800001F8 = RandomInstance
 
 # 0x80000298-0x800002FF
 

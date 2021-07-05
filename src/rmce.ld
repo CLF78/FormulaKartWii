@@ -8,6 +8,7 @@ SECTIONS {
 	DriverParam = 0x809BD134;
 	Menudata = 0x809BD508;
 	RKNetController = 0x809BD918;
+	RKNetItemHandler = 0x809BD938;
 	ItemHolder = 0x809BEE20;
 	ItemStructs = 0x809BEEB0;
 	ScreenHUD = 0x809BFDC0;
@@ -34,6 +35,9 @@ SECTIONS {
 	ptmf_scall = 0x800208F0;
 
 	SubtractTimers = 0x808423FC;
+	
+	RandomConstruct = 0x8054F444;
+	RandomNextLimited = 0x8054F5AC;
 
 	/* Codehandler Hooks */
 	VIHook = 0x801BAA80;
@@ -53,8 +57,6 @@ SECTIONS {
 	sprintf = 0x80010ECC;
 	swprintf = 0x80016CB4;
 	OSFatal = 0x801A4E24;
-	srand = 0x80011130;
-	rand = 0x80011110;
 	_restgpr_31_x = 0x80020A9C;
 
 	/* 30 FPS */
@@ -141,7 +143,7 @@ SECTIONS {
 	BlooperItemStruct = 0x808A2D60;
 
 	/* Don't Hide Position After Race */
-	NoHidePos = 0x807EA79C;
+	NoHidePos = 0x807EA79F;
 
 	/* Draggable Blue Shells */
 	BlueShellDrag = 0x808A1058;
@@ -238,7 +240,9 @@ SECTIONS {
 
 	/* Ultimate Item Randomizer */
 	SharedItemHook = 0x807AB700;
-	SpecialItemHook = 0x80790FBC;
+	SpecialItemHook = 0x80790FD8;
+	ItemAmountHook1 = 0x8065D35C;
+	ItemAmountHook2 = 0x807ADEF8;
 
 	/* Time Limit Modifier */
 	TimeLimit = 0x80539E7C;

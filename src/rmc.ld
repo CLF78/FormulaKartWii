@@ -13,6 +13,8 @@ SECTIONS {
 	VehicleRestrict = 0x800001B4;
 	TimerInstance = 0x800001C0;
 	EnableRampUpStuff = 0x800001CC;
+	ItemAmountArray = 0x800001D8;
+	RandomInstance = 0x800001E4;
 
 	/* Change Character Between Races */
 	ScenePtr = 0x80000EA0;

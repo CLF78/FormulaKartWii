@@ -1,5 +1,6 @@
 #include "common.h"
 #include "exception.h"
+#include "random.h"
 
 // Non-existant function so that DevkitPPC doesn't forget to pop the stack...
 void MainHookTail();
@@ -239,17 +240,12 @@ void loadCodes() {
 	// Ultra UnCut (by MrBean)
 	directWriteBranch(CKPTCheck, UltraUncut, true);
 
-	//////////////////////////////
-	// Ultimate Item Randomizer //
-	//////////////////////////////
-
-	// Itembox Randomizer
+	// Ultimate Item Randomizer (by CLF78 and Ismy)
+	RandomConstruct(&RandomInstance);
 	directWriteBranch(SharedItemHook, UltimateRandom, true);
-
-	// Bush/Woodbox/Goomba Randomizer
+	directWriteBranch(ItemAmountHook1, ItemAmount1, true);
+	directWriteBranch(ItemAmountHook2, ItemAmount2, false);
 	directWriteBranch(SpecialItemHook, SpecialRandom, true);
-
-	// Force probability to 100 (also affects Bushes!)
 	directWriteBranch(WoodProb, WoodboxPatch, true);
 
 	// Woodbox Respawn Modifier (by Atlas)
