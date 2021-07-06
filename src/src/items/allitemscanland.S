@@ -16,6 +16,10 @@ b begin
 li r7, 0x4
 b begin
 
+# Feather
+li r7, 0xC
+b begin
+
 # Bullet Bill
 li r7, 0xF
 
@@ -61,6 +65,7 @@ blr
 #####################
 # Item Struct Patch #
 #####################
+
 NoItemLandingPoofASM:
 li r12, 1
 li r11, 1

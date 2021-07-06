@@ -51,7 +51,7 @@ ItemTextureArray:
 # FIB
 .long OriginalTextures+0x20
 .long DoubleFIB
-.long OriginalTextures+0x84
+.long TripleFIB
 
 # Mushroom
 .long OriginalTextures+0x2C
@@ -93,10 +93,10 @@ ItemTextureArray:
 .long DoubleMega
 .long TripleMega
 
-# Triple FIB
-.long OriginalTextures+0x20
-.long DoubleFIB
+# Feather
 .long OriginalTextures+0x84
+.long DoubleFeather
+.long TripleFeather
 
 # POW
 .long OriginalTextures+0x8C
@@ -165,11 +165,17 @@ DoubleGolden:
 DoubleMega:
 .string "d-mega"
 
+DoubleFeather:
+.string "d-feather"
+
 DoublePOW:
 .string "d-pow"
 
 DoubleBill:
 .string "d-bill"
+
+TripleFIB:
+.string "t-fib"
 
 TripleBomb:
 .string "t-bomb"
@@ -188,6 +194,9 @@ TripleGolden:
 
 TripleMega:
 .string "t-mega"
+
+TripleFeather:
+.string "t-feather"
 
 TriplePOW:
 .string "t-pow"

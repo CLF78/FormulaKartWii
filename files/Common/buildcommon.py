@@ -11,9 +11,7 @@ for region in regionlist:
     for geohit in geohitlist:
         shutil.copy(geohit, 'Common_%s.d/%s' % (region.upper(), geohit.replace('Geo', 'Neo')))
 
-# Remove them
-for geohit in geohitlist:
-    os.remove(geohit)
+    shutil.copy('cesso.brres', 'Common_%s.d' % region.upper())
 
 # Create szs files
 call(['wszst', 'create', '*.d'])

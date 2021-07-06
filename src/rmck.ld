@@ -106,6 +106,7 @@ SECTIONS {
 	AICLUnk2 = 0x807850F0;
 	NoItemLandingPoof = 0x8077F2B0;
 	ItemLandMega = 0x808A3948;
+	ItemLandFeather = 0x808A3960;
 	ItemLandGolden = 0x808A3978;
 	ItemLandBill = 0x808A3984;
 
@@ -136,12 +137,6 @@ SECTIONS {
 	NoItemPoof2Hook = 0x8078FE14;
 	NoItemPoof3Hook = 0x8078FE24;
 
-	/* Replace Blooper with Triple FIBs */
-	BlooperKiller = 0x80797670;
-	BlooperHideModel = 0x80893CFC;
-	BlooperHideModel2 = 0x80893D04;
-	BlooperItemStruct = 0x80893CE0;
-
 	/* Don't Hide Position After Race */
 	NoHidePos = 0x807E3187;
 
@@ -153,6 +148,14 @@ SECTIONS {
 
 	/* Fast POW */
 	POWTimer = 0x807A0193;
+
+	/* Feather Item */
+	FeatherUseFunc = 0x80893CF4;
+	FeatherOnlineFixHook = 0x8078514C;
+	FeatherFilename = 0x80893D18;
+	FeatherSpeed = 0x808A409C;
+	GenerateEVENT = 0x8078A5E0;
+	SubtractItem = 0x807AAD3C;
 
 	/* Final Lap Music Trigger Modifier */
 	MusicPitch = 0x8088F538;
@@ -240,7 +243,7 @@ SECTIONS {
 
 	/* Ultimate Item Randomizer */
 	SharedItemHook = 0x807A8520;
-	SpecialItemHook = 0x807883A4;
+	SpecialItemHook = 0x807884A8;
 	ItemAmountHook1 = 0x8064A9EC;
 	ItemAmountHook2 = 0x807AAD18;
 

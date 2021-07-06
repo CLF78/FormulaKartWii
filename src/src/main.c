@@ -69,7 +69,8 @@ void loadCodes() {
 	tempVal32 = (u32)&AllItemsCanLand;
 	directWrite32(ItemLandMega, tempVal32);
 	directWrite32(ItemLandGolden, tempVal32+8);
-	directWrite32(ItemLandBill, tempVal32+16);
+	directWrite32(ItemLandFeather, tempVal32+16);
+	directWrite32(ItemLandBill, tempVal32+24);
 
 	// Banana Spinout Modifier (Skullface)
 	directWrite32(BananaDamage, 0x38600001);
@@ -119,6 +120,14 @@ void loadCodes() {
 
 	// Fast POW (by mdmwii)
 	directWrite8(POWTimer, 0x80);
+
+	// Feather Item (by CLF78)
+	extern void* FeatherFunc;
+	tempVal32 = (u32)&FeatherFunc;
+	directWrite32(FeatherUseFunc, tempVal32);
+	directWriteBranch(FeatherOnlineFixHook, FeatherOnlineFix, true);
+	directWriteArray(FeatherSpeed, FeatherSpeeds, 0xC);
+	directWrite8(FeatherFilename, 'c');
 
 	// Final Lap Music Trigger Modifier (by CLF78)
 	directWriteBranch(FastMusicHook, FinalLapCheck, true);
@@ -190,21 +199,6 @@ void loadCodes() {
 	directWriteBranch(RemoveFakeShroom, NoFakeShroom, true);
 	directWriteArray(RemoveFakeShroom2, NoFakeShroom2, 0xC);
 	directWrite32(RemoveFakeShroom3, 0x48000020);
-
-	//////////////////////////////////////
-	// Replace Blooper with Triple FIBs //
-	//////////////////////////////////////
-
-	// Prevent the Blooper from working
-	directWriteBlr(BlooperKiller);
-
-	// Hide the floating Blooper model
-	tempVal32 = 0x7F000000;
-	directWrite32(BlooperHideModel, tempVal32);
-	directWrite32Offset(BlooperHideModel, 8, tempVal32);
-
-	// Change the item's data
-	directWriteArray(BlooperItemStruct, BlooperData, 24);
 
 	// Shells Never Break (by CLF78)
 	directWrite16(ShellHitCount, 0x4800);

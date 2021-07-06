@@ -46,7 +46,7 @@ lfs f2, 0x1C(r1)
 
 # Subtract and compare
 fsubs f0, f0, f1
-fcmpu cr0, f2, f0
+fcmpu cr0, f0, f2
 ble+ getRandom
 
 # Newbie Helper required!
