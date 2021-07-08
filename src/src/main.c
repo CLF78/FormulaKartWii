@@ -174,6 +174,12 @@ void loadCodes() {
 	// Mega Thundercloud (by tZ)
 	directWriteBranch(MegaTCHook, MegaFunc, true);
 
+	// MK7 Shock Squishing (by CLF78)
+	directWriteBranch(ShockSquishingHook, ShockSquishing, false);
+	directWrite8(NoSquishStop, 0);
+	directWriteNop(NoSquishLoseItem);
+	directWrite32(NoSquishRespawn, 0x48000018);
+
 	// Motion-Sensor Bombs (by Hamster)
 	tempVal16 = 0x7FFF;
 	directWrite16(BombTimer, tempVal16);

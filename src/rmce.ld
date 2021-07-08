@@ -38,6 +38,7 @@ SECTIONS {
 	
 	RandomConstruct = 0x8054F444;
 	RandomNextLimited = 0x8054F5AC;
+	RandomRefresh = 0x8054F4B0;
 
 	/* Codehandler Hooks */
 	VIHook = 0x801BAA80;
@@ -205,6 +206,14 @@ SECTIONS {
 	/* Mega Thundercloud */
 	MegaTCHook = 0x80579DCC;
 	MegaFunc = 0x8078F6A8;
+
+	/* MK7 Shock Squishing */
+	ShockSquishingHook = 0x8056B554;
+	ShockSquishingCall = 0x8056B5E0;
+	ShockSquishingCall2 = 0x8056B770;
+	NoSquishStop = 0x8056554B;
+	NoSquishLoseItem = 0x805655AC;
+	NoSquishRespawn = 0x805655C8;
 
 	/* Motion-Sensor Bombs */
 	BombTimer = 0x8079CBEA;
