@@ -118,8 +118,8 @@ void loadCodes() {
 	// Duplicated Item Auto-Trail (by CLF78)
 	directWriteBranch(AutoTrailHook, ItemTrail, true);
 
-	// Fast POW (by mdmwii)
-	directWrite8(POWTimer, 0x80);
+	// Fast POW (by mdmwii and Ro)
+	directWriteArray(NoPOWDelay, POWDelay, 8);
 
 	// Feather Item (by CLF78)
 	extern void* FeatherFunc;
@@ -189,6 +189,9 @@ void loadCodes() {
 	directWrite8(ShroomInBullet, 0);
 	directWriteNop(StarWhenHit);
 	directWriteNop(ShroomWhenHit);
+
+	// POW Yourself in 1st (by CLF78)
+	directWriteBranch(POWSelfHook, POWSelf, false);
 
 	// Prevent Shock/POW Drop (by CLF78)
 	directWriteBranch(DropFunc, NoDrop, true);

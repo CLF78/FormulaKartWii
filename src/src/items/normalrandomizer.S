@@ -102,15 +102,13 @@ lwz r4, 0x34(r31)
 cmpwi r4, 0
 bne getRandom
 
-# If pow, check pow timer and position
+# If pow, check pow timer
 notShock:
 cmpwi r3, 0xD
 bne+ notPow
 lwz r4, 0x40(r31)
 cmpwi r4, 0
 bne getRandom
-cmpwi r25, 1
-beq getRandom
 
 # Save chosen item
 notPow:
@@ -200,7 +198,7 @@ ChancesArray:
 .byte 85,95
 
 # Feather
-.byte 95,99
+.byte 85,95
 
 # POW
 .byte 95,99

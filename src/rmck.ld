@@ -147,7 +147,7 @@ SECTIONS {
 	AutoTrailHook = 0x8077FD30;
 
 	/* Fast POW */
-	POWTimer = 0x807A0193;
+	NoPOWDelay = 0x807A018C;
 
 	/* Feather Item */
 	FeatherUseFunc = 0x80893CF4;
@@ -220,6 +220,9 @@ SECTIONS {
 	ShroomInBullet = 0x8056D43A;
 	StarWhenHit = 0x8056E2FC;
 	ShroomWhenHit = 0x8056D4A8;
+
+	/* POW Yourself in 1st */
+	POWSelfHook = 0x807A01F0;
 
 	/* Prevent Shock/POW Drop */
 	DropFunc = 0x807AA9F0;
