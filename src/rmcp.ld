@@ -173,8 +173,7 @@ SECTIONS {
 	GreenShellSpeed = 0x808A5DBC;
 
 	/* Impervious TC */
-	ImperviousTCHook = 0x807AFA9C;
-	ImperviousTCHook2 = 0x807AFAA8;
+	ImperviousTCHook = 0x807AFAA8;
 
 	/* Inside Drift Bikes */
 	KartParamHook = 0x80591FE8;
@@ -224,6 +223,11 @@ SECTIONS {
 
 	/* Prevent Shock/POW Drop */
 	DropFunc = 0x807BC630;
+
+	/* Red Shell Target Modifier */
+	TargetWhileRespawn = 0x80591296;
+	TargetWhileHit = 0x805912E3;
+	TargetPositionHook = 0x807B38A0;
 
 	/* Remove Mushroom Bug */
 	RemoveShroomBug = 0x807BA077;

@@ -145,8 +145,7 @@ void loadCodes() {
 	directWrite16(GreenShellSpeed, 0x4320);
 
 	// Impervious TC (by CLF78)
-	directWriteBranch(ImperviousTCHook, ImperviousTCFunc, true);
-	directWrite32(ImperviousTCHook2, 0x48000038);
+	directWrite32(ImperviousTCHook, 0x48000038);
 
 	// Inside Drift Bikes (by Seeky)
 	directWriteBranch(KartParamHook, DriftOverride, true);
@@ -193,6 +192,11 @@ void loadCodes() {
 
 	// Prevent Shock/POW Drop (by CLF78)
 	directWriteBranch(DropFunc, NoDrop, true);
+
+	// Red Shell Target Modifier (by CLF78)
+	directWrite8(TargetWhileRespawn, 0x20);
+	directWrite8(TargetWhileHit, 0x18);
+	directWriteArray(TargetPositionHook, TargetPosition, 0x10);
 
 	// Remove Mushroom Bug (by Vega and CLF78)
 	directWrite8(RemoveShroomBug, 0);

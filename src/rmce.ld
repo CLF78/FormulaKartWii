@@ -172,6 +172,9 @@ SECTIONS {
 	/* Green Shell Speed Modifier */
 	GreenShellSpeed = 0x808A12E4;
 
+	/* Impervious TC */
+	ImperviousTCHook = 0x807D74FC;
+
 	/* Inside Drift Bikes */
 	KartParamHook = 0x8058B7C4;
 
@@ -220,6 +223,11 @@ SECTIONS {
 
 	/* Prevent Shock/POW Drop */
 	DropFunc = 0x807ADBD0;
+
+	/* Red Shell Target Modifier */
+	TargetWhileRespawn = 0x8058AA72;
+	TargetWhileHit = 0x8058AABF;
+	TargetPositionHook = 0x807A4E40;
 
 	/* Remove Mushroom Bug */
 	RemoveShroomBug = 0x807AB617;
@@ -417,8 +425,4 @@ SECTIONS {
 	SpeedoTextParse = 0x805C1250;
 	SpeedoParseSkip = 0x805C12E8;
 	SpeedoNoPauseHook = 0x807E1CC8;
-
-	/* Impervious TC */
-	ImperviousTCHook = 0x807D74F0;
-	ImperviousTCHook2 = 0x807D74FC;
 }
