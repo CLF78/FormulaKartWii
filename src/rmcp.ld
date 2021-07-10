@@ -58,6 +58,7 @@ SECTIONS {
 	sprintf = 0x80011A2C;
 	swprintf = 0x80017814;
 	OSFatal = 0x801A4EC4;
+	CalcCRC32 = 0x801D1CA0;
 	_restgpr_31_x = 0x800215FC;
 
 	/* 30 FPS */
@@ -119,6 +120,10 @@ SECTIONS {
 	/* Blue Shell Speed */
 	BlueShellSpeed = 0x808A5BC4;
 	BlueShellSpeed2 = 0x808A5C24;
+
+	/* Bomb Lag Fix */
+	NoFakeBomb = 0x80572688;
+	NoDmgChange = 0x80569F68;
 
 	/* BRCTR Redirector */
 	LapNumberCTR = 0x808A9CC7;

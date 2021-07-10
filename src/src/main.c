@@ -85,6 +85,11 @@ void loadCodes() {
 	directWrite8(BlueShellSpeed, tempVal8);
 	directWrite8(BlueShellSpeed2, tempVal8);
 
+	// Bomb/Blue Explosion Lag Fix (by MrBean and CLF78)
+	tempVal16 = 0x4800;
+	directWrite16(NoFakeBomb, tempVal16);
+	directWrite16(NoDmgChange, tempVal16);
+
 	// BRCTR Redirector (by CLF78)
 	directWrite8(LapNumberCTR, 'f');
 	directWrite8(ItemWindowCTR, 's');

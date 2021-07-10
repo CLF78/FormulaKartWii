@@ -120,6 +120,10 @@ SECTIONS {
 	BlueShellSpeed = 0x808A10EC;
 	BlueShellSpeed2 = 0x808A114C;
 
+	/* Bomb Lag Fix */
+	NoFakeBomb = 0x8056D838;
+	NoDmgChange = 0x80565BE8;
+
 	/* BRCTR Redirector */
 	LapNumberCTR = 0x808A43FF;
 	ItemWindowCTR = 0x808A4342;
