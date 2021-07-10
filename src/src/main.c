@@ -132,6 +132,9 @@ void loadCodes() {
 	// Fast POW (by mdmwii and Ro)
 	directWriteArray(NoPOWDelay, POWDelay, 8);
 
+	// Faster Score Increase (by CLF78)
+	directWrite8(ScoreSkip, 1);
+
 	// Feather Item (by CLF78)
 	extern void* FeatherFunc;
 	tempVal32 = (u32)&FeatherFunc;

@@ -264,6 +264,9 @@ SECTIONS {
 	RemoveFakeShroom2 = 0x807A8844;
 	RemoveFakeShroom3 = 0x807A84E4;
 
+	/* Faster Score Increase */
+	ScoreSkip = 0x807E3BB7;
+
 	/* Set Default Drift Type */
 	DefaultDriftType = 0x805343C4;
 
