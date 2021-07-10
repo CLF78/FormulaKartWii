@@ -127,6 +127,10 @@ SET /P NOMUS=Disable Music? (Y/N):
 IF /i %NOMUS%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 80004002=01 -q
 
 echo.
+SET /P NOMCHAN=Disable Multi Channel Track Music? (Y/N):
+IF /i %NOMCHAN%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 80004007=01 -q
+
+echo.
 SET /P NOCHARS=Disable Character Voices? (Y/N):
 IF /i %NOCHARS%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 80004003=01 -q
 
@@ -142,7 +146,7 @@ echo 2. Yes (distance to player in 1st)
 SET /P TIMEDIFF=Enter the number corresponding to the option you want:
 
 if %TIMEDIFF% leq 2 set TD=1
-if %TIMEDIFF% geq 1 set TD=1
+if %TIMEDIFF% lss 1 set TD=0
 IF %TD%==1 wit\wit.exe dolpatch mkw.d/sys/main.dol 80004005=%TIMEDIFF% -q
 
 echo.

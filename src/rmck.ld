@@ -121,7 +121,7 @@ SECTIONS {
 	BlueShellSpeed2 = 0x80894084;
 
 	/* Bomb Lag Fix */
-	NoFakeBomb = 0x805606E0;
+	NoFakeBomb = 0x805606E8;
 	NoDmgChange = 0x80557FC0;
 
 	/* BRCTR Redirector */
@@ -133,6 +133,9 @@ SECTIONS {
 	CannonLandingFix = 0x805665B3;
 	CannonSpeed = 0x8057311C;
 	CannonSpeed2 = 0x80573128;
+
+	/* Credits Button */
+	CreditsButton = 0x8083F68B;
 
 	/* DC Bug Fix */
 	DCFix = 0x8052D71C;
@@ -174,8 +177,18 @@ SECTIONS {
 	GeoHitTableKartHook = 0x80818838;
 	GeyserCollFix = 0x8056141F;
 
+	/* Glitch Prevention */
+	DisableWallrideHook = 0x8056A070;
+	DisableHWG = 0x80583443;
+	DisableWigglerGlitchHook = 0x806B8A44;
+
 	/* Green Shell Speed Modifier */
 	GreenShellSpeed = 0x8089421C;
+
+	/* Host Version Check */
+	GuestSendHook = 0x800DBD98;
+	HostCheckHook = 0x800DC4FC;
+	DWCiCheckResvCommand = 0x800DE718;
 
 	/* Impervious TC */
 	ImperviousTCHook = 0x8079DE68;
@@ -251,6 +264,9 @@ SECTIONS {
 	RemoveFakeShroom2 = 0x807A8844;
 	RemoveFakeShroom3 = 0x807A84E4;
 
+	/* Set Default Drift Type */
+	DefaultDriftType = 0x805343C4;
+
 	/* Show Times After Race */
 	ShowTimesVS = 0x8084ACCC;
 	ShowTimesWW = 0x8084B820;
@@ -259,6 +275,15 @@ SECTIONS {
 
 	/* Ultra UnCut */
 	CKPTCheck = 0x80523174;
+
+	/* VS Menu Skip */
+	VSMenuSkipHook = 0x808407EC;
+	VSMenuSkipHook2 = 0x805E9BA8;
+	VSMenuSkip3 = 0x8061B654;
+	VSMenuSkip4 = 0x8061EAEB;
+	VSMenuReturnHook = 0x80840EDC;
+	VSMenuReturn = 0x8083DEF8;
+	VSMenuSkipMulti = 0x805F176B;
 
 	/* Woodbox Modifier */
 	WoodRespawn = 0x808BF728;
@@ -441,4 +466,8 @@ SECTIONS {
 	SpeedoTextParse = 0x805BBD30;
 	SpeedoParseSkip = 0x805BBDC8;
 	SpeedoNoPauseHook = 0x807D9934;
+
+	/* No Multi Channel Track Music */
+	NoMultiChannelHook = 0x806E8ED4;
+	FirstCall = 0x80707994;
 }

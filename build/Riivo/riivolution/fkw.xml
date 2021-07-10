@@ -36,9 +36,14 @@
 					<patch id="mystufffkwnrt" />
 				</choice>
 			</option>
-			<option name="No Character Sounds">
+			<option name="No Character Voices">
 				<choice name="Enabled">
 					<patch id="nochars" />
+				</choice>
+			</option>
+			<option name="No Multi Channel Track Music">
+				<choice name="Enabled">
+					<patch id="nomchan" />
 				</choice>
 			</option>
 			<option name="No Music">
@@ -119,5 +124,8 @@
 	</patch>
 	<patch id="speedo">
 		<memory offset="0x80004006" value="01"/>
+	</patch>
+	<patch id="mchan">
+		<memory offset="0x80004007" value="01"/>
 	</patch>
 </wiidisc>

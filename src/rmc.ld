@@ -15,6 +15,7 @@ SECTIONS {
 	EnableRampUpStuff = 0x800001CC;
 	ItemAmountArray = 0x800001D8;
 	RandomInstance = 0x800001E4;
+	Version = 0x800001F0;
 
 	/* Change Character Between Races */
 	ScenePtr = 0x80000EA0;
@@ -32,5 +33,6 @@ SECTIONS {
 	BtGlitch = 0x80004004;
 	TimeDiff = 0x80004005;
 	Speedometer = 0x80004006;
+	NoMultiChan = 0x80004007;
 	ThirtyFPS = 0x8000400F;
 }

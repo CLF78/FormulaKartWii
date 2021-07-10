@@ -106,8 +106,14 @@ void loadCodes() {
 	directWriteBranch(CannonSpeed, CannonSpeedMultiplier, false);
 	directWriteBranch(CannonSpeed2, CannonSpeedMultiplier2, true);
 
-	// DC Bug Fix (by Seeky)
-	directWrite32(DCFix, 0x38E40032);
+	// Credits Button (by CLF78)
+	directWrite8(CreditsButton, 0x3B);
+
+	// DC Bug Fix (by Seeky and CLF78)
+	directWriteBranch(DCFix, DCBugFix, false);
+
+	// Default Drift Type Modifier (by CLF78)
+	directWrite32(DefaultDriftType, 0x38600001);
 
 	// Disable Item Poof (by CLF78 and tZ)
 	directWriteNop(NoItemPoof);
@@ -139,6 +145,15 @@ void loadCodes() {
 	directWriteBranch(FastMusicHook2, PitchReset, true);
 	directWriteBranch(FastMusicHook3, PitchReset2, false);
 
+	// Fix Horizontal Wall Glitch (by stebler)
+	directWrite8(DisableHWG, 0);
+
+	// Fix Wallriding (by CLF78)
+	directWriteBranch(DisableWallrideHook, DisableWallride, true);
+
+	// Fix Wiggler Glitch (by stebler)
+	directWriteBranch(DisableWigglerGlitchHook, DisableWigglerGlitch, true);
+
 	// GeoHit Patches (by CLF78 and Ismy)
 	tempVal8 = 'N';
 	directWrite8(GeoHitTableItem, tempVal8);
@@ -148,6 +163,11 @@ void loadCodes() {
 
 	// Green Shell Speed Modifier (by davidevgen)
 	directWrite16(GreenShellSpeed, 0x4320);
+
+	// Host Version Check (by CLF78 & Seeky)
+	directWriteBranch(GuestSendHook, GuestSend, false);
+	directWriteBranch(HostCheckHook, HostCheck, true);
+	directWrite8(Version, 1);
 
 	// Impervious TC (by CLF78)
 	directWrite32(ImperviousTCHook, 0x48000038);
@@ -388,6 +408,15 @@ void loadCodes() {
 	// Silent Controller Changing (by Bully)
 	directWriteNop(NoControllerDC);
 
+	// VS Menu Skip (by TheLordScruffy and CLF78)
+	directWriteBranch(VSMenuSkipHook, VSMenuSkip, true);
+	directWriteBranch(VSMenuSkipHook2, VSMenuSkip2, true);
+	directWriteNop(VSMenuSkip3);
+	directWriteBranch(VSMenuReturnHook, VSMenuReturn, false);
+	tempVal8 = 0x72;
+	directWrite8(VSMenuSkip4, tempVal8);
+	directWrite8(VSMenuSkipMulti, tempVal8);
+
 	////////////////////
 	// Custom Options //
 	////////////////////
@@ -434,6 +463,11 @@ void loadCodes() {
 
 	// Applies the two options above (by CLF78)
 	directWriteBranch(TimeDiffApplyHook, TimeDiffApply, true);
+
+	// No Multi Channel Track Music (by CLF78)
+	if (NoMultiChan == 1) {
+		directWriteBranch(NoMultiChannelHook, NoMultiChannel, false);
+	}
 
 	// 30 FPS (by CLF78)
 	if (ThirtyFPS == 1) {

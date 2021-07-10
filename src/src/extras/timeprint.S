@@ -1,7 +1,7 @@
 .include "asm_setup.S"
 
-.extern Raceinfo, SetMatText, SubtractTimers, swprintf, SetTextSrc
-.global TimePrint
+.extern Raceinfo, SetMatText, SubtractTimers, swprintf, SetTextSrc, DCFix
+.global TimePrint, DCBugFix
 
 # Independently of the output, align the text to the right on the X axis
 TimePrint:
@@ -124,3 +124,19 @@ LapDistance:
 .string16 "%+d Lap%s"
 
 .align 2
+
+# Skipped instruction
+DCBugFix:
+rlwinm r7, r0, 3, 0, 28
+
+# Get raceCompletion
+lfs f0, 0xC(r10)
+
+# Get our float
+lis r8, 0xC248
+stw r8, 0x118(r1)
+lfs f1, 0x118(r1)
+
+# Do subtraction and return
+fadds f0, f0, f1
+b DCFix+0x34
