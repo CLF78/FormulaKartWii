@@ -15,7 +15,7 @@ SECTIONS {
 	EnableRampUpStuff = 0x800001CC;
 	ItemAmountArray = 0x800001D8;
 	RandomInstance = 0x800001E4;
-	Version = 0x800001F0;
+	Version = 0x800001FC;
 
 	/* Change Character Between Races */
 	ScenePtr = 0x80000EA0;

@@ -249,6 +249,13 @@ void loadCodes() {
 	directWriteNop(SpeedoTextParseNop);
 	directWriteBranch(SpeedoTextParse, SpeedoTextParseASM, true);
 
+	// Show Voting Timer (by CLF78)
+	directWriteNop(TimerShow);
+
+	// Super Miniturbo Multiplier (by CLF78)
+	directWrite16(SMTMultiplier, 0x40A0);
+	directWrite16(SMTMinimum, 0x87);
+
 	// Starting Lap Modifier (by CLF78, Ismy and Melg)
 	directWriteArray(StartingLapHook, StartingLap, 8);
 	directWriteBranch(LapCountFixHook, LapCountFix, true);
@@ -318,6 +325,9 @@ void loadCodes() {
 	directWriteBranch(AlwaysWinVoteHook, VotePatch, true);
 	directWriteBranch(TimerManagerHook, GameModeMaster, false);
 	directWriteBranch(VehicleRestrictionHook, VehicleRestriction, true);
+	directWrite8(MessageButtons, 0x6C);
+	directWriteArray(MessageButtons2Hook, MessageButtons2, 8);
+	directWriteBranch(MessageButtons3Hook, MessageButtons3, false);
 
 	// Offline Race Count Modifier (by JoshuaMK and CLF78)
 	directWrite8(RaceCountFix1, 15);
@@ -416,6 +426,7 @@ void loadCodes() {
 	tempVal8 = 0x72;
 	directWrite8(VSMenuSkip4, tempVal8);
 	directWrite8(VSMenuSkipMulti, tempVal8);
+	directWriteBlr(NoGhostLoading);
 
 	////////////////////
 	// Custom Options //

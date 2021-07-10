@@ -267,11 +267,18 @@ SECTIONS {
 	/* Set Default Drift Type */
 	DefaultDriftType = 0x80540E30;
 
+	/* Show Timers */
+	TimerShow = 0x8061CF40;
+
 	/* Show Times After Race */
 	ShowTimesVS = 0x8085A27C;
 	ShowTimesWW = 0x8085ADD0;
 	TimesFunc = 0x807EB334;
 	TimePrintHook = 0x807EB3F8;
+
+	/* Super Miniturbo Multiplier */
+	SMTMultiplier = 0x808B1410;
+	SMTMinimum = 0x808B1406;
 
 	/* Ultra UnCut */
 	CKPTCheck = 0x805305D4;
@@ -284,6 +291,7 @@ SECTIONS {
 	VSMenuReturnHook = 0x80821870;
 	VSMenuReturn = 0x80830524;
 	VSMenuSkipMulti = 0x805DEA6B;
+	NoGhostLoading = 0x805F0328;
 
 	/* Woodbox Modifier */
 	WoodRespawn = 0x808CA6A8;
@@ -353,6 +361,9 @@ SECTIONS {
 	BattleFixHook2 = 0x808308DC;
 	TimerManagerHook = 0x80531134;
 	VehicleRestrictionHook = 0x808286CC;
+	MessageButtons = 0x8062C907;
+	MessageButtons2Hook = 0x8062B954;
+	MessageButtons3Hook = 0x8062B2F0;
 
 	/* Offline Race Count Modifier */
 	RaceCountFix1 = 0x80832F73;
