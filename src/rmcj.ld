@@ -162,6 +162,7 @@ SECTIONS {
 	DynamicSizingHook4 = 0x8079E2F8;
 	DynamicSizingHook5 = 0x8079E850;
 	DynamicSizingHook6 = 0x8079EA6C;
+	DynamicSizingHook7 = 0x8079E688;
 
 	/* Fast POW */
 	NoPOWDelay = 0x807B1438;

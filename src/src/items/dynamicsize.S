@@ -1,7 +1,7 @@
 .include "asm_setup.S"
 
 .extern PlayerHolder, ItemStatusArray, DynamicSizingHook4Helper, DynamicSizingHook4
-.global DynamicSizing, DynamicSizing2, DynamicSizing3, DynamicSizing4Helper, DynamicSizing4, DynamicSizing5, DynamicSizing6
+.global DynamicSizing, DynamicSizing2, DynamicSizing3, DynamicSizing4Helper, DynamicSizing4, DynamicSizing5, DynamicSizing6, DynamicSizing7
 
 ##############
 # Function 1 #
@@ -16,11 +16,10 @@ lbzx r12, r11, r12
 # Load correct float based on status
 slwi r12, r12, 2
 lis r11, OurFloats@h
-ori r11, r11, OurFloats@l
+ori r11, r11, OurFloats@l-4
 lfsx f2, r11, r12
 
 # Multiply
-DynamicSubMini:
 fmuls f1, f1, f2
 blr
 
@@ -37,7 +36,7 @@ lbzx r12, r11, r12
 # Load correct float based on status
 slwi r12, r12, 2
 lis r11, OurFloats@h
-ori r11, r11, OurFloats@l
+ori r11, r11, OurFloats@l-4
 lfsx f3, r11, r12
 
 # Multiply
@@ -52,48 +51,13 @@ blr
 DynamicSizing:
 lfs f1, 0x48(r5)
 
-# Assume no mod required
-li r6, 0
-
-# Get playerId
-lbz r4, 0x6C(r31)
-slwi r4, r4, 2
-
-# Get the related PlayerHolder
-lis r5, PlayerHolder@ha
-lwz r5, PlayerHolder@l(r5)
-lwz r5, 0x20(r5)
-lwzx r4, r5, r4
-
-# Get PlayerSub1c->bitfield2
-lwz r4, 0x20(r4)
-lwz r4, 0xC(r4)
-
-# Check if player is in a mega
-rlwinm. r5, r4, 17, 31, 31
-beq notMega
-li r6, 1
-b storeStatus
-
-# Check if player is shocked
-notMega:
-rlwinm. r5, r4, 25, 31, 31
-beq storeStatus
-li r6, 2
-
-# Store result
-storeStatus:
+# Restore status to 0
 lis r4, ItemStatusArray@h
 ori r4, r4, ItemStatusArray@l
 lhz r5, 0x8(r31)
+li r6, 0
 stbx r6, r4, r5
-
-# Get float based on status
-slwi r6, r6, 2
-lis r4, OurFloats@h
-ori r4, r4, OurFloats@l
-lfsx f2, r4, r6
-b DynamicSubMini
+blr
 
 ################
 # Hook 2 and 3 #
@@ -171,11 +135,75 @@ bl DynamicSub2
 mtlr r0
 
 # Check if growing size needs to be changed
-cmpwi r12, 0
-beqlr+
+cmpwi r12, 4
+blelr+
 
 # If so just overwrite f1 with f2
 fmr f1, f2
+blr
+
+##########
+# Hook 7 #
+##########
+
+# Preload status array in r29
+DynamicSizing7:
+lis r29, ItemStatusArray@h
+ori r29, r29, ItemStatusArray@l
+
+# Check if status was already set, and if so return
+lhz r11, 0x8(r3)
+lbzx r0, r11, r29
+cmpwi r0, 0
+bne+ end
+
+# Assume no mod required
+li r0, 1
+
+# Get playerId
+lbz r7, 0x6C(r3)
+slwi r7, r7, 2
+
+# Get the related PlayerHolder
+lis r11, PlayerHolder@ha
+lwz r11, PlayerHolder@l(r11)
+lwz r11, 0x20(r11)
+lwzx r7, r11, r7
+
+# Get Playersub14->damage
+lwz r12, 0x48(r7)
+lwz r12, 0x1C(r12)
+
+# Get PlayerSub1c->bitfield2
+lwz r7, 0x20(r7)
+lwz r7, 0xC(r7)
+
+# Check if player is in a mega
+rlwinm. r11, r7, 17, 31, 31
+beq+ notMega
+li r0, 2
+b storeStatus
+
+# Check if player is shocked
+notMega:
+rlwinm. r11, r7, 25, 31, 31
+beq+ storeStatus
+
+# Check if his damage is shock or zapper and if so skip
+cmpwi r12, 0xA
+beq+ storeStatus
+cmpwi r12, 0xF
+beq+ storeStatus
+li r0, 3
+
+# Store result
+storeStatus:
+lhz r11, 0x8(r3)
+stbx r0, r11, r29
+
+# Original instruction
+end:
+mr r29, r3
 blr
 
 # Floats used for multiplication

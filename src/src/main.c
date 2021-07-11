@@ -137,6 +137,7 @@ void loadCodes() {
 	directWriteBranch(DynamicSizingHook4, DynamicSizing4, false);
 	directWriteBranch(DynamicSizingHook5, DynamicSizing5, true);
 	directWriteBranch(DynamicSizingHook6, DynamicSizing6, true);
+	directWriteBranch(DynamicSizingHook7, DynamicSizing7, true);
 
 	// Fast POW (by mdmwii and Ro)
 	directWriteArray(NoPOWDelay, POWDelay, 8);
