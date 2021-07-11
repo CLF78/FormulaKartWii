@@ -129,6 +129,15 @@ void loadCodes() {
 	// Duplicated Item Auto-Trail (by CLF78)
 	directWriteBranch(AutoTrailHook, ItemTrail, true);
 
+	// Dynamic Item Sizing (by CLF78)
+	directWriteBranch(DynamicSizingHook, DynamicSizing, true);
+	directWriteBranch(DynamicSizingHook2, DynamicSizing2, true);
+	directWriteBranch(DynamicSizingHook3, DynamicSizing2, true);
+	directWriteBranch(DynamicSizingHook4Helper, DynamicSizing4Helper, false);
+	directWriteBranch(DynamicSizingHook4, DynamicSizing4, false);
+	directWriteBranch(DynamicSizingHook5, DynamicSizing5, true);
+	directWriteBranch(DynamicSizingHook6, DynamicSizing6, true);
+
 	// Fast POW (by mdmwii and Ro)
 	directWriteArray(NoPOWDelay, POWDelay, 8);
 

@@ -16,6 +16,7 @@ SECTIONS {
 	ItemAmountArray = 0x800001D8;
 	RandomInstance = 0x800001E4;
 	Version = 0x800001FC;
+	ItemStatusArray = 0x80000F98;
 
 	/* Change Character Between Races */
 	ScenePtr = 0x80000EA0;

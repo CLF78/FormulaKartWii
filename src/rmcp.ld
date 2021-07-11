@@ -155,6 +155,15 @@ SECTIONS {
 	/* Duplicated Item Auto-Trail */
 	AutoTrailHook = 0x80791970;
 
+	/* Dynamic Item Sizing */
+	DynamicSizingHook = 0x8079EE98;
+	DynamicSizingHook2 = 0x807A26F4;
+	DynamicSizingHook3 = 0x807A278C;
+	DynamicSizingHook4Helper = 0x8079EC44;
+	DynamicSizingHook4 = 0x8079EC8C;
+	DynamicSizingHook5 = 0x8079F1E4;
+	DynamicSizingHook6 = 0x8079F400;
+
 	/* Fast POW */
 	NoPOWDelay = 0x807B1DCC;
 
