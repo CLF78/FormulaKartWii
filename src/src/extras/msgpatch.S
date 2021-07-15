@@ -11,7 +11,7 @@ bctrl
 bl GetSceneHolderThing
 
 # Load archive
-lwz r5, 0x18D4(r3)
+lwz r5, 0x18D8(r3)
 lis r3, ArchiveRoot@ha
 lwz r3, ArchiveRoot@l(r3)
 li r4, 0
@@ -20,7 +20,7 @@ bl LoadArchive
 
 # Add archive to linked list
 mr r4, r3
-addi r3, r31, 0xC74
+mr r3, r31
 li r5, 0
 bl AddFileToList
 
