@@ -2,7 +2,7 @@ import os
 import shutil
 from subprocess import call
 
-regionlist = ['e', 'f', 'g', 'i', 'j', 'k', 'm', 'q', 's', 'u']
+regionlist = ['e', 'j', 'k']
 version = 'version'
 root = os.path.abspath('../..')
 

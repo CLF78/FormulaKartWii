@@ -79,10 +79,10 @@ IF %LETTER%==P (
 	copy /b fkw\Race_I.szs mkw.d\files\Scene\UI\Race_I.szs >nul
 	copy /b fkw\Race_S.szs mkw.d\files\Scene\UI\Race_S.szs >nul
 	copy /b fkw\Title_E.szs mkw.d\files\Scene\UI\Title_E.szs >nul
-	copy /b fkw\Title_F.szs mkw.d\files\Scene\UI\Title_F.szs >nul
-	copy /b fkw\Title_G.szs mkw.d\files\Scene\UI\Title_G.szs >nul
-	copy /b fkw\Title_I.szs mkw.d\files\Scene\UI\Title_I.szs >nul
-	copy /b fkw\Title_S.szs mkw.d\files\Scene\UI\Title_S.szs >nul
+	copy /b fkw\Title_E.szs mkw.d\files\Scene\UI\Title_F.szs >nul
+	copy /b fkw\Title_E.szs mkw.d\files\Scene\UI\Title_G.szs >nul
+	copy /b fkw\Title_E.szs mkw.d\files\Scene\UI\Title_I.szs >nul
+	copy /b fkw\Title_E.szs mkw.d\files\Scene\UI\Title_S.szs >nul
 	copy /b fkw\Common_E.szs mkw.d\files\Race\Common_E.szs >nul
 	copy /b fkw\Common_F.szs mkw.d\files\Race\Common_F.szs >nul
 	copy /b fkw\Common_G.szs mkw.d\files\Race\Common_G.szs >nul
@@ -91,15 +91,15 @@ IF %LETTER%==P (
 )
 
 IF %LETTER%==E (
-	copy /b fkw\Race_M.szs mkw.d\files\Scene\UI\Race_M.szs >nul
-	copy /b fkw\Race_Q.szs mkw.d\files\Scene\UI\Race_Q.szs >nul
-	copy /b fkw\Race_U.szs mkw.d\files\Scene\UI\Race_U.szs >nul
-	copy /b fkw\Title_M.szs mkw.d\files\Scene\UI\Title_M.szs >nul
-	copy /b fkw\Title_Q.szs mkw.d\files\Scene\UI\Title_Q.szs >nul
-	copy /b fkw\Title_U.szs mkw.d\files\Scene\UI\Title_U.szs >nul
-	copy /b fkw\Common_S.szs mkw.d\files\Race\Common_M.szs >nul
-	copy /b fkw\Common_F.szs mkw.d\files\Race\Common_Q.szs >nul
-	copy /b fkw\Common_E.szs mkw.d\files\Race\Common_U.szs >nul
+	copy /b fkw\Race_S.szs mkw.d\files\Scene\UI\Race_M.szs >nul
+	copy /b fkw\Race_F.szs mkw.d\files\Scene\UI\Race_Q.szs >nul
+	copy /b fkw\Race_E.szs mkw.d\files\Scene\UI\Race_U.szs >nul
+	copy /b fkw\Title_E.szs mkw.d\files\Scene\UI\Title_M.szs >nul
+	copy /b fkw\Title_E.szs mkw.d\files\Scene\UI\Title_Q.szs >nul
+	copy /b fkw\Title_E.szs mkw.d\files\Scene\UI\Title_U.szs >nul
+	copy /b fkw\Common_M.szs mkw.d\files\Race\Common_M.szs >nul
+	copy /b fkw\Common_Q.szs mkw.d\files\Race\Common_Q.szs >nul
+	copy /b fkw\Common_U.szs mkw.d\files\Race\Common_U.szs >nul
 )
 
 IF %LETTER%==J (
@@ -111,7 +111,7 @@ IF %LETTER%==J (
 IF %LETTER%==K (
 	copy /b fkw\Race_K.szs mkw.d\files\Scene\UI\Race_K.szs >nul
 	copy /b fkw\Title_K.szs mkw.d\files\Scene\UI\Title_K.szs >nul
-	copy /b fkw\Common_J.szs mkw.d\files\Race\Common_J.szs >nul
+	copy /b fkw\Common_K.szs mkw.d\files\Race\Common_J.szs >nul
 )
 
 echo.

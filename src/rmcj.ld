@@ -3,6 +3,7 @@ SECTIONS {
 	SystemManager = 0x80385980;
 	Racedata = 0x809BC788;
 	Raceinfo = 0x809BC790;
+	ArchiveRoot = 0x809BC798;
 	PlayerHolder = 0x809C0958;
 	KartParam = 0x809C0978;
 	DriverParam = 0x809C097C;
@@ -233,6 +234,13 @@ SECTIONS {
 	/* Mega Thundercloud */
 	MegaTCHook = 0x8057FFB0;
 	MegaFunc = 0x80797D20;
+
+	/* Message Patch */
+	MSGPatchHook = 0x8051A6B0;
+	MSGPatchHook2 = 0x805F84B3;
+	GetSceneHolderThing = 0x8051B850;
+	LoadArchive = 0x8053FDD0;
+	AddFileToList = 0x8051A3D8;
 
 	/* MK7 Shock Squishing */
 	ShockSquishingHook = 0x8056FD24;

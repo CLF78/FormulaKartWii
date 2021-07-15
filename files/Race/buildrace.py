@@ -2,7 +2,7 @@ import os
 import shutil
 from subprocess import call
 
-regionlist = ['e', 'f', 'g', 'i', 'j', 'k', 'm', 'q', 's', 'u']
+regionlist = ['e', 'f', 'g', 'i', 'j', 'k', 's']
 itemlist = ['banana', 'bill', 'blue', 'bomb', 'feather', 'fib', 'golden', 'green', 'mega', 'pow', 'red', 'shock', 'star']
 tpllist = ['feather', 'tt_d_number_3d_none']
 ctrlist = ['fap_number', 'stem_window_new']
@@ -42,9 +42,6 @@ for region in regionlist:
     # BRCTR files
     for ctr in ctrlist:
         shutil.copy('%s.brctr' % ctr, '%s/game_image/ctrl' % foldername)
-
-    # Race.bmg
-    shutil.copy('Race_%s.bmg' % region.upper(), '%s/message/Race.bmg' % foldername)
     print('Assembled %s!' % foldername)
 
 # Create szs files

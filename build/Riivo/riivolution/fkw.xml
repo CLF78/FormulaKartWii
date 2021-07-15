@@ -72,11 +72,19 @@
 		<memory offset="0x8000629C" value="4BFFDE64"/>
 		<folder external="/fkw/fkw" disc="/fkw" create="true"/>
 		<!--File Replacements-->
-		<file disc="/Race/Common_U.szs" external="/fkw/Common_X/Common_E.szs" />
-		<file disc="/Race/Common_Q.szs" external="/fkw/Common_X/Common_F.szs" />
-		<file disc="/Race/Common_M.szs" external="/fkw/Common_X/Common_S.szs" />
+		<file disc="/Race/Common_J.szs" external="/fkw/Common_X/Common_{$__region}.szs" />
 		<folder disc="/Race" external="/fkw/Common_X" />
+		<file disc="/Scene/UI/Race_M.szs" external="/fkw/Race_X/Race_S.szs" />
+		<file disc="/Scene/UI/Race_Q.szs" external="/fkw/Race_X/Race_F.szs" />
+		<file disc="/Scene/UI/Race_U.szs" external="/fkw/Race_X/Race_E.szs" />
 		<folder disc="/Scene/UI" external="/fkw/Race_X" />
+		<file disc="/Scene/UI/Title_F.szs" external="/fkw/Title_X/Title_E.szs" />
+		<file disc="/Scene/UI/Title_G.szs" external="/fkw/Title_X/Title_E.szs" />
+		<file disc="/Scene/UI/Title_I.szs" external="/fkw/Title_X/Title_E.szs" />
+		<file disc="/Scene/UI/Title_S.szs" external="/fkw/Title_X/Title_E.szs" />
+		<file disc="/Scene/UI/Title_M.szs" external="/fkw/Title_X/Title_E.szs" />
+		<file disc="/Scene/UI/Title_Q.szs" external="/fkw/Title_X/Title_E.szs" />
+		<file disc="/Scene/UI/Title_U.szs" external="/fkw/Title_X/Title_E.szs" />
 		<folder disc="/Scene/UI" external="/fkw/Title_X" />
 		<!--Track Patches -->
 		<folder disc="/Race/Course" external="/fkw/TrackPatches" create="true" />
