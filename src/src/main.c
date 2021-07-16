@@ -238,6 +238,10 @@ void loadCodes() {
 	directWriteNop(StarWhenHit);
 	directWriteNop(ShroomWhenHit);
 
+	// No Multi Channel Track Music (by CLF78)
+	directWriteBranch(NoMultiChannelHook, NoMultiChannel, false);
+	directWriteBranch(NoMultiChannelHook2, NoMultiChannel2, true);
+
 	// POW Yourself in 1st (by CLF78)
 	directWriteBranch(POWSelfHook, POWSelf, false);
 
@@ -491,11 +495,6 @@ void loadCodes() {
 
 	// Applies the two options above (by CLF78)
 	directWriteBranch(TimeDiffApplyHook, TimeDiffApply, true);
-
-	// No Multi Channel Track Music (by CLF78)
-	if (NoMultiChan == 1) {
-		directWriteBranch(NoMultiChannelHook, NoMultiChannel, false);
-	}
 
 	// 30 FPS (by CLF78)
 	if (ThirtyFPS == 1) {

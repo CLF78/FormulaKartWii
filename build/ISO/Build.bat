@@ -127,10 +127,6 @@ SET /P NOMUS=Disable Music? (Y/N):
 IF /i %NOMUS%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 80004002=01 -q
 
 echo.
-SET /P NOMCHAN=Disable Multi Channel Track Music? (Y/N):
-IF /i %NOMCHAN%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 80004007=01 -q
-
-echo.
 SET /P NOCHARS=Disable Character Voices? (Y/N):
 IF /i %NOCHARS%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 80004003=01 -q
 

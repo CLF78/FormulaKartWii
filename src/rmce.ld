@@ -501,5 +501,6 @@ SECTIONS {
 
 	/* No Multi Channel Track Music */
 	NoMultiChannelHook = 0x806F5BC4;
+	NoMultiChannelHook2 = 0x800A4E78;
 	FirstCall = 0x80711720;
 }
