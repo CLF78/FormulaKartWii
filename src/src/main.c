@@ -216,6 +216,7 @@ void loadCodes() {
 	directWriteBranch(MSGPatchHook, MSGPatch, false);
 	directWrite8(MSGPatchHook2, 0);
 	directWriteBranch(MSGPatchHook3, MSGPatch3, true);
+	directWriteBranch(MSGPatchHook4, MSGPatch4, true);
 
 	// MK7 Shock Squishing (by CLF78)
 	directWriteBranch(ShockSquishingHook, ShockSquishing, false);

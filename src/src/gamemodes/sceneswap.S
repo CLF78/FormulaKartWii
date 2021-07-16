@@ -14,10 +14,10 @@ lwz r12, Racedata@l(r12)
 lwz r12, 0xB80(r12)
 b store
 
-# Check for scenes between 0x61 and 0x67 included (Online Friend Room VS)
+# Check for scenes between 0x60 and 0x67 included (Online Friend Room VS)
 check2:
-subi r11, r4, 0x61
-cmplwi r11, 6
+subi r11, r4, 0x60
+cmplwi r11, 7
 bgt+ check3
 
 # This one does not need to store the mode byte, as it will be delivered via the ROOM start packet.

@@ -54,16 +54,14 @@ cmplwi r12, 4
 bne+ end
 
 # Move subtype to r12
-srwi r12, r4, 8
-
-# Clear out bits > 16
-clrlwi r12, r12, 16
+rlwinm r12, r4, 24, 16, 31
 
 # Store AlwaysWinVote
 cmpwi r12, 1
 bgt continueSubCheck
 
 # Flag = MSG
+xori r12, r12, 1
 stb r12, AlwaysWinVote@l(r5)
 b end
 
@@ -74,6 +72,7 @@ bgt continueSubCheck2
 
 # Flag = (MSG & 1)
 rlwinm r12, r12, 0, 31, 31
+xori r12, r12, 1
 stb r12, MirrorOn@l(r5)
 b end
 
@@ -84,6 +83,7 @@ bgt continueSubCheck3
 
 # Flag = (MSG & 1)
 rlwinm r12, r12, 0, 31, 31
+xori r12, r12, 1
 stb r12, TeamsOn@l(r5)
 b end
 
@@ -106,4 +106,4 @@ b HostFlagsHook+4
 ########
 
 shifts:
-.byte 23, 22, 21, 20
+.byte 23, 22, 21, 19

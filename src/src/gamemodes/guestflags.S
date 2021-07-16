@@ -22,28 +22,24 @@ bne fakeHost
 # Load 0x8000 in r12
 lis r12, GameMode@ha
 
-# Get message subType
-srwi r11, r3, 8
-clrlwi r11, r11, 16
-
 # Store GameMode
-rlwinm r10, r11, 0, 30, 31
-stb r10, GameMode@l(r12)
+rlwinm r11, r3, 24, 30, 31
+stb r11, GameMode@l(r12)
 
 # Store AlwaysWinVote
-srwi r10, r11, 15
-stb r10, AlwaysWinVote@l(r12)
+rlwinm r11, r3, 9, 31, 31
+stb r11, AlwaysWinVote@l(r12)
 
 # Store MirrorOn
-rlwinm r10, r11, 18, 30, 31
-stb r10, MirrorOn@l(r12)
+rlwinm r11, r3, 10, 31, 31
+stb r11, MirrorOn@l(r12)
 
 # Store TeamsOn
-rlwinm r10, r11, 19, 31, 31
-stb r10, TeamsOn@l(r12)
+rlwinm r11, r3, 11, 31, 31
+stb r11, TeamsOn@l(r12)
 
 # Store VehicleRestrict
-rlwinm r11, r11, 20, 30, 31
+rlwinm r11, r3, 13, 30, 31
 stb r11, VehicleRestrict@l(r12)
 
 # Finally, clean up the subType to remove any flag
