@@ -238,6 +238,7 @@ SECTIONS {
 	/* Message Patch */
 	MSGPatchHook = 0x805168BC;
 	MSGPatchHook2 = 0x805D82F3;
+	MSGPatchHook3 = 0x808339B8;
 	GetSceneHolderThing = 0x80517A5C;
 	LoadArchive = 0x8053AF14;
 	AddFileToList = 0x805165E4;

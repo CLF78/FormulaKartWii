@@ -1,7 +1,7 @@
 .include "asm_setup.S"
 
-.extern GetSceneHolderThing, LoadArchive, AddFileToList, ArchiveRoot, MSGPatchHook
-.global MSGPatch
+.extern GetSceneHolderThing, LoadArchive, AddFileToList, ArchiveRoot, MSGPatchHook, GameMode
+.global MSGPatch, MSGPatch3
 
 # Original instruction
 MSGPatch:
@@ -26,3 +26,14 @@ bl AddFileToList
 
 # Return
 b MSGPatchHook+4
+
+# Store BMG ID of Game Mode
+MSGPatch3:
+lis r5, GameMode@ha
+lbz r5, GameMode@l(r5)
+addi r5, r5, 1436
+stw r5, 0x80(r1)
+
+# Original instruction
+addi r5, r1, 0x58
+blr

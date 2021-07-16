@@ -212,9 +212,10 @@ void loadCodes() {
 	// Mega Thundercloud (by tZ)
 	directWriteBranch(MegaTCHook, MegaFunc, true);
 
-	// Message Patch (by CLF78 and Kevin)
+	// Message Patches (by CLF78 and Kevin)
 	directWriteBranch(MSGPatchHook, MSGPatch, false);
 	directWrite8(MSGPatchHook2, 0);
+	directWriteBranch(MSGPatchHook3, MSGPatch3, true);
 
 	// MK7 Shock Squishing (by CLF78)
 	directWriteBranch(ShockSquishingHook, ShockSquishing, false);
