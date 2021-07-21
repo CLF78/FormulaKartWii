@@ -144,6 +144,7 @@ void loadCodes() {
 
 	// Faster Score Increase (by CLF78)
 	directWrite8(ScoreSkip, 1);
+	directWriteBranch(NoTransition, NoTransitionASM, true);
 
 	// Feather Item (by CLF78)
 	extern void* FeatherFunc;

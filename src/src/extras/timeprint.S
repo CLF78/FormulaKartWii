@@ -1,7 +1,7 @@
 .include "asm_setup.S"
 
 .extern Raceinfo, SetMatText, SubtractTimers, swprintf, SetTextSrc, DCFix
-.global TimePrint, DCBugFix
+.global TimePrint, DCBugFix, NoTransitionASM, isOnlineRace
 
 # Independently of the output, align the text to the right on the X axis
 TimePrint:
@@ -140,3 +140,17 @@ lfs f1, 0x118(r1)
 # Do subtraction and return
 fadds f0, f0, f1
 b DCFix+0x34
+
+# Original instruction
+NoTransitionASM:
+lwz r3, 0x44(r31)
+
+# If it's an online race, return
+lis r4, isOnlineRace@ha
+lbz r4, isOnlineRace@l(r4)
+cmpwi r4, 1
+beqlr
+
+# Else override with zero
+li r3, 0
+blr

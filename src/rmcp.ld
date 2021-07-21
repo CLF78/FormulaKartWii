@@ -287,6 +287,7 @@ SECTIONS {
 
 	/* Faster Score Increase */
 	ScoreSkip = 0x807F57F7;
+	NoTransition = 0x8085C134;
 
 	/* Set Default Drift Type */
 	DefaultDriftType = 0x8054636C;
