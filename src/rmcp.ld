@@ -422,8 +422,10 @@ SECTIONS {
 	NoItemGlow = 0x807BD2BC;
 	NoTeamInvincibility = 0x80572610;
 	NoTeamInvincibility2 = 0x80573298;
-	NoTeamInvincibility3 = 0x8056FD64;
+	NoTeamInvincibility3 = 0x8068E2D8;
 	NoTeamInvincibility4 = 0x807B0BDC;
+	NoTeamInvincibility5 = 0x8056FD30;
+	NoTeamInvincibility6 = 0x8068E31C;
 
 	/* Online Stuff */
 	ForceCCHook = 0x80661404;

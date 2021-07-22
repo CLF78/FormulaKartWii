@@ -386,6 +386,8 @@ void loadCodes() {
 	directWrite16(NoTeamInvincibility2, tempVal16);
 	directWrite16(NoTeamInvincibility3, tempVal16);
 	directWriteNop(NoTeamInvincibility4);
+	directWrite32(NoTeamInvincibility5, 0x7F600051);
+	directWrite16(NoTeamInvincibility6, tempVal16);
 
 	//////////////////
 	// Online Stuff //
