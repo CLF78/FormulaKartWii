@@ -65,6 +65,12 @@ exit
 
 :COPY
 echo.
+echo The script will now pause to let you replace any file on the disc.
+echo DO NOT patch this game with the Wiimmfi patcher, or it'll break the game.
+echo Press any button to resume the procedure.
+pause
+
+echo.
 echo Copying mod files...
 
 mkdir mkw.d\files\fkw
@@ -116,23 +122,23 @@ IF %LETTER%==K (
 
 echo.
 SET /P FASTMENU=Enable Faster Menu Navigation? (Y/N):
-IF /i %FASTMENU%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 80004000=01 -q
+IF /i %FASTMENU%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004000=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004000=00 -q)
 
 echo.
 SET /P MIIHEADS=Enable Mii Heads on Minimap? (Y/N):
-IF /i %MIIHEADS%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 80004001=01 -q
+IF /i %MIIHEADS%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004001=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004001=00 -q)
 
 echo.
 SET /P NOMUS=Disable Music? (Y/N):
-IF /i %NOMUS%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 80004002=01 -q
+IF /i %NOMUS%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004002=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004002=00 -q)
 
 echo.
 SET /P NOCHARS=Disable Character Voices? (Y/N):
-IF /i %NOCHARS%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 80004003=01 -q
+IF /i %NOCHARS%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004003=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004003=00 -q)
 
 echo.
 SET /P BTGLITCH=Force Battle Glitch? (Y/N):
-IF /i %BTGLITCH%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 80004004=01 -q
+IF /i %BTGLITCH%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004004=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004004=00 -q)
 
 echo.
 echo Enable Time Difference?:
@@ -143,15 +149,15 @@ SET /P TIMEDIFF=Enter the number corresponding to the option you want:
 
 if %TIMEDIFF% leq 2 set TD=1
 if %TIMEDIFF% lss 1 set TD=0
-IF %TD%==1 wit\wit.exe dolpatch mkw.d/sys/main.dol 80004005=%TIMEDIFF% -q
+IF %TD%==1 (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004005=%TIMEDIFF% -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004005=00 -q)
 
 echo.
 SET /P SPEEDO=Enable Speedometer? (Y/N):
-IF /i %SPEEDO%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 80004006=01 -q
+IF /i %SPEEDO%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004006=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004006=00 -q)
 
 echo.
 SET /P FRAMERATE=Force 30 FPS? (Y/N):
-IF /i %FRAMERATE%==Y wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400F=01 -q
+IF /i %FRAMERATE%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400F=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400F=00 -q)
 
 wit\wit.exe dolpatch mkw.d/sys/main.dol 8000629C=4BFFDE64 load=80004010,fkw/Loader%LETTER%.bin -q
 

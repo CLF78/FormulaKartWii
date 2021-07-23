@@ -1,4 +1,5 @@
 import os
+import sys
 from shutil import rmtree
 from subprocess import call
 from elftools.elf.elffile import ELFFile as elf
@@ -76,7 +77,11 @@ def build(isBootStrap):
 def main():
     # Debug prompt
     global debug
-    debug = input('Enable debug mode? (Y/N): ').lower() == 'y'
+    
+    if len(sys.argv) > 1:
+        debug = not (sys.argv[1] == '--no-debug')
+    else:
+        debug = input('Enable debug mode? (Y/N): ').lower() == 'y'
 
     # Make a clean build folder
     if os.path.isdir(destdir):
