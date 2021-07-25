@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern EnableRampUpStuff, PlayerGetControllerHolder, FastFallingHook, FastFallingHook2
+.extern EnableRampUpStuff, PlayerGetControllerHolder, FastFallingHook, FastFallingHook2, FeatherArray
 .global FastFalling, FastFalling2
 
 ##################################
@@ -16,6 +16,13 @@ lwz r12, 0(r29)
 lwz r12, 0(r12)
 lbz r12, 0x10(r12)
 
+# Check if player is in a Feather
+lis r11, FeatherArray@h
+ori r11, r11, FeatherArray@l
+lbzx r11, r11, r12
+cmpwi r11, 1
+beq doFastFall
+
 # Check if fast falling is enabled
 lis r11, EnableRampUpStuff@h
 ori r11, r11, EnableRampUpStuff@l
@@ -24,6 +31,7 @@ cmpwi r11, 1
 bne+ return
 
 # Do BL trick
+doFastFall:
 bl trick
 
 .float 0.3
@@ -88,6 +96,13 @@ lwz r3, 0(r28)
 lwz r3, 0(r12)
 lbz r3, 0x10(r12)
 
+# Check if player is in a Feather
+lis r12, FeatherArray@h
+ori r12, r12, FeatherArray@l
+lbzx r12, r12, r3
+cmpwi r12, 1
+beq doFastFall2
+
 # Check if fast falling is enabled
 lis r12, EnableRampUpStuff@h
 ori r12, r12, EnableRampUpStuff@l
@@ -96,6 +111,7 @@ cmpwi r12, 1
 bne+ end2
 
 # Do BL trick
+doFastFall2:
 bl trick2
 
 .float 0.3

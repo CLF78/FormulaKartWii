@@ -175,6 +175,9 @@ SECTIONS {
 	FeatherSpeed = 0x808A409C;
 	GenerateEVENT = 0x8078A5E0;
 	SubtractItem = 0x807AAD3C;
+	KCLHook = 0x8077C410;
+	FeatherResetHook = 0x8055CA70;
+	FeatherResetHook2 = 0x80561B6C;
 
 	/* Final Lap Music Trigger Modifier */
 	MusicPitch = 0x8088F538;

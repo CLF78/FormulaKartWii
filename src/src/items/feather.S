@@ -1,13 +1,20 @@
 .include "asm_setup.S"
 
-.extern SubtractItem, GenerateEVENT, isOnlineRace, ItemHolder
-.global FeatherFunc, FeatherSpeeds, FeatherOnlineFix
+.extern SubtractItem, GenerateEVENT, isOnlineRace, ItemHolder, FeatherArray
+.global FeatherFunc, FeatherSpeeds, FeatherOnlineFix, FeatherReset, FeatherReset2
 
 # Push stack
 FeatherFunc:
 stwu r1, -0x10(r1)
 mflr r0
 stw r0, 0x14(r1)
+
+# Update Feather status array
+lis r4, FeatherArray@l
+ori r4, r4, FeatherArray@l
+lbz r5, 0x18(r3)
+li r6, 1
+stbx r6, r4, r5
 
 # Get playerPointers
 lwz r4, 0(r3)
@@ -81,3 +88,23 @@ lwz r3, 0x14(r3)
 mulli r4, r4, 0x248
 add r3, r3, r4
 b FeatherFunc
+
+# Original instruction
+FeatherReset:
+lwz r0, 0(r4)
+
+# Reset feather status
+FeatherResetSub:
+lis r27, FeatherArray@h
+ori r27, r27, FeatherArray@l
+lwz r28, 0x4(r3)
+lwz r28, 0(r28)
+lbz r28, 0x10(r28)
+li r29, 0
+stbx r29, r27, r28
+blr
+
+# Original instruction
+FeatherReset2:
+lwz r8, 0x4(r3)
+b FeatherResetSub
