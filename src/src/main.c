@@ -165,9 +165,6 @@ void loadCodes() {
 	// Fix Wallriding (by CLF78)
 	directWriteBranch(DisableWallrideHook, DisableWallride, true);
 
-	// Fix Wiggler Glitch (by stebler)
-	directWriteBranch(DisableWigglerGlitchHook, DisableWigglerGlitch, true);
-
 	// GeoHit Patches (by CLF78 and Ismy)
 	tempVal8 = 'N';
 	directWrite8(GeoHitTableItem, tempVal8);

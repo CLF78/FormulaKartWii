@@ -191,7 +191,6 @@ SECTIONS {
 	/* Glitch Prevention */
 	DisableWallrideHook = 0x805757B4;
 	DisableHWG = 0x8058EBC7;
-	DisableWigglerGlitchHook = 0x806BFAA8;
 
 	/* Green Shell Speed Modifier */
 	GreenShellSpeed = 0x808A12E4;
