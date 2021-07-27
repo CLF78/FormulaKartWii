@@ -175,7 +175,7 @@ SECTIONS {
 	FeatherSpeed = 0x808B1364;
 	GenerateEVENT = 0x80793214;
 	SubtractItem = 0x807ADF1C;
-	KCLHook = 0x80785044;
+	FeatherInvisWallHook = 0x805AB940;
 	FeatherResetHook = 0x80569BC8;
 	FeatherResetHook2 = 0x8056ECC4;
 

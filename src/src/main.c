@@ -146,14 +146,14 @@ void loadCodes() {
 	directWrite8(ScoreSkip, 1);
 	directWriteBranch(NoTransition, NoTransitionASM, true);
 
-	// Feather Item (by CLF78)
+	// Feather Item (by CLF78 and stebler)
 	extern void* FeatherFunc;
 	tempVal32 = (u32)&FeatherFunc;
 	directWrite32(FeatherUseFunc, tempVal32);
 	directWriteBranch(FeatherOnlineFixHook, FeatherOnlineFix, true);
 	directWriteArray(FeatherSpeed, FeatherSpeeds, 0xC);
 	directWrite8(FeatherFilename, 'c');
-	directWriteBranch(KCLHook, KCL, true);
+	directWriteBranch(FeatherInvisWallHook, FeatherInvisWall, true);
 	directWriteBranch(FeatherResetHook, FeatherReset, true);
 	directWriteBranch(FeatherResetHook2, FeatherReset2, true);
 
