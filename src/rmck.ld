@@ -164,6 +164,14 @@ SECTIONS {
 	DynamicSizingHook5 = 0x8078D5A4;
 	DynamicSizingHook6 = 0x8078D7C0;
 	DynamicSizingHook7 = 0x8078D3DC;
+	BombVisualSizeHook = 0x80792A1C;
+	BombVisualSizeHook2 = 0x8079447C;
+	BombSizeHook = 0x80792AC0;
+	BombSizeHook2 = 0x80792B50;
+	BlueVisualSizeHook = 0x8079C624;
+	BlueSizeHook = 0x8079C6E0;
+	BlueSizeHook2 = 0x8079C744;
+	BlueExplosionFunc = 0x8079C318;
 
 	/* Fast POW */
 	NoPOWDelay = 0x807A018C;

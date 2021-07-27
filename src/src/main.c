@@ -138,6 +138,13 @@ void loadCodes() {
 	directWriteBranch(DynamicSizingHook5, DynamicSizing5, true);
 	directWriteBranch(DynamicSizingHook6, DynamicSizing6, true);
 	directWriteBranch(DynamicSizingHook7, DynamicSizing7, true);
+	directWriteBranch(BombVisualSizeHook, BombVisualSize, true);
+	directWriteBranch(BombVisualSizeHook2, BombVisualSize2, true);
+	directWriteBranch(BombSizeHook, BombSize, true);
+	directWriteBranch(BombSizeHook2, BombSize2, true);
+	directWriteBranch(BlueVisualSizeHook, BlueVisualSize, true);
+	directWriteBranch(BlueSizeHook, BlueSize, true);
+	directWriteBranch(BlueSizeHook2, BlueSize2, true);
 
 	// Fast POW (by mdmwii and Ro)
 	directWriteArray(NoPOWDelay, POWDelay, 8);

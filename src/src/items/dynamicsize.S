@@ -1,7 +1,8 @@
 .include "asm_setup.S"
 
-.extern PlayerHolder, ItemStatusArray, DynamicSizingHook4Helper, DynamicSizingHook4
+.extern PlayerHolder, ItemStatusArray, DynamicSizingHook4Helper, DynamicSizingHook4, BlueExplosionFunc
 .global DynamicSizing, DynamicSizing2, DynamicSizing3, DynamicSizing4Helper, DynamicSizing4, DynamicSizing5, DynamicSizing6, DynamicSizing7
+.global BombVisualSize, BombVisualSize2, BombSize, BombSize2, BlueVisualSize, BlueSize, BlueSize2
 
 ##############
 # Function 1 #
@@ -50,6 +51,13 @@ blr
 # Original instruction
 DynamicSizing:
 lfs f1, 0x48(r5)
+
+# Check if caller is for blue explosion and skip if so
+lwz r4, 0x14(r1)
+lis r5, BlueExplosionFunc@h
+ori r5, r5, BlueExplosionFunc@l+4
+cmpw r4, r5
+beqlr
 
 # Restore status to 0
 lis r4, ItemStatusArray@h
@@ -205,6 +213,131 @@ stbx r0, r11, r29
 end:
 mr r29, r3
 blr
+
+####################
+# Bomb Visual Size #
+####################
+
+# Original instruction
+BombVisualSize:
+lfs f0, 0xA0(r31)
+
+# Get item status
+lhz r11, 0x8(r29)
+
+# Load from array
+SizeSub:
+lis r12, ItemStatusArray@h
+ori r12, r12, ItemStatusArray@l
+lbzx r11, r12, r11
+slwi r11, r11, 2
+
+# Load correct float based on status
+lis r12, OurFloats@h
+ori r12, r12, OurFloats@l-4
+lfsx f1, r12, r11
+
+# Multiply and return
+fmuls f0, f0, f1
+blr
+
+# Original instruction
+BombVisualSize2:
+lwz r3, 0x74(r6)
+
+# Get item status
+lhz r11, 0x8(r31)
+
+# Load from array
+SizeSub2:
+lis r12, ItemStatusArray@h
+ori r12, r12, ItemStatusArray@l
+lbzx r11, r12, r11
+slwi r11, r11, 2
+
+# Load correct float based on status
+lis r12, OurFloats@h
+ori r12, r12, OurFloats@l-4
+lfsx f0, r12, r11
+
+# Multiply and return
+fmuls f1, f1, f0
+blr
+
+######################
+# Bomb Physical Size #
+######################
+
+# Original instruction
+BombSize:
+lwz r3, 0xB0(r29)
+
+# Get item status
+lhz r11, 0x8(r29)
+
+# Call sub to do the hard work for us
+b SizeSub
+
+# Original instruction
+BombSize2:
+mr r3, r29
+
+# Get item status
+lhz r11, 0x8(r29)
+
+# Call sub to do the hard work for us
+b SizeSub2
+
+####################
+# Blue Visual Size #
+####################
+
+# Original instruction
+BlueVisualSize:
+lfs f0, 0x198(r31)
+
+# Get item status
+lhz r11, 0x8(r30)
+
+# Call sub to do the hard work for us
+b SizeSub
+
+######################
+# Blue Physical Size #
+######################
+
+# Original instruction
+BlueSize:
+lwz r3, 0xB0(r30)
+
+# Get item status
+lhz r11, 0x8(r30)
+
+# Load from array
+SizeSub3:
+lis r12, ItemStatusArray@h
+ori r12, r12, ItemStatusArray@l
+lbzx r11, r12, r11
+slwi r11, r11, 2
+
+# Load correct float based on status
+lis r12, OurFloats@h
+ori r12, r12, OurFloats@l-4
+lfsx f2, r12, r11
+
+# Multiply and return
+fmuls f1, f1, f2
+blr
+
+# Original instruction
+BlueSize2:
+mr r3, r30
+
+# Get item status
+lhz r11, 0x8(r30)
+
+# Call sub to do the hard work for us
+b SizeSub2
 
 # Floats used for multiplication
 OurFloats:

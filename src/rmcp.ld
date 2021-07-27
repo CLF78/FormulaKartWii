@@ -59,7 +59,6 @@ SECTIONS {
 	sprintf = 0x80011A2C;
 	swprintf = 0x80017814;
 	OSFatal = 0x801A4EC4;
-	CalcCRC32 = 0x801D1CA0;
 	_restgpr_31_x = 0x800215FC;
 
 	/* 30 FPS */
@@ -165,6 +164,14 @@ SECTIONS {
 	DynamicSizingHook5 = 0x8079F1E4;
 	DynamicSizingHook6 = 0x8079F400;
 	DynamicSizingHook7 = 0x8079F01C;
+	BombVisualSizeHook = 0x807A465C;
+	BombVisualSizeHook2 = 0x807A60BC;
+	BombSizeHook = 0x807A4700;
+	BombSizeHook2 = 0x807A4790;
+	BlueVisualSizeHook = 0x807AE264;
+	BlueSizeHook = 0x807AE320;
+	BlueSizeHook2 = 0x807AE384;
+	BlueExplosionFunc = 0x807ADF58;
 
 	/* Fast POW */
 	NoPOWDelay = 0x807B1DCC;
