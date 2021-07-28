@@ -233,8 +233,8 @@ lbzx r11, r12, r11
 slwi r11, r11, 2
 
 # Load correct float based on status
-lis r12, OurFloats@h
-ori r12, r12, OurFloats@l-4
+lis r12, OurFloats2@h
+ori r12, r12, OurFloats2@l-4
 lfsx f1, r12, r11
 
 # Multiply and return
@@ -256,8 +256,8 @@ lbzx r11, r12, r11
 slwi r11, r11, 2
 
 # Load correct float based on status
-lis r12, OurFloats@h
-ori r12, r12, OurFloats@l-4
+lis r12, OurFloats2@h
+ori r12, r12, OurFloats2@l-4
 lfsx f0, r12, r11
 
 # Multiply and return
@@ -321,8 +321,8 @@ lbzx r11, r12, r11
 slwi r11, r11, 2
 
 # Load correct float based on status
-lis r12, OurFloats@h
-ori r12, r12, OurFloats@l-4
+lis r12, OurFloats2@h
+ori r12, r12, OurFloats2@l-4
 lfsx f2, r12, r11
 
 # Multiply and return
@@ -344,3 +344,9 @@ OurFloats:
 .float 1.0
 .float 2.0
 .float 0.5
+
+# Floats used for multiplication
+OurFloats2:
+.float 1.0
+.float 2.0
+.float 0.75
