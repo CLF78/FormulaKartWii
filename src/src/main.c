@@ -161,8 +161,6 @@ void loadCodes() {
 	directWriteArray(FeatherSpeed, FeatherSpeeds, 0xC);
 	directWrite8(FeatherFilename, 'c');
 	directWriteBranch(FeatherInvisWallHook, FeatherInvisWall, true);
-	directWriteBranch(FeatherResetHook, FeatherReset, true);
-	directWriteBranch(FeatherResetHook2, FeatherReset2, true);
 
 	// Final Lap Music Trigger Modifier (by CLF78)
 	directWriteBranch(FastMusicHook, FinalLapCheck, true);

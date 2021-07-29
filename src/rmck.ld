@@ -184,8 +184,6 @@ SECTIONS {
 	GenerateEVENT = 0x8078A5E0;
 	SubtractItem = 0x807AAD3C;
 	FeatherInvisWallHook = 0x805A48C0;
-	FeatherResetHook = 0x8055CA70;
-	FeatherResetHook2 = 0x80561B6C;
 
 	/* Final Lap Music Trigger Modifier */
 	MusicPitch = 0x8088F538;

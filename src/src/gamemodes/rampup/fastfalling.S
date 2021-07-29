@@ -11,17 +11,18 @@
 FastFalling:
 lfs f0, 0x4C(r31)
 
-# Get playerPointers -> playerParams -> playerID
+# Get playerPointers
 lwz r12, 0(r29)
-lwz r12, 0(r12)
-lbz r12, 0x10(r12)
 
 # Check if player is in a Feather
-lis r11, FeatherArray@h
-ori r11, r11, FeatherArray@l
-lbzx r11, r11, r12
-cmpwi r11, 1
+lwz r11, 0x4(r12)
+lwz r11, 0x78(r11)
+cmpwi r11, 7
 beq doFastFall
+
+# Get player id
+lwz r12, 0(r12)
+lbz r12, 0x10(r12)
 
 # Check if fast falling is enabled
 lis r11, EnableRampUpStuff@h
@@ -90,18 +91,18 @@ b FastFallingHook+4
 # Fast Falling - Wheel Gravity #
 ################################
 
-# Get playerPointers -> playerParams -> playerID
+# Get playerPointers
 FastFalling2:
 lwz r3, 0(r28)
-lwz r3, 0(r12)
-lbz r3, 0x10(r12)
 
 # Check if player is in a Feather
-lis r12, FeatherArray@h
-ori r12, r12, FeatherArray@l
-lbzx r12, r12, r3
-cmpwi r12, 1
-beq doFastFall2
+lwz r12, 0x4(r3)
+lwz r12, 0x78(r12)
+cmpwi r12, 7
+
+# Get player id
+lwz r3, 0(r3)
+lbz r3, 0x10(r3)
 
 # Check if fast falling is enabled
 lis r12, EnableRampUpStuff@h
