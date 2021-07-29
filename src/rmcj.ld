@@ -275,6 +275,10 @@ SECTIONS {
 	StarWhenHit = 0x8057FC24;
 	ShroomWhenHit = 0x8057EDD0;
 
+	/* Pause Menu Fix */
+	PauseMenuScreenHook = 0x8062BDB8;
+	PauseMenuScreenHook2 = 0x8062BEFC;
+
 	/* POW Yourself in 1st */
 	POWSelfHook = 0x807B149C;
 

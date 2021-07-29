@@ -250,6 +250,10 @@ void loadCodes() {
 	directWriteBranch(NoMultiChannelHook, NoMultiChannel, false);
 	directWriteBranch(NoMultiChannelHook2, NoMultiChannel2, true);
 
+	// Pause Menu Fix (by CLF78)
+	directWriteBranch(PauseMenuScreenHook, PauseMenuScreen, true);
+	directWriteBranch(PauseMenuScreenHook2, PauseMenuScreen, true);
+
 	// POW Yourself in 1st (by CLF78)
 	directWriteBranch(POWSelfHook, POWSelf, false);
 
