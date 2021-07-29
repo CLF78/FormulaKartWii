@@ -133,8 +133,8 @@ rlwinm r7, r0, 3, 0, 28
 lfs f0, 0xC(r10)
 
 # Get our float
-lis r8, 0xC248
-stw r8, 0x118(r1)
+lis r9, 0xC248
+stw r9, 0x118(r1)
 lfs f1, 0x118(r1)
 
 # Do subtraction and return
