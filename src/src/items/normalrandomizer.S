@@ -58,20 +58,22 @@ lis r3, RandomInstance@h
 ori r3, r3, RandomInstance@l
 
 # Get amount of possible items
-notHuman:
-li r4, 0x13
-cmpwi r29, 0
-beq+ rand
-li r4, 0xa
+lis r4, TotalItemCounts@h
+ori r4, r4, TotalItemCounts@l
+lbzx r4, r29, r4
 
 # Call function
-rand:
 bl RandomNextLimited
 
 # If Newbie Helper is on, add 6
 cmpwi r29, 0
 beq+ noNewb
 addi r3, r3, 6
+
+# Replace Bomb with Mushroom
+cmpwi r3, 6
+bne+ noDecrease
+li r3, 4
 b noDecrease
 
 # Skip value 5
@@ -110,8 +112,25 @@ lwz r4, 0x40(r31)
 cmpwi r4, 0
 bne getRandom
 
-# Save chosen item
+# Check if player is human (again)
 notPow:
+cmpwi r26, 1
+beq getAmount
+
+# Don't give feathers to CPUs, they can't use it
+cmpwi r3, 0xC
+beq getRandom
+
+# If they're in first, don't give them blue shells or pows or they'll hit themselves
+cmpwi r25, 1
+bne+ getAmount
+cmpwi r3, 7
+beq getRandom
+cmpwi r3, 0xD
+beq getRandom
+
+# Save chosen item
+getAmount:
 mr r28, r3
 
 # Call random function
@@ -157,6 +176,10 @@ lmw r28, 0xC(r1)
 mtlr r0
 addi r1, r1, 0x20
 blr
+
+# Used for randomizer
+TotalItemCounts:
+.byte 0x13, 0xa
 
 # Regular Items
 ChancesArray:
@@ -220,26 +243,26 @@ ChancesArray:
 
 # Newbie Helper Items
 
-# Green Shell
+# Green Shell (UNUSED)
 .byte -1,-1
 
-# Red Shell
+# Red Shell (UNUSED)
 .byte -1,-1
 
-# Banana
+# Banana (UNUSED)
 .byte -1,-1
 
-# FIB
+# FIB (UNUSED)
 .byte -1,-1
 
 # Mushroom
-.byte -1,-1
+.byte 34,67
 
 # Triple Mushroom (UNUSED)
 .byte -1,-1
 
-# Bomb
-.byte 85,95
+# Bomb (UNUSED)
+.byte -1,-1
 
 # Blue Shell
 .byte 85,95
