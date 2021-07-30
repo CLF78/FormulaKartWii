@@ -86,11 +86,18 @@ b FeatherFunc
 FeatherInvisWall:
 subi r23, r14, 0x4201
 
-# Check if player is in a Feather
+# Get playerSub1c
 lwz r27, 0x4(r15)
 lwz r27, 0x4(r27)
-lwz r27, 0x78(r27)
-cmpwi r27, 7
+
+# Check if player is in a jump pad
+lwz r4, 0x4(r27)
+rlwinm. r4, r4, 2, 31, 31
+beqlr+
+
+# Check if jump pad is the Feather
+lwz r4, 0x78(r27)
+cmpwi r4, 7
 bnelr+
 
 # Ignore invisible walls if so

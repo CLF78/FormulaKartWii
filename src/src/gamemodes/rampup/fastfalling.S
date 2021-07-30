@@ -14,13 +14,21 @@ lfs f0, 0x4C(r31)
 # Get playerPointers
 lwz r12, 0(r29)
 
-# Check if player is in a Feather
+# Get playerSub1c
 lwz r11, 0x4(r12)
-lwz r11, 0x78(r11)
-cmpwi r11, 7
+
+# Check if player is in a jump pad
+lwz r3, 0x4(r11)
+rlwinm. r3, r3, 2, 31, 31
+beq+ rampUp
+
+# Check if player is in a Feather
+lwz r3, 0x78(r11)
+cmpwi r3, 7
 beq doFastFall
 
 # Get player id
+rampUp:
 lwz r12, 0(r12)
 lbz r12, 0x10(r12)
 
@@ -95,12 +103,21 @@ b FastFallingHook+4
 FastFalling2:
 lwz r3, 0(r28)
 
-# Check if player is in a Feather
+# Get playerSub1c
 lwz r12, 0x4(r3)
-lwz r12, 0x78(r12)
-cmpwi r12, 7
+
+# Check if player is in a jump pad
+lwz r4, 0x4(r12)
+rlwinm. r4, r4, 2, 31, 31
+beq+ rampUp
+
+# Check if the jump pad type is the Feather
+lwz r4, 0x78(r12)
+cmpwi r4, 7
+beq doFastFall2
 
 # Get player id
+rampUp:
 lwz r3, 0(r3)
 lbz r3, 0x10(r3)
 
