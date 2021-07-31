@@ -90,9 +90,9 @@ fmuls f0, f0, f2
 # Restore registers
 end:
 mr r4, r11
-mr r3, r30
 
 return:
+mr r3, r30
 b FastFallingHook+4
 
 ################################
@@ -109,7 +109,7 @@ lwz r12, 0x4(r3)
 # Check if player is in a jump pad
 lwz r4, 0x4(r12)
 rlwinm. r4, r4, 2, 31, 31
-beq+ rampUp
+beq+ rampUp2
 
 # Check if the jump pad type is the Feather
 lwz r4, 0x78(r12)
@@ -117,7 +117,7 @@ cmpwi r4, 7
 beq doFastFall2
 
 # Get player id
-rampUp:
+rampUp2:
 lwz r3, 0(r3)
 lbz r3, 0x10(r3)
 
