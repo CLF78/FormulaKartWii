@@ -264,6 +264,10 @@ SECTIONS {
 	BombTimer = 0x8079CBEA;
 	BombTimer2 = 0x8079BABE;
 
+	/* Newbie Helper */
+	RespawnHelperHook = 0x8056EFD8;
+	RespawnHelperHook2 = 0x805733BC;
+
 	/* No Bullet Bill Icon */
 	NoBBIcon = 0x807ABB70;
 

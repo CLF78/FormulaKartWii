@@ -3,6 +3,7 @@
 .extern PlayerHolder, ItemStatusArray, DynamicSizingHook4Helper, DynamicSizingHook4, BlueExplosionFunc
 .global DynamicSizing, DynamicSizing2, DynamicSizing3, DynamicSizing4Helper, DynamicSizing4, DynamicSizing5, DynamicSizing6, DynamicSizing7
 .global BombVisualSize, BombVisualSize2, BombSize, BombSize2, BlueVisualSize, BlueSize, BlueSize2
+.global OurFloats
 
 ##############
 # Function 1 #

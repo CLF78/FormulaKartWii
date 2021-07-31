@@ -235,6 +235,10 @@ void loadCodes() {
 	directWrite16(BombTimer, tempVal16);
 	directWrite16(BombTimer2, tempVal16);
 
+	// Newbie Helper (by Seeky, CLF78 and davidevgen)
+	directWriteBranch(RespawnHelperHook, RespawnHelper, false);
+	directWriteBranch(RespawnHelperHook2, RespawnHelper2, false);
+
 	// No Bullet Bill Icon (by Anarion)
 	directWriteBlr(NoBBIcon);
 

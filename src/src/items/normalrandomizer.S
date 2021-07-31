@@ -21,36 +21,12 @@ li r29, 0
 cmpwi r26, 1
 bne+ getRandom
 
-# Load Raceinfo
-lis r4, Raceinfo@ha
-lwz r4, Raceinfo@l(r4)
+# Check if newbie helper is needed
+lbz r3, 0x18(r30)
+bl NewbieHelper
 
-# Get raceCompletion for player in 1st
-lwz r5, 0x18(r4)
-lbz r5, 0(r5)
-slwi r5, r5, 2
-lwz r4, 0xC(r4)
-lwzx r5, r5, r4
-lfs f0, 0xC(r5)
-
-# Get raceCompletion for currentPlayer
-lbz r5, 0x18(r30)
-slwi r5, r5, 2
-lwzx r5, r5, r4
-lfs f1, 0xC(r5)
-
-# Get immediate value for compare
-lis r6, 0x3F80
-stw r6, 0x1C(r1)
-lfs f2, 0x1C(r1)
-
-# Subtract and compare
-fsubs f0, f0, f1
-fcmpu cr0, f0, f2
-ble+ getRandom
-
-# Newbie Helper required!
-li r29, 1
+# Move result to r29
+mr r29, r3
 
 # Get random number
 getRandom:
