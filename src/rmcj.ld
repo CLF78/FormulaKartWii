@@ -321,7 +321,7 @@ SECTIONS {
 	SMTMinimum = 0x808B4E26;
 
 	/* Ultra UnCut */
-	CKPTCheck = 0x80534A9C;
+	CKPTCheck = 0x80534A98;
 
 	/* VS Menu Skip */
 	VSMenuSkipHook = 0x80851A98;

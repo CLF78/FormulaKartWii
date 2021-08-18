@@ -314,7 +314,7 @@ void loadCodes() {
 	directWriteArray(TimeLimit, NewTimeLimit, 8);
 
 	// Ultra UnCut (by MrBean)
-	directWriteBranch(CKPTCheck, UltraUncut, true);
+	directWriteBranch(CKPTCheck, UltraUncut, false);
 
 	// Ultimate Item Randomizer (by CLF78 and Ismy)
 	RandomConstruct(&RandomInstance);
