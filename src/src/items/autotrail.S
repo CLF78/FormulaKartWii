@@ -20,7 +20,7 @@ b itemChecks
 onlinePlayer:
 lis r3, RKNetItemHandler@ha
 lwz r3, RKNetItemHandler@l(r3)
-lbz r4, -0x9C(r27)
+lbz r4, 0x10(r27)
 slwi r4, r4, 3
 add r3, r3, r4
 
@@ -33,29 +33,23 @@ itemChecks:
 cmpwi r31, 3
 ble quantCheck
 
-# Check for Bombs
-cmpwi r31, 6
-beq quantCheck
+# Check for Tentative Three, Bombs and Blue Shells
+subi r3, r31, 5
+cmplwi r3, 2
+bgtlr+
 
-# Check for Blue Shells
-cmpwi r31, 7
-bnelr+
-
-# Check if it's more than 1, if not return
+# Check if the amount is more than 1, if not return
 quantCheck:
 cmpwi r4, 1
 blelr+
 
-# Check for bananas
-cmpwi r31, 2
-beq autoTrail
-
-# Set type to circle
-autoCircle:
-li r30, 3
-blr
-
-# Set type to trail
-autoTrail:
+# Set type to trail by default
 li r30, 2
+
+# Return if item is banana
+cmpwi r31, 2
+beqlr
+
+# Set type to trail otherwise
+addi r30, r30, 1
 blr

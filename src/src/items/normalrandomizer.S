@@ -44,7 +44,7 @@ bl RandomNextLimited
 # If Newbie Helper is on, add 6
 cmpwi r29, 0
 beq+ noNewb
-addi r3, r3, 6
+addi r3, r3, 5
 
 # Replace Bomb with Mushroom
 cmpwi r3, 6
@@ -52,14 +52,8 @@ bne+ noDecrease
 li r3, 4
 b noDecrease
 
-# Skip value 5
-noNewb:
-cmpwi r3, 0x5
-blt noIncrease
-addi r3, r3, 1
-
 # Subtract 0x10 for values 16 and above
-noIncrease:
+noNewb:
 cmpwi r3, 0x10
 blt+ noDecrease
 subi r3, r3, 0x10
@@ -155,7 +149,7 @@ blr
 
 # Used for randomizer
 TotalItemCounts:
-.byte 0x13, 0xa
+.byte 0x13, 0xb
 
 # Regular Items
 ChancesArray:
@@ -175,8 +169,8 @@ ChancesArray:
 # Mushroom
 .byte 34,67
 
-# Triple Mushroom (UNUSED)
-.byte -1,-1
+# Crazy Eight (TRIPLE ONLY)
+.byte 0,0
 
 # Bomb
 .byte 95,99
@@ -234,8 +228,8 @@ ChancesArray:
 # Mushroom
 .byte 34,67
 
-# Triple Mushroom (UNUSED)
-.byte -1,-1
+# Crazy Eight (TRIPLE ONLY)
+.byte 0,0
 
 # Bomb (UNUSED)
 .byte -1,-1

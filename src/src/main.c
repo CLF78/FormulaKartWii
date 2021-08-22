@@ -5,6 +5,9 @@
 // Non-existant function so that DevkitPPC doesn't forget to pop the stack...
 void MainHookTail();
 
+// Forward declarations
+void SetupLaunchFunctions();
+
 // This function loads all the codes that FKW uses after StaticR has loaded
 void loadCodes() {
 
@@ -105,6 +108,19 @@ void loadCodes() {
 	directWrite8(CannonLandingFix, tempVal8);
 	directWriteBranch(CannonSpeed, CannonSpeedMultiplier, false);
 	directWriteBranch(CannonSpeed2, CannonSpeedMultiplier2, true);
+
+	// Crazy Eight (by CLF78)
+	directWrite32(CrazyEightEnableCircling, 0);
+	directWriteArray(ItemAssignerStackFixHook, ItemAssignerStackFix, 0xC);
+	directWriteBranch(ItemAssignerHook2, ItemAssigner2, false);
+	directWriteArray(ItemAssignerHook3, ItemAssigner3, 0x18);
+	directWriteBranch(ItemAssignerHook4, ItemAssigner4, false);
+	directWrite32Offset(ItemAssignerHook4, 0x10, 0x4081FF68);
+	directWriteBranch(ItemAssignerHook5, ItemAssigner5, false);
+	directWriteArray(ItemAssignerStackFix2Hook, ItemAssignerStackFix2, 0xC);
+	directWriteBranch(ItemUsageFixHook, ItemUsageFix, true);
+	directWrite32(ItemUsageFixHook2, 0x807F0004);
+	SetupLaunchFunctions();
 
 	// Credits Button (by CLF78)
 	directWrite8(CreditsButton, 0x3B);
