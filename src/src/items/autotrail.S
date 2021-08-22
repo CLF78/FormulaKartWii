@@ -8,13 +8,11 @@ ItemTrail:
 lwz r30, 0x14(r6)
 
 # Check if player is ONLINE_REAL_LOCAL
-lbz r3, -0x9A(r27)
-cmpwi r3, 1
+cmpwi r28, 1
 beq onlinePlayer
 
-# Get current item and item amount
+# Get item amount
 localPlayer:
-lwz r3, -0x28(r27)
 lwz r4, -0x24(r27)
 b itemChecks
 
@@ -29,19 +27,18 @@ add r3, r3, r4
 # Get the data we need
 lbz r4, 0x17(r3)
 srwi r4, r4, 6
-lbz r3, 0x12(r3)
 
 # Check for Greens/Reds/Bananas/FIBs
 itemChecks:
-cmpwi r3, 3
+cmpwi r31, 3
 ble quantCheck
 
 # Check for Bombs
-cmpwi r3, 6
+cmpwi r31, 6
 beq quantCheck
 
 # Check for Blue Shells
-cmpwi r3, 7
+cmpwi r31, 7
 bnelr+
 
 # Check if it's more than 1, if not return
@@ -50,7 +47,7 @@ cmpwi r4, 1
 blelr+
 
 # Check for bananas
-cmpwi r3, 2
+cmpwi r31, 2
 beq autoTrail
 
 # Set type to circle
