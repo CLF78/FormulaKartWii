@@ -24,18 +24,22 @@ ori r6, r6, LaunchFunc@l
 li r7, 15
 mtctr r7
 
+# -1 for PTMF
+li r7, -1
+
 # Store item limit
 loop:
 lbzu r30, 0x1(r3)
 stwu r30, 0x74(r4)
 
 # Check if we should replace the launch function
-#lbzu r30, 0x1(r5)
-#cmpwi r30, 1
-#bne+ loopend
+lbzu r30, 0x1(r5)
+cmpwi r30, 1
+bne+ loopend
 
-# Store LaunchFunc if so
-#stw r6, 0x1C(r4)
+# Store LaunchFunc to PTMF if so
+stw r6, 0x1C(r4)
+stw r7, 0x18(r4)
 
 # End loop
 loopend:
@@ -52,5 +56,5 @@ ItemLimitArray:
 
 # Same order as above
 ItemLaunchModRequired:
-.byte 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0
+.byte 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0
 .align 2

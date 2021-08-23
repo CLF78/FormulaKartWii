@@ -117,6 +117,7 @@ void loadCodes() {
 	directWriteArray(ItemAssignerStackFix2Hook, ItemAssignerStackFix2, 0xC);
 	directWriteBranch(ItemUsageFixHook, ItemUsageFix, true);
 	directWrite32(ItemUsageFixHook2, 0x807F0004);
+	directWriteBranch(SubtractItem, SubtractItemFixFunc, false);
 
 	// Credits Button (by CLF78)
 	directWrite8(CreditsButton, 0x3B);

@@ -139,6 +139,7 @@ SECTIONS {
 	/* Crazy Eight */
 	CrazyEightEnableCircling = 0x808A5970;
 	ItemAssignerCall = 0x80791A48;
+	ItemAssignerCall2 = 0x807BC494;
 	ItemAssignerStackFixHook = 0x80795E04;
 	ItemAssignerHook2 = 0x80795E28;
 	ItemAssignerHook3 = 0x80795E2C;
@@ -147,6 +148,7 @@ SECTIONS {
 	ItemAssignerStackFix2Hook = 0x80795F18;
 	ItemUsageFixHook = 0x80794884;
 	ItemUsageFixHook2 = 0x807949F4;
+	DestroyItem = 0x807A6700;
 
 	/* Credits Button */
 	CreditsButton = 0x808512CB;

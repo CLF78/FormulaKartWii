@@ -17,6 +17,7 @@ SECTIONS {
 	RandomInstance = 0x800001E4;
 	Version = 0x800001FC;
 	CurrentStrmChannels = 0x800001FD;
+	SubtractItemFix = 0x800001FE;
 	ItemStatusArray = 0x80000F98;
 
 	/* Change Character Between Races */
