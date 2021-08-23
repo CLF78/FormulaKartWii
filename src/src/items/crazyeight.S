@@ -1,8 +1,8 @@
 .include "asm_setup.S"
 
-.extern ItemHolder, ItemAssignerCall, ItemAssignerHook4, ItemAssignerHook5, ItemStructsEX, ItemStructs, _directWrite32
+.extern ItemHolder, ItemAssignerCall, ItemAssignerHook4, ItemAssignerHook5, ItemStructsEX, ItemStructs
 .global ItemAssignerStackFix, ItemAssignerStackFix2, ItemAssigner2, ItemAssigner3, ItemAssigner4, ItemAssigner5, ItemUsageFix
-.global SetupLaunchFunctions
+.global LaunchFunc
 
 ###########################
 # Hook 1 - Fix Stack Push #
@@ -22,7 +22,7 @@ ItemAssigner2:
 mr r31, r8
 
 # Get item
-lwz r9, -0xC(r28)
+lwz r9, 0(r26)
 
 # Assume not crazy
 li r10, 0
@@ -34,7 +34,8 @@ cmpw r0, r25
 bne+ notCrazy
 
 # Check if the item is crazy eight
-cmpwi r9, 5
+lwz r25, -0x8(r28)
+cmpwi r25, 5
 bne+ notCrazy
 
 # Crazy eight confirmed! I repeat, crazy eight confirmed!
@@ -54,7 +55,7 @@ beq+ notCrazy2
 #bl GenerateCrazyItem
 #mr r9, r3
 mfctr r25
-addi r9, r25, 4
+addi r9, r25, 7
 
 # Store result to stack
 notCrazy2:
@@ -183,47 +184,3 @@ bctr
 ObjectToItem:
 .byte 0, 1, 2, 4, 9, 7, 8, 3, 0xB, 6, 0xC, 0xD, 0xA, 0xF, 0xE
 .align 2
-
-##########################
-# Setup Launch Functions #
-##########################
-
-# Save LR
-SetupLaunchFunctions:
-mflr r12
-
-# Do bl trick
-bl trick
-
-# Items that need modifications
-.byte 3, 4, 7, 8, 0xA, 0xC, 0xD
-.align 2
-
-# Setup loop - loop length
-trick:
-li r3, 7
-mtctr r3
-
-# Value to be written
-lis r4, LaunchFunc@h
-ori r4, r4, LaunchFunc@l
-
-# Initial offset
-lis r5, ItemStructsEX@h
-ori r5, r5, ItemStructsEX@l+0x20
-
-# Array to be used
-mflr r6
-subi r6, r6, 1
-
-# Run loop
-loop2:
-lbzu r3, 0x1(r6)
-mulli r3, r3, 0x74
-add r3, r3, r5
-bl _directWrite32
-bdnz+ loop2
-
-# Restore LR and return
-mtlr r12
-blr

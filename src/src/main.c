@@ -5,9 +5,6 @@
 // Non-existant function so that DevkitPPC doesn't forget to pop the stack...
 void MainHookTail();
 
-// Forward declarations
-void SetupLaunchFunctions();
-
 // This function loads all the codes that FKW uses after StaticR has loaded
 void loadCodes() {
 
@@ -120,7 +117,6 @@ void loadCodes() {
 	directWriteArray(ItemAssignerStackFix2Hook, ItemAssignerStackFix2, 0xC);
 	directWriteBranch(ItemUsageFixHook, ItemUsageFix, true);
 	directWrite32(ItemUsageFixHook2, 0x807F0004);
-	SetupLaunchFunctions();
 
 	// Credits Button (by CLF78)
 	directWrite8(CreditsButton, 0x3B);
