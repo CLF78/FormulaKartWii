@@ -71,7 +71,7 @@ bdnz+ loop
 
 # Setup next loop - goes to Hook 4
 li r25, 0
-b ItemAssignerHook4
+b ItemAssigner4
 
 ###########################
 # Hook 3 - Modified Check #

@@ -232,6 +232,9 @@ SECTIONS {
 
 	/* Instant Item Boxes */
 	InstantItemBoxes = 0x80828EDC;
+	ItemBoxFix = 0x8076CDDB;
+	ItemBoxFix2 = 0x8076CF17;
+	ItemBoxFix3 = 0x8076DB2A;
 
 	/* Item Textures */
 	ItemTexturesHook = 0x80860AF0;

@@ -207,8 +207,11 @@ void loadCodes() {
 	// Inside Drift Bikes (by Seeky)
 	directWriteBranch(KartParamHook, DriftOverride, true);
 
-	// Instant Item Boxes (by Anarion)
+	// Instant Item Boxes (by Anarion and CLF78)
 	directWriteNop(InstantItemBoxes);
+	directWrite32(ItemBoxFix, 0x48000064);
+	directWrite8(ItemBoxFix2, 0x2);
+	directWrite16(ItemBoxFix3, 0x210);
 
 	// Item Textures (by CLF78)
 	directWriteBranch(ItemTexturesHook, ItemTextures, false);
