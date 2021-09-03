@@ -26,8 +26,8 @@ SECTIONS {
 	SetTextSrc = 0x805C11E0;
 	SetMatText = 0x8060C89C;
 
-	playerCount = 0x809AF0B0;
-	isOnlineRace = 0x809AF0B1;
+	playerCount = 0x809BF0B0;
+	isOnlineRace = 0x809BF0B1;
 
 	UtilRandomSeed = 0x800F2E28;
 	UtilRandint = 0x800F2E40;

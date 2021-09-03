@@ -1,7 +1,7 @@
 .include "asm_setup.S"
 
-.extern Raceinfo, SetMatText, SubtractTimers, swprintf, SetTextSrc, DCFix
-.global TimePrint, DCBugFix, NoTransitionASM, isOnlineRace
+.extern Raceinfo, SetMatText, SubtractTimers, swprintf, SetTextSrc, DCFix, isOnlineRace
+.global TimePrint, DCBugFix, NoTransitionASM
 
 # Independently of the output, align the text to the right on the X axis
 TimePrint:
