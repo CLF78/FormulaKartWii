@@ -12,6 +12,7 @@ SECTIONS {
 	RKNetItemHandler = 0x809B0738;
 	ItemHolder = 0x809B1C58;
 	ItemStructs = 0x80893E78;
+	ItemStructsEX = 0x809B1588;
 	ScreenHUD = 0x809B2CC0;
 
 	PlayerGetControllerHolder = 0x8057E44C;
@@ -134,6 +135,20 @@ SECTIONS {
 	CannonLandingFix = 0x805665B3;
 	CannonSpeed = 0x8057311C;
 	CannonSpeed2 = 0x80573128;
+
+	/* Crazy Eight */
+	CrazyEightEnableCircling = 0x80893DD0;
+	ItemAssignerCall = 0x8077FE08;
+	ItemAssignerCall2 = 0x807AA854;
+	ItemAssignerStackFixHook = 0x807841C4;
+	ItemAssignerHook2 = 0x807841E8;
+	ItemAssignerHook3 = 0x807841EC;
+	ItemAssignerHook4 = 0x80784274;
+	ItemAssignerHook5 = 0x80784290;
+	ItemAssignerStackFix2Hook = 0x807842D8;
+	ItemUsageFixHook = 0x80782C44;
+	ItemUsageFixHook2 = 0x80782DB4;
+	DestroyItem = 0x80794AC0;
 
 	/* Credits Button */
 	CreditsButton = 0x8083F68B;
