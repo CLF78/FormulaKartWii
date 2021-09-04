@@ -143,7 +143,7 @@ b DCFix+0x34
 
 # Original instruction
 NoTransitionASM:
-lwz r3, 0x44(r31)
+li r0, 0x258
 
 # If it's an online race, return
 lis r4, isOnlineRace@ha
@@ -151,6 +151,6 @@ lbz r4, isOnlineRace@l(r4)
 cmpwi r4, 1
 beqlr
 
-# Else override with zero
-li r3, 0
+# Else override with infinite time
+li r0, 0xFFFF
 blr
