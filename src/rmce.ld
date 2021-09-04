@@ -329,7 +329,7 @@ SECTIONS {
 	TimerShow = 0x8061CF40;
 
 	/* Show Times After Race */
-	ShowTimesVS = 0x8085A27C;
+	ShowTimesVS = 0x8085A28C;
 	ShowTimesWW = 0x8085ADD0;
 	TimesFunc = 0x807EB334;
 	TimePrintHook = 0x807EB3F8;
