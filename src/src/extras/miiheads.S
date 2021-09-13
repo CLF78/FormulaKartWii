@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern RKNetController, isOnlineRace
+.extern isOnlineRace
 .global MiiHeadsPatch
 
 # Original instruction
@@ -17,18 +17,6 @@ bnelr+
 cmpwi r3, 0x2A
 bgelr
 
-# Check if player is connected
-cmpwi r6, 0
-beq doReplacement
-
-# Check if connection state is not 0
-lis r12, RKNetController@ha
-lwz r12, RKNetController@l(r12)
-lwz r12, 0x28(r12)
-cmpwi r12, 0
-beqlr
-
 # Replace with large mii
-doReplacement:
 li r3, 0x2C
 blr
