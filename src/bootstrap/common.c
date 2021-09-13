@@ -26,5 +26,5 @@ void _directWriteBlr(void* addr) {
 }
 
 void _directWriteBranch(void* addr, void* ptr, bool lk) {
-	_directWrite32((u32*)addr, ((((u32)(ptr) - (u32)(addr)) & 0x3FFFFFF) | 0x48000000 | !!lk));
+	_directWrite32((u32*)addr, ((((u32)(ptr) - (u32)(addr)) & 0x3FFFFFC) | 0x48000000 | !!lk));
 }

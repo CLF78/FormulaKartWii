@@ -152,5 +152,5 @@ cmpwi r4, 1
 beqlr
 
 # Else override with infinite time
-li r0, 0xFFFF
+li r0, -1
 blr

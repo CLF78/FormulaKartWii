@@ -61,7 +61,7 @@ def build(isBootStrap):
         if isBootStrap:
             with open(outputfile + 'o', 'rb') as f:
                 startFunc = elf(f).get_section_by_name('.symtab').get_symbol_by_name(startFuncName)[0].entry['st_value']
-            instruction = (((startFunc-startHook) & 0x3FFFFFF ) | 0x48000000)
+            instruction = (((startFunc-startHook) & 0x3FFFFFC ) | 0x48000000)
             print('Hook instruction is', hex(instruction))
 
         c = call([objcopy, '-O', 'binary', '-R', '.eh_frame', '-R', '.eh_frame_hdr', outputfile + 'o', outputfile + 'bin'])
