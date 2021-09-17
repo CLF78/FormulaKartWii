@@ -232,7 +232,7 @@ SECTIONS {
 
 	/* Instant Item Boxes */
 	InstantItemBoxes = 0x808153C8;
-	ItemBoxFix = 0x8075A6F3;
+	ItemBoxFix = 0x8075A6F8;
 	ItemBoxFix2 = 0x8075A82F;
 	ItemBoxFix3 = 0x8075B442;
 
