@@ -93,6 +93,7 @@ void loadCodes() {
 	// BRCTR Redirector (by CLF78)
 	directWrite8(LapNumberCTR, 'f');
 	directWrite8(ItemWindowCTR, 's');
+	//directWrite8(MapCharaCTR, 'f');
 
 	// Bullet Bill Speed Modifier (by davidevgen, CLF78 and Ismy)
 	directWrite16(BulletBillSpeed, 0x435C);
@@ -220,6 +221,9 @@ void loadCodes() {
 	directWrite32(SetLapCount, 0x38600032);
 	directWriteBranch(ColorFixHook, ColorFix, false);
 	directWriteBranch(PositionFixHook, PositionFix, true);
+
+	// Map Highlighter (by CLF78)
+	//directWriteBranch(MapHighlighterHook, MapHighlighter, true);
 
 	// Max Item Limit Modifier (by CLF78)
 	directWriteBranch(ItemLimitSetup, ItemLimitMod, true);

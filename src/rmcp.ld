@@ -129,6 +129,7 @@ SECTIONS {
 	/* BRCTR Redirector */
 	LapNumberCTR = 0x808A9CC7;
 	ItemWindowCTR = 0x808A9C0A;
+	MapCharaCTR = 0x808A94E6;
 
 	/* Bullet Bill Speed Modifier */
 	BulletBillSpeed = 0x808B59F8;
@@ -218,6 +219,9 @@ SECTIONS {
 
 	/* Green Shell Speed Modifier */
 	GreenShellSpeed = 0x808A5DBC;
+
+	/* Highlight 1st Place */
+	MapHighlighterHook = 0x807EB9D0;
 
 	/* Host Version Check */
 	GuestSendHook = 0x800DBD38;
