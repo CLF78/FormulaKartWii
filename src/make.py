@@ -14,6 +14,7 @@ debug = False
 regionlist = ['P', 'E', 'J', 'K']
 startHook = 0x8000629C
 startFuncName = 'start'
+excludefile = 'excludes.txt'
 
 def build(isBootStrap):
 
@@ -30,8 +31,12 @@ def build(isBootStrap):
     # Pretty print
     print('Building %s...' % buildtype)
 
+    # Get excluded files
+    with open(excludefile) as f:
+        excludes = [line.rstrip() for line in f.readlines()]
+
     # Get all files in the source folder
-    filelist = [os.path.join(root, item) for root, subfolder, files in os.walk(mainpath) for item in files if item.lower().endswith('.s') or item.lower().endswith('.c')]
+    filelist = [os.path.join(root, item) for root, subfolder, files in os.walk(mainpath) for item in files if item not in excludes and (item.lower().endswith('.s') or item.lower().endswith('.c'))]
 
     for region in regionlist:
         # Assemble destination file

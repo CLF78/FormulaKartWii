@@ -1,6 +1,7 @@
 .include "asm_setup.S"
 
-.extern ItemLimits, LaunchFunc
+.extern ItemLimits
+# .extern LaunchFunc
 .global ItemLimitMod
 
 # Get the array
@@ -13,19 +14,19 @@ lis r4, ItemLimits@h
 ori r4, r4, ItemLimits@l-0x74
 
 # Get yet another array
-lis r5, ItemLaunchModRequired@h
-ori r5, r5, ItemLaunchModRequired@l-1
+# lis r5, ItemLaunchModRequired@h
+# ori r5, r5, ItemLaunchModRequired@l-1
 
 # Load LaunchFunc address
-lis r6, LaunchFunc@h
-ori r6, r6, LaunchFunc@l
+# lis r6, LaunchFunc@h
+# ori r6, r6, LaunchFunc@l
 
 # Setup loop
 li r7, 15
 mtctr r7
 
 # -1 for PTMF
-li r7, -1
+# li r7, -1
 
 # Store item limit
 loop:
@@ -33,16 +34,16 @@ lbzu r30, 0x1(r3)
 stwu r30, 0x74(r4)
 
 # Check if we should replace the launch function
-lbzu r30, 0x1(r5)
-cmpwi r30, 1
-bne+ loopend
+# lbzu r30, 0x1(r5)
+# cmpwi r30, 1
+# bne+ loopend
 
 # Store LaunchFunc to PTMF if so
-stw r6, 0x1C(r4)
-stw r7, 0x18(r4)
+# stw r6, 0x1C(r4)
+# stw r7, 0x18(r4)
 
 # End loop
-loopend:
+# loopend:
 bdnz+ loop
 
 # Original instruction
@@ -55,6 +56,6 @@ ItemLimitArray:
 .align 2
 
 # Same order as above
-ItemLaunchModRequired:
-.byte 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0
-.align 2
+# ItemLaunchModRequired:
+# .byte 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0
+# .align 2

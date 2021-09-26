@@ -33,9 +33,13 @@ itemChecks:
 cmpwi r31, 3
 ble quantCheck
 
-# Check for Tentative Three, Bombs and Blue Shells
-subi r3, r31, 5
-cmplwi r3, 2
+# Check for Salty Six, Bombs and Blue Shells
+# subi r3, r31, 5
+# cmplwi r3, 2
+
+# Check for Bombs and Blue Shells
+subi r3, r31, 6
+cmplwi r3, 1
 bgtlr+
 
 # Check if the amount is more than 1, if not return
