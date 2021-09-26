@@ -113,7 +113,7 @@ void loadCodes() {
 	// directWriteBranch(ItemAssignerHook2, ItemAssigner2, false);
 	// directWriteArray(ItemAssignerHook3, ItemAssigner3, 0x18);
 	// directWriteBranch(ItemAssignerHook4, ItemAssigner4, false);
-	// directWrite32Offset(ItemAssignerHook4, 0x10, 0x4081FF68);
+	// directWrite32Offset(ItemAssignerHook4, 0x4081FF68, 0x10);
 	// directWriteBranch(ItemAssignerHook5, ItemAssigner5, false);
 	// directWriteArray(ItemAssignerStackFix2Hook, ItemAssignerStackFix2, 0xC);
 	// directWriteBranch(ItemUsageFixHook, ItemUsageFix, true);

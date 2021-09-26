@@ -10,7 +10,6 @@ objcopy = 'powerpc-eabi-objcopy'
 destdir = 'bin'
 
 # Initialize variables
-debug = False
 regionlist = ['P', 'E', 'J', 'K']
 startHook = 0x8000629C
 startFuncName = 'start'
@@ -44,10 +43,6 @@ def build(isBootStrap: bool):
         # Initialize GCC command
         cc_command = [gcc, '-Iinclude', '-pipe', '-nostdlib', '-D', f'REGION_{region}', '-Os', f'-Wl,-T,{mainpath}/mem.ld,-T,rmc.ld,-T,rmc{region.lower()}.ld']
 
-        # Add debug macro if debug is on
-        if debug:
-            cc_command += ['-D', 'DEBUG']
-
         # Add all cpp files and the destination
         cc_command += filelist
         cc_command += ['-o', outputfile + 'o']
@@ -69,21 +64,13 @@ def build(isBootStrap: bool):
             print('Hook instruction is', hex(instruction))
 
         # Convert to binary
-        c = call([objcopy, '-O', 'binary', outputfile + 'o', outputfile + 'bin'])
+        c = call([objcopy, '-O', 'binary', '-R', '.eh_frame', '-R', '.eh_frame_hdr', outputfile + 'o', outputfile + 'bin'])
         if c != 0:
             print('Build failed!')
         else:
             print(f'Built {region}!')
 
 def main():
-    # Debug prompt
-    global debug
-    
-    if len(sys.argv) > 1:
-        debug = not (sys.argv[1] == '--no-debug')
-    else:
-        debug = input('Enable debug mode? (Y/N): ').lower() == 'y'
-
     # Make a clean build folder
     if os.path.isdir(destdir):
         rmtree(destdir)

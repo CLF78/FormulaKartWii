@@ -1,6 +1,5 @@
 SECTIONS {
 	/* Base Functions */
-	gameRegion = 0x80000003;
 	OSLaunchCode = 0x8000318C;
 	_directWriteArray = 0x80005F34;
 	memset = 0x80006038;

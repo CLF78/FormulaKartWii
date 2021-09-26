@@ -14,7 +14,7 @@ try:
     run(['python', 'buildrace.py'], cwd='files/Race')
     run(['python', 'buildtitle.py'], cwd='files/Title')
     run(['python', 'buildtracks.py'], cwd='files/TrackPatches')
-    run(['python', 'make.py', '--no-debug'], cwd='src')
+    run(['python', 'make.py'], cwd='src')
 
     # Copy code
     for region in regionlist:

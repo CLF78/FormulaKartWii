@@ -1,32 +1,39 @@
 #include "common.h"
 
-// Forward declarations
+// Forward declarations (these strings were made in ASM to prevent random alignment zeroes)
 char filename, fatalstring;
-void runPayload();
+loaderFunctions funcs[4];
+
+// ASM Functions
+char regionIdentifier();
+__attribute__((noreturn)) void runPayload(); // Marked as no-return to prevent use of restgpr
 
 // This function loads all the codes that FKW uses after StaticR has loaded
 void readPayload() {
 
+	// Get region
+	char region = regionIdentifier();
+
 	// Compose filename
 	char buffer[32];
-	sprintf(buffer, &filename, gameRegion);
+	funcs[region].sprintf(buffer, &filename, funcs[region].letter);
 
 	// Open the file
 	DVDHandle fd;
-	bool ret = DVDOpen(buffer, &fd);
+	bool ret = funcs[region].DVDOpen(buffer, &fd);
 
 	// Failsafe
 	if (!ret) {
 		u32 fataltextcolor = 0xFFFFFFFF;
 		u32 fatalbackcolor = 0;
-		OSFatal(&fataltextcolor, &fatalbackcolor, &fatalstring);
+		funcs[region].OSFatal(&fataltextcolor, &fatalbackcolor, &fatalstring);
 	}
 
 	// Read the file (destination must be aligned by 32!)
-	DVDReadPrio(&fd, (void*)0x808DD400, fd.length, 0, 0);
+	funcs[region].DVDReadPrio(&fd, (void*)0x808DD400, fd.length, 0, 0);
 
 	// Close it
-	DVDClose(&fd);
+	funcs[region].DVDClose(&fd);
 
 	// Run the payload
 	runPayload();
@@ -35,24 +42,11 @@ void readPayload() {
 // Initial function. This hooks at the end of init_registers
 void start() {
 
-	// Codehandler Annihilator (by CLF78)
-
-	#ifndef DEBUG
-	directWriteBlr(VIHook);
-	directWriteBlr(KPADHook);
-	directWriteBlr(GXDrawHook);
-	directWriteBlr(GXFlushHook);
-	directWriteBlr(OSSleepHook);
-	directWriteBlr(AXNextFrameHook);
-	memset((void*)0x80001800, 0, 0x1800);
-	_directWriteBlr((void*)0x800018A8);
-	#endif
-
 	// Auto Strap Screen Skip (by TheLordScruffy)
 	directWrite16(OSLaunchCode, 0x101);
 
 	// Main Hook
-	directWriteBranchEx(RelHook, readPayload, false);
+	directWriteBranch(RelHook, readPayload, false);
 
 	// 30 FPS (by CLF78)
 	if (ThirtyFPS == 1) {
