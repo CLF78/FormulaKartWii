@@ -1,4 +1,21 @@
 SECTIONS {
+	/* Base Functions */
+	DVDOpen = 0x8015E1DC;
+	DVDReadPrio = 0x8015E754;
+	DVDClose = 0x8015E488;
+	sprintf = 0x80011950;
+	swprintf = 0x80017738;
+	OSFatal = 0x801A4DE4;
+	_restgpr_31_x = 0x80021520;
+
+	/* Codehandler Hooks */
+	VIHook = 0x801BAA40;
+	KPADHook = 0x801979C8;
+	GXDrawHook = 0x8016EA8C;
+	GXFlushHook = 0x8016E5CC;
+	OSSleepHook = 0x801AA9C0;
+	AXNextFrameHook = 0x801264C0;
+
 	/* Common Classes and Functions */
 	SystemManager = 0x80385980;
 	Racedata = 0x809BC788;
@@ -42,26 +59,6 @@ SECTIONS {
 	RandomNextLimited = 0x80554F4C;
 	RandomRefresh = 0x80554E50;
 
-	/* Codehandler Hooks */
-	VIHook = 0x801BAA40;
-	KPADHook = 0x801979C8;
-	GXDrawHook = 0x8016EA8C;
-	GXFlushHook = 0x8016E5CC;
-	OSSleepHook = 0x801AA9C0;
-	AXNextFrameHook = 0x801264C0;
-
-	/* Payload Hook */
-	RelHook = 0x801A6C50;
-
-	/* Base Functions */
-	DVDOpen = 0x8015E1DC;
-	DVDReadPrio = 0x8015E754;
-	DVDClose = 0x8015E488;
-	sprintf = 0x80011950;
-	swprintf = 0x80017738;
-	OSFatal = 0x801A4DE4;
-	_restgpr_31_x = 0x80021520;
-
 	/* 30 FPS */
 	ThirtyFPSHook1 = 0x80009998;
 	ThirtyFPSHook2 = 0x80009207;
@@ -69,37 +66,6 @@ SECTIONS {
 	ThirtyFPSHook4 = 0x8051A914;
 	ThirtyFPSHook5 = 0x8051ACBC;
 	ThirtyFPSHook6 = 0x8051ACAB;
-
-	/* Exception Handler */
-	ShowExceptions = 0x802A6D84;
-	ExcDispInfo = 0x802A6D90;
-
-	/* Wiimmfi */
-	WiimmfiPatch1 = 0x800ED788;
-	WiimmfiPatch2 = 0x800EC9CC;
-	WiimmfiPatch3 = 0x800EE2C0;
-	WiimmfiPatch4 = 0x801D4E1C;
-
-	LoginRegion = 0x80384950;
-	VSRegion = 0x80652CB0;
-	VSRegion2 = 0x80658878;
-	VSRegion3 = 0x80658D90;
-	VSRegion4 = 0x806596EC;
-
-	WiimmfiVersionString = 0x802759F4;
-	NaswiiURL = 0x80279DA4;
-	NaswiiURL2 = 0x80279DCC;
-	NaswiiURL3 = 0x80279E4C;
-	NaswiiURL4 = 0x80279DF0;
-	AvailableURL = 0x8027A708;
-	GPCMURL = 0x8027AE78;
-	GPSPURL = 0x8027B890;
-	MasterURL = 0x8027CA31;
-	NatnegURL = 0x8027D64B;
-	NatnegURL2 = 0x8027D667;
-	NatnegURL3 = 0x8027D683;
-	MSURL = 0x8027D7D3;
-	GSURL = 0x8027D857;
 
 	/* 30 Second Time Limit */
 	ThirtySecs = 0x8053E60E;
@@ -112,6 +78,16 @@ SECTIONS {
 	ItemLandFeather = 0x808B4648;
 	ItemLandGolden = 0x808B4660;
 	ItemLandBill = 0x808B466C;
+
+	/* Always Win Track Vote */
+	AlwaysWinVoteHook = 0x8066148C;
+
+	/* Automatic BRSAR Patch */
+	AutoBRSARHook = 0x800911F4;
+
+	/* BRCTR Redirector */
+	LapNumberCTR = 0x808A8E27;
+	ItemWindowCTR = 0x808A8D6A;
 
 	/* Banana/Blue/Bomb Spinout Modifier */
 	BananaDamage = 0x80572B08;
@@ -126,15 +102,19 @@ SECTIONS {
 	NoFakeBomb = 0x80572010;
 	NoDmgChange = 0x805698E8;
 
-	/* BRCTR Redirector */
-	LapNumberCTR = 0x808A8E27;
-	ItemWindowCTR = 0x808A8D6A;
-
 	/* Bullet Bill Speed Modifier */
 	BulletBillSpeed = 0x808B4B58;
 	CannonLandingFix = 0x80577EDB;
 	CannonSpeed = 0x80584A44;
 	CannonSpeed2 = 0x80584A50;
+
+	/* Change Characters Between Races */
+	ChangeCharsHook = 0x8062D7A4;
+	CreateScreen = 0x80622454;
+	PushButton_HandleClick = 0x805BDCD8;
+	PushButton_Vtable = 0x808B6918;
+	ChangeCharsHook2 = 0x80622574;
+	ChangeCharsHook3 = 0x8062D81C;
 
 	/* Crazy Eight */
 	CrazyEightEnableCircling = 0x808A4AD0;
@@ -153,6 +133,27 @@ SECTIONS {
 	/* Credits Button */
 	CreditsButton = 0x80850937;
 
+	/* Cycle Fixes - Coconut Mall */
+	EscalatorFixHook = 0x80800030;
+	PiantaFixHook = 0x80801820;
+
+	/* Cycle Fixes - Dry Dry Ruins */
+	PillarFixHook = 0x807FE480;
+	SandpitFixHook = 0x80686694;
+	SandpitFix2 = 0x806872E8;
+	SandpitFix3 = 0x80686EE8;
+
+	/* Cycle Fixes - Ghost Valley 2 */
+	GV2Fix = 0x8080A45A;
+
+	/* Cycle Fixes - Grumble Volcano */
+	RockFix = 0x806E31BE;
+	RockFix2Hook = 0x8081758C;
+	GeyserFixHook = 0x806C3194;
+
+	/* Cycle Fixes - Toad's Factory */
+	ConveyorFixHook = 0x807FCA30;
+
 	/* DC Bug Fix */
 	DCFix = 0x8053F044;
 
@@ -161,8 +162,14 @@ SECTIONS {
 	NoItemPoof2Hook = 0x807A10C0;
 	NoItemPoof3Hook = 0x807A10D0;
 
+	/* Disable TF Music Reset */
+	NoTFMusicReset = 0x80718F8C;
+
 	/* Don't Hide Position After Race */
 	NoHidePos = 0x807F4433;
+
+	/* Don't Lose VR When Disconnecting */
+	NoVRLoss = 0x80855BCC;
 
 	/* Draggable Blue Shells */
 	BlueShellDrag = 0x808A4C90;
@@ -188,8 +195,21 @@ SECTIONS {
 	BlueSizeHook2 = 0x807AD9F0;
 	BlueExplosionFunc = 0x807AD5C4;
 
+	/* Exception Handler */
+	ShowExceptions = 0x802A6D84;
+	ExcDispInfo = 0x802A6D90;
+
 	/* Fast POW */
 	NoPOWDelay = 0x807B1438;
+
+	/* Faster Menu Navigation */
+	FasterMenuHook = 0x8038898C;
+	FasterMenuHook2 = 0x80895E80;
+	FasterMenuHook3 = 0x80634DBC;
+
+	/* Faster Score Increase */
+	ScoreSkip = 0x807F4E63;
+	NoTransition = 0x8085B60C;
 
 	/* Feather Item */
 	FeatherUseFunc = 0x808A49F4;
@@ -206,232 +226,8 @@ SECTIONS {
 	FastMusicHook2 = 0x80711144;
 	FastMusicHook3 = 0x8062F7DC;
 
-	/* GeoHit Patches */
-	GeoHitTableItem = 0x808D71C0;
-	GeoHitTableItemObj = 0x808D71D8;
-	GeoHitTableKartHook = 0x80829AE4;
-	GeyserCollFix = 0x80572D47;
-
-	/* Glitch Prevention */
-	DisableWallrideHook = 0x8057B998;
-	DisableHWG = 0x80594D6B;
-
-	/* Green Shell Speed Modifier */
-	GreenShellSpeed = 0x808A4F1C;
-
-	/* Host Version Check */
-	GuestSendHook = 0x800DBC58;
-	HostCheckHook = 0x800DC3BC;
-	DWCiCheckResvCommand = 0x800DE5D8;
-
-	/* Impervious TC */
-	ImperviousTCHook = 0x807AF114;
-
-	/* Inside Drift Bikes */
-	KartParamHook = 0x80591968;
-
-	/* Instant Item Boxes */
-	InstantItemBoxes = 0x80828548;
-	ItemBoxFix = 0x8076C44C;
-	ItemBoxFix2 = 0x8076C583;
-	ItemBoxFix3 = 0x8076D196;
-
-	/* Item Textures */
-	ItemTexturesHook = 0x8086015C;
-	OriginalTextures = 0x808AE920;
-	DoubleShroom = 0x808AEB07;
-
-	/* Lap Counter */
-	SetLapCount = 0x807EEDD8;
-	ColorFixHook = 0x807EEE54;
-	PositionFixHook = 0x807EEED0;
-
-	/* Max Item Limit Modifier */
-	ItemLimitSetup = 0x80790274;
-	ItemLimits = 0x809C1FA4;
-
-	/* Mega Flips Cars */
-	MegaFlip = 0x8082A26F;
-
-	/* Mega Mushroom Size Multiplier */
-	MegaSizeHook = 0x80591AA8;
-	FOVChange = 0x80578D38;
-
-	/* Mega Thundercloud */
-	MegaTCHook = 0x8057FFB0;
-	MegaFunc = 0x80797D20;
-
-	/* Message Patch */
-	MSGPatchHook = 0x8051A6B0;
-	MSGPatchHook2 = 0x805F84B3;
-	MSGPatchHook3 = 0x80854AB4;
-	MSGPatchHook4 = 0x807F81C4;
-	GetSceneHolderThing = 0x8051B850;
-	LoadArchive = 0x8053FDD0;
-	AddFileToList = 0x8051A3D8;
-
-	/* MK7 Shock Squishing */
-	ShockSquishingHook = 0x8056FD24;
-	ShockSquishingCall = 0x8056FDB0;
-	ShockSquishingCall2 = 0x8056FF40;
-	NoSquishStop = 0x8056924B;
-	NoSquishLoseItem = 0x805692AC;
-	NoSquishRespawn = 0x805692C8;
-
-	/* Motion-Sensor Bombs */
-	BombTimer = 0x807A5262;
-	BombTimer2 = 0x807A4136;
-
-	/* Newbie Helper */
-	RespawnHelperHook = 0x805737A8;
-	RespawnHelperHook2 = 0x805795A0;
-
-	/* No Bullet Bill Icon */
-	NoBBIcon = 0x807B9C3C;
-
-	/* No Invincibility Frames */
-	NoInvFramesHook = 0x80567114;
-	NoRespawnInv = 0x80566FCE;
-	StarInBullet = 0x8057FBF2;
-	ShroomInBullet = 0x8057ED62;
-	StarWhenHit = 0x8057FC24;
-	ShroomWhenHit = 0x8057EDD0;
-
-	/* Pause Menu Fix */
-	PauseMenuScreenHook = 0x8062BDB8;
-	PauseMenuScreenHook2 = 0x8062BEFC;
-
-	/* POW Yourself in 1st */
-	POWSelfHook = 0x807B149C;
-
-	/* Prevent Shock/POW Drop */
-	DropFunc = 0x807BBC9C;
-
-	/* Red Shell Target Modifier */
-	TargetWhileRespawn = 0x80590C16;
-	TargetWhileHit = 0x80590C63;
-	TargetPositionHook = 0x807B2F0C;
-
-	/* Remove Mushroom Bug */
-	RemoveShroomBug = 0x807B96E3;
-	RemoveFakeShroom = 0x807B9AEC;
-	RemoveFakeShroom2 = 0x807B9AF0;
-	RemoveFakeShroom3 = 0x807B9790;
-
-	/* Faster Score Increase */
-	ScoreSkip = 0x807F4E63;
-	NoTransition = 0x8085B60C;
-
-	/* Set Default Drift Type */
-	DefaultDriftType = 0x80545CEC;
-
-	/* Show Timers */
-	TimerShow = 0x8064F8C0;
-
-	/* Show Times After Race */
-	ShowTimesVS = 0x8085BF78;
-	ShowTimesWW = 0x8085CACC;
-	TimesFunc = 0x807F4FC8;
-	TimePrintHook = 0x807F508C;
-
-	/* Super Miniturbo Multiplier */
-	SMTMultiplier = 0x808B4E30;
-	SMTMinimum = 0x808B4E26;
-
-	/* Ultra UnCut */
-	CKPTCheck = 0x80534A98;
-
-	/* VS Menu Skip */
-	VSMenuSkipHook = 0x80851A98;
-	VSMenuSkipHook2 = 0x805FB064;
-	VSMenuSkip3 = 0x8062C9A8;
-	VSMenuSkip4 = 0x8062FE3F;
-	VSMenuReturnHook = 0x80852188;
-	VSMenuReturn = 0x8084F1A4;
-	VSMenuSkipMulti = 0x80602ABF;
-	NoGhostLoading = 0x80620928;
-
-	/* Woodbox Modifier */
-	WoodRespawn = 0x808D03E0;
-	WoodProb = 0x8076E494;
-	BushFunc = 0x80766994;
-
-	/* Ultimate Item Randomizer */
-	SharedItemHook = 0x807B97CC;
-	SpecialItemHook = 0x80799754;
-	ItemAmountHook1 = 0x8065BD40;
-	ItemAmountHook2 = 0x807BBFC4;
-
-	/* Time Limit Modifier */
-	TimeLimit = 0x8053E724;
-
-	/* Shells Never Break */
-	ShellHitCount = 0x807B5580;
-	ShellHitCount2 = 0x807A3178;
-
-	/* Starting Lap Modifier */
-	StartingLapHook = 0x80533A20;
-	JingleFixHook = 0x8070A924;
-	LastLap = 0x8053455C;
-	LastLapLakitu = 0x80723338;
-	NoLapFix = 0x807233A8;
-	LapSignFix2 = 0x807233B4;
-	LakituBoardHook = 0x807233C0;
-	TimeStoreHook = 0x805344D8;
-	TimeStoreHook2 = 0x805350AC;
-	TimeStoreHook3 = 0x80535118;
-	FinishTimesHook = 0x80533D0C;
-	LapSignFixHook = 0x80534398;
-	LapArrayIncrease = 0x80532250;
-	LapCountFixHook = 0x80533A30;
-
-	/* Cycle Fixes - Coconut Mall */
-	EscalatorFixHook = 0x80800030;
-	PiantaFixHook = 0x80801820;
-
-	/* Cycle Fixes - Dry Dry Ruins */
-	PillarFixHook = 0x807FE480;
-	SandpitFixHook = 0x80686694;
-	SandpitFix2 = 0x806872E8;
-	SandpitFix3 = 0x80686EE8;
-
-	/* Cycle Fixes - Ghost Valley 2 */
-	GV2Fix = 0x8080A45A;
-
-	/* Cycle Fixes - Grumble Volcano */
-	RockFix = 0x806E31BE;
-	RockFix2Hook = 0x8081758C;
-	GeyserFixHook = 0x806C3194;
-
-	/* Cycle Fixes - Toad's Factory */
-	ConveyorFixHook = 0x807FCA30;
-
-	/* Game Modes - Generic */
-	SceneSwapHook = 0x80621568;
-	HostFlagsHook = 0x8065A4DC;
-	GuestFlagsHook = 0x8065A5DC;
-	FlagResetHook = 0x800D19D0;
-	FlagResetHook2 = 0x800D18A0;
-	FlagResetHook3 = 0x800D1C84;
-	FlagResetHook4 = 0x800D2BF0;
-	FlagResetHook5 = 0x800CCCC8;
-	BattleFixHook = 0x808600F8;
-	BattleFixHook2 = 0x8084F55C;
-	TimerManagerHook = 0x805355FC;
-	VehicleRestrictionHook = 0x80844C10;
-	MessageButtons = 0x805DBCC7;
-	MessageButtons2Hook = 0x805DACBC;
-	MessageButtons3Hook = 0x805DA658;
-
-	/* Offline Race Count Modifier */
-	RaceCountFix1 = 0x80852B27;
-	RaceCountFix2 = 0x808530A4;
-	RaceCountFix3 = 0x808530AC;
-	RaceCountFix4 = 0x80851F5C;
-	RaceCountFix5 = 0x8085203C;
-
-	/* Play VS Race Alone */
-	NoCPU = 0x808527B4;
+	/* Force Battle Glitch */
+	TagDistance = 0x808D2F64;
 
 	/* Game Mode - Ramp Up */
 	RampUpHook = 0x805344D0;
@@ -460,10 +256,176 @@ SECTIONS {
 	NoTeamInvincibility5 = 0x8056F6B0;
 	NoTeamInvincibility6 = 0x8068D988;
 
+	/* Game Modes - Generic */
+	SceneSwapHook = 0x80621568;
+	HostFlagsHook = 0x8065A4DC;
+	GuestFlagsHook = 0x8065A5DC;
+	FlagResetHook = 0x800D19D0;
+	FlagResetHook2 = 0x800D18A0;
+	FlagResetHook3 = 0x800D1C84;
+	FlagResetHook4 = 0x800D2BF0;
+	FlagResetHook5 = 0x800CCCC8;
+	BattleFixHook = 0x808600F8;
+	BattleFixHook2 = 0x8084F55C;
+	TimerManagerHook = 0x805355FC;
+	VehicleRestrictionHook = 0x80844C10;
+	MessageButtons = 0x805DBCC7;
+	MessageButtons2Hook = 0x805DACBC;
+	MessageButtons3Hook = 0x805DA658;
+
+	/* GeoHit Patches */
+	GeoHitTableItem = 0x808D71C0;
+	GeoHitTableItemObj = 0x808D71D8;
+	GeoHitTableKartHook = 0x80829AE4;
+	GeyserCollFix = 0x80572D47;
+
+	/* Glitch Prevention */
+	DisableWallrideHook = 0x8057B998;
+	DisableHWG = 0x80594D6B;
+
+	/* Green Shell Speed Modifier */
+	GreenShellSpeed = 0x808A4F1C;
+
+	/* Host Version Check */
+	GuestSendHook = 0x800DBC58;
+	HostCheckHook = 0x800DC3BC;
+	DWCiCheckResvCommand = 0x800DE5D8;
+
+	/* Impervious TC */
+	ImperviousTCHook = 0x807AF114;
+
+	/* Inside Drift Bikes */
+	KartParamHook = 0x80591968;
+
+	/* Instant DC */
+	WiiWheel = 0x80345162;
+	InstantDCHook = 0x8053EDF0;
+
+	/* Instant Item Boxes */
+	InstantItemBoxes = 0x80828548;
+	ItemBoxFix = 0x8076C44C;
+	ItemBoxFix2 = 0x8076C583;
+	ItemBoxFix3 = 0x8076D196;
+
+	/* Item Textures */
+	ItemTexturesHook = 0x8086015C;
+	OriginalTextures = 0x808AE920;
+	DoubleShroom = 0x808AEB07;
+
+	/* Lap Counter */
+	SetLapCount = 0x807EEDD8;
+	ColorFixHook = 0x807EEE54;
+	PositionFixHook = 0x807EEED0;
+
+	/* License Unlocker */
+	LicenseUnlocker = 0x805492F4;
+
+	/* MK7 Shock Squishing */
+	ShockSquishingHook = 0x8056FD24;
+	ShockSquishingCall = 0x8056FDB0;
+	ShockSquishingCall2 = 0x8056FF40;
+	NoSquishStop = 0x8056924B;
+	NoSquishLoseItem = 0x805692AC;
+	NoSquishRespawn = 0x805692C8;
+
+	/* Max Item Limit Modifier */
+	ItemLimitSetup = 0x80790274;
+	ItemLimits = 0x809C1FA4;
+
+	/* Mega Flips Cars */
+	MegaFlip = 0x8082A26F;
+
+	/* Mega Mushroom Size Multiplier */
+	MegaSizeHook = 0x80591AA8;
+	FOVChange = 0x80578D38;
+
+	/* Mega Thundercloud */
+	MegaTCHook = 0x8057FFB0;
+	MegaFunc = 0x80797D20;
+
+	/* Message Patch */
+	MSGPatchHook = 0x8051A6B0;
+	MSGPatchHook2 = 0x805F84B3;
+	MSGPatchHook3 = 0x80854AB4;
+	MSGPatchHook4 = 0x807F81C4;
+	GetSceneHolderThing = 0x8051B850;
+	LoadArchive = 0x8053FDD0;
+	AddFileToList = 0x8051A3D8;
+
+	/* Mii Heads on Minimap */
+	MiiHeadsHook = 0x807EA7CC;
+
+	/* Motion-Sensor Bombs */
+	BombTimer = 0x807A5262;
+	BombTimer2 = 0x807A4136;
+
+	/* Newbie Helper */
+	RespawnHelperHook = 0x805737A8;
+	RespawnHelperHook2 = 0x805795A0;
+
+	/* No Bullet Bill Icon */
+	NoBBIcon = 0x807B9C3C;
+
+	/* No Character Voices */
+	NoCharVoiceHook = 0x80715874;
+
+	/* No Invincibility Frames */
+	NoInvFramesHook = 0x80567114;
+	NoRespawnInv = 0x80566FCE;
+	StarInBullet = 0x8057FBF2;
+	ShroomInBullet = 0x8057ED62;
+	StarWhenHit = 0x8057FC24;
+	ShroomWhenHit = 0x8057EDD0;
+
+	/* No Multi Channel Track Music */
+	NoMultiChannelHook = 0x806FA198;
+	NoMultiChannelHook2 = 0x800A4E38;
+	FirstCall = 0x80718C58;
+
+	/* No Music */
+	NoMusicHook = 0x8009122C;
+
+	/* Offline Race Count Modifier */
+	RaceCountFix1 = 0x80852B27;
+	RaceCountFix2 = 0x808530A4;
+	RaceCountFix3 = 0x808530AC;
+	RaceCountFix4 = 0x80851F5C;
+	RaceCountFix5 = 0x8085203C;
+
 	/* Online Stuff */
 	ForceCCHook = 0x80660A70;
 	FroomRaceCount = 0x80645727;
 	FroomRaceCount2 = 0x8064EB8B;
+
+	/* POW Yourself in 1st */
+	POWSelfHook = 0x807B149C;
+
+	/* Pause Menu Fix */
+	PauseMenuScreenHook = 0x8062BDB8;
+	PauseMenuScreenHook2 = 0x8062BEFC;
+
+	/* Payload Hook */
+	RelHook = 0x801A6C50;
+
+	/* Play VS Race Alone */
+	NoCPU = 0x808527B4;
+
+	/* Points Modifier */
+	PointsModifierHook = 0x8052E5B8;
+
+	/* Prevent Shock/POW Drop */
+	DropFunc = 0x807BBC9C;
+
+	/* Red Shell Target Modifier */
+	TargetWhileRespawn = 0x80590C16;
+	TargetWhileHit = 0x80590C63;
+	TargetPositionHook = 0x807B2F0C;
+
+	/* Remove Mushroom Bug */
+	RemoveShroomBug = 0x807B96E3;
+	RemoveFakeShroom = 0x807B9AEC;
+	RemoveFakeShroom2 = 0x807B9AF0;
+	RemoveFakeShroom3 = 0x807B9790;
 
 	/* Remove WW Button */
 	NoWWButton = 0x8064AFEF;
@@ -476,47 +438,12 @@ SECTIONS {
 	NoWWButton8 = 0x8064B2BA;
 	NoWWButton9 = 0x8064B32E;
 
-	/* Automatic BRSAR Patch */
-	AutoBRSARHook = 0x800911F4;
+	/* Set Default Drift Type */
+	DefaultDriftType = 0x80545CEC;
 
-	/* Disable TF Music Reset */
-	NoTFMusicReset = 0x80718F8C;
-
-	/* Don't Lose VR When Disconnecting */
-	NoVRLoss = 0x80855BCC;
-
-	/* Instant DC */
-	WiiWheel = 0x80345162;
-	InstantDCHook = 0x8053EDF0;
-
-	/* License Unlocker */
-	LicenseUnlocker = 0x805492F4;
-
-	/* Points Modifier */
-	PointsModifierHook = 0x8052E5B8;
-
-	/* Silent Controller Changing */
-	NoControllerDC = 0x8061A70C;
-
-	/* Faster Menu Navigation */
-	FasterMenuHook = 0x8038898C;
-	FasterMenuHook2 = 0x80895E80;
-	FasterMenuHook3 = 0x80634DBC;
-
-	/* Mii Heads on Minimap */
-	MiiHeadsHook = 0x807EA7CC;
-
-	/* No Music */
-	NoMusicHook = 0x8009122C;
-
-	/* No Character Voices */
-	NoCharVoiceHook = 0x80715874;
-
-	/* Force Battle Glitch */
-	TagDistance = 0x808D2F64;
-
-	/* Always Win Track Vote */
-	AlwaysWinVoteHook = 0x8066148C;
+	/* Shells Never Break */
+	ShellHitCount = 0x807B5580;
+	ShellHitCount2 = 0x807A3178;
 
 	/* Show Time Difference */
 	GhostFileSkip = 0x807EDBFF;
@@ -524,13 +451,17 @@ SECTIONS {
 	TimeDiffPatchHook2 = 0x807EDC44;
 	TimeDiffApplyHook = 0x80855924;
 
-	/* Change Characters Between Races */
-	ChangeCharsHook = 0x8062D7A4;
-	CreateScreen = 0x80622454;
-	PushButton_HandleClick = 0x805BDCD8;
-	PushButton_Vtable = 0x808B6918;
-	ChangeCharsHook2 = 0x80622574;
-	ChangeCharsHook3 = 0x8062D81C;
+	/* Show Timers */
+	TimerShow = 0x8064F8C0;
+
+	/* Show Times After Race */
+	ShowTimesVS = 0x8085BF78;
+	ShowTimesWW = 0x8085CACC;
+	TimesFunc = 0x807F4FC8;
+	TimePrintHook = 0x807F508C;
+
+	/* Silent Controller Changing */
+	NoControllerDC = 0x8061A70C;
 
 	/* Speedometer */
 	SpeedoTextParseNop = 0x805CD610;
@@ -538,8 +469,77 @@ SECTIONS {
 	SpeedoParseSkip = 0x805CD6E4;
 	SpeedoNoPauseHook = 0x807EABE0;
 
-	/* No Multi Channel Track Music */
-	NoMultiChannelHook = 0x806FA198;
-	NoMultiChannelHook2 = 0x800A4E38;
-	FirstCall = 0x80718C58;
+	/* Starting Lap Modifier */
+	StartingLapHook = 0x80533A20;
+	JingleFixHook = 0x8070A924;
+	LastLap = 0x8053455C;
+	LastLapLakitu = 0x80723338;
+	NoLapFix = 0x807233A8;
+	LapSignFix2 = 0x807233B4;
+	LakituBoardHook = 0x807233C0;
+	TimeStoreHook = 0x805344D8;
+	TimeStoreHook2 = 0x805350AC;
+	TimeStoreHook3 = 0x80535118;
+	FinishTimesHook = 0x80533D0C;
+	LapSignFixHook = 0x80534398;
+	LapArrayIncrease = 0x80532250;
+	LapCountFixHook = 0x80533A30;
+
+	/* Super Miniturbo Multiplier */
+	SMTMultiplier = 0x808B4E30;
+	SMTMinimum = 0x808B4E26;
+
+	/* Time Limit Modifier */
+	TimeLimit = 0x8053E724;
+
+	/* Ultimate Item Randomizer */
+	SharedItemHook = 0x807B97CC;
+	SpecialItemHook = 0x80799754;
+	ItemAmountHook1 = 0x8065BD40;
+	ItemAmountHook2 = 0x807BBFC4;
+
+	/* Ultra UnCut */
+	CKPTCheck = 0x80534A98;
+
+	/* VS Menu Skip */
+	VSMenuSkipHook = 0x80851A98;
+	VSMenuSkipHook2 = 0x805FB064;
+	VSMenuSkip3 = 0x8062C9A8;
+	VSMenuSkip4 = 0x8062FE3F;
+	VSMenuReturnHook = 0x80852188;
+	VSMenuReturn = 0x8084F1A4;
+	VSMenuSkipMulti = 0x80602ABF;
+	NoGhostLoading = 0x80620928;
+
+	/* Wiimmfi */
+	WiimmfiPatch1 = 0x800ED788;
+	WiimmfiPatch2 = 0x800EC9CC;
+	WiimmfiPatch3 = 0x800EE2C0;
+	WiimmfiPatch4 = 0x801D4E1C;
+
+	LoginRegion = 0x80384950;
+	VSRegion = 0x80652CB0;
+	VSRegion2 = 0x80658878;
+	VSRegion3 = 0x80658D90;
+	VSRegion4 = 0x806596EC;
+
+	WiimmfiVersionString = 0x802759F4;
+	NaswiiURL = 0x80279DA4;
+	NaswiiURL2 = 0x80279DCC;
+	NaswiiURL3 = 0x80279E4C;
+	NaswiiURL4 = 0x80279DF0;
+	AvailableURL = 0x8027A708;
+	GPCMURL = 0x8027AE78;
+	GPSPURL = 0x8027B890;
+	MasterURL = 0x8027CA31;
+	NatnegURL = 0x8027D64B;
+	NatnegURL2 = 0x8027D667;
+	NatnegURL3 = 0x8027D683;
+	MSURL = 0x8027D7D3;
+	GSURL = 0x8027D857;
+
+	/* Woodbox Modifier */
+	WoodRespawn = 0x808D03E0;
+	WoodProb = 0x8076E494;
+	BushFunc = 0x80766994;
 }
