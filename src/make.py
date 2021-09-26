@@ -15,35 +15,34 @@ regionlist = ['P', 'E', 'J', 'K']
 startHook = 0x8000629C
 startFuncName = 'start'
 excludefile = 'excludes.txt'
+extensions = ['.s', '.S', '.c']
 
-def build(isBootStrap):
+def build(isBootStrap: bool):
 
     # Initialize vars
     if isBootStrap:
         mainpath = 'bootstrap'
         outname = 'Loader'
-        buildtype = 'bootstrap'
     else:
         mainpath = 'src'
         outname = 'FormulaKartWii'
-        buildtype = 'payload'
 
     # Pretty print
-    print('Building %s...' % buildtype)
+    print('Building', 'bootstrap...' if isBootStrap else 'payload...')
 
     # Get excluded files
     with open(excludefile) as f:
         excludes = [line.rstrip() for line in f.readlines()]
 
     # Get all files in the source folder
-    filelist = [os.path.join(root, item) for root, subfolder, files in os.walk(mainpath) for item in files if item not in excludes and (item.lower().endswith('.s') or item.lower().endswith('.c'))]
+    filelist = [os.path.join(root, item) for root, s, files in os.walk(mainpath) for item in files if item not in excludes and os.path.splitext(item)[1] in extensions]
 
     for region in regionlist:
         # Assemble destination file
-        outputfile = '%s/%s%s.' % (destdir, outname, region)
+        outputfile = f'{destdir}/{outname}{region}.'
 
         # Initialize GCC command
-        cc_command = [gcc, '-Iinclude', '-nostdlib', '-D', 'REGION_%s' % (region), '-D', 'REGION=\'%s\'' % region, '-Os', '-Wl,-T,%s/mem.ld,-T,rmc.ld,-T,rmc%s.ld' % (mainpath, region.lower())]
+        cc_command = [gcc, '-Iinclude', '-pipe', '-nostdlib', '-D', f'REGION_{region}', '-Os', f'-Wl,-T,{mainpath}/mem.ld,-T,rmc.ld,-T,rmc{region.lower()}.ld']
 
         # Add debug macro if debug is on
         if debug:
@@ -53,31 +52,28 @@ def build(isBootStrap):
         cc_command += filelist
         cc_command += ['-o', outputfile + 'o']
 
-        # Debug output for testing:
+        # Debug output for testing
         # print(*cc_command)
 
         # Call GCC to compile everything
         c = call(cc_command)
         if c != 0:
             print('Build failed!')
-            return
+            continue
 
         # Get offset to start function
         if isBootStrap:
             with open(outputfile + 'o', 'rb') as f:
-                startFunc = elf(f).get_section_by_name('.symtab').get_symbol_by_name(startFuncName)[0].entry['st_value']
-            instruction = (((startFunc-startHook) & 0x3FFFFFC ) | 0x48000000)
+                startFunc = elf(f).get_section_by_name('.symtab').get_symbol_by_name(startFuncName)[0]['st_value']
+            instruction = (((startFunc-startHook) & 0x3FFFFFC) | 0x48000000)
             print('Hook instruction is', hex(instruction))
 
-        c = call([objcopy, '-O', 'binary', '-R', '.eh_frame', '-R', '.eh_frame_hdr', outputfile + 'o', outputfile + 'bin'])
+        # Convert to binary
+        c = call([objcopy, '-O', 'binary', outputfile + 'o', outputfile + 'bin'])
         if c != 0:
             print('Build failed!')
-            return
         else:
-            print('Built %s!' % region)
-
-    # We're done!
-    print('All built!')
+            print(f'Built {region}!')
 
 def main():
     # Debug prompt
@@ -96,5 +92,8 @@ def main():
     # Build it!
     build(False)
     build(True)
+
+    # We're done!
+    print('Built all!')
 
 main()
