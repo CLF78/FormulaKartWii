@@ -64,7 +64,7 @@ void loadCodes() {
 	// All Items Can Land (by MrBean and CLF78)
 	directWriteNop(AICLUnk1);
 	directWrite32(AICLUnk2, 0x38600000);
-	directWriteArray(NoItemLandingPoof, NoItemLandingPoofASM, 12);
+	directWrite32(NoItemLandingPoof, 0x39800001);
 	extern void* AllItemsCanLand;
 	tempVal32 = (u32)&AllItemsCanLand;
 	directWrite32(ItemLandMega, tempVal32);
