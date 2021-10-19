@@ -10,7 +10,6 @@ objcopy = 'powerpc-eabi-objcopy'
 destdir = 'bin'
 
 # Initialize variables
-regionlist = ['P', 'E', 'J', 'K']
 startHook = 0x8000629C
 startFuncName = 'start'
 excludefile = 'excludes.txt'
@@ -22,9 +21,11 @@ def build(isBootStrap: bool):
     if isBootStrap:
         mainpath = 'bootstrap'
         outname = 'Loader'
+        regionlist = ['']
     else:
         mainpath = 'src'
         outname = 'FormulaKartWii'
+        regionlist = ['P', 'E', 'J', 'K']
 
     # Pretty print
     print('Building', 'bootstrap...' if isBootStrap else 'payload...')
@@ -41,7 +42,11 @@ def build(isBootStrap: bool):
         outputfile = f'{destdir}/{outname}{region}.'
 
         # Initialize GCC command
-        cc_command = [gcc, '-Iinclude', '-pipe', '-nostdlib', '-D', f'REGION_{region}', '-Os', f'-Wl,-T,{mainpath}/mem.ld,-T,rmc.ld,-T,rmc{region.lower()}.ld']
+        cc_command = [gcc, '-Iinclude', '-pipe', '-nostdlib', '-Os', f'-Wl,-T,{mainpath}/mem.ld,-T,rmc.ld']
+        
+        # Add other stuff not required for loader compilation
+        if not isBootStrap:
+            cc_command += ['-D', f'REGION_{region}', f'-Wl,-T,rmc{region.lower()}.ld']
 
         # Add all cpp files and the destination
         cc_command += filelist
@@ -61,7 +66,7 @@ def build(isBootStrap: bool):
             with open(outputfile + 'o', 'rb') as f:
                 startFunc = elf(f).get_section_by_name('.symtab').get_symbol_by_name(startFuncName)[0]['st_value']
             instruction = (((startFunc-startHook) & 0x3FFFFFC) | 0x48000000)
-            print('Hook instruction is', hex(instruction))
+            print('Insert', hex(instruction), 'at', hex(startHook))
 
         # Convert to binary
         c = call([objcopy, '-O', 'binary', '-R', '.eh_frame', '-R', '.eh_frame_hdr', outputfile + 'o', outputfile + 'bin'])

@@ -4,15 +4,16 @@
 char filename, fatalstring;
 loaderFunctions funcs[4];
 
+// External vars
+char region;
+u16 CheckAddress;
+void* StartFunc;
+
 // ASM Functions
-char regionIdentifier();
-__attribute__((noreturn)) void runPayload(); // Marked as no-return to prevent use of restgpr
+void ThirtyFPS1();
 
 // This function loads all the codes that FKW uses after StaticR has loaded
 void readPayload() {
-
-	// Get region
-	char region = regionIdentifier();
 
 	// Compose filename
 	char buffer[32];
@@ -36,23 +37,35 @@ void readPayload() {
 	funcs[region].DVDClose(&fd);
 
 	// Run the payload
-	runPayload();
+	((void(*)(void))StartFunc)();
 }
 
 // Initial function. This hooks at the end of init_registers
 void start() {
 
+	// Detect region
+	if (CheckAddress == 0x54A9)			// PAL
+		region = 0;
+	else if (CheckAddress == 0x5409)	// NTSC-U
+		region = 1;
+	else if (CheckAddress == 0x53CD)	// NTSC-K
+		region = 2;
+	else if (CheckAddress == 0x5511)	// NTSC-K
+		region = 3;
+	else
+		do {} while (true);				// Failed to detect, enter infinite loop
+
 	// Auto Strap Screen Skip (by TheLordScruffy)
 	directWrite16(OSLaunchCode, 0x101);
 
 	// Main Hook
-	directWriteBranch(RelHook, readPayload, false);
+	_directWriteBranch(funcs[region].RelHook, readPayload, false);
 
 	// 30 FPS (by CLF78)
 	if (ThirtyFPS == 1) {
-		directWriteBranch(ThirtyFPSHook1, ThirtyFPS1, true);
-		directWrite8(ThirtyFPSHook2, 2);
-		directWrite8(ThirtyFPSHook3, 2);
+		_directWriteBranch(funcs[region].ThirtyFPS1, ThirtyFPS1, true);
+		_directWrite8(funcs[region].ThirtyFPS2, 2);
+		_directWrite8(funcs[region].ThirtyFPS2+0x1FC, 2);
 	}
 
 	// Flush cache

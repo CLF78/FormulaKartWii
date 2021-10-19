@@ -197,7 +197,6 @@ SECTIONS {
 
 	/* Exception Handler */
 	ShowExceptions = 0x802A6D84;
-	ExcDispInfo = 0x802A6D90;
 
 	/* Fast POW */
 	NoPOWDelay = 0x807B1438;

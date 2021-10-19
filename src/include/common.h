@@ -129,6 +129,9 @@ struct loaderFunctions {
 	DVDOpen_t DVDOpen;
 	DVDClose_t DVDClose;
 	DVDReadPrio_t DVDReadPrio;
+	void* RelHook;
+	void* ThirtyFPS1;
+	void* ThirtyFPS2;
 	u8 letter;
 };
 
