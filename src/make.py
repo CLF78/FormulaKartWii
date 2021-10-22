@@ -1,5 +1,4 @@
 import os
-import sys
 from shutil import rmtree
 from subprocess import call
 from elftools.elf.elffile import ELFFile as elf
@@ -31,8 +30,11 @@ def build(isBootStrap: bool):
     print('Building', 'bootstrap...' if isBootStrap else 'payload...')
 
     # Get excluded files
-    with open(excludefile) as f:
-        excludes = [line.rstrip() for line in f.readlines()]
+    if os.path.isfile(excludefile):
+        with open(excludefile) as f:
+            excludes = [line.rstrip() for line in f.readlines()]
+    else:
+        excludes = []
 
     # Get all files in the source folder
     filelist = [os.path.join(root, item) for root, s, files in os.walk(mainpath) for item in files if item not in excludes and os.path.splitext(item)[1] in extensions]
