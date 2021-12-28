@@ -1,2 +1,3 @@
 src\extras\highlighter.S
 src\items\crazyeight.S
+src\items\testcommit.S
