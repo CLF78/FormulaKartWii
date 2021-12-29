@@ -1,9 +1,6 @@
 #include "common.h"
 #include "random.h"
 
-// Non-existant function so that DevkitPPC doesn't forget to pop the stack...
-void MainHookTail();
-
 // This function loads all the codes that FKW uses after StaticR has loaded
 void loadCodes() {
 
@@ -541,5 +538,4 @@ void loadCodes() {
 
 	sync();
 	isync();
-	MainHookTail();
 }

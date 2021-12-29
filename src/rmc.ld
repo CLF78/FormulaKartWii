@@ -1,9 +1,6 @@
 SECTIONS {
 	/* Base Functions */
-	OSLaunchCode = 0x8000318C;
 	_directWriteArray = 0x80005F34;
-	memset = 0x80006038;
-	CheckAddress = 0x8000620A;
 	StartFunc = 0x808DD400;
 
 	/* EVA Variables */
@@ -19,7 +16,6 @@ SECTIONS {
 	Version = 0x800001FC;
 	CurrentStrmChannels = 0x800001FD;
 	SubtractItemFix = 0x800001FE;
-	region = 0x800001FF;
 	ItemStatusArray = 0x80000F98;
 
 	/* Change Character Between Races */

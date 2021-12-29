@@ -6,7 +6,6 @@ SECTIONS {
 	sprintf = 0x80010ECC;
 	swprintf = 0x80016CB4;
 	OSFatal = 0x801A4E24;
-	_restgpr_31_x = 0x80020A9C;
 
 	/* Codehandler Hooks */
 	VIHook = 0x801BAA80;
@@ -54,7 +53,7 @@ SECTIONS {
 	ptmf_scall = 0x800208F0;
 
 	SubtractTimers = 0x808423FC;
-	
+
 	RandomConstruct = 0x8054F444;
 	RandomNextLimited = 0x8054F5AC;
 	RandomRefresh = 0x8054F4B0;

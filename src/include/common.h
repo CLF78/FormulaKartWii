@@ -35,105 +35,59 @@ void* _directWriteArray(void* dest, void* src, u32 count); // Actually memcpy bu
 
 /* A hack because i don't want to do a million typecasts and declarations */
 #define SIZEOF(object) (char *)(&object+1) - (char *)(&object)
+#define calcoffs(addr, offset) (void*)((int)&(addr))+(offset)
 
 #define directWrite8(addr, value) extern void* (addr);\
 _directWrite8(&(addr), value);
 
-#define directWrite8Offset(addr, value, offset) extern void* (addr);\
-_directWrite8(&(addr)+(offset), value);
+#define directWrite8Offset(addr, offset, value) extern void* (addr);\
+_directWrite8(calcoffs(addr, offset), value);
 
 #define directWrite16(addr, value) extern void* (addr);\
 _directWrite16(&(addr), value);
 
-#define directWrite16Offset(addr, value, offset) extern void* (addr);\
-_directWrite16(&(addr)+(offset), value);
+#define directWrite16Offset(addr, offset, value) extern void* (addr);\
+_directWrite16(calcoffs(addr, offset), value);
 
 #define directWrite32(addr, value) extern void* (addr);\
 _directWrite32(&(addr), value);
 
-#define directWrite32Offset(addr, value, offset) extern void* (addr);\
-_directWrite32(&(addr)+(offset), value);
+#define directWrite32Offset(addr, offset, value) extern void* (addr);\
+_directWrite32(calcoffs(addr, offset), value);
 
 #define directWriteNop(addr) extern void* (addr);\
 _directWrite32(&(addr), 0x60000000);
 
 #define directWriteNopOffset(addr, offset) extern void* (addr);\
-_directWrite32(&(addr)+(offset), 0x60000000);
+_directWrite32(calcoffs(addr, offset), 0x60000000);
 
 #define directWriteBlr(addr) extern void* (addr);\
 _directWrite32(&(addr), 0x4E800020);
 
 #define directWriteBlrOffset(addr, offset) extern void* (addr);\
-_directWrite32(&(addr)+(offset), 0x4E800020);
+_directWrite32(calcoffs(addr, offset), 0x4E800020);
 
 #define directWriteBranch(addr, ptr, lk) extern void* (addr);\
 void (ptr)();\
 _directWriteBranch(&(addr), ptr, lk);
 
-#define directWriteBranchOffset(addr, ptr, lk, offset) extern void* (addr);\
+#define directWriteBranchOffset(addr, offset, ptr, lk) extern void* (addr);\
 void (ptr)();\
-_directWriteBranch(&(addr)+(offset), ptr, lk);
+_directWriteBranch(calcoffs(addr, offset), ptr, lk);
 
-#define directWriteArray(dest, src, count) extern char (dest)[];\
-extern char (src)[];\
-_directWriteArray(&(dest), src, count);
+#define directWriteArray(dest, src, count) extern void* (dest);\
+extern void* (src);\
+_directWriteArray(&(dest), &(src), count);
 
-#define directWriteArrayOffset(dest, src, count, offset) extern char (dest)[];\
-extern char (src)[];\
-_directWriteArray(&(dest)+(offset), src, count);
+#define directWriteArrayOffset(dest, offset, src, count) extern void* (dest);\
+extern void* (src);\
+_directWriteArray(calcoffs(dest, offset), &(src), count);
 
-#define directWriteString(dest, src) extern char (dest)[];\
+#define directWriteString(dest, src) extern void* (dest);\
 _directWriteArray(&(dest), src, SIZEOF(src));
 
-#define directWriteStringOffset(dest, src, offset) extern char (dest)[];\
-_directWriteArray(&(dest)+(offset), src, SIZEOF(src));
-
-/* Common Structures */
-typedef struct DVDHandle DVDHandle;
-typedef struct DVDCommandBlock DVDCommandBlock;
-
-struct DVDCommandBlock {
-	DVDCommandBlock* next;	// 00
-	DVDCommandBlock* prev;	// 04
-	u32 command;			// 08
-	s32 state;				// 0C
-	u32 offset;				// 10
-	u32 length;				// 14
-	void* addr;				// 18
-	u32 currTransferSize;	// 1C
-	u32 transferredSize;	// 20
-	void* id;				// 24
-	void* cb;				// 28
-	void* userData;			// 2C
-};
-
-struct DVDHandle {
-	DVDCommandBlock block;	// 00
-	int address;			// 30
-	int length;				// 34
-	void* callback;			// 38
-};
-
-/* Loader Functions */
-typedef void (*OSFatal_t) (u32 *fg, u32 *bg, const char *str, ...);
-typedef int (*sprintf_t) (char *str, const char *format, ...);
-typedef bool (*DVDOpen_t) (const char* path, DVDHandle *handle);
-typedef bool (*DVDClose_t) (DVDHandle *handle);
-typedef int (*DVDReadPrio_t) (DVDHandle *handle, void *buffer, int length, int offset, int prio);
-
-typedef struct loaderFunctions loaderFunctions;
-
-struct loaderFunctions {
-	OSFatal_t OSFatal;
-	sprintf_t sprintf;
-	DVDOpen_t DVDOpen;
-	DVDClose_t DVDClose;
-	DVDReadPrio_t DVDReadPrio;
-	void* RelHook;
-	void* ThirtyFPS1;
-	void* ThirtyFPS2;
-	u8 letter;
-};
+#define directWriteStringOffset(dest, offset, src) extern void* (dest);\
+_directWriteArray(calcoffs(dest, offset), src, SIZEOF(src));
 
 /* Common Vars */
 char FasterMenu, MiiHeads, NoMusic, NoCharVoice, BtGlitch, TimeDiff, Speedometer, ThirtyFPS;

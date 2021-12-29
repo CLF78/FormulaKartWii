@@ -6,7 +6,6 @@ SECTIONS {
 	sprintf = 0x80011A2C;
 	swprintf = 0x80017814;
 	OSFatal = 0x801A4EC4;
-	_restgpr_31_x = 0x800215FC;
 
 	/* Codehandler Hooks */
 	VIHook = 0x801BAB20;
