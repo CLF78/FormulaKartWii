@@ -1,7 +1,7 @@
 .include "asm_setup.S"
 
-.extern Racedata
-.global VSMenuSkip, VSMenuSkip2
+.extern Racedata, VSMenuReturn2Func
+.global VSMenuSkip, VSMenuSkip2, VSMenuReturn2
 
 # Load Racedata
 VSMenuSkip:
@@ -22,10 +22,15 @@ blr
 
 # Original instruction
 VSMenuSkip2:
-lwz r3, 0x0(r3)
+subic. r0, r3, 0x49
 
 # Prevent array underflow
-cmpwi r3, 0x48
-bnelr+
-li r3, 0x4B
+bgelr+
+li r0, 2
 blr
+
+# Setup arguments for function and call it
+VSMenuReturn2:
+mr r5, r4
+li r4, 0x41
+b VSMenuReturn2Func

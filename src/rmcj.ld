@@ -497,11 +497,13 @@ SECTIONS {
 
 	/* VS Menu Skip */
 	VSMenuSkipHook = 0x80851A98;
-	VSMenuSkipHook2 = 0x805FB064;
+	VSMenuSkipHook2 = 0x805FB068;
 	VSMenuSkip3 = 0x8062C9A8;
 	VSMenuSkip4 = 0x8062FE3F;
 	VSMenuReturnHook = 0x80852188;
 	VSMenuReturn = 0x8084F1A4;
+	VSMenuReturnHook2 = 0x808520B4;
+	VSMenuReturn2Func = 0x8083758C;
 	VSMenuSkipMulti = 0x80602ABF;
 	NoGhostLoading = 0x80620928;
 

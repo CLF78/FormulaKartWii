@@ -482,6 +482,7 @@ void loadCodes() {
 	tempVal8 = 0x72;
 	directWrite8(VSMenuSkip4, tempVal8);
 	directWrite8(VSMenuSkipMulti, tempVal8);
+	directWriteBranch(VSMenuReturnHook2, VSMenuReturn2, true);
 	directWriteBlr(NoGhostLoading);
 
 	////////////////////
