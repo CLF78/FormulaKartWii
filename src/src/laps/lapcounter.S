@@ -45,21 +45,21 @@ PositionFix:
 mr r3, r30
 
 # Check if lap is 2
-cmpwi r0, 0xCF
+cmpwi r0, 2
 bne+ not2
 lis r5, 0xC2B4
 b store
 
 # Check if lap is 10
 not2:
-cmpwi r0, 0xD7
+cmpwi r0, 10
 bne+ not10
 lis r5, 0xC2E6
 b store
 
 # Check if lap is 20
 not10:
-cmpwi r0, 0xE1
+cmpwi r0, 20
 bnelr+
 lis r5, 0xC307
 

@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern MusicPitch, DriftSpeed, EnableRampUpStuff
+.extern MusicPitch, DriftSpeed
 .global FinalLapCheck, PitchReset, PitchReset2
 
 ###################
@@ -12,11 +12,11 @@ FinalLapCheck:
 rlwinm r0, r3, 0, 0x18, 0x1F
 
 # Check if it's lap 45
-cmpwi r31, 250
+cmpwi r31, 45
 beq doLapChange
 
 # Check if it's lap 50
-cmpwi r31, 255
+cmpwi r31, 50
 bnelr+
 
 # Change pitch (lap 50 ONLY)
@@ -71,10 +71,9 @@ lis r11, 0x3F80
 lis r12, MusicPitch@ha
 stw r11, MusicPitch@l(r12)
 
-# Write 0 to Ramp Up flag
+# Reset TimerInstance
 li r11, 0
-lis r12, EnableRampUpStuff@ha
-stw r11, EnableRampUpStuff@l(r12)
-stw r11, EnableRampUpStuff@l+4(r12)
-stw r11, EnableRampUpStuff@l+8(r12)
+stw r11, TimerInstance@l(r12)
+stw r11, TimerInstance@l+4(r12)
+stw r11, TimerInstance@l+8(r12)
 blr

@@ -1,7 +1,7 @@
 .include "asm_setup.S"
 
-.extern Raceinfo, SetMatText, SubtractTimers, swprintf, SetTextSrc, DCFix, isOnlineRace
-.global TimePrint, DCBugFix, NoTransitionASM
+.extern Raceinfo, SetMatText, SubtractTimers, swprintf, SetTextSrc, isOnlineRace
+.global TimePrint, NoTransitionASM
 
 # Independently of the output, align the text to the right on the X axis
 TimePrint:
@@ -34,12 +34,13 @@ stw r0, 0x34(r1)
 slwi r8, r30, 2
 lwzx r10, r8, r12
 
-# Get the player's raceCompletion, and convert it to absolute int
+# Get the player's raceCompletion, and convert it to int
 lfs f0, 0xC(r10)
-fabs f0, f0
 fctiwz f0, f0
 stfd f0, 0x8(r1)
 lwz r6, 0xC(r1)
+li r8, 50
+sub r6, r8, r6
 
 # Check if completion is more than one lap from the end
 cmpwi r6, 1
@@ -122,24 +123,7 @@ SecondsDistance:
 
 LapDistance:
 .string16 "%+d Lap%s"
-
 .align 2
-
-# Skipped instruction
-DCBugFix:
-rlwinm r7, r0, 3, 0, 28
-
-# Get raceCompletion
-lfs f0, 0xC(r10)
-
-# Get our float
-lis r9, 0xC248
-stw r9, 0x118(r1)
-lfs f1, 0x118(r1)
-
-# Do subtraction and return
-fadds f0, f0, f1
-b DCFix+0x34
 
 # Original instruction
 NoTransitionASM:

@@ -119,7 +119,7 @@ void loadCodes() {
 	directWrite8(CreditsButton, 0x3B);
 
 	// DC Bug Fix (by Seeky and CLF78)
-	directWriteBranch(DCFix, DCBugFix, false);
+	directWrite32(DCFix, 0x4800003C);
 
 	// Default Drift Type Modifier (by CLF78)
 	directWrite32(DefaultDriftType, 0x38600001);
@@ -215,7 +215,6 @@ void loadCodes() {
 	directWriteBranch(ItemTexturesHook, ItemTextures, false);
 
 	// Lap Counter (by TheLordScruffy and CLF78)
-	directWrite32(SetLapCount, 0x38600032);
 	directWriteBranch(ColorFixHook, ColorFix, false);
 	directWriteBranch(PositionFixHook, PositionFix, true);
 
@@ -310,22 +309,16 @@ void loadCodes() {
 	directWrite16(SMTMultiplier, 0x40A0);
 	directWrite16(SMTMinimum, 0x87);
 
-	// Starting Lap Modifier (by CLF78, Ismy and Melg)
-	directWriteArray(StartingLapHook, StartingLap, 8);
-	directWriteBranch(LapCountFixHook, LapCountFix, true);
-	directWriteBranch(JingleFixHook, JingleFix, true);
-	tempVal32 = 0x380000FF;
-	directWrite32(LastLap, tempVal32);
-	directWrite32(LastLapLakitu, tempVal32);
-	directWriteBranch(LapSignFixHook, LapSignFix, true);
-	directWrite32(LapSignFix2, 0x7FAC0774);
-	directWrite16(NoLapFix, 0x4800);
-	directWriteBranch(LakituBoardHook, LakituBoard, true);
-	directWrite32(LapArrayIncrease, 0x38A0000A);
-	directWriteBranch(TimeStoreHook, TimeStore, true);
-	directWriteBranch(TimeStoreHook2, TimeStore2, false);
-	directWriteBranch(TimeStoreHook3, TimeStore3, false);
-	directWriteBranch(FinishTimesHook, FinishTimes, false);
+	// Starting Lap Modifier (by CLF78 and Ismy)
+	tempVal8 = 50;
+	directWrite8(LapCount1, tempVal8);
+	directWrite8(LapCount2, tempVal8);
+	directWrite8(LapCount3, tempVal8);
+	directWrite8(LapCount4, tempVal8);
+	directWrite8(LapCount5, tempVal8);
+	directWriteBranchOffset(LapCount3, 0x49, FinishTimes, true);
+	directWrite16(LakituBoardHook, 0x4800);
+	directWriteBranchOffset(LakituBoardHook, 0x18, LakituBoard, true);
 
 	// Time Limit Modifier (by MrBean)
 	directWriteArray(TimeLimit, NewTimeLimit, 8);

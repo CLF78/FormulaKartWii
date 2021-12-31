@@ -154,7 +154,7 @@ SECTIONS {
 	ConveyorFixHook = 0x807EB784;
 
 	/* DC Bug Fix */
-	DCFix = 0x8052D71C;
+	DCFix = 0x8052D70C;
 
 	/* Disable Item Poof */
 	NoItemPoof = 0x80784980;
@@ -307,7 +307,6 @@ SECTIONS {
 	DoubleShroom = 0x8089DE07;
 
 	/* Lap Counter */
-	SetLapCount = 0x807DDB2C;
 	ColorFixHook = 0x807DDBA8;
 	PositionFixHook = 0x807DDC24;
 
@@ -464,20 +463,12 @@ SECTIONS {
 	SpeedoNoPauseHook = 0x807D9934;
 
 	/* Starting Lap Modifier */
-	StartingLapHook = 0x805220F8;
-	JingleFixHook = 0x806F9660;
-	LastLap = 0x80522C34;
-	LastLapLakitu = 0x80712074;
-	NoLapFix = 0x807120E4;
-	LapSignFix2 = 0x807120F0;
-	LakituBoardHook = 0x807120FC ;
-	TimeStoreHook = 0x80522BB0;
-	TimeStoreHook2 = 0x80523784;
-	TimeStoreHook3 = 0x805237F0;
-	FinishTimesHook = 0x805223E4;
-	LapSignFixHook = 0x80522A70;
-	LapArrayIncrease = 0x80520928;
-	LapCountFixHook = 0x80522108;
+	LapCount1 = 0x805208FF;
+	LapCount2 = 0x80521703;
+	LapCount3 = 0x8052239B;
+	LapCount4 = 0x80522C07;
+	LapCount5 = 0x80522D33;
+	LakituBoardHook = 0x807120E4;
 
 	/* Super Miniturbo Multiplier */
 	SMTMultiplier = 0x808A4148;
