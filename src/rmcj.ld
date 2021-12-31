@@ -177,20 +177,16 @@ SECTIONS {
 	AutoTrailHook = 0x80790FDC;
 
 	/* Dynamic Item Sizing */
-	DynamicSizingHook = 0x8079E504;
-	DynamicSizingHook2 = 0x807A1D60;
-	DynamicSizingHook3 = 0x807A1DF8;
-	DynamicSizingHook4Helper = 0x8079E2B0;
-	DynamicSizingHook4 = 0x8079E2F8;
-	DynamicSizingHook5 = 0x8079E850;
-	DynamicSizingHook6 = 0x8079EA6C;
-	DynamicSizingHook7 = 0x8079E688;
+	DynamicSizingHook = 0x807856D0;
+	DynamicSizingHook2 = 0x807D0DAC;
+	DynamicSizingHook3 = 0x8079E2B0;
+	DynamicSizingHook4 = 0x8079E688;
+	DynamicSizingHook7 = 0x8079D588;
 	BombVisualSizeHook = 0x807A3CC8;
 	BombVisualSizeHook2 = 0x807A5728;
-	BombSizeHook = 0x807A3D6C;
 	BombSizeHook2 = 0x807A3DFC;
+	BombSizeHook3 = 0x807A4CE8;
 	BlueVisualSizeHook = 0x807AD8D0;
-	BlueSizeHook = 0x807AD98C;
 	BlueSizeHook2 = 0x807AD9F0;
 	BlueExplosionFunc = 0x807AD5C4;
 

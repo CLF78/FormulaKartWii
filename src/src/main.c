@@ -139,20 +139,22 @@ void loadCodes() {
 	directWriteBranch(AutoTrailHook, ItemTrail, true);
 
 	// Dynamic Item Sizing (by CLF78)
-	directWriteBranch(DynamicSizingHook, DynamicSizing, true);
+	directWriteBranch(DynamicSizingHook, DynamicSizing, false);
 	directWriteBranch(DynamicSizingHook2, DynamicSizing2, true);
-	directWriteBranch(DynamicSizingHook3, DynamicSizing2, true);
-	directWriteBranch(DynamicSizingHook4Helper, DynamicSizing4Helper, false);
-	directWriteBranch(DynamicSizingHook4, DynamicSizing4, false);
-	directWriteBranch(DynamicSizingHook5, DynamicSizing5, true);
-	directWriteBranch(DynamicSizingHook6, DynamicSizing6, true);
+	directWriteBranch(DynamicSizingHook3, DynamicSizing3Helper, false);
+	directWriteBranchOffset(DynamicSizingHook3, 0x48, DynamicSizing3, false);
+	directWriteBranch(DynamicSizingHook4, DynamicSizing4, true);
+	directWriteBranchOffset(DynamicSizingHook4, 0x1C8, DynamicSizing5, false);
+	directWriteNopOffset(DynamicSizingHook4, 0x1D4);
+	directWriteBranchOffset(DynamicSizingHook4, 0x3E4, DynamicSizing6, false);
 	directWriteBranch(DynamicSizingHook7, DynamicSizing7, true);
 	directWriteBranch(BombVisualSizeHook, BombVisualSize, true);
+	directWriteBranchOffset(BombVisualSizeHook, 0xA4, BombSize, true);
 	directWriteBranch(BombVisualSizeHook2, BombVisualSize2, true);
-	directWriteBranch(BombSizeHook, BombSize, true);
 	directWriteBranch(BombSizeHook2, BombSize2, true);
+	directWriteBranch(BombSizeHook3, BombSize3, true);
 	directWriteBranch(BlueVisualSizeHook, BlueVisualSize, true);
-	directWriteBranch(BlueSizeHook, BlueSize, true);
+	directWriteBranchOffset(BlueVisualSizeHook, 0xBC, BlueSize, true);
 	directWriteBranch(BlueSizeHook2, BlueSize2, true);
 
 	// Fast POW (by mdmwii and Ro)

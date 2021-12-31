@@ -29,7 +29,6 @@
 - 0x80000EA0-0x80000E?? = Change Characters Between Races
 
 # 0x80000FB0-0x800012FF
-- 0x80000F98-0x80001098 = Item Status Array
 
 # 0x800013B0-0x800013FF
 
