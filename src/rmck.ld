@@ -103,7 +103,7 @@ SECTIONS {
 
 	/* Bullet Bill Speed Modifier */
 	BulletBillSpeed = 0x808A3E70;
-	CannonLandingFix = 0x805665B3;
+	CannonLandingFixHook = 0x805665B4;
 	CannonSpeed = 0x8057311C;
 	CannonSpeed2 = 0x80573128;
 

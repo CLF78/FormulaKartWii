@@ -92,13 +92,7 @@ void loadCodes() {
 
 	// Bullet Bill Speed Modifier (by davidevgen, CLF78 and Ismy)
 	directWrite16(BulletBillSpeed, 0x435C);
-
-	#pragma GCC diagnostic push
-	#pragma GCC diagnostic ignored "-Wpointer-to-int-cast"
-	tempVal8 = (u8)&BulletBillSpeed;
-	#pragma GCC diagnostic pop
-
-	directWrite8(CannonLandingFix, tempVal8);
+	directWriteBranch(CannonLandingFixHook, CannonLandingFix, true);
 	directWriteBranch(CannonSpeed, CannonSpeedMultiplier, false);
 	directWriteBranch(CannonSpeed2, CannonSpeedMultiplier2, true);
 
@@ -382,11 +376,6 @@ void loadCodes() {
 	directWriteNop(RaceCountFix3);
 	directWrite16(RaceCountFix4, 0x4800);
 	directWriteBranch(RaceCountFix5, RaceCountFix, true);
-
-	// Play VS Race Alone (by Elias)
-	#ifdef DEBUG
-	directWrite32(NoCPU, 0x38E00004);
-	#endif
 
 	// Game Mode - Ramp Up (by CLF78, Ismy and stebler)
 	directWriteBranch(RampUpHook, RampUp, false);

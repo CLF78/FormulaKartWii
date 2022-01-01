@@ -1,7 +1,7 @@
 .include "asm_setup.S"
 
-.extern CannonSpeed
-.global CannonSpeedMultiplier, CannonSpeedMultiplier2
+.extern CannonSpeed, Raceinfo
+.global CannonSpeedMultiplier, CannonSpeedMultiplier2, CannonLandingFix
 
 ###########################
 # Cannon Bill Speed Mod 1 #
@@ -58,4 +58,20 @@ fmuls f7, f7, f30
 # Multiply with multiplier for Ramp Up (that one's in r29)
 noBill:
 fmuls f7, f7, f29
+blr
+
+#################################
+# Cannon Bill Landing Speed Fix #
+#################################
+
+# Check if it's the first call before the race
+CannonLandingFix:
+lis r12, Raceinfo@ha
+lwz r12, Raceinfo@l(r12)
+lwz r12, 0x28(r12)
+cmpwi r12, 0
+bnelr+
+
+# If so execute original instruction
+stfs f0, 0x2C(r30)
 blr
