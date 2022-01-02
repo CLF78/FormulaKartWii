@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern MusicPitch, DriftSpeed
+.extern MusicPitch
 .global FinalLapCheck, PitchReset, PitchReset2
 
 ###################
@@ -45,28 +45,8 @@ bnelr+
 # Pitch Resetter 2 #
 ####################
 
-# Save LR
-PitchReset2:
-mflr r12
-
-# Do BL trick
-bl trick
-
-.float 0.55
-
-# Restore LR
-trick:
-mflr r11
-lfs f0, 0(r11)
-
-# Restore minimum drift speed
-lis r11, DriftSpeed@ha
-stfs f0, DriftSpeed@l(r11)
-
-# Restore LR
-mtlr r12
-
 # Write pitch back
+PitchReset2:
 lis r11, 0x3F80
 lis r12, MusicPitch@ha
 stw r11, MusicPitch@l(r12)

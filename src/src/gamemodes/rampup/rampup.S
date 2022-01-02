@@ -1,7 +1,7 @@
 .include "asm_setup.S"
 
-.extern GameMode, PlayerHolder, DriftSpeed
-.global RampUp, RampUpHook, RampUpSpeedFix
+.extern GameMode, PlayerHolder, OurFloats, RampUpHook, DriftSpeedHook4, DriftSpeedHook5, BoostAccelHook
+.global RampUp, RampUpSpeedFix, DriftSpeed1, DriftSpeed2, DriftSpeed3, DriftSpeed4, DriftSpeed5, BoostAccel, BoostAccel2
 
 #####################
 # Ramp Up Game Mode #
@@ -19,14 +19,12 @@ bl trick
 
 .float 0.01
 .float 220.0
-.float 0.004
 
 # Load floats in f1 and f4
 trick:
 mflr r3
 lfs f1, 0(r3)
 lfs f4, 0x4(r3)
-lfs f5, 0x8(r3)
 
 # Get player ID
 lbz r3, 0x8(r29)
@@ -36,25 +34,37 @@ slwi r3, r3, 2
 lis r4, PlayerHolder@ha
 lwz r4, PlayerHolder@l(r4)
 lwz r4, 0x20(r4)
-lwzx r4, r3, r4
-lwz r4, 0x44(r4)
+lwzx r3, r3, r4
+lwz r4, 0x44(r3)
 lfs f0, 0x10(r4)
 
 # Add f1 to f0
 fadds f2, f0, f1
 stfs f2, 0x10(r4)
 
+# Get stats
+lwz r3, 0x1C(r3)
+lwz r3, 0x14(r3)
+lwz r3, 0(r3)
+
+# Setup loop
+addi r3, r3, 0x20
+li r0, 4
+mtctr r0
+
+# Adjust acceleration stages
+loop:
+lfsu f3, 0x4(r3)
+fdivs f3, f3, f0
+fmuls f3, f3, f2
+stfs f3, 0(r3)
+bdnz+ loop
+
 # Get baseSpeed and increase it
 lfs f3, 0x14(r4)
 fdivs f3, f3, f0
 fmuls f3, f3, f2
 stfs f3, 0x14(r4)
-
-# Update minimum drift speed
-lis r3, DriftSpeed@ha
-lfs f1, DriftSpeed@l(r3)
-fsubs f1, f1, f5
-stfs f1, DriftSpeed@l(r3)
 
 # Get hardSpeedLimit and increase it, unless it's the bullet bill speed
 lfs f3, 0x2C(r4)
@@ -82,3 +92,137 @@ fmuls f0, f0, f1
 # Original instruction
 stfs f0, 0x2C(r3)
 blr
+
+###################
+# Drift Speed Sub #
+###################
+
+# Preload our floats
+DriftSpeedSub:
+lis r12, OurFloats@ha
+lfs f11, OurFloats@l(r12)
+lfs f10, DriftSpeedFloat@l(r12)
+
+# Maths
+fsubs f9, f11, f9
+fmadds f0, f9, f10, f0
+blr
+
+#################
+# Drift Speed 1 #
+#################
+
+# Original instruction
+DriftSpeed1:
+lfs f2, 0x20(r29)
+
+# Load multiplier and call sub
+lfs f9, 0x10(r29)
+b DriftSpeedSub
+
+#################
+# Drift Speed 2 #
+#################
+
+# Original instruction
+DriftSpeed2:
+lfs f2, 0x20(r3)
+
+# Load multiplier and call sub
+lfs f9, 0x10(r3)
+b DriftSpeedSub
+
+#################
+# Drift Speed 3 #
+#################
+
+# Original instruction
+DriftSpeed3:
+lfs f2, 0x20(r31)
+
+# Load multiplier and call sub
+lfs f9, 0x10(r31)
+b DriftSpeedSub
+
+#################
+# Drift Speed 4 #
+#################
+
+# Original instruction
+DriftSpeed4:
+lfs f2, 0x20(r3)
+
+# Preload our floats
+lis r12, OurFloats@ha
+lfs f11, OurFloats@l(r12)
+lfs f10, DriftSpeedFloat@l(r12)
+lfs f9, 0x10(r3)
+
+# Maths
+fsubs f9, f11, f9
+fmadds f0, f9, f10, f0
+b DriftSpeedHook4+4
+
+#################
+# Drift Speed 5 #
+#################
+
+# Original instruction
+DriftSpeed5:
+lfs f2, 0x20(r3)
+
+# Preload our floats
+lis r12, OurFloats@ha
+lfs f11, OurFloats@l(r12)
+lfs f10, DriftSpeedFloat@l(r12)
+lfs f9, 0x10(r3)
+
+# Maths
+fsubs f9, f11, f9
+fmadds f0, f9, f10, f0
+b DriftSpeedHook5+4
+
+######################
+# Boost Acceleration #
+######################
+
+# Original instruction
+BoostAccel:
+lfsx f0, r7, r0
+
+# Only act for boost type 0 (MT)
+cmpwi r0, 0
+bne+ end2
+
+# Get multiplier unsafely and multiply boost acceleration
+lfs f2, -0xF8(r3)
+fmuls f0, f0, f2
+
+end2:
+b BoostAccelHook+4
+
+########################
+# Boost Acceleration 2 #
+########################
+
+# Original instruction
+BoostAccel2:
+lfsx f0, r7, r0
+
+# Only act for boost type 0 (MT)
+cmpwi r0, 0
+bne+ end3
+
+# Get multiplier unsafely and multiply boost acceleration
+lfs f2, -0xF8(r3)
+fmuls f0, f0, f2
+
+end3:
+b BoostAccelHook+0x74
+
+########
+# Data #
+########
+
+DriftSpeedFloat:
+.float 0.6

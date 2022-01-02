@@ -226,7 +226,12 @@ SECTIONS {
 	/* Game Mode - Ramp Up */
 	RampUpHook = 0x80522BA8;
 	RampUpSpeedFixHook = 0x80569A0C;
-	DriftSpeed = 0x808A3F94;
+	DriftSpeedHook = 0x8056BF70;
+	DriftSpeedHook2 = 0x8056C17C;
+	DriftSpeedHook3 = 0x8056C5FC;
+	DriftSpeedHook4 = 0x8056CAF8;
+	DriftSpeedHook5 = 0x8056D05C;
+	BoostAccelHook = 0x80576F0C;
 	BrakeDriftClassicHook = 0x8050D61C;
 	BrakeDriftGCNHook = 0x8050E2C0;
 	BrakeDriftNunchuckHook = 0x80734074;

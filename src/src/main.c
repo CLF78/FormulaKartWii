@@ -380,6 +380,13 @@ void loadCodes() {
 	// Game Mode - Ramp Up (by CLF78, Ismy and stebler)
 	directWriteBranch(RampUpHook, RampUp, false);
 	directWriteBranch(RampUpSpeedFixHook, RampUpSpeedFix, false);
+	directWriteBranch(DriftSpeedHook, DriftSpeed1, true);
+	directWriteBranch(DriftSpeedHook2, DriftSpeed2, true);
+	directWriteBranch(DriftSpeedHook3, DriftSpeed3, true);
+	directWriteBranch(DriftSpeedHook4, DriftSpeed4, false);
+	directWriteBranch(DriftSpeedHook5, DriftSpeed5, false);
+	directWriteBranch(BoostAccelHook, BoostAccel, false);
+	directWriteBranchOffset(BoostAccelHook, 0x70, BoostAccel, false);
 	directWriteBranch(BrakeDriftClassicHook, BrakeDriftClassic, true);
 	directWriteBranch(BrakeDriftGCNHook, BrakeDriftGCN, true);
 	directWriteBranch(BrakeDriftNunchuckHook, BrakeDriftNunchuck, true);
