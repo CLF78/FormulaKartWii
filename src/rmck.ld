@@ -240,7 +240,6 @@ SECTIONS {
 	BrakeDriftSoundHook = 0x806E93A0;
 	BrakeDriftEffBikesHook = 0x80688040;
 	BrakeDriftEffKartsHook = 0x806872F8;
-	DoBrakeDrift = 0x80568EE4;
 	BrakeDriftEffFunc = 0x8068FD80;
 	BrakeDriftEffFunc2 = 0x8068FF10;
 	FastFallingHook = 0x805847E4;

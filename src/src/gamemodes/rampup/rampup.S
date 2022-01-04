@@ -1,7 +1,45 @@
 .include "asm_setup.S"
 
-.extern GameMode, PlayerHolder, OurFloats, RampUpHook, DriftSpeedHook4, DriftSpeedHook5, BoostAccelHook
-.global RampUp, RampUpSpeedFix, DriftSpeed1, DriftSpeed2, DriftSpeed3, DriftSpeed4, DriftSpeed5, BoostAccel, BoostAccel2
+.extern GameMode, PlayerHolder, OurFloats, RampUpHook, DriftSpeedHook4, DriftSpeedHook5, BoostAccelHook, Raceinfo
+.global RampUp, RampUpSpeedFix, DriftSpeed1, DriftSpeed2, DriftSpeed3, DriftSpeed4, DriftSpeed5, BoostAccel, BoostAccel2, GetRampUp
+
+####################
+# Get Ramp Up Flag #
+####################
+
+# Check if game mode is not Ramp Up
+GetRampUp:
+lis r12, GameMode@ha
+lbz r12, GameMode@l(r12)
+cmpwi r12, 2
+bne skip
+
+# Get player id
+lwz r12, 0(r11)
+lbz r12, 0x10(r12)
+slwi r12, r12, 2
+
+# Get Raceinfo
+lis r11, Raceinfo@ha
+lwz r11, Raceinfo@l(r11)
+lwz r11, 0xC(r11)
+lwzx r11, r11, r12
+lbz r11, 0x26(r11)
+
+# Return value >= 20
+subfic r11, r11, 19
+subfe r11, r11, r11
+neg r11, r11
+b return
+
+# Return 0
+skip:
+li r11, 0
+
+# Do the cmpwi here because lazyness
+return:
+cmpwi r11, 0
+blr
 
 #####################
 # Ramp Up Game Mode #

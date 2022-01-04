@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern EnableRampUpStuff, PlayerGetControllerHolder, FastFallingHook, FastFallingHook2, FeatherArray
+.extern EnableRampUpStuff, PlayerGetControllerHolder, FastFallingHook, FastFallingHook2
 .global FastFalling, FastFalling2
 
 ##################################

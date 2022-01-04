@@ -1,7 +1,7 @@
 .include "asm_setup.S"
 
 .extern BrakeDriftMainHook, BrakeDriftSoundHook, BrakeDriftEffBikesHook, BrakeDriftEffKartsHook
-.extern EnableRampUpStuff, PlayerGetControllerHolder, DoBrakeDrift, BrakeDriftEffFunc, BrakeDriftEffFunc2
+.extern PlayerGetControllerHolder, BrakeDriftEffFunc, BrakeDriftEffFunc2
 .global BrakeDriftClassic, BrakeDriftGCN, BrakeDriftNunchuck, BrakeDriftWheel, BrakeDriftMain, BrakeDriftSound, BrakeDriftEffBikes, BrakeDriftEffKarts
 
 #########################################
@@ -61,7 +61,7 @@ blr
 
 # Original instruction
 BrakeDriftWheel:
-ori r0, r0, 0x1 
+ori r0, r0, 0x1
 
 # (buttonRaw & (B | 1)) == (B | 1)
 andi. r3, r4, 0x600
@@ -75,26 +75,16 @@ blr
 # Enable Brake Drifting #
 #########################
 
-# Get PlayerSub10 -> playerPointers -> playerParams -> playerID
+# Get ramp up flag
 BrakeDriftMain:
-lwz r12, 0(r29)
-lwz r12, 0(r12)
-lbz r12, 0x10(r12)
-
-# Check if brake drifting should be enabled
-lis r11, EnableRampUpStuff@h
-ori r11, r11, EnableRampUpStuff@l
-lbzx r11, r11, r12
-cmpwi r11, 1
-bne+ return
-
-# Save r4 to r11
-mr r11, r4
+lwz r11, 0(r29)
+bl GetRampUp
+beq return
 
 # Check if we are brake drifting
-rlwinm r3, r11, 0, 28, 31
+rlwinm r3, r4, 0, 28, 31
 cmpwi r3, 0xF
-bne+ end
+bne+ return
 
 # Get the player's controllerHolder
 mr r3, r29
@@ -106,11 +96,11 @@ rlwinm. r3, r3, 0, 27, 27
 beq end
 
 # Otherwise do brake drift! This will not return
-b DoBrakeDrift
+b BrakeDriftMainHook+0xA0
 
 # Restore r4
 end:
-mr r4, r11
+lwz r4, 0x4(r6)
 
 # Original instruction
 return:
@@ -122,62 +112,43 @@ b BrakeDriftMainHook+4
 #####################
 
 # Original instruction
+BrakeDriftSound:
 rlwinm r27, r0, 30, 31, 31
 
-# Get PlayerSub10 -> playerPointers -> playerParams -> playerID
-BrakeDriftSound:
-lwz r12, 0x54(r29)
-lwz r12, 0(r12)
-lwz r12, 0(r12)
-lbz r12, 0x10(r12)
+# Get ramp up flag
+lwz r11, 0(r3)
+bl GetRampUp
+beq return2
 
-# Check if brake drifting is enabled
-lis r11, EnableRampUpStuff@h
-ori r11, r11, EnableRampUpStuff@l
-lbzx r11, r11, r12
-cmpwi r11, 1
-bne+ return2
+# Check if player is accelerating
+rlwinm. r4, r0, 0, 0, 0
+bne return2
 
-# Backup registers
-mr r10, r0
-mr r11, r3
-mr r12, r4
+# Check if player is on the ground
+rlwinm. r4, r0, 0, 11, 11
+bne return2
 
 # Check if we are brake drifting
-rlwinm r5, r10, 0, 27, 31
-cmpwi r5, 0xF
-bne+ end2
+rlwinm r4, r0, 0, 27, 31
+cmpwi r4, 0xF
+bne+ return2
 
 # Get the player's controllerHolder
-lwz r3, 0x18(r12)
 bl PlayerGetControllerHolder
 
 # Load buttonActions and check for flag 0x10
-lhz r5, 0x2C(r3)
-rlwinm. r5, r5, 0, 27, 27
-beq end2
-
-# Check if player is accelerating
-rlwinm. r5, r10, 0, 0, 0
-bne end2
-
-# Check if player is on the ground
-rlwinm. r5, r10, 0, 11, 11
-bne end2
+lhz r4, 0x2C(r3)
+rlwinm. r4, r4, 0, 27, 27
+beq return2
 
 # Enable sound!
 li r27, 0
 li r28, 1
 li r30, 0
 
-# Restore registers
-end2:
-mr r4, r12
-mr r3, r11
-mr r0, r10
-
-# Return!
+# Restore r3 and return
 return2:
+mr r3, r5
 b BrakeDriftSoundHook+4
 
 #################################
@@ -187,76 +158,68 @@ b BrakeDriftSoundHook+4
 # Get playerPointers
 BrakeDriftEffBikes:
 lwz r3, 0x118(r30)
-lwz r3, 0(r3)
 
-# Check if brake drifting is enabled
-lwz r12, 0(r3)
-lbz r12, 0x10(r12)
-lis r11, EnableRampUpStuff@h
-ori r11, r11, EnableRampUpStuff@l
-lbzx r11, r11, r12
-cmpwi r11, 1
-bne+ end3
+# Get ramp up flag
+lwz r11, 0(r3)
+bl GetRampUp
+beq end3
 
-# Check if we are brake drifting
-lwz r3, 0x4(r3)
-lwz r6, 0x4(r3)
-rlwinm r5, r6, 0, 27, 31
-cmpwi r5, 0xF
-bne+ notBrakeDrifting
+# Reload playerPointers
+lwz r5, 0(r3)
 
 # Get the player's controllerHolder
-lwz r3, 0x18(r3)
 bl PlayerGetControllerHolder
+
+# Default value for thing
+lbz r28, 0x15(r3)
+
+# Check if we are brake drifting
+lwz r5, 0x4(r5)
+lwz r6, 0x4(r5)
+rlwinm r5, r6, 0, 27, 31
+cmpwi r5, 0xF
+bne+ skip
 
 # Load buttonActions and check for flag 0x10
 lhz r5, 0x2C(r3)
 rlwinm. r5, r5, 0, 27, 27
-beq notBrakeDrifting
+beq skip
 
 # Check if player is accelerating
 rlwinm. r5, r6, 0, 0, 0
-bne notBrakeDrifting
+bne skip
 
 # Check if player is on the ground
 rlwinm. r5, r6, 0, 11, 11
-bne notBrakeDrifting
+bne skip
 
-# Stores something in the controllerHolder
-li r5, 1
-stb r5, 0x15(r3)
+# Set thing to 2 for next code
+li r28, 2
 
-# Call the function
-lis r29, BrakeDriftEffFunc@h
-ori r29, r29, BrakeDriftEffFunc@l
-b callFunc
+# Load function if thing > 0
+skip:
+subic. r28, r28, 1
+blt+ end3
 
-# Check a thing in controllerHolder
-notBrakeDrifting:
-lbz r5, 0x15(r3)
-cmpwi r5, 1
-bne end3
+# Array access
+stb r28, 0x15(r3)
+slwi r28, r28, 2
+lis r12, BrakeDriftFuncs@h
+ori r12, r12, BrakeDriftFuncs@l
+lwzx r12, r12, r28
 
-# Store 0 to the thing if it's not 1
-li r5, 0
-stb r5, 0x15(r3)
-
-# Call the function
-lis r29, BrakeDriftEffFunc2@h
-ori r29, r29, BrakeDriftEffFunc2@l
-
-callFunc:
+# Function call
 mr r3, r30
 lwz r4, 0x614(r30)
 li r5, 0x19
 li r6, 0x1A
 li r7, 1
-mtctr r29
+mtctr r12
 bctrl
 
 # Original instruction
 end3:
-addi r11, r1, 0xa0
+addi r11, r1, 0xA0
 b BrakeDriftEffBikesHook+4
 
 ##############################
@@ -266,71 +229,63 @@ b BrakeDriftEffBikesHook+4
 # Get playerPointers
 BrakeDriftEffKarts:
 lwz r3, 0x118(r31)
-lwz r3, 0(r3)
 
-# Check if brake drifting is enabled
-lwz r12, 0(r3)
-lbz r12, 0x10(r12)
-lis r11, EnableRampUpStuff@h
-ori r11, r11, EnableRampUpStuff@l
-lbzx r11, r11, r12
-cmpwi r11, 1
-bne+ end4
+# Get ramp up flag
+lwz r11, 0(r3)
+bl GetRampUp
+beq end4
 
-# Check if we are brake drifting
-lwz r3, 0x4 (r3)
-lwz r6, 0x4 (r3)
-rlwinm r5, r6, 0, 27, 31
-cmpwi r5, 0xF
-bne+ notBrakeDrifting2
+# Reload playerPointers
+lwz r5, 0(r3)
 
 # Get the player's controllerHolder
-lwz r3, 0x18(r3)
 bl PlayerGetControllerHolder
+
+# Default value for thing
+lbz r28, 0x15(r3)
+
+# Check if we are brake drifting
+lwz r5, 0x4(r5)
+lwz r6, 0x4(r5)
+rlwinm r5, r6, 0, 27, 31
+cmpwi r5, 0xF
+bne+ skip2
 
 # Load buttonActions and check for flag 0x10
 lhz r5, 0x2C(r3)
 rlwinm. r5, r5, 0, 27, 27
-beq notBrakeDrifting2
+beq skip2
 
 # Check if player is accelerating
 rlwinm. r5, r6, 0, 0, 0
-bne notBrakeDrifting2
+bne skip2
 
 # Check if player is on the ground
 rlwinm. r5, r6, 0, 11, 11
-bne notBrakeDrifting2
+bne skip2
 
-# Store 1 somewhere in controllerHolder
-li r5, 1
-stb r5, 0x15(r3)
+# Set thing to 2 for next code
+li r28, 2
 
-# Call functions
-lis r29, BrakeDriftEffFunc@h
-ori r29, r29, BrakeDriftEffFunc@l
-b callFuncs
+# Load function if thing > 0
+skip2:
+subic. r28, r28, 1
+blt+ end4
 
-# Check if thing in controllerHolder is 1
-notBrakeDrifting2:
-lbz r5, 0x15(r3)
-cmpwi r5, 1
-bne end4
+# Array access
+stb r28, 0x15(r3)
+slwi r28, r28, 2
+lis r12, BrakeDriftFuncs@h
+ori r12, r12, BrakeDriftFuncs@l
+lwzx r12, r12, r28
 
-# Store 0 somewhere in controllerHolder
-li r5, 0
-stb r5, 0x15(r3)
-
-# Call functions
-lis r29, BrakeDriftEffFunc2@h
-ori r29, r29, BrakeDriftEffFunc2@l
-
-callFuncs:
+# Function calls
 mr r3, r31
 lwz r4, 0x530(r31)
 li r5, 0x22
 li r6, 0x23
 li r7, 0
-mtctr r29
+mtctr r12
 bctrl
 
 mr r3, r31
@@ -338,10 +293,17 @@ lwz r4, 0x530(r31)
 li r5, 0x23
 li r6, 0x24
 li r7, 1
-mtctr r29
+mtctr r12
 bctrl
 
 # Original instruction
 end4:
 lwz r0, 0x24(r1)
 b BrakeDriftEffKartsHook+4
+
+##############################
+# Arrays For Function Access #
+##############################
+
+BrakeDriftFuncs:
+.long BrakeDriftEffFunc2, BrakeDriftEffFunc
