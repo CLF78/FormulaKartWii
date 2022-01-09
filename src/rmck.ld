@@ -133,7 +133,7 @@ SECTIONS {
 	CreditsButton = 0x8083F68B;
 
 	/* Cycle Fixes - Coconut Mall */
-	EscalatorFixHook = 0x8087EED84;
+	EscalatorFixHook = 0x807EED84;
 	PiantaFixHook = 0x807F0574;
 
 	/* Cycle Fixes - Dry Dry Ruins */

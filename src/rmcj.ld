@@ -327,7 +327,7 @@ SECTIONS {
 
 	/* Max Item Limit Modifier */
 	ItemLimitSetup = 0x80790274;
-	ItemLimits = 0x809C1FA4;
+	ItemLimits = 0x809C1FAC;
 
 	/* Mega Flips Cars */
 	MegaFlip = 0x8082A26F;
