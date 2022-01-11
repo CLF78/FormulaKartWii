@@ -508,9 +508,9 @@ void loadCodes() {
 
 	// Show Time Difference (by Melg and CLF78)
 	if (TimeDiff == 1 || TimeDiff == 2) {
-		directWrite8(GhostFileSkip, 1);
 		directWriteBranch(TimeDiffPatchHook, TimeDiffPatch, true);
-		directWriteBranch(TimeDiffPatchHook2, TimeDiffPatch2, false);
+		directWrite8Offset(TimeDiffPatchHook, 0xB, 1);
+		directWriteBranchOffset(TimeDiffPatchHook, 0x4C, TimeDiffPatch2, false);
 	}
 
 	// Speedometer (by stebler and CLF78)

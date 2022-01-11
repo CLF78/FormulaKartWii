@@ -1,7 +1,7 @@
 .include "asm_setup.S"
 
 .extern TimeDiff, Speedometer
-.extern TimerInstance, TimeDiffPatchHook2, Racedata, Raceinfo
+.extern TimeDiffPatchHook, _directWriteArray
 .global TimeDiffPatch, TimeDiffPatch2, TimeDiffApply
 
 ########################
@@ -44,107 +44,65 @@ blr
 # Patch 1 #
 ###########
 
-# Last lap failsafe
+# Check if the player is in 1st using cr7 so we can store the result for the next hook
 TimeDiffPatch:
-cmpwi r31, 0
-bne+ continue
-
-# Move r31 to r3 to force the compare result if it's the last lap
-mr r3, r31
-b end
-
-# Load Racedata and Raceinfo
-continue:
-lis r12, Racedata@ha
-lwz r9, Racedata@l(r12)
-lwz r12, Raceinfo@l(r12)
-
-# Load PlayerIDInEachPosition and my PlayerID
-lwz r6, 0x18(r12)
+lwz r6, 0x18(r5)
 lbz r7, 0(r6)
-lbz r8, 0xB84(r9)
+cmpw cr7, r3, r7
+bne+ cr7, end
 
-# Check if i am in 1st
-cmpw r8, r7
-beq inFirst
-
-# Otherwise check which option is enabled
-lis r11, TimeDiff@ha
-lbz r11, TimeDiff@l(r11)
-cmpwi r11, 2
-beq diffWithFirst
-
-# TimeDiff == 1 (diff with person in front)
-slwi r8, r8, 2
-lwz r12, 0xC(r12)
-lwzx r12, r12, r8
-lbz r8, 0x20(r12)
-b end
-
-# TimeDiff == 2 (diff with 1st Place)
-diffWithFirst:
-li r8, 2
-b end
-
-# I'm in first
-inFirst:
-li r8, 3
-
-# Get second place's maxLap
-lbz r12, 0x1(r6)
-slwi r12, r12, 2
-lwzx r12, r5, r12
-lbz r31, 0x26(r12)
+# If so, get the player in 2nd for the reference
+lbz r3, 0x1(r6)
 
 # Original instruction
 end:
-cmplw r3, r31
+slwi r4, r3, 2
 blr
 
 ###########
 # Patch 2 #
 ###########
 
-# r5 = RaceInfoPlayer
-# r6 = PlayerIdInEachPosition
-# r8 = Position+2
+# r0 = timer offset
+# r3 = argument for memcpy
+# r4 = raceInfoPlayer
+# r5 = raceInfoPlayers
+# r6 = player in each position
+# r7 = player in 1st
 
-# Depending on the situation, get the ID of the player in 1st, 2nd or the one in front of me
+# Reuse check from the previous hook, as the RaceinfoPlayer is already in r4 in this case
 TimeDiffPatch2:
-subi r8, r8, 2
-lbzx r8, r6, r8
-slwi r8, r8, 2
+beq+ cr7, skip
 
-# Load their raceinfo
-lwzx r5, r5, r8
+# Get the player we need based on the setting
+lis r8, TimeDiff@ha
+lbz r8, TimeDiff@l(r8)
+cmpwi r8, 2
+bne playerInFront
 
-# Add the correct offset for the function that fills the laps
-lwz r5, 0x3C(r5)
+# Get RaceinfoPlayer of 1st place
+slwi r4, r7, 2
+b getRinfo
 
-# Convert lap
-extsb r4, r31
-addi r4, r4, 50
+# Get our position
+playerInFront:
+lbz r4, 0x20(r4)
 
-# Module division
-li r12, 10
-divw r12, r4, r12
-mulli r12, r12, 10
-subf r4, r12, r4
+# Get player in front of us
+subi r4, r4, 2
+lbzx r4, r4, r6
+slwi r4, r4, 2
 
-# Prevent array underflow
-subi r4, r4, 1
-cmpwi r4, -1
-bne+ multiply
-li r4, 9
+# Get their RaceinfoPlayer
+getRinfo:
+lwzx r4, r4, r5
 
-# Add the result to r5
-multiply:
-mulli r4, r4, 0xC
-add r5, r5, r4
+# Copy the correct timer to the stack using memcpy
+skip:
+lwz r4, 0x3C(r4)
+add r4, r4, r0
+li r5, 0xC
+bl _directWriteArray
 
-# Replace r4 with TimerInstance so that the function that fills the laps loads a null lap 1
-lis r4, TimerInstance@h
-ori r4, r4, TimerInstance@l
-
-# Return
-b TimeDiffPatchHook2+8
+# Return later to skip the function call
+b TimeDiffPatchHook+0x5C

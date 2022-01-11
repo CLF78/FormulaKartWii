@@ -443,9 +443,7 @@ SECTIONS {
 	ShellHitCount2 = 0x8079AB00;
 
 	/* Show Time Difference */
-	GhostFileSkip = 0x8084212F;
-	TimeDiffPatchHook = 0x8084215C;
-	TimeDiffPatchHook2 = 0x80842174;
+	TimeDiffPatchHook = 0x80842124;
 	TimeDiffApplyHook = 0x80834828;
 
 	/* Show Timers */

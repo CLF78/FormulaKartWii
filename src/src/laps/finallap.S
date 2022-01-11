@@ -50,10 +50,4 @@ PitchReset2:
 lis r11, 0x3F80
 lis r12, MusicPitch@ha
 stw r11, MusicPitch@l(r12)
-
-# Reset TimerInstance
-li r11, 0
-stw r11, TimerInstance@l(r12)
-stw r11, TimerInstance@l+4(r12)
-stw r11, TimerInstance@l+8(r12)
 blr
