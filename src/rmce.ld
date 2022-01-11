@@ -513,19 +513,7 @@ SECTIONS {
 	VSRegion4 = 0x80655BAC;
 
 	WiimmfiVersionString = 0x80271D14;
-	NaswiiURL = 0x802760C4;
-	NaswiiURL2 = 0x802760EC;
-	NaswiiURL3 = 0x8027616C;
-	NaswiiURL4 = 0x80276110;
-	AvailableURL = 0x80276A28;
-	GPCMURL = 0x80277198;
-	GPSPURL = 0x80277BB0;
-	MasterURL = 0x80278D51;
-	NatnegURL = 0x8027996B;
-	NatnegURL2 = 0x80279987;
-	NatnegURL3 = 0x802799A3;
-	MSURL = 0x80279AF3;
-	GSURL = 0x80279B77;
+	WiimmfiURLs = 0x802760C4;
 
 	/* Woodbox Modifier */
 	WoodRespawn = 0x808CA6A8;

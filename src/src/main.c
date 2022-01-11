@@ -17,32 +17,32 @@ void loadCodes() {
 	directWrite32(WiimmfiPatch2, 0x3BC00000);
 	directWriteBranch(WiimmfiPatch3, WiimmfiASM1, false);
 	directWriteBranch(WiimmfiPatch4, WiimmfiASM2, false);
-	directWriteString(WiimmfiVersionString, "LE-CODE GCT v1 ");
 
 	// Wiimmfi String Patches (by Seeky)
-	directWriteString(NaswiiURL, "://ca.nas.wiimmfi.de/ca");
-	directWriteString(NaswiiURL2, "://naswii.wiimmfi.de/ac");
-	directWriteString(NaswiiURL3, "://naswii.wiimmfi.de/pr");
+	directWriteString(WiimmfiVersionString, "LE-CODE GCT v1 ");
+	directWriteString(WiimmfiURLs, "://ca.nas.wiimmfi.de/ca");
+	directWriteStringOffset(WiimmfiURLs, 0x28, "://naswii.wiimmfi.de/ac");
+	directWriteStringOffset(WiimmfiURLs, 0xA8, "://naswii.wiimmfi.de/pr");
 
 	#ifdef REGION_P
-	directWriteString(NaswiiURL4, "://main.nas.wiimmfi.de/pp");
+	directWriteStringOffset(WiimmfiURLs, 0x4C, "://main.nas.wiimmfi.de/pp");
 	#elif REGION_E
-	directWriteString(NaswiiURL4, "://main.nas.wiimmfi.de/pe");
+	directWriteStringOffset(WiimmfiURLs, 0x4C, "://main.nas.wiimmfi.de/pe");
 	#elif REGION_J
-	directWriteString(NaswiiURL4, "://main.nas.wiimmfi.de/pj");
+	directWriteStringOffset(WiimmfiURLs, 0x4C, "://main.nas.wiimmfi.de/pj");
 	#elif REGION_K
-	directWriteString(NaswiiURL4, "://main.nas.wiimmfi.de/pk");
+	directWriteStringOffset(WiimmfiURLs, 0x4C, "://main.nas.wiimmfi.de/pk");
 	#endif
 
-	directWriteString(AvailableURL, "wiimmfi.de");
-	directWriteString(GPCMURL, "wiimmfi.de");
-	directWriteString(GPSPURL, "wiimmfi.de");
-	directWriteString(MasterURL, "wiimmfi.de");
-	directWriteString(NatnegURL, "wiimmfi.de");
-	directWriteString(NatnegURL2, "wiimmfi.de");
-	directWriteString(NatnegURL3, "wiimmfi.de");
-	directWriteString(MSURL, "wiimmfi.de");
-	directWriteString(GSURL, "wiimmfi.de");
+	directWriteStringOffset(WiimmfiURLs, 0x964, "wiimmfi.de"); // Available
+	directWriteStringOffset(WiimmfiURLs, 0x10D4, "wiimmfi.de"); // GPCM
+	directWriteStringOffset(WiimmfiURLs, 0x1AEC, "wiimmfi.de"); // GPSP
+	directWriteStringOffset(WiimmfiURLs, 0x2C8D, "wiimmfi.de"); // Master
+	directWriteStringOffset(WiimmfiURLs, 0x38A7, "wiimmfi.de"); // Natneg
+	directWriteStringOffset(WiimmfiURLs, 0x38C3, "wiimmfi.de");
+	directWriteStringOffset(WiimmfiURLs, 0x38DF, "wiimmfi.de");
+	directWriteStringOffset(WiimmfiURLs, 0x3A2F, "wiimmfi.de"); // MS
+	directWriteStringOffset(WiimmfiURLs, 0x3AB3, "wiimmfi.de"); // SAKE
 
 	// Wiimmfi Login Region Changer (by Atlas)
 	directWriteString(LoginRegion, "120045");
