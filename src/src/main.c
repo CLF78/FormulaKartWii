@@ -235,10 +235,12 @@ void loadCodes() {
 	directWriteBranch(MSGPatchHook4, MSGPatch4, true);
 
 	// MK7 Shock Squishing (by CLF78)
-	directWriteBranch(ShockSquishingHook, ShockSquishing, false);
-	directWrite8(NoSquishStop, 0);
-	directWriteNop(NoSquishLoseItem);
-	directWrite32(NoSquishRespawn, 0x48000018);
+	directWriteBranch(SquishCheckHook, SquishCheck, true);
+	directWriteBranchOffset(SquishCheckHook, 0x6E0, SquishDmg, true);
+	directWriteBranchOffset(SquishCheckHook, 0x870, SquishDmg2, true);
+	directWrite8(SquishFunc, 0);                            // Remove stun
+	directWrite32Offset(SquishFunc, 0x41, 0x48000024);      // Keep item
+	directWrite32Offset(SquishFunc, 0x7D, 0x48000018);      // Remove respawn
 
 	// Motion-Sensor Bombs (by Hamster)
 	tempVal16 = 0x7FFF;

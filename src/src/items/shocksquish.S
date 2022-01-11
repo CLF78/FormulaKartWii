@@ -1,132 +1,83 @@
 .include "asm_setup.S"
 
-.extern ShockSquishingHook, ShockSquishingCall, ShockSquishingCall2
-.global ShockSquishing
+.global SquishCheck, SquishDmg, SquishDmg2
 
-# r31 = PlayerSub18 (playerPointers at 0x0)
-# r30 = otherPlayer (playerPointers at 0x4)
-# r29 = isBattle
 # r24 = in a mega
 # r23 = other in a mega
-# r22 = other crushed
-# r21 = crushed
-# r20 = in a bullet
-# r19 = other in a bullet
+# r6 = bitfield2
+# r7 = otherBitfield2
 
-##################
-# Initial Checks #
-##################
+#####################################################
+# Checks to make the player pretend to be in a Mega #
+#####################################################
+# Hook 8056fd4c
+# Check if p1 is crushed
+SquishCheck:
+rlwinm. r26, r6, 16, 31, 31
+bne player2
 
-# If any player is in a bullet or in a mega, return. Star was already checked by the game itself, so we don't need to
-ShockSquishing:
-cmpwi r24, 1
-beq end
-cmpwi r23, 1
-beq end
-cmpwi r20, 1
-beq end
-cmpwi r19, 1
-beq end
+# Check if p1 is shocked
+rlwinm. r26, r6, 25, 31, 31
+beq player2
 
-# Initial values for candidates
-li r4, 0
-li r5, 0
-
-###################
-# Player 1 Checks #
-###################
-
-# If player is already squished, skip to second player
-cmpwi r21, 1
-beq processOtherPlayer
-
-# If player is not shocked, process second player to see if he's shocked instead
-lwz r3, 0(r31)
-lwz r3, 0x4(r3)
-lwz r3, 0xC(r3)
-rlwinm. r3, r3, 25, 31, 31
-beq+ processOtherPlayer
-
-# Player 1 is a candidate for squishing!
-li r4, 1
-
-###################
-# Player 2 Checks #
-###################
-
-# Preload bitfield2 from otherPlayer's sub1c
-processOtherPlayer:
-lwz r3, 0x4(r30)
-lwz r3, 0x4(r3)
-lwz r3, 0xC(r3)
-
-# Check if player is to be squished
-cmpwi r4, 1
-beq playerSquished
-
-# Player 1 not to be squished #
-
-# If otherPlayer is already squished, return
-cmpwi r22, 1
-beq end
-
-# If otherPlayer is not shocked, return
-rlwinm. r3, r3, 25, 31, 31
-beq+ end
-
-# Player 2 is a candidate for squishing!
-li r5, 1
-b squishCheck
-
-# Player 1 to be squished #
-
-# If otherPlayer is also shocked, return
-playerSquished:
-rlwinm. r3, r3, 25, 31, 31
+# Check if p2 is not shocked as well
+rlwinm. r26, r7, 25, 31, 31
 bne end
 
-##################
-# Squish Applier #
-##################
+li r23, 1
+b end
 
-# Common value
-squishCheck:
-lis r11, ShockSquishingCall@h
+# Check if p2 is crushed
+player2:
+rlwinm. r26, r7, 16, 31, 31
+bne end
 
-# Check which player has to be squished and load their unique data
-cmpwi r4, 1
-bne+ squishCheck2
-lwz r3, 0(r31)
-lwz r8, 0x4(r30)
-ori r11, r11, ShockSquishingCall@l
-b applySquish
+# Check if p2 is shocked
+rlwinm. r26, r7, 25, 31, 31
+beq end
 
-squishCheck2:
-cmpwi r5, 1
-bne+ end
-lwz r3, 0x4(r30)
-lwz r8, 0(r31)
-ori r11, r11, ShockSquishingCall2@l
+# Check if p1 is not shocked as well
+rlwinm. r26, r6, 25, 31, 31
+bne end
 
-# Setup arguments for the part we skipped
-applySquish:
+li r24, 1
 
-# Player id of opponent
-lwz r8, 0(r8)
-lbz r8, 0x10(r8)
+# Restore cr0 and execute original instruction
+end:
+cmpwi r27, 0
+rlwinm r26, r3, 1, 31, 31
+blr
 
-# Player's sub14 and its vtable
-lwz r3, 0x2C(r3)
-lwz r12, 0xC(r3)
+#######################
+# Damage Change Hooks #
+#######################
 
-# Damage type
-li r4, 0x10
+# Hook 8057042c
+# Grab PlayerPointers and call sub
+SquishDmg:
+lwz r5, 0(r31)
+b SquishDmgSub
 
-# Call function (does not return)
-mtctr r11
-bctr
+# Hook 805705bc
+# Grab PlayerPointers and call sub
+SquishDmg2:
+lwz r5, 0x4(r30)
+b SquishDmgSub
+
+####################################
+# Subroutine for the above methods #
+####################################
 
 # Original instruction
-end:
-cmpwi r24, 0
-b ShockSquishingHook+4
+SquishDmgSub:
+li r4, 0xD
+
+# Get if the other player is in a Mega
+lwz r5, 0x4(r5)
+lwz r5, 0xC(r5)
+rlwinm. r5, r5, 17, 31, 31
+bnelr+
+
+# Replace damage
+li r4, 0x10
+blr

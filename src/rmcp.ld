@@ -322,12 +322,8 @@ SECTIONS {
 	LicenseUnlocker = 0x80549974;
 
 	/* MK7 Shock Squishing */
-	ShockSquishingHook = 0x805703A4;
-	ShockSquishingCall = 0x80570430;
-	ShockSquishingCall2 = 0x805705C0;
-	NoSquishStop = 0x805698CB;
-	NoSquishLoseItem = 0x8056992C;
-	NoSquishRespawn = 0x80569948;
+	SquishCheckHook = 0x8056FD4C;
+	SquishFunc = 0x805698CB;
 
 	/* Max Item Limit Modifier */
 	ItemLimitSetup = 0x80790C08;
