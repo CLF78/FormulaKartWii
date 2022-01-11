@@ -271,6 +271,9 @@ void loadCodes() {
 	// POW Yourself in 1st (by CLF78)
 	directWriteBranch(POWSelfHook, POWSelf, false);
 
+	// Prediction Removal (by stebler)
+	directWrite32(PredictionRemoval, 0x3F800000);
+
 	// Prevent Shock/POW Drop (by CLF78)
 	directWriteBranch(DropFunc, NoDrop, true);
 

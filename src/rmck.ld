@@ -410,6 +410,9 @@ SECTIONS {
 	/* Points Modifier */
 	PointsModifierHook = 0x8051CC90;
 
+	/* Prediction Removal */
+	PredictionRemoval = 0x8087FF30;
+
 	/* Prevent Shock/POW Drop */
 	DropFunc = 0x807AA9F0;
 
