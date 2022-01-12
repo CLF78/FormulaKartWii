@@ -172,9 +172,6 @@ void loadCodes() {
 	directWriteBranch(FastMusicHook2, PitchReset, true);
 	directWriteBranch(FastMusicHook3, PitchReset2, false);
 
-	// Fix Horizontal Wall Glitch (by stebler)
-	directWrite8(DisableHWG, 0);
-
 	// Fix Wallriding (by CLF78)
 	directWriteBranch(DisableWallrideHook, DisableWallride, true);
 
