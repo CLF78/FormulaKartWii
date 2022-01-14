@@ -245,6 +245,7 @@ SECTIONS {
 	BrakeDriftEffFunc2 = 0x806A1B68;
 	FastFallingHook = 0x8059678C;
 	FastFallingHook2 = 0x80597390;
+	RedSpeedHook = 0x807AAF14;
 
 	/* Game Mode - Teams */
 	NoItemGlow = 0x807BD2BC;

@@ -399,6 +399,7 @@ void loadCodes() {
 	directWriteBranch(BrakeDriftEffKartsHook, BrakeDriftEffKarts, false);
 	directWriteBranch(FastFallingHook, FastFalling, false);
 	directWriteBranch(FastFallingHook2, FastFalling2, false);
+	directWriteBranch(RedSpeedHook, RedSpeed, true);
 
 	// Game Mode - Teams (by CLF78, Ismy and Chippy)
 	directWrite32(NoItemGlow, 0x38000000);
