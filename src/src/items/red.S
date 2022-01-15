@@ -18,14 +18,14 @@ lbz r3, 0x6C(r31)
 slwi r3, r3, 2
 
 # Get their playerSub10
-lis r4, PlayerHolder@ha
-lwz r4, PlayerHolder@l(r4)
-lwz r4, 0x20(r4)
-lwzx r4, r4, r3
-lwz r4, 0x44(r4)
+lis r5, PlayerHolder@ha
+lwz r5, PlayerHolder@l(r5)
+lwz r5, 0x20(r5)
+lwzx r5, r5, r3
+lwz r5, 0x44(r5)
 
 # Get their multiplier and multiply speed
-lfs f2, 0x10(r4)
+lfs f2, 0x10(r5)
 fmuls f1, f1, f2
 
 # Original instruction
