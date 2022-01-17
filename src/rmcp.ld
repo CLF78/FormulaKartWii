@@ -339,6 +339,7 @@ SECTIONS {
 	/* Mega Thundercloud */
 	MegaTCHook = 0x80580630;
 	MegaFunc = 0x807986B4;
+	MegaTCHook2 = 0x807AFDBC;
 
 	/* Message Patch */
 	MSGPatchHook = 0x8051AD30;

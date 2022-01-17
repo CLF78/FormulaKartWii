@@ -224,6 +224,7 @@ void loadCodes() {
 
 	// Mega Thundercloud (by tZ)
 	directWriteBranch(MegaTCHook, MegaFunc, true);
+	directWriteBranch(MegaTCHook2, MegaTC2, false);
 
 	// Message Patches (by CLF78 and Kevin)
 	directWriteBranch(MSGPatchHook, MSGPatch, false);
