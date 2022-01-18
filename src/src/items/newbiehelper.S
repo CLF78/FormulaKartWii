@@ -1,7 +1,7 @@
 .include "asm_setup.S"
 
-.extern Raceinfo, OurFloats, RespawnHelperHook, RespawnHelperHook2
-.global NewbieHelper, RespawnHelper, RespawnHelper2
+.extern Raceinfo, OurFloats, RespawnHelperHook, RespawnHelperHook2, RespawnHelperHook3
+.global NewbieHelper, RespawnHelper, RespawnHelper2, RespawnHelper3
 
 # Load Raceinfo
 NewbieHelper:
@@ -54,42 +54,59 @@ lbz r3, 0x10(r3)
 # Call Newbie Helper
 bl NewbieHelper
 
-# Check if result is 1
-cmpwi r3, 1
-bne+ end
-
-# Replace timer with 0
+# Replace timer with 0 if necessary (use cr0+gt from ASM call)
+ble+ end
 li r0, 0
 
 # Return
 end:
 b RespawnHelperHook+4
 
-# Save original r4 value
-RespawnHelper2:
-mr r12, r4
-
 # Get playerId of player
+RespawnHelper2:
 lwz r3, 0(r30)
 lwz r3, 0(r3)
 lbz r3, 0x10(r3)
 
+# Backup r4
+mr r12, r4
+
 # Call Newbie Helper
 bl NewbieHelper
 
-# Check if result is 1
-cmpwi r3, 1
-beq applyNewbie
-
-# Restore r4 if not
+# Restore r4
 mr r4, r12
-b end2
 
-# Otherwise replace with zero
-applyNewbie:
+# Replace timer with 0 if necessary (use cr0+gt from ASM call)
+ble+ end2
 li r4, 0
 
 # Original instruction
 end2:
 lhz r3, 0x234(r30)
 b RespawnHelperHook2+4
+
+# Original instruction
+RespawnHelper3:
+lhz r0, 0x236(r29)
+
+# Get player id
+lwz r3, 0(r3)
+lbz r3, 0x10(r3)
+
+# Call Newbie Helper
+bl NewbieHelper
+
+# Restore r5 that we just clobbered
+lwz r5, 0(r29)
+lwz r5, 0x4(r5)
+
+# Use cr0+gt from Newbie Helper ASM
+ble+ end3
+
+# Force to 1
+li r0, 1
+
+# Return
+end3:
+b RespawnHelperHook3+4

@@ -357,6 +357,7 @@ SECTIONS {
 	/* Newbie Helper */
 	RespawnHelperHook = 0x8056EFD8;
 	RespawnHelperHook2 = 0x805733BC;
+	RespawnHelperHook3 = 0x8057B498;
 
 	/* No Bullet Bill Icon */
 	NoBBIcon = 0x807ABB70;

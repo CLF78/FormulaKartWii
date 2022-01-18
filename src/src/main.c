@@ -248,6 +248,7 @@ void loadCodes() {
 	// Newbie Helper (by Seeky, CLF78 and davidevgen)
 	directWriteBranch(RespawnHelperHook, RespawnHelper, false);
 	directWriteBranch(RespawnHelperHook2, RespawnHelper2, false);
+	directWriteBranch(RespawnHelperHook3, RespawnHelper3, false);
 
 	// No Bullet Bill Icon (by Anarion)
 	directWriteBlr(NoBBIcon);
