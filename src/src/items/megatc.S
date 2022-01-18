@@ -1,7 +1,32 @@
 .include "asm_setup.S"
 
-.extern ItemHolder, MegaTCHook2
-.global MegaTC2
+.extern ItemHolder, MegaTCHook, MegaTCHook2, MegaFunc, BillFunc
+.global MegaTC, MegaTC2
+
+# Get player id
+MegaTC:
+lwz r3, 0(r3)
+lwz r3, 0(r3)
+lbz r3, 0x10(r3)
+
+# Call newbie helper function
+bl NewbieHelper
+
+# Restore r3
+mr r3, r31
+
+# Activate mega (cr0+gt was already set in the asm, no need to repeat compares here)
+bgt bullet
+bl MegaFunc
+b end
+
+# Activate bullet
+bullet:
+li r4, 0xFF
+bl BillFunc
+
+end:
+b MegaTCHook+4
 
 # Original instruction
 MegaTC2:

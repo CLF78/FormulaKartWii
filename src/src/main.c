@@ -223,7 +223,7 @@ void loadCodes() {
 	directWriteBranch(FOVChange, FOVFix, true);
 
 	// Mega Thundercloud (by tZ)
-	directWriteBranch(MegaTCHook, MegaFunc, true);
+	directWriteBranch(MegaTCHook, MegaTC, false);
 	directWriteBranch(MegaTCHook2, MegaTC2, false);
 
 	// Message Patches (by CLF78 and Kevin)

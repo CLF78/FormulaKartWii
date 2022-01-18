@@ -29,16 +29,13 @@ lfs f1, 0xC(r4)
 lis r5, OurFloats@ha
 lfs f2, OurFloats@l(r5)
 
-# Assume false
-li r3, 0
-
 # Subtract and compare
 fsubs f0, f0, f1
 fcmpu cr0, f0, f2
-blelr+
 
-# Return true
-li r3, 1
+# Return value of cr0+gt
+mfcr r3
+rlwinm r3, r3, 2, 31, 31
 blr
 
 ##################
