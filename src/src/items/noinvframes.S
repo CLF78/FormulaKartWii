@@ -39,33 +39,28 @@ cmpw r25, r3
 bne removeInvFrames
 blr
 
-# Case 4 - 7, 8
-# Disable invincibility frames if previous damage is different or if alternate camera angle is off
+# Case 4 - 7, 8, 9, b, f
+# Disable invincibility frames if previous damage is different
 case4:
 cmpw r22, r5
 beqlr
 
-# Snippet copied from tZ
+# Case 1 - 0, 2, a, c, e, 10, 11
+removeInvFrames:
+case1:
+
+# Snipped copied from tZ
 lwz r4, 0(r21)
 lwz r4, 0x24(r4)
 cmpwi r4, 0
-beq removeInvFrames
-lhz r3, 0x334(r4)
-rlwinm. r3, r3, 0, 31, 31
-beqlr
+beq end
+lhz r0, 0x334(r4)
+rlwinm r0, r0, 0, 16, 30
+sth r0, 0x334(r4)
 
-# Case 1 - 0, 2, 9, a, c, e, 10, 11
 # Disable invincibility frames unconditionally
-removeInvFrames:
-case1:
+end:
 li r5, -1
-blr
-
-# Case 5 - b, f
-# Disable invincibility frames if previous damage is different
-case5:
-cmpw r22, r5
-bne removeInvFrames
 blr
 
 SwitchTable:
@@ -78,12 +73,12 @@ SwitchTable:
 .long case3
 .long case4
 .long case4
+.long case4
+.long case1
+.long case4
 .long case1
 .long case1
-.long case5
 .long case1
-.long case1
-.long case1
-.long case5
+.long case4
 .long case1
 .long case1
