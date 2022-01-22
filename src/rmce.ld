@@ -292,7 +292,7 @@ SECTIONS {
 	/* Hybrid Drift */
 	HybridDrift1 = 0x8058E23C;
 	HybridDrift3Hook = 0x80577744;
-	HybridDrift4Hook = 0x80577B60;
+	HybridDrift4Hook = 0x80577B8C;
 	HybridDrift5Hook = 0x80572568;
 	HybridDrift6Hook = 0x805778A4;
 	HybridDrift7 = 0x8058DCEA;
