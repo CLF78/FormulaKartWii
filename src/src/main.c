@@ -456,6 +456,17 @@ void loadCodes() {
 	// Don't Lose VR When Disconnecting (by Bully)
 	directWriteNop(NoVRLoss);
 
+	// Hybrid Drift (by Ismy)
+	directWriteNop(HybridDrift1);
+	directWriteBranchOffset(HybridDrift1, 0x48, HybridDrift2, true);
+	directWriteBranch(HybridDrift3Hook, HybridDrift3, true);
+	directWriteBranchOffset(HybridDrift3Hook, 0x70, HybridDrift4, true);
+	directWriteBranch(HybridDrift4Hook, HybridDrift4, true);
+	directWriteBranch(HybridDrift5Hook, HybridDrift5, true);
+	directWriteBranchOffset(HybridDrift5Hook, 0x540, HybridDrift5, true);
+	directWriteBranch(HybridDrift6Hook, HybridDrift6, true);
+	directWrite8(HybridDrift7, 0x20);
+
 	// Instant DC (by CLF78)
 	directWriteBranch(InstantDCHook, InstantDC, true);
 

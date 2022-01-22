@@ -289,6 +289,14 @@ SECTIONS {
 	HostCheckHook = 0x800DC3BC;
 	DWCiCheckResvCommand = 0x800DE5D8;
 
+	/* Hybrid Drift */
+	HybridDrift1 = 0x805943E0;
+	HybridDrift3Hook = 0x8057D928;
+	HybridDrift4Hook = 0x8057DD44;
+	HybridDrift5Hook = 0x8057874C;
+	HybridDrift6Hook = 0x8057DA88;
+	HybridDrift7 = 0x80593E8E;
+
 	/* Impervious TC */
 	ImperviousTCHook = 0x807AF114;
 
