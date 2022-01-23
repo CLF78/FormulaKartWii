@@ -1,14 +1,15 @@
 .include "asm_setup.S"
 
-.extern RandomInstance, RandomNextLimited, SpecialItemHook
+.extern SpecialItemHook, CalcRandom
 .global SpecialRandom
 
 # Get random item
 SpecialRandom:
-lis r3, RandomInstance@h
-ori r3, r3, RandomInstance@l
-li r4, 0xC
-bl RandomNextLimited
+bl CalcRandom
+li r28,12
+divw r28, r3, r28
+mulli r28, r28, 12
+subf r3, r28, r3
 
 # Replace shock
 cmpwi r3, 6

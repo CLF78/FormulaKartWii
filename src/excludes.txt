@@ -1,2 +1,3 @@
-src\extras\highlighter.S
-src\items\crazyeight.S
+highlighter.S
+crazyeight.S
+normalrandomizer.S

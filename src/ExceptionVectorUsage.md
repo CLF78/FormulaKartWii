@@ -1,7 +1,6 @@
 # 0x800001B0-0x800001FF
 - 0x800001B0-0x800001B5 = Friend Room Flags
 - 0x800001D8-0x800001E4 = Item Amount Array
-- 0x800001E4-0x800001FC = RandomInstance
 - 0x800001FC = Version
 - 0x800001FD = CurrentStrmChannels
 

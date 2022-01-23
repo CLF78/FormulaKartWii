@@ -1,5 +1,4 @@
 #include "common.h"
-#include "random.h"
 
 // This function loads all the codes that FKW uses after StaticR has loaded
 void loadCodes() {
@@ -325,7 +324,6 @@ void loadCodes() {
 	directWriteBranch(CKPTCheck, UltraUncut, false);
 
 	// Ultimate Item Randomizer (by CLF78 and Ismy)
-	RandomConstruct(&RandomInstance);
 	directWriteBranch(SharedItemHook, UltimateRandom, true);
 	directWriteBranch(ItemAmountHook1, ItemAmount1, true);
 	directWriteBranch(ItemAmountHook2, ItemAmount2, false);

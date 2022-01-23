@@ -46,17 +46,13 @@ SECTIONS {
 	playerCount = 0x809C38B8;
 	isOnlineRace = 0x809C38B9;
 
-	UtilRandomSeed = 0x800F2EC8;
-	UtilRandint = 0x800F2EE0;
+	CalcRandom = 0x800AD050;
+	canItemBeGotten = 0x80799BE8;
 
 	ptmf_test = 0x800213E4;
 	ptmf_scall = 0x80021450;
 
 	SubtractTimers = 0x807EE860;
-
-	RandomConstruct = 0x80555464;
-	RandomNextLimited = 0x805555CC;
-	RandomRefresh = 0x805554D0;
 
 	/* 30 FPS */
 	ThirtyFPSHook1 = 0x80009A3C;

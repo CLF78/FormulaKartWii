@@ -11,7 +11,6 @@ SECTIONS {
 	VehicleRestrict = 0x800001B4;
 	EnableRampUpStuff = 0x800001CC;
 	ItemAmountArray = 0x800001D8;
-	RandomInstance = 0x800001E4;
 	Version = 0x800001FC;
 	CurrentStrmChannels = 0x800001FD;
 	SubtractItemFix = 0x800001FE;
