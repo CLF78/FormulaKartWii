@@ -46,17 +46,13 @@ SECTIONS {
 	playerCount = 0x809C2918;
 	isOnlineRace = 0x809C2919;
 
-	UtilRandomSeed = 0x800F2DE8;
-	UtilRandint = 0x800F2E00;
+	CalcRandom = 0x800ACF70;
+	canItemBeGotten = 0x80799254;
 
 	ptmf_test = 0x80021308;
 	ptmf_scall = 0x80021374;
 
 	SubtractTimers = 0x807EDECC;
-
-	RandomConstruct = 0x80554DE4;
-	RandomNextLimited = 0x80554F4C;
-	RandomRefresh = 0x80554E50;
 
 	/* 30 FPS */
 	ThirtyFPSHook1 = 0x80009998;
@@ -315,6 +311,9 @@ SECTIONS {
 
 	/* Item Textures */
 	ItemTexturesHook = 0x8086015C;
+	ItemRouletteUpdate1Hook = 0x807B9860;
+	ItemRouletteUpdate2Hook = 0x807B9AA0;
+	ItemRouletteUpdate5Hook = 0x807EE7D0;
 	OriginalTextures = 0x808AE920;
 	DoubleShroom = 0x808AEB07;
 
@@ -430,9 +429,7 @@ SECTIONS {
 
 	/* Remove Mushroom Bug */
 	RemoveShroomBug = 0x807B96E3;
-	RemoveFakeShroom = 0x807B9AEC;
-	RemoveFakeShroom2 = 0x807B9AF0;
-	RemoveFakeShroom3 = 0x807B9790;
+	RemoveFakeShroom = 0x807B9AE8;
 
 	/* Remove WW Button */
 	NoWWButton = 0x8064AFEF;
@@ -492,8 +489,9 @@ SECTIONS {
 	/* Ultimate Item Randomizer */
 	SharedItemHook = 0x807B97CC;
 	SpecialItemHook = 0x80799754;
-	ItemAmountHook1 = 0x8065BD40;
-	ItemAmountHook2 = 0x807BBFC4;
+	ItemAmountHook = 0x807BBFC4;
+	ItemAmountHook2 = 0x807BBFF0;
+	ItemAmountHook3 = 0x807BBE50;
 
 	/* Ultra UnCut */
 	CKPTCheck = 0x80534A98;

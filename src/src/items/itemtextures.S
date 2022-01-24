@@ -1,18 +1,14 @@
 .include "asm_setup.S"
 
-.extern ItemTexturesHook, OriginalTextures, DoubleShroom
-.global ItemTextures
+.extern OriginalTextures, DoubleShroom, ItemAmounts, AmountRandomizer, ItemHolder, ItemRouletteUpdate1Hook, ItemRouletteUpdate2Hook
+.global ItemTextures, ItemRouletteUpdate1, ItemRouletteUpdate2, ItemRouletteUpdate3, ItemRouletteUpdate4, ItemRouletteUpdate5, ItemRouletteUpdate6
 
 #####################
 # Item Texture Code #
 #####################
 
-# Check if we have the item
+# Load texture from the array
 ItemTextures:
-cmpwi r4, -1
-beq doOriginal
-
-# If so, load from the array
 lis r5, ItemTextureArray@h
 ori r5, r5, ItemTextureArray@l
 mulli r3, r3, 12
@@ -23,10 +19,147 @@ add r3, r3, r5
 lwz r3, 0(r3)
 blr
 
+###########################
+# Item Roulette Updater 1 #
+###########################
+
 # Original instruction
-doOriginal:
-cmpwi r3, 0x5
-b ItemTexturesHook+4
+ItemRouletteUpdate1:
+stw r3, 0x1C(r23)
+
+# Call randomizer
+li r4, 0xC
+bl AmountRandomizer
+
+# Get amount array
+lis r4, ItemAmounts@h
+ori r4, r4, ItemAmounts@l
+
+# Get player id
+lwz r5, 0(r23)
+lbz r5, 0x18(r5)
+add r4, r4, r5
+
+# Get previous item amount and copy it
+lbz r5, 0xC(r4)
+stb r5, 0(r4)
+
+# Store new item amount
+stb r3, 0xC(r4)
+b ItemRouletteUpdate1Hook+4
+
+###########################
+# Item Roulette Updater 2 #
+###########################
+
+# Original instruction
+ItemRouletteUpdate2:
+stw r3, 0x1C(r31)
+
+# Call randomizer
+li r4, 0xC
+bl AmountRandomizer
+
+# Get amount array
+lis r4, ItemAmounts@h
+ori r4, r4, ItemAmounts@l
+
+# Get player id
+lwz r5, 0(r31)
+lbz r5, 0x18(r5)
+add r4, r4, r5
+
+# Get previous item amount and copy it
+lbz r5, 0xC(r4)
+stb r5, 0(r4)
+
+# Store new item amount
+stb r3, 0xC(r4)
+b ItemRouletteUpdate2Hook+4
+
+##########################
+# Item Roulette Update 3 #
+##########################
+
+# Get player id
+ItemRouletteUpdate3:
+lbz r4, 0x18(r3)
+
+# Load randomized item amount
+lis r5, ItemAmounts@h
+ori r5, r5, ItemAmounts@l
+lbzx r4, r4, r5
+
+# Original instruction
+lwz r3, 0x6C(r3)
+blr
+
+##########################
+# Item Roulette Update 4 #
+##########################
+
+# Get player id
+ItemRouletteUpdate4:
+lbz r4, 0x18(r3)
+
+# Load randomized item amount
+lis r5, ItemAmounts@h
+ori r5, r5, ItemAmounts@l+0xC
+lbzx r4, r4, r5
+
+# Original instruction
+lwz r3, 0x70(r3)
+blr
+
+##########################
+# Item Roulette Update 5 #
+##########################
+
+# Get ItemHolderPlayer
+ItemRouletteUpdate5:
+lis r4, ItemHolder@ha
+lwz r4, ItemHolder@l(r4)
+lwz r4, 0x14(r4)
+add r4, r4, r29
+
+# Get player id
+lbz r4, 0x18(r4)
+
+# Get calculated item amount
+lis r5, ItemAmounts@h
+ori r5, r5, ItemAmounts@l+0xC
+lbzx r4, r4, r5
+blr
+
+##########################
+# Item Roulette Update 6 #
+##########################
+
+# Original instruction
+ItemRouletteUpdate6:
+stw r0, 0x1C(r3)
+
+# Call randomizer
+mr r3, r0
+li r4, 0xC
+bl AmountRandomizer
+
+# Get amount array
+lis r4, ItemAmounts@h
+ori r4, r4, ItemAmounts@l
+
+# Get player id
+lwz r6, 0(r31)
+lbz r6, 0x18(r6)
+add r4, r4, r6
+
+# Get previous item amount and copy it
+lbz r6, 0xC(r4)
+stb r6, 0(r4)
+
+# Store new amount
+stb r3, 0xC(r4)
+b ItemRouletteUpdate2Hook+0xF8
 
 ######################
 # Item Texture Array #

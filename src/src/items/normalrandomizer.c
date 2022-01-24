@@ -10,9 +10,37 @@ typedef struct {
     unsigned int shockTimer, blueTimer, blooperTimer, powTimer;
 } ItemSlotData;
 
+extern unsigned char ItemChances[2][19][2];
+extern unsigned char ItemAmounts[2][12];
+
 bool NewbieHelper(unsigned int pid);
 unsigned int CalcRandom();
 bool canItemBeGotten(unsigned int item);
+
+unsigned int AmountRandomizer(unsigned int item, unsigned int pid) {
+	bool newbie;
+
+	if (pid == 0xC)
+		newbie = false;
+	else
+		newbie = NewbieHelper(pid);
+
+    unsigned int rand = CalcRandom() % 100;
+    unsigned int amount = 1;
+	unsigned int doubleChance = ItemChances[newbie][item][0];
+	unsigned int tripleChance = ItemChances[newbie][item][1];
+
+	if (rand >= doubleChance) {
+		amount++;
+		if (rand >= tripleChance)
+			amount++;
+	}
+
+	if (pid != 0xC)
+		ItemAmounts[1][pid] = amount;
+
+	return amount;
+}
 
 unsigned int UltimateRandom(ItemSlotData *slot, unsigned int itemBoxSetting, unsigned int position, bool isHuman, bool unused, ItemHolderPlayer* player) {
 	bool newbie = NewbieHelper(player->pid);
@@ -24,16 +52,17 @@ unsigned int UltimateRandom(ItemSlotData *slot, unsigned int itemBoxSetting, uns
     }
 
 	while (true) {
-        unsigned int item = (CalcRandom() % modulo) % 16 + increment;
+        unsigned int item = ((CalcRandom() % modulo) % 16) + increment;
         if (item == 0x5)
             continue;
-		else if (!isHuman)
-            if (item == 0xC)
-                continue;
-		else if (newbie && item == 0xC)
+		else if (item == 0xC) {
+			if (!isHuman || newbie)
+				continue;
+		}
+		else if (item == 0x10)
 		    item = 4;
 
-		if (item == 0x7) {
+		else if (item == 0x7) {
             if (slot->blueTimer || (!isHuman && position == 1))
                 continue;
         }

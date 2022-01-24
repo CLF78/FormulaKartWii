@@ -10,7 +10,7 @@ SECTIONS {
 	TeamsOn = 0x800001B3;
 	VehicleRestrict = 0x800001B4;
 	EnableRampUpStuff = 0x800001CC;
-	ItemAmountArray = 0x800001D8;
+	ItemAmounts = 0x800001D8;
 	Version = 0x800001FC;
 	CurrentStrmChannels = 0x800001FD;
 	SubtractItemFix = 0x800001FE;

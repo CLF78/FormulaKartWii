@@ -315,6 +315,9 @@ SECTIONS {
 
 	/* Item Textures */
 	ItemTexturesHook = 0x80860AF0;
+	ItemRouletteUpdate1Hook = 0x807BA1F4;
+	ItemRouletteUpdate2Hook = 0x807BA434;
+	ItemRouletteUpdate5Hook = 0x807EF164;
 	OriginalTextures = 0x808AF7C0;
 	DoubleShroom = 0x808AF9A7;
 
@@ -430,9 +433,7 @@ SECTIONS {
 
 	/* Remove Mushroom Bug */
 	RemoveShroomBug = 0x807BA077;
-	RemoveFakeShroom = 0x807BA480;
-	RemoveFakeShroom2 = 0x807BA484;
-	RemoveFakeShroom3 = 0x807BA124;
+	RemoveFakeShroom = 0x807BA47C;
 
 	/* Remove WW Button */
 	NoWWButton = 0x8064B983;
@@ -492,8 +493,9 @@ SECTIONS {
 	/* Ultimate Item Randomizer */
 	SharedItemHook = 0x807BA160;
 	SpecialItemHook = 0x8079A0E8;
-	ItemAmountHook1 = 0x8065C6D4;
-	ItemAmountHook2 = 0x807BC958;
+	ItemAmountHook = 0x807BC958;
+	ItemAmountHook2 = 0x807BC984;
+	ItemAmountHook3 = 0x807BC7E4;
 
 	/* Ultra UnCut */
 	CKPTCheck = 0x80535118;

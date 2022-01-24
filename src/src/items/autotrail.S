@@ -12,7 +12,6 @@ cmpwi r28, 1
 beq onlinePlayer
 
 # Get item amount
-localPlayer:
 lwz r4, -0x24(r27)
 b itemChecks
 
@@ -24,9 +23,11 @@ lbz r4, 0x10(r27)
 slwi r4, r4, 3
 add r3, r3, r4
 
-# Get the data we need
-lbz r4, 0x17(r3)
-srwi r4, r4, 6
+# Get item amount from tail mode
+lbz r4, 0x14(r3)
+rlwinm r3, r4, 1, 30, 30
+rlwinm r4, r4, 0, 30, 31
+xor r4, r3, r4
 
 # Check for Greens/Reds/Bananas/FIBs
 itemChecks:
