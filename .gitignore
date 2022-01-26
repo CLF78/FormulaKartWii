@@ -1,7 +1,6 @@
 build/ISO/wit
 src/bin
 src/doc
-src/asm_setup.S
 files/Title/*.d
 files/Race/*.d
 files/Common/*.d

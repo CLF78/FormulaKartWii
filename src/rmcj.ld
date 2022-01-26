@@ -429,7 +429,7 @@ SECTIONS {
 
 	/* Remove Mushroom Bug */
 	RemoveShroomBug = 0x807B96E3;
-	RemoveFakeShroom = 0x807B9AE8;
+	RemoveFakeShroom = 0x807B9AF0;
 
 	/* Remove WW Button */
 	NoWWButton = 0x8064AFEF;

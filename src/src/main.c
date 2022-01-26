@@ -290,7 +290,7 @@ void loadCodes() {
 
 	// Remove Mushroom Bug (by Vega and CLF78)
 	directWrite8(RemoveShroomBug, 0);
-	directWrite16(RemoveFakeShroom, 0x4800);
+	directWriteBranch(RemoveFakeShroom, NoFakeShroom, true);
 
 	// Shells Never Break (by CLF78)
 	directWrite16(ShellHitCount, 0x4800);

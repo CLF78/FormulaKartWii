@@ -120,7 +120,7 @@ bne notFirstFrame
 li r8, 0
 
 # Check if player is hopping
-lwz r12, 0x4(r12)
+lwz r12, 0x4(r3)
 rlwinm. r12, r12, 0, 24, 24
 beq notPressingHopButton
 
