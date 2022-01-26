@@ -40,12 +40,22 @@ lwz r5, 0(r23)
 lbz r5, 0x18(r5)
 add r4, r4, r5
 
-# Get previous item amount and copy it
+# Get previous item amount
 lbz r5, 0xC(r4)
+
+# Failsafe
+cmpwi r5, 0
+bne store
+li r5, 1
+
+store:
 stb r5, 0(r4)
 
 # Store new item amount
 stb r3, 0xC(r4)
+
+# Restore clobbered condition register
+cmpwi r30, 0
 b ItemRouletteUpdate1Hook+4
 
 ###########################
@@ -139,26 +149,13 @@ blr
 ItemRouletteUpdate6:
 stw r0, 0x1C(r3)
 
-# Call randomizer
+# Call randomizer with player id
+lwz r4, 0(r3)
+lbz r4, 0x18(r4)
 mr r3, r0
-li r4, 0xC
 bl AmountRandomizer
 
-# Get amount array
-lis r4, ItemAmounts@h
-ori r4, r4, ItemAmounts@l
-
-# Get player id
-lwz r6, 0(r31)
-lbz r6, 0x18(r6)
-add r4, r4, r6
-
-# Get previous item amount and copy it
-lbz r6, 0xC(r4)
-stb r6, 0(r4)
-
-# Store new amount
-stb r3, 0xC(r4)
+# Our deed was done, return immediately
 b ItemRouletteUpdate2Hook+0xF8
 
 ######################

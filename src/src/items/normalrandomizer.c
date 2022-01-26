@@ -1,4 +1,5 @@
 #include "common.h"
+#include "racedata.h"
 
 typedef struct {
     unsigned char unk[0x18];
@@ -20,7 +21,7 @@ bool canItemBeGotten(unsigned int item);
 unsigned int AmountRandomizer(unsigned int item, unsigned int pid) {
 	bool newbie;
 
-	if (pid == 0xC)
+	if (pid == 0xC || Racedata->main.scenarios[0].players[pid].playerType != PLAYER_REAL_LOCAL)
 		newbie = false;
 	else
 		newbie = NewbieHelper(pid);
