@@ -37,8 +37,10 @@ unsigned int AmountRandomizer(unsigned int item, unsigned int pid) {
 			amount++;
 	}
 
-	if (pid != 0xC)
+	if (pid != 0xC) {
+		ItemAmounts[0][pid] = ItemAmounts[1][pid];
 		ItemAmounts[1][pid] = amount;
+	}
 
 	return amount;
 }
