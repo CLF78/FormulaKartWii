@@ -94,6 +94,7 @@ void loadCodes() {
 	directWriteBranch(CannonLandingFixHook, CannonLandingFix, true);
 	directWriteBranch(CannonSpeed, CannonSpeedMultiplier, false);
 	directWriteBranch(CannonSpeed2, CannonSpeedMultiplier2, true);
+	directWrite16(BulletBillPosition, tempVal16);
 
 	// Crazy Eight (by CLF78)
 	// directWrite32(CrazyEightEnableCircling, 0);

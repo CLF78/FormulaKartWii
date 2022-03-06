@@ -103,6 +103,7 @@ SECTIONS {
 	CannonLandingFixHook = 0x8057855C;
 	CannonSpeed = 0x805850C4;
 	CannonSpeed2 = 0x805850D0;
+	BulletBillPosition = 0x8059CCF8;
 
 	/* Change Characters Between Races */
 	ChangeCharsHook = 0x8062E058;
