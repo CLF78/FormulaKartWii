@@ -277,6 +277,7 @@ SECTIONS {
 
 	/* Glitch Prevention */
 	DisableWallrideHook = 0x8057C018;
+	TCGlitchFixHook = 0x807B096C;
 
 	/* Green Shell Speed Modifier */
 	GreenShellSpeed = 0x808A5DBC;

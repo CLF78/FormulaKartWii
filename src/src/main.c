@@ -171,6 +171,9 @@ void loadCodes() {
 	directWriteBranch(FastMusicHook2, PitchReset, true);
 	directWriteBranch(FastMusicHook3, PitchReset2, false);
 
+	// Fix TC Glitch (by CLF78)
+	directWriteBranch(TCGlitchFixHook, TCGlitchFix, false);
+
 	// Fix Wallriding (by CLF78)
 	directWriteBranch(DisableWallrideHook, DisableWallride, true);
 
