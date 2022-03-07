@@ -325,9 +325,15 @@ void loadCodes() {
 	directWrite16(LakituBoardHook, 0x4800);
 	directWriteBranchOffset(LakituBoardHook, 0x18, LakituBoard, true);
 
-	// Track Identifier (by CLF78)
+	// Track Identifier + Patch Loader (by CLF78)
 	directWriteBranch(TrackIdentifierHook, TrackIdentifier, false);
 	directWriteBranch(TrackIdentifierHook2, TrackIdentifier2, false);
+	directWriteBranch(ITPHHook, AltKMP1, true);
+	directWriteBranch(ITPTHook, AltKMP1, true);
+	directWriteBranch(CKPTHook, AltKMP1, true);
+	directWriteBranch(AREAHook, AltKMP1, true);
+	directWriteBranch(JGPTHook, AltKMP1, true);
+	directWriteBranch(CKPHHook, AltKMP2, true);
 
 	// Time Limit Modifier (by MrBean)
 	directWriteArray(TimeLimit, NewTimeLimit, 8);

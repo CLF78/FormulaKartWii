@@ -495,6 +495,12 @@ SECTIONS {
 	/* Track Identifier */
 	TrackIdentifierHook = 0x80513740;
 	TrackIdentifierHook2 = 0x80512168;
+	ITPHHook = 0x805135E4;
+	ITPTHook = 0x805134C4;
+	CKPTHook = 0x80513028;
+	AREAHook = 0x80512CE0;
+	JGPTHook = 0x80512AAC;
+	CKPHHook = 0x8051316C;
 
 	/* Ultimate Item Randomizer */
 	SharedItemHook = 0x807B97CC;
