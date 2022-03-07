@@ -1,8 +1,9 @@
 #include "common.h"
 #include "dvd.h"
+#include "kmpfile.h"
 #include "stdlib.h"
 
-extern void* AltKMP;
+extern KMPHeader* AltKMP;
 
 void TrackIdentifierLoad(u32 crc) {
 	char buffer[64];
@@ -20,7 +21,7 @@ void TrackIdentifierLoad(u32 crc) {
 		void* kmpData = new(handle.length);
 
 		// Store static instance
-		AltKMP = kmpData;
+		AltKMP = (KMPHeader*)kmpData;
 
 		// Read the file there
 		DVDReadPrio(&handle, kmpData, handle.length, 0, 2);
@@ -28,4 +29,17 @@ void TrackIdentifierLoad(u32 crc) {
 		// Close the file
 		DVDClose(&handle);
 	}
+}
+
+u32* GetAltKMPSection(u32* originalSection, u32 magic) {
+	if (AltKMP == 0)
+		return originalSection;
+
+	for (int i = 0; i < AltKMP->numSections; i++) {
+		u32* currSection = (u32*)((u32)AltKMP + AltKMP->headerLength + AltKMP->sectionOffsets[i]);
+		if (*currSection == magic)
+			return currSection;
+	}
+
+	return originalSection;
 }

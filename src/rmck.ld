@@ -4,6 +4,7 @@ SECTIONS {
 	DVDReadPrio = 0x8015E8AC;
 	DVDClose = 0x8015E5E0;
 	sprintf = 0x80011A94;
+	snprintf = 0x800119A0;
 	swprintf = 0x8001787C;
 	OSFatal = 0x801A5220;
 	CalcCRC32 = 0x801D1FFC;
@@ -490,6 +491,10 @@ SECTIONS {
 
 	/* Time Limit Modifier */
 	TimeLimit = 0x8052D410;
+
+	/* Track Identifier */
+	TrackIdentifierHook = 0x80501DE0;
+	TrackIdentifierHook2 = 0x80500808;
 
 	/* Ultimate Item Randomizer */
 	SharedItemHook = 0x807A8520;
