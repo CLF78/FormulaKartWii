@@ -6,6 +6,9 @@ SECTIONS {
 	sprintf = 0x80011A94;
 	swprintf = 0x8001787C;
 	OSFatal = 0x801A5220;
+	CalcCRC32 = 0x801D1FFC;
+	new = 0x8022A140;
+	delete = 0x8022A188;
 
 	/* Codehandler Hooks */
 	VIHook = 0x801BAE7C;

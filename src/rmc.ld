@@ -9,11 +9,11 @@ SECTIONS {
 	MirrorOn = 0x800001B2;
 	TeamsOn = 0x800001B3;
 	VehicleRestrict = 0x800001B4;
-	EnableRampUpStuff = 0x800001CC;
-	ItemAmounts = 0x800001D8;
-	Version = 0x800001FC;
-	CurrentStrmChannels = 0x800001FD;
-	SubtractItemFix = 0x800001FE;
+	ItemAmounts = 0x800001B8;
+	Version = 0x800001D0;
+	CurrentStrmChannels = 0x800001D1;
+	SubtractItemFix = 0x800001D2;
+	AltKMP = 0x800001D4;
 
 	/* Change Character Between Races */
 	ScenePtr = 0x80000EA0;

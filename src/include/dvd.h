@@ -26,3 +26,7 @@ struct DVDHandle {
 	int length;				// 34
 	void* callback;			// 38
 };
+
+bool DVDOpen(char* path, DVDHandle *handle);
+bool DVDClose(DVDHandle *handle);
+int DVDReadPrio(DVDHandle *handle, void *buffer, int length, int offset, int prio);

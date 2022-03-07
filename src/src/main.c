@@ -325,6 +325,10 @@ void loadCodes() {
 	directWrite16(LakituBoardHook, 0x4800);
 	directWriteBranchOffset(LakituBoardHook, 0x18, LakituBoard, true);
 
+	// Track Identifier (by CLF78)
+	directWriteBranch(TrackIdentifierHook, TrackIdentifier, false);
+	directWriteBranch(TrackIdentifierHook2, TrackIdentifier2, false);
+
 	// Time Limit Modifier (by MrBean)
 	directWriteArray(TimeLimit, NewTimeLimit, 8);
 

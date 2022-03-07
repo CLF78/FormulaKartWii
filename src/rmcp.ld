@@ -6,6 +6,9 @@ SECTIONS {
 	sprintf = 0x80011A2C;
 	swprintf = 0x80017814;
 	OSFatal = 0x801A4EC4;
+	CalcCRC32 = 0x801D1CA0;
+	new = 0x80229DCC;
+	delete = 0x80229E14;
 
 	/* Codehandler Hooks */
 	VIHook = 0x801BAB20;
@@ -488,6 +491,10 @@ SECTIONS {
 	/* Super Miniturbo Multiplier */
 	SMTMultiplier = 0x808B5CD0;
 	SMTMinimum = 0x808B5CC6;
+
+	/* Track Identifier */
+	TrackIdentifierHook = 0x80513DC0;
+	TrackIdentifierHook2 = 0x805127E8;
 
 	/* Time Limit Modifier */
 	TimeLimit = 0x8053F3B8;
