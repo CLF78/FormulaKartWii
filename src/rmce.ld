@@ -8,7 +8,7 @@ SECTIONS {
 	swprintf = 0x80016CB4;
 	OSFatal = 0x801A4E24;
 	CalcCRC32 = 0x801D1D00;
-	new = 0x80229A48;
+	new = 0x80229A54;
 	delete = 0x80229A90;
 
 	/* Codehandler Hooks */
@@ -106,7 +106,7 @@ SECTIONS {
 	CannonLandingFixHook = 0x80571CF8;
 	CannonSpeed = 0x8057E8A0;
 	CannonSpeed2 = 0x8057E8AC;
-	BulletBillPosition = 0x805B1CE0;
+	BulletBillPosition = 0x805B1CE4;
 
 	/* Change Characters Between Races */
 	ChangeCharsHook = 0x805FD1A4;

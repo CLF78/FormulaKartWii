@@ -18,7 +18,7 @@ void TrackIdentifierLoad(u32 crc) {
 	// Check if file exists
 	if (fileOpened) {
 		// If so, get its length and allocate it
-		void* kmpData = new(handle.length);
+		void* kmpData = new(handle.length, 32);
 
 		// Store static instance
 		AltKMP = (KMPHeader*)kmpData;

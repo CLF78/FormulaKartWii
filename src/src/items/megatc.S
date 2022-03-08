@@ -104,4 +104,4 @@ stw r7, 0xC(r6)
 
 # Resume function execution
 exitLoop2:
-b TCGlitchFix+4
+b TCGlitchFixHook+4
