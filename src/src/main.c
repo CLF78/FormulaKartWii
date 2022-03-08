@@ -274,6 +274,10 @@ void loadCodes() {
 	directWriteBranch(NoMultiChannelHook, NoMultiChannel, false);
 	directWriteBranch(NoMultiChannelHook2, NoMultiChannel2, true);
 
+	// Patch.szs (by CLF78)
+	directWrite8(SZSCount, 4);
+	directWriteBranch(PatchSZSHook, PatchSZS, false);
+
 	// Pause Menu Fix (by CLF78)
 	directWriteBranch(PauseMenuScreenHook, PauseMenuScreen, true);
 	directWriteBranch(PauseMenuScreenHook2, PauseMenuScreen, true);

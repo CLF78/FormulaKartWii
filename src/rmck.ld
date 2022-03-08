@@ -409,6 +409,12 @@ SECTIONS {
 	/* POW Yourself in 1st */
 	POWSelfHook = 0x807A01F0;
 
+	/* Patch.szs */
+	SZSCount = 0x805181AF;
+	PatchSZSHook = 0x805183B0;
+	FilenameEndings = 0x808A15F8;
+	DefaultFileEnding = 0x8087E200;
+
 	/* Pause Menu Fix */
 	PauseMenuScreenHook = 0x8061AA64;
 	PauseMenuScreenHook2 = 0x8061ABA8;
