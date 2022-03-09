@@ -355,6 +355,7 @@ SECTIONS {
 	MSGPatchHook = 0x805E6FEC;
 	MSGPatchHook2 = 0x80843808;
 	MSGPatchHook3 = 0x807E6F18;
+	TitleCTR = 0x80886EC9;
 
 	/* Mii Heads on Minimap */
 	MiiHeadsHook = 0x807D9520;
