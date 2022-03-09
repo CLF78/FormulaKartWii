@@ -5,7 +5,7 @@
 
 # Original instruction
 MSGPatch:
-addi r5, r1, 0x58
+addi r5, r1, 0x8
 
 # Get first character of BMG name
 lbz r4, 0x8(r5)
