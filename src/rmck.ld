@@ -352,13 +352,9 @@ SECTIONS {
 	MegaTCHook2 = 0x8079E17C;
 
 	/* Message Patch */
-	MSGPatchHook = 0x80508D50;
-	MSGPatchHook2 = 0x805E6FF7;
-	MSGPatchHook3 = 0x80843808;
-	MSGPatchHook4 = 0x807E6F18;
-	GetSceneHolderThing = 0x80509EF0;
-	LoadArchive = 0x8052E4A8;
-	AddFileToList = 0x80508A78;
+	MSGPatchHook = 0x805E6FEC;
+	MSGPatchHook2 = 0x80843808;
+	MSGPatchHook3 = 0x807E6F18;
 
 	/* Mii Heads on Minimap */
 	MiiHeadsHook = 0x807D9520;

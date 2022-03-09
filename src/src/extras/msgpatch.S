@@ -1,34 +1,46 @@
 .include "asm_setup.S"
 
-.extern GetSceneHolderThing, LoadArchive, AddFileToList, ArchiveRoot, MSGPatchHook, GameMode
-.global MSGPatch, MSGPatch3, MSGPatch4
+.extern GameMode
+.global MSGPatch, MSGPatch2, MSGPatch3
 
 # Original instruction
 MSGPatch:
-bctrl
+addi r5, r1, 0x58
 
-# Get SceneHolder thing
-bl GetSceneHolderThing
+# Get first character of BMG name
+lbz r4, 0x8(r5)
 
-# Load archive
-lwz r5, 0x18D8(r3)
-lis r3, ArchiveRoot@ha
-lwz r3, ArchiveRoot@l(r3)
-li r4, 0
-li r6, 0
-bl LoadArchive
+# Check for StaffRoll
+cmpwi r4, 'S'
+beq staffRollBmg
 
-# Add archive to linked list
-mr r4, r3
-mr r3, r31
-li r5, 0
-bl AddFileToList
+# Check for Menu
+cmpwi r4, 'M'
+beq menuBmg
 
-# Return
-b MSGPatchHook+4
+# Check for Race
+cmpwi r4, 'R'
+bnelr+
+
+# Race BMG
+li r4, 'L'
+stb r4, 0x8(r5)
+blr
+
+# Staffroll BMG
+staffRollBmg:
+li r4, 'e'
+stb r4, 0x10(r5)
+blr
+
+# Menu BMG
+menuBmg:
+li r4, 'a'
+stb r4, 0x9(r5)
+blr
 
 # Store BMG ID of Game Mode
-MSGPatch3:
+MSGPatch2:
 lis r5, GameMode@ha
 lbz r5, GameMode@l(r5)
 addi r5, r5, 1436
@@ -39,7 +51,7 @@ addi r5, r1, 0x58
 blr
 
 # Store BMG ID of Game Mode
-MSGPatch4:
+MSGPatch3:
 lis r5, GameMode@ha
 lbz r5, GameMode@l(r5)
 addi r5, r5, 1436
