@@ -160,4 +160,5 @@ def main():
 	for root in os.listdir(ogDir):
 		parseFile(root[:-2])
 
-main()
+if __name__ == '__main__':
+	main()

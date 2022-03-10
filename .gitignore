@@ -1,8 +1,8 @@
 build/ISO/wit
 src/bin
 src/doc
-files/Title/*.d
-files/Race/*.d
-files/Common/*.d
+files/Common/*.szs
 files/TrackPatches/*.kmp
 files/TrackPatches/og
+files/UIPatches/*.szs
+__pycache__/

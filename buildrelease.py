@@ -2,6 +2,12 @@ import os
 from subprocess import run
 from shutil import copy
 
+from files.Common.buildcommon import main as buildcommon
+from files.TrackPatches.buildtracks import main as buildtracks
+from files.UIPatches.buildui import main as buildui
+from src.make import main as buildsrc
+
+"""
 arcname = 'FKWii'
 isoname = '%s_ISO_Patcher.zip' % arcname
 isoname2 = isoname.replace('_', ' ')
@@ -37,3 +43,4 @@ try:
     print('Built all!')
 except:
     print('Build failed!')
+"""
