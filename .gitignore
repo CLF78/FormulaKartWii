@@ -1,4 +1,6 @@
+build/ISO/fkw
 build/ISO/wit
+build/Riivo/fkw
 src/bin
 src/doc
 files/Common/*.szs
