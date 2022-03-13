@@ -74,50 +74,41 @@ echo.
 echo Copying mod files...
 
 mkdir mkw.d\files\fkw
-copy /b fkw\code\FormulaKartWii%LETTER%.bin mkw.d\files\fkw >nul
-copy /b fkw\tracks\*.szs mkw.d\files\Race\Course >nul
-copy /b fkw\tracks\*_Dif.szs mkw.d\files\Race\Course\*_d_Dif.szs >nul
+mkdir mkw.d\files\Race\Course\Patches
+copy /y fkw\code\FormulaKartWii%LETTER%.bin mkw.d\files\fkw >nul
+copy /y fkw\tracks\*.kmp mkw.d\files\Race\Course\Patches >nul
+copy /y fkw\Patch.szs mkw.d\files\Scene\UI >nul
 
 IF %LETTER%==P (
-	copy /b fkw\Race_E.szs mkw.d\files\Scene\UI\Race_E.szs >nul
-	copy /b fkw\Race_F.szs mkw.d\files\Scene\UI\Race_F.szs >nul
-	copy /b fkw\Race_G.szs mkw.d\files\Scene\UI\Race_G.szs >nul
-	copy /b fkw\Race_I.szs mkw.d\files\Scene\UI\Race_I.szs >nul
-	copy /b fkw\Race_S.szs mkw.d\files\Scene\UI\Race_S.szs >nul
-	copy /b fkw\Title_E.szs mkw.d\files\Scene\UI\Title_E.szs >nul
-	copy /b fkw\Title_E.szs mkw.d\files\Scene\UI\Title_F.szs >nul
-	copy /b fkw\Title_E.szs mkw.d\files\Scene\UI\Title_G.szs >nul
-	copy /b fkw\Title_E.szs mkw.d\files\Scene\UI\Title_I.szs >nul
-	copy /b fkw\Title_E.szs mkw.d\files\Scene\UI\Title_S.szs >nul
-	copy /b fkw\Common_E.szs mkw.d\files\Race\Common_E.szs >nul
-	copy /b fkw\Common_F.szs mkw.d\files\Race\Common_F.szs >nul
-	copy /b fkw\Common_G.szs mkw.d\files\Race\Common_G.szs >nul
-	copy /b fkw\Common_I.szs mkw.d\files\Race\Common_I.szs >nul
-	copy /b fkw\Common_S.szs mkw.d\files\Race\Common_S.szs >nul
+	copy /y fkw\Patch_E.szs mkw.d\files\Scene\UI >nul
+	copy /y fkw\Patch_F.szs mkw.d\files\Scene\UI >nul
+	copy /y fkw\Patch_G.szs mkw.d\files\Scene\UI >nul
+	copy /y fkw\Patch_I.szs mkw.d\files\Scene\UI >nul
+	copy /y fkw\Patch_S.szs mkw.d\files\Scene\UI >nul
+	copy /y fkw\Common_E.szs mkw.d\files\Race >nul
+	copy /y fkw\Common_F.szs mkw.d\files\Race >nul
+	copy /y fkw\Common_G.szs mkw.d\files\Race >nul
+	copy /y fkw\Common_I.szs mkw.d\files\Race >nul
+	copy /y fkw\Common_S.szs mkw.d\files\Race >nul
 )
 
 IF %LETTER%==E (
-	copy /b fkw\Race_S.szs mkw.d\files\Scene\UI\Race_M.szs >nul
-	copy /b fkw\Race_F.szs mkw.d\files\Scene\UI\Race_Q.szs >nul
-	copy /b fkw\Race_E.szs mkw.d\files\Scene\UI\Race_U.szs >nul
-	copy /b fkw\Title_E.szs mkw.d\files\Scene\UI\Title_M.szs >nul
-	copy /b fkw\Title_E.szs mkw.d\files\Scene\UI\Title_Q.szs >nul
-	copy /b fkw\Title_E.szs mkw.d\files\Scene\UI\Title_U.szs >nul
-	copy /b fkw\Common_M.szs mkw.d\files\Race\Common_M.szs >nul
-	copy /b fkw\Common_Q.szs mkw.d\files\Race\Common_Q.szs >nul
-	copy /b fkw\Common_U.szs mkw.d\files\Race\Common_U.szs >nul
+	copy /y fkw\Patch_M.szs mkw.d\files\Scene\UI >nul
+	copy /y fkw\Patch_Q.szs mkw.d\files\Scene\UI >nul
+	copy /y fkw\Patch_U.szs mkw.d\files\Scene\UI >nul
+	copy /y fkw\Common_S.szs mkw.d\files\Race\Common_M.szs >nul
+	copy /y fkw\Common_F.szs mkw.d\files\Race\Common_Q.szs >nul
+	copy /y fkw\Common_E.szs mkw.d\files\Race\Common_U.szs >nul
 )
 
 IF %LETTER%==J (
-	copy /b fkw\Race_J.szs mkw.d\files\Scene\UI\Race_J.szs >nul
-	copy /b fkw\Title_J.szs mkw.d\files\Scene\UI\Title_J.szs >nul
-	copy /b fkw\Common_J.szs mkw.d\files\Race\Common_J.szs >nul
+	copy /y fkw\Patch_J.szs mkw.d\files\Scene\UI >nul
+	copy /y fkw\Common_J.szs mkw.d\files\Race >nul
 )
 
 IF %LETTER%==K (
-	copy /b fkw\Race_K.szs mkw.d\files\Scene\UI\Race_K.szs >nul
-	copy /b fkw\Title_K.szs mkw.d\files\Scene\UI\Title_K.szs >nul
-	copy /b fkw\Common_K.szs mkw.d\files\Race\Common_J.szs >nul
+	copy /y fkw\Patch_K.szs mkw.d\files\Scene\UI >nul
+	copy /y fkw\Common_J.szs mkw.d\files\Race\Common_J.szs >nul
 )
 
 echo.
@@ -159,14 +150,14 @@ echo.
 SET /P FRAMERATE=Force 30 FPS? (Y/N):
 IF /i %FRAMERATE%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400F=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400F=00 -q)
 
-wit\wit.exe dolpatch mkw.d/sys/main.dol 8000629C=4BFFDE64 load=80004010,fkw/Loader%LETTER%.bin -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 8000629C=4BFFDF54 load=80004010,fkw/Loader.bin -q
 
 echo.
 echo Format Selection:
 echo 1. WBFS
 echo 2. ISO
 echo 3. Extracted Filesystem (ADVANCED USERS ONLY)
-SET /P EXTINPUT=Enter the number corresponding to the format you want: 
+SET /P EXTINPUT=Enter the number corresponding to the format you want:
 
 IF %EXTINPUT%==1 (
 	SET FILEEXT=wbfs
