@@ -8,3 +8,4 @@ files/TrackPatches/*.kmp
 files/TrackPatches/og
 files/UIPatches/*.szs
 __pycache__/
+*.zip

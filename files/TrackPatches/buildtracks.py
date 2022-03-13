@@ -4,10 +4,10 @@ import zlib
 
 """
 HOW TO USE:
-- Extract the original track szs in the 'og' folder using wszst
-- Place the patched KMP file in the 'patches' folder, name it the same as the szs file
+- Extract the original track szs files in the 'og' folder using wszst
+- Place the patched KMP files in the 'patches' folder, name them the same as their corresponding szs file
 - Run this script
-- The patched KMP will be placed in the 'final' folder, and it will be automatically renamed
+- The patched KMPs will be placed in this folder, automatically renamed
 """
 
 ogDir = 'og'
