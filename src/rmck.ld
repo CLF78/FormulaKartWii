@@ -272,6 +272,8 @@ SECTIONS {
 	MessageButtons = 0x805CA587;
 	MessageButtons2Hook = 0x805C957C;
 	MessageButtons3Hook = 0x805C8F18;
+	RandomComboPickerHook = 0x805CC8F4;
+	GetWeightClass = 0x8080B0FC;
 
 	/* GeoHit Patches */
 	GeoHitTableItem = 0x808C6508;
