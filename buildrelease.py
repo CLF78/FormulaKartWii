@@ -88,6 +88,9 @@ def main():
 	shutil.move(os.path.join(riivoroot, 'fkw', 'Loader.bin'), riivoroot)
 	shutil.move(os.path.join(isoroot, 'code', 'Loader.bin'), isoroot)
 
+	# Add My Stuff folder to Riivo
+	os.mkdir(os.path.join(riivoroot, 'My Stuff'))
+
 	# Create zips
 	arcname = 'FKWii'
 	isoname = f'{arcname} ISO Patcher.zip'
