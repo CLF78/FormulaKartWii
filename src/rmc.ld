@@ -9,6 +9,7 @@ SECTIONS {
 	MirrorOn = 0x800001B2;
 	TeamsOn = 0x800001B3;
 	VehicleRestrict = 0x800001B4;
+	RandomCombos = 0x800001B5;
 	ItemAmounts = 0x800001B8;
 	Version = 0x800001D0;
 	CurrentStrmChannels = 0x800001D1;

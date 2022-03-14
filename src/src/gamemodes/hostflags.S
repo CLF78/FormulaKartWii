@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern GameMode, AlwaysWinVote, MirrorOn, TeamsOn, VehicleRestrict, HostFlagsHook
+.extern GameMode, AlwaysWinVote, MirrorOn, TeamsOn, VehicleRestrict, RandomCombos, HostFlagsHook
 .global HostFlags
 
 # Load 0x8000 in r5
@@ -60,7 +60,7 @@ rlwinm r12, r4, 24, 16, 31
 cmpwi r12, 1
 bgt continueSubCheck
 
-# Flag = MSG
+# Flag = !MSG
 xori r12, r12, 1
 stb r12, AlwaysWinVote@l(r5)
 b end
@@ -70,7 +70,7 @@ continueSubCheck:
 cmpwi r12, 3
 bgt continueSubCheck2
 
-# Flag = (MSG & 1)
+# Flag = !(MSG & 1)
 rlwinm r12, r12, 0, 31, 31
 xori r12, r12, 1
 stb r12, MirrorOn@l(r5)
@@ -81,7 +81,7 @@ continueSubCheck2:
 cmpwi r12, 5
 bgt continueSubCheck3
 
-# Flag = (MSG & 1)
+# Flag = !(MSG & 1)
 rlwinm r12, r12, 0, 31, 31
 xori r12, r12, 1
 stb r12, TeamsOn@l(r5)
@@ -90,11 +90,21 @@ b end
 # Store VehicleRestrict
 continueSubCheck3:
 cmpwi r12, 8
-bgt end
+bgt continueSubCheck4
 
 # Flag = (MSG - 6)
 subi r12, r12, 6
 stb r12, VehicleRestrict@l(r5)
+b end
+
+# Store Random Character/Vehicles
+continueSubCheck4:
+cmpwi r4, 10
+bgt end
+
+# Flag = (MSG & 1)
+rlwinm r12, r12, 0, 31, 31
+stb r12, RandomCombos@l(r5)
 
 # Original instruction
 end:
@@ -106,4 +116,5 @@ b HostFlagsHook+4
 ########
 
 shifts:
-.byte 23, 22, 21, 19
+.byte 23, 22, 21, 19, 18
+.align 4
