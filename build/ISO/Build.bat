@@ -78,6 +78,7 @@ mkdir mkw.d\files\Race\Course\Patches
 copy /y fkw\code\FormulaKartWii%LETTER%.bin mkw.d\files\fkw >nul
 copy /y fkw\tracks\*.kmp mkw.d\files\Race\Course\Patches >nul
 copy /y fkw\Patch.szs mkw.d\files\Scene\UI >nul
+copy /y fkw\drift_select.thp mkw.d\files\thp\button >nul
 
 IF %LETTER%==P (
 	copy /y fkw\Patch_E.szs mkw.d\files\Scene\UI >nul

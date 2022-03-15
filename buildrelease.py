@@ -29,7 +29,9 @@ def callBuildScript(fileSrc, destRiivo, destIso, buildFunc, fileExt, isSrc=False
 
 	# Cwd to the script's folder and call function
 	os.chdir(fileSrc)
-	buildFunc()
+
+	if buildFunc:
+		buildFunc()
 
 	# A bunch of hardcodes
 	if isSrc:
@@ -87,6 +89,13 @@ def main():
 	# Move the loader back
 	shutil.move(os.path.join(riivoroot, 'fkw', 'Loader.bin'), riivoroot)
 	shutil.move(os.path.join(isoroot, 'code', 'Loader.bin'), isoroot)
+
+	# Copy the thp
+	callBuildScript(os.path.join('files', 'thp'),
+		os.path.join(riivoroot, 'thp'),
+		isoroot,
+		None,
+		'thp')
 
 	# Add My Stuff folder to Riivo
 	os.mkdir(os.path.join(riivoroot, 'My Stuff'))
