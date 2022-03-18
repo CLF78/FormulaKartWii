@@ -79,6 +79,8 @@
 		<folder disc="/Scene/UI" external="/fkw/UI" create="true" />
 		<!--Track Patches -->
 		<folder disc="/Race/Course/Patches" external="/fkw/TrackPatches" create="true" />
+		<!-- THP -->
+		<file disc="/thp/button/drift_select.thp" external="/fkw/thp/drift_select.thp" />
 	</patch>
 	<patch id="mystuffctgp">
 		<folder external="/ctgpr/My Stuff" recursive="false" />

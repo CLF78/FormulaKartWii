@@ -76,7 +76,7 @@ xori r12, r12, 1
 stb r12, MirrorOn@l(r5)
 b end
 
-# Store AlwaysWinVote
+# Store TeamsOn
 continueSubCheck2:
 cmpwi r12, 5
 bgt continueSubCheck3
@@ -99,7 +99,7 @@ b end
 
 # Store Random Character/Vehicles
 continueSubCheck4:
-cmpwi r4, 10
+cmpwi r12, 10
 bgt end
 
 # Flag = (MSG & 1)
