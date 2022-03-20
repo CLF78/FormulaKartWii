@@ -8,8 +8,9 @@ SECTIONS {
 	swprintf = 0x80017738;
 	OSFatal = 0x801A4DE4;
 	CalcCRC32 = 0x801D1BC0;
-	new = 0x80229CF8;
+	new = 0x80229D00;
 	delete = 0x80229D34;
+	FindContainHeap = 0x80198578;
 
 	/* Codehandler Hooks */
 	VIHook = 0x801BAA40;

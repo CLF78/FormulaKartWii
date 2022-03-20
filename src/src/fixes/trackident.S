@@ -13,6 +13,7 @@ mulli r4, r27, 0x14
 bl CalcCRC32
 
 # Call C function
+mr r4, r29
 bl TrackIdentifierLoad
 
 # Return
