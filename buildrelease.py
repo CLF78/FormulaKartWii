@@ -91,11 +91,11 @@ def main():
 	shutil.move(os.path.join(isoroot, 'code', 'Loader.bin'), isoroot)
 
 	# Copy the thp
-	callBuildScript(os.path.join('files', 'thp'),
-		os.path.join(riivoroot, 'thp'),
-		isoroot,
-		None,
-		'thp')
+	thpfile = os.path.join('files', 'thp', 'drift_select.thp')
+	thpfolder = os.path.join(riivoroot, 'thp')
+	os.mkdir(thpfolder)
+	shutil.copy(thpfile, thpfolder)
+	shutil.copy(thpfile, isoroot)
 
 	# Add My Stuff folder to Riivo
 	os.mkdir(os.path.join(riivoroot, 'My Stuff'))

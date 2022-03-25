@@ -32,7 +32,7 @@ SECTIONS {
 	RKNetController = 0x809B0718;
 	RKNetItemHandler = 0x809B0738;
 	ItemHolder = 0x809B1C58;
-	ItemStructs = 0x80893E78;
+	ItemStructs = 0x809B1CF8;
 	ItemStructsEX = 0x809B1588;
 	ScreenHUD = 0x809B2CC0;
 
