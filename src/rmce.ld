@@ -7,7 +7,7 @@ SECTIONS {
 	snprintf = 0x80010DD8;
 	swprintf = 0x80016CB4;
 	OSFatal = 0x801A4E24;
-	CalcCRC32 = 0x801D1D00;
+	CalcCRC32 = 0x801D1C00;
 	new = 0x80229A5C;
 	delete = 0x80229A90;
 	FindContainHeap = 0x801985B8;
