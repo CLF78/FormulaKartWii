@@ -187,7 +187,7 @@ SECTIONS {
 	BombVisualSizeHook = 0x8079B650;
 	BombVisualSizeHook2 = 0x8079D0B0;
 	BombSizeHook2 = 0x8079B784;
-	BombSizeHook3 = 0x8079D670;
+	BombSizeHook3 = 0x8079C670;
 	BlueVisualSizeHook = 0x807A35BC;
 	BlueSizeHook2 = 0x807A36DC;
 	BlueExplosionFunc = 0x807A32B0;
