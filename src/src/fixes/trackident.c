@@ -6,7 +6,7 @@
 extern KMPHeader* AltKMP;
 u32 FindContainHeap(void* buffer); // incorrect signature, whatever
 
-void TrackIdentifierLoad(u32 crc, void* ogSection) {
+void TrackIdentifierLoad(u32 crc) {
     char buffer[64];
     DVDHandle handle;
 
@@ -19,7 +19,7 @@ void TrackIdentifierLoad(u32 crc, void* ogSection) {
     // Check if file exists
     if (fileOpened) {
         // If so, get its length and allocate it
-        void* kmpData = new(handle.length, (void*)(FindContainHeap(ogSection) - 0x38), 32);
+        void* kmpData = new(handle.length, 32);
 
         // If allocation failed, bail
         if (kmpData != 0) {
@@ -28,7 +28,7 @@ void TrackIdentifierLoad(u32 crc, void* ogSection) {
             AltKMP = (KMPHeader*)kmpData;
 
             // Read the file there
-            DVDReadPrio(&handle, kmpData, handle.length, 0, 2);
+            DVDReadPrio(&handle, kmpData, OSRoundUp32B(handle.length), 0, 2);
         }
 
         // Close the file

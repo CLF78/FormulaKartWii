@@ -25,6 +25,8 @@ typedef unsigned char u8;
 typedef float f32;
 typedef double f64;
 
+#define OSRoundUp32B(x) (((u32)(x) + 32 - 1) & ~(32 - 1))
+
 /* Base Functions */
 void flushAddr(void* addr);
 void _directWrite8(void* addr, u8 value);
