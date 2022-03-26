@@ -76,6 +76,7 @@
 		<file disc="/Race/Common_U.szs" external="/fkw/Common_X/Common_E.szs" />
 		<file disc="/Race/Common_Q.szs" external="/fkw/Common_X/Common_F.szs" />
 		<file disc="/Race/Common_M.szs" external="/fkw/Common_X/Common_S.szs" />
+		<file disc="/Race/Common_K.szs" external="/fkw/Common_X/Common_K.szs" create="true" />
 		<folder disc="/Scene/UI" external="/fkw/UI" create="true" />
 		<!--Track Patches -->
 		<folder disc="/Race/Course/Patches" external="/fkw/TrackPatches" create="true" />

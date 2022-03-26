@@ -414,6 +414,7 @@ SECTIONS {
 	PatchSZSHook = 0x805183B0;
 	FilenameEndings = 0x808A15F8;
 	DefaultFileEnding = 0x8087E200;
+	CommonFix = 0x8089074E;
 
 	/* Pause Menu Fix */
 	PauseMenuScreenHook = 0x8061AA64;

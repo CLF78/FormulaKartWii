@@ -1,7 +1,7 @@
 import os
 from subprocess import run
 
-regionlist = ['E', 'F', 'G', 'I', 'J', 'S']
+regionlist = ['E', 'F', 'G', 'I', 'J', 'K', 'S']
 extrafiles = ['cesso.brres', 'NeoHitTableItem.bin', 'NeoHitTableItemObj.bin']
 
 def main():

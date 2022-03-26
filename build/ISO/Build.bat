@@ -109,7 +109,7 @@ IF %LETTER%==J (
 
 IF %LETTER%==K (
 	copy /y fkw\Patch_K.szs mkw.d\files\Scene\UI >nul
-	copy /y fkw\Common_J.szs mkw.d\files\Race\Common_J.szs >nul
+	copy /y fkw\Common_K.szs mkw.d\files\Race\ >nul
 )
 
 echo.

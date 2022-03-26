@@ -278,6 +278,9 @@ void loadCodes() {
     // Patch.szs (by CLF78)
     directWrite8(SZSCount, 4);
     directWriteBranch(PatchSZSHook, PatchSZS, false);
+    #ifdef REGION_K
+    directWrite8(CommonFix, 'j');
+    #endif
 
     // Pause Menu Fix (by CLF78)
     directWriteBranch(PauseMenuScreenHook, PauseMenuScreen, true);
