@@ -468,7 +468,7 @@ SECTIONS {
 	TimerShow = 0x8064F8C0;
 
 	/* Show Times After Race */
-	ShowTimesVS = 0x8085BF78;
+	ShowTimesVS = 0x8085BF88;
 	ShowTimesWW = 0x8085CACC;
 	TimesFunc = 0x807F4FC8;
 	TimePrintHook = 0x807F508C;
@@ -495,7 +495,7 @@ SECTIONS {
 	SMTMinimum = 0x808B4E26;
 
 	/* Time Limit Modifier */
-	TimeLimit = 0x8053E724;
+	TimeLimit = 0x8053ED38;
 
 	/* Track Identifier */
 	TrackIdentifierHook = 0x80513740;
