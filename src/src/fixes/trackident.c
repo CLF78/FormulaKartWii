@@ -4,6 +4,7 @@
 #include "stdlib.h"
 
 extern KMPHeader* AltKMP;
+extern void* endOfFile;
 u32 FindContainHeap(void* buffer); // incorrect signature, whatever
 
 void TrackIdentifierLoad(u32 crc) {
@@ -18,18 +19,12 @@ void TrackIdentifierLoad(u32 crc) {
 
     // Check if file exists
     if (fileOpened) {
-        // If so, get its length and allocate it
-        void* kmpData = new(handle.length, 32);
 
-        // If allocation failed, bail
-        if (kmpData != 0) {
+		// Store static instance
+        AltKMP = (KMPHeader*)&endOfFile;
 
-            // Store static instance
-            AltKMP = (KMPHeader*)kmpData;
-
-            // Read the file there
-            DVDReadPrio(&handle, kmpData, OSRoundUp32B(handle.length), 0, 2);
-        }
+        // Read the file there
+        DVDReadPrio(&handle, &endOfFile, OSRoundUp32B(handle.length), 0, 2);
 
         // Close the file
         DVDClose(&handle);

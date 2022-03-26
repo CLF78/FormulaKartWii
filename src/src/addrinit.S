@@ -5,5 +5,11 @@
 # As this file will be the first in the compiled blob, it will point to the start function, which the bootstrap will load and then call
 FileHeader:
 .long loadCodes
+.long endOfFile
+
+.section .eof
+.global endOfFile
+.align 5
+endOfFile:
 
 .section .text
