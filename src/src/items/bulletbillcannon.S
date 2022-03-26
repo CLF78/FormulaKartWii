@@ -69,8 +69,8 @@ CannonLandingFix:
 lis r12, Raceinfo@ha
 lwz r12, Raceinfo@l(r12)
 lwz r12, 0x28(r12)
-cmpwi r12, 0
-bnelr+
+cmpwi cr7, r12, 0
+bnelr+ cr7
 
 # If so execute original instruction
 stfs f0, 0x2C(r30)
