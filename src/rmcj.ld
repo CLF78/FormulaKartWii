@@ -327,7 +327,7 @@ SECTIONS {
 	ItemTexturesHook = 0x8086015C;
 	ItemRouletteUpdate1Hook = 0x807B9860;
 	ItemRouletteUpdate2Hook = 0x807B9AA0;
-	ItemRouletteUpdate5Hook = 0x807EE7D0;
+	ItemRouletteUpdate3Hook = 0x807EEA48;
 	OriginalTextures = 0x808AE920;
 	DoubleShroom = 0x808AEB07;
 
@@ -517,8 +517,6 @@ SECTIONS {
 	SharedItemHook = 0x807B97CC;
 	SpecialItemHook = 0x80799754;
 	ItemAmountHook = 0x807BBFC4;
-	ItemAmountHook2 = 0x807BBFF0;
-	ItemAmountHook3 = 0x807BBE50;
 
 	/* Ultra UnCut */
 	CKPTCheck = 0x80534A98;

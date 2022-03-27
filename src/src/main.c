@@ -209,10 +209,9 @@ void loadCodes() {
     directWriteBranch(ItemTexturesHook, ItemTextures, false);
     directWriteBranch(ItemRouletteUpdate1Hook, ItemRouletteUpdate1, false);
     directWriteBranch(ItemRouletteUpdate2Hook, ItemRouletteUpdate2, false);
-    directWriteBranchOffset(ItemRouletteUpdate2Hook, 0xF4, ItemRouletteUpdate6, false);
-    directWriteBranch(ItemRouletteUpdate5Hook, ItemRouletteUpdate5, true);
-    directWriteBranchOffset(ItemRouletteUpdate5Hook, 0x278, ItemRouletteUpdate3, true);
-    directWriteBranchOffset(ItemRouletteUpdate5Hook, 0x2DC, ItemRouletteUpdate4, true);
+    directWriteBranchOffset(ItemRouletteUpdate2Hook, 0xF4, ItemRouletteUpdate5, false);
+    directWriteBranch(ItemRouletteUpdate3Hook, ItemRouletteUpdate3, true);
+    directWriteBranchOffset(ItemRouletteUpdate3Hook, 0x64, ItemRouletteUpdate4, true);
 
     // Lap Counter (by TheLordScruffy and CLF78)
     directWriteBranch(ColorFixHook, ColorFix, false);
@@ -352,8 +351,6 @@ void loadCodes() {
     // Ultimate Item Randomizer (by CLF78 and Ismy)
     directWriteBranch(SharedItemHook, UltimateRandom, true);
     directWriteBranch(ItemAmountHook, ItemAmount, false);
-    directWriteBranch(ItemAmountHook2, ItemAmount2, false);
-    directWriteBranch(ItemAmountHook3, ItemAmount3, false);
     directWriteBranch(SpecialItemHook, SpecialRandom, true);
     directWriteBranch(WoodProb, WoodboxPatch, true);
 

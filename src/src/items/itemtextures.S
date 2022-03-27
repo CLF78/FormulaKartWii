@@ -1,7 +1,7 @@
 .include "asm_setup.S"
 
-.extern OriginalTextures, DoubleShroom, ItemAmounts, AmountRandomizer, ItemHolder, ItemRouletteUpdate1Hook, ItemRouletteUpdate2Hook
-.global ItemTextures, ItemRouletteUpdate1, ItemRouletteUpdate2, ItemRouletteUpdate3, ItemRouletteUpdate4, ItemRouletteUpdate5, ItemRouletteUpdate6
+.extern OriginalTextures, DoubleShroom, ItemAmounts, AmountRandomizer, ItemRouletteUpdate1Hook, ItemRouletteUpdate2Hook
+.global ItemTextures, ItemRouletteUpdate1, ItemRouletteUpdate2, ItemRouletteUpdate3, ItemRouletteUpdate4, ItemRouletteUpdate5
 
 #####################
 # Item Texture Code #
@@ -12,28 +12,12 @@ ItemTextures:
 lis r5, ItemTextureArray@h
 ori r5, r5, ItemTextureArray@l
 subi r4, r4, 1
-
-# Debugging because it is very much needed
-cmplwi r4, 2
-bgt panic
-cmplwi r3, 0x12
-bgt panic
-
 slwi r4, r4, 2
 mulli r3, r3, 0xC
 add r3, r3, r4
 add r3, r3, r5
 lwz r3, 0(r3)
 blr
-
-# Debug panicker
-panic:
-mr r5, r3
-lis r3, PanicString@h
-ori r3, r3, PanicString@l
-addi r4, r4, 1
-mflr r6
-b OSReport
 
 ###########################
 # Item Roulette Updater 1 #
@@ -134,28 +118,8 @@ blr
 # Item Roulette Update 5 #
 ##########################
 
-# Get ItemHolderPlayer
-ItemRouletteUpdate5:
-lis r4, ItemHolder@ha
-lwz r4, ItemHolder@l(r4)
-lwz r4, 0x14(r4)
-add r4, r4, r29
-
-# Get player id
-lbz r4, 0x18(r4)
-
-# Get calculated item amount
-lis r5, ItemAmounts@h
-ori r5, r5, ItemAmounts@l+0xC
-lbzx r4, r4, r5
-blr
-
-##########################
-# Item Roulette Update 6 #
-##########################
-
 # Original instruction
-ItemRouletteUpdate6:
+ItemRouletteUpdate5:
 stw r0, 0x1C(r3)
 
 # Call randomizer with player id
@@ -342,8 +306,5 @@ TriplePOW:
 
 TripleBill:
 .string "t-bill"
-
-PanicString:
-.string "Invalid item found (amount: %d, item: %d, caller: %x). Crashing game..."
 
 .align 2
