@@ -495,6 +495,8 @@ void loadCodes() {
     directWriteBranchOffset(HybridDrift5Hook, 0x540, HybridDrift5, true);
     directWriteBranch(HybridDrift6Hook, HybridDrift6, true);
     directWrite8(HybridDrift7, 0x20);
+    directWrite16(WiiWheelFix, 0);
+    directWrite16(WiiWheelFix2, 0x4800);
 
     // Instant DC (by CLF78)
     directWriteBranch(InstantDCHook, InstantDC, true);

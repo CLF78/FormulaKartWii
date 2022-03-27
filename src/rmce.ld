@@ -303,6 +303,8 @@ SECTIONS {
 	HybridDrift5Hook = 0x80572568;
 	HybridDrift6Hook = 0x805778A4;
 	HybridDrift7 = 0x8058DCEA;
+	WiiWheelFix = 0x808C6202;
+	WiiWheelFix2 = 0x80735BE4;
 
 	/* Impervious TC */
 	ImperviousTCHook = 0x807D74FC;
