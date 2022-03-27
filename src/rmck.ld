@@ -506,7 +506,6 @@ SECTIONS {
 
 	/* Track Identifier */
 	TrackIdentifierHook = 0x80501DE0;
-	TrackIdentifierHook2 = 0x80500808;
 	ITPHHook = 0x80501C84;
 	ITPTHook = 0x80501B64;
 	CKPTHook = 0x805016C8;
