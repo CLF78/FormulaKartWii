@@ -274,6 +274,9 @@ SECTIONS {
 	MessageButtons3Hook = 0x805DA658;
 	RandomComboPickerHook = 0x805DE034;
 	GetWeightClass = 0x8081C3A8;
+	DriftMenuBackFixHook = 0x8084D7E0;
+	DriftMenuBackFix2Hook = 0x808BB1DC;
+	DriftMenuBackFix2Return = 0x8084DD64;
 
 	/* GeoHit Patches */
 	GeoHitTableItem = 0x808D71C0;
