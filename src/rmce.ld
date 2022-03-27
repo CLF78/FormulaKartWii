@@ -6,6 +6,7 @@ SECTIONS {
 	sprintf = 0x80010ECC;
 	snprintf = 0x80010DD8;
 	swprintf = 0x80016CB4;
+	OSReport = 0x801A2530;
 	OSFatal = 0x801A4E24;
 	CalcCRC32 = 0x801D1C00;
 	new = 0x80229A54;
