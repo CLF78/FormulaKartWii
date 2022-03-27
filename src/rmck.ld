@@ -469,7 +469,7 @@ SECTIONS {
 	TimerShow = 0x8063E56C;
 
 	/* Show Times After Race */
-	ShowTimesVS = 0x8084ACCC;
+	ShowTimesVS = 0x8084ACDC;
 	ShowTimesWW = 0x8084B820;
 	TimesFunc = 0x807E3D1C;
 	TimePrintHook = 0x807E3DE0;
