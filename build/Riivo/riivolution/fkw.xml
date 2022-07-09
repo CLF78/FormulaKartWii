@@ -69,7 +69,7 @@
 	<patch id="fkw">
 		<!--Load Code-->
 		<memory valuefile="/fkw/Loader.bin" offset="0x80004010"/>
-		<memory offset="0x8000629C" value="4BFFDF54"/>
+		<memory offset="0x8000629C" value="4BFFDF60"/>
 		<folder external="/fkw/fkw" disc="/fkw" create="true"/>
 		<!--File Replacements-->
 		<folder disc="/Race" external="/fkw/Common_X" />
