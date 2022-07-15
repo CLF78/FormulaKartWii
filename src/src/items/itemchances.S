@@ -42,7 +42,7 @@ ItemChances:
 .byte 85,95
 
 # Feather
-.byte 85,95
+.byte 34,67
 
 # POW
 .byte 95,99
