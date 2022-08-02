@@ -17,6 +17,20 @@ lfs f1, 0x184(r3)
 
 # Multiply
 fmuls f0, f1, f0
+
+# Load the left part of the control float in f1
+lis r5, 0x4040
+stw r5, 0x184(r3)
+lfs f1, 0x184(r3)
+
+# Compare f0 and f1
+fcmpo cr0, f0, f1
+blt end
+
+# If f0 is larger, then cap to f1
+fmr f0, f1
+
+end:
 blr
 
 ###########
