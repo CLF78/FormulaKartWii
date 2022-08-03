@@ -101,7 +101,7 @@ def main():
 	os.mkdir(os.path.join(riivoroot, 'My Stuff'))
 
 	# Create zips
-	arcname = 'FKWii'
+	arcname = 'FKW'
 	isoname = f'{arcname} ISO Patcher.zip'
 	isoname2 = isoname.replace(' ', '_')
 	run(['7z', 'a', '-mx=9', f'{arcname}.zip', './build/Riivo/*'])

@@ -129,13 +129,13 @@ SET /P NOCHARS=Disable Character Voices? (Y/N):
 IF /i %NOCHARS%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004003=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004003=00 -q)
 
 echo.
-SET /P BTGLITCH=Force Battle Glitch? (Y/N):
+SET /P BTGLITCH=Long Distance Names? (Y/N):
 IF /i %BTGLITCH%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004004=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004004=00 -q)
 
 echo.
 echo Enable Time Difference?:
 echo 0. No
-echo 1. Yes (distance to player in front)
+echo 1. Yes (distance to player ahead)
 echo 2. Yes (distance to player in 1st)
 SET /P TIMEDIFF=Enter the number corresponding to the option you want:
 

@@ -12,7 +12,7 @@
 					<patch id="fastmenu" />
 				</choice>
 			</option>
-			<option name="Force Battle Glitch">
+			<option name="Long Distance Names">
 				<choice name="Enabled">
 					<patch id="btglitch" />
 				</choice>
@@ -47,7 +47,7 @@
 				</choice>
 			</option>
 			<option name="Show Time Difference">
-				<choice name="Player In Front">
+				<choice name="Player Ahead">
 					<patch id="timediff1" />
 				</choice>
 				<choice name="Player In 1st">
