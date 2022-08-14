@@ -50,9 +50,9 @@ bdnz+ loop
 li r30, 0
 blr
 
-# Order = Green Shell, Red Shell, Banana, Mushroom, Star, Blue Shell, Lightning, Fake Box, Mega Mushroom, Bob-omb, Blooper, POW Block, Golden Mushroom, Bullet Bill, Thunder Cloud
+# Order = Green Shell, Red Shell, Banana, Mushroom, Star, Blue Shell, Lightning, Fake Item Box, Mega Mushroom, Bob-omb, Blooper, POW Block, Golden Mushroom, Bullet Bill, Thunder Cloud
 ItemLimitArray:
-.byte 20, 20, 27, 12, 7, 4, 1, 27, 7, 7, 7, 1, 7, 7, 4
+.byte 20, 20, 27, 12, 7, 7, 1, 27, 7, 7, 7, 1, 7, 7, 7
 .align 2
 
 # Same order as above
