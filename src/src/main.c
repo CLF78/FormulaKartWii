@@ -157,6 +157,10 @@ void loadCodes() {
     // Faster Score Increase (by CLF78)
     directWrite8(ScoreSkip, 1);
     directWriteBranch(NoTransition, NoTransitionASM, true);
+	
+	// Faster Cut Indicators (by Ismy and CLF78)
+	directWriteBranch(FCIHook1, FeatherCutIndicator, true);
+	directWrite32(FCIHook2, 0x80810028);
 
     // Feather Item (by CLF78 and stebler)
     extern void* FeatherFunc;

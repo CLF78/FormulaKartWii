@@ -206,6 +206,10 @@ SECTIONS {
 	/* Faster Score Increase */
 	ScoreSkip = 0x807F4E63;
 	NoTransition = 0x8085B60C;
+	
+	/* Feather Cut Indicators */
+	FCIHook1 = 0x8081F3F8;
+	FCIHook2 = 0x8081F418;
 
 	/* Feather Item */
 	FeatherUseFunc = 0x808A49F4;
