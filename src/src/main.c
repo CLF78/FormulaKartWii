@@ -24,13 +24,13 @@ void loadCodes() {
     directWriteStringOffset(WiimmfiURLs, 0xA8, "://naswii.wiimmfi.de/pr");
 
     #ifdef REGION_P
-    directWriteStringOffset(WiimmfiURLs, 0x4C, "://main.nas.wiimmfi.de/pp");
+    directWriteStringOffset(WiimmfiURLs, 0x50, "main.nas.wiimmfi.de/pp");
     #elif REGION_E
-    directWriteStringOffset(WiimmfiURLs, 0x4C, "://main.nas.wiimmfi.de/pe");
+    directWriteStringOffset(WiimmfiURLs, 0x50, "main.nas.wiimmfi.de/pe");
     #elif REGION_J
-    directWriteStringOffset(WiimmfiURLs, 0x4C, "://main.nas.wiimmfi.de/pj");
+    directWriteStringOffset(WiimmfiURLs, 0x50, "main.nas.wiimmfi.de/pj");
     #elif REGION_K
-    directWriteStringOffset(WiimmfiURLs, 0x4C, "://main.nas.wiimmfi.de/pk");
+    directWriteStringOffset(WiimmfiURLs, 0x50, "main.nas.wiimmfi.de/pk");
     #endif
 
     directWriteStringOffset(WiimmfiURLs, 0x964, "wiimmfi.de"); // Available
@@ -157,7 +157,7 @@ void loadCodes() {
     // Faster Score Increase (by CLF78)
     directWrite8(ScoreSkip, 1);
     directWriteBranch(NoTransition, NoTransitionASM, true);
-	
+
 	// Faster Cut Indicators (by Ismy and CLF78)
 	directWriteBranch(FCIHook1, FeatherCutIndicator, true);
 	directWrite32(FCIHook2, 0x80810028);
