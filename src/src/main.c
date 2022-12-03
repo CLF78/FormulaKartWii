@@ -338,6 +338,7 @@ void loadCodes() {
 
     // Track Identifier + Patch Loader (by CLF78)
     directWriteBranch(TrackIdentifierHook, TrackIdentifier, false);
+    directWriteBranch(TrackIdentifierDeleteHook, TrackIdentifierDelete, false);
     directWriteBranch(ITPHHook, AltKMP1, true);
     directWriteBranch(ITPTHook, AltKMP1, true);
     directWriteBranch(CKPTHook, AltKMP1, true);

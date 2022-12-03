@@ -206,7 +206,7 @@ SECTIONS {
 	/* Faster Score Increase */
 	ScoreSkip = 0x807F4E63;
 	NoTransition = 0x8085B60C;
-	
+
 	/* Feather Cut Indicators */
 	FCIHook1 = 0x8081F3F8;
 	FCIHook2 = 0x8081F418;
@@ -509,6 +509,7 @@ SECTIONS {
 
 	/* Track Identifier */
 	TrackIdentifierHook = 0x80513740;
+	TrackIdentifierDeleteHook = 0x805120E8;
 	ITPHHook = 0x805135E4;
 	ITPTHook = 0x805134C4;
 	CKPTHook = 0x80513028;

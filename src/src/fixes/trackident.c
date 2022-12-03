@@ -43,3 +43,7 @@ u32* GetAltKMPSection(u32* originalSection, u32 magic) {
 
     return originalSection;
 }
+
+void TrackIdentifierDelete() {
+    AltKMP = 0;
+}
