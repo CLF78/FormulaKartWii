@@ -158,7 +158,7 @@ void loadCodes() {
     directWrite8(ScoreSkip, 1);
     directWriteBranch(NoTransition, NoTransitionASM, true);
 
-	// Faster Cut Indicators (by Ismy and CLF78)
+	// Feather Cut Indicators (by Ismy and CLF78)
 	directWriteBranch(FCIHook1, FeatherCutIndicator, true);
 	directWrite32(FCIHook2, 0x80810028);
 
@@ -195,7 +195,7 @@ void loadCodes() {
     // Host Version Check (by CLF78 & Seeky)
     directWriteBranch(GuestSendHook, GuestSend, false);
     directWriteBranch(HostCheckHook, HostCheck, true);
-    directWrite8(Version, 6);
+    directWrite8(Version, 7);
 
     // Impervious TC (by CLF78)
     directWrite32(ImperviousTCHook, 0x48000038);
