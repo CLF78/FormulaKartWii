@@ -269,6 +269,13 @@ void loadCodes() {
     // No Bullet Bill Icon (by Anarion)
     directWriteBlr(NoBBIcon);
 
+    // No Disconnect (by Bully)
+    directWrite32(NoDC1, 0x38000000);
+    directWrite32(NoDC2, 0x38000000);
+    directWrite32(NoDC3, 0x38000000);
+    directWrite32(NoDC4, 0x38000000);
+    directWrite32(NoDC5, 0x38000000);
+
     // No Invincibility Frames (by CLF78)
     directWriteBranch(NoInvFramesHook, NoInvFrames, true);
     directWrite8(NoRespawnInv, 0x20);
