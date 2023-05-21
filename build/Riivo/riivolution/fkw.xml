@@ -59,11 +59,6 @@
 					<patch id="speedo" />
 				</choice>
 			</option>
-			<option name="Feather Cut Indicators">
-				<choice name="Enabled">
-					<patch id="indics" />
-				</choice>
-			</option>
 			<option name="30 FPS (Dolphin ONLY)">
 				<choice name="Enabled">
 					<patch id="thirtyfps" />
@@ -128,9 +123,6 @@
 	</patch>
 	<patch id="speedo">
 		<memory offset="0x80004006" value="01"/>
-	</patch>
-	<patch id="indics">
-		<memory offset="0x80004007" value="01"/>
 	</patch>
 	<patch id="thirtyfps">
 		<memory offset="0x8000400F" value="01"/>

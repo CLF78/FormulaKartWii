@@ -157,6 +157,9 @@ SECTIONS {
 
 	/* DC Bug Fix */
 	DCFix = 0x8052D70C;
+	
+	/* DC Prevention from laggy players */
+	DCPrevention = 0x80643A04;
 
 	/* Disable Item Poof */
 	NoItemPoof = 0x80784980;
@@ -386,6 +389,13 @@ SECTIONS {
 
 	/* No Character Voices */
 	NoCharVoiceHook = 0x807045B0;
+	
+	/* No Disconnect */
+	NoDC1 = 0x8050F42C;
+	NoDC2 = 0x8052CCEC;
+	NoDC3 = 0x8052CFC4;
+	NoDC4 = 0x8052D10C;
+	NoDC5 = 0x8052D17C;
 
 	/* No Invincibility Frames */
 	NoInvFramesHook = 0x805557EC;

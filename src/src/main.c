@@ -115,6 +115,9 @@ void loadCodes() {
     // DC Bug Fix (by Seeky and CLF78)
     directWrite32(DCFix, 0x4800003C);
 
+    // DC Prevention from laggy players (by Kevin)
+    // directWriteNop(DCPrevention);
+
     // Default Drift Type Modifier (by CLF78)
     directWrite32(DefaultDriftType, 0x38600001);
 
@@ -158,9 +161,9 @@ void loadCodes() {
     directWrite8(ScoreSkip, 1);
     directWriteBranch(NoTransition, NoTransitionASM, true);
 
-	// Feather Cut Indicators (by Ismy and CLF78)
-	directWriteBranch(FCIHook1, FeatherCutIndicator, true);
-	directWrite32(FCIHook2, 0x80810028);
+    // Feather Cut Indicators (by Ismy and CLF78)
+    directWriteBranch(FCIHook1, FeatherCutIndicator, true);
+    directWrite32(FCIHook2, 0x80810028);
 
     // Feather Item (by CLF78 and stebler)
     extern void* FeatherFunc;

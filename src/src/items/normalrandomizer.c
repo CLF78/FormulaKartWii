@@ -46,37 +46,71 @@ u32 AmountRandomizer(u32 item, u32 pid) {
 }
 
 u32 UltimateRandom(ItemSlotData *slot, u32 itemBoxSetting, u32 position, bool isHuman, bool unused, ItemHolderPlayer* player) {
-    bool newbie = NewbieHelper(player->pid);
-    u32 modulo = 20;
-    u32 increment = 0;
-    if (newbie && isHuman) {
-        modulo = 10;
-        increment = 7;
+
+    // Get Newbie Helper
+    bool isNewbie = NewbieHelper(player->pid);
+    bool isValid = false;
+    u32 regularOptions = 19;
+    u32 newbieOptions = 9;
+
+    // Set default item as the Mushroom
+    u32 item = 0x04;
+
+    // Until an invalid item isn't determined, randomise new ones
+    while (!isValid) {
+
+        // Check if Newbie Helper is enabled (CPUs aren't supposed to get better items)
+        if (isNewbie && isHuman) {
+
+            // For lapped players, the pool is of 9 items from 0x07 to 0x0F excluding 0x0C and including 0x04
+            item = (CalcRandom() % newbieOptions) + 7;
+
+            // If the item is 0x0C, substitute it back with 0x04
+            if (item == 0x0C)
+                item == 0x04;
+        }
+        else {
+            // For regular players, the pool is of 15 items from 0x00 to 0x0F, with the items from 0x00 to 0x03 repeated once and excluding 0x05
+            item = CalcRandom() % regularOptions;
+
+            // If the item is 0x05 or over, shift it up by 1
+            if (item >= 0x05 && item <= 0x0E)
+                item += 1;
+
+            // If the item is over 0x0F, make it repeat the items from 0x00 to 0x03 by shifting them down by 15
+            else if (item >= 0x0F)
+                item -= 15;
+        }
+
+        // Once we have found our item, check if it is available
+        // Reroll the item if it's a blue shell for a CPU in first place
+        if (item == 0x07 && !isHuman && position == 1) continue;
+
+        // Reroll the item if it's a feather for a CPU
+        if (item == 0x0C && !isHuman) continue;
+
+        // Reroll the item if it's a POW block for a CPU in first place
+        if (item == 0x0D && !isHuman && position == 1) continue;
+
+        // Reroll the item if it's a blue shell and the cooldown is still running
+        if (item == 0x07 && slot->blueTimer) continue;
+
+        // Reroll the item if it's a shock and the cooldown is still running
+        if (item == 0x08 && slot->shockTimer) continue;
+
+        // Reroll the item if it's a POW block and the cooldown is still running
+        if (item == 0x0D && slot->powTimer) continue;
+
+        // Reroll the item if it's a shock and the item is held by another player
+        if (item == 0x08 && !canItemBeGotten(item)) continue;
+
+        // Reroll the item if it's a POW block and the item is held by another player
+        if (item == 0x0D && !canItemBeGotten(item)) continue;
+
+        // If all the checks passed, then the item is legit!
+        isValid = true;
     }
 
-    while (true) {
-        u32 item = ((CalcRandom() % modulo) % 16) + increment;
-        if (item == 0x5)
-            continue;
-        else if (item == 0xC) {
-            if (!isHuman || newbie)
-                continue;
-        }
-        else if (item == 0x10)
-            item = 4;
+    return item;
 
-        else if (item == 0x7) {
-            if (slot->blueTimer || (!isHuman && position == 1))
-                continue;
-        }
-        else if (item == 0x8) {
-            if (slot->shockTimer || !canItemBeGotten(item))
-                continue;
-        }
-        else if (item == 0xD) {
-            if (slot->powTimer || !canItemBeGotten(item) || (!isHuman && position == 1))
-                continue;
-        }
-        return item;
-    }
 }
