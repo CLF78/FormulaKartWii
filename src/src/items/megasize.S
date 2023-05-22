@@ -19,7 +19,7 @@ lfs f1, 0x184(r3)
 fmuls f0, f1, f0
 
 # Load the left part of the control float in f1
-lis r5, 0x4040
+lis r5, 0x4020
 stw r5, 0x184(r3)
 lfs f1, 0x184(r3)
 

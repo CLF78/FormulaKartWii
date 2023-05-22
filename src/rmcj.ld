@@ -301,8 +301,9 @@ SECTIONS {
 
 	/* Host Version Check */
 	GuestSendHook = 0x800DBC58;
-	HostCheckHook = 0x800DC3BC;
+	HostCheckHook = 0x800DC3B8;
 	DWCiCheckResvCommand = 0x800DE5D8;
+	Original30 = 0x802769F0;
 
 	/* Hybrid Drift */
 	HybridDrift1 = 0x805943E0;

@@ -197,8 +197,8 @@ void loadCodes() {
 
     // Host Version Check (by CLF78 & Seeky)
     directWriteBranch(GuestSendHook, GuestSend, false);
-    directWriteBranch(HostCheckHook, HostCheck, true);
-    directWrite8(Version, 7);
+    directWriteBranch(HostCheckHook, HostCheck, false);
+    directWrite8(Version, 8);
 
     // Impervious TC (by CLF78)
     directWrite32(ImperviousTCHook, 0x48000038);
