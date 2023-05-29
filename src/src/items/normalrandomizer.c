@@ -67,7 +67,7 @@ u32 UltimateRandom(ItemSlotData *slot, u32 itemBoxSetting, u32 position, bool is
 
             // If the item is 0x0C, substitute it back with 0x04
             if (item == 0x0C)
-                item == 0x04;
+                item = 0x04;
         }
         else {
             // For regular players, the pool is of 15 items from 0x00 to 0x0F, with the items from 0x00 to 0x03 repeated once and excluding 0x05

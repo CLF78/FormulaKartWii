@@ -76,8 +76,8 @@ ItemChances:
 # FIB (UNUSED)
 .byte -1,-1
 
-# Mushroom
-.byte 34,67
+# Mushroom (TRIPLE ONLY)
+.byte 0,0
 
 # Salty Six (TRIPLE ONLY)
 .byte 0,0
