@@ -95,6 +95,9 @@ void loadCodes() {
     directWriteBranch(CannonSpeed, CannonSpeedMultiplier, false);
     directWriteBranch(CannonSpeed2, CannonSpeedMultiplier2, true);
     directWrite16(BulletBillPosition, tempVal16);
+	
+	// Conditional Out of Bounds (by Riidefi)
+	directWriteBranch(ConditionalOutofBoundsHook, ConditionalOutofBounds, true);
 
     // Crazy Eight (by CLF78)
     // directWrite32(CrazyEightEnableCircling, 0);
@@ -497,7 +500,7 @@ void loadCodes() {
     // Don't Lose VR When Disconnecting (by Bully)
     directWriteNop(NoVRLoss);
 
-    // Hybrid Drift (by Ismy)
+    // Hybrid Drift (by Ismy and CLF78)
     directWriteNop(HybridDrift1);
     directWriteBranchOffset(HybridDrift1, 0x48, HybridDrift2, true);
     directWriteBranch(HybridDrift3Hook, HybridDrift3, true);
@@ -507,7 +510,8 @@ void loadCodes() {
     directWriteBranchOffset(HybridDrift5Hook, 0x540, HybridDrift5, true);
     directWriteBranch(HybridDrift6Hook, HybridDrift6, true);
     directWrite8(HybridDrift7, 0x20);
-    directWrite16(WiiWheelFix, 0);
+	directWrite32(HybridDrift8, 0x38600000);
+	directWrite16(WiiWheelFix, 0);
     directWrite16(WiiWheelFix2, 0x4800);
 
     // Instant DC (by CLF78)

@@ -24,6 +24,7 @@ SECTIONS {
 	SystemManager = 0x80374020;
 	Racedata = 0x809ABD68;
 	Raceinfo = 0x809ABD70;
+	KMPdata = 0x809ABD28;
 	ArchiveRoot = 0x809ABD78;
 	PlayerHolder = 0x809AFF38;
 	KartParam = 0x809AFF58;
@@ -116,6 +117,9 @@ SECTIONS {
 	PushButton_Vtable = 0x808A5C30;
 	ChangeCharsHook2 = 0x80611220;
 	ChangeCharsHook3 = 0x8061C4C8;
+	
+	/* Conditional Out of Bounds */
+	ConditionalOutofBoundsHook = 0x8055F8CC;
 
 	/* Crazy Eight */
 	CrazyEightEnableCircling = 0x80893DD0;
@@ -313,6 +317,7 @@ SECTIONS {
 	HybridDrift5Hook = 0x80566E24;
 	HybridDrift6Hook = 0x8056C160;
 	HybridDrift7 = 0x80582566;
+	HybridDrift8 = 0x80591614;
 	WiiWheelFix = 0x808B9BA2;
 	WiiWheelFix2 = 0x80733E70;
 
