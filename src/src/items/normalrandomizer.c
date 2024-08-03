@@ -41,7 +41,10 @@ u32 AmountRandomizer(u32 item, u32 pid) {
         ItemAmounts[0][pid] = ItemAmounts[1][pid];
         ItemAmounts[1][pid] = amount;
     }
-
+	
+	// If it's a CPU getting a blue shell, set its quantity to 1
+	if (Racedata->main.scenarios[0].players[pid].playerType != PLAYER_REAL_LOCAL && item == 0x07) amount = 1;
+	
     return amount;
 }
 

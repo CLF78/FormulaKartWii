@@ -33,4 +33,15 @@
 
 # 0x800017B0-0x800017FF
 
+# 0x80004000-0x8000400F (Riivo Settings Range)
+- 0x80004000 = Fast Menu Navigation
+- 0x80004001 = Mii Heads on the Minimap
+- 0x80004002 = No Music
+- 0x80004003 = No Character Sounds
+- 0x80004004 = Long Distance Names
+- 0x80004005 = Time Difference
+- 0x80004006 = Speedometer
+- 0x80004007 = Gradually Faster Music
+- 0x8000400F = 30FPS
+
 # Other ranges

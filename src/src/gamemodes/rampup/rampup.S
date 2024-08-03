@@ -55,7 +55,7 @@ bne+ end
 # Run bl trick if so
 bl trick
 
-.float 0.01
+.float 0.0102040816
 .float 220.0
 
 # Load floats in f1 and f4

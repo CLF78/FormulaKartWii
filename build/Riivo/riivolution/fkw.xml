@@ -59,6 +59,11 @@
 					<patch id="speedo" />
 				</choice>
 			</option>
+			<option name="Gradually Faster Music">
+				<choice name="Enabled">
+					<patch id="gradmusic" />
+				</choice>
+			</option>
 			<option name="30 FPS (Dolphin ONLY)">
 				<choice name="Enabled">
 					<patch id="thirtyfps" />
@@ -123,6 +128,9 @@
 	</patch>
 	<patch id="speedo">
 		<memory offset="0x80004006" value="01"/>
+	</patch>
+	<patch id="gradmusic">
+		<memory offset="0x80004007" value="01"/>
 	</patch>
 	<patch id="thirtyfps">
 		<memory offset="0x8000400F" value="01"/>
