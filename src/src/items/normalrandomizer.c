@@ -61,7 +61,10 @@ u32 UltimateRandom(ItemSlotData *slot, u32 itemBoxSetting, u32 position, bool is
 
     // Until an invalid item isn't determined, randomise new ones
     while (!isValid) {
-
+		
+        // Assume the item is valid
+        isValid = true;
+		
         // Check if Newbie Helper is enabled (CPUs aren't supposed to get better items)
         if (isNewbie && isHuman) {
 
@@ -86,32 +89,33 @@ u32 UltimateRandom(ItemSlotData *slot, u32 itemBoxSetting, u32 position, bool is
         }
 
         // Once we have found our item, check if it is available
-        // Reroll the item if it's a blue shell for a CPU in first place
-        if (item == 0x07 && !isHuman && position == 1) continue;
+        
+		// Reroll the item if it's a blue shell for a CPU in first place
+        if (item == 0x07 && !isHuman && position == 1) isValid = false;
 
         // Reroll the item if it's a feather for a CPU
-        if (item == 0x0C && !isHuman) continue;
+        if (item == 0x0C && !isHuman) isValid = false;
 
         // Reroll the item if it's a POW block for a CPU in first place
-        if (item == 0x0D && !isHuman && position == 1) continue;
+        if (item == 0x0D && !isHuman && position == 1) isValid = false;
 
         // Reroll the item if it's a blue shell and the cooldown is still running
-        if (item == 0x07 && slot->blueTimer) continue;
+        if (item == 0x07 && slot->blueTimer) isValid = false;
 
         // Reroll the item if it's a shock and the cooldown is still running
-        if (item == 0x08 && slot->shockTimer) continue;
+        if (item == 0x08 && slot->shockTimer) isValid = false;
 
         // Reroll the item if it's a POW block and the cooldown is still running
-        if (item == 0x0D && slot->powTimer) continue;
+        if (item == 0x0D && slot->powTimer) isValid = false;
 
         // Reroll the item if it's a shock and the item is held by another player
-        if (item == 0x08 && !canItemBeGotten(item)) continue;
+        if (item == 0x08 && !canItemBeGotten(item)) isValid = false;
 
         // Reroll the item if it's a POW block and the item is held by another player
-        if (item == 0x0D && !canItemBeGotten(item)) continue;
+        if (item == 0x0D && !canItemBeGotten(item)) isValid = false;
 
         // If all the checks passed, then the item is legit!
-        isValid = true;
+        
     }
 
     return item;

@@ -2,19 +2,32 @@
 
 .global FeatherCutIndicator
 
-# Get ID and check if it's our ID
+# Set visible by default
 FeatherCutIndicator:
-lhz r3, 0x88(r30)
-xori r3, r3, 0x2f0
-cntlzw r3, r3
-srwi r3, r3, 5
+li r3, 1
 
-# Get the setting value and determine if we show or not
+# Load FCI flag and check if it's enabled
 lis r12, 0x8000
-lbz r12, 0x4007(r12)
-and r3, r3, r12
-xori r3, r3, 1
+lbz r12, 0x400E(r12)
+cmpwi r12, 1
+bne end
+
+# Otherwise, check IDs and disable if they match
+lhz r3, 0x88(r30)
+cmpwi r3, 0x2f0
+beq+ disabled
+cmpwi r3, 0x2de
+beq+ disabled
+cmpwi r3, 0xda
+beq+ disabled
+li r3, 1
+b end
+
+# Load from Common if an ID needs it
+disabled:
+li r3, 0
 
 # Store in the stack for next call
+end:
 stw r3, 0x28(r1)
 blr
