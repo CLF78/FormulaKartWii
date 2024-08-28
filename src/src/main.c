@@ -202,7 +202,7 @@ void loadCodes() {
     directWriteBranch(GuestSendHook, GuestSend, false);
     directWriteBranch(HostCheckHook, HostCheck, false);
     directWriteBranch(HostCheckHelperHook, HostCheckHelper, true);
-    directWrite8(Version, 8);
+    directWrite8(Version, 9);
 
     // Impervious TC (by CLF78)
     directWrite32(ImperviousTCHook, 0x48000038);
@@ -275,7 +275,7 @@ void loadCodes() {
 
     // No Disconnect (by Bully)
     directWrite32(NoDC1, 0x38000000);
-    directWrite32(NoDC2, 0x38000000);
+    // directWrite32(NoDC2, 0x38000000); Causes the end of race timer to not countdown
     directWrite32(NoDC3, 0x38000000);
     directWrite32(NoDC4, 0x38000000);
     directWrite32(NoDC5, 0x38000000);

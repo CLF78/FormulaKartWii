@@ -7,6 +7,19 @@
 					<patch id="fkw" />
 				</choice>
 			</option>
+			<option name="Custom Transmission (Bikes)">
+				<choice name="Inside Drift">
+					<patch id="transbikesinside" />
+				</choice>
+				<choice name="Outside Drift">
+					<patch id="transbikesoutside" />
+				</choice>
+			</option>
+			<option name="Custom Transmission (Karts)">
+				<choice name="Inside Drift">
+					<patch id="transkarts" />
+				</choice>
+			</option>
 			<option name="Feather Cut Indicators (Addon)">
 				<choice name="Enabled">
 					<patch id="myfcis" />
@@ -15,6 +28,16 @@
 			<option name="Faster Menu Navigation">
 				<choice name="Enabled">
 					<patch id="fastmenu" />
+				</choice>
+			</option>
+			<option name="Force 30 FPS">
+				<choice name="Enabled">
+					<patch id="thirtyfps" />
+				</choice>
+			</option>
+			<option name="Gradually Faster Music">
+				<choice name="Enabled">
+					<patch id="gradmusic" />
 				</choice>
 			</option>
 			<option name="Long Distance Names">
@@ -62,16 +85,6 @@
 			<option name="Speedometer">
 				<choice name="Enabled">
 					<patch id="speedo" />
-				</choice>
-			</option>
-			<option name="Gradually Faster Music">
-				<choice name="Enabled">
-					<patch id="gradmusic" />
-				</choice>
-			</option>
-			<option name="30 FPS (Dolphin ONLY)">
-				<choice name="Enabled">
-					<patch id="thirtyfps" />
 				</choice>
 			</option>
 		</section>
@@ -141,6 +154,15 @@
 	</patch>
 	<patch id="gradmusic">
 		<memory offset="0x80004007" value="01"/>
+	</patch>
+	<patch id="transbikesinside">
+		<memory offset="0x80004008" value="02"/>
+	</patch>
+	<patch id="transbikesoutside">
+		<memory offset="0x80004008" value="01"/>
+	</patch>
+	<patch id="transkarts">
+		<memory offset="0x80004009" value="01"/>
 	</patch>
 	<patch id="thirtyfps">
 		<memory offset="0x8000400F" value="01"/>

@@ -42,6 +42,8 @@
 - 0x80004005 = Time Difference
 - 0x80004006 = Speedometer
 - 0x80004007 = Gradually Faster Music
+- 0x80004008 = Transmission Bikes
+- 0x80004009 = Transmission Karts
 - 0x8000400E = Feather Cut Indicators
 - 0x8000400F = 30FPS
 

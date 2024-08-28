@@ -7,8 +7,8 @@ FeatherCutIndicator:
 li r3, 1
 
 # Load FCI flag and check if it's enabled
-lis r12, 0x8000
-lbz r12, 0x400E(r12)
+lis r12, FCIs@ha
+lbz r12, FCIs@l(r12)
 cmpwi r12, 1
 bne end
 

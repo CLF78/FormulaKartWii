@@ -47,3 +47,4 @@ subi      r0, r4, 0x1
 or.       r3, r0, r3
 
 end:
+blr

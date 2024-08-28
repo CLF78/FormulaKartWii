@@ -19,7 +19,7 @@ void RandomComboPickerC(Menudata98* mdata) {
         bool isBike;
 
         // Get if kart or bike
-        if (VehicleRestrict > 0)
+        if (VehicleRestrict == 1 || VehicleRestrict == 2)
             isBike = VehicleRestrict - 1;
         else
             isBike = CalcRandom() & 1;
