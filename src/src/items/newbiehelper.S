@@ -1,7 +1,7 @@
 .include "asm_setup.S"
 
-.extern Raceinfo, OurFloats, RespawnHelperHook, RespawnHelperHook2, RespawnHelperHook3
-.global NewbieHelper, RespawnHelper, RespawnHelper2, RespawnHelper3
+.extern Raceinfo, OurFloats, RespawnHelperHook, RespawnHelperHook2, RespawnHelperHook3, InstaDraftHook
+.global NewbieHelper, RespawnHelper, RespawnHelper2, RespawnHelper3, InstaDraft
 
 # Load Raceinfo
 NewbieHelper:
@@ -110,3 +110,37 @@ li r0, 1
 # Return
 end3:
 b RespawnHelperHook3+4
+
+#################
+# Instant Draft #
+#################
+
+# Original Instruction
+InstaDraft:
+lha r0, 0x0290 (r30)
+
+# Backup r3
+mr r7, r3
+
+# Get playerId
+or r3, r29, r29
+lwz r3, 0 (r3)
+lwz r3, 0 (r3)
+lbz r3, 0x10 (r3)
+rlwinm r28, r3, 0, 0x18, 0x1f
+
+# Call Newbie Helper
+bl NewbieHelper
+
+# Restore r3
+mr r3, r7
+
+# Use cr0+gt from Newbie Helper ASM
+ble+ end4
+
+# Force to 0
+li r0, 0
+
+# Return
+end4:
+b InstaDraftHook+4

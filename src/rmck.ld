@@ -390,6 +390,7 @@ SECTIONS {
 	RespawnHelperHook = 0x80561E80;
 	RespawnHelperHook2 = 0x80567C78;
 	RespawnHelperHook3 = 0x8056FD54;
+	InstaDraftHook = 0x80575338;
 
 	/* No Bullet Bill Icon */
 	NoBBIcon = 0x807A8990;

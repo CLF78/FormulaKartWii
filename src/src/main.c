@@ -269,6 +269,7 @@ void loadCodes() {
     directWriteBranch(RespawnHelperHook, RespawnHelper, false);
     directWriteBranch(RespawnHelperHook2, RespawnHelper2, false);
     directWriteBranch(RespawnHelperHook3, RespawnHelper3, false);
+	directWriteBranch(InstaDraftHook, InstaDraft, false);
 
     // No Bullet Bill Icon (by Anarion)
     directWriteBlr(NoBBIcon);
