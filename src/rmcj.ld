@@ -102,6 +102,10 @@ SECTIONS {
 	/* Bomb Lag Fix */
 	NoFakeBomb = 0x80572010;
 	NoDmgChange = 0x805698E8;
+	
+	/* Bullet Bill Exhaust Animation Fix */
+	BillAnimationFixHook = 0x8059B308;
+	EffectPointer = 0x809C1230;
 
 	/* Bullet Bill Speed Modifier */
 	BulletBillSpeed = 0x808B4B58;
@@ -391,6 +395,9 @@ SECTIONS {
 	RespawnHelperHook2 = 0x805795A0;
 	RespawnHelperHook3 = 0x8058167C;
 	InstaDraftHook = 0x80586C60;
+	
+	/* No Bullet Bill Cancel When Touching Bottom of Rainbow Road */
+	NoBillCancelRR = 0x8059B7B0;
 
 	/* No Bullet Bill Icon */
 	NoBBIcon = 0x807B9C3C;

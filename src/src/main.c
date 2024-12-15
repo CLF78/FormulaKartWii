@@ -88,6 +88,9 @@ void loadCodes() {
     directWrite8(LapNumberCTR, 'f');
     directWrite8(ItemWindowCTR, 's');
     //directWrite8(MapCharaCTR, 'f');
+	
+	// Bullet Bill Exhaust Fire Animation Fix (by stealthsteeler)
+	directWriteBranch(BillAnimationFixHook, BillAnimationFix, true);
 
     // Bullet Bill Speed Modifier (by davidevgen, CLF78 and Ismy)
     directWrite16(BulletBillSpeed, 0x435C);
@@ -270,9 +273,12 @@ void loadCodes() {
     directWriteBranch(RespawnHelperHook, RespawnHelper, false);
     directWriteBranch(RespawnHelperHook2, RespawnHelper2, false);
     directWriteBranch(RespawnHelperHook3, RespawnHelper3, false);
-    // Instant Draft (by stealth steeler, Ismy)
+    // Instant Draft (by stealthsteeler and Ismy)
     directWriteBranch(InstaDraftHook, InstaDraft, false);
-
+	
+	// No Bullet Bill Cancel When Touching Bottom of Rainbow Road (by Ro)
+	directWriteNop(NoBillCancelRR)
+	
     // No Bullet Bill Icon (by Anarion)
     directWriteBlr(NoBBIcon);
 
