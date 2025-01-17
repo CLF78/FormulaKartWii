@@ -167,7 +167,7 @@ void loadCodes() {
     directWrite8(ScoreSkip, 1);
     directWriteBranch(NoTransition, NoTransitionASM, true);
 
-    // Feather Cut Indicators (by Ismy and CLF78)
+    // Feather Cut Indicators (by CLF78 and Ismy)
     directWriteBranch(FCIHook1, FeatherCutIndicator, true);
     directWrite32(FCIHook2, 0x80810028);
 
@@ -180,7 +180,7 @@ void loadCodes() {
     directWrite8(FeatherFilename, 'c');
     directWriteBranch(FeatherInvisWallHook, FeatherInvisWall, true);
 
-    // Final Lap Music Trigger Modifier (by CLF78)
+    // Gradually Faster Music (by CLF78 and Ismy)
     directWriteBranch(FastMusicHook, FinalLapCheck, true);
     directWriteBranch(FastMusicHook2, PitchReset, true);
     directWriteBranch(FastMusicHook3, PitchReset2, false);
@@ -273,7 +273,7 @@ void loadCodes() {
     directWriteBranch(RespawnHelperHook, RespawnHelper, false);
     directWriteBranch(RespawnHelperHook2, RespawnHelper2, false);
     directWriteBranch(RespawnHelperHook3, RespawnHelper3, false);
-    // Instant Draft (by stealthsteeler and Ismy)
+    // Instant Draft (by stealthsteeler, Ismy and Volderbeek)
     directWriteBranch(InstaDraftHook, InstaDraft, false);
 	
 	// No Bullet Bill Cancel When Touching Bottom of Rainbow Road (by Ro)
