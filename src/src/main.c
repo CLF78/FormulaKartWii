@@ -10,8 +10,10 @@ void loadCodes() {
 
     // Exception Handler (by Star)
     directWrite32(ShowExceptions, 0);
-
-    // Wiimmfi Code Patches (by Leseratte)
+	
+	// WiiLink patch in fkw.xml by Palapeli
+	/*
+    // Wiimmfi Code Patches (by Leseratte) [Obsolete]
     directWriteNop(WiimmfiPatch1);
     directWrite32(WiimmfiPatch2, 0x3BC00000);
     directWriteBranch(WiimmfiPatch3, WiimmfiASM1, false);
@@ -42,9 +44,10 @@ void loadCodes() {
     directWriteStringOffset(WiimmfiURLs, 0x38DF, "wiimmfi.de");
     directWriteStringOffset(WiimmfiURLs, 0x3A2F, "wiimmfi.de"); // MS
     directWriteStringOffset(WiimmfiURLs, 0x3AB3, "wiimmfi.de"); // SAKE
-
+	
     // Wiimmfi Login Region Changer (by Atlas)
     directWriteString(LoginRegion, "120045");
+	*/
 
     // VS Matchmaking Region Patch (by Leseratte)
     directWrite32(VSRegion, 0x38A04E4D);
