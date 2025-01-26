@@ -25,6 +25,12 @@ typedef unsigned char u8;
 typedef float f32;
 typedef double f64;
 
+typedef struct 
+{
+    f32 x;
+    f32 y;
+} Vec2;
+
 #define OSRoundUp32B(x) (((u32)(x) + 32 - 1) & ~(32 - 1))
 
 /* Base Functions */

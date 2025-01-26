@@ -276,9 +276,14 @@ void loadCodes() {
     directWriteBranch(RespawnHelperHook, RespawnHelper, false);
     directWriteBranch(RespawnHelperHook2, RespawnHelper2, false);
     directWriteBranch(RespawnHelperHook3, RespawnHelper3, false);
+
     // Instant Draft (by stealthsteeler, Ismy and Volderbeek)
     directWriteBranch(InstaDraftHook, InstaDraft, false);
-	
+
+    // KCPMap (by stealthsteeler)
+    directWriteBranch(KCPMapHook, KCPMap, false);
+    directWriteBranch(KCPMapHook1, KCPMap1, false);
+    
 	// No Bullet Bill Cancel When Touching Bottom of Rainbow Road (by Ro)
 	directWriteNop(NoBillCancelRR)
 	

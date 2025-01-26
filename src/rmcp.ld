@@ -210,6 +210,18 @@ SECTIONS {
 	/* Fast POW */
 	NoPOWDelay = 0x807B1DCC;
 
+	/* KCP Map */
+	KCPMapHook = 0x807ea450;
+	KCPMapHook1 = 0x807ea6e4;
+	CtrlRace2dMapObject_vt = 0x808d3900;
+	LayoutUIControl_construct = 0x8063d798;
+	UIControl_insertChild = 0x8063d278;
+	ControlLoader_load = 0x805c2c60;
+	s_game_image = 0x808a9477;
+	s_map_start_line = 0x808a9482;
+	s_start_line = 0x808a9491;
+	mkw_atan2 = 0x8001bbe4;
+
 	/* Faster Menu Navigation */
 	FasterMenuHook = 0x8038900C;
 	FasterMenuHook2 = 0x80896830;
