@@ -65,11 +65,11 @@ def main():
 		'szs')
 
 	# Build track patches
-	#callBuildScript(os.path.join('files', 'TrackPatches'),
-		#os.path.join(riivoroot, 'TrackPatches'),
-		#os.path.join(isoroot, 'tracks'),
-		#buildtracks,
-		#'kmp')
+	callBuildScript(os.path.join('files', 'TrackPatches'),
+		os.path.join(riivoroot, 'TrackPatches'),
+		os.path.join(isoroot, 'tracks'),
+		buildtracks,
+		'kmp')
 
 	# Build ui patches
 	callBuildScript(os.path.join('files', 'UIPatches'),
