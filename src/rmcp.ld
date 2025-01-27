@@ -211,7 +211,7 @@ SECTIONS {
 	NoPOWDelay = 0x807B1DCC;
 
 	/* KCP Map */
-	KCPMapHook = 0x807ea450;
+	KCPMapHook = 0x807ea4e0;
 	KCPMapHook1 = 0x807ea6e4;
 	CtrlRace2dMapObject_vt = 0x808d3900;
 	LayoutUIControl_construct = 0x8063d798;

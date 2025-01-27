@@ -39,7 +39,7 @@ u32 GetNKCPs() {
 u32 InsertKCPs(void* MapCtrl, u32 prevChildIndex, CtrlLoader* ctrlLoader){
     for(u32 i = 0; i < KMPdata->mpCheckPoint->count; i++){
         MapdataCheckPoint* checkpoint = KMPdata->mpCheckPoint->entries[i];
-        if(checkpoint->mpData->type != 0xff && checkpoint->mpData->type != 0x0){
+        if(checkpoint->mpData->type != 0xff){
             prevChildIndex++;
 
             MapObject* kcp = new(0x1b4,0x4);
