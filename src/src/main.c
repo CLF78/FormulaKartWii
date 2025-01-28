@@ -12,8 +12,8 @@ void loadCodes() {
     directWrite32(ShowExceptions, 0);
 	
 	// WiiLink patch in fkw.xml by Palapeli
-	/*
-    // Wiimmfi Code Patches (by Leseratte) [Obsolete]
+	
+    // Wiimmfi Code Patches (by Leseratte)
     directWriteNop(WiimmfiPatch1);
     directWrite32(WiimmfiPatch2, 0x3BC00000);
     directWriteBranch(WiimmfiPatch3, WiimmfiASM1, false);
@@ -47,7 +47,6 @@ void loadCodes() {
 	
     // Wiimmfi Login Region Changer (by Atlas)
     directWriteString(LoginRegion, "120045");
-	*/
 
     // VS Matchmaking Region Patch (by Leseratte)
     directWrite32(VSRegion, 0x38A04E4D);

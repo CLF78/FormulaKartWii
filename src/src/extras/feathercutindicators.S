@@ -20,6 +20,10 @@ cmpwi r3, 0x2de
 beq+ disabled
 cmpwi r3, 0x2c1
 beq+ disabled
+cmpwi r3, 0x173
+beq+ disabled
+cmpwi r3, 0x174
+beq+ disabled
 cmpwi r3, 0xda
 beq+ disabled
 li r3, 1
