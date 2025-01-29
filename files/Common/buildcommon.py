@@ -2,7 +2,7 @@ import os
 from subprocess import run
 
 regionlist = ['E', 'F', 'G', 'I', 'J', 'K', 'S']
-extrafiles = ['castleballoon1.brres', 'cesso.brres', 'M_obj_start.brres', 'Mstand.brres', 'NeoHitTableItem.bin', 'NeoHitTableItemObj.bin', 'volfall.brres']
+extrafiles = ['castleballoon1.brres', 'cesso.brres', 'M_obj_start.brres', 'Mstand.brres', 'NeoHitTableItem.bin', 'NeoHitTableItemObj.bin', 'volfall.brres', 'v_stand1.brres', 'v_stand2.brres']
 
 def main():
 	for region in regionlist:
