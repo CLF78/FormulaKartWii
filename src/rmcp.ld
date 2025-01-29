@@ -214,6 +214,7 @@ SECTIONS {
 	KCPMapHook = 0x807ea4e0;
 	KCPMapHook1 = 0x807ea6e4;
 	CtrlRace2dMapObject_vt = 0x808d3900;
+	CtrlRace2dMapObject_initSelf = 0x807eac2c;
 	LayoutUIControl_construct = 0x8063d798;
 	UIControl_insertChild = 0x8063d278;
 	ControlLoader_load = 0x805c2c60;
