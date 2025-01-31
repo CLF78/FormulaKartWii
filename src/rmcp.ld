@@ -222,6 +222,8 @@ SECTIONS {
 	s_map_start_line = 0x808a9482;
 	s_start_line = 0x808a9491;
 	mkw_atan2 = 0x8001bbe4;
+	killmefunction = 0x807e08e4;
+	killmepointer = 0x809c3f58;
 
 	/* Faster Menu Navigation */
 	FasterMenuHook = 0x8038900C;

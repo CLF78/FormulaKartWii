@@ -46,10 +46,12 @@ typedef struct{
 
 extern CourseMap* KMPdata;
 extern void* CtrlRace2dMapObject_vt;
+extern void* killmepointer;
 extern void* LayoutUIControl_construct(void* control);
 extern void UIControl_insertChild(void* control, u32 index, void* child);
 extern void ControlLoader_load(CtrlLoader* ControlLoader, char* dirname, char* filename, char* variantname, char** animations);
 extern void CtrlRace2dMapObject_initSelf(MapObject *object);
+extern void killmefunction(void* somepointer, Vec3* realpos, Vec2* mappos);
 extern f32 mkw_atan2(f32 x, f32 y);
 extern char s_game_image; 
 extern char s_map_start_line;
@@ -95,7 +97,28 @@ u32 InsertKCPs(void* MapCtrl, u32 prevChildIndex, CtrlLoader* ctrlLoader){
 
             CtrlRace2dMapObject_initSelf(kcp); //normally it does this automatically later but I have to do it now if I want to modify the scale
 
-            kcp->pane->base.width = fsqrt((checkpoint->mpData->p0.x - checkpoint->mpData->p1.x)*(checkpoint->mpData->p0.x - checkpoint->mpData->p1.x) + (checkpoint->mpData->p0.y - checkpoint->mpData->p1.y)*(checkpoint->mpData->p0.y - checkpoint->mpData->p1.y)) / 4000;
+            Vec3 p0real; 
+            p0real.x = checkpoint->mpData->p0.x;
+            p0real.y = 0;
+            p0real.z = checkpoint->mpData->p0.y;
+
+            Vec3 p1real; 
+            p1real.x = checkpoint->mpData->p1.x;
+            p1real.y = 0;
+            p1real.z = checkpoint->mpData->p1.y;
+
+            Vec2 p0map;
+            killmefunction(killmepointer, &p0real, &p0map);
+            p0map.x = 220 * (p0map.x - 0.5);
+            p0map.y = 220 * (p0map.y - 0.5);
+
+            Vec2 p1map;
+            killmefunction(killmepointer, &p1real, &p1map);
+            p1map.x = 220 * (p1map.x - 0.5);
+            p1map.y = 220 * (p1map.y - 0.5);
+
+            float scaledlength = sqrt_ap((p0map.x - p1map.x)*(p0map.x - p1map.x) + (p0map.y - p1map.y)*(p0map.y - p1map.y));
+            kcp->pane->base.width = scaledlength;
 
         }
     }
