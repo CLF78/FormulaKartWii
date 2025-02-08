@@ -3,6 +3,7 @@
 #include "stdlib.h"
 
 typedef struct{
+    void* vtable;
     u8 unk[0x28];
     Vec3 translation;
     Vec3 rotation;
@@ -17,24 +18,11 @@ typedef struct{
     char name[17]; // Created by retype action
     char userInfo[9];
     u8 unk3[0x2];
-} Pane_base;
-
-typedef struct{
-    void* vtable;
-    Pane_base base;
 } Pane;
 
-typedef struct {
-    Vec3 tranlate;
-    Vec2 scale;
-    u8 opacity;
-    u8 padding[0x3];
-} Element;
-
 typedef struct{
     void* vtable;
-    Element elements[4];
-    u8 unk[0x134];
+    u8 unk[0x194];
     Pane *pane;
     Vec3 position;
     Vec3 rotation;
@@ -118,7 +106,7 @@ u32 InsertKCPs(void* MapCtrl, u32 prevChildIndex, CtrlLoader* ctrlLoader){
             p1map.y = 220 * (p1map.y - 0.5);
 
             float scaledlength = sqrt_ap((p0map.x - p1map.x)*(p0map.x - p1map.x) + (p0map.y - p1map.y)*(p0map.y - p1map.y));
-            kcp->pane->base.width = scaledlength;
+            kcp->pane->width = scaledlength;
 
         }
     }
