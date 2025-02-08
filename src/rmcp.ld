@@ -37,6 +37,17 @@ SECTIONS {
 	ItemStructsEX = 0x809C2F48;
 	ScreenHUD = 0x809C4680;
 
+	/* Math Functions */
+	cos = 0x8001b590;
+	sin = 0x8001ba98;
+	tan = 0x8001bb64;
+	atan = 0x80085250;
+	atan2 = 0x800853c0;
+	acos = 0x8001bbdc;
+	pow = 0x8001bbf0;
+	sqrt = 0x8001bbf4;
+	rd_atan2 = 0x8001bbe4;
+
 	PlayerGetControllerHolder = 0x805903F4;
 	getPlayerById = 0x80590100;
 	getPlayerPosition = 0x8059020C;
@@ -221,9 +232,8 @@ SECTIONS {
 	s_game_image = 0x808a9477;
 	s_map_start_line = 0x808a9482;
 	s_start_line = 0x808a9491;
-	mkw_atan2 = 0x8001bbe4;
-	killmefunction = 0x807e08e4;
-	killmepointer = 0x809c3f58;
+	TranslateCoordinates = 0x807e08e4;
+	Map2DRenderer = 0x809c3f58;
 
 	/* Faster Menu Navigation */
 	FasterMenuHook = 0x8038900C;

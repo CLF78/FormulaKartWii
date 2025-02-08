@@ -1,6 +1,7 @@
 #include "common.h"
 #include "coursemap.h"
 #include "stdlib.h"
+#include "math.h"
 
 typedef struct{
     void* vtable;
@@ -34,13 +35,12 @@ typedef struct{
 
 extern CourseMap* KMPdata;
 extern void* CtrlRace2dMapObject_vt;
-extern void* killmepointer;
+extern void* Map2DRenderer;
 extern void* LayoutUIControl_construct(void* control);
 extern void UIControl_insertChild(void* control, u32 index, void* child);
 extern void ControlLoader_load(CtrlLoader* ControlLoader, char* dirname, char* filename, char* variantname, char** animations);
 extern void CtrlRace2dMapObject_initSelf(MapObject *object);
-extern void killmefunction(void* somepointer, Vec3* realpos, Vec2* mappos);
-extern f32 mkw_atan2(f32 x, f32 y);
+extern void TranslateCoordinates(void* somepointer, Vec3* realpos, Vec2* mappos);
 extern char s_game_image; 
 extern char s_map_start_line;
 extern char s_start_line; 
@@ -53,14 +53,6 @@ u32 GetNKCPs() {
         }
     }
     return count;
-}
-
-f32 sqrt_ap(f32 a){
-    f32 ig = a;
-    for (int i = 0; i < 10; i++) {
-        ig = 0.5 * (ig + a / ig);
-    }
-    return ig; 
 }
 
 u32 InsertKCPs(void* MapCtrl, u32 prevChildIndex, CtrlLoader* ctrlLoader){
@@ -81,7 +73,7 @@ u32 InsertKCPs(void* MapCtrl, u32 prevChildIndex, CtrlLoader* ctrlLoader){
             kcp->position.x = checkpoint->mMidpoint.x; 
             kcp->position.z = checkpoint->mMidpoint.y; //accept the way of life
 
-            kcp->rotation.y = mkw_atan2(checkpoint->mDir.x, checkpoint->mDir.y) * 57.2958;
+            kcp->rotation.y = rd_atan2(checkpoint->mDir.x, checkpoint->mDir.y) * 57.2958;
 
             CtrlRace2dMapObject_initSelf(kcp); //normally it does this automatically later but I have to do it now if I want to modify the scale
 
@@ -96,16 +88,16 @@ u32 InsertKCPs(void* MapCtrl, u32 prevChildIndex, CtrlLoader* ctrlLoader){
             p1real.z = checkpoint->mpData->p1.y;
 
             Vec2 p0map;
-            killmefunction(killmepointer, &p0real, &p0map);
+            TranslateCoordinates(Map2DRenderer, &p0real, &p0map);
             p0map.x = 220 * (p0map.x - 0.5);
             p0map.y = 220 * (p0map.y - 0.5);
 
             Vec2 p1map;
-            killmefunction(killmepointer, &p1real, &p1map);
+            TranslateCoordinates(Map2DRenderer, &p1real, &p1map);
             p1map.x = 220 * (p1map.x - 0.5);
             p1map.y = 220 * (p1map.y - 0.5);
 
-            float scaledlength = sqrt_ap((p0map.x - p1map.x)*(p0map.x - p1map.x) + (p0map.y - p1map.y)*(p0map.y - p1map.y));
+            float scaledlength = sqrt((p0map.x - p1map.x)*(p0map.x - p1map.x) + (p0map.y - p1map.y)*(p0map.y - p1map.y));
             kcp->pane->width = scaledlength;
 
         }
