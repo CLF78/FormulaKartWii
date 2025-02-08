@@ -38,12 +38,9 @@ extern void* CtrlRace2dMapObject_vt;
 extern void* Map2DRenderer;
 extern void* LayoutUIControl_construct(void* control);
 extern void UIControl_insertChild(void* control, u32 index, void* child);
-extern void ControlLoader_load(CtrlLoader* ControlLoader, char* dirname, char* filename, char* variantname, char** animations);
+extern void ControlLoader_load(CtrlLoader* ControlLoader, void* dirname, void* filename, void* variantname, char** animations);
 extern void CtrlRace2dMapObject_initSelf(MapObject *object);
 extern void TranslateCoordinates(void* somepointer, Vec3* realpos, Vec2* mappos);
-extern char s_game_image; 
-extern char s_map_start_line;
-extern char s_start_line; 
 
 u32 GetNKCPs() {
     u32 count;
@@ -68,7 +65,7 @@ u32 InsertKCPs(void* MapCtrl, u32 prevChildIndex, CtrlLoader* ctrlLoader){
             UIControl_insertChild(MapCtrl, prevChildIndex, kcp);
 
             ctrlLoader->destination = kcp;
-            ControlLoader_load(ctrlLoader, &s_game_image, &s_map_start_line, &s_start_line, 0); 
+            ControlLoader_load(ctrlLoader, &"game_image", &"map_start_line", &"start_line", 0); 
 
             kcp->position.x = checkpoint->mMidpoint.x; 
             kcp->position.z = checkpoint->mMidpoint.y; //accept the way of life

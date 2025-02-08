@@ -229,9 +229,6 @@ SECTIONS {
 	LayoutUIControl_construct = 0x8063d798;
 	UIControl_insertChild = 0x8063d278;
 	ControlLoader_load = 0x805c2c60;
-	s_game_image = 0x808a9477;
-	s_map_start_line = 0x808a9482;
-	s_start_line = 0x808a9491;
 	TranslateCoordinates = 0x807e08e4;
 	Map2DRenderer = 0x809c3f58;
 
