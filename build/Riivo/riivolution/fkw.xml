@@ -87,6 +87,11 @@
 					<patch id="speedo" />
 				</choice>
 			</option>
+			<option name="KCPs on Minimap">
+				<choice name="Enabled">
+					<patch id="kcpmap" />
+				</choice>
+			</option>
 		</section>
 	</options>
 	<patch id="fkw">
@@ -166,5 +171,8 @@
 	</patch>
 	<patch id="thirtyfps">
 		<memory offset="0x8000400F" value="01"/>
+	</patch>
+	<patch id="kcpmap">
+		<memory offset="0x80004010" value="01"/>
 	</patch>
 </wiidisc>

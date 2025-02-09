@@ -278,10 +278,6 @@ void loadCodes() {
 
     // Instant Draft (by stealthsteeler, Ismy and Volderbeek)
     directWriteBranch(InstaDraftHook, InstaDraft, false);
-
-    // KCPMap (by stealthsteeler)
-    directWriteBranch(KCPMapHook, KCPMap, false);
-    directWriteBranch(KCPMapHook1, KCPMap1, false);
     
 	// No Bullet Bill Cancel When Touching Bottom of Rainbow Road (by Ro)
 	directWriteNop(NoBillCancelRR)
@@ -605,6 +601,12 @@ void loadCodes() {
         directWrite32(ThirtyFPSHook4, 0x3BE00002);
         directWriteNop(ThirtyFPSHook5);
         directWrite8(ThirtyFPSHook6, 2);
+    }
+
+    // KCP Map (by stealthsteeler)
+    if (KCPMap == 1) {
+        directWriteBranch(KCPMapHook, KCPMapInject, false);
+        directWriteBranch(KCPMapHook1, KCPMapInject1, false);
     }
 
     sync();

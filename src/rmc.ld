@@ -37,4 +37,5 @@ SECTIONS {
 	TransKarts = 0x80004009;
 	FCIs = 0x8000400E;
 	ThirtyFPS = 0x8000400F;
+	KCPMap = 0x80004010;
 }

@@ -1,16 +1,16 @@
 .include "asm_setup.S"
 
 .extern GetNKCPs, InsertKCPs, KCPMapHook, KCPMapHook1
-.global KCPMap, KCPMap1
+.global KCPMapInject, KCPMapInject1
 
-KCPMap:
+KCPMapInject:
 bl GetNKCPs
 add r26, r26, r3
 
 mr r3, r24  #original instruction
 b KCPMapHook+4
 
-KCPMap1:
+KCPMapInject1:
 mr r3, r24
 mr r4, r28
 addi r5, r1, 0x20

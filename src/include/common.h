@@ -103,4 +103,4 @@ _directWriteArray(&(dest), src, SIZEOF(src));
 _directWriteArray(calcoffs(dest, offset), src, SIZEOF(src));
 
 /* Common Vars */
-char FasterMenu, MiiHeads, NoMusic, NoCharVoice, BtGlitch, TimeDiff, Speedometer, ThirtyFPS;
+char FasterMenu, MiiHeads, NoMusic, NoCharVoice, BtGlitch, TimeDiff, Speedometer, ThirtyFPS, KCPMap;
