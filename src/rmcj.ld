@@ -37,6 +37,17 @@ SECTIONS {
 	ItemStructsEX = 0x809C1FA8;
 	ScreenHUD = 0x809C36E0;
 
+	/* Math Functions */
+	cos = 0x8001b4b4;
+	sin = 0x8001b9bc;
+	tan = 0x8001ba88;
+	atan = 0x80085170;
+	atan2 = 0x800852e0;
+	acos = 0x8001bb00;
+	pow = 0x8001bb14;
+	sqrt = 0x8001bb18;
+	rd_atan2 = 0x8001bb08;
+
 	PlayerGetControllerHolder = 0x8058FD74;
 	getPlayerById = 0x8058FA80;
 	getPlayerPosition = 0x8058FB8C;
@@ -348,6 +359,17 @@ SECTIONS {
 	ItemRouletteUpdate3Hook = 0x807EEA48;
 	OriginalTextures = 0x808AE920;
 	DoubleShroom = 0x808AEB07;
+
+	/* KCP Map */
+	KCPMapHook = 0x807e9b4c;
+	KCPMapHook1 = 0x807e9d50;
+	CtrlRace2dMapObject_vt = 0x808d2a50;
+	CtrlRace2dMapObject_initSelf = 0x807ea298;
+	LayoutUIControl_construct = 0x8063ce04;
+	UIControl_insertChild = 0x8063c8e4;
+	ControlLoader_load = 0x805c25e0;
+	TranslateCoordinates = 0x807dff50;
+	Map2DRenderer = 0x809c2fb8;
 
 	/* Lap Counter */
 	ColorFixHook = 0x807EEE54;

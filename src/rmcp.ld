@@ -221,17 +221,6 @@ SECTIONS {
 	/* Fast POW */
 	NoPOWDelay = 0x807B1DCC;
 
-	/* KCP Map */
-	KCPMapHook = 0x807ea4e0;
-	KCPMapHook1 = 0x807ea6e4;
-	CtrlRace2dMapObject_vt = 0x808d3900;
-	CtrlRace2dMapObject_initSelf = 0x807eac2c;
-	LayoutUIControl_construct = 0x8063d798;
-	UIControl_insertChild = 0x8063d278;
-	ControlLoader_load = 0x805c2c60;
-	TranslateCoordinates = 0x807e08e4;
-	Map2DRenderer = 0x809c3f58;
-
 	/* Faster Menu Navigation */
 	FasterMenuHook = 0x8038900C;
 	FasterMenuHook2 = 0x80896830;
@@ -374,6 +363,17 @@ SECTIONS {
 	ItemRouletteUpdate3Hook = 0x807EF3DC;
 	OriginalTextures = 0x808AF7C0;
 	DoubleShroom = 0x808AF9A7;
+
+	/* KCP Map */
+	KCPMapHook = 0x807ea4e0;
+	KCPMapHook1 = 0x807ea6e4;
+	CtrlRace2dMapObject_vt = 0x808d3900;
+	CtrlRace2dMapObject_initSelf = 0x807eac2c;
+	LayoutUIControl_construct = 0x8063d798;
+	UIControl_insertChild = 0x8063d278;
+	ControlLoader_load = 0x805c2c60;
+	TranslateCoordinates = 0x807e08e4;
+	Map2DRenderer = 0x809c3f58;
 
 	/* Lap Counter */
 	ColorFixHook = 0x807EF7E8;
