@@ -148,35 +148,35 @@ SET /P SPEEDO=Enable Speedometer? (Y/N):
 IF /i %SPEEDO%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004006=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004006=00 -q)
 
 echo.
-SET /P SPEEDO=Enable Gradually Faster Music? (Y/N):
-IF /i %SPEEDO%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004007=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004007=00 -q)
+SET /P FASTMUSIC=Enable Gradually Faster Music? (Y/N):
+IF /i %FASTMUSIC%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004007=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004007=00 -q)
 
 echo.
 echo Bikes' Drift Type?:
 echo 0. Original
 echo 1. All Inside Drift
 echo 2. All Outside Drift
-SET /P TIMEDIFF=Enter the number corresponding to the option you want:
+SET /P BIKEDRIFT=Enter the number corresponding to the option you want:
 
-if %TIMEDIFF% leq 2 set TD=1
-if %TIMEDIFF% lss 1 set TD=0
-IF %TD%==1 (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004008=%TIMEDIFF% -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004008=00 -q)
-
-echo.
-SET /P SPEEDO=Enable Inside Drifting Karts? (Y/N):
-IF /i %SPEEDO%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004009=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004009=00 -q)
+if %BIKEDRIFT% leq 2 set BD=1
+if %BIKEDRIFT% lss 1 set BD=0
+IF %BD%==1 (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004008=%BIKEDRIFT% -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004008=00 -q)
 
 echo.
-SET /P SPEEDO=Enable Feather Cut Indicators (Addon has to be installed manually)? (Y/N):
-IF /i %SPEEDO%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400E=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400E=00 -q)
+SET /P KARTDRIFT=Enable Inside Drifting Karts? (Y/N):
+IF /i %KARTDRIFT%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004009=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004009=00 -q)
+
+echo.
+SET /P KCPMAP=Show KCPs on Minimap? (Y/N):
+IF /i %KCPMAP%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400A=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400A=00 -q)
+
+echo.
+SET /P FCIS=Enable Feather Cut Indicators? [Addon must be installed manually] (Y/N):
+IF /i %FCIS%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400E=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400E=00 -q)
 
 echo.
 SET /P FRAMERATE=Force 30 FPS? (Y/N):
 IF /i %FRAMERATE%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400F=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400F=00 -q)
-
-echo.
-SET /P KCPMAP=Show KCPs on Minimap? (Y/N):
-IF /i %KCPMAP%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004010=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004010=00 -q)
 
 wit\wit.exe dolpatch mkw.d/sys/main.dol 8000629C=4BFFDF60 load=80004010,fkw/Loader.bin -q
 

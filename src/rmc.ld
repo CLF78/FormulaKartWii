@@ -35,7 +35,7 @@ SECTIONS {
 	FasterMusic = 0x80004007;
 	TransBikes = 0x80004008;
 	TransKarts = 0x80004009;
+	KCPMap = 0x8000400A;
 	FCIs = 0x8000400E;
 	ThirtyFPS = 0x8000400F;
-	KCPMap = 0x80004010;
 }

@@ -40,6 +40,11 @@
 					<patch id="gradmusic" />
 				</choice>
 			</option>
+            <option name="KCPs on Minimap">
+				<choice name="Enabled">
+					<patch id="kcpmap" />
+				</choice>
+			</option>
 			<option name="Long Distance Names">
 				<choice name="Enabled">
 					<patch id="btglitch" />
@@ -85,11 +90,6 @@
 			<option name="Speedometer">
 				<choice name="Enabled">
 					<patch id="speedo" />
-				</choice>
-			</option>
-			<option name="KCPs on Minimap">
-				<choice name="Enabled">
-					<patch id="kcpmap" />
 				</choice>
 			</option>
 		</section>
@@ -169,10 +169,10 @@
 	<patch id="orientkarts">
 		<memory offset="0x80004009" value="01"/>
 	</patch>
+    <patch id="kcpmap">
+		<memory offset="0x8000400A" value="01"/>
+	</patch>
 	<patch id="thirtyfps">
 		<memory offset="0x8000400F" value="01"/>
-	</patch>
-	<patch id="kcpmap">
-		<memory offset="0x80004010" value="01"/>
 	</patch>
 </wiidisc>
