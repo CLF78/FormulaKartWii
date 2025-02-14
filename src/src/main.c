@@ -71,6 +71,8 @@ void loadCodes() {
     // Banana Spinout Modifier (Skullface)
     directWrite32(BananaDamage, 0x38600001);
 
+    directWriteBranch(BlueFlagHook, BlueFlagInject, false);
+
     // Blue Shell and Bomb Spinout Modifier (CLF78)
     tempVal8 = 1;
     directWrite8(BlueSpinoutDmg, tempVal8);
