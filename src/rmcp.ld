@@ -110,6 +110,7 @@ SECTIONS {
 	/* Blue Flag */
 	BlueFlagHook = 0x807f0744;
 	setPaneVisible = 0x8063e54c;
+	BalloonCTR = 0x808a9f2e;
 
 	/* Blue Shell Speed */
 	BlueShellSpeed = 0x808A5BC4;
