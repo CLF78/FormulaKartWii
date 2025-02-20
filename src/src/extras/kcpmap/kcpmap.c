@@ -65,7 +65,7 @@ u32 InsertKCPs(void* MapCtrl, u32 prevChildIndex, CtrlLoader* ctrlLoader){
             UIControl_insertChild(MapCtrl, prevChildIndex, kcp);
 
             ctrlLoader->destination = kcp;
-            ControlLoader_load(ctrlLoader, &"game_image", &"map_kcp_line", &"kcp_line", 0); 
+            ControlLoader_load(ctrlLoader, "game_image", "map_kcp_line", "kcp_line", 0); 
 
             kcp->position.x = checkpoint->mMidpoint.x; 
             kcp->position.z = checkpoint->mMidpoint.y; //accept the way of life

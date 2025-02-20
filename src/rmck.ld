@@ -106,6 +106,11 @@ SECTIONS {
 	BlueSpinoutDmg = 0x8056121B;
 	BombSpinoutDmg = 0x80561233;
 
+	/* Blue Flag */
+	BlueFlagHook = 0x807deb04;
+	setPaneVisible = 0x8062c864;
+	BalloonCTR = 0x8089838e;
+
 	/* Blue Shell Speed */
 	BlueShellSpeed = 0x80894024;
 	BlueShellSpeed2 = 0x80894084;
