@@ -12,6 +12,6 @@ typedef struct
 
 
 void BlueFlag_ToggleVisibility(ctrlRaceNameBalloon* CtrlRaceNameBalloon){
-    if(MODE_6 < Racedata->main.scenarios[0].settings.gamemode && Racedata->main.scenarios[0].settings.gamemode > MODE_PUBLIC_BATTLE){return;} //return when not in an online vs race
+    if(Racedata->main.scenarios[0].settings.gamemode <= MODE_TIME_TRIAL){return;} //return when not in an online vs race
     setPaneVisible(CtrlRaceNameBalloon, "blue_flag", NewbieHelper(CtrlRaceNameBalloon->pid));
 }
