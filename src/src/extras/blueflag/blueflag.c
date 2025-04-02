@@ -10,7 +10,6 @@ typedef struct
     u32 pid;
 } ctrlRaceNameBalloon;
 
-
 void BlueFlag_ToggleVisibility(ctrlRaceNameBalloon* CtrlRaceNameBalloon){
     if(Racedata->main.scenarios[0].settings.gamemode <= MODE_TIME_TRIAL){return;} //return when not in an online vs race
     setPaneVisible(CtrlRaceNameBalloon, "blue_flag", NewbieHelper(CtrlRaceNameBalloon->pid));
