@@ -71,6 +71,14 @@ void loadCodes() {
     // Banana Spinout Modifier (Skullface)
     directWrite32(BananaDamage, 0x38600001);
 
+    // Blue Flag + BRCTR redirect (by stealthsteeler)
+    directWrite8(BalloonCTR, 'e');
+    #ifdef REGION_K
+    directWriteBranch(BlueFlagHook, BlueFlagInject_K, false); //we love random region differences
+    #else
+    directWriteBranch(BlueFlagHook, BlueFlagInject, false);
+    #endif
+
     // Blue Shell and Bomb Spinout Modifier (CLF78)
     tempVal8 = 1;
     directWrite8(BlueSpinoutDmg, tempVal8);
