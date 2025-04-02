@@ -538,15 +538,10 @@ void loadCodes() {
     // Silent Controller Changing (by Bully)
     directWriteNop(NoControllerDC);
 
-    // VS Menu Skip (by TheLordScruffy and CLF78)
-    directWriteBranch(VSMenuSkipHook, VSMenuSkip, true);
-    directWriteBranch(VSMenuSkipHook2, VSMenuSkip2, true);
-    directWriteNop(VSMenuSkip3);
+    // VS Multi Menu Skip (by TheLordScruffy, CLF78 and Ismy)
     directWriteBranch(VSMenuReturnHook, VSMenuReturn, false);
-    tempVal8 = 0x72;
-    directWrite8(VSMenuSkip4, tempVal8);
-    directWrite8(VSMenuSkipMulti, tempVal8);
     directWriteBranch(VSMenuReturnHook2, VSMenuReturn2, true);
+    directWrite8(VSMenuSkipMulti, 0x72);
     directWriteBlr(NoGhostLoading);
 
     ////////////////////

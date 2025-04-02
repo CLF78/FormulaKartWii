@@ -576,16 +576,14 @@ SECTIONS {
 	/* Ultra UnCut */
 	CKPTCheck = 0x80535118;
 
-	/* VS Menu Skip */
-	VSMenuSkipHook = 0x8085242C;
-	VSMenuSkipHook2 = 0x805FB78C;
-	VSMenuSkip3 = 0x8062D25C;
-	VSMenuSkip4 = 0x806306F3;
+	/* VS Multi Menu Skip */
 	VSMenuReturnHook = 0x80852B1C;
-	VSMenuReturn = 0x8084FB38;
+	VSMenuReturnNormFunc = 0x8084FB38;
 	VSMenuReturnHook2 = 0x80852A48;
 	VSMenuReturn2Func = 0x80837F20;
+    VSMenuReturn2NormFunc = 0x80837B4C;
 	VSMenuSkipMulti = 0x8060334B;
+    VSMenuSkipOGInstr = 0x808B0000;
 	NoGhostLoading = 0x806211DC;
 
 	/* Wiimmfi */
