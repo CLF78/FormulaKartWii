@@ -11,7 +11,7 @@ void loadCodes() {
     // Exception Handler (by Star)
     directWrite32(ShowExceptions, 0);
     
-    // WiiLink Code Patches (ported by Palapeli)
+    // WiiLink Code Patches (by The WiiLink Team, ported by Palapeli and Ismy)
     #ifdef REGION_P
     directWriteArray(WL_Code_Text_Hook, WL_Code_Text_P, 0x58);
     directWriteArray(WL_Code_Data_Hook, WL_Code_Data_P, 0x4C);
@@ -119,7 +119,7 @@ void loadCodes() {
     directWrite8(BlueShellSpeed, tempVal8);
     directWrite8(BlueShellSpeed2, tempVal8);
 
-    // Bomb/Blue Explosion Lag Fix (by MrBean and CLF78)
+    // Bomb/Blue Explosion Lag Fix (by MrBean35000vr and CLF78)
     tempVal16 = 0x4800;
     directWrite16(NoFakeBomb, tempVal16);
     directWrite16(NoDmgChange, tempVal16);
@@ -167,15 +167,15 @@ void loadCodes() {
     // Default Drift Type Modifier (by CLF78)
     directWrite32(DefaultDriftType, 0x38600001);
 
-    // Disable Item Poof (by CLF78 and tZ)
+    // Disable Item Poof (by CLF78 and _tZ)
     directWriteNop(NoItemPoof);
     directWriteBranch(NoItemPoof2Hook, NoItemPoof2, false);
     directWriteBranch(NoItemPoof3Hook, NoItemPoof3, true);
 
-    // Don't Hide Position After Race (by MrBean)
+    // Don't Hide Position After Race (by MrBean35000vr)
     directWrite8(NoHidePos, 0);
 
-    // Draggable Blue Shells (by MrBean)
+    // Draggable Blue Shells (by MrBean35000vr)
     directWrite32(BlueShellDrag, 0);
 
     // Duplicated Item Auto-Trail (by CLF78)
@@ -241,7 +241,7 @@ void loadCodes() {
     // Green Shell Speed Modifier (by davidevgen)
     directWrite16(GreenShellSpeed, 0x4320);
 
-    // Host Version Check (by CLF78 & Seeky)
+    // Host Version Check (by CLF78 and Seeky)
     directWriteBranch(GuestSendHook, GuestSend, false);
     directWriteBranch(HostCheckHook, HostCheck, false);
     directWriteBranch(HostCheckHelperHook, HostCheckHelper, true);
@@ -284,7 +284,7 @@ void loadCodes() {
     directWriteBranch(MegaSizeHook, MegaSizeMod, true);
     directWriteBranch(FOVChange, FOVFix, true);
 
-    // Mega Thundercloud (by tZ)
+    // Mega Thundercloud (by _tZ)
     directWriteBranch(MegaTCHook, MegaTC, false);
     directWriteBranch(MegaTCHook2, MegaTC2, false);
 
@@ -303,7 +303,7 @@ void loadCodes() {
     directWrite32Offset(SquishFunc, 0x41, 0x48000024);      // Keep item
     directWrite32Offset(SquishFunc, 0x7D, 0x48000018);      // Remove respawn
 
-    // Motion-Sensor Bombs (by Hamster)
+    // Motion-Sensor Bombs (by Hamster35000vr)
     tempVal16 = 0x7FFF;
     directWrite16(BombTimer, tempVal16);
     directWrite16(BombTimer2, tempVal16);
@@ -323,7 +323,7 @@ void loadCodes() {
     // No Bullet Bill Icon (by Anarion)
     directWriteBlr(NoBBIcon);
 
-    // No Disconnect (by Bully)
+    // No Disconnect (by BullyWiiPlaza)
     directWrite32(NoDC1, 0x38000000);
     // directWrite32(NoDC2, 0x38000000); Causes the end of race timer to not countdown
     directWrite32(NoDC3, 0x38000000);
@@ -410,10 +410,10 @@ void loadCodes() {
     directWriteBranch(JGPTHook, AltKMP1, true);
     directWriteBranch(CKPHHook, AltKMP2, true);
 
-    // Time Limit Modifier (by MrBean)
+    // Time Limit Modifier (by MrBean35000vr)
     directWriteArray(TimeLimit, NewTimeLimit, 8);
 
-    // Ultra UnCut (by MrBean)
+    // Ultra UnCut (by MrBean35000vr)
     directWriteBranch(CKPTCheck, UltraUncut, false);
 
     // Ultimate Item Randomizer (by CLF78 and Ismy)
@@ -514,7 +514,7 @@ void loadCodes() {
     // Force CC (by Star)
     directWriteBranch(ForceCCHook, ForceCC, true);
 
-    // Friend Room Race Count Modifier (by MrBean)
+    // Friend Room Race Count Modifier (by MrBean35000vr)
     directWrite8(FroomRaceCount, 0);
     directWrite8(FroomRaceCount2, 0);
 
@@ -538,16 +538,16 @@ void loadCodes() {
     // Automatic BRSAR Patching (by Elias)
     directWriteBranch(AutoBRSARHook, AutoBRSAR, true);
 
-    // Change Characters Between Races (by MrBean)
+    // Change Characters Between Races (by MrBean35000vr)
     directWriteBranch(ChangeCharsHook, ChangeCharsSetup, false);
     directWriteBranch(ChangeCharsHook2, ChangeCharsASM, true);
     directWriteBranch(ChangeCharsHook3, ChangeCharsASM2, true);
     directWriteArray(VtablePtr, ChangeCharsData, 0x14);
 
-    // Disable TF Music Reset (by tZ)
+    // Disable TF Music Reset (by _tZ)
     directWrite32(NoTFMusicReset, 0x48000010);
 
-    // Don't Lose VR When Disconnecting (by Bully)
+    // Don't Lose VR When Disconnecting (by BullyWiiPlaza)
     directWriteNop(NoVRLoss);
 
     // Hybrid Drift (by Ismy and CLF78)
@@ -567,13 +567,13 @@ void loadCodes() {
     // Instant DC (by CLF78)
     directWriteBranch(InstantDCHook, InstantDC, true);
 
-    // License Unlocker (by tZ)
+    // License Unlocker (by _tZ)
     directWrite32(LicenseUnlocker, 0x38600001);
 
     // Points Modifier (by CLF78)
     directWriteBranch(PointsModifierHook, PointsModifier, true);
 
-    // Silent Controller Changing (by Bully)
+    // Silent Controller Changing (by BullyWiiPlaza)
     directWriteNop(NoControllerDC);
 
     // VS Menu Skip (by TheLordScruffy and CLF78)
