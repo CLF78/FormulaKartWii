@@ -10,9 +10,38 @@ void loadCodes() {
 
     // Exception Handler (by Star)
     directWrite32(ShowExceptions, 0);
-	
-	// WiiLink patch in fkw.xml by Palapeli
-	
+    
+    // WiiLink Code Patches (ported by Palapeli)
+    #ifdef REGION_P
+    directWriteArray(WL_Code_Text_Hook, WL_Code_Text_P, 0x58);
+    directWriteArray(WL_Code_Data_Hook, WL_Code_Data_P, 0x4C);
+    #elif REGION_E
+    directWriteArray(WL_Code_Text_Hook, WL_Code_Text_E, 0x58);
+    directWriteArray(WL_Code_Data_Hook, WL_Code_Data_E, 0x4C);
+    #elif REGION_J
+    directWriteArray(WL_Code_Text_Hook, WL_Code_Text_J, 0x58);
+    directWriteArray(WL_Code_Data_Hook, WL_Code_Data_J, 0x4C);
+    #elif REGION_K
+    directWriteArray(WL_Code_Text_Hook, WL_Code_Text_K, 0x58);
+    directWriteArray(WL_Code_Data_Hook, WL_Code_Data_K, 0x4C);
+    #endif
+    
+    // WiiLink Auth response
+    directWriteArray(WL_Auth_Response_Hook, WL_Auth_Response, 0x8);
+    
+    // WiiLink String Patches
+    directWriteArray(WL_Domain_Hook, WL_Domain, 0x11);
+    directWriteArray(WL_URL_Hook, WL_URL, 0x18);
+    
+    // WiiLink Skip DNS request caching
+    directWrite32(WL_Skip_DNS, 0x480001F4);
+    
+    // Anti-Wiimmfi
+    directWrite32(Anti_Wiimmfi_1, 0x2C030000);
+    directWrite32(Anti_Wiimmfi_2, 0x7C7E1B78);
+    directWrite32(Anti_Wiimmfi_3, 0x00004E4D);
+    
+    /*
     // Wiimmfi Code Patches (by Leseratte)
     directWriteNop(WiimmfiPatch1);
     directWrite32(WiimmfiPatch2, 0x3BC00000);
@@ -44,16 +73,17 @@ void loadCodes() {
     directWriteStringOffset(WiimmfiURLs, 0x38DF, "wiimmfi.de");
     directWriteStringOffset(WiimmfiURLs, 0x3A2F, "wiimmfi.de"); // MS
     directWriteStringOffset(WiimmfiURLs, 0x3AB3, "wiimmfi.de"); // SAKE
-	
+    */
+    
     // Wiimmfi Login Region Changer (by Atlas)
     directWriteString(LoginRegion, "120045");
-
+    
     // VS Matchmaking Region Patch (by Leseratte)
     directWrite32(VSRegion, 0x38A04E4D);
     directWrite32(VSRegion2, 0x38E04E4D);
     directWrite32(VSRegion3, 0x38E04E4D);
     directWrite32(VSRegion4, 0x3880004D);
-
+    
     // 30 Seconds Time Limit Modifier (by CLF78)
     directWrite16(ThirtySecs, 0x2A30);
 

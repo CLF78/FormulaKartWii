@@ -589,6 +589,19 @@ SECTIONS {
 	VSMenuSkipMulti = 0x80602ABF;
 	NoGhostLoading = 0x80620928;
 
+	/* Wiilink */
+	WL_Code_Text_Hook = 0x800EDFB8;
+	WL_Code_Data_Hook = 0x800EDDA4;
+	WL_Auth_Response_Hook = 0x800EE2C4;
+	WL_Domain_Hook = 0x8027A705;
+	WL_URL_Hook = 0x80279DCC;
+	WL_Skip_DNS = 0x800D1438;
+
+	/* Anti-Wiimmfi */
+	Anti_Wiimmfi_1 = 0x800EE2C0;
+	Anti_Wiimmfi_2 = 0x800EC9CC;
+	Anti_Wiimmfi_3 = 0x80005EFC;
+
 	/* Wiimmfi */
 	WiimmfiPatch1 = 0x800ED788;
 	WiimmfiPatch2 = 0x800EC9CC;
