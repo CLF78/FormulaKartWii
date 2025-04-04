@@ -19,6 +19,10 @@ stb r4, 0x7E(r12)
 li r4, -1
 sth r4, 0x99C(r12)
 
-# Original instruction
-lis r4, 0x809C
+#Original instruction
+#ifdef REGION_K
+lis r4,-0x7f65
+#else
+lis r4,-0x7f64
+#endif
 blr
