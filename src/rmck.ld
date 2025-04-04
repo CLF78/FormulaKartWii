@@ -137,7 +137,10 @@ SECTIONS {
 	PushButton_Vtable = 0x808A5C30;
 	ChangeCharsHook2 = 0x80611220;
 	ChangeCharsHook3 = 0x8061C4C8;
-	
+
+	/* Clear Exhaust Pipe Boost Particle After Damage */
+	ClearExhaustHook = 0x80555510;
+
 	/* Conditional Out of Bounds */
 	ConditionalOutofBoundsHook = 0x8055F8CC;
 
@@ -252,6 +255,12 @@ SECTIONS {
 	FastMusicHook = 0x806F9674;
 	FastMusicHook2 = 0x806FFE80;
 	FastMusicHook3 = 0x8061E488;
+
+	/* Fix Offroad Glitch */
+	OffroadRampGlitchFixHook = 0x805706D4;
+
+	/* Fix Online Players Stuck in Halfpipe */
+	HalfPipeFixHook = 0x80579FB0;
 
 	/* Force Battle Glitch */
 	TagDistance = 0x808C22AC;
@@ -589,6 +598,19 @@ SECTIONS {
 	VSMenuReturn2Func = 0x808262E0;
 	VSMenuSkipMulti = 0x805F176B;
 	NoGhostLoading = 0x8060F5D4;
+
+	/* Wiilink */
+	WL_Code_Text_Hook = 0x800EE110;
+	WL_Code_Data_Hook = 0x800EDEFC;
+	WL_Auth_Response_Hook = 0x800EE41C;
+	WL_Domain_Hook = 0x80268C15;
+	WL_URL_Hook = 0x802682DC;
+	WL_Skip_DNS = 0x800D1578;
+
+	/* Anti-Wiimmfi */
+	Anti_Wiimmfi_1 = 0x800EE418;
+	Anti_Wiimmfi_2 = 0x800ECB24;
+	Anti_Wiimmfi_3 = 0x80005EFC;
 
 	/* Wiimmfi */
 	WiimmfiPatch1 = 0x800ED8E0;
