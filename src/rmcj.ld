@@ -137,7 +137,10 @@ SECTIONS {
 	PushButton_Vtable = 0x808B6918;
 	ChangeCharsHook2 = 0x80622574;
 	ChangeCharsHook3 = 0x8062D81C;
-	
+
+	/* Clear Exhaust Pipe Boost Particle After Damage */
+	ClearExhaustHook = 0x80566E38;
+
 	/* Conditional Out of Bounds */
 	ConditionalOutofBoundsHook = 0x805711F4;
 
@@ -252,6 +255,12 @@ SECTIONS {
 	FastMusicHook = 0x8070A938;
 	FastMusicHook2 = 0x80711144;
 	FastMusicHook3 = 0x8062F7DC;
+
+	/* Fix Offroad Glitch */
+	OffroadRampGlitchFixHook = 0x80581FFC;
+
+	/* Fix Online Players Stuck in Halfpipe */
+	HalfPipeFixHook = 0x8058B8D8;
 
 	/* Force Battle Glitch */
 	TagDistance = 0x808D2F64;

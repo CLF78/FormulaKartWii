@@ -158,6 +158,9 @@ void loadCodes() {
     // Credits Button (by CLF78)
     directWrite8(CreditsButton, 0x3B);
 
+    // Clear Exhaust Pipe Boost Particle After Damage (by Ro)
+    directWriteBranch(ClearExhaustHook, ClearExhaust, true);
+
     // DC Bug Fix (by Seeky and CLF78)
     directWrite32(DCFix, 0x4800003C);
 
@@ -225,6 +228,12 @@ void loadCodes() {
     directWriteBranch(FastMusicHook2, PitchReset, true);
     directWriteBranch(FastMusicHook3, PitchReset2, false);
 
+    // Fix Offroad Ramp Glitch (by vabold)
+    directWriteBranch(OffroadRampGlitchFixHook, OffroadRampGlitchFix, true);
+
+    // Fix Online Players Stuck in Halfpipe (by Ro)
+    directWriteBranch(HalfPipeFixHook, HalfPipeFix, true);
+
     // Fix TC Glitch (by CLF78)
     directWriteBranch(TCGlitchFixHook, TCGlitchFix, false);
 
@@ -245,7 +254,7 @@ void loadCodes() {
     directWriteBranch(GuestSendHook, GuestSend, false);
     directWriteBranch(HostCheckHook, HostCheck, false);
     directWriteBranch(HostCheckHelperHook, HostCheckHelper, true);
-    directWrite8(Version, 11);
+    directWrite8(Version, 12);
 
     // Impervious TC (by CLF78)
     directWrite32(ImperviousTCHook, 0x48000038);
