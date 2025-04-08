@@ -134,7 +134,11 @@ void loadCodes() {
     directWriteBranch(CannonSpeed, CannonSpeedMultiplier, false);
     directWriteBranch(CannonSpeed2, CannonSpeedMultiplier2, true);
     directWrite16(BulletBillPosition, tempVal16);
-	
+
+    // Cannon Fixes (by Ismy)
+    directWriteNop(CannonOffroadFix);
+    directWriteNop(CannonTCFix);
+
 	// Conditional Out of Bounds (by Riidefi)
 	directWriteBranch(ConditionalOutofBoundsHook, ConditionalOutofBounds, true);
 

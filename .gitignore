@@ -9,3 +9,4 @@ files/TrackPatches/og
 files/UIPatches/*.szs
 __pycache__/
 *.zip
+Build.bat

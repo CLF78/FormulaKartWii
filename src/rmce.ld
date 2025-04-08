@@ -130,6 +130,10 @@ SECTIONS {
 	CannonSpeed2 = 0x8057E8AC;
 	BulletBillPosition = 0x805B1CE4;
 
+	/* Cannon Fixes */
+	CannonOffroadFix = 0x8057E2C4;
+	CannonTCFix = 0x8057E34C;
+
 	/* Change Characters Between Races */
 	ChangeCharsHook = 0x805FD1A4;
 	CreateScreen = 0x805F1E54;

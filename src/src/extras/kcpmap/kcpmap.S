@@ -7,7 +7,8 @@ KCPMapInject:
 bl GetNKCPs
 add r26, r26, r3
 
-mr r3, r24  #original instruction
+# Original instruction
+mr r3, r24
 b KCPMapHook+4
 
 KCPMapInject1:
@@ -17,6 +18,10 @@ addi r5, r1, 0x20
 bl InsertKCPs
 mr r28, r3
 
-lis r25, -0x7f64 #original instruction
+# Original instruction
+#ifdef REGION_K
+lis r25, -0x7f65
+#else
+lis r25, -0x7f64 
+#endif
 b KCPMapHook1+4
-
