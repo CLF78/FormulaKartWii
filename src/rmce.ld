@@ -31,7 +31,7 @@ SECTIONS {
 	DriverParam = 0x809BD134;
 	Menudata = 0x809BD508;
 	RKNetController = 0x809BD918;
-	RKNetItemHandler = 0x809BD938;
+	RKNetItemHandler = 0x809BD950;
 	ItemHolder = 0x809BEE20;
 	ItemStructs = 0x809BEEB0;
 	ItemStructsEX = 0x809BE750;
