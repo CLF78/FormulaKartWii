@@ -533,7 +533,7 @@ SECTIONS {
 
 	/* Shells Never Break */
 	ShellHitCount = 0x807A74B4;
-	ShellHitCount2 = 0x8079AB00;
+	ShellHitCount2 = 0x807A4008;
 
 	/* Show Time Difference */
 	TimeDiffPatchHook = 0x80842124;

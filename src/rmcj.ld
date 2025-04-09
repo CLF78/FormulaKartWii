@@ -172,7 +172,7 @@ SECTIONS {
 	/* Cycle Fixes - Dry Dry Ruins */
 	PillarFixHook = 0x807FE480;
 	SandpitFixHook = 0x80686694;
-	SandpitFix2 = 0x806872E8;
+	SandpitFix2 = 0x80686954;
 	SandpitFix3 = 0x80686EE8;
 
 	/* Cycle Fixes - Ghost Valley 2 */
@@ -533,7 +533,7 @@ SECTIONS {
 
 	/* Shells Never Break */
 	ShellHitCount = 0x807B5580;
-	ShellHitCount2 = 0x807A3178;
+	ShellHitCount2 = 0x807AE31C;
 
 	/* Show Time Difference */
 	TimeDiffPatchHook = 0x807EDBF4;
@@ -625,7 +625,7 @@ SECTIONS {
 	VSRegion = 0x80652CB0;
 	VSRegion2 = 0x80658878;
 	VSRegion3 = 0x80658D90;
-	VSRegion4 = 0x806596EC;
+	VSRegion4 = 0x806596A0;
 
 	WiimmfiVersionString = 0x802759F4;
 	WiimmfiURLs = 0x80279DA4;

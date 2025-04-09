@@ -534,7 +534,7 @@ SECTIONS {
 
 	/* Shells Never Break */
 	ShellHitCount = 0x807A42D4;
-	ShellHitCount2 = 0x80791ECC;
+	ShellHitCount2 = 0x8079D070;
 
 	/* Show Time Difference */
 	TimeDiffPatchHook = 0x807DC948;
@@ -626,7 +626,7 @@ SECTIONS {
 	VSRegion = 0x8064195C;
 	VSRegion2 = 0x80647524;
 	VSRegion3 = 0x80647A3C;
-	VSRegion4 = 0x80648398;
+	VSRegion4 = 0x8064834C;
 
 	WiimmfiVersionString = 0x80263E34;
 	WiimmfiURLs = 0x802682B4;
