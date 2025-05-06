@@ -38,8 +38,8 @@ blr
 # If it's not lap 45 or 50, check if setting is enabled
 morechecks:
 lis r5, 0x8000
-lbz r5, 0x4007 (r5)
-cmpwi r5, 1
+lbz r5, 0x4002 (r5)
+cmpwi r5, 2
 beq- gradmusic
 blr
 
@@ -50,7 +50,7 @@ lfs f29, MusicPitch@l(r5)
 
 # If it's laps 1-44 increase by a small factor
 lis r3, 0x3F80
-ori r3, r3, 0x470F
+ori r3, r3, 0x4400
 
 # Check if it's lap 46-49
 cmpwi r31, 45
@@ -59,7 +59,7 @@ blt+ mulstore
 # If it's laps 46-49 increase by a bigger factor
 finallaps:
 lis r3, 0x3F83
-ori r3, r3, 0x1628
+ori r3, r3, 0x1600
 
 # Multiply by the constant and store the new pitch
 mulstore:

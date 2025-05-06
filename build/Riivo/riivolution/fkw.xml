@@ -35,11 +35,6 @@
 					<patch id="thirtyfps" />
 				</choice>
 			</option>
-			<option name="Gradually Faster Music">
-				<choice name="Enabled">
-					<patch id="gradmusic" />
-				</choice>
-			</option>
             <option name="KCPs on Minimap">
 				<choice name="Enabled">
 					<patch id="kcpmap" />
@@ -53,6 +48,14 @@
 			<option name="Mii Heads on Minimap">
 				<choice name="Enabled">
 					<patch id="miiheads" />
+				</choice>
+			</option>
+            <option name="Music">
+				<choice name="Enabled">
+					<patch id="music" />
+				</choice>
+                <choice name="Gradually Faster">
+					<patch id="gradmusic" />
 				</choice>
 			</option>
 			<option name="My Stuff">
@@ -72,11 +75,6 @@
 			<option name="No Character Voices">
 				<choice name="Enabled">
 					<patch id="nochars" />
-				</choice>
-			</option>
-			<option name="No Music">
-				<choice name="Enabled">
-					<patch id="nomusic" />
 				</choice>
 			</option>
 			<option name="Show Time Difference">
@@ -139,8 +137,11 @@
 	<patch id="miiheads">
 		<memory offset="0x80004001" value="01"/>
 	</patch>
-	<patch id="nomusic">
+	<patch id="music">
 		<memory offset="0x80004002" value="01"/>
+	</patch>
+    <patch id="gradmusic">
+		<memory offset="0x80004002" value="02"/>
 	</patch>
 	<patch id="nochars">
 		<memory offset="0x80004003" value="01"/>
@@ -157,14 +158,11 @@
 	<patch id="speedo">
 		<memory offset="0x80004006" value="01"/>
 	</patch>
-	<patch id="gradmusic">
-		<memory offset="0x80004007" value="01"/>
-	</patch>
-	<patch id="orientbikesinside">
-		<memory offset="0x80004008" value="02"/>
-	</patch>
 	<patch id="orientbikesoutside">
 		<memory offset="0x80004008" value="01"/>
+	</patch>
+    <patch id="orientbikesinside">
+		<memory offset="0x80004008" value="02"/>
 	</patch>
 	<patch id="orientkarts">
 		<memory offset="0x80004009" value="01"/>

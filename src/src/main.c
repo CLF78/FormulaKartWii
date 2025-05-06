@@ -75,7 +75,7 @@ void loadCodes() {
     directWriteStringOffset(WiimmfiURLs, 0x3AB3, "wiimmfi.de"); // SAKE
     */
     
-    // Wiimmfi Login Region Changer (by Atlas)
+    // Login Region Changer (by Atlas)
     directWriteString(LoginRegion, "120045");
     
     // VS Matchmaking Region Patch (by Leseratte)
@@ -83,6 +83,16 @@ void loadCodes() {
     directWrite32(VSRegion2, 0x38E04E4D);
     directWrite32(VSRegion3, 0x38E04E4D);
     directWrite32(VSRegion4, 0x3880004D);
+    
+    // Frameskip (by the Wiimmfi Team)
+    directWriteBranch(FrameskipHook1, GetFrameskip1, true);
+    directWriteBranch(FrameskipHook2, GetFrameskip2, true);
+    directWriteNop(FrameskipHook3);
+    directWriteNop(FrameskipHook4);
+    directWrite32(FrameskipHook5, 0x480000DC);
+    directWriteNop(FrameskipHook6);
+    directWrite32(FrameskipHook7, 0x000F7709);
+    directWrite32(FrameskipHook8, 0x00000006);
     
     // 30 Seconds Time Limit Modifier (by CLF78)
     directWrite16(ThirtySecs, 0x2A30);
@@ -175,6 +185,9 @@ void loadCodes() {
     directWriteBranch(NoItemPoof2Hook, NoItemPoof2, false);
     directWriteBranch(NoItemPoof3Hook, NoItemPoof3, true);
 
+    // Disable Title Demo Movie (by Diamond)
+    directWrite16(DisableTitleDemoMovie, 0x4800);
+
     // Don't Hide Position After Race (by MrBean35000vr)
     directWrite8(NoHidePos, 0);
 
@@ -254,7 +267,7 @@ void loadCodes() {
     directWriteBranch(GuestSendHook, GuestSend, false);
     directWriteBranch(HostCheckHook, HostCheck, false);
     directWriteBranch(HostCheckHelperHook, HostCheckHelper, true);
-    directWrite8(Version, 12);
+    directWrite8(Version, 13);
 
     // Impervious TC (by CLF78)
     directWrite32(ImperviousTCHook, 0x48000038);
@@ -347,6 +360,9 @@ void loadCodes() {
     directWriteNop(StarWhenHit);
     directWriteNop(ShroomWhenHit);
 
+    // No Lightning Flash (by Ro)
+    directWrite32(NoLightningFlash, 0x4E800020);
+
     // No Multi Channel Track Music (by CLF78)
     directWriteBranch(NoMultiChannelHook, NoMultiChannel, false);
     directWriteBranch(NoMultiChannelHook2, NoMultiChannel2, true);
@@ -430,6 +446,11 @@ void loadCodes() {
     directWriteBranch(ItemAmountHook, ItemAmount, false);
     directWriteBranch(SpecialItemHook, SpecialRandom, true);
     directWriteBranch(WoodProb, WoodboxPatch, true);
+
+    // Use Items in Cannon (by Ro)
+    directWriteNop(ItemsCannon1);
+    directWriteNop(ItemsCannon2);
+    directWriteNop(ItemsCannon3);
 
     // Woodbox Respawn Modifier (by Atlas)
     directWrite32(WoodRespawn, 150);
@@ -614,7 +635,7 @@ void loadCodes() {
     }
 
     // No Music (by CosmoCortney)
-    if (NoMusic == 1) {
+    if (NoMusic == 0x74) {
         directWrite32(NoMusicHook, 0x38600000);
     }
 

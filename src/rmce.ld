@@ -29,13 +29,20 @@ SECTIONS {
 	PlayerHolder = 0x809BD110;
 	KartParam = 0x809BD130;
 	DriverParam = 0x809BD134;
+	DriverManager = 0x809BF0B4;
 	Menudata = 0x809BD508;
 	RKNetController = 0x809BD918;
 	RKNetItemHandler = 0x809BD950;
+	RKNetPacketManager = 0x809BD790;
 	ItemHolder = 0x809BEE20;
 	ItemStructs = 0x809BEEB0;
 	ItemStructsEX = 0x809BE750;
 	ScreenHUD = 0x809BFDC0;
+	DisableInterrupts = 0x801A650C;
+	RestoreInterrupts = 0x801A6534;
+	GetTime = 0x801AACBC;
+	GXDrawDone = 0x8016EA10;
+	BeginFrame = 0x8020FD84;
 
 	/* Math Functions */
 	cos = 0x8001aa30;
@@ -200,6 +207,9 @@ SECTIONS {
 	/* Disable TF Music Reset */
 	NoTFMusicReset = 0x80711A54;
 
+	/* Disable Title Demo Movie */
+	DisableTitleDemoMovie = 0x806F59BC;
+
 	/* Don't Hide Position After Race */
 	NoHidePos = 0x807EA79F;
 
@@ -268,6 +278,16 @@ SECTIONS {
 
 	/* Force Battle Glitch */
 	TagDistance = 0x808CEEAC;
+
+	/* Frameskip */
+	FrameskipHook1 = 0x8055E750;
+	FrameskipHook2 = 0x80009584;
+	FrameskipHook3 = 0x800095A4;
+	FrameskipHook4 = 0x800095B4;
+	FrameskipHook5 = 0x80517228;
+	FrameskipHook6 = 0x8064FF78;
+	FrameskipHook7 = 0x80001614;
+	FrameskipHook8 = 0x80001634;
 
 	/* Game Mode - Ramp Up */
 	RampUpHook = 0x80530008;
@@ -460,6 +480,9 @@ SECTIONS {
 	StarWhenHit = 0x80579A40;
 	ShroomWhenHit = 0x80578BEC;
 
+	/* No Lightning Flash */
+	NoLightningFlash = 0x80549C74;
+
 	/* No Multi Channel Track Music */
 	NoMultiChannelHook = 0x806F5BC4;
 	NoMultiChannelHook2 = 0x800A4E78;
@@ -589,6 +612,11 @@ SECTIONS {
 
 	/* Ultra UnCut */
 	CKPTCheck = 0x805305D0;
+
+	/* Use Items in Cannon */
+	ItemsCannon1 = 0x8078ef7c;
+	ItemsCannon2 = 0x8078eb94;
+	ItemsCannon3 = 0x8078ec28;
 
 	/* VS Menu Skip */
 	VSMenuSkipHook = 0x80857FB4;
