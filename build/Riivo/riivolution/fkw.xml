@@ -50,14 +50,6 @@
 					<patch id="miiheads" />
 				</choice>
 			</option>
-            <option name="Music">
-				<choice name="Enabled">
-					<patch id="music" />
-				</choice>
-                <choice name="Gradually Faster">
-					<patch id="gradmusic" />
-				</choice>
-			</option>
 			<option name="My Stuff">
 				<choice name="CTGP">
 					<patch id="mystuffctgp" />
@@ -75,6 +67,14 @@
 			<option name="No Character Voices">
 				<choice name="Enabled">
 					<patch id="nochars" />
+				</choice>
+			</option>
+            <option name="Race Music" default="1">
+				<choice name="Normal">
+					<patch id="music" />
+				</choice>
+                <choice name="Gradually Faster">
+					<patch id="gradmusic" />
 				</choice>
 			</option>
 			<option name="Show Time Difference">
