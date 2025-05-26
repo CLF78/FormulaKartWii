@@ -98,6 +98,9 @@ SECTIONS {
 	ItemLandGolden = 0x808B0DC8;
 	ItemLandBill = 0x808B0DD4;
 
+	/* Allow looking backwards during the countdown */
+	CountdownLookBack = 0x80597224;
+
 	/* Always Win Track Vote */
 	AlwaysWinVoteHook = 0x80659EE4;
 
@@ -136,6 +139,9 @@ SECTIONS {
 	CannonSpeed = 0x8057E8A0;
 	CannonSpeed2 = 0x8057E8AC;
 	BulletBillPosition = 0x805B1CE4;
+
+	/* Camera Distance Modifier */
+	CustomFOV = 0x8088DBE4;
 
 	/* Cannon Fixes */
 	CannonOffroadFix = 0x8057E2C4;
@@ -536,6 +542,9 @@ SECTIONS {
 	TargetWhileHit = 0x8058AABF;
 	TargetPositionHook = 0x807A4E40;
 
+	/* Remove Bloom and Depth of Field */
+	NoBloomHook = 0x805A66B4;
+
 	/* Remove Mushroom Bug */
 	RemoveShroomBug = 0x807AB617;
 	RemoveFakeShroom = 0x807ABA24;
@@ -604,6 +613,9 @@ SECTIONS {
 	AREAHook = 0x8050EEEC;
 	JGPTHook = 0x8050ECB8;
 	CKPHHook = 0x8050F378;
+
+	/* Transformation Music */
+	TransfMusicHook = 0x807082B8;
 
 	/* Ultimate Item Randomizer */
 	SharedItemHook = 0x807AB700;

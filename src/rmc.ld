@@ -32,10 +32,13 @@ SECTIONS {
 	BtGlitch = 0x80004004;
 	TimeDiff = 0x80004005;
 	Speedometer = 0x80004006;
-	FasterMusic = 0x80004007;
-	TransBikes = 0x80004008;
-	TransKarts = 0x80004009;
+	TransfMusic = 0x80004007;
+	DriftBikes = 0x80004008;
+	DriftKarts = 0x80004009;
 	KCPMap = 0x8000400A;
+	LightFlash = 0x8000400B;
+	RemoveBloom = 0x8000400C;
+	FOVSetting = 0x8000400D;
 	FCIs = 0x8000400E;
 	ThirtyFPS = 0x8000400F;
 }

@@ -1,53 +1,10 @@
 <wiidisc version="1">
 	<id game="RMC"/>
 	<options>
-		<section name="Formula Kart Wii">
+		<section name="FKW: Feature Settings">
 			<option name="Formula Kart Wii">
 				<choice name="Enabled">
 					<patch id="fkw" />
-				</choice>
-			</option>
-			<option name="Drift Orientation (Bikes)">
-				<choice name="Inside Drift">
-					<patch id="orientbikesinside" />
-				</choice>
-				<choice name="Outside Drift">
-					<patch id="orientbikesoutside" />
-				</choice>
-			</option>
-			<option name="Drift Orientation (Karts)">
-				<choice name="Inside Drift">
-					<patch id="orientkarts" />
-				</choice>
-			</option>
-			<option name="Feather Cut Indicators (Addon)">
-				<choice name="Enabled">
-					<patch id="myfcis" />
-				</choice>
-			</option>
-			<option name="Faster Menu Navigation">
-				<choice name="Enabled">
-					<patch id="fastmenu" />
-				</choice>
-			</option>
-			<option name="Force 30 FPS">
-				<choice name="Enabled">
-					<patch id="thirtyfps" />
-				</choice>
-			</option>
-            <option name="KCPs on Minimap">
-				<choice name="Enabled">
-					<patch id="kcpmap" />
-				</choice>
-			</option>
-			<option name="Long Distance Names">
-				<choice name="Enabled">
-					<patch id="btglitch" />
-				</choice>
-			</option>
-			<option name="Mii Heads on Minimap">
-				<choice name="Enabled">
-					<patch id="miiheads" />
 				</choice>
 			</option>
 			<option name="My Stuff">
@@ -64,30 +21,104 @@
 					<patch id="mystufffkwnrt" />
 				</choice>
 			</option>
-			<option name="No Character Voices">
+			<option name="Feather Cut Indicators (Addon)">
 				<choice name="Enabled">
-					<patch id="nochars" />
+					<patch id="myfcis" />
 				</choice>
 			</option>
-            <option name="Race Music" default="1">
-				<choice name="Normal">
-					<patch id="music" />
+			<option name="Drift Orientation (Bikes)">
+				<choice name="Inside Drift">
+					<patch id="orientbikesinside" />
 				</choice>
-                <choice name="Gradually Faster">
-					<patch id="gradmusic" />
+				<choice name="Outside Drift">
+					<patch id="orientbikesoutside" />
+				</choice>
+			</option>
+			<option name="Drift Orientation (Karts)">
+				<choice name="Inside Drift">
+					<patch id="orientkarts" />
+				</choice>
+			</option>
+			<option name="Key Checkpoints on Minimap">
+				<choice name="Enabled">
+					<patch id="kcpmap" />
 				</choice>
 			</option>
 			<option name="Show Time Difference">
 				<choice name="Player Ahead">
 					<patch id="timediff1" />
 				</choice>
-				<choice name="Player In 1st">
+				<choice name="Player in First">
 					<patch id="timediff2" />
 				</choice>
 			</option>
 			<option name="Speedometer">
 				<choice name="Enabled">
 					<patch id="speedo" />
+				</choice>
+			</option>
+		</section>
+		<section name="FKW: Accessibility Settings">
+			<option name="Bloom and Depth of Field"  default="1">
+				<choice name="Normal">
+					<patch id="nobloom" />
+				</choice>
+			</option>
+			<option name="Character Voices"  default="1">
+				<choice name="Enabled">
+					<patch id="charvoices" />
+				</choice>
+			</option>
+			<option name="Faster Menu Navigation">
+				<choice name="Enabled">
+					<patch id="fastmenu" />
+				</choice>
+			</option>
+			<option name="Field of View">
+				<choice name="Narrow">
+					<patch id="fovnarrow" />
+				</choice>
+				<choice name="Very Narrow">
+					<patch id="fovverynarrow" />
+				</choice>
+				<choice name="Wide">
+					<patch id="fovwide" />
+				</choice>
+				<choice name="Very Wide">
+					<patch id="fovverywide" />
+				</choice>
+			</option>
+			<option name="Force 30 FPS">
+				<choice name="Enabled">
+					<patch id="thirtyfps" />
+				</choice>
+			</option>
+			<option name="Lightning Flash" default="1">
+				<choice name="Enabled">
+					<patch id="lightflash" />
+				</choice>
+			</option>
+			<option name="Long Distance Names">
+				<choice name="Enabled">
+					<patch id="btglitch" />
+				</choice>
+			</option>
+			<option name="Mii Heads on Minimap">
+				<choice name="Enabled">
+					<patch id="miiheads" />
+				</choice>
+			</option>
+			<option name="Race Music" default="1">
+				<choice name="Normal Speed">
+					<patch id="racemusic" />
+				</choice>
+				<choice name="Accelerating">
+					<patch id="gradmusic" />
+				</choice>
+			</option>
+			<option name="Transformation Music" default="1">
+				<choice name="Enabled">
+					<patch id="transfmusic" />
 				</choice>
 			</option>
 		</section>
@@ -137,13 +168,13 @@
 	<patch id="miiheads">
 		<memory offset="0x80004001" value="01"/>
 	</patch>
-	<patch id="music">
+	<patch id="racemusic">
 		<memory offset="0x80004002" value="01"/>
 	</patch>
     <patch id="gradmusic">
 		<memory offset="0x80004002" value="02"/>
 	</patch>
-	<patch id="nochars">
+	<patch id="charvoices">
 		<memory offset="0x80004003" value="01"/>
 	</patch>
 	<patch id="btglitch">
@@ -158,6 +189,9 @@
 	<patch id="speedo">
 		<memory offset="0x80004006" value="01"/>
 	</patch>
+	<patch id="transfmusic">
+		<memory offset="0x80004007" value="01"/>
+	</patch>
 	<patch id="orientbikesoutside">
 		<memory offset="0x80004008" value="01"/>
 	</patch>
@@ -169,6 +203,24 @@
 	</patch>
     <patch id="kcpmap">
 		<memory offset="0x8000400A" value="01"/>
+	</patch>
+	<patch id="lightflash">
+		<memory offset="0x8000400B" value="01"/>
+	</patch>
+	<patch id="nobloom">
+		<memory offset="0x8000400C" value="01"/>
+	</patch>
+	<patch id="fovnarrow">
+		<memory offset="0x8000400D" value="01"/>
+	</patch>
+	<patch id="fovverynarrow">
+		<memory offset="0x8000400D" value="02"/>
+	</patch>
+	<patch id="fovwide">
+		<memory offset="0x8000400D" value="03"/>
+	</patch>
+	<patch id="fovverywide">
+		<memory offset="0x8000400D" value="04"/>
 	</patch>
 	<patch id="thirtyfps">
 		<memory offset="0x8000400F" value="01"/>

@@ -37,13 +37,17 @@
 - 0x80004000 = Fast Menu Navigation
 - 0x80004001 = Mii Heads on the Minimap
 - 0x80004002 = Music
-- 0x80004003 = No Character Sounds
+- 0x80004003 = Character Sounds
 - 0x80004004 = Long Distance Names
 - 0x80004005 = Time Difference
 - 0x80004006 = Speedometer
-- 0x80004007 = *Empty*
+- 0x80004007 = Transformation Music
 - 0x80004008 = Drift Bikes
 - 0x80004009 = Drift Karts
+- 0x8000400A = Key Checkpoints on Minimap
+- 0x8000400B = Lightning Flash
+- 0x8000400C = Bloom and Depth of Field
+- 0x8000400D = Custom FOV
 - 0x8000400E = Feather Cut Indicators
 - 0x8000400F = 30FPS
 

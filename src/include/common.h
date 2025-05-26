@@ -103,4 +103,9 @@ _directWriteArray(&(dest), src, SIZEOF(src));
 _directWriteArray(calcoffs(dest, offset), src, SIZEOF(src));
 
 /* Common Vars */
-char FasterMenu, MiiHeads, NoMusic, NoCharVoice, BtGlitch, TimeDiff, Speedometer, ThirtyFPS, KCPMap;
+
+/* Features */
+char FCIs, DriftBikes, DriftKarts, KCPMap, TimeDiff, Speedometer;
+
+/* Accessibility */
+char FasterMenu, MiiHeads, NoMusic, NoCharVoice, BtGlitch, TransfMusic, LightFlash, RemoveBloom, ThirtyFPS, FOVSetting;

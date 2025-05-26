@@ -98,6 +98,9 @@ SECTIONS {
 	ItemLandGolden = 0x808B5500;
 	ItemLandBill = 0x808B550C;
 
+	/* Allow looking backwards during the countdown */
+	CountdownLookBack = 0x805A225C;
+
 	/* Always Win Track Vote */
 	AlwaysWinVoteHook = 0x80661E20;
 
@@ -137,6 +140,9 @@ SECTIONS {
 	CannonSpeed = 0x805850C4;
 	CannonSpeed2 = 0x805850D0;
 	BulletBillPosition = 0x8059CCFC;
+
+	/* Camera Distance Modifier */
+	CustomFOV = 0x80892324;
 
 	/* Cannon Fixes */
 	CannonOffroadFix = 0x80584AE8;
@@ -540,6 +546,9 @@ SECTIONS {
 	TargetWhileHit = 0x805912E3;
 	TargetPositionHook = 0x807B38A0;
 
+	/* Remove Bloom and Depth of Field */
+	NoBloomHook = 0x805B15DC;
+
 	/* Remove Mushroom Bug */
 	RemoveShroomBug = 0x807BA077;
 	RemoveFakeShroom = 0x807BA484;
@@ -609,6 +618,9 @@ SECTIONS {
 	JGPTHook = 0x8051312C;
 	CKPHHook = 0x805137EC;
 
+	/* Transformation Music */
+	TransfMusicHook = 0x8070FD5C;
+
 	/* Ultimate Item Randomizer */
 	SharedItemHook = 0x807BA160;
 	SpecialItemHook = 0x8079A0E8;
@@ -634,7 +646,7 @@ SECTIONS {
 	VSMenuSkipMulti = 0x8060334B;
 	NoGhostLoading = 0x806211DC;
 
-	/* Wiilink */
+	/* WiiLink */
 	WL_Code_Text_Hook = 0x800EE098;
 	WL_Code_Data_Hook = 0x800EDE84;
 	WL_Auth_Response_Hook = 0x800EE3A4;
