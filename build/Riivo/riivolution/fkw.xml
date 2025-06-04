@@ -7,6 +7,11 @@
 					<patch id="fkw" />
 				</choice>
 			</option>
+			<option name="Feather Cut Indicators (Addon)">
+				<choice name="Enabled">
+					<patch id="myfcis" />
+				</choice>
+			</option>
 			<option name="My Stuff">
 				<choice name="CTGP">
 					<patch id="mystuffctgp" />
@@ -19,11 +24,6 @@
 				</choice>
 				<choice name="FKW (Music Only)">
 					<patch id="mystufffkwnrt" />
-				</choice>
-			</option>
-			<option name="Feather Cut Indicators (Addon)">
-				<choice name="Enabled">
-					<patch id="myfcis" />
 				</choice>
 			</option>
 			<option name="Drift Orientation (Bikes)">
