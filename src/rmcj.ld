@@ -89,6 +89,9 @@ SECTIONS {
 	/* 30 Second Time Limit */
 	ThirtySecs = 0x8053E60E;
 
+	/* AirFIBs */
+	AirFIBsHook = 0x807a7090;
+
 	/* All Items Can Land */
 	AICLUnk1 = 0x807A5D30;
 	AICLUnk2 = 0x8079639C;
@@ -674,4 +677,23 @@ SECTIONS {
 	WoodRespawn = 0x808D03E0;
 	WoodProb = 0x8076E494;
 	BushFunc = 0x80766994;
+	
+	/* 200cc Bullshit */
+	AddrFloat1 = 0x808a4c10;
+	AddrFloat2 = 0x808a4c1c;
+	AddrFloat3 = 0x808a4d24;
+	AddrFloat4 = 0x808a4d84;
+	AddrFloat5 = 0x808a4d94;
+	AddrFloat6 = 0x808a4f20;
+	AddrFloat7 = 0x808b4c7c;
+	AddrFloat8 = 0x808b4dd8;
+	AddrFloat9 = 0x808ca6a0;
+	AddrFloat10 = 0x80577ed8;
+	AddrFloat11 = 0x80577edc;
+	AddrFloat12 = 0x8057b31c;
+	AddrFloat13 = 0x8057b320;
+	AddrFloat14 = 0x8057b324;
+	AddrFloat15 = 0x8057b330;
+	AddrFloat16 = 0x8057b334;
+	TestHook = 0x808B4E3C;
 }

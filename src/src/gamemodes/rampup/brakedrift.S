@@ -79,7 +79,7 @@ blr
 BrakeDriftMain:
 lwz r11, 0(r29)
 bl GetRampUp
-beq return
+bne return
 
 # Check if we are brake drifting
 rlwinm r3, r4, 0, 28, 31
@@ -118,7 +118,7 @@ rlwinm r27, r0, 30, 31, 31
 # Get ramp up flag
 lwz r11, 0(r3)
 bl GetRampUp
-beq return2
+bne return2
 
 # Check if player is accelerating
 rlwinm. r4, r0, 0, 0, 0
@@ -162,7 +162,7 @@ lwz r3, 0x118(r30)
 # Get ramp up flag
 lwz r11, 0(r3)
 bl GetRampUp
-beq end3
+bne end3
 
 # Reload playerPointers
 lwz r5, 0(r3)
@@ -233,7 +233,7 @@ lwz r3, 0x118(r31)
 # Get ramp up flag
 lwz r11, 0(r3)
 bl GetRampUp
-beq end4
+bne end4
 
 # Reload playerPointers
 lwz r5, 0(r3)

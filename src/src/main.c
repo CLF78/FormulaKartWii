@@ -97,6 +97,9 @@ void loadCodes() {
 	// 30 Seconds Time Limit Modifier (by CLF78)
 	directWrite16(ThirtySecs, 0x2A30);
 
+	// AirFIBs (Ro)
+	//directWriteBranch(AirFIBsHook, AirFIBs, true);
+
 	// All Items Can Land (by MrBean and CLF78)
 	directWriteNop(AICLUnk1);
 	directWrite32(AICLUnk2, 0x38600000);
@@ -506,15 +509,15 @@ void loadCodes() {
 	directWriteBranch(RaceCountFix5, RaceCountFix, true);
 
 	// Game Mode - Ramp Up (by CLF78, Ismy and stebler)
-	directWriteBranch(RampUpHook, RampUp, false);
-	directWriteBranch(RampUpSpeedFixHook, RampUpSpeedFix, false);
-	directWriteBranch(DriftSpeedHook, DriftSpeed1, true);
-	directWriteBranch(DriftSpeedHook2, DriftSpeed2, true);
-	directWriteBranch(DriftSpeedHook3, DriftSpeed3, true);
-	directWriteBranch(DriftSpeedHook4, DriftSpeed4, false);
-	directWriteBranch(DriftSpeedHook5, DriftSpeed5, false);
-	directWriteBranch(BoostAccelHook, BoostAccel, false);
-	directWriteBranchOffset(BoostAccelHook, 0x70, BoostAccel, false);
+	// directWriteBranch(RampUpHook, RampUp, false);
+	// directWriteBranch(RampUpSpeedFixHook, RampUpSpeedFix, false);
+	// directWriteBranch(DriftSpeedHook, DriftSpeed1, true);
+	// directWriteBranch(DriftSpeedHook2, DriftSpeed2, true);
+	// directWriteBranch(DriftSpeedHook3, DriftSpeed3, true);
+	// directWriteBranch(DriftSpeedHook4, DriftSpeed4, false);
+	// directWriteBranch(DriftSpeedHook5, DriftSpeed5, false);
+	// directWriteBranch(BoostAccelHook, BoostAccel, false);
+	// directWriteBranchOffset(BoostAccelHook, 0x70, BoostAccel, false);
 	directWriteBranch(BrakeDriftClassicHook, BrakeDriftClassic, true);
 	directWriteBranch(BrakeDriftGCNHook, BrakeDriftGCN, true);
 	directWriteBranch(BrakeDriftNunchuckHook, BrakeDriftNunchuck, true);
@@ -525,7 +528,7 @@ void loadCodes() {
 	directWriteBranch(BrakeDriftEffKartsHook, BrakeDriftEffKarts, false);
 	directWriteBranch(FastFallingHook, FastFalling, false);
 	directWriteBranch(FastFallingHook2, FastFalling2, false);
-	directWriteBranch(RedSpeedHook, RedSpeed, true);
+	// directWriteBranch(RedSpeedHook, RedSpeed, true);
 
 	// Game Mode - Teams (by CLF78, Ismy and Chippy)
 	directWrite32(NoItemGlow, 0x38000000);
@@ -711,6 +714,25 @@ void loadCodes() {
 			FOV = 0x3F00;
 	}
 	directWrite16(CustomFOV, FOV);
+
+	// 200cc Bullshit
+	directWrite32(AddrFloat1, 0x42e10000);
+	directWrite32(AddrFloat2, 0x43430000);
+	directWrite32(AddrFloat3, 0x43c30000);
+	directWrite32(AddrFloat4, 0x43430000);
+	directWrite32(AddrFloat5, 0x496a6000);
+	directWrite32(AddrFloat6, 0x431d8000);
+	directWrite32(AddrFloat7, 0x3ebbbbbc);
+	directWrite32(AddrFloat8, 0x40900000);
+	directWrite32(AddrFloat9, 0x42d20000);
+	directWrite32(AddrFloat10, 0x3d804334);
+	directWrite32(AddrFloat11, 0x919e002c);
+	directWrite32(AddrFloat12, 0x3c804359);
+	directWrite32(AddrFloat13, 0x60848000);
+	directWrite32(AddrFloat14, 0x9083002c);
+	directWrite32(AddrFloat15, 0x3c804334);
+	directWrite32(AddrFloat16, 0x9083002c);
+	directWrite32(TestHook, 0x3FC00000);
 
 	sync();
 	isync();

@@ -48,7 +48,7 @@ beq checkFastFall
 rampUp:
 lwz r11, 0(r29)
 bl GetRampUp
-beq end
+bne end
 
 # Get airtime
 checkFastFall:
@@ -106,7 +106,7 @@ beq checkFastFall2
 rampUp2:
 lwz r11, 0(r28)
 bl GetRampUp
-beq end2
+bne end2
 
 # Get airtime
 checkFastFall2:
