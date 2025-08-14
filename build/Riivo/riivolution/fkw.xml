@@ -1,7 +1,7 @@
 <wiidisc version="1">
 	<id game="RMC"/>
 	<options>
-		<section name="FKW: Feature Settings">
+		<section name="FKW - Features">
 			<option name="Formula Kart Wii">
 				<choice name="Enabled">
 					<patch id="fkw" />
@@ -58,7 +58,7 @@
 				</choice>
 			</option>
 		</section>
-		<section name="FKW: Accessibility Settings">
+		<section name="FKW - Accessibility">
 			<option name="Bloom and Depth of Field"  default="1">
 				<choice name="Normal">
 					<patch id="nobloom" />
@@ -143,7 +143,7 @@
 	<patch id="myfcis">
 		<folder external="/fkw/My FCIs" recursive="false" />
 		<folder external="/fkw/My FCIs" disc="/" />
-		<memory offset="0x8000400E" value="01"/>
+		<memory offset="0x8000400E" value="01" original="67"/>
 	</patch>
 	<patch id="mystuffctgp">
 		<folder external="/ctgpr/My Stuff" recursive="false" />
@@ -163,66 +163,66 @@
 	</patch>
 	<!--Set bytes to enable the following codes-->
 	<patch id="fastmenu">
-		<memory offset="0x80004000" value="01"/>
+		<memory offset="0x80004000" value="01" original="4d"/>
 	</patch>
 	<patch id="miiheads">
-		<memory offset="0x80004001" value="01"/>
+		<memory offset="0x80004001" value="01" original="65"/>
 	</patch>
 	<patch id="racemusic">
-		<memory offset="0x80004002" value="01"/>
+		<memory offset="0x80004002" value="01" original="74"/>
 	</patch>
     <patch id="gradmusic">
-		<memory offset="0x80004002" value="02"/>
+		<memory offset="0x80004002" value="02" original="74"/>
 	</patch>
 	<patch id="charvoices">
-		<memory offset="0x80004003" value="01"/>
+		<memory offset="0x80004003" value="01" original="72"/>
 	</patch>
 	<patch id="btglitch">
-		<memory offset="0x80004004" value="01"/>
+		<memory offset="0x80004004" value="01" original="6f"/>
 	</patch>
 	<patch id="timediff1">
-		<memory offset="0x80004005" value="01"/>
+		<memory offset="0x80004005" value="01" original="77"/>
 	</patch>
 	<patch id="timediff2">
-		<memory offset="0x80004005" value="02"/>
+		<memory offset="0x80004005" value="02" original="77"/>
 	</patch>
 	<patch id="speedo">
-		<memory offset="0x80004006" value="01"/>
+		<memory offset="0x80004006" value="01" original="65"/>
 	</patch>
 	<patch id="transfmusic">
-		<memory offset="0x80004007" value="01"/>
+		<memory offset="0x80004007" value="01" original="72"/>
 	</patch>
 	<patch id="orientbikesoutside">
-		<memory offset="0x80004008" value="01"/>
+		<memory offset="0x80004008" value="01" original="6b"/>
 	</patch>
     <patch id="orientbikesinside">
-		<memory offset="0x80004008" value="02"/>
+		<memory offset="0x80004008" value="02" original="6b"/>
 	</patch>
 	<patch id="orientkarts">
-		<memory offset="0x80004009" value="01"/>
+		<memory offset="0x80004009" value="01" original="73"/>
 	</patch>
     <patch id="kcpmap">
-		<memory offset="0x8000400A" value="01"/>
+		<memory offset="0x8000400A" value="01" original="20"/>
 	</patch>
 	<patch id="lightflash">
-		<memory offset="0x8000400B" value="01"/>
+		<memory offset="0x8000400B" value="01" original="54"/>
 	</patch>
 	<patch id="nobloom">
-		<memory offset="0x8000400C" value="01"/>
+		<memory offset="0x8000400C" value="01" original="61"/>
 	</patch>
 	<patch id="fovnarrow">
-		<memory offset="0x8000400D" value="01"/>
+		<memory offset="0x8000400D" value="01" original="72"/>
 	</patch>
 	<patch id="fovverynarrow">
-		<memory offset="0x8000400D" value="02"/>
+		<memory offset="0x8000400D" value="02" original="72"/>
 	</patch>
 	<patch id="fovwide">
-		<memory offset="0x8000400D" value="03"/>
+		<memory offset="0x8000400D" value="03" original="72"/>
 	</patch>
 	<patch id="fovverywide">
-		<memory offset="0x8000400D" value="04"/>
+		<memory offset="0x8000400D" value="04" original="72"/>
 	</patch>
 	<patch id="thirtyfps">
-		<memory offset="0x8000400F" value="01"/>
+		<memory offset="0x8000400F" value="01" original="65"/>
 	</patch>
 </wiidisc>

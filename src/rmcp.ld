@@ -43,6 +43,7 @@ SECTIONS {
 	GetTime = 0x801AAD5C;
 	GXDrawDone = 0x8016EAB0;
 	BeginFrame = 0x8020FE24;
+	PlayerModels = 0x809C2F38;
 
 	/* Math Functions */
 	cos = 0x8001b590;
@@ -97,6 +98,9 @@ SECTIONS {
 	ItemLandFeather = 0x808B54E8;
 	ItemLandGolden = 0x808B5500;
 	ItemLandBill = 0x808B550C;
+
+	/* Allow looking backwards during respawn */
+	RespawnLookBack = 0x805A228C;
 
 	/* Allow looking backwards during the countdown */
 	CountdownLookBack = 0x805A225C;
@@ -206,6 +210,9 @@ SECTIONS {
 	/* DC Prevention from laggy players */
 	DCPrevention = 0x806556EC;
 
+	/* Disable Bob-omb Backspam */
+	NoBackBombs = 0x807A4A78;
+
 	/* Disable Item Poof */
 	NoItemPoof = 0x807965C0;
 	NoItemPoof2Hook = 0x807A1A54;
@@ -243,6 +250,9 @@ SECTIONS {
 	BlueSizeHook2 = 0x807AE384;
 	BlueExplosionFunc = 0x807ADF58;
 
+	/* Emitted Bob-ombs Explode (Idle Fix) */
+	BombIdleFixHook = 0x807A7170;
+
 	/* Exception Handler */
 	ShowExceptions = 0x802A7404;
 
@@ -270,6 +280,9 @@ SECTIONS {
 	GenerateEVENT = 0x8079C220;
 	SubtractItem = 0x807BC97C;
 	FeatherInvisWallHook = 0x805B6868;
+
+	/* FIBs Float in Midair when Backspammed */
+	AirFIBsHook = 0x807a7a24;
 
 	/* Final Lap Music Trigger Modifier */
 	MusicPitch = 0x808A10D8;
@@ -465,7 +478,7 @@ SECTIONS {
 	RespawnHelperHook2 = 0x80579C20;
 	RespawnHelperHook3 = 0x80581CFC;
 	InstaDraftHook = 0x805872E0;
-	
+
 	/* No Bullet Bill Cancel When Touching Bottom of Rainbow Road */
 	NoBillCancelRR = 0x8059BE30;
 
@@ -628,6 +641,9 @@ SECTIONS {
 
 	/* Ultra UnCut */
 	CKPTCheck = 0x80535118;
+
+	/* Un-Beancorner */
+	UnBeanCornerHook = 0x8056e804;
 
 	/* Use Items in Cannon */
 	ItemsCannon1 = 0x80797f88;

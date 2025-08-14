@@ -108,6 +108,9 @@ void loadCodes() {
 	directWrite32(ItemLandFeather, tempVal32+16);
 	directWrite32(ItemLandBill, tempVal32+24);
 
+	// Allow looking backwards during respawn (by Ro)
+	directWriteNop(RespawnLookBack);
+
 	// Allow looking backwards during the countdown (by Gaberboo)
 	directWrite32(CountdownLookBack, 0x38800001);
 
@@ -183,6 +186,9 @@ void loadCodes() {
 	// Default Drift Type Modifier (by CLF78)
 	directWrite32(DefaultDriftType, 0x38600001);
 
+	// Disable Bob-omb Backspam (by stealthsteeler)
+	directWrite32(NoBackBombs, 0x48000060);
+
 	// Disable Item Poof (by CLF78 and _tZ)
 	directWriteNop(NoItemPoof);
 	directWriteBranch(NoItemPoof2Hook, NoItemPoof2, false);
@@ -219,6 +225,9 @@ void loadCodes() {
 	directWriteBranchOffset(BlueVisualSizeHook, 0xBC, BlueSize, true);
 	directWriteBranch(BlueSizeHook2, BlueSize2, true);
 
+	// Emitted Bob-ombs Explode (Idle Fix) (by Ro)
+	directWriteBranch(BombIdleFixHook, BombIdleFix, true);
+
 	// Fast POW (by mdmwii and Ro)
 	directWriteArray(NoPOWDelay, POWDelay, 8);
 
@@ -243,6 +252,9 @@ void loadCodes() {
 	directWriteBranch(FastMusicHook, FinalLapCheck, true);
 	directWriteBranch(FastMusicHook2, PitchReset, true);
 	directWriteBranch(FastMusicHook3, PitchReset2, false);
+	
+	// FIBs Float in Midair when Backspammed (by Ro and stealthsteeler)
+	directWriteBranch(AirFIBsHook, AirFIBs, true);
 
 	// Fix Offroad Ramp Glitch (by vabold)
 	directWriteBranch(OffroadRampGlitchFixHook, OffroadRampGlitchFix, true);
@@ -270,7 +282,7 @@ void loadCodes() {
 	directWriteBranch(GuestSendHook, GuestSend, false);
 	directWriteBranch(HostCheckHook, HostCheck, false);
 	directWriteBranch(HostCheckHelperHook, HostCheckHelper, true);
-	directWrite8(Version, 14);
+	directWrite8(Version, 255);
 
 	// Impervious TC (by CLF78)
 	directWrite32(ImperviousTCHook, 0x48000038);
@@ -447,6 +459,9 @@ void loadCodes() {
 	directWriteBranch(SpecialItemHook, SpecialRandom, true);
 	directWriteBranch(WoodProb, WoodboxPatch, true);
 
+	// Un-Beancorner (by JoshuaMK)
+	directWriteBranch(UnBeanCornerHook, UnBeanCorner, true);
+
 	// Use Items in Cannon (by Ro)
 	directWriteNop(ItemsCannon1);
 	directWriteNop(ItemsCannon2);
@@ -466,7 +481,7 @@ void loadCodes() {
 	directWrite8(SandpitFix3, 0x80);
 
 	// Cycle Fix - Ghost Valley 2 (by CLF78 and Ismy)
-	directWrite16(GV2Fix, 0x3C0);
+	directWrite16(GV2Fix, 0x1E0);
 
 	// Cycle Fix - Grumble Volcano (by CLF78 and Ismy)
 	directWrite16(RockFix, 0x3C0);

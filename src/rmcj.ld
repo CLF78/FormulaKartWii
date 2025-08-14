@@ -43,6 +43,7 @@ SECTIONS {
 	GetTime = 0x801AAC7C;
 	GXDrawDone = 0x8016E9D0;
 	BeginFrame = 0x8020FD44;
+	PlayerModels = 0x809C1F98;
 
 	/* Math Functions */
 	cos = 0x8001b4b4;
@@ -97,6 +98,9 @@ SECTIONS {
 	ItemLandFeather = 0x808B4648;
 	ItemLandGolden = 0x808B4660;
 	ItemLandBill = 0x808B466C;
+
+	/* Allow looking backwards during respawn */
+	RespawnLookBack = 0x805A1C0C;
 
 	/* Allow looking backwards during the countdown */
 	CountdownLookBack = 0x805A1BDC;
@@ -205,6 +209,9 @@ SECTIONS {
 	/* DC Prevention from laggy players */
 	DCPrevention = 0x80654D58;
 
+	/* Disable Bob-omb Backspam */
+	NoBackBombs = 0x807a40e4;
+
 	/* Disable Item Poof */
 	NoItemPoof = 0x80795C2C;
 	NoItemPoof2Hook = 0x807A10C0;
@@ -242,6 +249,9 @@ SECTIONS {
 	BlueSizeHook2 = 0x807AD9F0;
 	BlueExplosionFunc = 0x807AD5C4;
 
+	/* Emitted Bob-ombs Explode (Idle Fix) */
+	BombIdleFixHook = 0x807A67DC;
+
 	/* Exception Handler */
 	ShowExceptions = 0x802A6D84;
 
@@ -269,6 +279,9 @@ SECTIONS {
 	GenerateEVENT = 0x8079B88C;
 	SubtractItem = 0x807BBFE8;
 	FeatherInvisWallHook = 0x805B61E8;
+
+	/* FIBs Float in Midair when Backspammed */
+	AirFIBsHook = 0x807a7090;
 
 	/* Final Lap Music Trigger Modifier */
 	MusicPitch = 0x808A0238;
@@ -624,6 +637,9 @@ SECTIONS {
 
 	/* Ultra UnCut */
 	CKPTCheck = 0x80534A98;
+
+	/* Un-Beancorner */
+	UnBeanCornerHook = 0x8056e184;
 
 	/* Use Items in Cannon */
 	ItemsCannon1 = 0x807975f4;
