@@ -2,6 +2,7 @@
 #include "coursemap.h"
 #include "stdlib.h"
 #include "math.h"
+#include "racedata.h"
 
 typedef struct{
     void* vtable;
@@ -70,7 +71,11 @@ u32 InsertKCPs(void* MapCtrl, u32 prevChildIndex, CtrlLoader* ctrlLoader){
             kcp->position.x = checkpoint->mMidpoint.x; 
             kcp->position.z = checkpoint->mMidpoint.y; //accept the way of life
 
-            kcp->rotation.y = rd_atan2(checkpoint->mDir.x, checkpoint->mDir.y) * 57.2958;
+            if(Racedata->main.scenarios[0].settings.modeFlags & 1) {
+                kcp->rotation.y = rd_atan2(-checkpoint->mDir.x, checkpoint->mDir.y) * 57.2958;
+            } else {
+                kcp->rotation.y = rd_atan2(checkpoint->mDir.x, checkpoint->mDir.y) * 57.2958;
+            }
 
             CtrlRace2dMapObject_initSelf(kcp); //normally it does this automatically later but I have to do it now if I want to modify the scale
 
