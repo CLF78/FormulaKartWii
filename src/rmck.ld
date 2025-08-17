@@ -79,6 +79,9 @@ SECTIONS {
 
 	SubtractTimers = 0x807DCC20;
 
+	/* 1st Place Crown on Minimap */
+	CrownMinimapHook = 0x807D9850;
+
 	/* 30 FPS */
 	ThirtyFPSHook1 = 0x80009B44;
 	ThirtyFPSHook2 = 0x800093FB;
@@ -114,6 +117,7 @@ SECTIONS {
 	/* BRCTR Redirector */
 	LapNumberCTR = 0x80898127;
 	ItemWindowCTR = 0x8089806A;
+	MapCharaCTR = 0x8089794e;
 
 	/* Banana/Blue/Bomb Spinout Modifier */
 	BananaDamage = 0x805611E0;

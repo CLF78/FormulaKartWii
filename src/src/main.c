@@ -93,7 +93,10 @@ void loadCodes() {
 	directWriteNop(FrameskipHook6);
 	directWrite32(FrameskipHook7, 0x000F7709);
 	directWrite32(FrameskipHook8, 0x00000006);
-	
+
+	// 1st Place Crown on Minimap (by Ro)
+	directWriteBranch(CrownMinimapHook, CrownMinimap, true);
+
 	// 30 Seconds Time Limit Modifier (by CLF78)
 	directWrite16(ThirtySecs, 0x2A30);
 
@@ -139,7 +142,7 @@ void loadCodes() {
 	// BRCTR Redirector (by CLF78)
 	directWrite8(LapNumberCTR, 'f');
 	directWrite8(ItemWindowCTR, 's');
-	//directWrite8(MapCharaCTR, 'f');
+	directWrite8(MapCharaCTR, 't');
 	
 	// Bullet Bill Exhaust Fire Animation Fix (by stealthsteeler)
 	directWriteBranch(BillAnimationFixHook, BillAnimationFix, true);

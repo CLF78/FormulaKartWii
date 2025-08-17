@@ -24,7 +24,7 @@ ItemChances:
 .byte 0,0
 
 # Bomb
-.byte 95,99
+.byte 85,95
 
 # Blue Shell
 .byte 95,99
@@ -33,7 +33,7 @@ ItemChances:
 .byte 95,99
 
 # Star
-.byte 85,95
+.byte 95,99
 
 # Golden
 .byte 95,99
