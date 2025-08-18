@@ -100,7 +100,7 @@ void loadCodes() {
 	// 30 Seconds Time Limit Modifier (by CLF78)
 	directWrite16(ThirtySecs, 0x2A30);
 
-	// All Items Can Land (by MrBean and CLF78)
+	// All Items Can Land (by MrBean35000vr and CLF78)
 	directWriteNop(AICLUnk1);
 	directWrite32(AICLUnk2, 0x38600000);
 	directWrite32(NoItemLandingPoof, 0x39800001);
@@ -157,6 +157,9 @@ void loadCodes() {
 	// Cannon Fixes (by Ismy)
 	directWriteNop(CannonOffroadFix);
 	directWriteNop(CannonTCFix);
+	
+	// Change Camera Perspective after Race (by Ro)
+	directWrite32(CameraPersp, 0x38600001);
 
 	// Conditional Out of Bounds (by Riidefi)
 	directWriteBranch(ConditionalOutofBoundsHook, ConditionalOutofBounds, true);
@@ -230,6 +233,17 @@ void loadCodes() {
 
 	// Emitted Bob-ombs Explode (Idle Fix) (by Ro)
 	directWriteBranch(BombIdleFixHook, BombIdleFix, true);
+
+	// Enhanced Race/Battle Pause Menu (by Ro)
+	directWrite32(CreateTTPause1, 0x38800019);
+	directWrite32(CreateTTPause2, 0x38800019);
+	directWrite32(CreateTTPause3, 0x38800019);
+	directWrite32(CreateTTPause4, 0x38600019);
+	directWrite32(CreateTTPause5, 0x38600019);
+	directWriteNop(PreventStoringTTs);
+	directWrite32(DisableControllerImage1, 0x48000808);
+	directWrite32(DisableControllerImage2, 0x48000040);
+	directWriteBranch(VSPauseMenuHook, VSPauseMenu, true);
 
 	// Fast POW (by mdmwii and Ro)
 	directWriteArray(NoPOWDelay, POWDelay, 8);
@@ -450,6 +464,9 @@ void loadCodes() {
 	directWriteBranch(JGPTHook, AltKMP1, true);
 	directWriteBranch(CKPHHook, AltKMP2, true);
 
+	// Trickable Cannons (by Ro)
+	directWriteBranch(TrickableCannonHook, TrickableCannon, true);
+
 	// Time Limit Modifier (by MrBean35000vr)
 	directWriteArray(TimeLimit, NewTimeLimit, 8);
 
@@ -558,6 +575,9 @@ void loadCodes() {
 	//////////////////
 	// Online Stuff //
 	//////////////////
+
+	// Anti Lag/Late Start Online (by davidevgen, MrBean35000vr and Ro)
+	directWriteBranch(AntiLagStartHook, AntiLagStart, true);
 
 	// Force CC (by Star)
 	directWriteBranch(ForceCCHook, ForceCC, true);

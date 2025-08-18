@@ -111,6 +111,9 @@ SECTIONS {
 	/* Always Win Track Vote */
 	AlwaysWinVoteHook = 0x80659EE4;
 
+	/* Anti Lag/Late Start Online */
+	AntiLagStartHook = 0x8052E8E8;
+
 	/* Automatic BRSAR Patch */
 	AutoBRSARHook = 0x80091234;
 
@@ -154,6 +157,9 @@ SECTIONS {
 	/* Cannon Fixes */
 	CannonOffroadFix = 0x8057E2C4;
 	CannonTCFix = 0x8057E34C;
+
+	/* Change Camera Perspective after Race */
+	CameraPersp = 0x80597910;
 
 	/* Change Characters Between Races */
 	ChangeCharsHook = 0x805FD1A4;
@@ -255,6 +261,17 @@ SECTIONS {
 
 	/* Emitted Bob-ombs Explode (Idle Fix) */
 	BombIdleFixHook = 0x8079E164;
+
+	/* Enhanced Race/Battle Pause Menu */
+	CreateTTPause1 = 0x805fb7a4;
+	CreateTTPause2 = 0x805fb8e8;
+	CreateTTPause3 = 0x805fba2c;
+	CreateTTPause4 = 0x80602be4;
+	CreateTTPause5 = 0x80602abc;
+	PreventStoringTTs = 0x80822bb8;
+	DisableControllerImage1 = 0x808375d8;
+	DisableControllerImage2 = 0x808373a8;
+	VSPauseMenuHook = 0x805ddbf8;
 
 	/* Exception Handler */
 	ShowExceptions = 0x802A3084;
@@ -633,6 +650,9 @@ SECTIONS {
 
 	/* Transformation Music */
 	TransfMusicHook = 0x807082B8;
+
+	/* Trickable Cannons */
+	TrickableCannonHook = 0x8057E38C;
 
 	/* Ultimate Item Randomizer */
 	SharedItemHook = 0x807AB700;
