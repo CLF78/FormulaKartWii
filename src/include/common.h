@@ -108,4 +108,4 @@ _directWriteArray(calcoffs(dest, offset), src, SIZEOF(src));
 char FCIs, DriftBikes, DriftKarts, KCPMap, TimeDiff, Speedometer;
 
 /* Accessibility */
-char FasterMenu, MiiHeads, NoMusic, NoCharVoice, BtGlitch, TransfMusic, LightFlash, RemoveBloom, ThirtyFPS, FOVSetting;
+char FasterMenu, MiiHeads, Music, CharVoices, BtGlitch, TransfMusic, LightFlash, Bloom, ThirtyFPS, FOVSetting, TMCam;

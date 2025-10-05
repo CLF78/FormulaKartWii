@@ -4,121 +4,129 @@
 		<section name="FKW - Features">
 			<option name="Formula Kart Wii">
 				<choice name="Enabled">
-					<patch id="fkw" />
+					<patch id="fkw"/>
 				</choice>
 			</option>
 			<option name="Feather Cut Indicators (Addon)">
 				<choice name="Enabled">
-					<patch id="myfcis" />
+					<patch id="myfcis"/>
 				</choice>
 			</option>
 			<option name="My Stuff">
 				<choice name="CTGP">
-					<patch id="mystuffctgp" />
+					<patch id="mystuffctgp"/>
 				</choice>
 				<choice name="CTGP (Music Only)">
-					<patch id="mystuffctgpnrt" />
+					<patch id="mystuffctgpnrt"/>
 				</choice>
 				<choice name="FKW">
-					<patch id="mystufffkw" />
+					<patch id="mystufffkw"/>
 				</choice>
 				<choice name="FKW (Music Only)">
-					<patch id="mystufffkwnrt" />
+					<patch id="mystufffkwnrt"/>
 				</choice>
 			</option>
 			<option name="Drift Orientation (Bikes)">
 				<choice name="Inside Drift">
-					<patch id="orientbikesinside" />
+					<patch id="orientbikesinside"/>
 				</choice>
 				<choice name="Outside Drift">
-					<patch id="orientbikesoutside" />
+					<patch id="orientbikesoutside"/>
 				</choice>
 			</option>
 			<option name="Drift Orientation (Karts)">
 				<choice name="Inside Drift">
-					<patch id="orientkarts" />
+					<patch id="orientkarts"/>
 				</choice>
 			</option>
 			<option name="Key Checkpoints on Minimap">
 				<choice name="Enabled">
-					<patch id="kcpmap" />
+					<patch id="kcpmap"/>
 				</choice>
 			</option>
 			<option name="Show Time Difference">
 				<choice name="Player Ahead">
-					<patch id="timediff1" />
+					<patch id="timediff1"/>
 				</choice>
 				<choice name="Player in First">
-					<patch id="timediff2" />
+					<patch id="timediff2"/>
 				</choice>
 			</option>
 			<option name="Speedometer">
 				<choice name="Enabled">
-					<patch id="speedo" />
+					<patch id="speedo"/>
 				</choice>
 			</option>
 		</section>
 		<section name="FKW - Accessibility">
 			<option name="Bloom and Depth of Field"  default="1">
 				<choice name="Normal">
-					<patch id="nobloom" />
+					<patch id="nobloom"/>
 				</choice>
 			</option>
 			<option name="Character Voices"  default="1">
 				<choice name="Enabled">
-					<patch id="charvoices" />
+					<patch id="charvoices"/>
 				</choice>
 			</option>
 			<option name="Faster Menu Navigation">
 				<choice name="Enabled">
-					<patch id="fastmenu" />
+					<patch id="fastmenu"/>
 				</choice>
 			</option>
 			<option name="Field of View">
 				<choice name="Narrow">
-					<patch id="fovnarrow" />
+					<patch id="fovnarrow"/>
 				</choice>
 				<choice name="Very Narrow">
-					<patch id="fovverynarrow" />
+					<patch id="fovverynarrow"/>
 				</choice>
 				<choice name="Wide">
-					<patch id="fovwide" />
+					<patch id="fovwide"/>
 				</choice>
 				<choice name="Very Wide">
-					<patch id="fovverywide" />
+					<patch id="fovverywide"/>
 				</choice>
 			</option>
 			<option name="Force 30 FPS">
 				<choice name="Enabled">
-					<patch id="thirtyfps" />
+					<patch id="thirtyfps"/>
 				</choice>
 			</option>
 			<option name="Lightning Flash" default="1">
 				<choice name="Enabled">
-					<patch id="lightflash" />
+					<patch id="lightflash"/>
 				</choice>
 			</option>
 			<option name="Long Distance Names">
 				<choice name="Enabled">
-					<patch id="btglitch" />
+					<patch id="btglitch"/>
 				</choice>
 			</option>
 			<option name="Mii Heads on Minimap">
 				<choice name="Enabled">
-					<patch id="miiheads" />
+					<patch id="miiheads"/>
 				</choice>
 			</option>
 			<option name="Race Music" default="1">
 				<choice name="Normal Speed">
-					<patch id="racemusic" />
+					<patch id="racemusic"/>
 				</choice>
 				<choice name="Accelerating">
-					<patch id="gradmusic" />
+					<patch id="gradmusic"/>
 				</choice>
 			</option>
 			<option name="Transformation Music" default="1">
+				<choice name="Normal">
+					<patch id="transfmusic"/>
+				</choice>
+				<choice name="Overlayed">
+					<patch id="overlayedtransfmusic"/>
+				</choice>
+			</option>
+			<option name="Low-angled Camera">
 				<choice name="Enabled">
-					<patch id="transfmusic" />
+					<patch id="tmcamera"/>
 				</choice>
 			</option>
 		</section>
@@ -129,100 +137,106 @@
 		<memory offset="0x8000629C" value="4BFFDF60"/>
 		<folder external="/fkw/fkw" disc="/fkw" create="true"/>
 		<!--File Replacements-->
-		<folder disc="/Race" external="/fkw/Common_X" />
-		<file disc="/Race/Common_U.szs" external="/fkw/Common_X/Common_E.szs" />
-		<file disc="/Race/Common_Q.szs" external="/fkw/Common_X/Common_F.szs" />
-		<file disc="/Race/Common_M.szs" external="/fkw/Common_X/Common_S.szs" />
-		<file disc="/Race/Common_K.szs" external="/fkw/Common_X/Common_K.szs" create="true" />
-		<folder disc="/Scene/UI" external="/fkw/UI" create="true" />
+		<folder disc="/Race" external="/fkw/Common_X"/>
+		<file disc="/Race/Common_U.szs" external="/fkw/Common_X/Common_E.szs"/>
+		<file disc="/Race/Common_Q.szs" external="/fkw/Common_X/Common_F.szs"/>
+		<file disc="/Race/Common_M.szs" external="/fkw/Common_X/Common_S.szs"/>
+		<file disc="/Race/Common_K.szs" external="/fkw/Common_X/Common_K.szs" create="true"/>
+		<folder disc="/Scene/UI" external="/fkw/UI" create="true"/>
 		<!--Track Patches -->
-		<folder disc="/Race/Course/Patches" external="/fkw/TrackPatches" create="true" />
+		<folder disc="/Race/Course/Patches" external="/fkw/TrackPatches" create="true"/>
 		<!-- THP -->
-		<file disc="/thp/button/drift_select.thp" external="/fkw/thp/drift_select.thp" />
+		<file disc="/thp/button/drift_select.thp" external="/fkw/thp/drift_select.thp"/>
 	</patch>
 	<patch id="myfcis">
-		<folder external="/fkw/My FCIs" recursive="false" />
-		<folder external="/fkw/My FCIs" disc="/" />
-		<memory offset="0x8000400E" value="01" original="67"/>
+		<folder external="/fkw/My FCIs" recursive="false"/>
+		<folder external="/fkw/My FCIs" disc="/"/>
+		<memory offset="0x800017BE" value="01" original="00"/>
 	</patch>
 	<patch id="mystuffctgp">
-		<folder external="/ctgpr/My Stuff" recursive="false" />
-		<folder external="/ctgpr/My Stuff" disc="/" />
+		<folder external="/ctgpr/My Stuff" recursive="false"/>
+		<folder external="/ctgpr/My Stuff" disc="/"/>
 	</patch>
 	<patch id="mystuffctgpnrt">
-		<folder external="/ctgpr/My Stuff" recursive="false" disc="/sound" />
-		<folder external="/ctgpr/My Stuff" recursive="false" disc="/sound/strm" />
+		<folder external="/ctgpr/My Stuff" recursive="false" disc="/sound"/>
+		<folder external="/ctgpr/My Stuff" recursive="false" disc="/sound/strm"/>
 	</patch>
 	<patch id="mystufffkw">
-		<folder external="/fkw/My Stuff" recursive="false" />
-		<folder external="/fkw/My Stuff" disc="/" />
+		<folder external="/fkw/My Stuff" recursive="false"/>
+		<folder external="/fkw/My Stuff" disc="/"/>
 	</patch>
 	<patch id="mystufffkwnrt">
-		<folder external="/fkw/My Stuff" recursive="false" disc="/sound" />
-		<folder external="/fkw/My Stuff" recursive="false" disc="/sound/strm" />
+		<folder external="/fkw/My Stuff" recursive="false" disc="/sound"/>
+		<folder external="/fkw/My Stuff" recursive="false" disc="/sound/strm"/>
 	</patch>
 	<!--Set bytes to enable the following codes-->
 	<patch id="fastmenu">
-		<memory offset="0x80004000" value="01" original="4d"/>
+		<memory offset="0x800017B0" value="01" original="00"/>
 	</patch>
 	<patch id="miiheads">
-		<memory offset="0x80004001" value="01" original="65"/>
+		<memory offset="0x800017B1" value="01" original="00"/>
 	</patch>
 	<patch id="racemusic">
-		<memory offset="0x80004002" value="01" original="74"/>
+		<memory offset="0x800017B2" value="01" original="00"/>
 	</patch>
     <patch id="gradmusic">
-		<memory offset="0x80004002" value="02" original="74"/>
+		<memory offset="0x800017B2" value="02" original="00"/>
 	</patch>
 	<patch id="charvoices">
-		<memory offset="0x80004003" value="01" original="72"/>
+		<memory offset="0x800017B3" value="01" original="00"/>
 	</patch>
 	<patch id="btglitch">
-		<memory offset="0x80004004" value="01" original="6f"/>
+		<memory offset="0x800017B4" value="01" original="00"/>
 	</patch>
 	<patch id="timediff1">
-		<memory offset="0x80004005" value="01" original="77"/>
+		<memory offset="0x800017B5" value="01" original="00"/>
 	</patch>
 	<patch id="timediff2">
-		<memory offset="0x80004005" value="02" original="77"/>
+		<memory offset="0x800017B5" value="02" original="00"/>
 	</patch>
 	<patch id="speedo">
-		<memory offset="0x80004006" value="01" original="65"/>
+		<memory offset="0x800017B6" value="01" original="00"/>
 	</patch>
 	<patch id="transfmusic">
-		<memory offset="0x80004007" value="01" original="72"/>
+		<memory offset="0x800017B7" value="01" original="00"/>
+	</patch>
+	<patch id="overlayedtransfmusic">
+		<memory offset="0x800017B7" value="02" original="00"/>
 	</patch>
 	<patch id="orientbikesoutside">
-		<memory offset="0x80004008" value="01" original="6b"/>
+		<memory offset="0x800017B8" value="01" original="00"/>
 	</patch>
     <patch id="orientbikesinside">
-		<memory offset="0x80004008" value="02" original="6b"/>
+		<memory offset="0x800017B8" value="02" original="00"/>
 	</patch>
 	<patch id="orientkarts">
-		<memory offset="0x80004009" value="01" original="73"/>
+		<memory offset="0x800017B9" value="01" original="00"/>
 	</patch>
     <patch id="kcpmap">
-		<memory offset="0x8000400A" value="01" original="20"/>
+		<memory offset="0x800017BA" value="01" original="00"/>
 	</patch>
 	<patch id="lightflash">
-		<memory offset="0x8000400B" value="01" original="54"/>
+		<memory offset="0x800017BB" value="01" original="00"/>
 	</patch>
 	<patch id="nobloom">
-		<memory offset="0x8000400C" value="01" original="61"/>
+		<memory offset="0x800017BC" value="01" original="00"/>
 	</patch>
 	<patch id="fovnarrow">
-		<memory offset="0x8000400D" value="01" original="72"/>
+		<memory offset="0x800017BD" value="01" original="00"/>
 	</patch>
 	<patch id="fovverynarrow">
-		<memory offset="0x8000400D" value="02" original="72"/>
+		<memory offset="0x800017BD" value="02" original="00"/>
 	</patch>
 	<patch id="fovwide">
-		<memory offset="0x8000400D" value="03" original="72"/>
+		<memory offset="0x800017BD" value="03" original="00"/>
 	</patch>
 	<patch id="fovverywide">
-		<memory offset="0x8000400D" value="04" original="72"/>
+		<memory offset="0x800017BD" value="04" original="00"/>
 	</patch>
 	<patch id="thirtyfps">
-		<memory offset="0x8000400F" value="01" original="65"/>
+		<memory offset="0x800017BF" value="01" original="00"/>
+	</patch>
+	<patch id="tmcamera">
+		<memory offset="0x800017C0" value="01" original="00"/>
 	</patch>
 </wiidisc>

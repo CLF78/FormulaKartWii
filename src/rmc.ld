@@ -25,20 +25,21 @@ SECTIONS {
 	DCScreenPtr = 0x80000EB4;
 
 	/* Riivolution Options */
-	FasterMenu = 0x80004000;
-	MiiHeads = 0x80004001;
-	NoMusic = 0x80004002;
-	NoCharVoice = 0x80004003;
-	BtGlitch = 0x80004004;
-	TimeDiff = 0x80004005;
-	Speedometer = 0x80004006;
-	TransfMusic = 0x80004007;
-	DriftBikes = 0x80004008;
-	DriftKarts = 0x80004009;
-	KCPMap = 0x8000400A;
-	LightFlash = 0x8000400B;
-	RemoveBloom = 0x8000400C;
-	FOVSetting = 0x8000400D;
-	FCIs = 0x8000400E;
-	ThirtyFPS = 0x8000400F;
+	FasterMenu = 0x800017B0;
+	MiiHeads = 0x800017B1;
+	Music = 0x800017B2;
+	CharVoice = 0x800017B3;
+	BtGlitch = 0x800017B4;
+	TimeDiff = 0x800017B5;
+	Speedometer = 0x800017B6;
+	TransfMusic = 0x800017B7;
+	DriftBikes = 0x800017B8;
+	DriftKarts = 0x800017B9;
+	KCPMap = 0x800017BA;
+	LightFlash = 0x800017BB;
+	Bloom = 0x800017BC;
+	FOVSetting = 0x800017BD;
+	FCIs = 0x800017BE;
+	ThirtyFPS = 0x800017BF;
+	TMCam = 0x800017C0;
 }

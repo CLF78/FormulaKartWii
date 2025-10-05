@@ -319,6 +319,9 @@ SECTIONS {
 	/* Force Battle Glitch */
 	TagDistance = 0x808C22AC;
 
+	/* Force Low-Angle Camera */
+	TMCamHook = 0x80591AA4;
+
 	/* Frameskip */
 	FrameskipHook1 = 0x80550B28;
 	FrameskipHook2 = 0x800096CC;
@@ -531,6 +534,9 @@ SECTIONS {
 	/* No Music */
 	NoMusicHook = 0x8009136C;
 
+	/* No Transformation Music */
+	NoTransfMusicHook = 0x806FE104;
+
 	/* Offline Race Count Modifier */
 	RaceCountFix1 = 0x8084187B;
 	RaceCountFix2 = 0x80841DF8;
@@ -655,8 +661,8 @@ SECTIONS {
 	JGPTHook = 0x8050114C;
 	CKPHHook = 0x8050180C;
 
-	/* Transformation Music */
-	TransfMusicHook = 0x806FE104;
+	/* Transformation Music Plays over Course Music */
+	OverlayTransfMusicHook = 0x806FE224;
 
 	/* Trickable Cannons */
 	TrickableCannonHook = 0x80572C08;

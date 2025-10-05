@@ -32,24 +32,25 @@
 # 0x800014B0-0x800016FF
 - 0x80001614-0x8000166B = Frameskip
 
-# 0x800017B0-0x800017FF
+# 0x800017B0-0x800017FF (Riivo Settings Range)
+- 0x800017B0 = Fast Menu Navigation			[0-1]
+- 0x800017B1 = Mii Heads on the Minimap		[0-1]
+- 0x800017B2 = Music						[0-2]
+- 0x800017B3 = Character Voices				[0-1]
+- 0x800017B4 = Long Distance Names			[0-1]
+- 0x800017B5 = Time Difference				[0-2]
+- 0x800017B6 = Speedometer					[0-1]
+- 0x800017B7 = Transformation Music			[0-2]
+- 0x800017B8 = Drift Bikes					[0-2]
+- 0x800017B9 = Drift Karts					[0-1]
+- 0x800017BA = Key Checkpoints on Minimap	[0-1]
+- 0x800017BB = Lightning Flash				[0-1]
+- 0x800017BC = Bloom and Depth of Field		[0-1]
+- 0x800017BD = Custom FOV					[0-4]
+- 0x800017BE = Feather Cut Indicators		[0-1]
+- 0x800017BF = 30FPS						[0-1]
+- 0x800017C0 = TrackMania Camera			[0-1]
 
-# 0x80004000-0x8000400F (Riivo Settings Range)
-- 0x80004000 = Fast Menu Navigation
-- 0x80004001 = Mii Heads on the Minimap
-- 0x80004002 = Music
-- 0x80004003 = Character Sounds
-- 0x80004004 = Long Distance Names
-- 0x80004005 = Time Difference
-- 0x80004006 = Speedometer
-- 0x80004007 = Transformation Music
-- 0x80004008 = Drift Bikes
-- 0x80004009 = Drift Karts
-- 0x8000400A = Key Checkpoints on Minimap
-- 0x8000400B = Lightning Flash
-- 0x8000400C = Bloom and Depth of Field
-- 0x8000400D = Custom FOV
-- 0x8000400E = Feather Cut Indicators
-- 0x8000400F = 30FPS
+# 0x80004000-0x8000400F
 
 # Other ranges

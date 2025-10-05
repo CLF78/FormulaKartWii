@@ -667,7 +667,7 @@ void loadCodes() {
 	////////////////////
 
 	// Faster Menu Navigation (by east)
-	if (FasterMenu == 1) {
+	if (FasterMenu) {
 		tempVal32 = 0;
 		directWrite32(FasterMenuHook, tempVal32);
 		directWrite32(FasterMenuHook2, tempVal32);
@@ -675,27 +675,27 @@ void loadCodes() {
 	}
 
 	// Mii Heads on Minimap (by JoshuaMK and CLF78)
-	if (MiiHeads == 1) {
+	if (MiiHeads) {
 		directWriteBranch(MiiHeadsHook, MiiHeadsPatch, true);
 	}
 
 	// No Music (by CosmoCortney)
-	if (NoMusic != 1 && NoMusic != 2) {
+	if (!Music) {
 		directWrite32(NoMusicHook, 0x38600000);
 	}
 
 	// No Character Voices (by Melg)
-	if (NoCharVoice != 1) {
+	if (!CharVoices) {
 		directWrite32(NoCharVoiceHook, 0x38600001);
 	}
 
 	// Force Battle Glitch (by XeR)
-	if (BtGlitch == 1) {
+	if (BtGlitch) {
 		directWrite32(TagDistance, 0x47927C00);
 	}
 
 	// Show Time Difference (by Melg and CLF78)
-	if (TimeDiff == 1 || TimeDiff == 2) {
+	if (TimeDiff) {
 		directWriteBranch(TimeDiffPatchHook, TimeDiffPatch, true);
 		directWrite8Offset(TimeDiffPatchHook, 0xB, 1);
 		directWriteBranchOffset(TimeDiffPatchHook, 0x4C, TimeDiffPatch2, false);
@@ -705,57 +705,66 @@ void loadCodes() {
 	directWriteBranch(TimeDiffApplyHook, TimeDiffApply, true);
 
 	// Speedometer (by stebler and CLF78)
-	if (Speedometer == 1) {
+	if (Speedometer) {
 		directWriteBranch(SpeedoNoPauseHook, SpeedoNoPause, true);
 	}
 
-	// Transformation Music (by Anarion)
-	if (TransfMusic != 1) {
-		directWrite32(TransfMusicHook, 0x38000003);
+	// No Transformation Music (by Anarion)
+	if (!TransfMusic) {
+		directWrite32(NoTransfMusicHook, 0x38000003);
+	}
+
+	// Transformation Music Plays over Course Music (by Ro)
+	if (TransfMusic == 2) {
+		directWriteNop(OverlayTransfMusicHook);
 	}
 
 	// 30 FPS (by CLF78)
-	if (ThirtyFPS == 1) {
+	if (ThirtyFPS) {
 		directWrite32(ThirtyFPSHook4, 0x3BE00002);
 		directWriteNop(ThirtyFPSHook5);
 		directWrite8(ThirtyFPSHook6, 2);
 	}
 
 	// KCP Map (by stealthsteeler)
-	if (KCPMap == 1) {
+	if (KCPMap) {
 		directWriteBranch(KCPMapHook, KCPMapInject, false);
 		directWriteBranch(KCPMapHook1, KCPMapInject1, false);
 	}
 	
 	// No Lightning Flash (by Ro)
-	if (LightFlash != 1) {
+	if (!LightFlash) {
 		directWrite32(NoLightningFlash, 0x4E800020);
 	}
 	
 	// Remove Bloom and Depth of Field (by Gearworks)
-	if (RemoveBloom != 1) {
+	if (!Bloom) {
 		directWriteBranch(NoBloomHook, NoBloom, true);
 	}
 	
 	// Camera Distance Modifier (by davidevgen)
-	u16 FOV;
 	switch(FOVSetting) {
 		case 1:
-			FOV = 0x3EE0;
+			tempVal16 = 0x3EE0;
 			break;
 		case 2:
-			FOV = 0x3EC0;
+			tempVal16 = 0x3EC0;
 			break;
 		case 3:
-			FOV = 0x3F20;
+			tempVal16 = 0x3F20;
 			break;
 		case 4:
-			FOV = 0x3F40;
+			tempVal16 = 0x3F40;
 			break;
 		default:
-			FOV = 0x3F00;
+			tempVal16 = 0x3F00;
 	}
-	directWrite16(CustomFOV, FOV);
+	directWrite16(CustomFOV, tempVal16);
+
+	// Force Low-Angle Camera (by stealthsteeler)
+	if (TMCam) {
+		directWrite32(TMCamHook, 0x38600001);
+	}
 
 	sync();
 	isync();

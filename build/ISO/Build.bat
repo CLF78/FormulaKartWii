@@ -18,7 +18,7 @@ IF NOT EXIST "fkw" (
 	echo as this script. Exiting...
 	echo.
 	pause
-	exit
+	EXIT
 	)
 
 IF EXIST mkw.d (
@@ -61,11 +61,12 @@ echo.
 echo Please make sure you have one in the same directory
 echo as this script. Exiting...
 pause
-exit
+EXIT
 
 :COPY
 echo.
 echo The script will now pause to let you replace any file on the disc.
+echo If you want to install the Feather Cut Indicators, do it now by replacing the .szs files of the tracks.
 echo DO NOT patch this game with the Wiimmfi patcher, or it'll break the game.
 echo Press any button to resume the procedure.
 pause
@@ -112,80 +113,100 @@ IF %LETTER%==K (
 	copy /y fkw\Common_K.szs mkw.d\files\Race\ >nul
 )
 
-echo.
-SET /P FASTMENU=Enable Faster Menu Navigation? (Y/N):
-IF /i %FASTMENU%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004000=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004000=00 -q)
+CLS
+SET /P FASTMENU=[01/17] Enable Faster Menu Navigation? (0=No, 1=Yes) ~ 
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017B0=%FASTMENU% -q
 
-echo.
-SET /P MIIHEADS=Enable Mii Heads on Minimap? (Y/N):
-IF /i %MIIHEADS%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004001=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004001=00 -q)
+CLS
+SET /P MIIHEADS=[02/17] Enable Mii Heads on Minimap? (0=No, 1=Yes) ~ 
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017B1=%MIIHEADS% -q
 
-echo.
-SET /P NOMUS=Disable Music? (Y/N):
-IF /i %NOMUS%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004002=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004002=00 -q)
+CLS
+SET /P NOMUS=[03/17] Enable Music? (0=No, 1=Yes) ~ 
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017B2=%NOMUS% -q
 
-echo.
-SET /P NOCHARS=Disable Character Voices? (Y/N):
-IF /i %NOCHARS%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004003=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004003=00 -q)
+CLS
+SET /P NOCHARS=[04/17] Enable Character Voices? (0=No, 1=Yes) ~ 
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017B3=%NOCHARS% -q
 
-echo.
-SET /P BTGLITCH=Long Distance Names? (Y/N):
-IF /i %BTGLITCH%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004004=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004004=00 -q)
+CLS
+SET /P BTGLITCH=[05/17] Enable Long Distance Names? (0=No, 1=Yes) ~ 
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017B4=%BTGLITCH% -q
 
-echo.
-echo Enable Time Difference?:
-echo 0. No
-echo 1. Yes (distance to player ahead)
-echo 2. Yes (distance to player in 1st)
-SET /P TIMEDIFF=Enter the number corresponding to the option you want:
+CLS
+echo [06/17] Time Difference?
+echo 0. Disabled
+echo 1. Difference to player ahead
+echo 2. Difference to player in first
+SET /P TIMEDIFF=~ 
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017B5=%TIMEDIFF% -q
 
-if %TIMEDIFF% leq 2 set TD=1
-if %TIMEDIFF% lss 1 set TD=0
-IF %TD%==1 (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004005=%TIMEDIFF% -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004005=00 -q)
+CLS
+SET /P SPEEDO=[07/17] Enable Speedometer? (0=No, 1=Yes) ~ 
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017B6=%SPEEDO% -q
 
-echo.
-SET /P SPEEDO=Enable Speedometer? (Y/N):
-IF /i %SPEEDO%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004006=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004006=00 -q)
+CLS
+echo [08/17] Race Music?
+echo 0. Disabled
+echo 1. Normal
+echo 2. Accelerating
+SET /P FASTMUSIC=~ 
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017B7=%FASTMUSIC% -q
 
-echo.
-SET /P FASTMUSIC=Enable Gradually Faster Music? (Y/N):
-IF /i %FASTMUSIC%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004007=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004007=00 -q)
-
-echo.
-echo Bikes' Drift Type?:
+CLS
+echo [09/17] Bikes' Drift Type?
 echo 0. Original
 echo 1. All Inside Drift
 echo 2. All Outside Drift
-SET /P BIKEDRIFT=Enter the number corresponding to the option you want:
+SET /P BIKEDRIFT=~ 
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017B8=%BIKEDRIFT% -q
 
-if %BIKEDRIFT% leq 2 set BD=1
-if %BIKEDRIFT% lss 1 set BD=0
-IF %BD%==1 (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004008=%BIKEDRIFT% -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004008=00 -q)
+CLS
+SET /P KARTDRIFT=[10/17] Enable Inside Drifting Karts? (0=No, 1=Yes) ~ 
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017B9=%KARTDRIFT% -q
 
-echo.
-SET /P KARTDRIFT=Enable Inside Drifting Karts? (Y/N):
-IF /i %KARTDRIFT%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004009=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004009=00 -q)
+CLS
+SET /P KCPMAP=[11/17] Show Key Checkpoints on Minimap? (0=No, 1=Yes) ~ 
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017BA=%KCPMAP% -q
 
-echo.
-SET /P KCPMAP=Show KCPs on Minimap? (Y/N):
-IF /i %KCPMAP%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400A=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400A=00 -q)
+CLS
+SET /P LGHTFLSH=[12/17] Enable Lightning Flash? (0=No, 1=Yes) ~ 
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017BB=%LGHTFLSH% -q
 
-echo.
-SET /P FCIS=Enable Feather Cut Indicators? [Addon must be installed manually] (Y/N):
-IF /i %FCIS%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400E=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400E=00 -q)
+CLS
+SET /P BLMDOF=[13/17] Enable Bloom and Depth of Field? (0=No, 1=Yes) ~ 
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017BC=%BLMDOF% -q
 
-echo.
-SET /P FRAMERATE=Force 30 FPS? (Y/N):
-IF /i %FRAMERATE%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400F=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400F=00 -q)
+CLS
+echo [14/17] Field of View?
+echo 0. Original
+echo 1. Narrow
+echo 2. Very Narrow
+echo 3. Wide
+echo 4. Very Wide
+SET /P FOV=~ 
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017BD=%FOV% -q
+
+CLS
+SET /P FCIS=[15/17] Enable Feather Cut Indicators? [Addon must be installed separately] (0=No, 1=Yes) ~ 
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017BE=%FCIS% -q
+
+CLS
+SET /P FRAMERATE=[16/17] Force 30 FPS? (0=No, 1=Yes) ~ 
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017BF=%FRAMERATE% -q
+
+CLS
+SET /P LOWCAM=[17/17] Force Low-Angled Camera? (0=No, 1=Yes) ~ 
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017C0=%LOWCAM% -q
 
 wit\wit.exe dolpatch mkw.d/sys/main.dol 8000629C=4BFFDF60 load=80004010,fkw/Loader.bin -q
 
-echo.
+CLS
 echo Format Selection:
 echo 1. WBFS
 echo 2. ISO
 echo 3. Extracted Filesystem (ADVANCED USERS ONLY)
-SET /P EXTINPUT=Enter the number corresponding to the format you want:
+SET /P EXTINPUT=Enter the number corresponding to the format you want ~ 
 
 IF %EXTINPUT%==1 (
 	SET FILEEXT=wbfs
@@ -217,5 +238,5 @@ GOTO END
 
 :END
 echo.
-echo All done"^!"
+echo All done^!
 pause
