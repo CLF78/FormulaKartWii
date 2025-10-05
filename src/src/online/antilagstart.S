@@ -1,11 +1,12 @@
 .include "asm_setup.S"
 
 .global AntiLagStart
+.extern Racedata
 
-# Wait for everyone to have sent the READY event, including yourself, before counting down.
+# Instantly start the countdown if you're late to the party!
 AntiLagStart:
-lwz		r12, -10456(r30)
-lwz		r12, 2928(r12)
+lwz		r12, Racedata@l(r30)
+lwz		r12, 0xB70(r12)
 cmpwi	r12, 0x7
 blt-	end
 li		r3, 0x1

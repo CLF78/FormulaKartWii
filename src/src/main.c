@@ -372,7 +372,7 @@ void loadCodes() {
 	directWriteBranch(InstaDraftHook, InstaDraft, false);
 	
 	// No Bullet Bill Cancel When Touching Bottom of Rainbow Road (by Ro)
-	directWriteNop(NoBillCancelRR)
+	directWriteNop(NoBillCancelRR);
 	
 	// No Bullet Bill Icon (by Anarion)
 	directWriteBlr(NoBBIcon);
@@ -395,6 +395,13 @@ void loadCodes() {
 	// No Multi Channel Track Music (by CLF78)
 	directWriteBranch(NoMultiChannelHook, NoMultiChannel, false);
 	directWriteBranch(NoMultiChannelHook2, NoMultiChannel2, true);
+
+	// OoB Bill Bike Fix (by stealthsteeler and Ismy)
+	extern void* OoBOGFunction;
+	tempVal32 = (u32)&OoBOGFunction;
+	directWrite32(OoBLocalPlayerVT, tempVal32);
+	directWrite32(OoBLocalCPUVT, tempVal32);
+	directWrite32(OoBOnlinePlayerVT, tempVal32);
 
 	// Patch.szs (by CLF78)
 	directWrite8(SZSCount, 4);

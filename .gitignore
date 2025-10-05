@@ -10,3 +10,5 @@ files/UIPatches/*.szs
 __pycache__/
 *.zip
 Build.bat
+buildtest.py
+settings.json

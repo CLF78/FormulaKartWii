@@ -543,6 +543,12 @@ SECTIONS {
 	FroomRaceCount = 0x806343D3;
 	FroomRaceCount2 = 0x8063D837;
 
+	/* OoB Bill Bike Fix */
+	OoBOGFunction = 0x805716b0;
+	OoBLocalPlayerVT = 0x808a41b8;
+	OoBLocalCPUVT = 0x808a42a0;
+	OoBOnlinePlayerVT = 0x808a4388;
+
 	/* POW Yourself in 1st */
 	POWSelfHook = 0x807A01F0;
 
