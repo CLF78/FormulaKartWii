@@ -59,12 +59,12 @@
 			</option>
 		</section>
 		<section name="FKW - Accessibility">
-			<option name="Bloom and Depth of Field"  default="1">
+			<option name="Bloom and Depth of Field" default="1">
 				<choice name="Normal">
 					<patch id="nobloom"/>
 				</choice>
 			</option>
-			<option name="Character Voices"  default="1">
+			<option name="Character Voices" default="1">
 				<choice name="Enabled">
 					<patch id="charvoices"/>
 				</choice>

@@ -28,7 +28,7 @@ SECTIONS {
 	FasterMenu = 0x800017B0;
 	MiiHeads = 0x800017B1;
 	Music = 0x800017B2;
-	CharVoice = 0x800017B3;
+	CharVoices = 0x800017B3;
 	BtGlitch = 0x800017B4;
 	TimeDiff = 0x800017B5;
 	Speedometer = 0x800017B6;
