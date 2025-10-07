@@ -130,6 +130,38 @@
 				</choice>
 			</option>
 		</section>
+		<section name="FKW - Newbie Helper">
+			<option name="Better Item Pool">
+				<choice name="Enabled">
+					<patch id="betteritems"/>
+				</choice>
+			</option>
+			<option name="Item Replacing POW">
+				<choice name="Test">
+					<patch id="powreplace"/>
+				</choice>
+			</option>
+			<option name="Bullet Bill TCs">
+				<choice name="Enabled">
+					<patch id="bullettcs"/>
+				</choice>
+			</option>
+			<option name="Instant Respawn">
+				<choice name="Enabled">
+					<patch id="instantrespawn"/>
+				</choice>
+			</option>
+			<option name="Automatic Respawn Boost">
+				<choice name="Enabled">
+					<patch id="autorespawnboost"/>
+				</choice>
+			</option>
+			<option name="Instant Draft">
+				<choice name="Enabled">
+					<patch id="instantdraft"/>
+				</choice>
+			</option>
+		</section>
 	</options>
 	<patch id="fkw">
 		<!--Load Code-->
@@ -238,5 +270,23 @@
 	</patch>
 	<patch id="tmcamera">
 		<memory offset="0x800017C0" value="01" original="00"/>
+	</patch>
+	<patch id="betteritems">
+		<memory offset="0x800017F0" value="01" original="00"/>
+	</patch>
+	<patch id="powreplace">
+		<memory offset="0x800017F1" value="01" original="00"/>
+	</patch>
+	<patch id="bullettcs">
+		<memory offset="0x800017F2" value="01" original="00"/>
+	</patch>
+	<patch id="instantrespawn">
+		<memory offset="0x800017F3" value="01" original="00"/>
+	</patch>
+	<patch id="autorespawnboost">
+		<memory offset="0x800017F4" value="01" original="00"/>
+	</patch>
+	<patch id="instantdraft">
+		<memory offset="0x800017F5" value="01" original="00"/>
 	</patch>
 </wiidisc>

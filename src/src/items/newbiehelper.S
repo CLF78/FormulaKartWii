@@ -3,6 +3,7 @@
 .extern Raceinfo, OurFloats, RespawnHelperHook, RespawnHelperHook2, RespawnHelperHook3, InstaDraftHook
 .global NewbieHelper, RespawnHelper, RespawnHelper2, RespawnHelper3, InstaDraft
 
+# Newbie Helper Function uses registers r3, r4, r5, f0, f1, f2 and clobbers cr0
 # Load Raceinfo
 NewbieHelper:
 lis r4, Raceinfo@ha

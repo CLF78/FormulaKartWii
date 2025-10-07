@@ -361,15 +361,6 @@ void loadCodes() {
 	tempVal16 = 0x7FFF;
 	directWrite16(BombTimer, tempVal16);
 	directWrite16(BombTimer2, tempVal16);
-
-	// Newbie Helper (by Seeky, CLF78 and davidevgen)
-	// Instant Respawn (by Seeky, CLF78 and davidevgen)
-	directWriteBranch(RespawnHelperHook, RespawnHelper, false);
-	directWriteBranch(RespawnHelperHook2, RespawnHelper2, false);
-	directWriteBranch(RespawnHelperHook3, RespawnHelper3, false);
-
-	// Instant Draft (by stealthsteeler, Ismy and Volderbeek)
-	directWriteBranch(InstaDraftHook, InstaDraft, false);
 	
 	// No Bullet Bill Cancel When Touching Bottom of Rainbow Road (by Ro)
 	directWriteNop(NoBillCancelRR);
@@ -764,6 +755,23 @@ void loadCodes() {
 	// Force Low-Angle Camera (by stealthsteeler)
 	if (TMCam) {
 		directWrite32(TMCamHook, 0x38600001);
+	}
+
+	// Newbie Helper
+	// Instant Respawn (by Seeky, CLF78 and davidevgen)
+	if (InstantRespawn) {
+		directWriteBranch(RespawnHelperHook, RespawnHelper, false);
+		directWriteBranch(RespawnHelperHook2, RespawnHelper2, false);
+	}
+
+	// Automatic Respawn Boost (by Seeky, CLF78 and davidevgen)
+	if (AutoRespawnBoost) {
+		directWriteBranch(RespawnHelperHook3, RespawnHelper3, false);
+	}
+
+	// Instant Draft (by stealthsteeler, Ismy and Volderbeek)
+	if (InstantDraft) {
+		directWriteBranch(InstaDraftHook, InstaDraft, false);
 	}
 
 	sync();

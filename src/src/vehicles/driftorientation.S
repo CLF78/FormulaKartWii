@@ -10,11 +10,11 @@ lwz r5, 4(r4)
 cmpwi r5, 0
 beq- kart
 
-# If it's a bike and selection is 1 or 2, set the according drift
+# If it's a bike and selection is not 0, set the according drift
 lis r8, DriftBikes@ha
 lbz r8, DriftBikes@l(r8)
-cmpwi r8, 2
-bgt+ end
+cmpwi r8, 0
+beq+ end
 mr r5, r8
 b end
 

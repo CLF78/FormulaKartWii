@@ -109,3 +109,6 @@ char FCIs, DriftBikes, DriftKarts, KCPMap, TimeDiff, Speedometer;
 
 /* Accessibility */
 char FasterMenu, MiiHeads, Music, CharVoices, BtGlitch, TransfMusic, LightFlash, Bloom, ThirtyFPS, FOVSetting, TMCam;
+
+/* Newbie Helper */
+char BetterItems, POWReplacement, BulletTCs, InstantRespawn, AutoRespawnBoost, InstantDraft;

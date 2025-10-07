@@ -32,7 +32,7 @@
 # 0x800014B0-0x800016FF
 - 0x80001614-0x8000166B = Frameskip
 
-# 0x800017B0-0x800017FF (Riivo Settings Range)
+# 0x800017B0-0x800017EF (Riivolution Settings)
 - 0x800017B0 = Fast Menu Navigation			[0-1]
 - 0x800017B1 = Mii Heads on the Minimap		[0-1]
 - 0x800017B2 = Music						[0-2]
@@ -50,6 +50,14 @@
 - 0x800017BE = Feather Cut Indicators		[0-1]
 - 0x800017BF = 30FPS						[0-1]
 - 0x800017C0 = TrackMania Camera			[0-1]
+
+# 0x800017F0-0x800017FF (Newbie Helper Settings)
+- 0x800017F0 = Better Item Pool				[0-1]
+- 0x800017F1 = Feather Replaces POW			[0-1]
+- 0x800017F2 = Bullet Bill TCs				[0-1]
+- 0x800017F3 = Instant Respawn				[0-1]
+- 0x800017F4 = Automatic Respawn Boost		[0-1]
+- 0x800017F5 = Instant Draft				[0-1]
 
 # 0x80004000-0x8000400F
 

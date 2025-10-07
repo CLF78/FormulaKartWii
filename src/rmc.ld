@@ -42,4 +42,12 @@ SECTIONS {
 	FCIs = 0x800017BE;
 	ThirtyFPS = 0x800017BF;
 	TMCam = 0x800017C0;
+
+	/* Newbie Helper Options */
+	BetterItems = 0x800017F0;
+	POWReplacement = 0x800017F1;
+	BulletTCs = 0x800017F2;
+	InstantRespawn = 0x800017F3;
+	AutoRespawnBoost = 0x800017F4;
+	InstantDraft = 0x800017F5;
 }

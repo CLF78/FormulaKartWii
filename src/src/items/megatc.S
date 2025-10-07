@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern ItemHolder, MegaTCHook, MegaTCHook2, MegaFunc, BillFunc, TCGlitchFixHook
+.extern ItemHolder, MegaTCHook, MegaTCHook2, MegaFunc, BillFunc, TCGlitchFixHook, BulletTCs
 .global MegaTC, MegaTC2, TCGlitchFix
 
 # Get player id
@@ -15,13 +15,22 @@ bl NewbieHelper
 # Restore r3
 mr r3, r31
 
-# Activate mega (cr0+gt was already set in the asm, no need to repeat compares here)
+# cr0+gt was already set in the asm, no need to repeat compares here
 bgt bullet
+
+# Activate mega
+mega:
 bl MegaFunc
 b end
 
-# Activate bullet
+# Check if the setting flag is enabled
 bullet:
+lis r4, BulletTCs@ha
+lbz r4, BulletTCs@l(r4)
+cmpwi r4, 1
+
+# If it is, activate bullet, otherwise activate the mega
+bne+ mega
 li r4, 0xFF
 bl BillFunc
 
