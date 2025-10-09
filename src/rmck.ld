@@ -515,6 +515,9 @@ SECTIONS {
 	NoDC4 = 0x8052D10C;
 	NoDC5 = 0x8052D17C;
 
+	/* No Distorted Music */
+	NoDistortedMusicHook = 0x806FE3E8;
+
 	/* No Invincibility Frames */
 	NoInvFramesHook = 0x805557EC;
 	NoRespawnInv = 0x805556A6;

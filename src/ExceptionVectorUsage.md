@@ -50,6 +50,8 @@
 - 0x800017BE = Feather Cut Indicators		[0-1]
 - 0x800017BF = 30FPS						[0-1]
 - 0x800017C0 = TrackMania Camera			[0-1]
+- 0x800017C1 = Distorted Music				[0-1]
+- 0x800017C2 = Automatic BRSAR Patching		[0-1]
 
 # 0x800017F0-0x800017FF (Newbie Helper Settings)
 - 0x800017F0 = Better Item Pool				[0-1]

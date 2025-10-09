@@ -42,6 +42,8 @@ SECTIONS {
 	FCIs = 0x800017BE;
 	ThirtyFPS = 0x800017BF;
 	TMCam = 0x800017C0;
+	DistortedMusic = 0x800017C1;
+	BRSARPatch = 0x800017C2;
 
 	/* Newbie Helper Options */
 	BetterItems = 0x800017F0;

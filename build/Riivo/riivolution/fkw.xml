@@ -1,7 +1,8 @@
 <wiidisc version="1">
 	<id game="RMC"/>
 	<options>
-		<section name="FKW - Features">
+		<!-- Core Features -->
+		<section name="FKW - Core Features">
 			<option name="Formula Kart Wii">
 				<choice name="Enabled">
 					<patch id="fkw"/>
@@ -39,99 +40,10 @@
 					<patch id="orientkarts"/>
 				</choice>
 			</option>
-			<option name="Key Checkpoints on Minimap">
-				<choice name="Enabled">
-					<patch id="kcpmap"/>
-				</choice>
-			</option>
-			<option name="Show Time Difference">
-				<choice name="Player Ahead">
-					<patch id="timediff1"/>
-				</choice>
-				<choice name="Player in First">
-					<patch id="timediff2"/>
-				</choice>
-			</option>
-			<option name="Speedometer">
-				<choice name="Enabled">
-					<patch id="speedo"/>
-				</choice>
-			</option>
 		</section>
-		<section name="FKW - Accessibility">
-			<option name="Bloom and Depth of Field" default="1">
-				<choice name="Normal">
-					<patch id="nobloom"/>
-				</choice>
-			</option>
-			<option name="Character Voices" default="1">
-				<choice name="Enabled">
-					<patch id="charvoices"/>
-				</choice>
-			</option>
-			<option name="Faster Menu Navigation">
-				<choice name="Enabled">
-					<patch id="fastmenu"/>
-				</choice>
-			</option>
-			<option name="Field of View">
-				<choice name="Narrow">
-					<patch id="fovnarrow"/>
-				</choice>
-				<choice name="Very Narrow">
-					<patch id="fovverynarrow"/>
-				</choice>
-				<choice name="Wide">
-					<patch id="fovwide"/>
-				</choice>
-				<choice name="Very Wide">
-					<patch id="fovverywide"/>
-				</choice>
-			</option>
-			<option name="Force 30 FPS">
-				<choice name="Enabled">
-					<patch id="thirtyfps"/>
-				</choice>
-			</option>
-			<option name="Lightning Flash" default="1">
-				<choice name="Enabled">
-					<patch id="lightflash"/>
-				</choice>
-			</option>
-			<option name="Long Distance Names">
-				<choice name="Enabled">
-					<patch id="btglitch"/>
-				</choice>
-			</option>
-			<option name="Mii Heads on Minimap">
-				<choice name="Enabled">
-					<patch id="miiheads"/>
-				</choice>
-			</option>
-			<option name="Race Music" default="1">
-				<choice name="Normal Speed">
-					<patch id="racemusic"/>
-				</choice>
-				<choice name="Accelerating">
-					<patch id="gradmusic"/>
-				</choice>
-			</option>
-			<option name="Transformation Music" default="1">
-				<choice name="Normal">
-					<patch id="transfmusic"/>
-				</choice>
-				<choice name="Overlayed">
-					<patch id="overlayedtransfmusic"/>
-				</choice>
-			</option>
-			<option name="Low-angled Camera">
-				<choice name="Enabled">
-					<patch id="tmcamera"/>
-				</choice>
-			</option>
-		</section>
+		<!-- Newbie Helper -->
 		<section name="FKW - Newbie Helper">
-			<option name="Better Item Pool">
+			<option name="Better Item Pool" default="1">
 				<choice name="Enabled">
 					<patch id="betteritems"/>
 				</choice>
@@ -159,24 +71,128 @@
 					<patch id="greentopow"/>
 				</choice>
 			</option>
-			<option name="Bullet Bill TCs">
+			<option name="Bullet Bill TCs" default="1">
 				<choice name="Enabled">
 					<patch id="bullettcs"/>
 				</choice>
 			</option>
-			<option name="Instant Respawn">
+			<option name="Instant Respawn" default="1">
 				<choice name="Enabled">
 					<patch id="instantrespawn"/>
 				</choice>
 			</option>
-			<option name="Automatic Respawn Boost">
+			<option name="Automatic Respawn Boost" default="1">
 				<choice name="Enabled">
 					<patch id="autorespawnboost"/>
 				</choice>
 			</option>
-			<option name="Instant Draft">
+			<option name="Instant Draft" default="1">
 				<choice name="Enabled">
 					<patch id="instantdraft"/>
+				</choice>
+			</option>
+		</section>
+		<!-- Video -->
+		<section name="FKW - Video Settings">
+			<option name="Force 30 FPS">
+				<choice name="Enabled">
+					<patch id="thirtyfps"/>
+				</choice>
+			</option>
+			<option name="Faster Menu Navigation">
+				<choice name="Enabled">
+					<patch id="fastmenu"/>
+				</choice>
+			</option>
+			<option name="Speedometer">
+				<choice name="Enabled">
+					<patch id="speedo"/>
+				</choice>
+			</option>
+			<option name="Key Checkpoints on Minimap">
+				<choice name="Enabled">
+					<patch id="kcpmap"/>
+				</choice>
+			</option>
+			<option name="Mii Heads on Minimap">
+				<choice name="Enabled">
+					<patch id="miiheads"/>
+				</choice>
+			</option>
+			<option name="Long Distance Names">
+				<choice name="Enabled">
+					<patch id="btglitch"/>
+				</choice>
+			</option>
+			<option name="Show Time Difference">
+				<choice name="Player Ahead">
+					<patch id="timediffahead"/>
+				</choice>
+				<choice name="Player in First">
+					<patch id="timediffafirst"/>
+				</choice>
+			</option>
+			<option name="Bloom and Depth of Field" default="1">
+				<choice name="Normal">
+					<patch id="nobloom"/>
+				</choice>
+			</option>
+			<option name="Lightning Flash" default="1">
+				<choice name="Enabled">
+					<patch id="lightflash"/>
+				</choice>
+			</option>
+			<option name="Field of View">
+				<choice name="Narrow">
+					<patch id="fovnarrow"/>
+				</choice>
+				<choice name="Very Narrow">
+					<patch id="fovverynarrow"/>
+				</choice>
+				<choice name="Wide">
+					<patch id="fovwide"/>
+				</choice>
+				<choice name="Very Wide">
+					<patch id="fovverywide"/>
+				</choice>
+			</option>
+			<option name="Low-angled Camera">
+				<choice name="Enabled">
+					<patch id="tmcamera"/>
+				</choice>
+			</option>
+		</section>
+		<!-- Audio -->
+		<section name="FKW - Audio Settings">
+			<option name="Character Voices" default="1">
+				<choice name="Enabled">
+					<patch id="charvoices"/>
+				</choice>
+			</option>
+			<option name="Race Music" default="1">
+				<choice name="Normal">
+					<patch id="racemusic"/>
+				</choice>
+				<choice name="Accelerating">
+					<patch id="gradmusic"/>
+				</choice>
+			</option>
+			<option name="Transformation Music" default="1">
+				<choice name="Normal">
+					<patch id="transfmusic"/>
+				</choice>
+				<choice name="Overlayed">
+					<patch id="overlayedtransfmusic"/>
+				</choice>
+			</option>
+			<option name="Distorted Music" default="1">
+				<choice name="Enabled">
+					<patch id="distortedmusic"/>
+				</choice>
+			</option>
+			<option name="Automatic BRSAR Patching" default="1">
+				<choice name="Enabled">
+					<patch id="autobrsar"/>
 				</choice>
 			</option>
 		</section>
@@ -238,10 +254,10 @@
 	<patch id="btglitch">
 		<memory offset="0x800017B4" value="01" original="00"/>
 	</patch>
-	<patch id="timediff1">
+	<patch id="timediffahead">
 		<memory offset="0x800017B5" value="01" original="00"/>
 	</patch>
-	<patch id="timediff2">
+	<patch id="timediffafirst">
 		<memory offset="0x800017B5" value="02" original="00"/>
 	</patch>
 	<patch id="speedo">
@@ -289,6 +305,13 @@
 	<patch id="tmcamera">
 		<memory offset="0x800017C0" value="01" original="00"/>
 	</patch>
+	<patch id="distortedmusic">
+		<memory offset="0x800017C1" value="01" original="00"/>
+	</patch>
+	<patch id="autobrsar">
+		<memory offset="0x800017C2" value="01" original="00"/>
+	</patch>
+	<!-- Newbie Helper Options -->
 	<patch id="betteritems">
 		<memory offset="0x800017F0" value="01" original="00"/>
 	</patch>

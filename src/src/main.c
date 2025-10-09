@@ -601,9 +601,6 @@ void loadCodes() {
 	// Extras //
 	////////////
 
-	// Automatic BRSAR Patching (by Elias)
-	directWriteBranch(AutoBRSARHook, AutoBRSAR, true);
-
 	// Change Characters Between Races (by MrBean35000vr)
 	directWriteBranch(ChangeCharsHook, ChangeCharsSetup, false);
 	directWriteBranch(ChangeCharsHook2, ChangeCharsASM, true);
@@ -664,9 +661,29 @@ void loadCodes() {
 		directWrite8(ThirtyFPSHook6, 2);
 	}
 
-	/******************
-	 * User Interface *
-	 ******************/
+	/*****************
+	 * Newbie Helper *
+	 *****************/
+
+	// Instant Respawn (by Seeky, CLF78 and davidevgen)
+	if (InstantRespawn) {
+		directWriteBranch(RespawnHelperHook, RespawnHelper, false);
+		directWriteBranch(RespawnHelperHook2, RespawnHelper2, false);
+	}
+
+	// Automatic Respawn Boost (by Seeky, CLF78 and davidevgen)
+	if (AutoRespawnBoost) {
+		directWriteBranch(RespawnHelperHook3, RespawnHelper3, false);
+	}
+
+	// Instant Draft (by stealthsteeler, Ismy and Volderbeek)
+	if (InstantDraft) {
+		directWriteBranch(InstaDraftHook, InstaDraft, false);
+	}
+
+	/*********
+	 * Video *
+	 *********/
 
 	// Faster Menu Navigation (by east)
 	if (FasterMenu) {
@@ -740,7 +757,7 @@ void loadCodes() {
 	}
 
 	/*********
-	 * Sound *
+	 * Audio *
 	 *********/
 
 	// No Character Voices (by Melg)
@@ -763,24 +780,14 @@ void loadCodes() {
 		directWriteNop(OverlayTransfMusicHook);
 	}
 
-	/*****************
-	 * Newbie Helper *
-	 *****************/
-
-	// Instant Respawn (by Seeky, CLF78 and davidevgen)
-	if (InstantRespawn) {
-		directWriteBranch(RespawnHelperHook, RespawnHelper, false);
-		directWriteBranch(RespawnHelperHook2, RespawnHelper2, false);
+	// No Distorted Music (Anarion)
+	if (!DistortedMusic) {
+		directWriteNop(NoDistortedMusicHook);
 	}
 
-	// Automatic Respawn Boost (by Seeky, CLF78 and davidevgen)
-	if (AutoRespawnBoost) {
-		directWriteBranch(RespawnHelperHook3, RespawnHelper3, false);
-	}
-
-	// Instant Draft (by stealthsteeler, Ismy and Volderbeek)
-	if (InstantDraft) {
-		directWriteBranch(InstaDraftHook, InstaDraft, false);
+	// Automatic BRSAR Patching (by Elias)
+	if (BRSARPatch) {
+		directWriteBranch(AutoBRSARHook, AutoBRSAR, true);
 	}
 
 	sync();
