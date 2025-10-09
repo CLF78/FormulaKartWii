@@ -13,6 +13,8 @@ typedef struct {
 
 extern u8 ItemChances[2][19][2];
 extern u8 ItemAmounts[2][12];
+extern u8 ItemPool[19];
+extern u8 NewbieItemPool[8];
 
 bool NewbieHelper(u32 pid);
 u32 CalcRandom();
@@ -24,7 +26,7 @@ u32 AmountRandomizer(u32 item, u32 pid) {
     if (pid == 0xC || Racedata->main.scenarios[0].players[pid].playerType != PLAYER_REAL_LOCAL)
         newbie = false;
     else
-        newbie = NewbieHelper(pid);
+        newbie = NewbieHelper(pid) && BetterItems;
 
     u32 rand = CalcRandom() % 100;
     u32 amount = 1;
@@ -48,7 +50,7 @@ u32 AmountRandomizer(u32 item, u32 pid) {
     return amount;
 }
 
-u32 UltimateRandom(ItemSlotData *slot, u32 itemBoxSetting, u32 position, bool isHuman, bool unused, ItemHolderPlayer* player) {
+u32 UltimateRandomOld(ItemSlotData *slot, u32 itemBoxSetting, u32 position, bool isHuman, bool unused, ItemHolderPlayer* player) {
 
     // Get Newbie Helper
     bool isNewbie = NewbieHelper(player->pid);
@@ -119,5 +121,85 @@ u32 UltimateRandom(ItemSlotData *slot, u32 itemBoxSetting, u32 position, bool is
     }
 
     return item;
+
+}
+
+u32 UltimateRandom(ItemSlotData *slot, u32 itemBoxSetting, u32 position, bool isHuman, bool unused, ItemHolderPlayer* player) {
+
+    // Get Newbie Helper
+    bool isNewbieActive = NewbieHelper(player->pid) && BetterItems && isHuman;
+
+	u8 pool[19];
+	u8 poolSize = 19;
+    
+	if (isNewbieActive) {
+
+		// Get the Newbie Helper item pool
+		poolSize = 8;
+		for (u8 i = 0; i < poolSize; i++) pool[i] = NewbieItemPool[i];
+		pool[7] = ExtraItem;	// Set the selected extra item
+
+		// Remove Lightning if it's held by another player or the cooldown is still running
+		if (!canItemBeGotten(0x08) || slot->shockTimer) {
+			pool[1] = 0xFF;
+			poolSize--;
+		}
+
+		// Remove POW Block if it's the selected extra item and it's held by another player or the cooldown is still running
+		if (pool[7] == 0x0D && (!canItemBeGotten(0x0D) || slot->powTimer)) {
+			pool[7] = 0xFF;
+			poolSize--;
+		}
+
+		// Remove Blue Shell if it's the selected extra item and the cooldown is still running
+		if (pool[7] == 0x07 && slot->blueTimer) {
+			pool[7] = 0xFF;
+			poolSize--;
+		}
+
+	}
+	else {
+		
+		// Get the regular item pool
+		for (u8 i = 0; i < poolSize; i++) pool[i] = ItemPool[i];
+
+		// CPU item replacements
+		if (!isHuman) {
+
+			// Replace Feather with Mushroom for CPUs
+			pool[11] = 0x04;
+			
+			// If the CPU is in first place replace Blue Shell with Bob-omb
+			if (position == 1) pool[6] = 0x06;
+
+		}
+
+		// Remove Blue Shell if the cooldown is still running
+		if (slot->blueTimer) {
+			pool[6] = 0xFF;
+			poolSize--;
+		}
+
+		// Remove Lightning if it's held by another player or the cooldown is still running
+		if (!canItemBeGotten(0x08) || slot->shockTimer) {
+			pool[7] = 0xFF;
+			poolSize--;
+		}
+
+		// Remove POW Block if it's held by another player, the cooldown is still running or if the CPU is in first place
+		if (!canItemBeGotten(0x0D) || slot->powTimer || (!isHuman && position == 1)) {
+			pool[12] = 0xFF;
+			poolSize--;
+		}
+	}
+
+	// Randomize the item from the available pool
+	u8 rand = CalcRandom() % poolSize;
+	u8 selected = -1;
+	for (u8 i = 0; i <= rand; i++) {
+		selected++;
+		if (pool[selected] == 0xFF) selected++;	// If the item was removed from the pool, skip it
+	}
+	return pool[selected];
 
 }

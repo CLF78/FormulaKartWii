@@ -657,6 +657,17 @@ void loadCodes() {
 	// Custom Options //
 	////////////////////
 
+	// 30 FPS (by CLF78)
+	if (ThirtyFPS) {
+		directWrite32(ThirtyFPSHook4, 0x3BE00002);
+		directWriteNop(ThirtyFPSHook5);
+		directWrite8(ThirtyFPSHook6, 2);
+	}
+
+	/******************
+	 * User Interface *
+	 ******************/
+
 	// Faster Menu Navigation (by east)
 	if (FasterMenu) {
 		tempVal32 = 0;
@@ -670,16 +681,6 @@ void loadCodes() {
 		directWriteBranch(MiiHeadsHook, MiiHeadsPatch, true);
 	}
 
-	// No Music (by CosmoCortney)
-	if (!Music) {
-		directWrite32(NoMusicHook, 0x38600000);
-	}
-
-	// No Character Voices (by Melg)
-	if (!CharVoices) {
-		directWrite32(NoCharVoiceHook, 0x38600001);
-	}
-
 	// Force Battle Glitch (by XeR)
 	if (BtGlitch) {
 		directWrite32(TagDistance, 0x47927C00);
@@ -690,31 +691,12 @@ void loadCodes() {
 		directWriteBranch(TimeDiffPatchHook, TimeDiffPatch, true);
 		directWrite8Offset(TimeDiffPatchHook, 0xB, 1);
 		directWriteBranchOffset(TimeDiffPatchHook, 0x4C, TimeDiffPatch2, false);
+		directWriteBranch(TimeDiffApplyHook, TimeDiffApply, true);
 	}
-
-	// Applies the two options above (by CLF78)
-	directWriteBranch(TimeDiffApplyHook, TimeDiffApply, true);
 
 	// Speedometer (by stebler and CLF78)
 	if (Speedometer) {
 		directWriteBranch(SpeedoNoPauseHook, SpeedoNoPause, true);
-	}
-
-	// No Transformation Music (by Anarion)
-	if (!TransfMusic) {
-		directWrite32(NoTransfMusicHook, 0x38000003);
-	}
-
-	// Transformation Music Plays over Course Music (by Ro)
-	if (TransfMusic == 2) {
-		directWriteNop(OverlayTransfMusicHook);
-	}
-
-	// 30 FPS (by CLF78)
-	if (ThirtyFPS) {
-		directWrite32(ThirtyFPSHook4, 0x3BE00002);
-		directWriteNop(ThirtyFPSHook5);
-		directWrite8(ThirtyFPSHook6, 2);
 	}
 
 	// KCP Map (by stealthsteeler)
@@ -722,7 +704,7 @@ void loadCodes() {
 		directWriteBranch(KCPMapHook, KCPMapInject, false);
 		directWriteBranch(KCPMapHook1, KCPMapInject1, false);
 	}
-	
+
 	// No Lightning Flash (by Ro)
 	if (!LightFlash) {
 		directWrite32(NoLightningFlash, 0x4E800020);
@@ -732,7 +714,7 @@ void loadCodes() {
 	if (!Bloom) {
 		directWriteBranch(NoBloomHook, NoBloom, true);
 	}
-	
+
 	// Camera Distance Modifier (by davidevgen)
 	switch(FOVSetting) {
 		case 1:
@@ -757,7 +739,34 @@ void loadCodes() {
 		directWrite32(TMCamHook, 0x38600001);
 	}
 
-	// Newbie Helper
+	/*********
+	 * Sound *
+	 *********/
+
+	// No Character Voices (by Melg)
+	if (!CharVoices) {
+		directWrite32(NoCharVoiceHook, 0x38600001);
+	}
+
+	// No Music (by CosmoCortney)
+	if (!Music) {
+		directWrite32(NoMusicHook, 0x38600000);
+	}
+
+	// No Transformation Music (by Anarion)
+	if (!TransfMusic) {
+		directWrite32(NoTransfMusicHook, 0x38000003);
+	}
+
+	// Transformation Music Plays over Course Music (by Ro)
+	if (TransfMusic == 2) {
+		directWriteNop(OverlayTransfMusicHook);
+	}
+
+	/*****************
+	 * Newbie Helper *
+	 *****************/
+
 	// Instant Respawn (by Seeky, CLF78 and davidevgen)
 	if (InstantRespawn) {
 		directWriteBranch(RespawnHelperHook, RespawnHelper, false);

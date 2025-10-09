@@ -45,7 +45,7 @@ SECTIONS {
 
 	/* Newbie Helper Options */
 	BetterItems = 0x800017F0;
-	POWReplacement = 0x800017F1;
+	ExtraItem = 0x800017F1;
 	BulletTCs = 0x800017F2;
 	InstantRespawn = 0x800017F3;
 	AutoRespawnBoost = 0x800017F4;

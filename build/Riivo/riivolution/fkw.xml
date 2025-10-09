@@ -136,9 +136,27 @@
 					<patch id="betteritems"/>
 				</choice>
 			</option>
-			<option name="Item Replacing POW">
-				<choice name="Test">
-					<patch id="powreplace"/>
+			<option name="Item Replacing Green Shell" default="5">
+				<choice name="Red Shell">
+					<patch id="greentored"/>
+				</choice>
+				<choice name="Banana">
+					<patch id="greentobanana"/>
+				</choice>
+				<choice name="Fake Item Box">
+					<patch id="greentofib"/>
+				</choice>
+				<choice name="Bob-omb">
+					<patch id="greentobomb"/>
+				</choice>
+				<choice name="Blue Shell">
+					<patch id="greentoblue"/>
+				</choice>
+				<choice name="Feather">
+					<patch id="greentofeather"/>
+				</choice>
+				<choice name="POW Block">
+					<patch id="greentopow"/>
 				</choice>
 			</option>
 			<option name="Bullet Bill TCs">
@@ -274,8 +292,26 @@
 	<patch id="betteritems">
 		<memory offset="0x800017F0" value="01" original="00"/>
 	</patch>
-	<patch id="powreplace">
+	<patch id="greentored">
 		<memory offset="0x800017F1" value="01" original="00"/>
+	</patch>
+	<patch id="greentobanana">
+		<memory offset="0x800017F1" value="02" original="00"/>
+	</patch>
+	<patch id="greentofib">
+		<memory offset="0x800017F1" value="03" original="00"/>
+	</patch>
+	<patch id="greentobomb">
+		<memory offset="0x800017F1" value="06" original="00"/>
+	</patch>
+	<patch id="greentoblue">
+		<memory offset="0x800017F1" value="07" original="00"/>
+	</patch>
+	<patch id="greentofeather">
+		<memory offset="0x800017F1" value="0C" original="00"/>
+	</patch>
+	<patch id="greentopow">
+		<memory offset="0x800017F1" value="0D" original="00"/>
 	</patch>
 	<patch id="bullettcs">
 		<memory offset="0x800017F2" value="01" original="00"/>

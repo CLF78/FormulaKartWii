@@ -111,4 +111,4 @@ char FCIs, DriftBikes, DriftKarts, KCPMap, TimeDiff, Speedometer;
 char FasterMenu, MiiHeads, Music, CharVoices, BtGlitch, TransfMusic, LightFlash, Bloom, ThirtyFPS, FOVSetting, TMCam;
 
 /* Newbie Helper */
-char BetterItems, POWReplacement, BulletTCs, InstantRespawn, AutoRespawnBoost, InstantDraft;
+char BetterItems, ExtraItem, BulletTCs, InstantRespawn, AutoRespawnBoost, InstantDraft;
