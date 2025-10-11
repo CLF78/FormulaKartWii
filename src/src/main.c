@@ -609,7 +609,7 @@ void loadCodes() {
 	directWrite32(OPM_BranchToPauseMenu15, 0x4BFFF9B8);
 	directWriteBranch(OPM_CreateOnlinePauseMenu, CreateOnlinePauseMenu, false);
 	directWriteBranch(OPM_ReplaceInvalidPauseID, ReplaceInvalidPauseID, true);
-	directWriteBranch(OPM_AvoidDisconnectOnQuit, AvoidDisconnectOnQuit, true);
+	directWriteBranch(OPM_AvoidDisconnectOnQuit, AvoidDisconnectOnQuit, false);
 	directWriteBranch(OPM_ReturnToOnlineMenu, ReturnToOnlineMenu, false);
 	directWriteBranch(OPM_PreventFreeze, PreventFreezeOnlinePause, true);
 	directWriteBranch(OPM_KeepSoundsAndMusic, KeepSoundsAndMusic, true);

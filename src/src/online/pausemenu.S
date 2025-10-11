@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern CreateScreen, DisconnectFromMatch, RKNetController, Menudata, Racedata, OPM_CreateOnlinePauseMenu, OPM_ReturnToOnlineMenu, OPM_ClosePauseOnEndOfRace3
+.extern CreateScreen, DisconnectFromMatch, RKNetController, Menudata, Racedata, OPM_CreateOnlinePauseMenu, OPM_ClosePauseOnEndOfRace3, OPM_ReturnToOnlineMenu
 .global CreateOnlinePauseMenu, ReplaceInvalidPauseID, AvoidDisconnectOnQuit, ReturnToOnlineMenu, PreventFreezeOnlinePause, KeepSoundsAndMusic, ClosePauseOnEndOfRace3, ShowControllerImage1, ShowControllerImage2
 
 # Create VS pause menu and Quit confirmation screen for online race
