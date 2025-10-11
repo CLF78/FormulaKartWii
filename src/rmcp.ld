@@ -44,6 +44,8 @@ SECTIONS {
 	GXDrawDone = 0x8016EAB0;
 	BeginFrame = 0x8020FE24;
 	PlayerModels = 0x809C2F38;
+	CreateScreen = 0x80622D08;
+	DisconnectFromMatch = 0x80656898;
 
 	/* Math Functions */
 	cos = 0x8001b590;
@@ -163,7 +165,6 @@ SECTIONS {
 
 	/* Change Characters Between Races */
 	ChangeCharsHook = 0x8062E058;
-	CreateScreen = 0x80622D08;
 	PushButton_HandleClick = 0x805BE358;
 	PushButton_Vtable = 0x808B77B8;
 	ChangeCharsHook2 = 0x80622E28;
@@ -549,6 +550,39 @@ SECTIONS {
 	RaceCountFix3 = 0x80853A40;
 	RaceCountFix4 = 0x808528F0;
 	RaceCountFix5 = 0x808529D0;
+
+	/* Online Pause Menu */
+	OPM_AllowPausing = 0x808567b8;
+	OPM_PreventRaceInputs = 0x8051b560;
+	OPM_AllowPauseOpenSFX1 = 0x80859a54;
+	OPM_AllowPauseOpenSFX2 = 0x80859a58;
+	OPM_AllowPauseCloseSFX = 0x80859f54;
+	OPM_ClosePauseOnEndOfRace1 = 0x807f074c;
+	OPM_ClosePauseOnEndOfRace2 = 0x807f0750;
+	OPM_BranchToPauseMenu1 = 0x8062ed3c;
+	OPM_BranchToPauseMenu2 = 0x8062ed90;
+	OPM_BranchToPauseMenu3 = 0x8062ede4;
+	OPM_BranchToPauseMenu4 = 0x8062ee68;
+	OPM_BranchToPauseMenu5 = 0x8062eeec;
+	OPM_BranchToPauseMenu6 = 0x8062ef4c;
+	OPM_BranchToPauseMenu7 = 0x8062efac;
+	OPM_BranchToPauseMenu8 = 0x8062f018;
+	OPM_BranchToPauseMenu9 = 0x8062f084;
+	OPM_BranchToPauseMenu10 = 0x8062f0f0;
+	OPM_BranchToPauseMenu11 = 0x8062f15c;
+	OPM_BranchToPauseMenu12 = 0x8062f1c8;
+	OPM_BranchToPauseMenu13 = 0x8062f234;
+	OPM_BranchToPauseMenu14 = 0x8062f2a0;
+	OPM_BranchToPauseMenu15 = 0x8062f30c;
+	OPM_CreateOnlinePauseMenu = 0x8062ecc4;
+	OPM_ReplaceInvalidPauseID = 0x808569ec;
+	OPM_AvoidDisconnectOnQuit = 0x80623054;
+	OPM_ReturnToOnlineMenu = 0x8085a45c;
+	OPM_PreventFreeze = 0x80554e4c;
+	OPM_KeepSoundsAndMusic = 0x80622454;
+	OPM_ClosePauseOnEndOfRace3 = 0x807f0774;
+	OPM_ShowControllerImage1 = 0x80858e2c;
+	OPM_ShowControllerImage2 = 0x80859058;
 
 	/* Online Stuff */
 	ForceCCHook = 0x80661404;

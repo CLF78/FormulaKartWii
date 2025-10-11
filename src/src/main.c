@@ -276,9 +276,6 @@ void loadCodes() {
 	// Fix Offroad Ramp Glitch (by vabold)
 	directWriteBranch(OffroadRampGlitchFixHook, OffroadRampGlitchFix, true);
 
-	// Fix Online Players Stuck in Halfpipe (by Ro)
-	directWriteBranch(HalfPipeFixHook, HalfPipeFix, true);
-
 	// Fix TC Glitch (by CLF78)
 	directWriteBranch(TCGlitchFixHook, TCGlitchFix, false);
 
@@ -577,12 +574,48 @@ void loadCodes() {
 	// Anti Lag/Late Start Online (by davidevgen, MrBean35000vr and Ro)
 	directWriteBranch(AntiLagStartHook, AntiLagStart, true);
 
+	// Fix Online Players Stuck in Halfpipe (by Ro)
+	directWriteBranch(HalfPipeFixHook, HalfPipeFix, true);
+
 	// Force CC (by Star)
 	directWriteBranch(ForceCCHook, ForceCC, true);
 
 	// Friend Room Race Count Modifier (by MrBean35000vr)
 	directWrite8(FroomRaceCount, 0);
 	directWrite8(FroomRaceCount2, 0);
+
+	// Online Pause Menu (by Ro)
+	directWrite32(OPM_AllowPausing, 0x38000000);
+	directWrite32(OPM_PreventRaceInputs, 0x38000000);
+	directWrite32(OPM_AllowPauseOpenSFX1, 0x41820014);
+	directWrite32(OPM_AllowPauseOpenSFX2, 0x2C00001F);
+	directWrite32(OPM_AllowPauseCloseSFX, 0x3800001F);
+	directWrite32(OPM_ClosePauseOnEndOfRace1, 0x80A40000);
+	directWrite32(OPM_ClosePauseOnEndOfRace2, 0x38000000);
+	directWrite32(OPM_BranchToPauseMenu1, 0x4BFFFF88);
+	directWrite32(OPM_BranchToPauseMenu2, 0x4BFFFF34);
+	directWrite32(OPM_BranchToPauseMenu3, 0x4BFFFEE0);
+	directWrite32(OPM_BranchToPauseMenu4, 0x4BFFFE5C);
+	directWrite32(OPM_BranchToPauseMenu5, 0x4BFFFDD8);
+	directWrite32(OPM_BranchToPauseMenu6, 0x4BFFFD78);
+	directWrite32(OPM_BranchToPauseMenu7, 0x4BFFFD18);
+	directWrite32(OPM_BranchToPauseMenu8, 0x4BFFFCAC);
+	directWrite32(OPM_BranchToPauseMenu9, 0x4BFFFC40);
+	directWrite32(OPM_BranchToPauseMenu10, 0x4BFFFBD4);
+	directWrite32(OPM_BranchToPauseMenu11, 0x4BFFFB68);
+	directWrite32(OPM_BranchToPauseMenu12, 0x4BFFFAFC);
+	directWrite32(OPM_BranchToPauseMenu13, 0x4BFFFA90);
+	directWrite32(OPM_BranchToPauseMenu14, 0x4BFFFA24);
+	directWrite32(OPM_BranchToPauseMenu15, 0x4BFFF9B8);
+	directWriteBranch(OPM_CreateOnlinePauseMenu, CreateOnlinePauseMenu, false);
+	directWriteBranch(OPM_ReplaceInvalidPauseID, ReplaceInvalidPauseID, true);
+	directWriteBranch(OPM_AvoidDisconnectOnQuit, AvoidDisconnectOnQuit, false);
+	directWriteBranch(OPM_ReturnToOnlineMenu, ReturnToOnlineMenu, false);
+	directWriteBranch(OPM_PreventFreeze, PreventFreezeOnlinePause, true);
+	directWriteBranch(OPM_KeepSoundsAndMusic, KeepSoundsAndMusic, true);
+	directWriteBranch(OPM_ClosePauseOnEndOfRace3, ClosePauseOnEndOfRace3, false);
+	directWriteBranch(OPM_ShowControllerImage1, ShowControllerImage1, true);
+	directWriteBranch(OPM_ShowControllerImage2, ShowControllerImage2, true);
 
 	// Remove Worldwide Button (by Chadderz)
 	directWrite8(NoWWButton, 5);
@@ -628,7 +661,7 @@ void loadCodes() {
 	directWrite16(WiiWheelFix2, 0x4800);
 
 	// Instant DC (by CLF78)
-	directWriteBranch(InstantDCHook, InstantDC, true);
+	// directWriteBranch(InstantDCHook, InstantDC, true);
 
 	// License Unlocker (by _tZ)
 	directWrite32(LicenseUnlocker, 0x38600001);
