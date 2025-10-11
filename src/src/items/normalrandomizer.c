@@ -200,6 +200,7 @@ u32 UltimateRandom(ItemSlotData *slot, u32 itemBoxSetting, u32 position, bool is
 		selected++;
 		if (pool[selected] == 0xFF) selected++;	// If the item was removed from the pool, skip it
 	}
+	if (pool[selected] > 0x0F) return 0x04;	// Fallback to Mushroom if something went wrong
 	return pool[selected];
 
 }

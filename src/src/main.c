@@ -574,6 +574,9 @@ void loadCodes() {
 	// Anti Lag/Late Start Online (by davidevgen, MrBean35000vr and Ro)
 	directWriteBranch(AntiLagStartHook, AntiLagStart, true);
 
+	// Disable Online Six Minute Disconnection (by Ro)
+	directWriteNop(Disable6MinDC);
+
 	// Fix Online Players Stuck in Halfpipe (by Ro)
 	directWriteBranch(HalfPipeFixHook, HalfPipeFix, true);
 

@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern CreateScreen, DisconnectFromMatch, RKNetController, Menudata, Racedata, OPM_CreateOnlinePauseMenu, OPM_ClosePauseOnEndOfRace3, OPM_ReturnToOnlineMenu
+.extern CreateScreen, DisconnectFromMatch, RKNetController, Menudata, Racedata, OPM_CreateOnlinePauseMenu, OPM_ClosePauseOnEndOfRace3, OPM_ReturnToOnlineMenu, OPM_AvoidDisconnectOnQuit
 .global CreateOnlinePauseMenu, ReplaceInvalidPauseID, AvoidDisconnectOnQuit, ReturnToOnlineMenu, PreventFreezeOnlinePause, KeepSoundsAndMusic, ClosePauseOnEndOfRace3, ShowControllerImage1, ShowControllerImage2
 
 # Create VS pause menu and Quit confirmation screen for online race
@@ -58,7 +58,7 @@ beqlr
 # Original instruction
 end2:
 li r0, 0x1
-blr
+b OPM_AvoidDisconnectOnQuit+4
 
 # Go to online main menu instead of single player menu and force disconnecting from match
 

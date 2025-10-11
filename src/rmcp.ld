@@ -228,6 +228,9 @@ SECTIONS {
 	NoItemPoof2Hook = 0x807A1A54;
 	NoItemPoof3Hook = 0x807A1A64;
 
+	/* Disable Online Six Minute Disconnection */
+	Disable6MinDC = 0x8053F474;
+
 	/* Disable TF Music Reset */
 	NoTFMusicReset = 0x80719920;
 
