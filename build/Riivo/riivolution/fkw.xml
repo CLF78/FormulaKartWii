@@ -81,9 +81,9 @@
 					<patch id="instantrespawn"/>
 				</choice>
 			</option>
-			<option name="Automatic Respawn Boost" default="1">
+			<option name="Holdable Respawn Boost" default="1">
 				<choice name="Enabled">
-					<patch id="autorespawnboost"/>
+					<patch id="holdrespawnboost"/>
 				</choice>
 			</option>
 			<option name="Instant Slipstream" default="1">
@@ -296,7 +296,7 @@
 		<memory offset="0x80004043" value="01" original="00"/>
 	</patch>
 
-	<patch id="autorespawnboost">
+	<patch id="holdrespawnboost">
 		<memory offset="0x80004044" value="01" original="00"/>
 	</patch>
 

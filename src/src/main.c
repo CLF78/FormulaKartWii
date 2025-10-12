@@ -707,8 +707,8 @@ void loadCodes() {
 		directWriteBranch(RespawnHelperHook2, RespawnHelper2, false);
 	}
 
-	// Automatic Respawn Boost (by Seeky, CLF78 and davidevgen)
-	if (AutoRespawnBoost) {
+	// Hold Respawn Boost (by Seeky, CLF78, davidevgen and stealthsteeler)
+	if (HoldRespawnBoost) {
 		directWriteBranch(RespawnHelperHook3, RespawnHelper3, false);
 	}
 

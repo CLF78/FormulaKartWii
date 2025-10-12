@@ -180,11 +180,11 @@ read INSTARESPAWN
 
 clear
 echo [2/4] FKW - Newbie Helper
-echo [5/6] Automatic Respawn Boost?
+echo [5/6] Holdable Respawn Boost?
 echo 0. No
 echo 1. Yes
 echo -n " > "
-read AUTOBOOST
+read HOLDBOOST
 
 clear
 echo [2/4] FKW - Newbie Helper
@@ -349,7 +349,7 @@ wit\wit.exe dolpatch mkw.d/sys/main.dol 800017F0=$BETTERITEMS -q
 wit\wit.exe dolpatch mkw.d/sys/main.dol 800017F1=$GREENREPLACE -q
 wit\wit.exe dolpatch mkw.d/sys/main.dol 800017F2=$BILLTCS -q
 wit\wit.exe dolpatch mkw.d/sys/main.dol 800017F3=$INSTARESPAWN -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 800017F4=$AUTOBOOST -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017F4=$HOLDBOOST -q
 wit\wit.exe dolpatch mkw.d/sys/main.dol 800017F5=$INSTADRAFT -q
 
 # FKW - Video Settings

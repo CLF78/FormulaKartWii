@@ -34,7 +34,7 @@ SECTIONS {
 	ExtraItem = 0x80004041;
 	BulletTCs = 0x80004042;
 	InstantRespawn = 0x80004043;
-	AutoRespawnBoost = 0x80004044;
+	HoldRespawnBoost = 0x80004044;
 	InstantDraft = 0x80004045;
 
 	/* FKW - Video Settings */

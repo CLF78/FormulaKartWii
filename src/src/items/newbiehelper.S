@@ -105,8 +105,9 @@ lwz r5, 0x4(r5)
 # Use cr0+gt from Newbie Helper ASM
 ble+ end3
 
-# Force to 1
-li r0, 1
+# shift acceleration bit into check
+lwz r0,0x4(r5)
+rlwinm r0,r0,0x0,0x1f,0x1f
 
 # Return
 end3:

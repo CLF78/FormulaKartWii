@@ -108,7 +108,7 @@ _directWriteArray(calcoffs(dest, offset), src, SIZEOF(src));
 char FCIs, DriftBikes, DriftKarts;
 
 /* Newbie Helper */
-char BetterItems, ExtraItem, BulletTCs, InstantRespawn, AutoRespawnBoost, InstantDraft;
+char BetterItems, ExtraItem, BulletTCs, InstantRespawn, HoldRespawnBoost, InstantDraft;
 
 /* Video */
 char KCPMap, TimeDiff, Speedometer, FasterMenu, MiiHeads, TagsDist, LightFlash, Bloom, ThirtyFPS, FOVSetting, TMCam;

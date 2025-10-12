@@ -46,7 +46,7 @@
 - 0x80004041 = Green Shell Replacement		[0-1-2-3-6-7-C-D]
 - 0x80004042 = Bullet Bill TCs				[0-1]
 - 0x80004043 = Instant Respawn				[0-1]
-- 0x80004044 = Automatic Respawn Boost		[0-1]
+- 0x80004044 = Holdable Respawn Boost		[0-1]
 - 0x80004045 = Instant Slipstream			[0-1]
 
 # 0x80004050-0x8000405F (FKW - Video Settings)

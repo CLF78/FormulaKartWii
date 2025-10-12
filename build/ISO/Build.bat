@@ -190,10 +190,10 @@ SET /P INSTARESPAWN="> "
 
 CLS
 echo [2/4] FKW - Newbie Helper
-echo [5/6] Automatic Respawn Boost?
+echo [5/6] Holdable Respawn Boost?
 echo 0. No
 echo 1. Yes
-SET /P AUTOBOOST="> "
+SET /P HOLDBOOST="> "
 
 CLS
 echo [2/4] FKW - Newbie Helper
@@ -341,7 +341,7 @@ wit\wit.exe dolpatch mkw.d/sys/main.dol 80004040=%BETTERITEMS% -q
 wit\wit.exe dolpatch mkw.d/sys/main.dol 80004041=%GREENREPLACE% -q
 wit\wit.exe dolpatch mkw.d/sys/main.dol 80004042=%BILLTCS% -q
 wit\wit.exe dolpatch mkw.d/sys/main.dol 80004043=%INSTARESPAWN% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004044=%AUTOBOOST% -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 80004044=%HOLDBOOST% -q
 wit\wit.exe dolpatch mkw.d/sys/main.dol 80004045=%INSTADRAFT% -q
 
 :: FKW - Video Settings
