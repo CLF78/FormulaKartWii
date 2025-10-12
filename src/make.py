@@ -9,7 +9,7 @@ objcopy = 'powerpc-eabi-objcopy'
 destdir = 'bin'
 
 # Initialize variables
-startHook = 0x8000629C
+startHook = 0x8000631C
 startFuncName = 'start'
 excludefile = 'excludes.txt'
 extensions = ['.s', '.S', '.c']

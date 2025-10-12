@@ -37,8 +37,8 @@ blr
 
 # If it's not lap 45 or 50, check if setting is enabled
 morechecks:
-lis r5, Music@ha
-lbz r5, Music@l (r5)
+lis r5, RaceMusic@ha
+lbz r5, RaceMusic@l (r5)
 cmpwi r5, 2
 beq- gradmusic
 blr

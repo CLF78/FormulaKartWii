@@ -193,7 +193,7 @@ void loadCodes() {
 	directWrite32(DefaultDriftType, 0x38600001);
 
 	// Disable Bob-omb Backspam (by stealthsteeler)
-	directWrite32(NoBackBombs, 0x48000060);
+	// directWrite32(NoBackBombs, 0x48000060);
 
 	// Disable Item Poof (by CLF78 and _tZ)
 	directWriteNop(NoItemPoof);
@@ -734,10 +734,24 @@ void loadCodes() {
 		directWriteBranch(MiiHeadsHook, MiiHeadsPatch, true);
 	}
 
-	// Force Battle Glitch (by XeR)
-	if (BtGlitch) {
-		directWrite32(TagDistance, 0x47927C00);
+	// Nametags Showing Distance Override (by XeR and Ismy)
+	switch(TagsDist) {
+		case 1:		// Normal
+			tempVal32 = 0x45EA6000;
+			break;
+		case 2:		// Near
+			tempVal32 = 0x456A6000;
+			break;
+		case 3:		// Far
+			tempVal32 = 0x466A6000;
+			break;
+		case 4:		// Always
+			tempVal32 = 0x496A6000;
+			break;
+		default:	// Disabled
+			tempVal32 = 0x00000000;
 	}
+	directWrite32(TagDistance, tempVal32);
 
 	// Show Time Difference (by Melg and CLF78)
 	if (TimeDiff) {
@@ -770,19 +784,19 @@ void loadCodes() {
 
 	// Camera Distance Modifier (by davidevgen)
 	switch(FOVSetting) {
-		case 1:
+		case 1:		// Very Narrow
 			tempVal16 = 0x3EE0;
 			break;
-		case 2:
+		case 2:		// Narrow
 			tempVal16 = 0x3EC0;
 			break;
-		case 3:
+		case 3:		// Wide
 			tempVal16 = 0x3F20;
 			break;
-		case 4:
+		case 4:		// Very Wide
 			tempVal16 = 0x3F40;
 			break;
-		default:
+		default:	// Normal
 			tempVal16 = 0x3F00;
 	}
 	directWrite16(CustomFOV, tempVal16);
@@ -802,7 +816,7 @@ void loadCodes() {
 	}
 
 	// No Music (by CosmoCortney)
-	if (!Music) {
+	if (!RaceMusic) {
 		directWrite32(NoMusicHook, 0x38600000);
 	}
 

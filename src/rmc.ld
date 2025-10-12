@@ -24,32 +24,37 @@ SECTIONS {
 	VtablePtr = 0x80000EB0;
 	DCScreenPtr = 0x80000EB4;
 
-	/* Riivolution Options */
-	FasterMenu = 0x800017B0;
-	MiiHeads = 0x800017B1;
-	Music = 0x800017B2;
-	CharVoices = 0x800017B3;
-	BtGlitch = 0x800017B4;
-	TimeDiff = 0x800017B5;
-	Speedometer = 0x800017B6;
-	TransfMusic = 0x800017B7;
-	DriftBikes = 0x800017B8;
-	DriftKarts = 0x800017B9;
-	KCPMap = 0x800017BA;
-	LightFlash = 0x800017BB;
-	Bloom = 0x800017BC;
-	FOVSetting = 0x800017BD;
-	FCIs = 0x800017BE;
-	ThirtyFPS = 0x800017BF;
-	TMCam = 0x800017C0;
-	DistortedMusic = 0x800017C1;
-	BRSARPatch = 0x800017C2;
+	/* FKW - Core Features */
+	FCIs = 0x80004030;
+	DriftBikes = 0x80004031;
+	DriftKarts = 0x80004032;
 
-	/* Newbie Helper Options */
-	BetterItems = 0x800017F0;
-	ExtraItem = 0x800017F1;
-	BulletTCs = 0x800017F2;
-	InstantRespawn = 0x800017F3;
-	AutoRespawnBoost = 0x800017F4;
-	InstantDraft = 0x800017F5;
+	/* FKW - Newbie Helper */
+	BetterItems = 0x80004040;
+	ExtraItem = 0x80004041;
+	BulletTCs = 0x80004042;
+	InstantRespawn = 0x80004043;
+	AutoRespawnBoost = 0x80004044;
+	InstantDraft = 0x80004045;
+
+	/* FKW - Video Settings */
+	ThirtyFPS = 0x80004050;
+	FasterMenu = 0x80004051;
+	Speedometer = 0x80004052;
+	KCPMap = 0x80004053;
+	MiiHeads = 0x80004054;
+	TagsDist = 0x80004055;
+	TimeDiff = 0x80004056;
+	Bloom = 0x80004057;
+	LightFlash = 0x80004058;
+	FOVSetting = 0x80004059;
+	TMCam = 0x8000405A;
+
+	/* FKW - Audio Settings */
+	CharVoices = 0x80004060;
+	RaceMusic = 0x80004061;
+	TransfMusic = 0x80004062;
+	DistortedMusic = 0x80004063;
+	BRSARPatch = 0x80004064;
+
 }

@@ -20,18 +20,19 @@ bool NewbieHelper(u32 pid);
 u32 CalcRandom();
 bool canItemBeGotten(u32 item);
 
-u32 AmountRandomizer(u32 item, u32 pid) {
-    bool newbie;
+u32 AmountRandomizerOld(u32 item, u32 pid) {
+    bool isNewbie;
+	bool playerType = Racedata->main.scenarios[0].players[pid].playerType;
 
-    if (pid == 0xC || Racedata->main.scenarios[0].players[pid].playerType != PLAYER_REAL_LOCAL)
-        newbie = false;
+    if (pid == 0xC || playerType != PLAYER_REAL_LOCAL)
+        isNewbie = false;
     else
-        newbie = NewbieHelper(pid) && BetterItems;
+        isNewbie = NewbieHelper(pid) && BetterItems;
 
     u32 rand = CalcRandom() % 100;
     u32 amount = 1;
-    u32 doubleChance = ItemChances[newbie][item][0];
-    u32 tripleChance = ItemChances[newbie][item][1];
+    u32 doubleChance = ItemChances[isNewbie][item][0];
+    u32 tripleChance = ItemChances[isNewbie][item][1];
 
     if (rand >= doubleChance) {
         amount++;
@@ -40,7 +41,7 @@ u32 AmountRandomizer(u32 item, u32 pid) {
     }
 
     // If it's a CPU getting a blue shell, set its quantity to 1
-    if (Racedata->main.scenarios[0].players[pid].playerType != PLAYER_REAL_LOCAL && item == 0x07) amount = 1;
+    if (playerType == PLAYER_CPU && item == 0x07) amount = 1;
 
     if (pid != 0xC) {
         ItemAmounts[0][pid] = ItemAmounts[1][pid];
@@ -122,6 +123,36 @@ u32 UltimateRandomOld(ItemSlotData *slot, u32 itemBoxSetting, u32 position, bool
 
     return item;
 
+}
+
+u8 AmountRandomizer(u32 item, u32 pid) {
+	bool isNewbie = false;
+	bool playerType = PLAYER_NONE;
+	// If player is valid, get the real player's information
+	if (pid < 0xC) {
+		playerType = Racedata->main.scenarios[0].players[pid].playerType;
+		isNewbie = NewbieHelper(pid) && BetterItems && playerType != PLAYER_CPU;
+	}
+    u8 doubleChance = ItemChances[isNewbie][item][0];
+    u8 tripleChance = ItemChances[isNewbie][item][1];
+	u8 rand = CalcRandom() % 100;
+    u8 amount = 1;
+
+    if (rand >= doubleChance) {
+        amount++;
+        if (rand >= tripleChance) amount++;
+    }
+
+    // If it's a CPU getting a blue shell, set its quantity to 1
+    if (playerType == PLAYER_CPU && item == 0x07) amount = 1;
+
+	// Cycle the roulette amounts around
+	if (pid < 0xC) {
+		ItemAmounts[0][pid] = ItemAmounts[1][pid];
+		ItemAmounts[1][pid] = amount;
+	}
+	
+    return amount;
 }
 
 u32 UltimateRandom(ItemSlotData *slot, u32 itemBoxSetting, u32 position, bool isHuman, bool unused, ItemHolderPlayer* player) {

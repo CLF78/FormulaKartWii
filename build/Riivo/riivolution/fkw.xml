@@ -48,7 +48,7 @@
 					<patch id="betteritems"/>
 				</choice>
 			</option>
-			<option name="Item Replacing Green Shell" default="5">
+			<option name="Green Shell Replacement" default="5">
 				<choice name="Red Shell">
 					<patch id="greentored"/>
 				</choice>
@@ -71,7 +71,7 @@
 					<patch id="greentopow"/>
 				</choice>
 			</option>
-			<option name="Bullet Bill TCs" default="1">
+			<option name="Bullet Bill Thunderclouds" default="1">
 				<choice name="Enabled">
 					<patch id="bullettcs"/>
 				</choice>
@@ -86,7 +86,7 @@
 					<patch id="autorespawnboost"/>
 				</choice>
 			</option>
-			<option name="Instant Draft" default="1">
+			<option name="Instant Slipstream" default="1">
 				<choice name="Enabled">
 					<patch id="instantdraft"/>
 				</choice>
@@ -99,7 +99,7 @@
 					<patch id="thirtyfps"/>
 				</choice>
 			</option>
-			<option name="Faster Menu Navigation">
+			<option name="Fast Menu Navigation">
 				<choice name="Enabled">
 					<patch id="fastmenu"/>
 				</choice>
@@ -109,22 +109,31 @@
 					<patch id="speedo"/>
 				</choice>
 			</option>
-			<option name="Key Checkpoints on Minimap">
+			<option name="Minimap: Key Checkpoints">
 				<choice name="Enabled">
 					<patch id="kcpmap"/>
 				</choice>
 			</option>
-			<option name="Mii Heads on Minimap">
+			<option name="Minimap: Mii Heads">
 				<choice name="Enabled">
 					<patch id="miiheads"/>
 				</choice>
 			</option>
-			<option name="Long Distance Names">
-				<choice name="Enabled">
-					<patch id="btglitch"/>
+			<option name="Nametags Distance">
+				<choice name="Normal">
+					<patch id="nametagsnormal"/>
+				</choice>
+				<choice name="Near">
+					<patch id="nametagsnear"/>
+				</choice>
+				<choice name="Far">
+					<patch id="nametagsfar"/>
+				</choice>
+				<choice name="Always Show">
+					<patch id="nametagsalways"/>
 				</choice>
 			</option>
-			<option name="Show Time Difference">
+			<option name="Time Difference">
 				<choice name="Player Ahead">
 					<patch id="timediffahead"/>
 				</choice>
@@ -169,7 +178,7 @@
 					<patch id="charvoices"/>
 				</choice>
 			</option>
-			<option name="Race Music" default="1">
+			<option name="Music: Race" default="1">
 				<choice name="Normal">
 					<patch id="racemusic"/>
 				</choice>
@@ -177,7 +186,7 @@
 					<patch id="gradmusic"/>
 				</choice>
 			</option>
-			<option name="Transformation Music" default="1">
+			<option name="Music: Transformation" default="1">
 				<choice name="Normal">
 					<patch id="transfmusic"/>
 				</choice>
@@ -185,7 +194,7 @@
 					<patch id="overlayedtransfmusic"/>
 				</choice>
 			</option>
-			<option name="Distorted Music" default="1">
+			<option name="Music: Distortion" default="1">
 				<choice name="Enabled">
 					<patch id="distortedmusic"/>
 				</choice>
@@ -197,10 +206,12 @@
 			</option>
 		</section>
 	</options>
+	<!--FKW - Core Features-->
+
 	<patch id="fkw">
 		<!--Load Code-->
-		<memory valuefile="/fkw/Loader.bin" offset="0x80004010"/>
-		<memory offset="0x8000629C" value="4BFFDF60"/>
+		<memory valuefile="/fkw/Loader.bin" offset="0x80004090"/>
+		<memory offset="0x8000631C" value="4BFFDF60"/>
 		<folder external="/fkw/fkw" disc="/fkw" create="true"/>
 		<!--File Replacements-->
 		<folder disc="/Race" external="/fkw/Common_X"/>
@@ -214,11 +225,13 @@
 		<!-- THP -->
 		<file disc="/thp/button/drift_select.thp" external="/fkw/thp/drift_select.thp"/>
 	</patch>
+
 	<patch id="myfcis">
 		<folder external="/fkw/My FCIs" recursive="false"/>
 		<folder external="/fkw/My FCIs" disc="/"/>
-		<memory offset="0x800017BE" value="01" original="00"/>
+		<memory offset="0x80004030" value="01" original="00"/>
 	</patch>
+
 	<patch id="mystuffctgp">
 		<folder external="/ctgpr/My Stuff" recursive="false"/>
 		<folder external="/ctgpr/My Stuff" disc="/"/>
@@ -235,117 +248,154 @@
 		<folder external="/fkw/My Stuff" recursive="false" disc="/sound"/>
 		<folder external="/fkw/My Stuff" recursive="false" disc="/sound/strm"/>
 	</patch>
-	<!--Set bytes to enable the following codes-->
-	<patch id="fastmenu">
-		<memory offset="0x800017B0" value="01" original="00"/>
-	</patch>
-	<patch id="miiheads">
-		<memory offset="0x800017B1" value="01" original="00"/>
-	</patch>
-	<patch id="racemusic">
-		<memory offset="0x800017B2" value="01" original="00"/>
-	</patch>
-    <patch id="gradmusic">
-		<memory offset="0x800017B2" value="02" original="00"/>
-	</patch>
-	<patch id="charvoices">
-		<memory offset="0x800017B3" value="01" original="00"/>
-	</patch>
-	<patch id="btglitch">
-		<memory offset="0x800017B4" value="01" original="00"/>
-	</patch>
-	<patch id="timediffahead">
-		<memory offset="0x800017B5" value="01" original="00"/>
-	</patch>
-	<patch id="timediffafirst">
-		<memory offset="0x800017B5" value="02" original="00"/>
-	</patch>
-	<patch id="speedo">
-		<memory offset="0x800017B6" value="01" original="00"/>
-	</patch>
-	<patch id="transfmusic">
-		<memory offset="0x800017B7" value="01" original="00"/>
-	</patch>
-	<patch id="overlayedtransfmusic">
-		<memory offset="0x800017B7" value="02" original="00"/>
-	</patch>
+
 	<patch id="orientbikesoutside">
-		<memory offset="0x800017B8" value="01" original="00"/>
+		<memory offset="0x80004031" value="01" original="00"/>
 	</patch>
     <patch id="orientbikesinside">
-		<memory offset="0x800017B8" value="02" original="00"/>
+		<memory offset="0x80004031" value="02" original="00"/>
 	</patch>
+
 	<patch id="orientkarts">
-		<memory offset="0x800017B9" value="01" original="00"/>
+		<memory offset="0x80004032" value="01" original="00"/>
 	</patch>
-    <patch id="kcpmap">
-		<memory offset="0x800017BA" value="01" original="00"/>
-	</patch>
-	<patch id="lightflash">
-		<memory offset="0x800017BB" value="01" original="00"/>
-	</patch>
-	<patch id="nobloom">
-		<memory offset="0x800017BC" value="01" original="00"/>
-	</patch>
-	<patch id="fovnarrow">
-		<memory offset="0x800017BD" value="01" original="00"/>
-	</patch>
-	<patch id="fovverynarrow">
-		<memory offset="0x800017BD" value="02" original="00"/>
-	</patch>
-	<patch id="fovwide">
-		<memory offset="0x800017BD" value="03" original="00"/>
-	</patch>
-	<patch id="fovverywide">
-		<memory offset="0x800017BD" value="04" original="00"/>
-	</patch>
-	<patch id="thirtyfps">
-		<memory offset="0x800017BF" value="01" original="00"/>
-	</patch>
-	<patch id="tmcamera">
-		<memory offset="0x800017C0" value="01" original="00"/>
-	</patch>
-	<patch id="distortedmusic">
-		<memory offset="0x800017C1" value="01" original="00"/>
-	</patch>
-	<patch id="autobrsar">
-		<memory offset="0x800017C2" value="01" original="00"/>
-	</patch>
-	<!-- Newbie Helper Options -->
+
+	<!--FKW - Newbie Helper-->
+
 	<patch id="betteritems">
-		<memory offset="0x800017F0" value="01" original="00"/>
+		<memory offset="0x80004040" value="01" original="00"/>
 	</patch>
+
 	<patch id="greentored">
-		<memory offset="0x800017F1" value="01" original="00"/>
+		<memory offset="0x80004041" value="01" original="00"/>
 	</patch>
 	<patch id="greentobanana">
-		<memory offset="0x800017F1" value="02" original="00"/>
+		<memory offset="0x80004041" value="02" original="00"/>
 	</patch>
 	<patch id="greentofib">
-		<memory offset="0x800017F1" value="03" original="00"/>
+		<memory offset="0x80004041" value="03" original="00"/>
 	</patch>
 	<patch id="greentobomb">
-		<memory offset="0x800017F1" value="06" original="00"/>
+		<memory offset="0x80004041" value="06" original="00"/>
 	</patch>
 	<patch id="greentoblue">
-		<memory offset="0x800017F1" value="07" original="00"/>
+		<memory offset="0x80004041" value="07" original="00"/>
 	</patch>
 	<patch id="greentofeather">
-		<memory offset="0x800017F1" value="0C" original="00"/>
+		<memory offset="0x80004041" value="0C" original="00"/>
 	</patch>
 	<patch id="greentopow">
-		<memory offset="0x800017F1" value="0D" original="00"/>
+		<memory offset="0x80004041" value="0D" original="00"/>
 	</patch>
+
 	<patch id="bullettcs">
-		<memory offset="0x800017F2" value="01" original="00"/>
+		<memory offset="0x80004042" value="01" original="00"/>
 	</patch>
+
 	<patch id="instantrespawn">
-		<memory offset="0x800017F3" value="01" original="00"/>
+		<memory offset="0x80004043" value="01" original="00"/>
 	</patch>
+
 	<patch id="autorespawnboost">
-		<memory offset="0x800017F4" value="01" original="00"/>
+		<memory offset="0x80004044" value="01" original="00"/>
 	</patch>
+
 	<patch id="instantdraft">
-		<memory offset="0x800017F5" value="01" original="00"/>
+		<memory offset="0x80004045" value="01" original="00"/>
+	</patch>
+
+	<!--FKW - Video Settings-->
+
+	<patch id="thirtyfps">
+		<memory offset="0x80004050" value="01" original="00"/>
+	</patch>
+
+	<patch id="fastmenu">
+		<memory offset="0x80004051" value="01" original="00"/>
+	</patch>
+
+	<patch id="speedo">
+		<memory offset="0x80004052" value="01" original="00"/>
+	</patch>
+
+	<patch id="kcpmap">
+		<memory offset="0x80004053" value="01" original="00"/>
+	</patch>
+
+	<patch id="miiheads">
+		<memory offset="0x80004054" value="01" original="00"/>
+	</patch>
+
+	<patch id="nametagsnormal">
+		<memory offset="0x80004055" value="01" original="00"/>
+	</patch>
+	<patch id="nametagsnear">
+		<memory offset="0x80004055" value="02" original="00"/>
+	</patch>
+	<patch id="nametagsfar">
+		<memory offset="0x80004055" value="03" original="00"/>
+	</patch>
+	<patch id="nametagsalways">
+		<memory offset="0x80004055" value="04" original="00"/>
+	</patch>
+
+	<patch id="timediffahead">
+		<memory offset="0x80004056" value="01" original="00"/>
+	</patch>
+	<patch id="timediffafirst">
+		<memory offset="0x80004056" value="02" original="00"/>
+	</patch>
+
+	<patch id="nobloom">
+		<memory offset="0x80004057" value="01" original="00"/>
+	</patch>
+
+	<patch id="lightflash">
+		<memory offset="0x80004058" value="01" original="00"/>
+	</patch>
+
+	<patch id="fovnarrow">
+		<memory offset="0x80004059" value="01" original="00"/>
+	</patch>
+	<patch id="fovverynarrow">
+		<memory offset="0x80004059" value="02" original="00"/>
+	</patch>
+	<patch id="fovwide">
+		<memory offset="0x80004059" value="03" original="00"/>
+	</patch>
+	<patch id="fovverywide">
+		<memory offset="0x80004059" value="04" original="00"/>
+	</patch>
+
+	<patch id="tmcamera">
+		<memory offset="0x8000405A" value="01" original="00"/>
+	</patch>
+
+	<!--FKW - Audio Settings-->
+
+	<patch id="charvoices">
+		<memory offset="0x80004060" value="01" original="00"/>
+	</patch>
+
+	<patch id="racemusic">
+		<memory offset="0x80004061" value="01" original="00"/>
+	</patch>
+    <patch id="gradmusic">
+		<memory offset="0x80004061" value="02" original="00"/>
+	</patch>
+	
+	<patch id="transfmusic">
+		<memory offset="0x80004062" value="01" original="00"/>
+	</patch>
+	<patch id="overlayedtransfmusic">
+		<memory offset="0x80004062" value="02" original="00"/>
+	</patch>
+
+	<patch id="distortedmusic">
+		<memory offset="0x80004063" value="01" original="00"/>
+	</patch>
+
+	<patch id="autobrsar">
+		<memory offset="0x80004064" value="01" original="00"/>
 	</patch>
 </wiidisc>

@@ -32,35 +32,41 @@
 # 0x800014B0-0x800016FF
 - 0x80001614-0x8000166B = Frameskip
 
-# 0x800017B0-0x800017EF (Riivolution Settings)
-- 0x800017B0 = Fast Menu Navigation			[0-1]
-- 0x800017B1 = Mii Heads on the Minimap		[0-1]
-- 0x800017B2 = Music						[0-2]
-- 0x800017B3 = Character Voices				[0-1]
-- 0x800017B4 = Long Distance Names			[0-1]
-- 0x800017B5 = Time Difference				[0-2]
-- 0x800017B6 = Speedometer					[0-1]
-- 0x800017B7 = Transformation Music			[0-2]
-- 0x800017B8 = Drift Bikes					[0-2]
-- 0x800017B9 = Drift Karts					[0-1]
-- 0x800017BA = Key Checkpoints on Minimap	[0-1]
-- 0x800017BB = Lightning Flash				[0-1]
-- 0x800017BC = Bloom and Depth of Field		[0-1]
-- 0x800017BD = Custom FOV					[0-4]
-- 0x800017BE = Feather Cut Indicators		[0-1]
-- 0x800017BF = 30FPS						[0-1]
-- 0x800017C0 = TrackMania Camera			[0-1]
-- 0x800017C1 = Distorted Music				[0-1]
-- 0x800017C2 = Automatic BRSAR Patching		[0-1]
+# 0x800017B0-0x800017FF
 
-# 0x800017F0-0x800017FF (Newbie Helper Settings)
-- 0x800017F0 = Better Item Pool				[0-1]
-- 0x800017F1 = Feather Replaces POW			[0-1]
-- 0x800017F2 = Bullet Bill TCs				[0-1]
-- 0x800017F3 = Instant Respawn				[0-1]
-- 0x800017F4 = Automatic Respawn Boost		[0-1]
-- 0x800017F5 = Instant Draft				[0-1]
+# 0x80004000-0x8000402F
 
-# 0x80004000-0x8000400F
+# 0x80004030-0x8000403F (FKW - Core Features)
+- 0x80004030 = Feather Cut Indicators		[0-1]
+- 0x80004031 = Drift Bikes					[0-1-2]
+- 0x80004032 = Drift Karts					[0-1]
+
+# 0x80004040-0x8000404F (FKW - Newbie Helper)
+- 0x80004040 = Better Item Pool				[0-1]
+- 0x80004041 = Green Shell Replacement		[0-1-2-3-6-7-C-D]
+- 0x80004042 = Bullet Bill TCs				[0-1]
+- 0x80004043 = Instant Respawn				[0-1]
+- 0x80004044 = Automatic Respawn Boost		[0-1]
+- 0x80004045 = Instant Slipstream			[0-1]
+
+# 0x80004050-0x8000405F (FKW - Video Settings)
+- 0x80004050 = Force 30FPS					[0-1]
+- 0x80004051 = Fast Menu Navigation			[0-1]
+- 0x80004052 = Speedometer					[0-1]
+- 0x80004053 = Minimap: Key Checkpoints		[0-1]
+- 0x80004054 = Minimap: Mii Heads			[0-1]
+- 0x80004055 = Nametags Distance			[0-1-2-3-4]
+- 0x80004056 = Time Difference				[0-1-2]
+- 0x80004057 = Bloom and Depth of Field		[0-1]
+- 0x80004058 = Lightning Flash				[0-1]
+- 0x80004059 = Field of View				[0-1-2-3-4]
+- 0x8000405A = Low-angled Camera			[0-1]
+
+# 0x80004060-0x8000406F (FKW - Audio Settings)
+- 0x80004060 = Character Voices				[0-1]
+- 0x80004061 = Music: Race					[0-1-2]
+- 0x80004062 = Music: Transformation		[0-1-2]
+- 0x80004063 = Music: Distortion			[0-1]
+- 0x80004064 = Automatic BRSAR Patching		[0-1]
 
 # Other ranges

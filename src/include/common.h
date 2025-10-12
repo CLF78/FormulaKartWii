@@ -111,7 +111,7 @@ char FCIs, DriftBikes, DriftKarts;
 char BetterItems, ExtraItem, BulletTCs, InstantRespawn, AutoRespawnBoost, InstantDraft;
 
 /* Video */
-char KCPMap, TimeDiff, Speedometer, FasterMenu, MiiHeads, BtGlitch, LightFlash, Bloom, ThirtyFPS, FOVSetting, TMCam;
+char KCPMap, TimeDiff, Speedometer, FasterMenu, MiiHeads, TagsDist, LightFlash, Bloom, ThirtyFPS, FOVSetting, TMCam;
 
 /* Audio */
-char DistortedMusic, Music, CharVoices, TransfMusic, BRSARPatch;
+char DistortedMusic, RaceMusic, CharVoices, TransfMusic, BRSARPatch;

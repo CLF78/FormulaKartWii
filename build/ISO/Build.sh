@@ -106,117 +106,282 @@ if [ $LETTER = K ]; then
 	cp fkw/Common_K.szs mkw.d/files/Race/
 fi
 
-clear
-echo "[01/17] Enable Faster Menu Navigation? (0=No, 1=Yes) ~ "
-read FASTMENU
-wit dolpatch mkw.d/sys/main.dol 800017B0=$FASTMENU -q
+#########################
+# Core Features Options #
+#########################
 
 clear
-echo "[02/17] Enable Mii Heads on Minimap? (0=No, 1=Yes) ~ "
-read MIIHEADS
-wit dolpatch mkw.d/sys/main.dol 800017B1=$MIIHEADS -q
-
-clear
-echo "[03/17] Disable Music? (0=No, 1=Yes) ~ "
-read NOMUS
-wit dolpatch mkw.d/sys/main.dol 800017B2=$NOMUS -q
-
-clear
-echo "[04/17] Disable Character Voices? (0=No, 1=Yes) ~ "
-read NOCHARS
-wit dolpatch mkw.d/sys/main.dol 800017B3=$NOCHARS -q
-
-clear
-echo "[05/17] Enable Long Distance Names? (0=No, 1=Yes) ~ "
-read BTGLITCH
-wit dolpatch mkw.d/sys/main.dol 800017B4=$BTGLITCH -q
-
-clear
-echo "[06/17] Time Difference?"
-echo "0. Disabled"
-echo "1. Difference to player ahead"
-echo "2. Difference to player in first"
-echo "~ "
-read TIMEDIFF
-wit dolpatch mkw.d/sys/main.dol 800017B5=$TIMEDIFF -q
-
-clear
-echo "[07/17] Enable Speedometer? (0=No, 1=Yes) ~ "
-read SPEEDO
-wit dolpatch mkw.d/sys/main.dol 800017B6=$SPEEDO -q
-
-clear
-echo "[08/17] Race Music?"
-echo "0. Disabled"
-echo "1. Normal"
-echo "2. Accelerating"
-echo "~ "
-read FASTMUSIC
-wit dolpatch mkw.d/sys/main.dol 800017B7=$FASTMUSIC -q
-
-clear
-echo "[09/17] Bikes' Drift Type?"
-echo "0. Original"
-echo "1. All Inside Drift"
-echo "2. All Outside Drift"
-echo "~ "
-read BIKEDRIFT
-wit dolpatch mkw.d/sys/main.dol 800017B8=$BIKEDRIFT -q
-
-clear
-echo "[10/17] Enable Inside Drifting Karts? (0=No, 1=Yes) ~ "
-read KARTDRIFT
-wit dolpatch mkw.d/sys/main.dol 800017B9=$KARTDRIFT -q
-
-clear
-echo "[11/17] Show Key Checkpoints on Minimap? (0=No, 1=Yes) ~ "
-read KCPMAP
-wit dolpatch mkw.d/sys/main.dol 800017BA=$KCPMAP -q
-
-clear
-echo "[12/17] Enable Lightning Flash? (0=No, 1=Yes) ~ "
-read LGHTFLSH
-wit dolpatch mkw.d/sys/main.dol 800017BB=$LGHTFLSH -q
-
-clear
-echo "[13/17] Enable Bloom and Depth of Field? (0=No, 1=Yes) ~ "
-read BLMDOF
-wit dolpatch mkw.d/sys/main.dol 800017BC=$BLMDOF -q
-
-clear
-echo "[14/17] Field of View?"
-echo "0. Original"
-echo "1. Narrow"
-echo "2. Very Narrow"
-echo "3. Wide"
-echo "4. Very Wide"
-echo "~ "
-read FOV
-wit dolpatch mkw.d/sys/main.dol 800017BD=$FOV -q
-
-clear
-echo "[15/17] Enable Feather Cut Indicators? [Addon must be installed manually] (0=No, 1=Yes) ~ "
+echo [1/4] FKW - Core Features
+echo [1/3] Feather Cut Indicators?
+echo 0. No
+echo 1. Yes
+echo -n " > "
 read FCIS
-wit dolpatch mkw.d/sys/main.dol 800017BE=$FCIS -q
 
 clear
-echo "[16/17] Force 30 FPS? (0=No, 1=Yes) ~ "
-read FRAMERATE
-wit dolpatch mkw.d/sys/main.dol 800017BF=$FRAMERATE -q
+echo [1/4] FKW - Core Features
+echo [2/3] Drift Orientation for Bikes?
+echo 0. Original
+echo 1. Inside Drift
+echo 2. Outside Drift
+echo -n " > "
+read DRIFTBIKES
 
 clear
-SET "[17/17] Force Low-Angled Camera? (0=No, 1=Yes) ~ "
+echo [1/4] FKW - Core Features
+echo [3/3] Drift Orientation for Karts?
+echo 0. Original
+echo 1. Inside Drift
+echo -n " > "
+read DRIFTKARTS
+
+#########################
+# Newbie Helper Options #
+#########################
+
+clear
+echo [2/4] FKW - Newbie Helper
+echo [1/6] Better Item Pool?
+echo 0. No
+echo 1. Yes
+echo -n " > "
+read BETTERITEMS
+
+# Missing input validation
+clear
+echo [2/4] FKW - Newbie Helper
+echo [2/6] Green Shell Replacement Item?
+echo 0. No
+echo 1. Red Shell
+echo 2. Banana
+echo 3. Fake Item Box
+echo 6. Bob-omb
+echo 7. Blue Shell
+echo C. Golden Mushroom
+echo D. Star
+echo -n " > "
+read GREENREPLACE
+
+clear
+echo [2/4] FKW - Newbie Helper
+echo [3/6] Bullet Bill Thunderclouds?
+echo 0. No
+echo 1. Yes
+echo -n " > "
+read BILLTCS
+
+clear
+echo [2/4] FKW - Newbie Helper
+echo [4/6] Instant Respawn?
+echo 0. No
+echo 1. Yes
+echo -n " > "
+read INSTARESPAWN
+
+clear
+echo [2/4] FKW - Newbie Helper
+echo [5/6] Automatic Respawn Boost?
+echo 0. No
+echo 1. Yes
+echo -n " > "
+read AUTOBOOST
+
+clear
+echo [2/4] FKW - Newbie Helper
+echo [6/6] Instant Slipstream?
+echo 0. No
+echo 1. Yes
+echo -n " > "
+read INSTADRAFT
+
+##################
+# Video Settings #
+##################
+
+clear
+echo [3/4] FKW - Video Settings
+echo [1/11] Force 30FPS?
+echo 0. No
+echo 1. Yes
+echo -n " > "
+read THIRTYFPS
+
+clear
+echo [3/4] FKW - Video Settings
+echo [2/11] Faster Menu Navigation?
+echo 0. No
+echo 1. Yes
+echo -n " > "
+read FASTMENU
+
+clear
+echo [3/4] FKW - Video Settings
+echo [3/11] Speedometer?
+echo 0. No
+echo 1. Yes
+echo -n " > "
+read SPEEDOMETER
+
+clear
+echo [3/4] FKW - Video Settings
+echo [4/11] Minimap: Key Checkpoints?
+echo 0. No
+echo 1. Yes
+echo -n " > "
+read MINIMAPKCPS
+
+clear
+echo [3/4] FKW - Video Settings
+echo [5/11] Minimap: Mii Heads?
+echo 0. No
+echo 1. Yes
+echo -n " > "
+read MINIMAPMII
+
+clear
+echo [3/4] FKW - Video Settings
+echo [6/11] Nametags Distance?
+echo 0. Never
+echo 1. Normal
+echo 2. Near
+echo 3. Far
+echo 4. Always
+echo -n " > "
+read TAGSDIST
+
+clear
+echo [3/4] FKW - Video Settings
+echo [7/11] Time Difference?
+echo 0. No
+echo 1. To Player Ahead
+echo 2. To Player in First Place
+echo -n " > "
+read TIMEDIFF
+
+clear
+echo [3/4] FKW - Video Settings
+echo [8/11] Bloom and Depth of Field?
+echo 0. No
+echo 1. Yes
+echo -n " > "
+read BLOOM
+
+clear
+echo [3/4] FKW - Video Settings
+echo [9/11] Lightning Flash?
+echo 0. No
+echo 1. Yes
+echo -n " > "
+read LIGHTFLASH
+
+clear
+echo [3/4] FKW - Video Settings
+echo [10/11] Field of View?
+echo 0. Original
+echo 1. Narrow
+echo 2. Very Narrow
+echo 3. Wide
+echo 4. Very Wide
+echo -n " > "
+read FOV
+
+clear
+echo [3/4] FKW - Video Settings
+echo [11/11] Low-angled Camera?
+echo 0. No
+echo 1. Yes
+echo -n " > "
 read LOWCAM
-wit dolpatch mkw.d/sys/main.dol 800017C0=$LOWCAM -q
+
+##################
+# Audio Settings #
+##################
+
+clear
+echo [4/4] FKW - Audio Settings
+echo [1/5] Character Voices?
+echo 0. No
+echo 1. Yes
+echo -n " > "
+read CHARVOICES
+
+clear
+echo [4/4] FKW - Audio Settings
+echo [2/5] Music: Race
+echo 0. Off
+echo 1. Normal
+echo 2. Accelerating
+echo -n " > "
+read MUSICRACE
+
+clear
+echo [4/4] FKW - Audio Settings
+echo [3/5] Music: Transformation
+echo 0. Off
+echo 1. Normal
+echo 2. Overlayed
+echo -n " > "
+read MUSICTRANS
+
+clear
+echo [4/4] FKW - Audio Settings
+echo [4/5] Music: Distortion
+echo 0. No
+echo 1. Yes
+echo -n " > "
+read MUSICDIST
+
+clear
+echo [4/4] FKW - Audio Settings
+echo [5/5] Automatic BRSAR Patching?
+echo 0. No
+echo 1. Yes
+echo -n " > "
+read AUTOBRSAR
+
+# FKW - Core Features
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017BE=$FCIS -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017B8=$DRIFTBIKES -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017B9=$DRIFTKARTS -q
+
+# FKW - Newbie Helper
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017F0=$BETTERITEMS -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017F1=$GREENREPLACE -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017F2=$BILLTCS -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017F3=$INSTARESPAWN -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017F4=$AUTOBOOST -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017F5=$INSTADRAFT -q
+
+# FKW - Video Settings
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017BF=$THIRTYFPS -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017B0=$FASTMENU -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017B6=$SPEEDOMETER -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017BA=$MINIMAPKCPS -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017B1=$MINIMAPMII -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017B4=$TAGSDIST -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017B5=$TIMEDIFF -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017BC=$BLOOM -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017BB=$LIGHTFLASH -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017BD=$FOV -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017C0=$LOWCAM -q
+
+# FKW - Audio Settings
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017B3=$CHARVOICES -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017B2=$MUSICRACE -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017B7=$MUSICTRANS -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017C1=$MUSICDIST -q
+wit\wit.exe dolpatch mkw.d/sys/main.dol 800017C2=$AUTOBRSAR -q
+
+# Inject loader
 
 wit dolpatch mkw.d/sys/main.dol 8000629C=4BFFDF60 load=80004010,fkw/Loader.bin -q
 
 clear
-echo "Format Selection:"
-echo "1. WBFS"
-echo "2. ISO"
-echo "3. Extracted Filesystem (ADVANCED USERS ONLY)"
-echo "Enter the number corresponding to the format you want:"
+echo Choose in which format you want to save the game:
+echo 1. WBFS
+echo 2. ISO
+echo 3. Extracted Filesystem (ADVANCED USERS ONLY)
+echo -n " > "
 read EXTINPUT
 
 FILEEXT=NONE

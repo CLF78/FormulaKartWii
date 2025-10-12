@@ -320,9 +320,6 @@ SECTIONS {
 	/* Fix Online Players Stuck in Halfpipe */
 	HalfPipeFixHook = 0x80579FB0;
 
-	/* Force Battle Glitch */
-	TagDistance = 0x808C22AC;
-
 	/* Force Low-Angle Camera */
 	TMCamHook = 0x80591AA4;
 
@@ -496,6 +493,9 @@ SECTIONS {
 	/* Motion-Sensor Bombs */
 	BombTimer = 0x80793FB6;
 	BombTimer2 = 0x80792E8A;
+
+	/* Nametags Showing Distance Override */
+	TagDistance = 0x808C22AC;
 
 	/* Newbie Helper */
 	RespawnHelperHook = 0x80561E80;

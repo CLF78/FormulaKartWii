@@ -52,6 +52,6 @@ rlwinm. r3, r3, 0, 16, 16
 beqlr
 
 # Store new FOV if so
-lis r7, 0x4170
+lis r7, 0x4200
 stw r7, 0x120(r5)
 blr
