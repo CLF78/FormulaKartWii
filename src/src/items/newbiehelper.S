@@ -105,8 +105,12 @@ lwz r5, 0x4(r5)
 # Use cr0+gt from Newbie Helper ASM
 ble+ end3
 
-# Force to 1
+# force 1 if not braking
+lwz r3,0x4(r5)
+rlwinm. r3,r3,0x0,0x1e,0x1e
+bne skipforce
 li r0, 1
+skipforce:
 
 # Return
 end3:
