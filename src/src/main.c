@@ -654,12 +654,13 @@ void loadCodes() {
 	directWriteBranchOffset(HybridDrift1, 0x48, HybridDrift2, true);
 	directWriteBranch(HybridDrift3Hook, HybridDrift3, true);
 	directWriteBranchOffset(HybridDrift3Hook, 0x70, HybridDrift4, true);
-	directWriteBranch(HybridDrift4Hook, HybridDrift4, false);
+	directWriteBranch(HybridDrift4Hook, HybridDrift4, true);
 	directWriteBranch(HybridDrift5Hook, HybridDrift5, true);
 	directWriteBranchOffset(HybridDrift5Hook, 0x540, HybridDrift5, true);
 	directWriteBranch(HybridDrift6Hook, HybridDrift6, true);
 	directWrite8(HybridDrift7, 0x20);
 	directWrite32(HybridDrift8, 0x38600000);
+	directWriteNop(HybridDrift9);
 	directWrite16(WiiWheelFix, 0);
 	directWrite16(WiiWheelFix2, 0x4800);
 

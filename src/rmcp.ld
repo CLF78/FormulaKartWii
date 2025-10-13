@@ -418,6 +418,7 @@ SECTIONS {
 	HybridDrift6Hook = 0x8057E108;
 	HybridDrift7 = 0x8059450E;
 	HybridDrift8 = 0x805A35BC;
+	HybridDrift9 = 0x805920AC;
 	WiiWheelFix = 0x808CB70A;
 	WiiWheelFix2 = 0x80745AB0;
 

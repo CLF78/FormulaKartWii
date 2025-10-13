@@ -72,7 +72,7 @@ blr
 HybridDrift5:
 lwz r0, 0x14(r3)
 
-# Check if we're an inside drifting bike
+# Check if we're an inside drifting bike, if we are, end the code (Bug is only for outside drift)
 lwz r12, 0(r28)
 lwz r12, 0(r12)
 lwz r12, 0x14(r12)
@@ -81,7 +81,12 @@ lwz r12, 0x4(r12)
 cmpwi r12, 2
 beqlr
 
-# If not, load a dummy value to force the next branch
+# Check if we're drifting, if we are, end the code
+lwz r3, 4 (r3)
+andis. r3, r3, 0x1000
+bnelr
+
+# Fix slide issue (Load a dummy value to force the next branch)
 li r0, 0
 blr
 
