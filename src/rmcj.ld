@@ -415,7 +415,6 @@ SECTIONS {
 	HybridDrift6Hook = 0x8057DA88;
 	HybridDrift7 = 0x80593E8E;
 	HybridDrift8 = 0x805A2F3C;
-	HybridDrift9 = 0x80591A2C;
 	WiiWheelFix = 0x808CA85A;
 	WiiWheelFix2 = 0x8074511C;
 
@@ -424,6 +423,7 @@ SECTIONS {
 
 	/* Inside Drift Bikes */
 	KartParamHook = 0x80591968;
+	DriftCamNop = 0x80591A2C;
 
 	/* Instant DC */
 	WiiWheel = 0x80345162;

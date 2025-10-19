@@ -303,6 +303,7 @@ void loadCodes() {
 
 	// Inside Drift Bikes (by Seeky)
 	directWriteBranch(KartParamHook, DriftOverride, true);
+	// directWriteNop(DriftCamNop);
 
 	// Instant Item Boxes (by Anarion and CLF78)
 	directWriteNop(InstantItemBoxes);
@@ -660,7 +661,6 @@ void loadCodes() {
 	directWriteBranch(HybridDrift6Hook, HybridDrift6, true);
 	directWrite8(HybridDrift7, 0x20);
 	directWrite32(HybridDrift8, 0x38600000);
-	directWriteNop(HybridDrift9);
 	directWrite16(WiiWheelFix, 0);
 	directWrite16(WiiWheelFix2, 0x4800);
 
