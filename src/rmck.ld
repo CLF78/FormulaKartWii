@@ -46,6 +46,12 @@ SECTIONS {
 	PlayerModels = 0x809B1578;
 	CreateScreen = 0x80611100;
 	DisconnectFromMatch = 0x80644BB0;
+	DWC_IsServerMyself = 0x800d27c0;
+	DWC_CloseConnectionHard = 0x800d2060;
+	GetRaceHeader2Buffer = 0x80641fd0;
+	OSDisableInterrupts = 0x801a6908;
+	OSRestoreInterrupts = 0x801a6930;
+	ptr_miscPacketHandler = 0x809b0590;
 
 	/* Math Functions */
 	cos = 0x8001b5f8;
@@ -768,4 +774,9 @@ SECTIONS {
 	WoodRespawn = 0x808BF728;
 	WoodProb = 0x8075D1E8;
 	BushFunc = 0x807556E8;
+
+	/* Track Check */
+	InsertTrackIdentHook = 0x8052c4c8;
+	CheckTrackIdentHook = 0x8052d4f4;
+	clearSendRH2 = 0x80642090;
 }
