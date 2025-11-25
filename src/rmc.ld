@@ -15,6 +15,7 @@ SECTIONS {
 	CurrentStrmChannels = 0x800001D1;
 	SubtractItemFix = 0x800001D2;
 	AltKMP = 0x800001D4;
+	ENPTCRC = 0x800001EC;
 
 	/* Change Character Between Races */
 	ScenePtr = 0x80000EA0;

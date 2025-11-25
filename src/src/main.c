@@ -687,6 +687,10 @@ void loadCodes() {
 	directWriteBranch(VSMenuReturnHook2, VSMenuReturn2, true);
 	directWriteBlr(NoGhostLoading);
 
+	// Track Check (by CLF78 and Lami)
+	directWriteBranch(InsertTrackIdentHook, InsertTrackIdent, false);
+	directWriteBranch(CheckTrackIdentHook, CheckTrackIdent, false);
+
 	////////////////////
 	// Custom Options //
 	////////////////////
