@@ -15,7 +15,7 @@ ogDest = '.d'
 patchDir = 'patches'
 kmpFile = 'course.kmp'
 kmpMagic = 'RKMD'
-importantSections = ['ITPT', 'ITPH', 'CKPT', 'CKPH', 'AREA', 'JGPT']
+importantSections = ['ITPT', 'ITPH', 'CKPT', 'CKPH', 'GOBJ', 'POTI', 'AREA', 'JGPT']
 enptMagic = 'ENPT'
 
 def parseFile(root):
