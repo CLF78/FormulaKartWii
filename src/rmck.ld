@@ -707,6 +707,8 @@ SECTIONS {
 	AREAHook = 0x80501380;
 	JGPTHook = 0x8050114C;
 	CKPHHook = 0x8050180C;
+	GOBJHook = 0x80501550;
+	POTIHook = 0x8050141C;
 
 	/* Transformation Music Plays over Course Music */
 	OverlayTransfMusicHook = 0x806FE224;

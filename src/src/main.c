@@ -459,6 +459,8 @@ void loadCodes() {
 	directWriteBranch(AREAHook, AltKMP1, true);
 	directWriteBranch(JGPTHook, AltKMP1, true);
 	directWriteBranch(CKPHHook, AltKMP2, true);
+	directWriteBranch(GOBJHook, AltKMP1, true);
+	directWriteBranch(POTIHook, AltKMP1, true);
 
 	// Trickable Cannons (by Ro)
 	directWriteBranch(TrickableCannonHook, TrickableCannon, true);
