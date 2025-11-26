@@ -1,7 +1,7 @@
 .include "asm_setup.S"
 
 .extern TrackIdentifierHook, CalcCRC32, TrackIdentifierLoad, AltKMP
-.global TrackIdentifier, AltKMP1, AltKMP2
+.global TrackIdentifier, AltKMP1, AltKMP2, FCIAltKMP
 
 # Original instruction
 TrackIdentifier:
@@ -18,6 +18,12 @@ bl TrackIdentifierLoad
 # Return
 b TrackIdentifierHook+4
 
+FCIAltKMP:
+lis r12, FCIs@ha
+lbz r12, FCIs@l(r12)
+cmpwi r12, 1
+bne end
+
 # Save LR
 AltKMP1:
 mflr r12
@@ -29,11 +35,12 @@ bl GetAltKMPSection
 # Move result back
 mr r31, r3
 
-# Original instruction
-cmpwi r31, 0
-
-# Restore LR and return
+# Restore LR
 mtlr r12
+
+end:
+# Original instruction and return
+cmpwi r31, 0
 blr
 
 # Save LR
@@ -47,9 +54,9 @@ bl GetAltKMPSection
 # Move result back
 mr r23, r3
 
-# Original instruction
-cmpwi r23, 0
-
-# Restore LR and return
+# Restore LR
 mtlr r12
+
+# Original instruction and return
+cmpwi r23, 0
 blr
