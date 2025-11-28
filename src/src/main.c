@@ -147,6 +147,9 @@ void loadCodes() {
 	// Bullet Bill Exhaust Fire Animation Fix (by stealthsteeler)
 	directWriteBranch(BillAnimationFixHook, BillAnimationFix, true);
 
+	// Bullet Bill Snapping (by stealthsteeler)
+	directWriteBranch(BillSnapHook, BillSnap, true);
+
 	// Bullet Bill Speed Modifier (by davidevgen, CLF78 and Ismy)
 	directWrite16(BulletBillSpeed, 0x435C);
 	directWriteBranch(CannonLandingFixHook, CannonLandingFix, true);

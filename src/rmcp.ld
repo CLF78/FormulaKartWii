@@ -152,6 +152,9 @@ SECTIONS {
 	BillAnimationFixHook = 0x8059B988;
 	EffectPointer = 0x809C21D0;
 
+	/* Bullet Bill Snapping */
+	BillSnapHook = 0x8059c698;
+
 	/* Bullet Bill Speed Modifier */
 	BulletBillSpeed = 0x808B59F8;
 	CannonLandingFixHook = 0x8057855C;
