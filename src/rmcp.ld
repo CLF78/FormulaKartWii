@@ -152,6 +152,9 @@ SECTIONS {
 	BillAnimationFixHook = 0x8059B988;
 	EffectPointer = 0x809C21D0;
 
+	/* Bullet Bill Snapping */
+	BillSnapHook = 0x8059c698;
+
 	/* Bullet Bill Speed Modifier */
 	BulletBillSpeed = 0x808B59F8;
 	CannonLandingFixHook = 0x8057855C;
@@ -709,6 +712,8 @@ SECTIONS {
 	AREAHook = 0x80513360;
 	JGPTHook = 0x8051312C;
 	CKPHHook = 0x805137EC;
+	GOBJHook = 0x80513530;
+	POTIHook = 0x805133FC;
 
 	/* Transformation Music Plays over Course Music */
 	OverlayTransfMusicHook = 0x8070FE7C;

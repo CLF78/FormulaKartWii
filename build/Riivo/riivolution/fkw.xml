@@ -227,8 +227,6 @@
 	</patch>
 
 	<patch id="myfcis">
-		<folder external="/fkw/My FCIs" recursive="false"/>
-		<folder external="/fkw/My FCIs" disc="/"/>
 		<memory offset="0x80004030" value="01" original="00"/>
 	</patch>
 
