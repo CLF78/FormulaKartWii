@@ -21,9 +21,19 @@ lwz r3, 0x98(r3)
 # Call C function
 bl RandomComboPickerC
 
-# Restore registers
+# Restore / Set registers
 mr r3, r29
-li r4, 0x6D
+li r4, 0x82             #id for multiplayer drift select
+
+# Get MenuData98        #check if in multiplayer
+lis r12, Menudata@ha
+lwz r12, Menudata@l(r12)
+lwz r12, 0x98(r12)
+lwz r12, 0x124 (r12)
+cmpwi r12, 1
+bgt end
+
+li r4, 0x6D             #id for drift select
 
 # Return
 end:
