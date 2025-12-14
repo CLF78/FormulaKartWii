@@ -1,5 +1,26 @@
 .include "asm_setup.S"
-.global BillSnap
+.global BillSnap, BillTimerIncrement, BillTimerReset
+
+BillTimerIncrement:
+
+#original instruction
+sth r0,0x12(r31)
+
+lha r4, 0x66 (r31)
+addi r0, r4, 1
+sth r0, 0x66 (r31)
+
+b end
+
+BillTimerReset:
+
+#original instruction
+stb r0, 0x31 (r27)
+
+li r0, 0
+sth r0, 0x66 (r27)
+
+b end
 
 BillSnap:
 
@@ -7,7 +28,7 @@ BillSnap:
 lfs f0, 0x1fcc (r3)
 
 #make sure we are in the first 10 frames (number of frames can probably be reduced but to lazy)
-lha r0, 0x12 (r31)  
+lha r0, 0x66 (r31)  
 cmpwi r0, 10 
 bgt+ end
 

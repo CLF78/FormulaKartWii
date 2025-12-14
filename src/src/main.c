@@ -148,6 +148,9 @@ void loadCodes() {
 	directWriteBranch(BillAnimationFixHook, BillAnimationFix, true);
 
 	// Bullet Bill Snapping (by stealthsteeler)
+	directWrite16(BillTimerMemExtension, 0x66);
+	directWriteBranch(BillTimerIncrementHook, BillTimerIncrement, true);
+	directWriteBranch(BillTimerResetHook, BillTimerReset, true);
 	directWriteBranch(BillSnapHook, BillSnap, true);
 
 	// Bullet Bill Speed Modifier (by davidevgen, CLF78 and Ismy)

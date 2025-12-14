@@ -153,6 +153,9 @@ SECTIONS {
 	EffectPointer = 0x809BDA10;
 
 	/* Bullet Bill Snapping */
+	BillTimerMemExtension = 0x80587C76;
+	BillTimerIncrementHook = 0x805B0DE8;
+	BillTimerResetHook = 0x805B1DF0;
 	BillSnapHook = 0x805B1680;
 
 	/* Bullet Bill Speed Modifier */
