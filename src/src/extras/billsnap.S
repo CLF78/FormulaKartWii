@@ -15,10 +15,10 @@ b end
 BillTimerReset:
 
 #original instruction
-stb r0, 0x31 (r27)
+lwz r4,0x0(r31)
 
 li r0, 0
-sth r0, 0x66 (r27)
+sth r0, 0x66 (r31)
 
 b end
 
@@ -38,3 +38,5 @@ stw r0, -0x4 (r1)
 lfs f0, -0x4 (r1)
 
 end:
+
+blr
