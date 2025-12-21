@@ -2,13 +2,13 @@
 
 .global DriftOverride
 
-# stfs for 0x64 is nopped later in the function as I store the drift camera stuff in here, but some code ends early in here, causing it to store nothing. So, store original value before doing anything
-lfs f0, 0x64 (r4)
-stfs f0, 0x64 (r3)
-
 # Original instruction
 DriftOverride:
 lwz r5, 4(r4)
+
+# stfs for 0x64 is nopped later in the function as I store the drift camera stuff in here, but some code ends early in here, causing it to store nothing. So, store original value before doing anything
+lfs f0, 0x64 (r4)
+stfs f0, 0x64 (r3)
 
 # Check if it's a kart
 cmpwi r5, 0
