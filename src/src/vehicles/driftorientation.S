@@ -2,6 +2,10 @@
 
 .global DriftOverride
 
+# stfs for 0x64 is nopped later in the function as I store the drift camera stuff in here, but some code ends early in here, causing it to store nothing. So, store original value before doing anything
+lfs f0, 0x64 (r4)
+stfs f0, 0x64 (r3)
+
 # Original instruction
 DriftOverride:
 lwz r5, 4(r4)
@@ -16,14 +20,11 @@ lbz r8, DriftBikes@l(r8)
 cmpwi r8, 0
 beq+ end
 mr r5, r8
-b end
-
-# lis r8, 0x4234 
-# cmpwi r5, 1
-# beq storeDriftCam
-
-# li r8, 0
-# b storeDriftCam
+lis r8, 0x4234 
+cmpwi r5, 1
+beq storeDriftCam
+li r8, 0
+b storeDriftCam
 
 # If it's a kart and selection is 1, set inside drift
 kart:
@@ -37,9 +38,8 @@ setinside:
 li r5, 2
 
 # r8 is 1 in here but it's not a problem since inside drift cam value is 0, so 1 is no difference for this float
-
-# storeDriftCam:
-# stw r8, 0x64 (r3)
+storeDriftCam:
+stw r8, 0x64 (r3)
 
 # Done
 end:

@@ -169,6 +169,7 @@ SECTIONS {
 	CustomFOV = 0x8088072C;
 
 	/* Cannon Fixes */
+	CannonStarFixHook = 0x8056A450;
 	CannonOffroadFix = 0x80572B40;
 	CannonTCFix = 0x80572BC8;
 
@@ -517,7 +518,7 @@ SECTIONS {
 	InstaDraftHook = 0x80575338;
 	
 	/* No Bullet Bill Cancel When Touching Bottom of Rainbow Road */
-	NoBillCancelRR = 0x80589E88;
+	NoBillCancelRR = 0x80589E78;
 
 	/* No Bullet Bill Icon */
 	NoBBIcon = 0x807A8990;

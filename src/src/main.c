@@ -160,7 +160,8 @@ void loadCodes() {
 	directWriteBranch(CannonSpeed2, CannonSpeedMultiplier2, true);
 	directWrite16(BulletBillPosition, tempVal16);
 
-	// Cannon Fixes (by Ismy)
+	// Cannon Fixes (by Ismy and Ro)
+	directWriteBranch(CannonStarFixHook, CannonStarFix, true);
 	directWriteNop(CannonOffroadFix);
 	directWriteNop(CannonTCFix);
 	
@@ -309,7 +310,7 @@ void loadCodes() {
 
 	// Inside Drift Bikes (by Seeky)
 	directWriteBranch(KartParamHook, DriftOverride, true);
-	// directWriteNop(DriftCamNop);
+	directWriteNop(DriftCamNop);
 
 	// Instant Item Boxes (by Anarion and CLF78)
 	directWriteNop(InstantItemBoxes);
@@ -367,7 +368,7 @@ void loadCodes() {
 	directWrite16(BombTimer2, tempVal16);
 	
 	// No Bullet Bill Cancel When Touching Bottom of Rainbow Road (by Ro)
-	directWriteNop(NoBillCancelRR);
+	directWrite32(NoBillCancelRR, 0x38600000);
 	
 	// No Bullet Bill Icon (by Anarion)
 	directWriteBlr(NoBBIcon);
