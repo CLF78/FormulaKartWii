@@ -154,9 +154,9 @@ SECTIONS {
 
 	/* Bullet Bill Snapping */
 	BillTimerMemExtension = 0x8058E49A;
-	BillTimerIncrementHook = 0x8059be00;
+	BillTimerIncrementHook = 0x8059BE00;
 	BillTimerResetHook = 0x8059C16C;
-	BillSnapHook = 0x8059C698;
+	BillSnapHook = 0x8059C69C;
 
 	/* Bullet Bill Speed Modifier */
 	BulletBillSpeed = 0x808B59F8;
