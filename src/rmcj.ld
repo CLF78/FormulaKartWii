@@ -156,7 +156,7 @@ SECTIONS {
 	BillTimerMemExtension = 0x8058DE1A;
 	BillTimerIncrementHook = 0x8059B780;
 	BillTimerResetHook = 0x8059BAEC;
-	BillSnapHook = 0x8059C018;
+	BillSnapHook = 0x8059C01C;
 
 	/* Bullet Bill Speed Modifier */
 	BulletBillSpeed = 0x808B4B58;
