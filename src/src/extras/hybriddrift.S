@@ -81,12 +81,17 @@ lwz r12, 0x4(r12)
 cmpwi r12, 2
 beqlr
 
+# Check if we have regular kart drift. If we do, fix the slide issue
+cmpwi r12, 0
+beq slideissue
+
 # Check if we're drifting, if we are, end the code
 lwz r3, 4 (r3)
 andis. r3, r3, 0x1000
 bnelr
 
 # Fix slide issue (Load a dummy value to force the next branch)
+slideissue:
 li r0, 0
 blr
 

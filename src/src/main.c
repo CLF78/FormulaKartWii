@@ -303,7 +303,7 @@ void loadCodes() {
 	directWriteBranch(GuestSendHook, GuestSend, false);
 	directWriteBranch(HostCheckHook, HostCheck, false);
 	directWriteBranch(HostCheckHelperHook, HostCheckHelper, true);
-	directWrite8(Version, 190);
+	directWrite8(Version, 191);
 
 	// Impervious TC (by CLF78)
 	directWrite32(ImperviousTCHook, 0x48000038);
@@ -596,6 +596,9 @@ void loadCodes() {
 	// Friend Room Race Count Modifier (by MrBean35000vr)
 	directWrite8(FroomRaceCount, 0);
 	directWrite8(FroomRaceCount2, 0);
+
+	// Instant Voting Roulette Decide (by Ro)
+	directWrite32(InstantVote, 0x4800011C);
 
 	// Online Pause Menu (by Ro)
 	directWrite32(OPM_AllowPausing, 0x38000000);

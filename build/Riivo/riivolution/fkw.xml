@@ -8,7 +8,7 @@
 					<patch id="fkw"/>
 				</choice>
 			</option>
-			<option name="Feather Cut Indicators (Addon)">
+			<option name="Feather Cut Indicators">
 				<choice name="Enabled">
 					<patch id="myfcis"/>
 				</choice>
@@ -119,7 +119,7 @@
 					<patch id="miiheads"/>
 				</choice>
 			</option>
-			<option name="Nametags Distance">
+			<option name="Nametags Distance" default="1">
 				<choice name="Normal">
 					<patch id="nametagsnormal"/>
 				</choice>

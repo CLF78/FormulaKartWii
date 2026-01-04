@@ -451,6 +451,9 @@ SECTIONS {
 	ItemBoxFix2 = 0x8076CF17;
 	ItemBoxFix3Hook = 0x8076DD0C;
 
+	/* Instant Voting Roulette Decide */
+	InstantVote = 0x80643bc4;
+
 	/* Item Textures */
 	ItemTexturesHook = 0x80860AF0;
 	ItemRouletteUpdate1Hook = 0x807BA1F4;
