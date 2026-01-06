@@ -340,37 +340,37 @@ echo -n " > "
 read AUTOBRSAR
 
 # FKW - Core Features
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004030=$FCIS -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004031=$DRIFTBIKES -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004032=$DRIFTKARTS -q
+wit dolpatch mkw.d/sys/main.dol 80004030=$FCIS -q
+wit dolpatch mkw.d/sys/main.dol 80004031=$DRIFTBIKES -q
+wit dolpatch mkw.d/sys/main.dol 80004032=$DRIFTKARTS -q
 
 # FKW - Newbie Helper
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004040=$BETTERITEMS -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004041=$GREENREPLACE -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004042=$BILLTCS -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004043=$INSTARESPAWN -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004044=$AUTOBOOST -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004045=$INSTADRAFT -q
+wit dolpatch mkw.d/sys/main.dol 80004040=$BETTERITEMS -q
+wit dolpatch mkw.d/sys/main.dol 80004041=$GREENREPLACE -q
+wit dolpatch mkw.d/sys/main.dol 80004042=$BILLTCS -q
+wit dolpatch mkw.d/sys/main.dol 80004043=$INSTARESPAWN -q
+wit dolpatch mkw.d/sys/main.dol 80004044=$AUTOBOOST -q
+wit dolpatch mkw.d/sys/main.dol 80004045=$INSTADRAFT -q
 
 # FKW - Video Settings
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004050=$THIRTYFPS -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004051=$FASTMENU -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004052=$SPEEDOMETER -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004053=$MINIMAPKCPS -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004054=$MINIMAPMII -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004055=$TAGSDIST -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004056=$TIMEDIFF -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004057=$BLOOM -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004058=$LIGHTFLASH -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004059=$FOV -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 8000405A=$LOWCAM -q
+wit dolpatch mkw.d/sys/main.dol 80004050=$THIRTYFPS -q
+wit dolpatch mkw.d/sys/main.dol 80004051=$FASTMENU -q
+wit dolpatch mkw.d/sys/main.dol 80004052=$SPEEDOMETER -q
+wit dolpatch mkw.d/sys/main.dol 80004053=$MINIMAPKCPS -q
+wit dolpatch mkw.d/sys/main.dol 80004054=$MINIMAPMII -q
+wit dolpatch mkw.d/sys/main.dol 80004055=$TAGSDIST -q
+wit dolpatch mkw.d/sys/main.dol 80004056=$TIMEDIFF -q
+wit dolpatch mkw.d/sys/main.dol 80004057=$BLOOM -q
+wit dolpatch mkw.d/sys/main.dol 80004058=$LIGHTFLASH -q
+wit dolpatch mkw.d/sys/main.dol 80004059=$FOV -q
+wit dolpatch mkw.d/sys/main.dol 8000405A=$LOWCAM -q
 
 # FKW - Audio Settings
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004060=$CHARVOICES -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004061=$MUSICRACE -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004062=$MUSICTRANS -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004063=$MUSICDIST -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004064=$AUTOBRSAR -q
+wit dolpatch mkw.d/sys/main.dol 80004060=$CHARVOICES -q
+wit dolpatch mkw.d/sys/main.dol 80004061=$MUSICRACE -q
+wit dolpatch mkw.d/sys/main.dol 80004062=$MUSICTRANS -q
+wit dolpatch mkw.d/sys/main.dol 80004063=$MUSICDIST -q
+wit dolpatch mkw.d/sys/main.dol 80004064=$AUTOBRSAR -q
 
 # Inject loader
 
