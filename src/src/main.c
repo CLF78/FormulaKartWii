@@ -303,7 +303,7 @@ void loadCodes() {
 	directWriteBranch(GuestSendHook, GuestSend, false);
 	directWriteBranch(HostCheckHook, HostCheck, false);
 	directWriteBranch(HostCheckHelperHook, HostCheckHelper, true);
-	directWrite8(Version, 192);
+	directWrite8(Version, 101);
 
 	// Impervious TC (by CLF78)
 	directWrite32(ImperviousTCHook, 0x48000038);
