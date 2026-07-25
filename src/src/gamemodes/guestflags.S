@@ -43,7 +43,7 @@ rlwinm r11, r3, 13, 30, 31
 stb r11, VehicleRestrict@l(r12)
 
 # Store RandomCombos
-rlwinm r11, r3, 14, 30, 31
+rlwinm r11, r3, 14, 31, 31
 stb r11, RandomCombos@l(r12)
 
 # Finally, clean up the subType to remove any flag

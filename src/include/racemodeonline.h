@@ -8,7 +8,8 @@ typedef struct {
     u8 localPlayerId[2];
     u8 _12;
     u8 localPlayerCount;
-    u16 raceCompletion[2];
+    s8 laps[2];
+    u8 frac[2];
     u32 minimumRaceFinishTime;
     bool disconnecting;
     u8 _1D;
