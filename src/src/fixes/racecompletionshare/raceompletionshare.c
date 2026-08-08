@@ -6,7 +6,7 @@ extern void VSRaceFinishFunc(RaceModeOnlineVs *racemode);
 extern void* ptr_miscPacketHandler;
 static u32 fixTimer[12] = {0};
 
-const u32 gracePeriod = 60;
+const u32 gracePeriod = 0;
 
 void RaceCompletionShare(RaceModeOnlineVs *racemode){
     //transmit own raceCompletion
