@@ -33,16 +33,20 @@ void RaceCompletionShare(RaceModeOnlineVs *racemode){
             
             //if laps are negative don't bother
             if (RH2->laps[hudid] < 1) { continue; }
-
-            fixTimer[pid] += 1;
+            
+            //if player's sent race completion differs enough from the locally calculated one in the positive direction, then assume they've broken the Key Checkpoints and adjust their lap count accordingly
             if (player->raceCompletion - sentRaceCompletion > 0.2) {
+                fixTimer[pid] += 1;
                 if (fixTimer[pid] > gracePeriod) {
-                    player->currentLap -= 1;
+                    player->currentLap = RH2->laps[hudid] - 1;
                     fixTimer[pid] = 0;
                 }
-            } else if (player->raceCompletion - sentRaceCompletion > -0.95) { 
+            }
+            //otherwise, if it happens in the negative direction, assume something went wrong and resync their lap count to the sent one
+            else if (player->raceCompletion - sentRaceCompletion < -0.95) {
+                fixTimer[pid] += 1;
                 if (fixTimer[pid] > gracePeriod) {
-                    player->currentLap += 1;
+                    player->currentLap = RH2->laps[hudid];
                     fixTimer[pid] = 0;
                 }
             } else {
