@@ -534,7 +534,8 @@ void loadCodes() {
 	directWriteBranch(ConveyorFixHook, ConveyorFix, true);
 
 	// Game Modes - Generic (by CLF78, Ismy, Seeky, TheLordScruffy and Nameless)
-	extern void DriftMenuBackFix2();
+	extern void DriftMenuBackFix2Single();
+	extern void DriftMenuBackFix2Multi();
 	directWriteBranch(SceneSwapHook, GameModeSelector, true);
 	directWriteBranch(HostFlagsHook, HostFlags, false);
 	directWriteBranch(GuestFlagsHook, GuestFlags, false);
@@ -552,8 +553,10 @@ void loadCodes() {
 	directWriteArray(MessageButtons2Hook, MessageButtons2, 8);
 	directWriteBranch(MessageButtons3Hook, MessageButtons3, false);
 	directWriteBranch(RandomComboPickerHook, RandomComboPicker, false);
-	directWriteBranch(DriftMenuBackFixHook, DriftMenuBackFix, true);
-	directWrite32(DriftMenuBackFix2Hook, (u32)&DriftMenuBackFix2);
+	directWriteBranch(DriftMenuBackFixSingleHook, DriftMenuBackFixSingle, true);
+	directWriteBranch(DriftMenuBackFixMultiHook, DriftMenuBackFixMulti, true);
+	directWrite32(DriftMenuBackFix2SingleHook, (u32)&DriftMenuBackFix2Single);
+	directWrite32(DriftMenuBackFix2MultiHook, (u32)&DriftMenuBackFix2Multi);
 
 	// Offline Race Count Modifier (by JoshuaMK and CLF78)
 	directWrite8(RaceCountFix1, 15);

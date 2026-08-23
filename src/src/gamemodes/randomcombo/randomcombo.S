@@ -1,7 +1,7 @@
 .include "asm_setup.S"
 
-.extern RandomComboPickerHook, RandomCombos, Menudata, RandomComboPickerC, DriftMenuBackFix2Return
-.global RandomComboPicker, DriftMenuBackFix, DriftMenuBackFix2
+.extern RandomComboPickerHook, RandomCombos, Menudata, RandomComboPickerC, DriftMenuBackFix2ReturnSingle, DriftMenuBackFix2ReturnMulti
+.global RandomComboPicker, DriftMenuBackFixSingle, DriftMenuBackFixMulti, DriftMenuBackFix2Single, DriftMenuBackFix2Multi
 
 # Original instruction
 RandomComboPicker:
@@ -40,7 +40,7 @@ end:
 b RandomComboPickerHook+4
 
 # Original instruction
-DriftMenuBackFix:
+DriftMenuBackFixSingle:
 cmpwi r3, 0x4
 
 # Check if random combos are on
@@ -54,12 +54,38 @@ li r5, 1
 stb r5, 0xD4(r31)
 blr
 
+# Original instruction
+DriftMenuBackFixMulti:
+li r6, 0
+
+# Check if random combos are on
+lis r5, RandomCombos@ha
+lbz r5, RandomCombos@l(r5)
+cmpwi cr7, r5, 1
+bnelr+ cr7
+
+# Hide back button
+li r5, 1
+stb r5, 0xD4(r25)
+blr
+
 # Check if random combos are on and if so return
-DriftMenuBackFix2:
+DriftMenuBackFix2Single:
 lis r12, RandomCombos@ha
 lbz r12, RandomCombos@l(r12)
 cmpwi r12, 1
 beqlr
 
 # Otherwise call original function
-b DriftMenuBackFix2Return
+b DriftMenuBackFix2ReturnSingle
+
+# Check if random combos are on and if so return
+DriftMenuBackFix2Multi:
+lis r12, RandomCombos@ha
+lbz r12, RandomCombos@l(r12)
+cmpwi r12, 1
+beqlr
+
+# Otherwise call original function
+b DriftMenuBackFix2ReturnMulti
+
