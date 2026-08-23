@@ -52,6 +52,7 @@ SECTIONS {
 	OSDisableInterrupts = 0x801a6908;
 	OSRestoreInterrupts = 0x801a6930;
 	ptr_miscPacketHandler = 0x809b0590;
+	ResourceExists = 0x80549A58;
 
 	/* Math Functions */
 	cos = 0x8001b5f8;
@@ -312,7 +313,7 @@ SECTIONS {
 	NoTransition = 0x8084A360;
 
 	/* Feather Cut Indicators */
-	FCIHook1 = 0x8080E14C;
+	FCIHook1 = 0x8080E150;
 	FCIHook2 = 0x8080E16C;
 
 	/* Feather Item */
