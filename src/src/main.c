@@ -534,8 +534,6 @@ void loadCodes() {
 	directWriteBranch(ConveyorFixHook, ConveyorFix, true);
 
 	// Game Modes - Generic (by CLF78, Ismy, Seeky, TheLordScruffy and Nameless)
-	extern void DriftMenuBackFix2Single();
-	extern void DriftMenuBackFix2Multi();
 	directWriteBranch(SceneSwapHook, GameModeSelector, true);
 	directWriteBranch(HostFlagsHook, HostFlags, false);
 	directWriteBranch(GuestFlagsHook, GuestFlags, false);
@@ -552,11 +550,19 @@ void loadCodes() {
 	directWrite8(MessageButtons, 0x6E);
 	directWriteArray(MessageButtons2Hook, MessageButtons2, 8);
 	directWriteBranch(MessageButtons3Hook, MessageButtons3, false);
-	directWriteBranch(RandomComboPickerHook, RandomComboPicker, false);
-	directWriteBranch(DriftMenuBackFixSingleHook, DriftMenuBackFixSingle, true);
-	directWriteBranch(DriftMenuBackFixMultiHook, DriftMenuBackFixMulti, true);
-	directWrite32(DriftMenuBackFix2SingleHook, (u32)&DriftMenuBackFix2Single);
-	directWrite32(DriftMenuBackFix2MultiHook, (u32)&DriftMenuBackFix2Multi);
+
+	// Random Combos (by stealthsteeler)
+	extern void* CharSelectPageAfterInAnim;
+	extern void* KartSelectPageAfterInAnim;
+	extern void* DriftSelectPageBack;
+	extern void* MultiDriftSelectPageBack;
+	extern void* MultiKartSelectPageAfterInAnim;
+	directWrite32Offset(CharSelectPageVT, 0x3C, (u32)&CharSelectPageAfterInAnim);
+	directWrite32Offset(KartSelectPageVT, 0x3C, (u32)&KartSelectPageAfterInAnim);
+	directWrite32Offset(MultiKartSelectPageVT, 0x3C, (u32)&MultiKartSelectPageAfterInAnim);
+	directWrite32(DriftSelectPageBackVT, (u32)&DriftSelectPageBack);
+	directWrite32(MultiDriftSelectPageBackVT, (u32)&MultiDriftSelectPageBack);
+	directWriteBranch(ModelRendererFixHook, ModelRendererFix, false);
 
 	// Offline Race Count Modifier (by JoshuaMK and CLF78)
 	directWrite8(RaceCountFix1, 15);
