@@ -670,6 +670,7 @@ SECTIONS {
 	MultiDriftSelectPageBackVT = 0x808bb854;
 	MultiDriftSelectPageBackOg = 0x8084ae60;
 	ModelRendererFixHook = 0x808464f4;
+	ModelRendererFixHook2 = 0x805f3814;
 
 	/* Red Shell Target Modifier */
 	TargetWhileRespawn = 0x80590C16;

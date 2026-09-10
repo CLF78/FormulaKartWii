@@ -18,9 +18,6 @@ void PageCheckActions(Page* page);
 void MultiKartSelectOnButtonClick(MultiKartSelectPage* multiKartSelectPage, KartSelectControl* UIControl, u32 hudSlotId);
 
 void PressButtonHelper(Page* page, void* button, u32 hudid) {
-    //set the page to active
-    page->currentState = 4;
-
     //select the button and call page check actions so it updates
     MenuButtonSelect(button, hudid);
     PageCheckActions(page);
@@ -30,7 +27,7 @@ void PressButtonHelper(Page* page, void* button, u32 hudid) {
 }
 
 void CharSelectPageAfterInAnim(CharacterSelectPage* charSelectPage){
-    //if (!RandomCombos) { return; }
+    if (!RandomCombos) { return; }
 
     for (u32 i = 0; i < Menudata->menudata98->localPlayerCount; i++) {
         // Get character excluding Miis
@@ -45,7 +42,7 @@ void CharSelectPageAfterInAnim(CharacterSelectPage* charSelectPage){
 }
 
 void KartSelectPageAfterInAnim(KartSelectPage* kartSelectPage){
-    //if (!RandomCombos) { return; }
+    if (!RandomCombos) { return; }
 
     // Get weight class
     u32 weightClass = GetWeightClass(Menudata->menudata98->prevCharacters[0]);
@@ -70,11 +67,9 @@ void KartSelectPageAfterInAnim(KartSelectPage* kartSelectPage){
 }
 
 void MultiKartSelectPageAfterInAnim(MultiKartSelectPage* multiKartSelectPage){
-    //if (!RandomCombos) { return; }
+    if (!RandomCombos) { return; }
 
     for (u32 i = 0; i < Menudata->menudata98->localPlayerCount; i++) {
-
-        // Get if kart or bike
         // Use branchless method
         bool isBike;
 

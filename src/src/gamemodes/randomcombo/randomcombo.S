@@ -1,15 +1,50 @@
 .include "asm_setup.S"
 
-.global DriftSelectPageBack, MultiDriftSelectPageBack, ModelRendererFix
+.global DriftSelectPageBack, MultiDriftSelectPageBack, ModelRendererFix, ModelRendererFix2
 .extern DriftSelectPageBackOg, RandomCombos, RandomComboReroll, ModelRendererFixHook
+
+//3 for no, 2 for yes 
+//saves 2 insctructions
+DelayAnimFlag:
+.byte 3
+.align 4
+
+ModelRendererFix2:
+li r5, 2
+
+//check if random combos are on
+lis r12, RandomCombos@ha
+lbz r12, RandomCombos@l (r12)
+cmpwi r12, 1
+bne setState2
+
+//check for delay
+lis r11, DelayAnimFlag@ha
+lbz r12, DelayAnimFlag@l (r11)
+cmpwi r12, 2
+bne setState2
+
+//switchstate
+li r5, 3
+stb r5, DelayAnimFlag@l (r11)
+
+setState2:
+b ModelRendererFixHook2+4
 
 ModelRendererFix:
 li r5, 3
+
+//check if random combos are on
 lis r12, RandomCombos@ha
 lbz r12, RandomCombos@l (r12)
 cmpwi r12, 1
 bne setState
+
+//delay switchstate by one frame
 li r5, 2
+lis r12, DelayAnimFlag@ha
+stb r5, DelayAnimFlag@l (r12)
+
 setState:
 b ModelRendererFixHook+4
 
