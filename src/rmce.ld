@@ -401,14 +401,6 @@ SECTIONS {
 	MessageButtons = 0x8062C907;
 	MessageButtons2Hook = 0x8062B954;
 	MessageButtons3Hook = 0x8062B2F0;
-	RandomComboPickerHook = 0x8062EC74;
-	GetWeightClass = 0x80809F90;
-	DriftMenuBackFixSingleHook = 0x8082EB60;
-	DriftMenuBackFixMultiHook = 0x80855A7C;
-	DriftMenuBackFix2SingleHook = 0x808B5C5C;
-	DriftMenuBackFix2MultiHook = 0x808B62D4;
-	DriftMenuBackFix2ReturnSingle = 0x8082F0E4;
-	DriftMenuBackFix2ReturnMulti = 0x80855FD8;
 
 	/* GeoHit Patches */
 	GeoHitTableItem = 0x808D2690;
@@ -661,6 +653,23 @@ SECTIONS {
 	VSRaceMemExpansionMove3 = 0x80538f06;
 	RaceCompletionShareHook = 0x80539e60; 
 	VSRaceFinishFunc = 0x80539704;
+
+	/* Random Combos */
+	CharSelectPageVT = 0x808d34d0;
+	KartSelectPageVT = 0x808d3790;
+	MultiKartSelectPageVT = 0x808d3a18;
+	MenuButtonSelect = 0x805b5ea0;
+	MenuButtonPress = 0x805b66b4;
+	PageCheckActions = 0x805dd384;
+	GetWeightClass = 0x80809F90;
+	GetButtonDriver = 0x807dd520;
+	GetButtonMachine = 0x8082a2ec;
+	MultiKartSelectOnButtonClick = 0x8082d228;
+	DriftSelectPageBackVT = 0x808b5c5c;
+	DriftSelectPageBackOg = 0x8082f0e4;
+	MultiDriftSelectPageBackVT = 0x808b62d4;
+	MultiDriftSelectPageBackOg = 0x80855fd8;
+	ModelRendererFixHook = 0x80829fb0;
 
 	/* Red Shell Target Modifier */
 	TargetWhileRespawn = 0x8058AA72;
