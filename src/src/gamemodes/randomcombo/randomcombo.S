@@ -1,65 +1,104 @@
 .include "asm_setup.S"
 
-.extern RandomComboPickerHook, RandomCombos, Menudata, RandomComboPickerC, DriftMenuBackFix2Return
-.global RandomComboPicker, DriftMenuBackFix, DriftMenuBackFix2
+.global DriftSelectPageBack, MultiDriftSelectPageBack, ModelRendererFix, ModelRendererFix2
+.extern DriftSelectPageBackOg, RandomCombos, RandomComboReroll, ModelRendererFixHook
 
-# Original instruction
-RandomComboPicker:
-li r4, 0x6B
+//3 for no, 2 for yes 
+//saves 2 insctructions
+DelayAnimFlag:
+.byte 3
+.align 4
 
-# Check if random combos are on
+ModelRendererFix2:
+li r5, 2
+
+//check if random combos are on
 lis r12, RandomCombos@ha
-lbz r12, RandomCombos@l(r12)
+lbz r12, RandomCombos@l (r12)
 cmpwi r12, 1
-bne+ end
+bne setState2
 
-# Get MenuData98
-lis r3, Menudata@ha
-lwz r3, Menudata@l(r3)
-lwz r3, 0x98(r3)
+//check for delay
+lis r11, DelayAnimFlag@ha
+lbz r12, DelayAnimFlag@l (r11)
+cmpwi r12, 2
+bne setState2
 
-# Call C function
-bl RandomComboPickerC
+//switchstate
+li r5, 3
+stb r5, DelayAnimFlag@l (r11)
 
-# Restore / Set registers
-mr r3, r29
-li r4, 0x82             #id for multiplayer drift select
+setState2:
+b ModelRendererFixHook2+4
 
-# Get MenuData98        #check if in multiplayer
-lis r12, Menudata@ha
-lwz r12, Menudata@l(r12)
-lwz r12, 0x98(r12)
-lwz r12, 0x124 (r12)
+ModelRendererFix:
+li r5, 3
+
+//check if random combos are on
+lis r12, RandomCombos@ha
+lbz r12, RandomCombos@l (r12)
 cmpwi r12, 1
-bgt end
+bne setState
 
-li r4, 0x6D             #id for drift select
+//delay switchstate by one frame
+li r5, 2
+lis r12, DelayAnimFlag@ha
+stb r5, DelayAnimFlag@l (r12)
 
-# Return
-end:
-b RandomComboPickerHook+4
+setState:
+b ModelRendererFixHook+4
 
-# Original instruction
-DriftMenuBackFix:
-cmpwi r3, 0x4
-
-# Check if random combos are on
+DriftSelectPageBack:
+//check if random combos are on
 lis r5, RandomCombos@ha
-lbz r5, RandomCombos@l(r5)
-cmpwi cr7, r5, 1
-bnelr+ cr7
+lbz r4, RandomCombos@l (r5)
+cmpwi r4, 1
+bne normal
 
-# Hide back button
-li r5, 1
-stb r5, 0xD4(r31)
-blr
+//check if rerolled already
+lbz r4, RandomComboReroll@l (r5)
+cmpwi r4, 1
+beq end
 
-# Check if random combos are on and if so return
-DriftMenuBackFix2:
-lis r12, RandomCombos@ha
-lbz r12, RandomCombos@l(r12)
+//set the reroll flag and hide the back button
+li r4, 1
+stb r4, RandomComboReroll@l (r5)
+stb r4, 0xD4(r3)
+
+//replace the target page with CharacterSelect to reroll
+li r4, 0x6B
+stw r4, 0x3ec (r3)
+
+normal:
+b DriftSelectPageBackOg
+
+MultiDriftSelectPageBack:
+//check if hudid 0
+cmpwi r4, 0
+bne multinormal
+
+//check if random combos are on
+lis r6, RandomCombos@ha
+lbz r12, RandomCombos@l (r6)
 cmpwi r12, 1
-beqlr
+bne multinormal
 
-# Otherwise call original function
-b DriftMenuBackFix2Return
+//check if rerolled already
+lbz r12, RandomComboReroll@l (r6)
+cmpwi r12, 1
+beq end
+
+//set the reroll flag and hide the back button
+li r12, 1
+stb r12, RandomComboReroll@l (r6)
+stb r12, 0xD4(r3)
+
+//replace the target page with CharacterSelect to reroll
+li r12, 0x6B
+stw r12, 0x3ec (r3)
+
+multinormal:
+b MultiDriftSelectPageBackOg
+
+end:
+blr
