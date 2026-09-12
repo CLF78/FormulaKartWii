@@ -564,6 +564,7 @@ void loadCodes() {
 	directWrite32(MultiDriftSelectPageBackVT, (u32)&MultiDriftSelectPageBack);
 	directWriteBranch(ModelRendererFixHook, ModelRendererFix, false);
 	directWriteBranch(ModelRendererFixHook2, ModelRendererFix2, false);
+	directWriteBranch(RerollFlagResetHook, RerollFlagReset, false);
 
 	// Offline Race Count Modifier (by JoshuaMK and CLF78)
 	directWrite8(RaceCountFix1, 15);

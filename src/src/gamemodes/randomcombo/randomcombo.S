@@ -102,3 +102,10 @@ b MultiDriftSelectPageBackOg
 
 end:
 blr
+
+RerollFlagReset:
+li r11, 0
+lis r12, RandomComboReroll@ha
+stb r11, RandomComboReroll@l
+li r4, 0x6b
+b RerollFlagResetHook+4
