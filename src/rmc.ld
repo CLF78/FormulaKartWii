@@ -10,7 +10,6 @@ SECTIONS {
 	TeamsOn = 0x800001B3;
 	VehicleRestrict = 0x800001B4;
 	RandomCombos = 0x800001B5;
-	RandomComboReroll = 0x800001B6;
 	ItemAmounts = 0x800001B8;
 	Version = 0x800001D0;
 	CurrentStrmChannels = 0x800001D1;
