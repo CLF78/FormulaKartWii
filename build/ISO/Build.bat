@@ -18,7 +18,7 @@ IF NOT EXIST "fkw" (
 	echo as this script. Exiting...
 	echo.
 	pause
-	EXIT
+	exit
 	)
 
 IF EXIST mkw.d (
@@ -61,12 +61,11 @@ echo.
 echo Please make sure you have one in the same directory
 echo as this script. Exiting...
 pause
-EXIT
+exit
 
 :COPY
 echo.
 echo The script will now pause to let you replace any file on the disc.
-echo If you want to install the Feather Cut Indicators, do it now by replacing the .szs files of the tracks.
 echo DO NOT patch this game with the Wiimmfi patcher, or it'll break the game.
 echo Press any button to resume the procedure.
 pause
@@ -79,6 +78,7 @@ mkdir mkw.d\files\Race\Course\Patches
 copy /y fkw\code\FormulaKartWii%LETTER%.bin mkw.d\files\fkw >nul
 copy /y fkw\tracks\*.kmp mkw.d\files\Race\Course\Patches >nul
 copy /y fkw\Patch.szs mkw.d\files\Scene\UI >nul
+copy /y fkw\PatchCommon.szs mkw.d\files\Race >nul
 copy /y fkw\drift_select.thp mkw.d\files\thp\button >nul
 
 IF %LETTER%==P (
@@ -113,266 +113,78 @@ IF %LETTER%==K (
 	copy /y fkw\Common_K.szs mkw.d\files\Race\ >nul
 )
 
-:::::::::::::::::::::::::::
-:: Core Features Options ::
-:::::::::::::::::::::::::::
+echo.
+SET /P FASTMENU=Enable Faster Menu Navigation? (Y/N):
+IF /i %FASTMENU%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004000=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004000=00 -q)
 
-CLS
-echo [1/4] FKW - Core Features
-echo [1/3] Feather Cut Indicators?
+echo.
+SET /P MIIHEADS=Enable Mii Heads on Minimap? (Y/N):
+IF /i %MIIHEADS%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004001=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004001=00 -q)
+
+echo.
+SET /P NOMUS=Disable Music? (Y/N):
+IF /i %NOMUS%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004002=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004002=00 -q)
+
+echo.
+SET /P NOCHARS=Disable Character Voices? (Y/N):
+IF /i %NOCHARS%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004003=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004003=00 -q)
+
+echo.
+SET /P BTGLITCH=Long Distance Names? (Y/N):
+IF /i %BTGLITCH%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004004=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004004=00 -q)
+
+echo.
+echo Enable Time Difference?:
 echo 0. No
-echo 1. Yes
-SET /P FCIS="> "
+echo 1. Yes (distance to player ahead)
+echo 2. Yes (distance to player in 1st)
+SET /P TIMEDIFF=Enter the number corresponding to the option you want:
 
-CLS
-echo [1/4] FKW - Core Features
-echo [2/3] Drift Orientation for Bikes?
-echo 0. Original
-echo 1. Inside Drift
-echo 2. Outside Drift
-SET /P DRIFTBIKES="> "
+if %TIMEDIFF% leq 2 set TD=1
+if %TIMEDIFF% lss 1 set TD=0
+IF %TD%==1 (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004005=%TIMEDIFF% -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004005=00 -q)
 
-CLS
-echo [1/4] FKW - Core Features
-echo [3/3] Drift Orientation for Karts?
-echo 0. Original
-echo 1. Inside Drift
-SET /P DRIFTKARTS="> "
+echo.
+SET /P SPEEDO=Enable Speedometer? (Y/N):
+IF /i %SPEEDO%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004006=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004006=00 -q)
 
-:::::::::::::::::::::::::::
-:: Newbie Helper Options ::
-:::::::::::::::::::::::::::
+echo.
+SET /P GRADMUSIC=Enable Gradually Faster Lap Music? (Y/N):
+IF /i %GRADMUSIC%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004007=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004007=00 -q)
 
-CLS
-echo [2/4] FKW - Newbie Helper
-echo [1/6] Better Item Pool?
-echo 0. No
-echo 1. Yes
-SET /P BETTERITEMS="> "
+echo.
+echo Select Online Line Color.:
+echo 0. Red
+echo 1. Blue
+echo 2. Green
+echo 3. Yellow
+echo 4. Magenta
+echo 5. White
+echo 6. Black
+echo 7. Orange
+echo 8. Cyan
+echo 9. Purple
+SET /P LINECOLOR=Enter the number corresponding to the option you want:
 
-:ItemSel
-CLS
-echo [2/4] FKW - Newbie Helper
-echo [2/6] Green Shell Replacement Item?
-echo 0. No
-echo 1. Red Shell
-echo 2. Banana
-echo 3. Fake Item Box
-echo 6. Bob-omb
-echo 7. Blue Shell
-echo C. Golden Mushroom
-echo D. S"tar
-SET /P GREENREPLACE="> "
-if "%GREENREPLACE%"=="0" goto AfterItemSel
-if "%GREENREPLACE%"=="1" goto AfterItemSel
-if "%GREENREPLACE%"=="2" goto AfterItemSel
-if "%GREENREPLACE%"=="3" goto AfterItemSel
-if "%GREENREPLACE%"=="6" goto AfterItemSel
-if "%GREENREPLACE%"=="7" goto AfterItemSel
-if "%GREENREPLACE%"=="C" goto AfterItemSel
-if "%GREENREPLACE%"=="D" goto AfterItemSel
-goto ItemSel
+if %LINECOLOR% geq 4 (set /A "LC=%LINECOLOR%+1") ELSE (set LC=%LINECOLOR%)
+if %LC%==10 (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004009=0A -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004009=%LC% -q)
 
-:AfterItemSel
-CLS
-echo [2/4] FKW - Newbie Helper
-echo [3/6] Bullet Bill Thunderclouds?
-echo 0. No
-echo 1. Yes
-SET /P BILLTCS="> "
+echo.
+SET /P FRAMERATE=Force 30 FPS? (Y/N):
+IF /i %FRAMERATE%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400F=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 8000400F=00 -q)
 
-CLS
-echo [2/4] FKW - Newbie Helper
-echo [4/6] Instant Respawn?
-echo 0. No
-echo 1. Yes
-SET /P INSTARESPAWN="> "
-
-CLS
-echo [2/4] FKW - Newbie Helper
-echo [5/6] Automatic Respawn Boost?
-echo 0. No
-echo 1. Yes
-SET /P AUTOBOOST="> "
-
-CLS
-echo [2/4] FKW - Newbie Helper
-echo [6/6] Instant Slipstream?
-echo 0. No
-echo 1. Yes
-SET /P INSTADRAFT="> "
-
-::::::::::::::::::::
-:: Video Settings ::
-::::::::::::::::::::
-
-CLS
-echo [3/4] FKW - Video Settings
-echo [1/11] Force 30FPS?
-echo 0. No
-echo 1. Yes
-SET /P THIRTYFPS="> "
-
-CLS
-echo [3/4] FKW - Video Settings
-echo [2/11] Faster Menu Navigation?
-echo 0. No
-echo 1. Yes
-SET /P FASTMENU="> "
-
-CLS
-echo [3/4] FKW - Video Settings
-echo [3/11] Speedometer?
-echo 0. No
-echo 1. Yes
-SET /P SPEEDOMETER="> "
-
-CLS
-echo [3/4] FKW - Video Settings
-echo [4/11] Minimap: Key Checkpoints?
-echo 0. No
-echo 1. Yes
-SET /P MINIMAPKCPS="> "
-
-CLS
-echo [3/4] FKW - Video Settings
-echo [5/11] Minimap: Mii Heads?
-echo 0. No
-echo 1. Yes
-SET /P MINIMAPMII="> "
-
-CLS
-echo [3/4] FKW - Video Settings
-echo [6/11] Nametags Distance?
-echo 0. Never
-echo 1. Normal
-echo 2. Near
-echo 3. Far
-echo 4. Always
-SET /P TAGSDIST="> "
-
-CLS
-echo [3/4] FKW - Video Settings
-echo [7/11] Time Difference?
-echo 0. No
-echo 1. To Player Ahead
-echo 2. To Player in First Place
-SET /P TIMEDIFF="> "
-
-CLS
-echo [3/4] FKW - Video Settings
-echo [8/11] Bloom and Depth of Field?
-echo 0. No
-echo 1. Yes
-SET /P BLOOM="> "
-
-CLS
-echo [3/4] FKW - Video Settings
-echo [9/11] Lightning Flash?
-echo 0. No
-echo 1. Yes
-SET /P LIGHTFLASH="> "
-
-CLS
-echo [3/4] FKW - Video Settings
-echo [10/11] Field of View?
-echo 0. Original
-echo 1. Narrow
-echo 2. Very Narrow
-echo 3. Wide
-echo 4. Very Wide
-SET /P FOV="> "
-
-CLS
-echo [3/4] FKW - Video Settings
-echo [11/11] Low-angled Camera?
-echo 0. No
-echo 1. Yes
-SET /P LOWCAM="> "
-
-::::::::::::::::::::
-:: Audio Settings ::
-::::::::::::::::::::
-
-CLS
-echo [4/4] FKW - Audio Settings
-echo [1/5] Character Voices?
-echo 0. No
-echo 1. Yes
-SET /P CHARVOICES="> "
-
-CLS
-echo [4/4] FKW - Audio Settings
-echo [2/5] Music: Race
-echo 0. Off
-echo 1. Normal
-echo 2. Accelerating
-SET /P MUSICRACE="> "
-
-CLS
-echo [4/4] FKW - Audio Settings
-echo [3/5] Music: Transformation
-echo 0. Off
-echo 1. Normal
-echo 2. Overlayed
-SET /P MUSICTRANS="> "
-
-CLS
-echo [4/4] FKW - Audio Settings
-echo [4/5] Music: Distortion
-echo 0. No
-echo 1. Yes
-SET /P MUSICDIST="> "
-
-CLS
-echo [4/4] FKW - Audio Settings
-echo [5/5] Automatic BRSAR Patching?
-echo 0. No
-echo 1. Yes
-SET /P AUTOBRSAR="> "
-
-:: FKW - Core Features
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004030=%FCIS% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004031=%DRIFTBIKES% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004032=%DRIFTKARTS% -q
-
-:: FKW - Newbie Helper
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004040=%BETTERITEMS% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004041=%GREENREPLACE% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004042=%BILLTCS% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004043=%INSTARESPAWN% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004044=%AUTOBOOST% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004045=%INSTADRAFT% -q
-
-:: FKW - Video Settings
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004050=%THIRTYFPS% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004051=%FASTMENU% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004052=%SPEEDOMETER% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004053=%MINIMAPKCPS% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004054=%MINIMAPMII% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004055=%TAGSDIST% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004056=%TIMEDIFF% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004057=%BLOOM% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004058=%LIGHTFLASH% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004059=%FOV% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 8000405A=%LOWCAM% -q
-
-:: FKW - Audio Settings
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004060=%CHARVOICES% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004061=%MUSICRACE% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004062=%MUSICTRANS% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004063=%MUSICDIST% -q
-wit\wit.exe dolpatch mkw.d/sys/main.dol 80004064=%AUTOBRSAR% -q
-
-:: Inject loader
+echo.
+SET /P KCPMAP=Show KCPs on Minimap? (Y/N):
+IF /i %KCPMAP%==Y (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004010=01 -q) ELSE (wit\wit.exe dolpatch mkw.d/sys/main.dol 80004010=00 -q)
 
 wit\wit.exe dolpatch mkw.d/sys/main.dol 8000629C=4BFFDF60 load=80004010,fkw/Loader.bin -q
 
-echo Choose in which format you want to save the game:
+echo.
+echo Format Selection:
 echo 1. WBFS
 echo 2. ISO
 echo 3. Extracted Filesystem (ADVANCED USERS ONLY)
-SET /P EXTINPUT="> "
+SET /P EXTINPUT=Enter the number corresponding to the format you want:
 
 IF %EXTINPUT%==1 (
 	SET FILEEXT=wbfs
@@ -404,5 +216,5 @@ GOTO END
 
 :END
 echo.
-echo All done^!
+echo All done"^!"
 pause

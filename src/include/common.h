@@ -103,15 +103,4 @@ _directWriteArray(&(dest), src, SIZEOF(src));
 _directWriteArray(calcoffs(dest, offset), src, SIZEOF(src));
 
 /* Common Vars */
-
-/* Features */
-char FCIs, DriftBikes, DriftKarts;
-
-/* Newbie Helper */
-char BetterItems, ExtraItem, BulletTCs, InstantRespawn, AutoRespawnBoost, InstantDraft;
-
-/* Video */
-char KCPMap, TimeDiff, Speedometer, FasterMenu, MiiHeads, TagsDist, LightFlash, Bloom, ThirtyFPS, FOVSetting, TMCam;
-
-/* Audio */
-char DistortedMusic, RaceMusic, CharVoices, TransfMusic, BRSARPatch;
+char FasterMenu, MiiHeads, NoMusic, NoCharVoice, BtGlitch, TimeDiff, Speedometer, ThirtyFPS, KCPMap;

@@ -1,8 +1,8 @@
 .include "asm_setup.S"
 
-.extern TimeDiff, Speedometer
+.extern TimeDiff, Speedometer, SystemManager
 .extern TimeDiffPatchHook, _directWriteArray
-.global TimeDiffPatch, TimeDiffPatch2, TimeDiffApply
+.global TimeDiffPatch, TimeDiffPatch2, TimeDiffApply, TimeDiffPos
 
 ########################
 # Multiplayer Failsafe #
@@ -106,3 +106,38 @@ bl _directWriteArray
 
 # Return later to skip the function call
 b TimeDiffPatchHook+0x5C
+
+###########
+# Patch 3 #
+###########
+
+# Failsafe
+TimeDiffPos:
+cmpwi r4, 0
+beq skipPos
+
+# Check if widescreen
+lis r12, SystemManager@ha
+lwz r12, SystemManager@l(r12)
+lwz r12, 0x58(r12)
+cmpwi r12, 1
+lis r12, 0x4382
+lis f11, 0x3F2E
+ori r11, r11, 0x147B
+lis r4, 0x42C0
+beq+ widescreen
+lis r12, 0x4330
+lis f11, 0x3F0C
+ori r11, r11, 0xCCCD
+lis r4, 0x42E0
+
+widescreen:
+stw r12, 0x1C(r14)
+stw r11, 0x40(r14)
+stw r11, 0x44(r14)
+stw r4, 0x38(r14)
+
+# Original instruction
+skipPos:
+rlwinm. r0,r16,0,19,19
+blr

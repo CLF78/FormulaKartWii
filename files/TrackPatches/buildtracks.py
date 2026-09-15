@@ -15,18 +15,12 @@ ogDest = '.d'
 patchDir = 'patches'
 kmpFile = 'course.kmp'
 kmpMagic = 'RKMD'
-importantSections = ['ITPT', 'ITPH', 'CKPT', 'CKPH', 'GOBJ', 'POTI', 'AREA', 'JGPT']
+importantSections = ['ITPT', 'ITPH', 'CKPT', 'CKPH', 'AREA', 'JGPT']
 enptMagic = 'ENPT'
 
 def parseFile(root):
 	print('Parsing', root + '...')
-	
-	patch_path = os.path.join(patchDir, root + '.kmp')
-	if not os.path.exists(patch_path):
-		print('No Patch for',root)
-		return
-	
-	with open(os.path.join(ogDir, root + ogDest, kmpFile), 'rb') as og, open(patch_path, 'rb') as patch:
+	with open(os.path.join(ogDir, root + ogDest, kmpFile), 'rb') as og, open(os.path.join(patchDir, root + '.kmp'), 'rb') as patch:
 
 		# Get section count and header size for both files
 		og.seek(8)

@@ -10,13 +10,15 @@ SECTIONS {
 	TeamsOn = 0x800001B3;
 	VehicleRestrict = 0x800001B4;
 	RandomCombos = 0x800001B5;
-	RandomComboReroll = 0x800001B6;
 	ItemAmounts = 0x800001B8;
 	Version = 0x800001D0;
 	CurrentStrmChannels = 0x800001D1;
 	SubtractItemFix = 0x800001D2;
 	AltKMP = 0x800001D4;
-	ENPTCRC = 0x800001EC;
+	SpeedModifier = 0x80001200;
+	UMTEffectPointer = 0x80001500;
+	UMTStrings = 0x80001540;
+	isUMT = 0x80001210;
 
 	/* Change Character Between Races */
 	ScenePtr = 0x80000EA0;
@@ -26,37 +28,18 @@ SECTIONS {
 	VtablePtr = 0x80000EB0;
 	DCScreenPtr = 0x80000EB4;
 
-	/* FKW - Core Features */
-	FCIs = 0x80004030;
-	DriftBikes = 0x80004031;
-	DriftKarts = 0x80004032;
-
-	/* FKW - Newbie Helper */
-	BetterItems = 0x80004040;
-	ExtraItem = 0x80004041;
-	BulletTCs = 0x80004042;
-	InstantRespawn = 0x80004043;
-	AutoRespawnBoost = 0x80004044;
-	InstantDraft = 0x80004045;
-
-	/* FKW - Video Settings */
-	ThirtyFPS = 0x80004050;
-	FasterMenu = 0x80004051;
-	Speedometer = 0x80004052;
-	KCPMap = 0x80004053;
-	MiiHeads = 0x80004054;
-	TagsDist = 0x80004055;
-	TimeDiff = 0x80004056;
-	Bloom = 0x80004057;
-	LightFlash = 0x80004058;
-	FOVSetting = 0x80004059;
-	TMCam = 0x8000405A;
-
-	/* FKW - Audio Settings */
-	CharVoices = 0x80004060;
-	RaceMusic = 0x80004061;
-	TransfMusic = 0x80004062;
-	DistortedMusic = 0x80004063;
-	BRSARPatch = 0x80004064;
-
+	/* Riivolution Options */
+	FasterMenu = 0x80004000;
+	MiiHeads = 0x80004001;
+	NoMusic = 0x80004002;
+	NoCharVoice = 0x80004003;
+	BtGlitch = 0x80004004;
+	TimeDiff = 0x80004005;
+	Speedometer = 0x80004006;
+	FasterMusic = 0x80004007;
+	ItemDebug = 0x80004008;
+	RegionByte = 0x80004009;
+	FCIs = 0x8000400E;
+	ThirtyFPS = 0x8000400F;
+	KCPMap = 0x80004010;
 }

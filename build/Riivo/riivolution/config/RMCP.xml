@@ -1,0 +1,16 @@
+<riivolution version="2">
+  <option id="Formula Kart WiiFormula Kart Wii" default="1" />
+  <option id="Formula Kart WiiFeather Cut Indicators (Addon)" default="0" />
+  <option id="Formula Kart WiiFaster Menu Navigation" default="1" />
+  <option id="Formula Kart WiiForce 30 FPS" default="0" />
+  <option id="Formula Kart WiiGradually Faster Music" default="1" />
+  <option id="Formula Kart WiiKCPs on Minimap" default="1" />
+  <option id="Formula Kart WiiLong Distance Names" default="1" />
+  <option id="Formula Kart WiiMii Heads on Minimap" default="1" />
+  <option id="Formula Kart WiiMy Stuff" default="3" />
+  <option id="Formula Kart WiiRegion Line Color" default="7" />
+  <option id="Formula Kart WiiNo Character Voices" default="0" />
+  <option id="Formula Kart WiiNo Music" default="0" />
+  <option id="Formula Kart WiiShow Time Difference" default="2" />
+  <option id="Formula Kart WiiSpeedometer" default="1" />
+</riivolution>

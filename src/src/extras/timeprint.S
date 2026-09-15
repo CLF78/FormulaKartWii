@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern Raceinfo, SetMatText, SubtractTimers, swprintf, SetTextSrc, isOnlineRace
+.extern Raceinfo, SetMatText, SubtractTimers, swprintf, SetTextSrc, isOnlineRace, KMPinfo
 .global TimePrint, NoTransitionASM
 
 # Independently of the output, align the text to the right on the X axis
@@ -39,7 +39,16 @@ lfs f0, 0xC(r10)
 fctiwz f0, f0
 stfd f0, 0x8(r1)
 lwz r6, 0xC(r1)
-li r8, 50
+lis r8, KMPinfo@ha
+lwz r8, KMPinfo@l(r8)
+lwz r8, 0x3C(r8)
+lwz r8, 0x0(r8)
+lwz r8, 0x0(r8)
+lwz r8, 0x0(r8)
+lbz r8, 0x0(r8)
+subi r8, r8, 1
+mulli r8, r8, 0x14
+addi r8, r8, 0xA
 sub r6, r8, r6
 
 # Check if completion is more than one lap from the end

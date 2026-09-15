@@ -10,7 +10,10 @@ SECTIONS {
 	OSFatal = 0x801A5220;
 	CalcCRC32 = 0x801D1FFC;
 	new = 0x8022A14C;
+	new2 = 0x8022A140;
+	new_a = 0x8022A164;
 	delete = 0x8022A188;
+	delete_a = 0x8022A254;
 
 	/* Codehandler Hooks */
 	VIHook = 0x801BAE7C;
@@ -22,37 +25,20 @@ SECTIONS {
 
 	/* Common Classes and Functions */
 	SystemManager = 0x80374020;
+	KMPinfo = 0x809ABD28;
 	Racedata = 0x809ABD68;
 	Raceinfo = 0x809ABD70;
-	KMPdata = 0x809ABD28;
 	ArchiveRoot = 0x809ABD78;
 	PlayerHolder = 0x809AFF38;
 	KartParam = 0x809AFF58;
 	DriverParam = 0x809AFF5C;
-	DriverManager = 0x809B1EFC;
 	Menudata = 0x809B0478;
 	RKNetController = 0x809B0718;
 	RKNetItemHandler = 0x809B0738;
-	RKNetPacketManager = 0x809B0590;
 	ItemHolder = 0x809B1C58;
 	ItemStructs = 0x809B1CF8;
 	ItemStructsEX = 0x809B1588;
 	ScreenHUD = 0x809B2CC0;
-	DisableInterrupts = 0x801A6908;
-	RestoreInterrupts = 0x801A6930;
-	GetTime = 0x801AB0B8;
-	GXDrawDone = 0x8016EB4C;
-	BeginFrame = 0x802101AC;
-	PlayerModels = 0x809B1578;
-	CreateScreen = 0x80611100;
-	DisconnectFromMatch = 0x80644BB0;
-	DWC_IsServerMyself = 0x800d27c0;
-	DWC_CloseConnectionHard = 0x800d2060;
-	GetRaceHeader2Buffer = 0x80641fd0;
-	OSDisableInterrupts = 0x801a6908;
-	OSRestoreInterrupts = 0x801a6930;
-	ptr_miscPacketHandler = 0x809b0590;
-	ResourceExists = 0x80549A58;
 
 	/* Math Functions */
 	cos = 0x8001b5f8;
@@ -69,6 +55,9 @@ SECTIONS {
 	getPlayerById = 0x8057E158;
 	getPlayerPosition = 0x8057E264;
 
+	/* Button Conditionals */
+	GCNButton = 0x80336200;
+
 	NETSHA1Init = 0x801D2850;
 	NETSHA1Update = 0x801D28A0;
 	NETSHA1GetDigest = 0x801D2954;
@@ -77,19 +66,18 @@ SECTIONS {
 	SetTextSrc = 0x805BBCC0;
 	SetMatText = 0x8062BFD4;
 
-	playerCount = 0x809B1EF8;
-	isOnlineRace = 0x809B1EF9;
+	playerCount = 0x809B13F8;
+	isOnlineRace = 0x809B13F9;
 
 	CalcRandom = 0x800AD0B0;
 	canItemBeGotten = 0x80787FA8;
+
+	UtilRandom = 0x800F2F58;
 
 	ptmf_test = 0x8002144C;
 	ptmf_scall = 0x800214B8;
 
 	SubtractTimers = 0x807DCC20;
-
-	/* 1st Place Crown on Minimap */
-	CrownMinimapHook = 0x807D9850;
 
 	/* 30 FPS */
 	ThirtyFPSHook1 = 0x80009B44;
@@ -111,17 +99,8 @@ SECTIONS {
 	ItemLandGolden = 0x808A3978;
 	ItemLandBill = 0x808A3984;
 
-	/* Allow looking backwards during respawn */
-	RespawnLookBack = 0x805902E4;
-
-	/* Allow looking backwards during the countdown */
-	CountdownLookBack = 0x805902B4;
-
 	/* Always Win Track Vote */
 	AlwaysWinVoteHook = 0x80650138;
-
-	/* Anti Lag/Late Start Online */
-	AntiLagStartHook = 0x80521488;
 
 	/* Automatic BRSAR Patch */
 	AutoBRSARHook = 0x80091334;
@@ -129,7 +108,7 @@ SECTIONS {
 	/* BRCTR Redirector */
 	LapNumberCTR = 0x80898127;
 	ItemWindowCTR = 0x8089806A;
-	MapCharaCTR = 0x8089794e;
+	ChaseIconCTR = 0x8089844F;
 
 	/* Banana/Blue/Bomb Spinout Modifier */
 	BananaDamage = 0x805611E0;
@@ -148,16 +127,10 @@ SECTIONS {
 	/* Bomb Lag Fix */
 	NoFakeBomb = 0x805606E8;
 	NoDmgChange = 0x80557FC0;
-	
+
 	/* Bullet Bill Exhaust Animation Fix */
 	BillAnimationFixHook = 0x805899E0;
 	EffectPointer = 0x809B0810;
-
-	/* Bullet Bill Snapping */
-	BillTimerMemExtension = 0x8057C4F2;
-	BillTimerIncrementHook = 0x80589E58;
-	BillTimerResetHook = 0x8058A1C4;
-	BillSnapHook = 0x8058A6F4;
 
 	/* Bullet Bill Speed Modifier */
 	BulletBillSpeed = 0x808A3E70;
@@ -166,23 +139,31 @@ SECTIONS {
 	CannonSpeed2 = 0x80573128;
 	BulletBillPosition = 0x8058AD54;
 
-	/* Camera Distance Modifier */
-	CustomFOV = 0x8088072C;
+	/* CalcRecovery */
+	CalcRecoveryHook_Push = 0x8078A488;
+	CalcRecovery_WriteNegate = 0x8078A508;
+	CalcRecoveryHook_Pop = 0x8078A524;
+
+	/* Cancel Shrunk Status When Using Star */
+	KartStarShrinkCancel_Hook = 0x8056E3A0;
+	KartShrinkEnd = 0x8056EADC;
 
 	/* Cannon Fixes */
-	CannonStarFixHook = 0x8056A450;
 	CannonOffroadFix = 0x80572B40;
 	CannonTCFix = 0x80572BC8;
 
-	/* Change Camera Perspective after Race */
-	CameraPersp = 0x805909A0;
-
 	/* Change Characters Between Races */
 	ChangeCharsHook = 0x8061C450;
+	CreateScreen = 0x80611100;
 	PushButton_HandleClick = 0x805AC3B0;
 	PushButton_Vtable = 0x808A5C30;
 	ChangeCharsHook2 = 0x80611220;
 	ChangeCharsHook3 = 0x8061C4C8;
+
+	/* Chase Icon Fix */
+	ChaseIconHook = 0x807E1A98;
+	DrawShit = 0x80554078;
+	ChasePointer = 0x809AFEA8;
 
 	/* Clear Exhaust Pipe Boost Particle After Damage */
 	ClearExhaustHook = 0x80555510;
@@ -207,6 +188,11 @@ SECTIONS {
 	/* Credits Button */
 	CreditsButton = 0x8083F68B;
 
+	/* Region Line Color Changer */
+	LocalIDHook = 0x8063F6E4;
+	USERIDHook = 0x80651488;
+	LineColorHook = 0x807DE7EC;
+
 	/* Cycle Fixes - Coconut Mall */
 	EscalatorFixHook = 0x807EED84;
 	PiantaFixHook = 0x807F0574;
@@ -225,12 +211,6 @@ SECTIONS {
 	RockFix2Hook = 0x808062E0;
 	GeyserFixHook = 0x806B1ED0;
 
-	/* Cycle Fixes - Rainbow Road */
-	AuroraExtensionHook = 0x807e919c;
-	AuroraExtensionHook2 = 0x807e94b4;
-	AuroraExtensionHook3 = 0x807e9594;
-	AuroraExtensionHook4 = 0x807e97ec;
-
 	/* Cycle Fixes - Toad's Factory */
 	ConveyorFixHook = 0x807EB784;
 
@@ -240,22 +220,24 @@ SECTIONS {
 	/* DC Prevention from laggy players */
 	DCPrevention = 0x80643A04;
 
-	/* Disable Bob-omb Backspam */
-	NoBackBombs = 0x80792e38;
+	/* Disable Event Receive Thunder Cloud Pass Radius Check */
+	DisableTCPassRadiusCheck = 0x8079FB00;
+
+	/* Disable Fake Hits From Statuses For Online Players */
+	DisableFakeHitsFromStatuses_Hook1 = 0x8055DF24;
+	DisableFakeHitsFromStatuses_Hook2 = 0x8055DFB0;
+	DisableFakeHitsFromStatuses_Hook3 = 0x8055E0E4;
+	DisableFakeHitsFromStatuses_Hook4 = 0x8055E280;
+	DisableFakeHitsFromStatuses_Hook5 = 0x8055E47C;
+	DisableFakeHitsFromStatuses_Hook6 = 0x8055E60C;
 
 	/* Disable Item Poof */
 	NoItemPoof = 0x80784980;
 	NoItemPoof2Hook = 0x8078FE14;
 	NoItemPoof3Hook = 0x8078FE24;
 
-	/* Disable Online Six Minute Disconnection */
-	Disable6MinDC = 0x8052D4CC;
-
 	/* Disable TF Music Reset */
 	NoTFMusicReset = 0x80707CC8;
-
-	/* Disable Title Demo Movie */
-	DisableTitleDemoMovie = 0x806E8CCC;
 
 	/* Don't Hide Position After Race */
 	NoHidePos = 0x807E3187;
@@ -265,6 +247,16 @@ SECTIONS {
 
 	/* Draggable Blue Shells */
 	BlueShellDrag = 0x80893F90;
+
+	/* Driver Cheer On Star/Mega/Bullet Hits */
+	DriverCheerOnSMBHits_Hook1 = 0x8055DF54;
+	DriverCheerOnSMBHits_Hook2 = 0x8055DFE0;
+	DriverCheerOnSMBHits_Hook3 = 0x8055E114;
+	DriverCheerOnSMBHits_Hook4 = 0x8055E2B0;
+	DriverCheerOnSMBHits_Hook5 = 0x8055E4AC;
+	DriverCheerOnSMBHits_Hook6 = 0x8055E63C;
+	DriverStartCheerNetRecv = 0x8057BC64;
+	DriverNetSendCheer = 0x8057F880;
 
 	/* Duplicated Item Auto-Trail */
 	AutoTrailHook = 0x8077FD30;
@@ -283,20 +275,6 @@ SECTIONS {
 	BlueSizeHook2 = 0x8079C744;
 	BlueExplosionFunc = 0x8079C318;
 
-	/* Emitted Bob-ombs Explode (Idle Fix) */
-	BombIdleFixHook = 0x80795530;
-
-	/* Enhanced Race/Battle Pause Menu */
-	CreateTTPause1 = 0x8061aa50;
-	CreateTTPause2 = 0x8061ab94;
-	CreateTTPause3 = 0x8061acd8;
-	CreateTTPause4 = 0x80621e90;
-	CreateTTPause5 = 0x80621d68;
-	PreventStoringTTs = 0x8082b9d8;
-	DisableControllerImage1 = 0x80847428;
-	DisableControllerImage2 = 0x808471f8;
-	VSPauseMenuHook = 0x805f08f8;
-
 	/* Exception Handler */
 	ShowExceptions = 0x80295404;
 
@@ -313,7 +291,7 @@ SECTIONS {
 	NoTransition = 0x8084A360;
 
 	/* Feather Cut Indicators */
-	FCIHook1 = 0x8080E150;
+	FCIHook1 = 0x8080E14C;
 	FCIHook2 = 0x8080E16C;
 
 	/* Feather Item */
@@ -324,9 +302,6 @@ SECTIONS {
 	GenerateEVENT = 0x8078A5E0;
 	SubtractItem = 0x807AAD3C;
 	FeatherInvisWallHook = 0x805A48C0;
-
-	/* FIBs Float in Midair when Backspammed */
-	AirFIBsHook = 0x80795de4;
 
 	/* Final Lap Music Trigger Modifier */
 	MusicPitch = 0x8088F538;
@@ -340,18 +315,8 @@ SECTIONS {
 	/* Fix Online Players Stuck in Halfpipe */
 	HalfPipeFixHook = 0x80579FB0;
 
-	/* Force Low-Angle Camera */
-	TMCamHook = 0x80591AA4;
-
-	/* Frameskip */
-	FrameskipHook1 = 0x80550B28;
-	FrameskipHook2 = 0x800096CC;
-	FrameskipHook3 = 0x800096EC;
-	FrameskipHook4 = 0x800096FC;
-	FrameskipHook5 = 0x805096BC;
-	FrameskipHook6 = 0x80642718;
-	FrameskipHook7 = 0x80001614;
-	FrameskipHook8 = 0x80001634;
+	/* Force Battle Glitch */
+	TagDistance = 0x808C22AC;
 
 	/* Game Mode - Ramp Up */
 	RampUpHook = 0x80522BA8;
@@ -401,6 +366,11 @@ SECTIONS {
 	MessageButtons = 0x805CA587;
 	MessageButtons2Hook = 0x805C957C;
 	MessageButtons3Hook = 0x805C8F18;
+	RandomComboPickerHook = 0x805CC8F4;
+	GetWeightClass = 0x8080B0FC;
+	DriftMenuBackFixHook = 0x8083C534;
+	DriftMenuBackFix2Hook = 0x808AA4FC;
+	DriftMenuBackFix2Return = 0x8083CAB8;
 
 	/* GeoHit Patches */
 	GeoHitTableItem = 0x808C6508;
@@ -429,16 +399,16 @@ SECTIONS {
 	HybridDrift5Hook = 0x80566E24;
 	HybridDrift6Hook = 0x8056C160;
 	HybridDrift7 = 0x80582566;
-	HybridDrift8 = 0x80591614;
+	HybridDrift8Hook = 0x8056C05C;
 	WiiWheelFix = 0x808B9BA2;
 	WiiWheelFix2 = 0x80733E70;
+	CameraFix = 0x80591614;
 
 	/* Impervious TC */
 	ImperviousTCHook = 0x8079DE68;
 
 	/* Inside Drift Bikes */
 	KartParamHook = 0x80580040;
-	DriftCamNop = 0x80580104;
 
 	/* Instant DC */
 	WiiWheel = 0x803337E2;
@@ -450,8 +420,8 @@ SECTIONS {
 	ItemBoxFix2 = 0x8075B2D7;
 	ItemBoxFix3Hook = 0x8075C0CC;
 
-	/* Instant Voting Roulette Decide */
-	InstantVote = 0x80631edc;
+	/* Item Cycler */
+	ItemCyclerHook = 0x807DD258;
 
 	/* Item Textures */
 	ItemTexturesHook = 0x8084EEB0;
@@ -472,9 +442,22 @@ SECTIONS {
 	TranslateCoordinates = 0x807ceca4;
 	Map2DRenderer = 0x809b2598;
 
+	/* Kart Status Stacker */
+	StarStackHook = 0x8056E314;
+	StarStack2 = 0x805599E0;
+	StarTimer = 0x3F30;
+	MegaStackHook = 0x8056EBA0;
+	MegaTimer = 0x3E3C;
+	BulletStackHook = 0x805898B0;
+	ShockStackHook1 = 0x8056E7F4;
+	ShockStackHook2 = 0x8068C350;
+	ShroomStackHook = 0x8056D4C0;
+	ShroomTimer = 0x3FA0;
+
 	/* Lap Counter */
 	ColorFixHook = 0x807DDBA8;
-	PositionFixHook = 0x807DDC24;
+	PositionFixHook1 = 0x807DDC24;
+	PositionFixHook2 = 0x807DDAEC;
 
 	/* License Unlocker */
 	LicenseUnlocker = 0x805379CC;
@@ -496,6 +479,8 @@ SECTIONS {
 
 	/* Mega Thundercloud */
 	MegaTCHook = 0x8056E688;
+	TCFileName1 = 0x808942F0;
+	TCFileName2 = 0x808943D4;
 	MegaFunc = 0x8056EB6C;
 	BillFunc = 0x80573904;
 	MegaTCHook2 = 0x8079E17C;
@@ -513,17 +498,17 @@ SECTIONS {
 	BombTimer = 0x80793FB6;
 	BombTimer2 = 0x80792E8A;
 
-	/* Nametags Showing Distance Override */
-	TagDistance = 0x808C22AC;
-
 	/* Newbie Helper */
 	RespawnHelperHook = 0x80561E80;
 	RespawnHelperHook2 = 0x80567C78;
 	RespawnHelperHook3 = 0x8056FD54;
 	InstaDraftHook = 0x80575338;
-	
+	StarHelperHook1 = 0x8056E330;
+	StarHelperHook2 = 0x805599E4;
+	MegaHelperHook = 0x8056EBA4;
+
 	/* No Bullet Bill Cancel When Touching Bottom of Rainbow Road */
-	NoBillCancelRR = 0x80589E78;
+	NoBillCancelRR = 0x80589E88;
 
 	/* No Bullet Bill Icon */
 	NoBBIcon = 0x807A8990;
@@ -538,9 +523,6 @@ SECTIONS {
 	NoDC4 = 0x8052D10C;
 	NoDC5 = 0x8052D17C;
 
-	/* No Distorted Music */
-	NoDistortedMusicHook = 0x806FE3E8;
-
 	/* No Invincibility Frames */
 	NoInvFramesHook = 0x805557EC;
 	NoRespawnInv = 0x805556A6;
@@ -548,9 +530,6 @@ SECTIONS {
 	ShroomInBullet = 0x8056D43A;
 	StarWhenHit = 0x8056E2FC;
 	ShroomWhenHit = 0x8056D4A8;
-
-	/* No Lightning Flash */
-	NoLightningFlash = 0x8053D208;
 
 	/* No Multi Channel Track Music */
 	NoMultiChannelHook = 0x806E8ED4;
@@ -560,9 +539,6 @@ SECTIONS {
 	/* No Music */
 	NoMusicHook = 0x8009136C;
 
-	/* No Transformation Music */
-	NoTransfMusicHook = 0x806FE104;
-
 	/* Offline Race Count Modifier */
 	RaceCountFix1 = 0x8084187B;
 	RaceCountFix2 = 0x80841DF8;
@@ -570,59 +546,32 @@ SECTIONS {
 	RaceCountFix4 = 0x80840CB0;
 	RaceCountFix5 = 0x80840D90;
 
-	/* Online Pause Menu */
-	OPM_AllowPausing = 0x80844b78;
-	OPM_PreventRaceInputs = 0x80509580;
-	OPM_AllowPauseOpenSFX1 = 0x80847e14;
-	OPM_AllowPauseOpenSFX2 = 0x80847e18;
-	OPM_AllowPauseCloseSFX = 0x80848314;
-	OPM_ClosePauseOnEndOfRace1 = 0x807deb0c;
-	OPM_ClosePauseOnEndOfRace2 = 0x807deb10;
-	OPM_BranchToPauseMenu1 = 0x8061d134;
-	OPM_BranchToPauseMenu2 = 0x8061d188;
-	OPM_BranchToPauseMenu3 = 0x8061d1dc;
-	OPM_BranchToPauseMenu4 = 0x8061d260;
-	OPM_BranchToPauseMenu5 = 0x8061d2e4;
-	OPM_BranchToPauseMenu6 = 0x8061d344;
-	OPM_BranchToPauseMenu7 = 0x8061d3a4;
-	OPM_BranchToPauseMenu8 = 0x8061d410;
-	OPM_BranchToPauseMenu9 = 0x8061d47c;
-	OPM_BranchToPauseMenu10 = 0x8061d4e8;
-	OPM_BranchToPauseMenu11 = 0x8061d554;
-	OPM_BranchToPauseMenu12 = 0x8061d5c0;
-	OPM_BranchToPauseMenu13 = 0x8061d62c;
-	OPM_BranchToPauseMenu14 = 0x8061d698;
-	OPM_BranchToPauseMenu15 = 0x8061d704;
-	OPM_CreateOnlinePauseMenu = 0x8061d0bc;
-	OPM_ReplaceInvalidPauseID = 0x80844dac;
-	OPM_AvoidDisconnectOnQuit = 0x8061144c;
-	OPM_ReturnToOnlineMenu = 0x8084881c;
-	OPM_PreventFreeze = 0x80542ea4;
-	OPM_KeepSoundsAndMusic = 0x8061084c;
-	OPM_ClosePauseOnEndOfRace3 = 0x807deb34;
-	OPM_ShowControllerImage1 = 0x808471ec;
-	OPM_ShowControllerImage2 = 0x80847418;
-
 	/* Online Stuff */
 	ForceCCHook = 0x8064F71C;
 	FroomRaceCount = 0x806343D3;
 	FroomRaceCount2 = 0x8063D837;
 
-	/* OoB Bill Bike Fix */
-	OoBOGFunction = 0x805716b0;
-	OoBLocalPlayerVT = 0x808a41b8;
-	OoBLocalCPUVT = 0x808a42a0;
-	OoBOnlinePlayerVT = 0x808a4388;
-
 	/* POW Yourself in 1st */
 	POWSelfHook = 0x807A01F0;
 
 	/* Patch.szs */
-	SZSCount = 0x805181AF;
+	SZSCount = 0x8051812F;
 	PatchSZSHook = 0x805183B0;
 	FilenameEndings = 0x808A15F8;
 	DefaultFileEnding = 0x8087E200;
 	CommonFix = 0x8089074E;
+
+	/* Patch Effects */
+	GetFile = 0x8052F254;
+	EffectConstruct = 0x8022600C;
+	PlayerEffectConstruct = 0x8067C340;
+	EffectDrawer = 0x80669C98;
+	EffectBind = 0x8067D3EC;
+	EGGEffectConstruct = 0x80223040;
+	EffectCreate = 0x8054267C;
+	EffectDestroy = 0x805091B8;
+	EffectLoad = 0x8067CD6C;
+	EffectBCTRL = 0x8067CC30;
 
 	/* Pause Menu Fix */
 	PauseMenuScreenHook = 0x8061AA64;
@@ -643,43 +592,17 @@ SECTIONS {
 	/* Prevent Shock/POW Drop */
 	DropFunc = 0x807AA9F0;
 
-	/* Proper Pokey Respawn */
-	ProperPokeyHook = 0x80768ef2;
-	ProperPokeyHook2 = 0x80769012;
+	/* Random FIB Colors */
+	FIBFunc = 0x80796350;
+	FIBString = 0x80893C55;
 
-	/* Race Completion Share */
-	VSRaceMemExpansion = 0x80520322;
-	VSRaceMemExpansionMove = 0x8052cce2;
-	VSRaceMemExpansionMove2 = 0x8052ccf2;
-	VSRaceMemExpansionMove3 = 0x8052c49a;
-	RaceCompletionShareHook = 0x8052d3f4; 
-	VSRaceFinishFunc = 0x8052cc98;
-
-	/* Random Combos */
-	CharSelectPageVT = 0x808c7758;
-	KartSelectPageVT = 0x808c7d18;
-	MultiKartSelectPageVT = 0x808c7fa0;
-	MenuButtonSelect = 0x805abb9c;
-	MenuButtonPress = 0x805ac3b0;
-	PageCheckActions = 0x805f0084;
-	GetWeightClass = 0x8080B0FC;
-	GetButtonDriver = 0x807d1970;
-	GetButtonMachine = 0x80835584;
-	MultiKartSelectOnButtonClick = 0x808384c0;
-	DriftSelectPageBackVT = 0x808aa4fc;
-	DriftSelectPageBackOg = 0x8083cab8;
-	MultiDriftSelectPageBackVT = 0x808aab74;
-	MultiDriftSelectPageBackOg = 0x80839bb4;
-	ModelRendererFixHook = 0x80835248;
-	ModelRendererFixHook2 = 0x805e2358;
+	/* Red Shell Curve Time Desync Fix */
+	RedCurveHook = 0x807A34F8;
 
 	/* Red Shell Target Modifier */
 	TargetWhileRespawn = 0x8057F2EE;
 	TargetWhileHit = 0x8057F33B;
 	TargetPositionHook = 0x807A1C60;
-
-	/* Remove Bloom and Depth of Field */
-	NoBloomHook = 0x8059F634;
 
 	/* Remove Mushroom Bug */
 	RemoveShroomBug = 0x807A8437;
@@ -703,9 +626,13 @@ SECTIONS {
 	ShellHitCount = 0x807A42D4;
 	ShellHitCount2 = 0x8079D070;
 
+	/* Show Mega Damage For Online Players */
+	ShowOnlinePlayerMegaDmg = 0x8057B703;
+
 	/* Show Time Difference */
 	TimeDiffPatchHook = 0x807DC948;
 	TimeDiffApplyHook = 0x80844678;
+	TimeDiffPosHook = 0x80846898;
 
 	/* Show Timers */
 	TimerShow = 0x8063E56C;
@@ -719,6 +646,32 @@ SECTIONS {
 	/* Silent Controller Changing */
 	NoControllerDC = 0x806093B8;
 
+	/* Slot Crash Patches */
+	SLFix = 0x8067C370;
+	SGBFix = 0x80815DF4;
+	MHFix = 0x80815D6C;
+	MHMatFix = 0x8077C5AC;
+	GetResMdl = 0x8004C2A0;
+	GetResMat = 0x8004E950;
+	MatPointer = 0x808BFCF8;
+
+	/* Speed Modifier */
+	SpeedMod1 = 0x80569A08;
+	SpeedMod2 = 0x805665B0;
+	SpeedMod3 = 0x80573920;
+	SpeedMod4 = 0x805699F8;
+	SpeedMod5 = 0x80569C1C;
+	SpeedMod6 = 0x80569DD8;
+	SpeedMod7 = 0x80569DB4;
+	SpeedMod8 = 0x80580204;
+	SpeedMod9 = 0x80580214;
+	SpeedMod10 = 0x80580224;
+	SpeedMod11 = 0x80580234;
+	SpeedMod12 = 0x805801E4;
+	SpeedBuff = 0x8057D6CC;
+	SpeedModFloats = 0x80894220;
+	SpeedModHalf = 0x3E6C;
+
 	/* Speedometer */
 	SpeedoTextParseNop = 0x805BBCF4;
 	SpeedoTextParse = 0x805BBD30;
@@ -726,16 +679,22 @@ SECTIONS {
 	SpeedoNoPauseHook = 0x807D9934;
 
 	/* Starting Lap Modifier */
-	LapCount1 = 0x805208FF;
-	LapCount2 = 0x80521703;
-	LapCount3 = 0x8052239B;
-	LapCount4 = 0x80522C07;
-	LapCount5 = 0x80522D33;
+	LapCount1 = 0x805208FC;
+	LapCount2 = 0x80521700;
+	LapCount3 = 0x80522398;
+	LapCount4 = 0x80522C04;
+	LapCount5 = 0x80522D30;
 	LakituBoardHook = 0x807120E4;
 
 	/* Super Miniturbo Multiplier */
 	SMTMultiplier = 0x808A4148;
 	SMTMinimum = 0x808A413E;
+
+	/* Super Miniturbos on Outward Bikes */
+	KartMTFunc = 0x8056CEA8;
+	BikeMTFunc = 0x805768E0;
+	BikeMTParticles = 0x80681866;
+	OutwardSMT = 0x80691308;
 
 	/* Time Limit Modifier */
 	TimeLimit = 0x8052D410;
@@ -749,30 +708,31 @@ SECTIONS {
 	AREAHook = 0x80501380;
 	JGPTHook = 0x8050114C;
 	CKPHHook = 0x8050180C;
-	GOBJHook = 0x80501550;
-	POTIHook = 0x8050141C;
-
-	/* Transformation Music Plays over Course Music */
-	OverlayTransfMusicHook = 0x806FE224;
-
-	/* Trickable Cannons */
-	TrickableCannonHook = 0x80572C08;
 
 	/* Ultimate Item Randomizer */
 	SharedItemHook = 0x807A8520;
 	SpecialItemHook = 0x807884A8;
 	ItemAmountHook = 0x807AAD18;
 
+	/* Ultra MiniTurbos */
+	CreateUMT = 0x8056CEB4;
+	BuffUMT = 0x80571034;
+	UMTMultiplier = 0x805673A4;
+	UpdateBoost = 0x80576E7C;
+	DriftStateCheck = 0x80686424;
+	KartDriftEffectHandler = 0x806865D0;
+	CreateEffect = 0x8068597C;
+	DestroyEffect = 0x80685B30;
+	PatchBoost = 0x806920B0;
+	BoostMatrix = 0x8068A348;
+	HandleBase = 0x80037650;
+	UMTSound = 0x806F7960;
+	HoldSound = 0x806F76E0;
+	DetailPlay = 0x800A3EE0;
+	DetailHold = 0x800A3FF0;
+
 	/* Ultra UnCut */
 	CKPTCheck = 0x80523170;
-
-	/* Un-Beancorner */
-	UnBeanCornerHook = 0x8055c85c;
-
-	/* Use Items in Cannon */
-	ItemsCannon1 = 0x80786348;
-	ItemsCannon2 = 0x80785f60;
-	ItemsCannon3 = 0x80785ff4;
 
 	/* VS Menu Skip */
 	VSMenuSkipHook = 0x808407EC;
@@ -818,9 +778,4 @@ SECTIONS {
 	WoodRespawn = 0x808BF728;
 	WoodProb = 0x8075D1E8;
 	BushFunc = 0x807556E8;
-
-	/* Track Check */
-	InsertTrackIdentHook = 0x8052c4c8;
-	CheckTrackIdentHook = 0x8052d4f4;
-	clearSendRH2 = 0x80642090;
 }

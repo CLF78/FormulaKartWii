@@ -65,6 +65,19 @@ b DynamicSizingHook3+4
 DynamicSizing3:
 lfs f1, 0x48(r3)
 
+lwz r4, 4(r12)
+cmpwi r4, 5
+bne skipBlueShellSizeMult
+
+lwz r4, 0x78(r12)
+rlwinm. r0, r4, 0,16,16 # dropped?
+beq skipBlueShellSizeMult
+
+lis r4, DroppedBlueShellSize@ha
+lfs f2, DroppedBlueShellSize@l(r4)
+fmuls f1, f1, f2
+
+skipBlueShellSizeMult:
 # Get item status
 lbz r12, 0x72(r12)
 lis r11, OurFloats@h
@@ -147,6 +160,19 @@ blr
 DynamicSizing5Sub:
 lfs f2, 0x48(r3)
 
+lwz r12, 4(r29)
+cmpwi r12, 5
+bne skipBlueShellSizeMult2
+
+lwz r12, 0x78(r29)
+rlwinm. r0, r12, 0,16,16 # dropped?
+beq skipBlueShellSizeMult2
+
+lis r12, DroppedBlueShellSize@ha
+lfs f3, DroppedBlueShellSize@l(r12)
+fmuls f2, f2, f3
+
+skipBlueShellSizeMult2:
 # Get item status
 lbz r12, 0x72(r29)
 
@@ -361,3 +387,7 @@ OurFloats3:
 .float 1.0
 .float 5.0
 .float 0.5
+
+# Float multiplier used for dropped blue shells
+DroppedBlueShellSize:
+.float 2.1 # same as the default multiplier for red/green shells

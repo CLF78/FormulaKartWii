@@ -1,6 +1,6 @@
 .include "asm_setup.S"
 
-.extern GameMode, PlayerHolder, OurFloats, RampUpHook, DriftSpeedHook4, DriftSpeedHook5, BoostAccelHook, Raceinfo
+.extern GameMode, PlayerHolder, OurFloats, RampUpHook, DriftSpeedHook4, DriftSpeedHook5, BoostAccelHook, Raceinfo, KMPinfo
 .global RampUp, RampUpSpeedFix, DriftSpeed1, DriftSpeed2, DriftSpeed3, DriftSpeed4, DriftSpeed5, BoostAccel, BoostAccel2, GetRampUp
 
 ####################
@@ -24,10 +24,17 @@ lis r11, Raceinfo@ha
 lwz r11, Raceinfo@l(r11)
 lwz r11, 0xC(r11)
 lwzx r11, r11, r12
+mtctr r11
+lwz r12, 0x68(r11)
+li r11, 0xA
+divw r11, r12, r11
+srwi r12, r12, 1
+sub r12, r12, r11
+mfctr r11
 lbz r11, 0x26(r11)
 
-# Return value >= 20
-subfic r11, r11, 19
+# Return value >= r12
+subfe r11, r11, r12
 subfe r11, r11, r11
 neg r11, r11
 b return
@@ -55,14 +62,34 @@ bne+ end
 # Run bl trick if so
 bl trick
 
-.float 0.0102040816
+.float 0.0555555555 #10
+.float 0.0172413793 #30
+.float 0.0102040816 #50
+.float 0.0072463768 #70
+.float 0.0056179775 #90
+.float 0.0045871559 #110
+.float 0.0038759689 #130
+.float 0.0033557046 #150
+.float 0.0029585798 #170
 .float 220.0
 
-# Load floats in f1 and f4
+
 trick:
+#Get the lap count
+lis r12, KMPinfo@ha
+lwz r12, KMPinfo@l(r12)
+lwz r12, 0x3C(r12)
+lwz r12, 0x0(r12)
+lwz r12, 0x0(r12)
+lwz r12, 0x0(r12)
+lbz r12, 0x0(r12)
+subi r12, r12, 1
+mulli r12, r12, 0x4
+
+# Load floats in f1 and f4
 mflr r3
-lfs f1, 0(r3)
-lfs f4, 0x4(r3)
+lfsx f1, r3, r12
+lfs f4, 0x24(r3)
 
 # Get player ID
 lbz r3, 0x8(r29)

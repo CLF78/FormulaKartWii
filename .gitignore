@@ -9,7 +9,3 @@ files/TrackPatches/og
 files/UIPatches/*.szs
 __pycache__/
 *.zip
-Build.bat
-buildtest.py
-settings.json
-FKW_WiikiPage.wikitext

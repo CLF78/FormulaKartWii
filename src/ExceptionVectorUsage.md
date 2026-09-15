@@ -30,43 +30,22 @@
 # 0x800013B0-0x800013FF
 
 # 0x800014B0-0x800016FF
-- 0x80001614-0x8000166B = Frameskip
 
 # 0x800017B0-0x800017FF
 
-# 0x80004000-0x8000402F
-
-# 0x80004030-0x8000403F (FKW - Core Features)
-- 0x80004030 = Feather Cut Indicators		[0-1]
-- 0x80004031 = Drift Bikes					[0-1-2]
-- 0x80004032 = Drift Karts					[0-1]
-
-# 0x80004040-0x8000404F (FKW - Newbie Helper)
-- 0x80004040 = Better Item Pool				[0-1]
-- 0x80004041 = Green Shell Replacement		[0-1-2-3-6-7-C-D]
-- 0x80004042 = Bullet Bill TCs				[0-1]
-- 0x80004043 = Instant Respawn				[0-1]
-- 0x80004044 = Automatic Respawn Boost		[0-1]
-- 0x80004045 = Instant Slipstream			[0-1]
-
-# 0x80004050-0x8000405F (FKW - Video Settings)
-- 0x80004050 = Force 30FPS					[0-1]
-- 0x80004051 = Fast Menu Navigation			[0-1]
-- 0x80004052 = Speedometer					[0-1]
-- 0x80004053 = Minimap: Key Checkpoints		[0-1]
-- 0x80004054 = Minimap: Mii Heads			[0-1]
-- 0x80004055 = Nametags Distance			[0-1-2-3-4]
-- 0x80004056 = Time Difference				[0-1-2]
-- 0x80004057 = Bloom and Depth of Field		[0-1]
-- 0x80004058 = Lightning Flash				[0-1]
-- 0x80004059 = Field of View				[0-1-2-3-4]
-- 0x8000405A = Low-angled Camera			[0-1]
-
-# 0x80004060-0x8000406F (FKW - Audio Settings)
-- 0x80004060 = Character Voices				[0-1]
-- 0x80004061 = Music: Race					[0-1-2]
-- 0x80004062 = Music: Transformation		[0-1-2]
-- 0x80004063 = Music: Distortion			[0-1]
-- 0x80004064 = Automatic BRSAR Patching		[0-1]
+# 0x80004000-0x8000400F (Riivo Settings Range)
+- 0x80004000 = Fast Menu Navigation
+- 0x80004001 = Mii Heads on the Minimap
+- 0x80004002 = No Music
+- 0x80004003 = No Character Sounds
+- 0x80004004 = Long Distance Names
+- 0x80004005 = Time Difference
+- 0x80004006 = Speedometer
+- 0x80004007 = Gradually Faster Music
+- 0x80004008 = Debug Item Cycler
+- 0x80004009 = Region Line Colors
+- 0x8000400E = Feather Cut Indicators
+- 0x8000400F = 30FPS
+- 0x80004010 = Show KCPs on Minimap
 
 # Other ranges
