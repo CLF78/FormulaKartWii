@@ -17,6 +17,13 @@ void MenuButtonPress(void* button, u32 hudid, u32 unk);
 void PageCheckActions(Page* page);
 void MultiKartSelectOnButtonClick(MultiKartSelectPage* multiKartSelectPage, KartSelectControl* UIControl, u32 hudSlotId);
 
+static u32 RandomComboPrevVehicles[2] = {-1};
+
+void resetRandomComboPrevVehicles(){
+    RandomComboPrevVehicles[0] = -1;
+    RandomComboPrevVehicles[1] = -1;
+}
+
 void PressButtonHelper(Page* page, void* button, u32 hudid) {
     //select the button and call page check actions so it updates
     MenuButtonSelect(button, hudid);
@@ -58,6 +65,10 @@ void KartSelectPageAfterInAnim(KartSelectPage* kartSelectPage){
 
     // Get random vehicle
     u32 vehicle = (CalcRandom() % 6 * 3) + (0x12 * isBike) + weightClass;
+    while (RandomComboPrevVehicles[0] == vehicle) {
+        vehicle = (CalcRandom() % 6 * 3) + (0x12 * isBike) + weightClass;
+    }
+    RandomComboPrevVehicles[0] = vehicle;
 
     // Get corresponding button
     void *button = GetButtonMachine(kartSelectPage, vehicle);
@@ -70,6 +81,10 @@ void MultiKartSelectPageAfterInAnim(MultiKartSelectPage* multiKartSelectPage){
     if (!RandomCombos) { return; }
 
     for (u32 i = 0; i < Menudata->menudata98->localPlayerCount; i++) {
+
+        /// Get weight class
+        u32 weightClass = GetWeightClass(Menudata->menudata98->prevCharacters[i]);
+
         // Use branchless method
         bool isBike;
 
@@ -79,7 +94,16 @@ void MultiKartSelectPageAfterInAnim(MultiKartSelectPage* multiKartSelectPage){
         else
             isBike = CalcRandom() & 1;
 
-        u32 optionId = CalcRandom() % 6 + 6 * isBike;
+        // Get random vehicle
+        u32 vehicle = (CalcRandom() % 6 * 3) + (0x12 * isBike) + weightClass;
+        while (RandomComboPrevVehicles[i] == vehicle) {
+            vehicle = (CalcRandom() % 6 * 3) + (0x12 * isBike) + weightClass;
+        }
+        RandomComboPrevVehicles[i] = vehicle;
+
+        // convert vehicle to optionId branchless
+        u32 optionId = (vehicle/*- weightClass*/) / 3 - ((VehicleRestrict == 2) * 6);
+
         // Get corresponding button
         KartSelectControl *button = &multiKartSelectPage->selects[i];
         button->optionId = optionId;
