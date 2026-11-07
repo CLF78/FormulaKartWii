@@ -40,6 +40,11 @@
 					<patch id="orientkarts"/>
 				</choice>
 			</option>
+			<option name="Wiimmfi toggle">
+				<choice name="Enabled">
+					<patch id="wiimmfi"/>
+				</choice>
+			</option>
 		</section>
 		<!-- Newbie Helper -->
 		<section name="FKW - Newbie Helper">
@@ -256,6 +261,10 @@
 
 	<patch id="orientkarts">
 		<memory offset="0x80004032" value="01" original="00"/>
+	</patch>
+
+	<patch id="wiimmfi">
+		<memory offset="0x80004033" value="01" original="00"/>
 	</patch>
 
 	<!--FKW - Newbie Helper-->

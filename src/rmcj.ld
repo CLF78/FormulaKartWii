@@ -315,6 +315,7 @@ SECTIONS {
 	/* Feather Cut Indicators */
 	FCIHook1 = 0x8081F3FC;
 	FCIHook2 = 0x8081F418;
+	CalcModelFlagCheckHook = 0x80820e24;
 
 	/* Feather Item */
 	FeatherUseFunc = 0x808A49F4;

@@ -29,6 +29,7 @@ SECTIONS {
 	FCIs = 0x80004030;
 	DriftBikes = 0x80004031;
 	DriftKarts = 0x80004032;
+	Wiimmfi = 0x80004033;
 
 	/* FKW - Newbie Helper */
 	BetterItems = 0x80004040;
