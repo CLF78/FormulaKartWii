@@ -10,71 +10,73 @@ void loadCodes() {
 
 	// Exception Handler (by Star)
 	directWrite32(ShowExceptions, 0);
-	
-	// WiiLink Code Patches (by The WiiLink Team, ported by Palapeli and Ismy)
-	#ifdef REGION_P
-	directWriteArray(WL_Code_Text_Hook, WL_Code_Text_P, 0x58);
-	directWriteArray(WL_Code_Data_Hook, WL_Code_Data_P, 0x4C);
-	#elif REGION_E
-	directWriteArray(WL_Code_Text_Hook, WL_Code_Text_E, 0x58);
-	directWriteArray(WL_Code_Data_Hook, WL_Code_Data_E, 0x4C);
-	#elif REGION_J
-	directWriteArray(WL_Code_Text_Hook, WL_Code_Text_J, 0x58);
-	directWriteArray(WL_Code_Data_Hook, WL_Code_Data_J, 0x4C);
-	#elif REGION_K
-	directWriteArray(WL_Code_Text_Hook, WL_Code_Text_K, 0x58);
-	directWriteArray(WL_Code_Data_Hook, WL_Code_Data_K, 0x4C);
-	#endif
-	
-	// WiiLink Auth response
-	directWriteArray(WL_Auth_Response_Hook, WL_Auth_Response, 0x8);
-	
-	// WiiLink String Patches
-	directWriteArray(WL_Domain_Hook, WL_Domain, 0x11);
-	directWriteArray(WL_URL_Hook, WL_URL, 0x18);
-	
-	// WiiLink Skip DNS request caching
-	directWrite32(WL_Skip_DNS, 0x480001F4);
-	
-	// Anti-Wiimmfi
-	directWrite32(Anti_Wiimmfi_1, 0x2C030000);
-	directWrite32(Anti_Wiimmfi_2, 0x7C7E1B78);
-	directWrite32(Anti_Wiimmfi_3, 0x00004E4D);
-	
-	/*
-	// Wiimmfi Code Patches (by Leseratte)
-	directWriteNop(WiimmfiPatch1);
-	directWrite32(WiimmfiPatch2, 0x3BC00000);
-	directWriteBranch(WiimmfiPatch3, WiimmfiASM1, false);
-	directWriteBranch(WiimmfiPatch4, WiimmfiASM2, false);
 
-	// Wiimmfi String Patches (by Seeky)
-	directWriteString(WiimmfiVersionString, "LE-CODE GCT v1 ");
-	directWriteString(WiimmfiURLs, "://ca.nas.wiimmfi.de/ca");
-	directWriteStringOffset(WiimmfiURLs, 0x28, "://naswii.wiimmfi.de/ac");
-	directWriteStringOffset(WiimmfiURLs, 0xA8, "://naswii.wiimmfi.de/pr");
+	extern bool Wiimmfi;
+	if(!Wiimmfi) {
+		// WiiLink Code Patches (by The WiiLink Team, ported by Palapeli and Ismy)
+		#ifdef REGION_P
+		directWriteArray(WL_Code_Text_Hook, WL_Code_Text_P, 0x58);
+		directWriteArray(WL_Code_Data_Hook, WL_Code_Data_P, 0x4C);
+		#elif REGION_E
+		directWriteArray(WL_Code_Text_Hook, WL_Code_Text_E, 0x58);
+		directWriteArray(WL_Code_Data_Hook, WL_Code_Data_E, 0x4C);
+		#elif REGION_J
+		directWriteArray(WL_Code_Text_Hook, WL_Code_Text_J, 0x58);
+		directWriteArray(WL_Code_Data_Hook, WL_Code_Data_J, 0x4C);
+		#elif REGION_K
+		directWriteArray(WL_Code_Text_Hook, WL_Code_Text_K, 0x58);
+		directWriteArray(WL_Code_Data_Hook, WL_Code_Data_K, 0x4C);
+		#endif
 
-	#ifdef REGION_P
-	directWriteStringOffset(WiimmfiURLs, 0x50, "main.nas.wiimmfi.de/pp");
-	#elif REGION_E
-	directWriteStringOffset(WiimmfiURLs, 0x50, "main.nas.wiimmfi.de/pe");
-	#elif REGION_J
-	directWriteStringOffset(WiimmfiURLs, 0x50, "main.nas.wiimmfi.de/pj");
-	#elif REGION_K
-	directWriteStringOffset(WiimmfiURLs, 0x50, "main.nas.wiimmfi.de/pk");
-	#endif
+		// WiiLink Auth response
+		directWriteArray(WL_Auth_Response_Hook, WL_Auth_Response, 0x8);
 
-	directWriteStringOffset(WiimmfiURLs, 0x964, "wiimmfi.de"); // Available
-	directWriteStringOffset(WiimmfiURLs, 0x10D4, "wiimmfi.de"); // GPCM
-	directWriteStringOffset(WiimmfiURLs, 0x1AEC, "wiimmfi.de"); // GPSP
-	directWriteStringOffset(WiimmfiURLs, 0x2C8D, "wiimmfi.de"); // Master
-	directWriteStringOffset(WiimmfiURLs, 0x38A7, "wiimmfi.de"); // Natneg
-	directWriteStringOffset(WiimmfiURLs, 0x38C3, "wiimmfi.de");
-	directWriteStringOffset(WiimmfiURLs, 0x38DF, "wiimmfi.de");
-	directWriteStringOffset(WiimmfiURLs, 0x3A2F, "wiimmfi.de"); // MS
-	directWriteStringOffset(WiimmfiURLs, 0x3AB3, "wiimmfi.de"); // SAKE
-	*/
-	
+		// WiiLink String Patches
+		directWriteArray(WL_Domain_Hook, WL_Domain, 0x11);
+		directWriteArray(WL_URL_Hook, WL_URL, 0x18);
+
+		// WiiLink Skip DNS request caching
+		directWrite32(WL_Skip_DNS, 0x480001F4);
+
+		// Anti-Wiimmfi
+		directWrite32(Anti_Wiimmfi_1, 0x2C030000);
+		directWrite32(Anti_Wiimmfi_2, 0x7C7E1B78);
+		directWrite32(Anti_Wiimmfi_3, 0x00004E4D);
+	} else {
+
+		// Wiimmfi Code Patches (by Leseratte)
+		directWriteNop(WiimmfiPatch1);
+		directWrite32(WiimmfiPatch2, 0x3BC00000);
+		directWriteBranch(WiimmfiPatch3, WiimmfiASM1, false);
+		directWriteBranch(WiimmfiPatch4, WiimmfiASM2, false);
+
+		// Wiimmfi String Patches (by Seeky)
+		directWriteString(WiimmfiVersionString, "LE-CODE GCT v1 ");
+		directWriteString(WiimmfiURLs, "://ca.nas.wiimmfi.de/ca");
+		directWriteStringOffset(WiimmfiURLs, 0x28, "://naswii.wiimmfi.de/ac");
+		directWriteStringOffset(WiimmfiURLs, 0xA8, "://naswii.wiimmfi.de/pr");
+
+		#ifdef REGION_P
+		directWriteStringOffset(WiimmfiURLs, 0x50, "main.nas.wiimmfi.de/pp");
+		#elif REGION_E
+		directWriteStringOffset(WiimmfiURLs, 0x50, "main.nas.wiimmfi.de/pe");
+		#elif REGION_J
+		directWriteStringOffset(WiimmfiURLs, 0x50, "main.nas.wiimmfi.de/pj");
+		#elif REGION_K
+		directWriteStringOffset(WiimmfiURLs, 0x50, "main.nas.wiimmfi.de/pk");
+		#endif
+
+		directWriteStringOffset(WiimmfiURLs, 0x964, "wiimmfi.de"); // Available
+		directWriteStringOffset(WiimmfiURLs, 0x10D4, "wiimmfi.de"); // GPCM
+		directWriteStringOffset(WiimmfiURLs, 0x1AEC, "wiimmfi.de"); // GPSP
+		directWriteStringOffset(WiimmfiURLs, 0x2C8D, "wiimmfi.de"); // Master
+		directWriteStringOffset(WiimmfiURLs, 0x38A7, "wiimmfi.de"); // Natneg
+		directWriteStringOffset(WiimmfiURLs, 0x38C3, "wiimmfi.de");
+		directWriteStringOffset(WiimmfiURLs, 0x38DF, "wiimmfi.de");
+		directWriteStringOffset(WiimmfiURLs, 0x3A2F, "wiimmfi.de"); // MS
+		directWriteStringOffset(WiimmfiURLs, 0x3AB3, "wiimmfi.de"); // SAKE
+	}
+
 	// Login Region Changer (by Atlas)
 	directWriteString(LoginRegion, "120045");
 	
