@@ -259,9 +259,10 @@ void loadCodes() {
 	directWrite8(ScoreSkip, 1);
 	directWriteBranch(NoTransition, NoTransitionASM, true);
 
-	// Feather Cut Indicators (by CLF78 and Ismy)
+	// Feather Cut Indicators (by CLF78, Ismy and stealthsteeler)
 	directWriteBranch(FCIHook1, FeatherCutIndicator, true);
 	directWrite32(FCIHook2, 0x80810028);
+	directWriteBranch(CalcModelFlagCheckHook, CalcModelFlagCheck, false);
 
 	// Feather Item (by CLF78 and stebler)
 	extern void* FeatherFunc;
